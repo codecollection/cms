@@ -1,0 +1,18 @@
+.sel_box{position:relative;}
+.sel_box,.txt_box,.sel_list{width:100%; height:20px; line-height:20px;display:block;}
+.txt_box {border:1px solid #ccc;border-radius:3px;}
+.txt_box .sel_inp{background: url(sort_down.png) no-repeat 94% 50%;border:0;height:20px; overflow:hidden; line-height:20px;float:left;width:78%;padding-right:20%;text-align:left;text-indent:15px;color:#666;font-size:12px;}
+.txt_box .sel_inp.no_sel{background:rgb(221, 221, 221) url(sort_down.png) no-repeat 94% 50%;}
+/*.txt_box .sel_span{height:24px;background:#fff url(sort_down.png) no-repeat 50% 50%;display:inline-block; float:right;width:30px;}
+.txt_box .sel_span:hover{background: #cee9fc url(sort_down_h.png) no-repeat 50% 50%;}*/
+.sel_list{overflow-y:auto; height:140px; overflow-x:hidden;width:100%; border:1px solid #ccc;background-color:#f7fbfe; border-width:0 1px 1px 1px;position:absolute;left:0\9;}
+.sel_list a{display:block;text-decoration:none;font-size:12px; background:#fff;text-align:left;text-indent:15px;width:100%;border-bottom:1px solid #ccc;height:22px;line-height:22px;color:#555;overflow:Hidden;}
+.sel_list a:hover{background:#f7f7f7;color:#555;text-decoration:none;}
+.sel_list a.current{background:#eee;color:#333;}
+.sel_list .last_item{border:0;}
+.sel_list a:last-child{border:0;}
+
+/*multi class*/
+.duo_sel_box{border:1px solid #addbfb;height:134px;overflow-y:auto;width:100%;background-color:#fff;}
+.duo_sel_box a{height:24px;line-height:24px;width:100%;font-size:12px;text-align:center;text-indent:0;}
+.duo_sel_box .sel_list{overflow:hidden;position:relative;height:auto;width:100%;border-width:0 0 1px 0;}

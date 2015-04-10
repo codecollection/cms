@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CMS</title>
+<meta content="" name="keywords" />
+<meta content="" name="description"/>
+<!--插件JS和样式-->
+<script src="/static/libs/jquery-1.7.1.min.js"></script>
+<script src="/static/libs/common.js"></script>
+<script src="/static/libs/zy.select/jquery.select.js"></script>
+<script src="/static/libs/zy.tree/jquery.tree.js"></script>
+<script src="/static/libs/datepicker.js"></script>
+<script src="/static/sty_default/js/public.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/back/zy.select/select.css"/>
+<link rel="stylesheet" type="text/css" href="/style/back/zy.tree/tree.css"/>
+<link href="/style/image/logo_ico.ico" type="image/x-icon" rel="shortcut icon"/>
+<!--[if lte IE 6]>
+<script language="javascript" type="text/javascript" src="/static/libs/png.js" ></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('div, ul, li, input , h2, b,span,a,a:hover');
+</script>
+<![endif]--><!--本页JS和样式-->
+<script src="/static/sty_default/js/login.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/back/css/admin.css">
+</head>
+<body>
+<!-- 加载头部 -->
+<div class="header_wrap"><!-- 头部 -->
+    <div class="header">
+        <div class="hd_logo l"><a href="index.php"><img src="/style/back/image/logo.png" /></a></div>
+        <ul class="user_hd r">
+            <li><a href="info.list.php?tpl=edit">添加文档</a></li>
+            <li><a href="category.php">分类管理</a></li>
+			<li><a href="/" target="_blank">前台首页</a></li>
+            <li><a href="cache.clear.php">清理缓存</a></li>
+            <li><a href="javascript:void(0);" onclick="restart();">重启账号</a></li>
+            <li><span>系统管理员&nbsp;(&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();">wenghe</a>)</span></li>
+            <li><a href="login.php?m=logout">退出</a></li>
+        </ul>
+        <ul class="hd_tabs" id="hd_tabs">
+            <li><a href="index.php" class="current">文档</a></li><li><a href="user.php">用户</a></li><li><a href="config.basic.php">系统</a></li><li><a href="weixin.menu.php">微信</a></li><li><a href="gov.plugin.vars.php">插件</a></li>        </ul>
+    </div>
+</div><!-- 主体内容 -->
+<div class="content">
+    <ul class="manage_btn">
+        <li><a href="index.php" class="current">统计概览</a></li><li><a href="info.list.php">文档管理</a></li><li><a href="category.php">分类管理</a></li>    </ul>
+    <p class="line-t-6"></p>
+    <div class="crumbs">
+        <span class="cbs_left">
+            <b>文档</b><em>></em><a href="index.php">统计概览</a>
+        </span>
+    </div>
+	<p class="line-t-15"></p>
+	<div>
+		<!--统计概览-->
+		<div class="totals clearfix">
+			<ul>
+				<li class="hdli">文档</li>
+				<li><a href="info.list.php?info_status=-1">草稿（0）</a></li>
+				<li><a href="info.list.php?info_status=3">未通过（0）</a></li>
+				<li><a href="info.list.php?info_status=2">审核中（0）</a></li>
+				<li><a href="info.list.php?info_status=0">已通过（22）</a></li>
+				<li><a href="info.list.php?info_status=1">回收站（0）</a></li>
+			</ul>
+			<ul>
+				<li class="hdli">用户</li>
+				<li><a href="user.php?login_status=0">正常（1）</a></li>
+				<li><a href="user.php?login_status=1">禁用（0）</a></li>
+				<li><a href="user.php?login_status=2">未激活（0）</a></li>
+			</ul>
+		</div>
+		<p class="line-t-10" style="clear:both;"></p>
+		<!--系统信息 -->
+		<div class="columns-mod l">
+			<div class="hd">
+				<h5>系统信息</h5>
+			</div>
+			<div class="bd">
+				<div class="sys-info">
+					<table>
+						<tr>
+							<th>Mcms版本</th>
+							<td>3.1.3</td>
+						</tr>
+						<tr>
+							<th>服务器操作系统</th>
+							<td>Darwin</td>
+						</tr>
+						<tr>
+							<th>运行环境 </th>
+							<td></td>
+						</tr>
+						<tr>
+							<th>MYSQL版本</th>
+							<td>5.5.38</td>
+						</tr>
+						<tr>
+							<th>上传限制</th>
+							<td>1MB</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--产品团队 -->
+		<div class="columns-mod r">
+			<div class="hd">
+				<h5>产品团队</h5>
+			</div>
+			<div class="bd">
+				<div class="sys-info">
+					<table>
+					<tr>
+						<th>版权所有</th>
+						<td id="copyright"><a target="_blank" href="http://www.mcms.cc" title="南昌掌易业泰科技有限公司">南昌掌易业泰科技有限公司</a></td>
+					</tr>
+					<tr>
+						<th>总策划</th>
+						<td id="producer">茶油哥</td>
+					</tr>
+					<tr>
+						<th>产品设计及研发团队</th>
+						<td id="team">茶油哥 , 无痕 , Josephu , 扬空 , 无为草莽 , you</td>
+					</tr>
+					<tr>
+						<th>官方网址</th>
+						<td id="official_website"><a target="_blank" href="http://www.mcms.cc" title="http://www.mcms.cc">http://www.mcms.cc</a></td>
+					</tr>
+					<tr>
+						<th>官方QQ群</th>
+						<td id="official_qq">
+							<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=99308d84c58580e490ef36a2318403c5a484f751c4c9542eb0ef5ca659c259ba">		<img border="0" title="MCMS交流群1" alt="MCMS交流群1" src="http://pub.idqqimg.com/wpa/images/group.png">
+							</a>
+						</td>
+					</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div id="alert"></div>
+    <p class="line-t-20"></p>
+    <!-- 加载底部 -->
+    <p class="footer_cpy">
+    Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;掌易科技 &nbsp;&nbsp;0.006 秒
+</p>
+<div class="to-top" style="display:none;">
+    <a class="to-top-a" title="返回顶部"></a>
+</div></div>
+<style type="text/css">
+	.columns-mod{
+		width:490px;
+		height:320px;
+		border-radius: 5px;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
+	}
+	.hd{
+		border-radius: 5px 5px 0 0;
+		-moz-border-radius: 5px 5px 0 0;
+		-webkit-border-radius: 5px 5px 0 0;
+		background-color: #F2F2F2;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 10px 0 15px;
+	}
+	.bd{
+		background-color: rgba(250, 250, 250, 0.3);
+		border-radius: 0 0 5px 5px;
+		-moz-border-radius: 5px 5px 0 0;
+		-webkit-border-radius: 5px 5px 0 0;
+		height: 200px;
+		overflow: hidden;
+		border-bottom: 1px solid #F2F2F2;
+		border-left: 1px solid #F2F2F2;
+		border-right: 1px solid #F2F2F2;
+	}
+	.sys-info{
+		padding: 15px;
+	}
+	.sys-info table{
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.sys-info table a:hover{text-decoration: none;}
+	.sys-info th {
+		font-weight: normal;
+		text-align: left;
+		width: 30%;
+		font-size:14px;
+	}
+	.sys-info th, .sys-info td {
+		height: 20px;
+		line-height: 20px;
+		padding: 5px 0;
+		font-size:12px;
+	}
+	.totals{
+		border-radius: 5px;
+		-moz-border-radius: 5px 5px 0 0;
+		-webkit-border-radius: 5px 5px 0 0;
+		margin:5px 0 5px 0;
+		background-color: rgba(250, 250, 250, 0.3);
+        border:1px solid #eee;
+	}
+	.totals ul{clear:both;}
+	.totals li {
+		float:left;
+		margin-left:15px;
+		font-size:12px;
+		height: 30px;
+		line-height: 29px;
+		width: 100px;
+	}
+	.totals li a{line-height: 29px;}
+	.totals li a:hover{text-decoration: none;}
+	.totals .hdli {
+		font-size:14px;
+		font-weight: bold;
+	}
+</style>
+<script type="text/javascript">
+$(function(){ad_saf_team();});
+function  ad_saf_team(){
+	var url = 'http://www.mcms.cc/app/mcms/info.php?ver=3.1.3'
+    $.getJSON(url,{},function(json){
+        try{
+			for(var i in json) {
+				$("#"+i).html('');
+				$("#"+i).html(json[i]);
+			}
+        }catch(e){alert(e.message);}
+    });
+}
+</script>
+</body>
+</html>
