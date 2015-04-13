@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" class="login_bg">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>用户登录-掌易科技</title>
+<title>用户登录-NCMS-后台管理中心</title>
 <meta content="" name="keywords">
 <meta content="" name="description">
 <!--插件JS和样式-->
@@ -21,7 +21,7 @@
     DD_belatedPNG.fix('div, ul, li, input , h2, b,span,a,a:hover');
 </script>
 <![endif]--><!--本页JS和样式-->
-<script src="/static/sty_default/js/login.js"></script>
+<script src="/style/back/js/login.js"></script>
 <link rel="stylesheet" type="text/css" href="/style/back/css/admin.css">
 </head>
 <body class="login_bg">
@@ -31,10 +31,10 @@
             <div class="login_form" id="login_form">
                 <table class="lg_table">
                     <tr>
-                        <td><input id="uname" type="text" class="user_name" value=""/></td>
+                        <td><input id="aname" type="text" class="user_name" value=""/></td>
                     </tr>
                     <tr>
-                        <td><input id="upass"  type="password" class="user_pwd" onkeydown="if(event.keyCode==13) login('login_form','login');" value=""/></td>
+                        <td><input id="apass"  type="password" class="user_pwd" onkeydown="if(event.keyCode==13) login('login_form','login');" value=""/></td>
                     </tr>
                 </table>
                 <p class="line-t-6"></p>
@@ -42,7 +42,7 @@
                 <p class="line-t-6"></p>
             </div>
         </div>
-        <p class="ft_crt">Copyright(c) &nbsp;&nbsp;2013-2015 &nbsp;&nbsp;掌易科技</p>
+        <p class="ft_crt">Copyright(c) &nbsp;&nbsp;2013-2015 &nbsp;&nbsp;小肉粽</p>
     </div>
 </body>
 </html>

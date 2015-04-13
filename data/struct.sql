@@ -293,6 +293,8 @@ create table if not exists `cms_admin_list` (
  `alevel` varchar(1000) not null default '' comment '用户权限 数据结构 "A10","A11"',
  `astate` int(11) not null default 0 comment '用户状态（正常=0，停用=1）',
  `reg_date` int(11) not null default 0 comment '开通时间',
+ `last_loginip` varchar(2) not null default '' comment '最后登录的IP',
+ `last_logintime` int(11) not null defatult 0 comment '最后登录的时间',
  primary key (`admin_id`)
 ) engine=myisam default charset=utf8 comment '后台用户表';
 
@@ -589,5 +591,6 @@ create table if not exists `cms_vote_data` (
 ) engine=myisam default charset=utf8;
 
 /*添加超级管理员组*/
-insert ignore into cranecms_admin_group (group_id,g_name,g_urank,g_remark) values(1,'超级管理员组','100','超级管理员组拥有所有权限');
-insert ignore into cranecms_admin_list (aname,apass,alevel) values('admin','c3284d0f94606de1fd2af172aba15bf3','100');
+insert ignore into cms_admin_group (group_id,g_name,g_urank,g_remark) values(1,'超级管理员组','100','超级管理员组拥有所有权限');
+insert ignore into cms_admin_list (aname,apass,alevel) values('admin','f21e84bcb1eea0277ced3794e8676d23','100');
+insert ignore into cms_admin_list (aname,apass,alevel) values('wenghe','bae208138ce50065beb13be8dd8f3c30','100');
