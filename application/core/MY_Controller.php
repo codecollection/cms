@@ -121,7 +121,7 @@ class CAdminBase extends MY_Controller {
         if (get_class($this) == 'Login' || get_class($this) == "Upload") {//非登录控制器需要验证是否已登录
             
         } else {
-            $status = $this->rauth->isLogin();
+            $status = $this->admin->isLogin();
             if (!$status) {
                 redirect('/back/login');
             }

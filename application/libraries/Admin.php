@@ -9,6 +9,8 @@ class Admin {
     
     const USR_COOKIE_KEY = '*&Mdd28H0M<=//-+@sdsGGk';
     
+    const USR_CACHE_KEY = "A";
+
     private $ci = NULL;
    
     private $token = NULL;
@@ -81,7 +83,7 @@ class Admin {
             return -1;//无此用户
         }
         
-        if ($query->row()->apass != self::makePwd($query->row()->apass, $password)) {
+        if ($query->row()->apass != self::makePwd($query->row()->aname, $password)) {
             return -2;//密码错误
         }
         
@@ -103,7 +105,7 @@ class Admin {
      * @return mixed 成功返回token，失败返回false
      * 
      */
-    public function update($adminId, $time) {
+    public function update($adminId, $time = 0) {
 
         if ($time <= 0) {
             $time = 3600;//30分钟内不用登录
@@ -130,7 +132,7 @@ class Admin {
        
         $token = self::makeToken($data['aname']);
         
-        $this->setSession($data,$time);
+        $this->setSession();
         
         $this->ci->db->query("UPDATE {$this->adminTabel} SET last_loginip='" . $data['loginIp'] . "', last_logintime=" . time() . ' WHERE admin_id =' . $adminId);
         
@@ -148,9 +150,9 @@ class Admin {
      * @param type $data
      * @param type $time
      */
-    private function setSession($token,$data, $time){
+    private function setSession(){
         
-        $_SESSION['admin'] = array("token"=>$token,"info"=>$data);
+        $_SESSION['admin'] = array("token"=>  $this->token,"info"=>  $this->info);
     }
 
     /**
@@ -186,7 +188,8 @@ class Admin {
      */
     public function getToken() {
         
-        return $this->token;
+        return isset($_SESSION['admin']['token']) ? $_SESSION['admin']['token'] : '';
+        //return $this->token;
     }
     
     /**
@@ -196,9 +199,9 @@ class Admin {
     public function getUserInfo($key = NULL) {
         
         if ($key == NULL) {
-            return $this->info;
+            return isset($_SESSION['admin']['info']) ? $_SESSION['admin']['info']  :  array();
         } else {
-            return $this->info[$key];
+            return isset($_SESSION['admin']['info'][$key]) ? $_SESSION['admin']['info'][$key] : '';
         }
     }
     /**
@@ -208,7 +211,7 @@ class Admin {
         
         $infoId = $this->getUserInfo('admin_id');
         
-        if ($this->getToken() && !empty($infoId)) {
+        if (!empty($infoId)) {
             return true;
         }
         

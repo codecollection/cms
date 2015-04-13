@@ -36,6 +36,8 @@
  * @filesource
  */
 
+ ini_set('date.timezone','Asia/Shanghai');
+ session_start();
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

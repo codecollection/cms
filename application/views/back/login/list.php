@@ -8,8 +8,14 @@
 <!--插件JS和样式-->
 <script src="/style/libs/jquery-1.7.1.min.js"></script>
 <script src="/style/libs/common.js"></script>
+<!-- 
+<script src="/style/libs/zy.select/jquery.select.js"></script>
+<script src="/style/libs/zy.tree/jquery.tree.js"></script> -->
 <script src="/style/back/js/public.js"></script>
 <link href="/static/logo/logo_ico.ico" type="image/x-icon" rel="shortcut icon"/>
+<!-- 
+<link rel="stylesheet" type="text/css" href="/style/libs/zy.select/select.css"/>
+<link rel="stylesheet" type="text/css" href="/style/libs/zy.tree/tree.css"/> -->
 <!--[if lte IE 6]>
 <script language="javascript" type="text/javascript" src="/style/libs/png.js" ></script>
 <script type="text/javascript">

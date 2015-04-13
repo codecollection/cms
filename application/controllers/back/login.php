@@ -27,6 +27,7 @@ class Login extends CAdminBase {
         $data = $this->admin->getUserInfo();
         
         if($data){
+            
             redirect("/back/home");
             exit;
         }

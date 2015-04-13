@@ -1271,7 +1271,7 @@ var ckeditor_toolbar=[
 ];
 
 //载入弹层样式
-C.loadCss('../../static/libs/images/alert.css');
+C.loadCss('../../style/libs/images/alert.css');
 
 //缩略图onerror函数
 function original_img(obj) {
