@@ -40,6 +40,9 @@ class MY_Controller extends CI_Controller {
         RKit::printJson(array_merge($response, $data));
     }
     
+    protected function successAjax(){
+        $this->echoAjax(0, '');
+    }
     /**
      * 载入模型
      * @param type $models

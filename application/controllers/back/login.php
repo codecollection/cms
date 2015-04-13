@@ -47,8 +47,8 @@ class Login extends CAdminBase {
          if ($rs > 0) {
             
             $this->admin->update($rs);
-            redirect("/back/home");
-            exit;
+            //redirect("/back/home");
+            $this->successAjax();
         }
 
         $info = array(
