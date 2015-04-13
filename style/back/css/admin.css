@@ -45,7 +45,7 @@ em,i{font-style:normal;}
 
 
 /* 置顶 */
-.to-top-a {width: 50px;height:50px;background:url(images/backtop.jpg) no-repeat 0 bottom;display:block;border-radius:2px;}
+.to-top-a {width: 50px;height:50px;background:url(../image/backtop.jpg) no-repeat 0 bottom;display:block;border-radius:2px;}
 .to-top-a:hover{background-position:0 top;}
 .to-top {position: absolute;cursor:pointer;width:50px;height:50px;right:50%;margin-right:-600px;}
 
@@ -107,8 +107,8 @@ scrollbar-track-color: #c6e4f8;  /*立体滚动条背景颜色*/
 .btn:hover{background-color:#c0dfff;cursor:pointer;text-decoration:none;color:#333;}
 .btn2,.btn3{padding:8px 115px;border:1px solid #0876c2;background-color:#2a95de;font-size:14px;color:#fff;margin:0 auto;}
 .btn2:hover{color:#fff;background-color:rgb(61, 168, 241);text-decoration:none;}
-.btn3{padding:0 10px;font-size:12px;background:url(images/btn3_bg.png) repeat-x 0 50%;height:30px;line-height:30px;display:inline-block;border-radius:3px;*line-height:34px;_line-height:30px;}
-.btn3:hover{background:url(images/btn3_bg_h.png) repeat-x 0 50%;color:#fff;text-decoration:none;}
+.btn3{padding:0 10px;font-size:12px;background:url(../image/btn3_bg.png) repeat-x 0 50%;height:30px;line-height:30px;display:inline-block;border-radius:3px;*line-height:34px;_line-height:30px;}
+.btn3:hover{background:url(../image/btn3_bg_h.png) repeat-x 0 50%;color:#fff;text-decoration:none;}
 .btn3_1{background:#ececec;border:1px solid #cdcdcd;color:#888;}
 .btn3_1:hover{background:#ececec;color:#888;}
 .btn3_2{background:#ececec;border:1px solid #cdcdcd;color:#888;}
@@ -196,7 +196,7 @@ textarea{border: 1px solid #ccc;border-radius: 2px;width:760px;height:40px;paddi
 
 /*定义角色*/
 .role_tabs {/*border-bottom:1px solid #c6e4f8;*/height:29px;}
-.role_tabs a{width:70px;height:28px;border:1px solid #c6e4f8;border-bottom:0;font-size:12px; border-radius:2px 2px 0 0; display:inline-block;float:left;margin-right:6px;background:url(images/tabsbg.png) repeat-x 0 0;line-height:28px;text-align:center;}
+.role_tabs a{width:70px;height:28px;border:1px solid #c6e4f8;border-bottom:0;font-size:12px; border-radius:2px 2px 0 0; display:inline-block;float:left;margin-right:6px;background:url(../image/tabsbg.png) repeat-x 0 0;line-height:28px;text-align:center;}
 .role_tabs a.current,.role_tabs a:hover{color:#333;font-weight:700;height:19px;position:relative;bottom:0px;height:29px;text-decoration:none;}
 
 .w50{width:50%;}
@@ -205,7 +205,7 @@ textarea{border: 1px solid #ccc;border-radius: 2px;width:760px;height:40px;paddi
 
 /*分页*/
 .pagebar{margin:0 0 0 20px;}
-.pagebar a,.pagebar span{border-radius:2px;border:1px solid #555;float:left;display:inline-block;height:24px;line-height:24px;padding:0 8px; background:url(images/pgbg.png) repeat-x 50% 50%;text-align:center;color:#333;margin-right:4px;text-decoration: none;}
+.pagebar a,.pagebar span{border-radius:2px;border:1px solid #555;float:left;display:inline-block;height:24px;line-height:24px;padding:0 8px; background:url(../image/pgbg.png) repeat-x 50% 50%;text-align:center;color:#333;margin-right:4px;text-decoration: none;}
 .pagebar a:hover,.pagebar span{background:#888;color:#fff;border:1px solid #888;}
 
 .page_right{font-size:12px; color:#999;margin-top:7px;}
@@ -230,7 +230,7 @@ textarea{border: 1px solid #ccc;border-radius: 2px;width:760px;height:40px;paddi
 .upload_face span{line-height:30px;color:#666;}
 
 /*资源属性管理*/
-.tree_hd_tit{text-indent:22px;display:block;line-height:30px;font:700 14px '';margin:10px auto 0 auto;width:160px;background:url(images/tit_yuan.png) no-repeat 0 50%;}
+.tree_hd_tit{text-indent:22px;display:block;line-height:30px;font:700 14px '';margin:10px auto 0 auto;width:160px;background:url(../image/tit_yuan.png) no-repeat 0 50%;}
 
 .screening{border:1px solid #f1f1f1;border-top:0;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
 .screening li{border-top:1px solid #f1f1f1;padding:10px 0; overflow:hidden;}
@@ -275,7 +275,7 @@ textarea{border: 1px solid #ccc;border-radius: 2px;width:760px;height:40px;paddi
 .son_div{z-index:10;position:absolute;left:0;top:34px;display:none;width:1000px;height:300px;border:1px solid #dff1fd;border-top:2px solid #dff1fd;background:#fff;overflow-x:hidden;overflow-y:scroll;}
 
 /*登录*/
-.login_bg{background-color:#00724D;}
+.login_bg{background-color:#f5f6f8;}
 
 .login_wrap{width:400px;;position:absolute;left:50%;top:50%;margin:-173px 0 0 -200px;}
 .login_wrap .ft_crt{text-align:center;color:#fff;font-size:13px;line-height:40px;}
@@ -287,8 +287,8 @@ textarea{border: 1px solid #ccc;border-radius: 2px;width:760px;height:40px;paddi
 .lg_table tr td{/*width:77%;*/}
 .lg_table tr td input {padding:10px 10px 10px 34px;color:#333;width:314px;border:1px solid #ddd;height:18px;}
 .lg_table tr td input.savePwd,.lg_table tr td input.auto_login{vertical-align: -2px;width:auto;height:auto;padding:0;border:1px solid #9a9a9a;border-radius:0;}
-.lg_table tr td input.user_name{background:url(images/u_ico1.png) no-repeat 2px 50%;}
-.lg_table tr td input.user_pwd{background:url(images/u_ico2.png) no-repeat 2px 50%;}
+.lg_table tr td input.user_name{background:url(../image/u_ico1.png) no-repeat 2px 50%;}
+.lg_table tr td input.user_pwd{background:url(../image/u_ico2.png) no-repeat 2px 50%;}
 .login_btn,.register_btn{background-color:#00724d;display:block;text-align:center;height:40px;font:16px/40px '微软雅黑';width:360px;color:#fff;}
 .login_btn:hover,.register_btn:hover{background-color:#0E8860;color:#fff;}
 .login_box .login_else{display:block;text-align:right;}
@@ -299,5 +299,5 @@ textarea{border: 1px solid #ccc;border-radius: 2px;width:760px;height:40px;paddi
 .search_box a:hover{text-decoration:none;}
 .login_dom{border:12px solid #00724d;margin:-180px 0 0 -200px;}
 .login_dom .login_box{position:relative;}
-.login_dom .login_box .login_close{right:-22px;top:-22px;position:absolute;background:url(images/login_close.png) no-repeat 50% 50%;display:block;height:30px;width:30px;text-align:center;font:20px/30px "Arial Negreta", "Arial";color:#fff;}
+.login_dom .login_box .login_close{right:-22px;top:-22px;position:absolute;background:url(../image/login_close.png) no-repeat 50% 50%;display:block;height:30px;width:30px;text-align:center;font:20px/30px "Arial Negreta", "Arial";color:#fff;}
 .login_dom .login_box .login_close:hover{color:#32DAA3;}
