@@ -11,6 +11,14 @@ class Login extends CAdminBase {
 
     protected $controllerId = "login";
     
+    function __construct() {
+
+       parent::__construct();
+       
+       $this->lang->load('manager', 'zh_cn');
+    }
+
+    
     /**
      *  如果没有登录就到登录页面，如果登录了就到管理首页
      */
@@ -37,7 +45,7 @@ class Login extends CAdminBase {
         
          if ($rs > 0) {
             
-            $this->rauth->update($rs);
+            $this->admin->update($rs);
             redirect("/back/home");
             exit;
         }

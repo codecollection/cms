@@ -1,0 +1,6 @@
+<?php
+$video = $result['file']['file_url']; //视频地址
+$width = 756; //视频宽度
+$height = 440; //视频高度
+require('../../css/libs/jwplayer/show_video.php');//引入插件
+?>

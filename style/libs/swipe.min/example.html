@@ -1,0 +1,61 @@
+<!--图片轮播 开始-->
+<style type="text/css">
+/*图片轮播*/
+.addWrap{width:100%;margin:auto;position:relative;margin-top:1px;}
+.addWrap .swipe{height:150px;overflow: hidden;visibility: hidden;position:relative;}
+.addWrap .swipe-wrap{overflow:hidden;position:relative;}
+.addWrap .swipe-wrap > div {float: left;width: 100%;position:relative;}
+.addWrap .swipe-wrap div img{width:100%;height:auto;}
+#position{padding:0;text-align:center;margin-top:10px;}
+#position li{width:10px;height:10px;margin:0 3px;display:inline-block;-webkit-border-radius:5px;border-radius:5px;background-color:#AFAFAF;}
+#position li.cur{background-color:#FF0000;}
+</style>
+<script type="text/javascript" src="<?php echo SITE_PATH;?>templates/lib/swipe.min/swipe.min.js"></script>
+<div class="addWrap">
+	<div class="swipe" id="mySwipe">
+		<div class="swipe-wrap">
+			<?php
+				$img_arr = $c->get_ad(13,0,1); //修改第一个参数即可
+				$img_str = '';
+				$count = count($img_arr);
+				foreach($img_arr as $k=>$v) {
+					$onclick = 'onclick="window.location.href=\''.$v['url'].'\'"';
+					$img_str .= '<div><div class="silder_tit" '.$onclick.'>'.$v['title'].'</div><img src="'.$v['img'].'" border="0" alt="'.$v['title'].'" '.$onclick.' /></div>';
+				}
+				echo $img_str;
+			?>
+		</div>
+	</div>
+	<style>
+		.silder_tit{overflow:hidden;position:absolute; top:119px;left:0;height:30px;width:100%;text-indent:15px;line-height:30px;color:#fff;font-size:14px;background-color:rgba(0, 0, 0, 0.4)}
+	</style>
+	<ul id="position">
+		<?php
+			$str = '';
+			for($i=0;$i<$count;$i++) {
+				if($i == 0) {
+					$str .= '<li class="cur"></li>';
+				}else{
+					$str .= '<li class=""></li>';
+				}
+			}
+			echo $str;
+		?>
+	</ul>
+</div>
+<script type="text/javascript">
+	var bullets = document.getElementById('position').getElementsByTagName('li');
+	var banner = Swipe(document.getElementById('mySwipe'), {
+		auto: 2000,
+		continuous: true,
+		disableScroll: false,
+		callback: function(pos) {
+			var i = bullets.length;
+			while (i--) {
+				bullets[i].className = ' ';
+			}
+			bullets[pos].className = 'cur';
+		}
+	});
+</script>
+<!--图片轮播 结束-->

@@ -74,14 +74,14 @@ class Admin {
         
         $where = "aname='{$name}'";
         
-        $sql = "SELECT a.*,b.* from {$this->adminTabel} as a left join on {$this->adminGroupTabel} as b on b.group_id = a.group_id where {$where} ";
+        $sql = "SELECT a.*,b.* from {$this->adminTabel} as a left join {$this->adminGroupTabel} as b on b.group_id = a.group_id where {$where} ";
         $query = $this->ci->db->query($sql);
         
         if ($query->num_rows() == 0) {
             return -1;//无此用户
         }
         
-        if ($query->row()->em_password != self::makePwd($query->row()->apass, $password)) {
+        if ($query->row()->apass != self::makePwd($query->row()->apass, $password)) {
             return -2;//密码错误
         }
         
@@ -113,7 +113,7 @@ class Admin {
             throw new Exception('your page has output, do not set cookie for auth.');
         }
         
-         $sql = "SELECT a.*,b.* from {$this->adminTabel} as a left join on {$this->adminGroupTabel} as b on b.group_id = a.group_id where admin_id = {$adminId} ";
+         $sql = "SELECT a.*,b.* from {$this->adminTabel} as a left join {$this->adminGroupTabel} as b on b.group_id = a.group_id where admin_id = {$adminId} ";
          
         $query = $this->ci->db->query($sql);
 

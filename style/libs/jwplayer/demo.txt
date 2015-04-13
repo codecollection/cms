@@ -1,0 +1,6 @@
+<?php
+	$video = 'http://player.youku.com/player.php/sid/XODAxNTEyMDky/v.swf'; //视频地址
+	$width = 500; //视频宽度
+	$height = 400; //视频高度
+	require(ROOT_PATH.'/static/libs/jwplayer/show_video.php');//引入插件
+?>

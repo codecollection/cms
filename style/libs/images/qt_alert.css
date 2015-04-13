@@ -1,0 +1,40 @@
+.opacty{display:block;position:absolute;background:#000:top:0;left:0;filter:Alpha(opacity=20);opacity:0.2;top:0;left:0}
+.div_tips,.div_tips2{background: #fff;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;border:1px solid #bfbfbf;border-top:4px solid #19a97b;box-shadow:0 0 12px #bfbfbf;}
+.wxTips{border:1px solid #888;-webkit-box-shadow:#333 0px 0px 12px;-moz-box-shadow:#333 0px 0px 12px;box-shadow:#333 0px 0px 12px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background:#fff;position:absolute;z-index:20000;}
+#tips_20130528_opacity{width:100%;height:100%;position:absolute;background:#000;left:0;top:0;z-index:19000;filter:Alpha(opacity=70);opacity:0.7;}
+.tips_tit{cursor:move;background:#fff;height:50px;line-height:50px;border-bottom:1px solid #e5e5e5;width:90%;max-width:90%;margin:0 auto 10px auto;overflow:hidden;}
+.tit_left{font:700 16px/62px '微软雅黑';float:left;}
+.close_a{font-size:18px;color:#888;font-weight:600;display:inline-block;width:20px; height:20px; line-height:28px; text-align:center;background:url(/css/libs/images/icons_v1.png) right -248px no-repeat;position:absolute;top:20px;right:6%;}
+.tb3{width:90%;margin:0 auto;}
+.tb3 tr{height:42px;}
+.tb3 tr td{font-size:12px;}
+.wxTips{border-top:4px solid #19a97b;}
+
+.ipt{border:1px solid #addbfb;font-size:12px;color:#666;height:24px;line-height:24px;width:160px;border-radius:2px;margin-right:5px;padding-left:10px;}
+.ipt1{border: 1px solid #aaa;height: 22px;line-height: 22px;text-indent: 5px;*padding-left:5px;*text-indent:0;width:120px;font-size:14px;}
+.txt1{border: 1px solid #aaa;height: 100px;line-height: 20px;width: 400px;padding:5px;font-size:14px;}
+
+select{color: black;cursor: default;font-size:14px;overflow:hidden;display:inline;*border:1px solid red;padding:3px;}
+.fim{color:red;margin:0 8px 0 0;}
+.stype_desc{color:#666;font-size:12px;margin:0 0 0 10px;}
+.stype_tit label{margin-left:10px;cursor:pointer;}
+.stype_tit{margin:10px 0;}
+.stype_tit select{background: none repeat scroll 0 0 rgba(0, 0, 0, 0);border: 1px solid #CCCCCC;font-size: 12px;margin:0;padding: 0;}
+
+.but_cancel,.but_ok{padding:0 14px;font-size:12px;border:1px solid rgb(23, 143, 104);border-radius:3px;margin-right:10px;color:#333;font-weight:700;display:inline-block;height:24px;line-height:24px;}
+.but_ok{background-color:#19a97b;color:#fff;} /* 确定按钮 */
+.but_ok:hover{background-color:rgb(31, 182, 134);color:#fff;text-decoration:none;}
+.but_cancel{background-color:#fff;color:#19a97b;border:1px solid rgb(23, 143, 104);}
+.but_cancel:hover{background-color:#f2f2f2;text-decoration:none;}
+
+.but_alert2{background:url(../libs/images/buts.png) 0 -304px repeat-x;color:#fff;border:1px solid #d14c03;}
+.but_alert2:hover{background:url(../libs/images/buts.png) 0 -334px repeat-x;color:yellow;text-decoration:none;border:1px solid #961204;}
+
+/*消息提示层*/
+.alert_tips_table{padding:15px 0;width:90%;margin:0 auto 10px auto;}
+.alert_tips_table tr {height:50px;}
+.alert_tips_table tr td{font:14px/24px '微软雅黑';text-align:center;}
+.alert_hr{border-top:1px solid #ddd;height:10px;*height:5px;font-size:0;line-height:0;}
+.alert_bottom_btns{text-align:right;padding: 5px 0 15px 0;}
+
+.bdr0{border:0;}

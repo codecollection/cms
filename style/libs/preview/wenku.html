@@ -1,0 +1,79 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+</head>
+<body>
+<div id="wenku"></div>
+<script type="text/javascript" src="../jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/wenku.min.js"></script>
+<script type="text/javascript" src="js/wenku.handlers.min.js"></script>
+<script type="text/javascript">	
+    var isFF = navigator.userAgent.toLowerCase().indexOf('firefox');
+    var mousewheel=function(event)
+    {
+		var event = event ? event : window.event;
+		var obj = event.srcElement;
+		if (!obj)
+		{
+			obj = event.target;
+		}
+		if(obj.type == "application/x-shockwave-flash" || obj.type == "")
+		{
+			if(isFF > 0)
+			{
+				event.preventDefault();
+				event.stopPropagation();
+			}
+			else
+			{
+				return false;
+			}
+		}
+    }
+    function onloaded()
+    {   
+		if(isFF > 0)
+				document.body.addEventListener("DOMMouseScroll", mousewheel, false);
+		else
+				document.body.onmousewheel=mousewheel;
+    }
+    window.onload = function()
+    {
+            onloaded();
+    }
+	function getParam(name) 
+	{    
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");    
+		var r = window.location.search.substr(1).match(reg);    
+		if (r != null) 
+			return unescape(r[2]); 
+		return null;    
+	}
+	var doc = getParam("doc");
+    $('#wenku').FlexPaperViewer(
+            { config : {
+                SWFFile : doc,
+                Scale : 1,
+                ZoomTransition : 'easeOut',
+                ZoomTime : 0.5,
+                ZoomInterval : 0.2,
+                FitPageOnLoad : false,
+                FitWidthOnLoad : true,
+                FullScreenAsMaxWindow : false,
+                ProgressiveLoading : true,
+                MinZoomSize : 0.1,
+                MaxZoomSize : 5,
+                SearchMatchAll : false,
+                InitViewMode : 'Portrait',
+                RenderingOrder : 'flash,html',
+                StartAtPage : '',
+                ViewModeToolsVisible : true,
+				CursorToolsVisible : true,
+                ZoomToolsVisible : true,
+                NavToolsVisible : true,
+                SearchToolsVisible : true,	
+                WMode : 'transparent',
+                localeChain: 'zh_CN'
+            }}
+    );
+</script>
+</body>

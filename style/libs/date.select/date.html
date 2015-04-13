@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>
+            网站模板框架
+        </title>
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+		<script src="jquery-1.7.1.min.js"></script>
+        <script src="jquery.date.select.js"></script>
+        <link href="dateSelect.css" rel="stylesheet" type="text/css">
+        <script>
+            $(function(){
+                /*$('#date_input').click(function(e){$('#date_input').date.select({curmonth:new Date().getMonth(),iptID:'date_input',cur_day:['2014-10-20','2014-10-21']});});
+                $('#date_next').click(function(e){$('#date_next').date.select({curmonth:new Date().getMonth() + 1,iptID:'date_next',cur_day:['2014-11-17','2014-11-10','2014-11-24','2014-11-21']});});*/
+                $('#date_input').dateSelect({curmonth:new Date().getMonth(),defaultShow:true,iptID:'date_input'});
+                $('#date_next').dateSelect({curmonth:new Date().getMonth() + 1,defaultShow:true,iptID:'date_next',cur_day:['2014-11-17','2014-11-10','2014-11-24','2014-11-21']});
+            });
+        </script>
+    </head>
+    <body>
+		<input type="text" id="date_input" />
+        <input type="text" id="date_next">
+    </body>
+</html>
