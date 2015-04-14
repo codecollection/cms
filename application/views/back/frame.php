@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CMS</title>
+<meta content="" name="keywords" />
+<meta content="" name="description"/>
+<!--插件JS和样式-->
+<script src="/static/libs/jquery-1.7.1.min.js"></script>
+<script src="/static/libs/common.js"></script>
+<script src="/static/libs/zy.select/jquery.select.js"></script>
+<script src="/static/libs/zy.tree/jquery.tree.js"></script>
+<script src="/static/libs/datepicker.js"></script>
+<script src="/static/sty_default/js/public.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/back/zy.select/select.css"/>
+<link rel="stylesheet" type="text/css" href="/style/back/zy.tree/tree.css"/>
+<link href="/style/image/logo_ico.ico" type="image/x-icon" rel="shortcut icon"/>
+<!--[if lte IE 6]>
+<script language="javascript" type="text/javascript" src="/style/libs/png.js" ></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix('div, ul, li, input , h2, b,span,a,a:hover');
+</script>
+<![endif]--><!--本页JS和样式-->
+<script src="/static/sty_default/js/login.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/back/css/admin.css">
+</head>
+<body>
+<!-- 加载头部 -->
+<div class="header_wrap"><!-- 头部 -->
+    <div class="header">
+        <div class="hd_logo l"><a href="index.php"><img src="/style/back/image/logo.png" /></a></div>
+        <ul class="user_hd r">
+            <li><a href="info.list.php?tpl=edit">添加文档</a></li>
+            <li><a href="category.php">分类管理</a></li>
+			<li><a href="/" target="_blank">前台首页</a></li>
+            <li><a href="cache.clear.php">清理缓存</a></li>
+            <li><a href="javascript:void(0);" onclick="restart();">重启账号</a></li>
+            <li><span>系统管理员&nbsp;(&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();">wenghe</a>)</span></li>
+            <li><a href="login.php?m=logout">退出</a></li>
+        </ul>
+        <ul class="hd_tabs" id="hd_tabs">
+            <?php foreach($userNav as $k => $v){?>
+            <li><a href="<?php echo $v['url'];?>" <?php if ($v['level'] == $thisc->level) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
+            <?php }?>
+            
+            <!-- <li><a href="index.php" class="current">文档</a></li> -->
+        </ul>
+    </div>
+</div>
+<!-- 主体内容 -->
+<div class="content">
+    <ul class="manage_btn">
+        <?php foreach($nav as $k => $v){?>
+        <li><a href="<?php echo $v['url'];?>"  <?php if ($v['level'] == $thisc->activeModule) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
+        <?php }?>
+        <!-- <li><a href="index.php" class="current">统计概览</a></li> -->
+    </ul>
+    <p class="line-t-6"></p>
+    <div class="crumbs">
+        <span class="cbs_left">
+            <?php 
+            $countNav = count($navItem);
+            foreach($navItem as $k => $v){?>
+            <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+            <?php if($k < $countNav - 1) echo('<em>></em>');?>
+            <?php }?>
+            <!-- <b>文档</b><em>></em><a href="">统计</a>-->
+        </span>
+    </div>
+    <p class="line-t-15"></p>
+    <?php echo $mainContent;?>
+    <div id="alert"></div>
+    <p class="line-t-20"></p>
+    <!-- 加载底部 -->
+    <p class="footer_cpy">
+    Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;0.006 秒
+    </p>
+    <div class="to-top" style="display:none;">
+        <a class="to-top-a" title="返回顶部"></a>
+    </div>
+</div>
+
+</body>
+</html>

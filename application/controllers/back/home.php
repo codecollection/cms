@@ -5,7 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Home extends CAdminBase {
 
-    protected $controllerId = "login";
+    protected $controllerId = "home";
+    
+    public $level = "A";
     
     function __construct() {
 
@@ -17,8 +19,8 @@ class Home extends CAdminBase {
      *  如果没有登录就到登录页面，如果登录了就到管理首页
      */
     public function index(){
-        
-        print_r($_SESSION);
+        $this->checkPermission("{$this->level}01");
+        $this->renderAdminView($this->viewDir());
     }
     
 }

@@ -79,6 +79,7 @@ class CAdminBase extends MY_Controller {
      */
     protected $controllerId = '';
 
+    public $level = "";
     /**
      * 控制器名称
      * @var string
@@ -259,27 +260,27 @@ class CAdminBase extends MY_Controller {
      * @param boolean $isReturn
      */
     public function checkPermission($moduleIdentity, $isReturn = false) {
-
-        $msg = '';
-
-        if (empty($moduleIdentity)) {
-            $msg = '未知的页面';
-        } else {
-            $msg = $this->rauth->isValid($moduleIdentity);
-        }
-
-        if ($msg !== true) {
-            if ($isReturn)
-                return false;
-            $this->showRefusalPage($msg);
-        }
-
-        if ($isReturn) {
-            return true;
-        }
-
         $this->activeModule = $moduleIdentity;
-        $this->log(sprintf(lang('page_access'), $this->controllerTitle));
+//        $msg = '';
+//
+//        if (empty($moduleIdentity)) {
+//            $msg = '未知的页面';
+//        } else {
+//            $msg = $this->rauth->isValid($moduleIdentity);
+//        }
+//
+//        if ($msg !== true) {
+//            if ($isReturn)
+//                return false;
+//            $this->showRefusalPage($msg);
+//        }
+//
+//        if ($isReturn) {
+//            return true;
+//        }
+//
+//        $this->activeModule = $moduleIdentity;
+//        $this->log(sprintf(lang('page_access'), $this->controllerTitle));
     }
 
     /**
@@ -334,30 +335,25 @@ class CAdminBase extends MY_Controller {
      */
     protected function renderAdminView($viewName, $data = array()) {
 
-        $userInfo = $this->rauth->getUserInfo();
+        $userInfo = $this->admin->getUserInfo();
         $data['thisc'] = $this;
-        $userNav = $userInfo['userNav'];
 
-        $menu = NavPanel::getInstance()->getMenus($userNav, $this->activeModule);
-
-        $msgCount = $this->msg->getUnReadCount($userInfo['employmentId']);
-
-        $viewHtml = $this->load->view('admin/' . $viewName, array_merge($data, $this->renderData), true);
+        $menu = NavPanel::getInstance()->getMenus($this->activeModule,$this->level);
+        
+        $viewHtml = $this->load->view($viewName, array_merge($data, $this->renderData), true);
         $frameData = array(
-            'techType' => $userInfo['techType'],
             'mainContent' => $viewHtml,
             'activedModule' => $this->activeModule,
-            'activedModuleTitle' => $menu['title'],
-            'userModules' => $menu['lists'],
-            'navPath' => $menu['navPath'],
+            'navItem' => $menu['item'],
+            'userNav' => $menu['userModules'],
+            'nav' => $menu['nav'],
             'thisc' => $this,
-            'msgCount' => $msgCount,
             'js' => implode("\r\n", $this->frontFile['js']),
             'css' => implode("\r\n", $this->frontFile['css']),
             'header' => implode("\r\n", $this->frontFile['header']),
         );
 
-        $this->load->view("admin/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
+        $this->load->view("back/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
     }
 
     /**
