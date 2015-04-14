@@ -50,7 +50,7 @@ class NavPanel {
             'bgimg' => '/style/back/img/menu1/union.png',
             'menu'  => array(
                 array(
-                    'title'=>'用户分组',
+                    'title'=>'管理员组',
                     'url' => '/admin/userg',
                     'level' => 'B01', //页面权限
                     'menu' => array(
@@ -60,7 +60,7 @@ class NavPanel {
                     ),
                 ),
                 array(
-                    'title'=>'用户列表',
+                    'title'=>'管 理 员',
                     'url' => '/admin/account',
                     'level' => 'B02', //页面权限
                     'menu' => array(
@@ -74,6 +74,25 @@ class NavPanel {
                     'level' => 'B03', //页面权限
                     'menu' => array(
                         array('title' => '分配权限', 'level' => 'B0301'),
+                    ),
+                ),
+                array(
+                    'title'=>'用户分组',
+                    'url' => '/admin/userg',
+                    'level' => 'B04', //页面权限
+                    'menu' => array(
+                        array('title' => '添加编辑', 'level' => 'B0101'), 
+                        //array('title' => '删除用户组', 'level' => 'B0102'), 
+                        array('title' => '启用禁用', 'level' => 'B0103'), 
+                    ),
+                ),
+                array(
+                    'title'=>'用户列表',
+                    'url' => '/admin/account',
+                    'level' => 'B05', 
+                    'menu' => array(
+                        array('title' => '增改用户', 'level' => 'B0201'),
+                        array('title' => '启用停用', 'level' => 'B0202'),
                     ),
                 ),
             ),
@@ -109,9 +128,9 @@ class NavPanel {
         ),
         array(
             'title' => '模 型',
-            'url' => '/admin/module',
+            'url' => '/back/model',
             'level'=>'D',
-            'bgimg' => '/style/back/img/menu1/category.png',
+            'bgimg' => '',
             'menu'  => array(
                 array(
                     'title'=>'模型设置',
@@ -316,6 +335,7 @@ class NavPanel {
                 
                 if($activeModule == $val['level']){ 
                     $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']));
+                    
                     $isSelect = TRUE;
                 }
                 $return[$row]['menu'][$key] = $val;
@@ -323,6 +343,7 @@ class NavPanel {
                     if(!$this->checkPrem($v['level']))  { continue; }
                     if($activeModule == $v['level']){ 
                         $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']),array('title' => $v['title'], 'url' => ''));
+                        
                         $isSelect = TRUE;
                     }
                     $return[$row]['menu'][$key][$k] = $v;
@@ -334,6 +355,7 @@ class NavPanel {
                 $nav = $cate['menu'];
             }
         }
+        
         $data['item'] = $item;
         $data['userModules'] = $return;
         $data["nav"] = $nav;

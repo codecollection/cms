@@ -154,8 +154,7 @@ create table if not exists `cms_ad_list` (
 
 create table if not exists `cms_model` (
  `model_id` int(11) unsigned not null auto_increment comment '模型ID',
- `model_title` varchar(100) not null default '' not null comment '扩展模型描述',
- `model_type` int(2) not null default 0 comment '模型类型0=扩展字段，1=独立表',
+ `model_title` varchar(100) not null default '' not null comment '模型标题',
  `model_name` varchar(100) not null default '' not null comment '扩展模型表名',
  `cmodel_id` varchar(100) not null default 0 comment '模型子表的ID',
  `attr_content` text not null  comment '扩展属性，JSON格式数据[{"lable":"颜色","name":"color","type":"text/checkbox/radio/select/editor/date","value":["红色","蓝色"],”field_type”:”varchar(100)/ int(11) ”},...]',
@@ -165,16 +164,15 @@ create table if not exists `cms_model` (
 create table if not exists `cms_model_fields` (
  `field_id` int(11) unsigned not null auto_increment comment '字段ID',
  `model_id` int(11) not null default 0 comment '模型表ID',
- `model_name` varchar(100) not null default 0 comment '模型表名',
+ `model_name` varchar(100) not null default 0 comment '模型表名（数据库中表的名称）',
  `title` varchar(50) not null default '' not null comment '字段文字',
- `field` varchar(50) not null default '' comment '字段名称',
+ `field` varchar(50) not null default '' comment '字段名称（表的字段名）',
  `field_type` varchar(100) not null default '' not null comment '字段类型SQL',
  `form_type` varchar(100) not null default '' not null comment '表单类型',
  `form_value` varchar(1000) not null default '' not null comment '表单默认值，竖线分开为多值表单的项',
  `field_remark` int(2) not null default 0 not null comment '表单的备注，比如不能为空等 0=无，1=不能为空 2=是数字 3=手机号 4=邮箱地址 5=身份证号 6=QQ号 7=银行卡号,可以自定义添加正则等',
  `forder` int(3) not null default 100 comment '字段显示排序',
- `info_show` int(3) not null default 100 comment '是否在后台详情中显示，比如公司简介就不要很多字段，可以屏蔽一些',
- `linkage_type_id` int(11) not null default 0 comment '联动类型ID',
+ `linkage_type_id` int(11) not null default 0 comment '联动类型ID，（如果有，先处理这个）',
  `is_system` int(3) not null default 1 comment '是否为系统字段，0=系统字段 ，1=扩展字段',
  primary key (`field_id`)
 ) engine=myisam default charset=utf8 comment '扩展模型字段';

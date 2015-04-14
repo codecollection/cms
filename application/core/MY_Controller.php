@@ -73,6 +73,7 @@ class CAdminBase extends MY_Controller {
      */
     public $activeModule = '';
 
+    
     /**
      * 当前控制器id
      * @var string
@@ -170,19 +171,20 @@ class CAdminBase extends MY_Controller {
      */
     public function lists($params = array()) {
 
-        $this->checkPermission($this->controllerId . '_LIST'); //检测权限
-
+        $this->activeModule = $this->level."01";
+        //检测权限
+        $this->checkPermission($this->level."01");
         $page = $this->input->get_post('p');
 
         $this->bindModel->page($page, PAGESIZE);
         $lists = $this->bindModel->search();
 
-        $data = array('page' => RKit::getPageLink("/admin/" . strtolower(get_class($this)) . "?" . http_build_query($params), $lists['count']),
-            'pageId' => 'p_list_' . $this->controllerId,
+        $data = array('page' => RKit::getPageLink("/back/" . strtolower(get_class($this)) . "?" . http_build_query($params), $lists['count']),
+            
             'list' => $lists,
         );
 
-        $this->renderAdminView($this->controllerId . '/list', $data);
+        $this->renderAdminView($this->viewDir(), $data);
     }
 
     /**
@@ -203,7 +205,7 @@ class CAdminBase extends MY_Controller {
      */
     public function edit() {
 
-        $this->checkPermission($this->controllerId . '_EDIT'); //检测权限
+        //检测权限
 
         $id = $this->input->get_post('id');
 
@@ -216,7 +218,7 @@ class CAdminBase extends MY_Controller {
      */
     public function save() {
 
-        $this->checkPermissionsOr($this->controllerId . '_ADD', $this->controllerId . '_EDIT'); //检测权限
+        //检测权限
 
         $id = $this->input->get_post('id');
         $data = $this->input->get_post('data');
@@ -244,7 +246,7 @@ class CAdminBase extends MY_Controller {
      */
     public function delete() {
 
-        $this->checkPermission($this->controllerId . 'DEL'); //检测权限
+        //检测权限
         $ids = $this->input->get_post('id'); //'2,3,4,5,6,7,8';
 
         $status = $this->bindModel->deletes($ids);
@@ -260,72 +262,26 @@ class CAdminBase extends MY_Controller {
      * @param boolean $isReturn
      */
     public function checkPermission($moduleIdentity, $isReturn = false) {
-        $this->activeModule = $moduleIdentity;
-//        $msg = '';
-//
-//        if (empty($moduleIdentity)) {
-//            $msg = '未知的页面';
-//        } else {
-//            $msg = $this->rauth->isValid($moduleIdentity);
-//        }
-//
-//        if ($msg !== true) {
-//            if ($isReturn)
-//                return false;
-//            $this->showRefusalPage($msg);
-//        }
-//
-//        if ($isReturn) {
-//            return true;
-//        }
-//
-//        $this->activeModule = $moduleIdentity;
-//        $this->log(sprintf(lang('page_access'), $this->controllerTitle));
-    }
+        
+        $msg = '';
 
-    /**
-     * 检测用户是否具有某些权限中的一个
-     */
-    protected function checkPermissionsOr() {
-
-        $return = false;
-        $moduleIdentity = func_get_args();
-
-        foreach ($moduleIdentity as $id) {
-            $status = $this->rauth->isValid($id);
-            $return = $return || ($status === true);
-            if ($return) {//只要有一个权限的访问就退出
-                break;
-            }
+        if (empty($moduleIdentity)) {
+            $msg = '未知的页面';
+        } else {
+            $msg = $this->admin->isValid($moduleIdentity);
         }
 
-        if ($return) {
-            $this->showRefusalPage(-3);
+        if ($msg !== true) {
+            if ($isReturn)
+                return false;
+            $this->showRefusalPage($msg);
         }
 
-        $this->activeModule = $moduleIdentity[0];
-    }
-
-    /**
-     * 检测用户是否具有给出的全部权限
-     */
-    protected function checkPermissionsAnd() {
-
-        $return = true;
-        $moduleIdentity = func_get_args();
-        foreach ($moduleIdentity as $id) {
-            $status = $this->rauth->isValid($id);
-            $return = $return && ($status === true);
-            if (!$return) {//有一个权限不具有就退出
-                break;
-            }
+        if ($isReturn) {
+            return true;
         }
 
-        if ($return) {
-            $this->showRefusalPage(-3);
-        }
-
-        $this->activeModule = $moduleIdentity[0];
+        //$this->log(sprintf(lang('page_access'), $this->controllerTitle));
     }
 
     /**

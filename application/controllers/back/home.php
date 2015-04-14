@@ -19,6 +19,7 @@ class Home extends CAdminBase {
      *  如果没有登录就到登录页面，如果登录了就到管理首页
      */
     public function index(){
+        $this->activeModule = "{$this->level}01";
         $this->checkPermission("{$this->level}01");
         $this->renderAdminView($this->viewDir());
     }
