@@ -335,8 +335,6 @@ class NavPanel {
                 
                 if($activeModule == $val['level']){ 
                     $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']));
-                    
-                    $isSelect = TRUE;
                 }
                 $return[$row]['menu'][$key] = $val;
                 foreach ($val['menu'] as $k => $v){
@@ -344,7 +342,6 @@ class NavPanel {
                     if($activeModule == $v['level']){ 
                         $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']),array('title' => $v['title'], 'url' => ''));
                         
-                        $isSelect = TRUE;
                     }
                     $return[$row]['menu'][$key][$k] = $v;
                 }
