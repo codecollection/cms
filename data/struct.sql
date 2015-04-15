@@ -53,43 +53,6 @@ create table if not exists `cms_cate_relation` (
   index `id_publish_time` (`cate_id`,`id_publish_time`) 
 ) engine=myisam default charset=utf8 comment '分类和信息关系表';
 
-create table if not exists `cms_info_list` (
- `info_id` int(11) unsigned not null auto_increment comment '文档id',
- `last_cate_id` int(11) not null default 0 comment '终极分类ID',
- `info_title` varchar(500) not null default '' comment '标题',
- `info_stitle` varchar(500) not null default '' comment '短标题',
- `info_img` varchar(500) not null default '' comment '缩略图',
- `info_desc` varchar(500) not null default '' comment '摘要',
- `info_body` text not null  comment '详情',
- `info_tags` varchar(300) not null default '' comment '标签',
- `info_from` varchar(100) not null default '' comment '来源',
- `info_from_url` varchar(200) not null default '' comment '来源地址',
- `uid` int(11) not null default 0 comment '发布人ID',
- `uname` varchar(100) not null default '' comment '发布人',
- `info_comments` int(11) not null default 0 comment '评论量',
- `info_visitors` int(11) not null default 0 comment '浏览量',
- `info_order` int(11) not null default 100 comment '排序',
- `info_url` varchar(500) not null default '' comment '跳转外部URL',
- `tpl_content` varchar(500) not null default '' comment  '内容页模板',
- `cdate` int(11) not null default 0 comment '创建时间',
- `publish_time` int(11) not null default 0 comment '发布时间',
- `info_state` int(2) not null default 2 comment '文档状态0=正常，1=删除，2=审核中',
- `fbold` int(1) not null default 0 comment '是否加粗',
- `fcolor` varchar(16) not null default '' comment '颜色',
- `related_ids` varchar(200) not null default '' comment '关联信息列表',
- primary key (`info_id`),
- index `cate_order` (`last_cate_id`,`info_order`),
- index `cate_visitors` (`last_cate_id`,`info_visitors`),
- index `cate_comments` (`last_cate_id`,`info_comments`),
- index `cate_state` (`last_cate_id`,`info_state`),
- index `info_order` (`info_order`),
- index `info_visitors` (`info_visitors`),
- index `info_state` (`info_state`),
- index `info_comments` (`info_comments`),
- index `cdate` (`cdate`),
- index `publish_time` (`publish_time`)
-) engine=myisam default charset=utf8 comment '信息表';
-
 create table if not exists `cms_resource_list` (
  `id` int(11) unsigned not null auto_increment comment '资源',
  `resource_url` varchar(500) not null default '' comment '资源地址', 
@@ -161,22 +124,30 @@ create table if not exists `cms_model` (
  primary key (`model_id`)
 ) engine=myisam default charset=utf8 comment '扩展模型';
 
-create table if not exists `cms_model_fields` (
+create table if not exists `cms_fields` (
  `field_id` int(11) unsigned not null auto_increment comment '字段ID',
- `model_id` int(11) not null default 0 comment '模型表ID',
- `model_name` varchar(100) not null default 0 comment '模型表名（数据库中表的名称）',
- `title` varchar(50) not null default '' not null comment '字段文字',
- `field` varchar(50) not null default '' comment '字段名称（表的字段名）',
- `field_type` varchar(100) not null default '' not null comment '字段类型SQL',
- `form_type` varchar(100) not null default '' not null comment '表单类型',
- `form_value` varchar(1000) not null default '' not null comment '表单默认值，竖线分开为多值表单的项',
+ `title` varchar(50) not null default '' not null comment '字段文字(如：标题)',
+ `field` varchar(50) not null default '' comment '字段名称（表的字段名，如：title）',
+ `field_type` varchar(100) not null default '' not null comment '字段类型SQL,如：varchar(100)',
+ `form_type` varchar(100) not null default '' not null comment '表单类型(input ,textarea等)',
+ `form_value` varchar(1000) not null default '' not null comment '表单默认值，json格式(如:{0:红色,1:蓝色})',
  `field_remark` int(2) not null default 0 not null comment '表单的备注，比如不能为空等 0=无，1=不能为空 2=是数字 3=手机号 4=邮箱地址 5=身份证号 6=QQ号 7=银行卡号,可以自定义添加正则等',
  `forder` int(3) not null default 100 comment '字段显示排序',
  `linkage_type_id` int(11) not null default 0 comment '联动类型ID，（如果有，先处理这个）',
  `is_system` int(3) not null default 1 comment '是否为系统字段，0=系统字段 ，1=扩展字段',
+ `field_tag` varchar(20) not null default '' comment '标签',
  primary key (`field_id`)
-) engine=myisam default charset=utf8 comment '扩展模型字段';
+) engine=myisam default charset=utf8 comment '模型字段';
 
+-- 模型字段关系表
+
+create table if not exists `cms_model_fields`(
+ `m_f_id` int(11) unsigned not null auto_increment comment 'id',
+ `model_id` int(11) not null default 0 comment '模型Id',
+ `field_id` int(11) not null default 0 comment '字段Id',
+ primary key (`m_f_id`),
+ index `m_f_rel` (`model_id`,`field_id`)
+)engine=myisam default charset=utf8 comment '模型字段关系表';
 -- 联动菜单类型
 create table if not exists `cms_linkage_type` (
   `linkage_type_id` int(11) unsigned not null auto_increment,
@@ -292,7 +263,7 @@ create table if not exists `cms_admin_list` (
  `astate` int(11) not null default 0 comment '用户状态（正常=0，停用=1）',
  `reg_date` int(11) not null default 0 comment '开通时间',
  `last_loginip` varchar(2) not null default '' comment '最后登录的IP',
- `last_logintime` int(11) not null defatult 0 comment '最后登录的时间',
+ `last_logintime` int(11) not null default 0 comment '最后登录的时间',
  primary key (`admin_id`)
 ) engine=myisam default charset=utf8 comment '后台用户表';
 
@@ -592,3 +563,71 @@ create table if not exists `cms_vote_data` (
 insert ignore into cms_admin_group (group_id,g_name,g_urank,g_remark) values(1,'超级管理员组','100','超级管理员组拥有所有权限');
 insert ignore into cms_admin_list (aname,apass,alevel) values('admin','f21e84bcb1eea0277ced3794e8676d23','100');
 insert ignore into cms_admin_list (aname,apass,alevel) values('wenghe','bae208138ce50065beb13be8dd8f3c30','100');
+
+insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(1, '文档', 'cms_info_list', 0);
+insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(2, '产品', 'cms_product', 0);
+
+
+-- 系统默认的字段
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(1, `终极分类ID`, `last_cate_id`, `int(11) not null`, 0, 0,0,0 ,'系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(2, `标题`, `title`, `varchar(100) not null`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(3, `缩略图`, `img_url`, `varchar(100) not null`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(4, `描述`, `desc`, `varchar(300) not null`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(5, `内容`, `body`, `text`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(6, `标签`, `tag`, `varchar(100)`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(7, `发布者Id`, `uid`, `int(11) not null`, 0, 0, 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(8, `发布者`, `uname`, `varchar(50) not null`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(9, `评论量`, `comments`, `int(6) not null`, 0, 0, 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(10, `浏览量`, `visitors`, `int(6) not null `, 0, 0, 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(11, `内容模板`, `tpl_content`, `varchar(20) not null`, 0, '', 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type, form_value, field_remark, is_system, field_tag) 
+values(12, `创建时间`, `cdate`, `int(11) not null`, 0, 0, 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(13, `状态`, `state`, `tinyint(2) not null`, 0, 0, 0, 0, '系统');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type, form_value, field_remark, is_system, field_tag) 
+values(14, `排序`, `forder`, `int(11) not null`, 0, 0, 0, 0, '系统');
+
+-- 文档扩展字段
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(15, `文章来源`, `info_from`, `varchar(20) not null`, 0, '', 0, 1, '文档');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(16, `来源地址`, `info_from_url`, `varchar(50) not null`, 0, '', 0, 1, '文档');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type, form_value, field_remark, is_system, field_tag) 
+values(17, `跳转地址`, `info_url`, `varchar(50) not null`, 0, '', 0, 1, '文档');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(18, `是否加粗`, `fbold`, `tinyint(2) not null `, 0, 0, 0, 1, '文档');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(19, `标题颜色`, `fcolor`, `varchar(20) not null `, 0, '', 0, 1, '文档');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(20, `关联文档`, `related_ids`, `varchar(200) not null `, 0, '', 0, 1, '文档');
