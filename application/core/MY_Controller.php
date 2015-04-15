@@ -6,9 +6,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class MY_Controller extends CI_Controller {
 
+    protected $startMicrotime = 0;
     public function __construct() {
         parent::__construct();
         $this->lang->load('manager', 'zh_cn');
+        $this->startMicrotime = $this->microtime_float();
     }
 
     /**
@@ -58,6 +60,11 @@ class MY_Controller extends CI_Controller {
                 $this->load->model($m . '_model', $m);
             }
         }
+    }
+    
+    protected function microtime_float(){
+        list($usec, $sec) = explode(" ", microtime());
+        return ((float)$usec + (float)$sec);
     }
 
 }
@@ -304,6 +311,7 @@ class CAdminBase extends MY_Controller {
             'userNav' => $menu['userModules'],
             'nav' => $menu['nav'],
             'thisc' => $this,
+            'microtime' => $this->microtime_float() - $this->startMicrotime,
             'js' => implode("\r\n", $this->frontFile['js']),
             'css' => implode("\r\n", $this->frontFile['css']),
             'header' => implode("\r\n", $this->frontFile['header']),

@@ -73,7 +73,7 @@
     <p class="line-t-20"></p>
     <!-- 加载底部 -->
     <p class="footer_cpy">
-    Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;0.006 秒
+    Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;<?php echo $microtime;?> 秒
     </p>
     <div class="to-top" style="display:none;">
         <a class="to-top-a" title="返回顶部"></a>
