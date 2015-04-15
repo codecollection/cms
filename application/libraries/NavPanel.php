@@ -133,8 +133,8 @@ class NavPanel {
             'bgimg' => '',
             'menu'  => array(
                 array(
-                    'title'=>'模型设置',
-                    'url' => '/admin/module',
+                    'title'=>'模型管理',
+                    'url' => '/back/model',
                     'level' => 'D01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'D0101'), //按钮功能配置
@@ -143,9 +143,8 @@ class NavPanel {
                         array('title' => '删除字段', 'level' => 'D0104'),
                     ),
                 ),
-                
                 array(
-                    'title' => '数据管理', 
+                    'title' => '字段管理', 
                     'url' => 'alone_table.php',
                     'level'=>'D02',
                     'menu'=>array(
