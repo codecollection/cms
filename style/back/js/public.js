@@ -129,3 +129,19 @@ function restart() {
         }catch(e){C.alert.alert({'content':e.message+data});}
     });
 } // end func
+
+//保存表单数据
+function save_data(){
+    var postdata = C.form.get_form('#form_add');
+    
+    $.post(urls.save,postdata,function(data){
+        try {
+            var json = $.evalJSON(data);
+            if(json.status == 0){
+                window.location.reload();
+            }else{
+                C.alert.alert({content:json.msg});
+            }
+        }catch(e){C.alert.alert({content:e.message+data});}
+    });
+}

@@ -21,6 +21,7 @@ class MY_Controller extends CI_Controller {
      * @return type
      */
     public function getData($field) {
+        
         return $this->input->get_post($field);
     }
 
@@ -143,8 +144,6 @@ class CAdminBase extends MY_Controller {
         //$this->load->model('message_model', 'msg');
 
         $this->bindModel = $this->{$this->controllerId};
-
-        $this->addJs("{$this->controllerId}.js");
     }
 
     /**
@@ -234,7 +233,7 @@ class CAdminBase extends MY_Controller {
         
         $id = $this->getData('id');
         $data = $this->getData('data');
-
+        
         $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
         $msg = '';
 
@@ -245,7 +244,7 @@ class CAdminBase extends MY_Controller {
         }
 
         if ($status) {
-            $this->echoAjax(0, $msg, array('url' => '/admin/' . $this->controllerId));
+            $this->echoAjax(0, $msg);
         } else {
             $this->echoAjax(100, $msg);
         }
@@ -438,29 +437,19 @@ class CAdminBase extends MY_Controller {
 
 
     /**
+     * 根据权限等信息显示按钮，没有权限不显示按钮
      * 
-     * 根据权限显示按钮
-     * @param type $modId
-     * @param type $class
+     * @param type $level
+     * @param type $url
      * @param type $title
-     * @param type $css_name
-     * @param string $url
-     * @return type
+     * @param type $css
      */
-    public function showButton($modId, $class, $title, $css_name, $url = "javascript:;") {
-        $mods = $this->rauth->getUserInfo('userRoleAccess');
-
-        $cssCheck = '';
-        if (in_array($modId, $mods)) {
-
-            $cssCheck = $url == "javascript:;" ? ' J_act-list ' . ' ' . $css_name . " " : ' ' . $css_name . "";
-            //return ($isEvent ? ' J_act-list ' : '') . ' z-' . $css_name . ' ';
-        } else {
-            $url = "javascript:;";
-            $cssCheck = " s-tip z-disable";
+    public function echoButton($level,$url, $title, $css = 'class="btn"') {
+        
+        if($this->admin->isValid($level)){
+            echo '<a href="'.$url.'" '.$css.'>'.$title.'</a>';
         }
-
-        return "<a href='" . $url . "' class='" . $class . $cssCheck . "' >$title</a>";
+        
     }
 
     /**

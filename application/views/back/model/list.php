@@ -1,4 +1,5 @@
 <div class="box4">
+<form id="form_add">
     <table class="table_lists table_click">
         <thead>
             <tr>
@@ -20,30 +21,36 @@
                 <td><?php echo $v['cmodel_id'];?></td>
                 <td style="padding-left:10px;"><?php echo empty($v['attr_content']) ? '&nbsp;': $v['attr_content'];?></td>
                 <td>
-                    <a href="javascript:void(0);" onclick="del_attr(1);" class="btn">删除</a>
+                    <a href="javascript:void(0);" onclick="model_field(<?php echo $v['model_id'];?>);" class="btn">字段管理</a>
                 </td>
             </tr>
             <?php }?>
-            <tr id="form" class="foot_add">
+            <tr>
+                <input type="hidden" value="0" name="id" id="id" >
                 <td>&nbsp;</td>
-                <td><input type="text" value="" placeholder="产品" style="width:80px;" class="comm_ipt " name="model_title" id="model_title"></td>
-                <td><input type="text" value="" style="width:80px;" class="comm_ipt" placeholder="cms_product" id="model_name" name="model_name"></td>
-                <td><input type="text" value="0" style="width:80px;" class="comm_ipt " placeholder="0" id="cmodel_id" name="cmodel_id"></td>
-                <td><input type="text" value="" style="width:180px;" class="comm_ipt " placeholder="扩展属性，json格式" id="attr_content" name="attr_content"></td>
-                
+                <td><input type="text" value="" placeholder="产品" style="width:80px;" class="comm_ipt " name="data[model_title]" id="model_title"></td>
+                <td><input type="text" value="" style="width:80px;" class="comm_ipt" placeholder="cms_product" id="model_name" name="data[model_name]"></td>
+                <td><input type="text" value="0" style="width:80px;" class="comm_ipt " placeholder="0" id="cmodel_id" name="data[cmodel_id]"></td>
+                <td><input type="text" value="" style="width:180px;" class="comm_ipt " placeholder="扩展属性，json格式" id="attr_content" name="data[attr_content]"></td>
                 <td>
-                    <a href="javascript:void(0);" onclick="save_model_attr();" class="btn">添加</a>
+                    <!-- <a href="javascript:void(0);" onclick="save_data();" class="btn">添加</a> -->
+                    <?php echo $thisc->echoButton($this->controllerId . "02","javascript:save_data();","添加")?>
                 </td>
             </tr>
+        
         </tbody>
 
     </table>
+</form>
     <p class="line-t-20"></p>
         <div class="pagebar">
             <?php echo $page;?>
         </div>
     <p class="line-t-20"></p>
 </div>
+<script>
+    var urls = {"save":"/back/model/save","del":"/back/model/del"};
+</script>
 <!--
 <div class="footer_fixed">
     <div class="box_1000">
