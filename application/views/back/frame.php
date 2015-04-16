@@ -6,12 +6,12 @@
 <meta content="" name="keywords" />
 <meta content="" name="description"/>
 <!--插件JS和样式-->
-<script src="/static/libs/jquery-1.7.1.min.js"></script>
-<script src="/static/libs/common.js"></script>
-<script src="/static/libs/zy.select/jquery.select.js"></script>
-<script src="/static/libs/zy.tree/jquery.tree.js"></script>
-<script src="/static/libs/datepicker.js"></script>
-<script src="/static/sty_default/js/public.js"></script>
+<script src="/style/libs/jquery-1.7.1.min.js"></script>
+<script src="/style/libs/common.js"></script>
+<script src="/style/libs/zy.select/jquery.select.js"></script>
+<script src="/style/libs/zy.tree/jquery.tree.js"></script>
+<script src="/style/libs/datepicker.js"></script>
+<script src="/style/back/js/public.js"></script>
 <link rel="stylesheet" type="text/css" href="/style/back/zy.select/select.css"/>
 <link rel="stylesheet" type="text/css" href="/style/back/zy.tree/tree.css"/>
 <link href="/style/image/logo_ico.ico" type="image/x-icon" rel="shortcut icon"/>
@@ -21,8 +21,9 @@
     DD_belatedPNG.fix('div, ul, li, input , h2, b,span,a,a:hover');
 </script>
 <![endif]--><!--本页JS和样式-->
-<script src="/static/sty_default/js/login.js"></script>
+<?php echo $js;?>
 <link rel="stylesheet" type="text/css" href="/style/back/css/admin.css">
+<?php echo $css;?>
 </head>
 <body>
 <!-- 加载头部 -->
@@ -73,7 +74,7 @@
     <p class="line-t-20"></p>
     <!-- 加载底部 -->
     <p class="footer_cpy">
-    Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;<?php echo $microtime;?> 秒
+    Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;<?php echo $microtime;?>秒
     </p>
     <div class="to-top" style="display:none;">
         <a class="to-top-a" title="返回顶部"></a>

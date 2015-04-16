@@ -144,6 +144,7 @@ class CAdminBase extends MY_Controller {
 
         $this->bindModel = $this->{$this->controllerId};
 
+        $this->addJs("{$this->controllerId}.js");
     }
 
     /**
@@ -178,16 +179,16 @@ class CAdminBase extends MY_Controller {
      */
     public function lists($params = array()) {
 
+        //设置活动的模块
         $this->activeModule = $this->level."01";
         //检测权限
         $this->checkPermission($this->level."01");
-        $page = $this->input->get_post('p');
+        $page = $this->getData('p');
 
         $this->bindModel->page($page, PAGESIZE);
         $lists = $this->bindModel->search();
 
         $data = array('page' => RKit::getPageLink("/back/" . strtolower(get_class($this)) . "?" . http_build_query($params), $lists['count']),
-            
             'list' => $lists,
         );
 
@@ -199,7 +200,8 @@ class CAdminBase extends MY_Controller {
      */
     public function add() {
 
-        $this->checkPermission($this->controllerId . '_ADD'); //检测权限
+        $this->activeModule = $this->level."02";
+        $this->checkPermission($this->level . '02'); //检测权限
 
         $data = $this->bindModel->getDefaultValue();
         $renderData = array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId);
@@ -212,9 +214,10 @@ class CAdminBase extends MY_Controller {
      */
     public function edit() {
 
+        $this->activeModule = $this->level."02";
         //检测权限
-
-        $id = $this->input->get_post('id');
+        $this->checkPermission($this->level . '02');
+        $id = $this->getData('id');
 
         $data = $this->bindModel->find($id);
         $this->renderAdminView($this->controllerId . '/edit', array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
@@ -224,27 +227,27 @@ class CAdminBase extends MY_Controller {
      * 保存
      */
     public function save() {
-
+        
+        $this->activeModule = $this->level."02";
         //检测权限
-
-        $id = $this->input->get_post('id');
-        $data = $this->input->get_post('data');
+        $this->checkPermission($this->level . '02');
+        
+        $id = $this->getData('id');
+        $data = $this->getData('data');
 
         $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
         $msg = '';
 
         if ($id == 0) {
-            $msg = sprintf(lang($status ? 'model_insert_success' : 'model_insert_fail'), $this->controllerTitle);
+            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
         } else {
-            $msg = sprintf(lang($status ? 'model_update_success' : 'model_update_fail'), $this->controllerTitle);
+            $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
         }
 
-        $err = $this->bindModel->getFirstError();
-        $this->log($msg);
-        if ($status || empty($err[0])) {
+        if ($status) {
             $this->echoAjax(0, $msg, array('url' => '/admin/' . $this->controllerId));
         } else {
-            $this->echoAjax(100, $err[1], array('tag' => $err[0]));
+            $this->echoAjax(100, $msg);
         }
     }
 
@@ -253,12 +256,15 @@ class CAdminBase extends MY_Controller {
      */
     public function delete() {
 
-        //检测权限
-        $ids = $this->input->get_post('id'); //'2,3,4,5,6,7,8';
+        $this->activeModule = $this->level."01";
+        //检测权限 
+        $this->checkPermission($this->level . '02');
+        
+        $ids = $this->getData('id'); //'2,3,4,5,6,7,8'
 
-        $status = $this->bindModel->deletes($ids);
-        $msg = sprintf(lang($status ? 'model_delete_success' : 'model_delete_fail'), $this->controllerTitle);
-        $this->log($msg);
+        $where =  "{$this->bindModel->pk} in ({$ids})";
+        $status = $this->bindModel->deletes($where);
+        $msg = sprintf(lang($status ? 'delete_success' : 'delete_fail'), $this->controllerTitle);
 
         $this->echoAjax(0, $msg);
     }
@@ -337,7 +343,7 @@ class CAdminBase extends MY_Controller {
             'css' => implode("\r\n", $this->frontFile['css']),
             'header' => implode("\r\n", $this->frontFile['header']),
         );
-
+        
         $this->load->view("admin/frameHTML", array_merge($frameData, $this->renderData, $data));
     }
 
@@ -353,7 +359,8 @@ class CAdminBase extends MY_Controller {
         }
 
         foreach ($file as $value) {
-            $value = strstr($value, 'http') ? $value : STATIC_RES_PATH . '/js/' . $value;
+            $value = strstr($value, 'http') ? $value : STATIC_RES_PATH . $value;
+            
             $this->frontFile['js'][] = '<script type="text/javascript" src="' . $value . '" ></script>';
         }
 

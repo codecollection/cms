@@ -8,6 +8,8 @@ class Model_model extends MBase{
     
     protected $tableName = 'cms_model';
     
+    protected $pk = "model_id";
+    
     public function  __construct(){
         parent::__construct();
     }

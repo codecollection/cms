@@ -12,17 +12,19 @@
         </thead>
 
         <tbody>
-            <tr id="formli1">
-                <td>1</td>
-                <td>文档</td>
-                <td>cms_info_list</td>
-                <td>0</td>
-                <td style="padding-left:10px;">&nbsp;</td>
+            <?php foreach($list['list'] as $k => $v){?>
+            <tr id="<?php echo "formli" . $k + 1;?>">
+                <td><?php echo $v['model_id'];?></td>
+                <td><?php echo $v['model_title'];?></td>
+                <td><?php echo $v['model_name'];?></td>
+                <td><?php echo $v['cmodel_id'];?></td>
+                <td style="padding-left:10px;"><?php echo empty($v['attr_content']) ? '&nbsp;': $v['attr_content'];?></td>
                 <td>
                     <a href="javascript:void(0);" onclick="del_attr(1);" class="btn">删除</a>
                 </td>
             </tr>
-            <tr id="html_model" class="foot_add">
+            <?php }?>
+            <tr id="form" class="foot_add">
                 <td>&nbsp;</td>
                 <td><input type="text" value="" placeholder="产品" style="width:80px;" class="comm_ipt " name="model_title" id="model_title"></td>
                 <td><input type="text" value="" style="width:80px;" class="comm_ipt" placeholder="cms_product" id="model_name" name="model_name"></td>
@@ -36,8 +38,13 @@
         </tbody>
 
     </table>
+    <p class="line-t-20"></p>
+        <div class="pagebar">
+            <?php echo $page;?>
+        </div>
+    <p class="line-t-20"></p>
 </div>
-
+<!--
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
@@ -47,3 +54,4 @@
         <a href="model.php" class="btn3">取消</a>
     </div>
 </div>
+-->

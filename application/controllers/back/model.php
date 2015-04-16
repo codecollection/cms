@@ -20,7 +20,6 @@ class Model extends CAdminBase {
      */
     public function index(){
         
-        $this->checkPermission("{$this->level}01");
         $this->lists();
     }
     
