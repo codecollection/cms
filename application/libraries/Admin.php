@@ -77,6 +77,7 @@ class Admin {
         $where = "aname='{$name}'";
         
         $sql = "SELECT a.*,b.* from {$this->adminTabel} as a left join {$this->adminGroupTabel} as b on b.group_id = a.group_id where {$where} ";
+        
         $query = $this->ci->db->query($sql);
         
         if ($query->num_rows() == 0) {

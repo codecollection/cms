@@ -32,10 +32,10 @@
             <div class="login_form" id="login_form">
                 <table class="lg_table">
                     <tr>
-                        <td><input id="aname" type="text" class="user_name" value=""/></td>
+                        <td><input id="aname" name="aname" type="text" class="user_name" value=""/></td>
                     </tr>
                     <tr>
-                        <td><input id="apass"  type="password" class="user_pwd" onkeydown="if(event.keyCode==13) login('login_form','login');" value=""/></td>
+                        <td><input id="apass" name="apass"  type="password" class="user_pwd" onkeydown="if(event.keyCode==13) login('login_form','login');" value=""/></td>
                     </tr>
                 </table>
                 <p class="line-t-6"></p>

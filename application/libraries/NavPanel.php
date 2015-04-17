@@ -138,14 +138,14 @@ class NavPanel {
                     'level' => 'D01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'D0101'), //按钮功能配置
-                        array('title' => '模型字段', 'level' => 'D0102'),
+                        array('title' => '字段管理', 'level' => 'D0102'),
                         array('title' => '更 新 表', 'level' => 'D0103'),
                         array('title' => '删除字段', 'level' => 'D0104'),
                     ),
                 ),
                 array(
-                    'title' => '字段管理', 
-                    'url' => 'alone_table.php',
+                    'title' => '模型字段', 
+                    'url' => '/back/field',
                     'level'=>'D02',
                     'menu'=>array(
                         array('title'=>'添加编辑数据','level'=>'D0201'),
@@ -320,24 +320,26 @@ class NavPanel {
      * @param type $activeModule
      * @return type
      */
-    public function getMenus($activeModule,$level = 'A') {
+    public function getMenus($activeModule,$level = 'A01') {
         
         $item = array();
-        
+        $nav = array();
         foreach ($this->menu as $row => $cate){
             $isSelect = FALSE;
             //检测权限
             if(!$this->checkPrem($cate['level']))  { continue; }
             $return[$row] = $cate;
+           
             foreach ($cate['menu'] as $key => $val){
                 if(!$this->checkPrem($val['level']))  { continue; }
-                
+            
                 if($activeModule == $val['level']){ 
                     $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']));
                 }
                 $return[$row]['menu'][$key] = $val;
                 foreach ($val['menu'] as $k => $v){
                     if(!$this->checkPrem($v['level']))  { continue; }
+                    
                     if($activeModule == $v['level']){ 
                         $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']),array('title' => $v['title'], 'url' => ''));
                         
@@ -346,8 +348,8 @@ class NavPanel {
                 }
             }
             $return[$row]['select'] = $isSelect;
+            if($cate['level'] == substr($level, 0, 1)){
             
-            if($cate['level'] == $level){
                 $nav = $cate['menu'];
             }
         }

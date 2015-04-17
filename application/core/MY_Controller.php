@@ -179,9 +179,9 @@ class CAdminBase extends MY_Controller {
     public function lists($params = array()) {
 
         //设置活动的模块
-        $this->activeModule = $this->level."01";
+        $this->activeModule = $this->level;
         //检测权限
-        $this->checkPermission($this->level."01");
+        $this->checkPermission($this->level);
         $page = $this->getData('p');
 
         $this->bindModel->page($page, PAGESIZE);
@@ -476,7 +476,6 @@ class CAdminBase extends MY_Controller {
         }
         return  $viewDir;
     }
-    
 }
 
 /**

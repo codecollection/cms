@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * 模型管理
+ *  字段管理
  */
-class Model extends CAdminBase {
+class Field extends CAdminBase {
 
-    public $controllerId = "model";
+    public $controllerId = "field";
     
-    public $level = "D01";
+    public $level = "D02";
     
     function __construct() {
 
