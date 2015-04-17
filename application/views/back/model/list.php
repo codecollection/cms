@@ -21,7 +21,7 @@
                 <td><?php echo $v['cmodel_id'];?></td>
                 <td style="padding-left:10px;"><?php echo empty($v['attr_content']) ? '&nbsp;': $v['attr_content'];?></td>
                 <td>
-                    <a href="javascript:void(0);" onclick="model_field(<?php echo $v['model_id'];?>);" class="btn">字段管理</a>
+                    <?php $thisc->echoButton($this->controllerId . "02","/back/model/field?id={$v['model_id']}","字段管理");?>
                 </td>
             </tr>
             <?php }?>
@@ -34,7 +34,7 @@
                 <td><input type="text" value="" style="width:180px;" class="comm_ipt " placeholder="扩展属性，json格式" id="attr_content" name="data[attr_content]"></td>
                 <td>
                     <!-- <a href="javascript:void(0);" onclick="save_data();" class="btn">添加</a> -->
-                    <?php echo $thisc->echoButton($this->controllerId . "02","javascript:save_data();","添加")?>
+                    <?php $thisc->echoButton($this->controllerId . "01","javascript:save_data();","添加");?>
                 </td>
             </tr>
         

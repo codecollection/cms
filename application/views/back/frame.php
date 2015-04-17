@@ -76,6 +76,8 @@
     <p class="footer_cpy">
     Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;<?php echo $microtime;?>秒
     </p>
+    <p class="line-t-20"></p>
+    <p class="line-t-20"></p>
     <div class="to-top" style="display:none;">
         <a class="to-top-a" title="返回顶部"></a>
     </div>

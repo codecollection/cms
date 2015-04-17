@@ -23,4 +23,12 @@ class Model extends CAdminBase {
         $this->lists();
     }
     
+    /**
+     * 
+     * 字段管理页面
+     */
+    public function field(){
+        
+    }
+    
 }

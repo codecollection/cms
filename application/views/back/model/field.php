@@ -38,19 +38,3 @@
         </tbody>
 
     </table>
-    <p class="line-t-20"></p>
-        <div class="pagebar">
-            <?php echo $page;?>
-        </div>
-    <p class="line-t-20"></p>
-</div>
-<script>
-    var urls = {"save":"/back/model/save","del":"/back/model/del"};
-</script>
-
-<div class="footer_fixed">
-    <div class="box_1000">
-        <span>操作：</span>
-        <a href="javascript:void(0);" class="btn3" onclick="C.form.update_field('model.php?m=save_model_attr_all&ajax=1', '.corder');">添加字段</a>
-    </div>
-</div>
