@@ -14,4 +14,15 @@ class Field_model extends MBase{
         parent::__construct();
     }
     
+    /*
+     * 获取字段标签，方便查看
+     */
+    public function getTags(){
+        
+        $sql = "select field_tag from ".$this->tableName. " group by field_tag";
+        
+        $query =  $this->db->query($sql);
+        
+        return $query->result_array();
+    }
 }

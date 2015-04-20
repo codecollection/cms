@@ -54,9 +54,9 @@
         <?php foreach($nav as $k => $v){?>
         <li><a href="<?php echo $v['url'];?>"  <?php if ($v['level'] == $thisc->activeModule) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
         <?php }?>
-        <!-- <li><a href="index.php" class="current">统计概览</a></li> -->
+        
     </ul>
-    <p class="line-t-6"></p>
+    
     <div class="crumbs">
         <span class="cbs_left">
             <?php 
@@ -65,7 +65,7 @@
             <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
             <?php if($k < $countNav - 1) echo('<em>></em>');?>
             <?php }?>
-            <!-- <b>文档</b><em>></em><a href="">统计</a>-->
+            
         </span>
     </div>
     <p class="line-t-15"></p>

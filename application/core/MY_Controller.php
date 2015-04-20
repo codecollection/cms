@@ -44,7 +44,7 @@ class MY_Controller extends CI_Controller {
     }
     
     protected function successAjax(){
-        $this->echoAjax(0, '');
+        $this->echoAjax(0, "操作成功");
     }
     /**
      * 载入模型
@@ -465,14 +465,14 @@ class CAdminBase extends MY_Controller {
      * @param type $type 1= list 2 =add和edit
      * @return type
      */
-    public function viewDir($type = 1){
+    public function viewDir($type = 1,$file = "list"){
         $viewDir = "";
         switch ($type){
             case 1: $viewDir =  "back/{$this->controllerId}/list";
                 break;
             case 2 : $viewDir = "back/{$this->controllerId}/edit";
                 break;
-            default : $viewDir =  "back/{$this->controllerId}/list";
+            default : $viewDir =  "back/{$this->controllerId}/{$file}";
         }
         return  $viewDir;
     }

@@ -756,13 +756,15 @@ var C={
           C.form.update_field('/admin_user.php','order','pid');
           input 格式 <input type="text" class="order" pid="<?php echo();?>">
       */
-      "update_field": function (url, tag_class, tag_id,rows) {
+      "update_field": function (url, tag_class, tag_id,rows,selected_class) {
         if (!arguments[0]) { C.alert.alert({ "content": "错误：没有处理程序地址" }); return; }
         if (!arguments[1]) tag_class = '.order';
         if (!arguments[2]) tag_id = 'pid';
-        if (!arguments[3]) rows = 1;
+        if (!arguments[3]) rows = 0;
+        if (!arguments[4]) selected_class = ".chk_list";
         var params = [];
         //遍历所有input 值
+       
         if(rows==0){
             $(tag_class).each(function () {
               var id = $(this).attr(tag_id);
@@ -779,6 +781,7 @@ var C={
               params.push(rdata);
             });
         }
+        
         if (params.length == 0) { C.alert.alert({ "content": "没有需要修改的数据" }); return; }
         //转换为字符串并URL编码
         //var params_str = $.toJSON(params);

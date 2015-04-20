@@ -138,9 +138,9 @@ class NavPanel {
                     'level' => 'D01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'D0101'), //按钮功能配置
-                        array('title' => '字段管理', 'level' => 'D0102'),
-                        array('title' => '更 新 表', 'level' => 'D0103'),
-                        array('title' => '删除字段', 'level' => 'D0104'),
+                        array('title' => '删除字段', 'level' => 'D0102'),
+                        array('title' => '字段管理', 'level' => 'D0103'),
+                        array('title' => '更 新 表', 'level' => 'D0104'),
                     ),
                 ),
                 array(

@@ -14,4 +14,17 @@ class Model_model extends MBase{
         parent::__construct();
     }
     
+    /**
+     * 获取表已经存在的字段
+     * @param type $tableName
+     * @return type
+     */
+    public function getTableFields($tableName){
+        
+        $sql = "show columns from ". DB_PREFIX.$tableName. " ";
+        
+        $query =  $this->db->query($sql);
+        
+        return $query->result_array();
+    }
 }
