@@ -308,13 +308,12 @@ class CAdminBase extends MY_Controller {
 
         $menu = NavPanel::getInstance()->getMenus($this->activeModule,$this->level);
         
-        $viewHtml = $this->load->view($viewName, array_merge($data, $this->renderData), true);
+        $viewHtml = $this->load->view($viewName, array_merge($data, $this->renderData,
+            array('nav' => $menu['nav'])), true);
         $frameData = array(
             'mainContent' => $viewHtml,
             'activedModule' => $this->activeModule,
             'navItem' => $menu['item'],
-            'userNav' => $menu['userModules'],
-            'nav' => $menu['nav'],
             'thisc' => $this,
             'microtime' => $this->microtime_float() - $this->startMicrotime,
             'js' => implode("\r\n", $this->frontFile['js']),

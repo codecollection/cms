@@ -40,7 +40,7 @@
             <li><a href="login.php?m=logout">退出</a></li>
         </ul>
         <ul class="hd_tabs" id="hd_tabs">
-            <?php foreach($userNav as $k => $v){?>
+            <?php foreach($navItem as $k => $v){?>
             <li><a href="<?php echo $v['url'];?>" <?php if ($v['level'] == $thisc->level) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
             <?php }?>
             

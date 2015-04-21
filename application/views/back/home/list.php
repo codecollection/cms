@@ -8,11 +8,11 @@
     <div class="crumbs">
         <span class="cbs_left">
             <?php 
-            $countNav = count($navItem);
-            foreach($navItem as $k => $v){?>
+            //$countNav = count($navItem);
+            //foreach($navItem as $k => $v){?>
             <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
-            <?php if($k < $countNav - 1) echo('<em>></em>');?>
-            <?php }?>
+            <?php //if($k < $countNav - 1) echo('<em>></em>');?>
+            <?php //}?>
             
         </span>
     </div>
