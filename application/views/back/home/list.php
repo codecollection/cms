@@ -1,4 +1,22 @@
-
+<ul class="manage_btn">
+        <?php foreach($nav as $k => $v){?>
+        <li><a href="<?php echo $v['url'];?>"  <?php if ($v['level'] == $thisc->activeModule) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
+        <?php }?>
+        
+    </ul>
+    
+    <div class="crumbs">
+        <span class="cbs_left">
+            <?php 
+            $countNav = count($navItem);
+            foreach($navItem as $k => $v){?>
+            <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+            <?php if($k < $countNav - 1) echo('<em>></em>');?>
+            <?php }?>
+            
+        </span>
+    </div>
+    <p class="line-t-15"></p>
 <div>
     <!--统计概览-->
     <div class="totals clearfix">

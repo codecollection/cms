@@ -50,25 +50,6 @@
 </div>
 <!-- 主体内容 -->
 <div class="content">
-    <ul class="manage_btn">
-        <?php foreach($nav as $k => $v){?>
-        <li><a href="<?php echo $v['url'];?>"  <?php if ($v['level'] == $thisc->activeModule) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
-        <?php }?>
-        
-    </ul>
-    
-    <div class="crumbs">
-        <span class="cbs_left">
-            <?php 
-            $countNav = count($navItem);
-            foreach($navItem as $k => $v){?>
-            <a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
-            <?php if($k < $countNav - 1) echo('<em>></em>');?>
-            <?php }?>
-            
-        </span>
-    </div>
-    <p class="line-t-15"></p>
     <?php echo $mainContent;?>
     <div id="alert"></div>
     <p class="line-t-20"></p>
@@ -77,11 +58,10 @@
     Copyright(c) &nbsp;&nbsp;2012-2015 &nbsp;&nbsp;小肉粽 &nbsp;&nbsp;<?php echo $microtime;?>秒
     </p>
     <p class="line-t-20"></p>
-    <p class="line-t-20"></p>
-    <div class="to-top" style="display:none;">
-        <a class="to-top-a" title="返回顶部"></a>
-    </div>
 </div>
 
+<div class="to-top" style="display:none;">
+    <a class="to-top-a" title="返回顶部"></a>
+</div>
 </body>
 </html>
