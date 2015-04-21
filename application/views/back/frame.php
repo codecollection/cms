@@ -14,7 +14,7 @@
 <script src="/style/back/js/public.js"></script>
 <link rel="stylesheet" type="text/css" href="/style/back/zy.select/select.css"/>
 <link rel="stylesheet" type="text/css" href="/style/back/zy.tree/tree.css"/>
-<link href="/style/image/logo_ico.ico" type="image/x-icon" rel="shortcut icon"/>
+<link rel="shortcut icon" href="/style/back/image/logo_ico.ico" type="image/x-icon" />
 <!--[if lte IE 6]>
 <script language="javascript" type="text/javascript" src="/style/libs/png.js" ></script>
 <script type="text/javascript">
