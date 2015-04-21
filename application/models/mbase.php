@@ -733,4 +733,21 @@ class MBase extends CI_Model{
        $query = $this->db->query($sql);
        return isset($query->row()->$field) ? $query->row()->$field : '';
     }
+    
+    /**
+     * 
+     * @param array $where 多条件显示查询的数组， 如 array("field_id=>1,model_id => 1);
+     *
+     * @param string $field string 要查询的字段，默认为整条数据
+     * @return 
+     */
+    public function getUnique($where,$field = null){
+        
+        $f = $field === null ? "*" : $field;
+        
+        $whe = implode(" and ", $where);
+        
+        return $this->getFieldByWhere($f, $whe);
+        
+    }
 }

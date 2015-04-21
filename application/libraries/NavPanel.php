@@ -8,6 +8,7 @@ class NavPanel {
     
     private $ci = NULL;
 
+    private $adminDirName = "back";
     private $menu = array(
         array(
             'title' => "系 统", //功能导航分类
@@ -100,13 +101,13 @@ class NavPanel {
         
         array(
             'title' => '文 档',
-            'url' => '',
+            'url' => '/back/cate',
             'level'=>'C',
             'bgimg' => '/style/back/img/menu1/info.png',
             'menu'  => array(
                 array(
                     'title'=>'文档列表',
-                    'url' => '/admin/info',
+                    'url' => '/back/info',
                     'level' => 'C01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'C0101'), //按钮功能配置
@@ -116,7 +117,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'文档分类',
-                    'url' => '/admin/category',
+                    'url' => '/back/cate',
                     'level' => 'C02', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'C0201'), //按钮功能配置
@@ -325,39 +326,16 @@ class NavPanel {
         $item = array();
         $nav = array();
         foreach ($this->menu as $row => $cate){
-            $isSelect = FALSE;
-            //检测权限
-            if(!$this->checkPrem($cate['level']))  { continue; }
-            $return[$row] = $cate;
-           
-            foreach ($cate['menu'] as $key => $val){
-                if(!$this->checkPrem($val['level']))  { continue; }
-            
-                if($activeModule == $val['level']){ 
-                    $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']));
-                }
-                $return[$row]['menu'][$key] = $val;
-                foreach ($val['menu'] as $k => $v){
-                    if(!$this->checkPrem($v['level']))  { continue; }
-                    
-                    if($activeModule == $v['level']){ 
-                        $item = array(array('title'=>$cate['title'],'url'=>$cate['url']),array('title' => $val['title'], 'url' => $val['url']),array('title' => $v['title'], 'url' => ''));
-                        
-                    }
-                    $return[$row]['menu'][$key][$k] = $v;
-                }
+            if(substr($level, 0,1) == $cate["level"]){
+                $nav = $cate["menu"];
             }
-            $return[$row]['select'] = $isSelect;
-            if($cate['level'] == substr($level, 0, 1)){
-            
-                $nav = $cate['menu'];
-            }
+            unset($cate["menu"]);
+            array_push($item, $cate);
         }
         
         $data['item'] = $item;
-        $data['userModules'] = $return;
         $data["nav"] = $nav;
-        //print_r($data);
+        
         return $data;
     }
     

@@ -561,8 +561,8 @@ create table if not exists `cms_vote_data` (
 
 /*添加超级管理员组*/
 insert ignore into cms_admin_group (group_id,g_name,g_urank,g_remark) values(1,'超级管理员组','100','超级管理员组拥有所有权限');
-insert ignore into cms_admin_list (aname,apass,alevel) values('admin','f21e84bcb1eea0277ced3794e8676d23','100');
-insert ignore into cms_admin_list (aname,apass,alevel) values('wenghe','bae208138ce50065beb13be8dd8f3c30','100');
+insert ignore into cms_admin_list (aname,apass,alevel,group_id) values('admin','f21e84bcb1eea0277ced3794e8676d23','100',1);
+insert ignore into cms_admin_list (aname,apass,alevel,group_id) values('wenghe','bae208138ce50065beb13be8dd8f3c30','100',1);
 
 insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(1, '文档', 'cms_info_list', 0);
 insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(2, '产品', 'cms_product', 0);

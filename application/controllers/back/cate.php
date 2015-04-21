@@ -7,6 +7,8 @@ class Cate extends CAdminBase {
 
     public $controllerId = "cate";
     
+    public $topLevel = "C";
+    
     public $level = "C01";
     
     function __construct() {
@@ -22,5 +24,7 @@ class Cate extends CAdminBase {
         
         $this->lists();
     }
+    
+    
     
 }

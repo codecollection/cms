@@ -88,6 +88,8 @@ class CAdminBase extends MY_Controller {
      */
     protected $controllerId = '';
 
+    public $topLevel = "";
+    
     public $level = "";
     /**
      * 控制器名称
@@ -308,20 +310,19 @@ class CAdminBase extends MY_Controller {
 
         $menu = NavPanel::getInstance()->getMenus($this->activeModule,$this->level);
         
-        $viewHtml = $this->load->view($viewName, array_merge($data, $this->renderData), true);
+        $viewHtml = $this->load->view($viewName, array_merge($data, $this->renderData,
+            array('nav' => $menu['nav'])), true);
         $frameData = array(
             'mainContent' => $viewHtml,
             'activedModule' => $this->activeModule,
             'navItem' => $menu['item'],
-            'userNav' => $menu['userModules'],
-            'nav' => $menu['nav'],
             'thisc' => $this,
             'microtime' => $this->microtime_float() - $this->startMicrotime,
             'js' => implode("\r\n", $this->frontFile['js']),
             'css' => implode("\r\n", $this->frontFile['css']),
             'header' => implode("\r\n", $this->frontFile['header']),
+            'admin' => array("group"=>$this->admin->getUserInfo("g_name"),"name"=>$this->admin->getUserInfo("aname")),
         );
-
         $this->load->view("back/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
     }
 
