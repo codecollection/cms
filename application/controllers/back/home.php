@@ -7,7 +7,9 @@ class Home extends CAdminBase {
 
     protected $controllerId = "home";
     
-    public $level = "A";
+    public $topLevel = "A";
+    
+    public $level = "A01";
     
     function __construct() {
 

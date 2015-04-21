@@ -88,6 +88,8 @@ class CAdminBase extends MY_Controller {
      */
     protected $controllerId = '';
 
+    public $topLevel = "";
+    
     public $level = "";
     /**
      * 控制器名称
@@ -319,8 +321,8 @@ class CAdminBase extends MY_Controller {
             'js' => implode("\r\n", $this->frontFile['js']),
             'css' => implode("\r\n", $this->frontFile['css']),
             'header' => implode("\r\n", $this->frontFile['header']),
+            'admin' => array("group"=>$this->admin->getUserInfo("g_name"),"name"=>$this->admin->getUserInfo("aname")),
         );
-
         $this->load->view("back/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
     }
 

@@ -7,6 +7,7 @@ class Model extends CAdminBase {
 
     public $controllerId = "model";
     
+    public $topLevel = "D";
     public $level = "D01";
     
     function __construct() {

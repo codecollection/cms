@@ -215,7 +215,6 @@ class Admin {
         if (!empty($infoId)) {
             return true;
         }
-        
         return false;
     }
     
@@ -225,7 +224,7 @@ class Admin {
     public function logout() {
         
         session_destroy();
-        set_cookie('token', '', time() - 1);
+        //set_cookie('token', '', time() - 1);
         return true;
     }
 }

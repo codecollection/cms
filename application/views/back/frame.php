@@ -36,15 +36,13 @@
 			<li><a href="/" target="_blank">前台首页</a></li>
             <li><a href="cache.clear.php">清理缓存</a></li>
             <li><a href="javascript:void(0);" onclick="restart();">重启账号</a></li>
-            <li><span>系统管理员&nbsp;(&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();">wenghe</a>)</span></li>
-            <li><a href="login.php?m=logout">退出</a></li>
+            <li><span><?php echo $admin["group"];?>&nbsp;(&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php echo $admin["name"];?></a>)</span></li>
+            <li><a href="/back/login/loginOut">退出</a></li>
         </ul>
         <ul class="hd_tabs" id="hd_tabs">
             <?php foreach($navItem as $k => $v){?>
-            <li><a href="<?php echo $v['url'];?>" <?php if ($v['level'] == $thisc->level) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
+            <li><a href="<?php echo $v['url'];?>" <?php if ($v['level'] == $thisc->topLevel) echo 'class="current"';?>><?php echo $v['title'];?></a></li>
             <?php }?>
-            
-            <!-- <li><a href="index.php" class="current">文档</a></li> -->
         </ul>
     </div>
 </div>
