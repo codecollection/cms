@@ -300,7 +300,7 @@ class RKit {
                 $path = $data['BasePath'] . date('Ym');
                 $absPath = realpath('.') . $path;
                 if (!is_dir($absPath)) {
-                    mkdir($absPath);
+                    mkdir($absPath, 0777, true);
                 }
             } else {
                 $path = $data['BasePath']; 
@@ -316,8 +316,8 @@ class RKit {
                 $config['file_name'] = $_FILES[$data['Field']]['name'];
             }
             
-
             $ci->load->library('upload', $config);
+            
             if (!$ci->upload->do_upload($data['Field'])) { 
                 //print_r($_FILES);
                 //print_r($ci->upload->display_errors());
