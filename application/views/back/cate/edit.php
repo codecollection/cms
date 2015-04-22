@@ -52,11 +52,12 @@
             <td><input id="clogo" type="text" class="comm_ipt" value=""> 可用于图片导航条，或者分类LOGO图/广告图等
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
-                    <iframe src="/back/upload" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                    <iframe src="/back/upload?vid=clogo" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
                 </div>
 
                 <div class="slt_small" style="right:228px;">
-                    <img id="thumb_clogo" src="/style/back/image/upload-pic.png" />                    </div>
+                    <img id="thumb_clogo" src="/style/back/image/upload-pic.png" />                    
+                </div>
             </td>
         </tr>
         <tr>
@@ -64,7 +65,7 @@
             <td><input id="clogo_hover" type="text" class="comm_ipt" value=""> 分类图片鼠标移动替换效果图，保持跟分类图片一致
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
-                    <iframe src="/back/upload" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                    <iframe src="/back/upload?vid=clogo_hover" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
                 </div>
 
                 <div class="slt_small" style="right:228px;">

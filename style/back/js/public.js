@@ -151,12 +151,13 @@ function save_data(){
 function callback_upload_thumb(ret){
     try{
         var json=$.evalJSON(ret);
-        alert(ret);
+        
         if(json.files.length<=0) {
             alert('上传失败');
             return false;
         }
-        $("#thumb_"+json.params.vid).html('<img src="'+json.files+'" width="30" height="30" >');
+        
+        $("#thumb_"+json.params.vid).attr("src",json.files);//.html('<img src="'+json.files+'" width="30" height="30" >');
         $("#"+json.params.vid).val(json.files);
     }catch(e){
         alert('err:'+e.message);

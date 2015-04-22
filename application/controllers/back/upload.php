@@ -6,6 +6,8 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Upload extends CAdminBase {
     
+    protected $controllerId = "myupload";
+    
     protected $resourceTabel = "cms_resource_list";
     public function __construct() {
         parent::__construct();
@@ -13,20 +15,25 @@ class Upload extends CAdminBase {
     
     public function index(){
         
-        $params = $this->getData('params');
+        $func = $this->getData('func');
+        $vid = $this->getData("vid");
         
-        if(empty($params)){
-            $params = '{"func":"callback_upload_thumb","vid":"clogo","thumb":{"width":"300","height":"300"}}';
-        }
-        echo($this->load->view($this->viewDir(),array('params'=>$params),true));
+        $f = empty($func) ? 'callback_upload_thumb' : $func;
+        
+        $divId = empty($vid) ? 'logo' : $vid;
+        
+        echo($this->load->view($this->viewDir(),array("func"=>$f,"vid"=>$divId),true));
     }
     
     public function doUpload(){
-        $params = $this->getData('params');
-        //print_r($params);
-        if(empty($params)){
-            $params = '{"func":"callback_upload_thumb","vid":"clogo","thumb":{"width":"300","height":"300"}}';
-        }
+        
+        $func = $this->getData('func');
+        $vid = $this->getData("vid");
+        
+        $f = empty($func) ? 'callback_upload_thumb' : $func;
+        
+        $divId = empty($vid) ? 'logo' : $vid;
+        
         $upload = array('Field'=>'file');
         
         $file = $_FILES['file'];
@@ -41,7 +48,7 @@ class Upload extends CAdminBase {
             $this->_addResource($resource);
         }
         
-        $params='{\"params\":' . $params . ',\"files\":"'. $fileUrl .'"}';
+        $params = '{"params":{"func":"'.$f.'","vid":"'.$vid.'"'. '},"files":"'. $fileUrl .'"}';
         echo('<script>window.parent.callback_upload(\''.$params.'\');</script>');
         exit();
     }

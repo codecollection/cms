@@ -1,9 +1,3 @@
-<?php 
-
-$params=preg_replace('~(\\\")~','"',$params);
-$json=json_decode($params);
-
-?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,12 +20,12 @@ body{cursor:default;}
 
 //回调通知
 function callback_upload(ret){
-    window.parent.<?php echo($json->func); ?>(ret);
+    window.parent.<?php echo($func); ?>(ret);
 }
 </script>
 </head>
 <body>
-    <form action='/back/upload/doUpload?params=<?php echo urlencode($params);?>' id="form" name="form" enctype="multipart/form-data" method="post" target="hidden_frame">
+    <form action='/back/upload/doUpload?vid=<?php echo($vid);?>&func=<?php echo $func;?>' id="form" name="form" enctype="multipart/form-data" method="post" target="hidden_frame">
        <a class="input-file">上传文件<input type="file" id="file" name="file" size="1" style="width:70px;cursor:default;height:25px;line-height:25px;"></a>
        <iframe name="hidden_frame" id="hidden_frame" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
    </form>
