@@ -67,6 +67,7 @@ create table if not exists `cms_resource_list` (
 create table if not exists `cms_resource_info`(
  `res_info_id` int(11) unsigned not null auto_increment,
  `info_id` int(11) not null default 0 comment '信息ID',
+ `model_id` int(11) not null default 0 comment '模型ID',
  `resource_id` int(11) not null default 0 comment '资源id',
  `cdate` int(11) not null default 0 comment '关联时间',
  primary key(`res_info_id`),
