@@ -6,8 +6,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Upload extends CAdminBase {
     
-    protected $controllerId = "upload";
-    
     protected $resourceTabel = "cms_resource_list";
     public function __construct() {
         parent::__construct();
@@ -26,6 +24,9 @@ class Upload extends CAdminBase {
     public function doUpload(){
         $params = $this->getData('params');
         //print_r($params);
+        if(empty($params)){
+            $params = '{"func":"callback_upload_thumb","vid":"clogo","thumb":{"width":"300","height":"300"}}';
+        }
         $upload = array('Field'=>'file');
         
         $file = $_FILES['file'];
@@ -45,7 +46,11 @@ class Upload extends CAdminBase {
         exit();
     }
     
-    public function _addResource($resource){
+    /*
+     * 保存资源数据
+     */
+    private function _addResource($resource){
+        
         $this->db->insert($this->resourceTabel,$resource);
     }
 }

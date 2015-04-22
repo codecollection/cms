@@ -316,7 +316,7 @@ class RKit {
                 $config['file_name'] = $_FILES[$data['Field']]['name'];
             }
             
-            $ci->load->library('upload', $config);
+            $ci->load->library('upload',$config);
             
             if (!$ci->upload->do_upload($data['Field'])) { 
                 //print_r($_FILES);

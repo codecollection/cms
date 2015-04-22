@@ -142,7 +142,9 @@ class CAdminBase extends MY_Controller {
             }
         }
 
-        $this->load->model($this->controllerId . '_model', $this->controllerId);
+        if(!empty($this->controllerId)){
+            $this->load->model($this->controllerId . '_model', $this->controllerId);
+        }
         //$this->load->model('message_model', 'msg');
 
         $this->bindModel = $this->{$this->controllerId};
