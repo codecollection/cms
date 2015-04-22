@@ -25,6 +25,10 @@ class Cate extends CAdminBase {
         $this->lists();
     }
     
-    
+    public function add(){
+        
+        
+        parent::add();
+    }
     
 }

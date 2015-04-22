@@ -205,9 +205,9 @@ class CAdminBase extends MY_Controller {
         $this->checkPermission($this->level . '02'); //检测权限
 
         $data = $this->bindModel->getDefaultValue();
-        $renderData = array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId);
+        $renderData = array('data' => $data);
 
-        $this->renderAdminView($this->controllerId . '/edit', array_merge($renderData, array()));
+        $this->renderAdminView($this->viewDir(2), array_merge($renderData, array()));
     }
 
     /**

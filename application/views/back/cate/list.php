@@ -39,31 +39,29 @@
                 <td>ID</td>
                 <td width="60">排序</td>
                 <td width="240">分类名称</td>
-                <td width="280">字母别名</td>
                 <td width="60">导航显示</td>
                 <td></td>
                 <td width="60">操作</td>
             </tr>
         </thead>
         <tbody>
+            <?php foreach($list["list"] as $k => $v){ ?>
             <tr id="formli1" title="文档数量：6 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="1"></td>
-                <td><a href="/index.php?tpl=list&cid=1&p=1" target="_blank">1</a></td>
-                <td><input id="corder" type="text" pid="1" class="comm_ipt corder" style="width:30px;" value="100"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="公司动态">
+                <td><input type="checkbox" class="chk_list" value="<?php echo $v["cate_id"];?>"></td>
+                <td><a href="/" target="_blank"><?php echo $v["cate_id"];?></a></td>
+                <td><input id="corder" type="text" pid="1" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["corder"];?>"></td>
+                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="<?php echo $v["cname"];?>">
                     <a  href="?cate_id=1">查看下级(0)</a>
                 </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="gongsidongtai">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
                 <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
                 <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：6                                                                                                                                            </td>
+                    &nbsp;&nbsp;文档：6                                                                                                      </td>
                 <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=1">编辑</a>
+                    <a class="btn" href="/back/cate/edit?cate_id=<?php echo $v["cate_id"];?>">编辑</a>
                 </td>
             </tr>
-            <tr id="formli2" title="文档数量：1 绑定域名： 跳转地址：">
+            <?php }?>
+            <!-- <tr id="formli2" title="文档数量：1 绑定域名： 跳转地址：">
                 <td><input type="checkbox" class="chk_list" value="2"></td>
                 <td><a href="/index.php?tpl=list&cid=2&p=1" target="_blank">2</a></td>
                 <td><input id="corder" type="text" pid="2" class="comm_ipt corder" style="width:30px;" value="101"></td>
@@ -79,109 +77,7 @@
 
                     <a class="btn" href="?tpl=edit&cate_id=2">编辑</a>
                 </td>
-            </tr>
-            <tr id="formli3" title="文档数量：4 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="3"></td>
-                <td><a href="/index.php?tpl=list&cid=3&p=1" target="_blank">3</a></td>
-                <td><input id="corder" type="text" pid="3" class="comm_ipt corder" style="width:30px;" value="102"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="成功案例">
-                    <a  href="?cate_id=3">查看下级(0)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="chenggonganli">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：4                                                                                                <br>&nbsp;&nbsp;列表模板：tpl.list.anli.php                                            </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=3">编辑</a>
-                </td>
-            </tr>
-            <tr id="formli4" title="文档数量：3 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="4"></td>
-                <td><a href="/index.php?tpl=list&cid=4&p=1" target="_blank">4</a></td>
-                <td><input id="corder" type="text" pid="4" class="comm_ipt corder" style="width:30px;" value="103"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="关于我们">
-                    <a  href="?cate_id=4">查看下级(0)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="guanyuwomen">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：3                                                                                                <br>&nbsp;&nbsp;列表模板：tpl.list.single.php                        <br>&nbsp;&nbsp;内容模板：tpl.content.single.php                    </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=4">编辑</a>
-                </td>
-            </tr>
-            <tr id="formli11" title="文档数量：3 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="11"></td>
-                <td><a href="/index.php?tpl=list&cid=11&p=1" target="_blank">11</a></td>
-                <td><input id="corder" type="text" pid="11" class="comm_ipt corder" style="width:30px;" value="104"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="商业服务">
-                    <a  href="?cate_id=11">查看下级(0)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="shangyefuwu">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：3                                                                                                <br>&nbsp;&nbsp;列表模板：tpl.list.single.php                        <br>&nbsp;&nbsp;内容模板：tpl.content.single.php                    </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=11">编辑</a>
-                </td>
-            </tr>
-            <tr id="formli9" title="文档数量：0 绑定域名： 跳转地址：/app/message/">
-                <td><input type="checkbox" class="chk_list" value="9"></td>
-                <td><a href="/app/message/" target="_blank">9</a></td>
-                <td><input id="corder" type="text" pid="9" class="comm_ipt corder" style="width:30px;" value="105"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="给我留言">
-                    <a  href="?cate_id=9">查看下级(0)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="geiwoliuyan">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：0                                                <br>&nbsp;&nbsp;跳转：/app/message/                                                                                            </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=9">编辑</a>
-                </td>
-            </tr>
-            <tr id="formli8" title="文档数量：3 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="8"></td>
-                <td><a href="/index.php?tpl=list&cid=8&p=1" target="_blank">8</a></td>
-                <td><input id="corder" type="text" pid="8" class="comm_ipt corder" style="width:30px;" value="106"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="系统特点">
-                    <a  href="?cate_id=8">查看下级(0)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="xitongtedian">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="0"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：3                                                                                                                                            </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=8">编辑</a>
-                </td>
-            </tr>
-            <tr id="formli10" title="文档数量：2 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="10"></td>
-                <td><a href="/index.php?tpl=list&cid=10&p=1" target="_blank">10</a></td>
-                <td><input id="corder" type="text" pid="10" class="comm_ipt corder" style="width:30px;" value="107"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="服务支持">
-                    <a  href="?cate_id=10">查看下级(0)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="fuwuzhichi">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="0"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：2                                                                                                <br>&nbsp;&nbsp;列表模板：tpl.list.single.php                        <br>&nbsp;&nbsp;内容模板：tpl.content.single.php                    </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=10">编辑</a>
-                </td>
-            </tr>
+            </tr>-->
             <tr id="cateform" class="foot_add">
                 <td>
                     <input type="hidden" id="parent_id" value="0" />
@@ -191,8 +87,7 @@
                 <td><input type="text" id="cname" class="comm_ipt " style="width:150px;" value="">
 
                 </td>
-                <td><input type="text" id="cname_py" class="comm_ipt " style="width:150px;" value="">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
+                
                 <td><input type="text" id="nav_show" class="comm_ipt " style="width:30px;" value="0"></td>
                 <td></td>
                 <td>
@@ -207,7 +102,7 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="?tpl=edit&parent_id=0" class="btn3">添加顶级分类</a>
+        <a href="/back/cate/add" class="btn3">添加分类</a>
 
         <a href="javascript:void(0);" class="btn3" onclick="C.form.update_field('category.php?m=save_all&ajax=1', '.corder');">批量修改</a>
 
