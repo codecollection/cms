@@ -573,7 +573,7 @@ class RKit {
         if($type=='select_single'){
             $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').');return false;" '.$style.'>';
             $html .= '    <a href="javascript:void(0);" class="txt_box" id="txt_box">';
-            $html .= '        <div class="sel_inp" id="sel_inp">'."000".'</div>'; //$this->get_field_str($node,$default)
+            $html .= '        <div class="sel_inp" id="sel_inp">'.$fields[$default]['txt'].'</div>'; //$this->get_field_str($node,$default)
             $html .= '        <input type="hidden" name="'.($alias==''?$node.$name:$alias.$name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
             $html .= '    </a>';
             $html .= '    <div class="sel_list" id="sel_list" style="display:none;">';

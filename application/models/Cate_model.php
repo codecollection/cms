@@ -58,9 +58,11 @@ class Cate_model extends MBase{
      */
     private function getCategories()
     {
-        $sql = "select * from {$this->tableName} order by corder asc";
-        $a = $this->db->query($sql)->result_array();
+//        $sql = "select * from {$this->tableName} order by corder asc";
+//        $a = $this->db->query($sql)->result_array();
         $tmp_trees = array();
+        
+        $a = $this->cateList;
         //遍历全部分类
         foreach ($a as $k => $v) {
             //判断是否绑定域名到站点根目录
@@ -86,8 +88,9 @@ class Cate_model extends MBase{
 
             //print_r($v);die();
             //遍历查询子类
-            $sql = "select * from {$this->tableName} where parent_id='{$v['cate_id']}' order by corder asc";
-            $rs = $this->db->query($sql)->result_array();
+//            $sql = "select * from {$this->tableName} where parent_id='{$v['cate_id']}' order by corder asc";
+//            $rs = $this->db->query($sql)->result_array();
+            $rs = $this->cate_son($v['cate_id']);
             $v['son'] = $rs;
             //遍历子类修改URL
             foreach ($v['son'] as $ks => $vs) {
