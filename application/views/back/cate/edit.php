@@ -12,7 +12,7 @@
 
 <div id="form_add">
 
-    <input type="hidden" id="cate_id" name="id" value="0" />
+    <input type="hidden" id="cate_id" name="id" value="<?php echo($data["cate_id"]);?>" />
     <table class="table_lists editbox">
         <thead>
             <tr><td colspan="2">基本信息</td></tr>
@@ -22,30 +22,32 @@
             <td>
                 <span class="l">
                     <?php 
+                    
                     $fields = $thisc->cate->show_select();
                     array_unshift($fields, array('value'=>0,"txt"=>"顶级分类","txt_color"=>""));
-                    echo RKit::input_str(array('node'=>'cate_id_select','alias'=>'cate_id','type'=>'select_single','default'=>0,'style'=>'style="width:200px;"'), $fields)?>                
+                    echo RKit::input_str(array('node'=>'cate_id_select','name'=>'parent_id','type'=>'select_single','default'=>$data["parent_id"] = $data["parent_id"] == "" ? 0 : $data["parent_id"],'style'=>'style="width:200px;"'), $fields)?>                
                 </span>
             </td>
         </tr>
         <tr>
             <td class="fr"><span class="fred">* </span>分类名称 ：</td>
-            <td><input id="cname" type="text" name="data[cname]" class="comm_ipt" value=""></td>
+            <td><input id="cname" type="text" name="data[cname]" class="comm_ipt" value="<?php echo $data["cname"]?>"></td>
         </tr>
         <tr>
             <td class="fr">分类别名：</td>
-            <td><input id="cnick" type="text" name="data[cnick]" class="comm_ipt" value=""> 用于手机等小设备显示简短分类名称</td>
+            <td><input id="cnick" type="text" name="data[cnick]" class="comm_ipt" value="<?php echo $data["cnick"]?>"> 用于手机等小设备显示简短分类名称</td>
         </tr>
         <tr>
             <td class="fr">排序：</td>
-            <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="0"> 数字小排前面</td>
+            <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="<?php echo $data['corder'] = $data["corder"] == '' ? '' : $data['corder'] ; ?>"> 数字小排前面</td>
         </tr>
         <tr>
             <td class="fr">导航显示：</td>
             <td>
                 <span class="l" style="line-height:200%;">PC站导航&nbsp;&nbsp;&nbsp;&nbsp;</span> 
                 <span class="l">
-                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:120px">    
+                    <?php echo $thisc->vars->input_str(array("node"=>"nav_show","default"=>$data["nav_show"]= $data["nav_show"] == "" ? 0 : $data["nav_show"],"type"=>"select_single"));?>
+<!--                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:120px">    
                         <a href="javascript:void(0);" class="txt_box" id="txt_box">        
                             <div class="sel_inp" id="sel_inp">否</div>       
                             <input type="hidden" name="data[nav_show]" id="nav_show" value="0" class="sel_subject_val">    
@@ -54,56 +56,47 @@
                             <a href="javascript:void(0);" value="0" class="current" >否</a>        
                             <a href="javascript:void(0);" value="1" class="" >是</a>    
                         </div>
-                    </div>
+                    </div>-->
                 </span>
                 <span class="l" style="line-height:200%;">&nbsp;&nbsp;&nbsp;&nbsp;WAP站导航&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span class="l">
-                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:120px">    
-                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">否</div>        
-                            <input type="hidden" name="data[nav_show_wap]" id="nav_show_wap" value="0" class="sel_subject_val">    
-                        </a>    
-                        <div class="sel_list" id="sel_list" style="display:none;">        
-                                <a href="javascript:void(0);" value="0" class="current" >否</a>   
-                                <a href="javascript:void(0);" value="1" class="" >是</a>   
-                        </div>
-                    </div>
+                    <?php echo $thisc->vars->input_str(array("node"=>"nav_show","default"=>$data["nav_show_wap"]= $data["nav_show_wap"] == "" ? 0 : $data["nav_show_wap"],"type"=>"select_single"));?>
                 </span>
             </td>
         </tr>
         <tr>
             <td class="fr" style="vertical-align:top;">分类图片：</td>
-            <td><input id="clogo" type="text" class="comm_ipt" value="" name="data[clogo]"> 可用于图片导航条，或者分类LOGO图/广告图等
+            <td><input id="clogo" type="text" class="comm_ipt" value="<?php echo $data["clogo"]?>" name="data[clogo]"> 可用于图片导航条，或者分类LOGO图/广告图等
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
                     <iframe src="/back/upload?vid=clogo" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
                 </div>
 
                 <div class="slt_small" style="right:228px;">
-                    <img id="thumb_clogo" src="/style/back/image/upload-pic.png" />                    
+                    <img id="thumb_clogo" src="<?php echo $data["clogo"] = $data['clogo'] == '' ? "/style/back/image/upload-pic.png" : $data["clogo"]; ?>" />                    
                 </div>
             </td>
         </tr>
         <tr>
             <td class="fr" style="vertical-align:top;">分类替换图片：</td>
-            <td><input id="clogo_hover" type="text" class="comm_ipt" value=""> 分类图片鼠标移动替换效果图，保持跟分类图片一致
+            <td><input id="clogo_hover" type="text" name="data[clogo_hover]" class="comm_ipt" value="<?php echo $data["clogo_hover"]?>"> 分类图片鼠标移动替换效果图，保持跟分类图片一致
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
                     <iframe src="/back/upload?vid=clogo_hover" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
                 </div>
 
                 <div class="slt_small" style="right:228px;">
-                    <img id="thumb_clogo_hover" src="/style/back/image/upload-pic.png" />                    
+                    <img id="thumb_clogo_hover" src="<?php echo $data["clogo_hover"] = $data['clogo_hover'] == '' ? "/style/back/image/upload-pic.png" : $data["clogo_hover"]; ?>" />                    
                 </div>
             </td>
         </tr>
         <tr>
             <td class="fr">绑定域名：</td>
-            <td><input id="cdomain" name="data[cdomain]" type="text" class="comm_ipt" value=""> 当前分类作为一个独立域名频道，该域名指向目录跟主站一致</td>
+            <td><input id="cdomain" name="data[cdomain]" type="text" class="comm_ipt" value="<?php echo $data["cdomain"]?>"> 当前分类作为一个独立域名频道，该域名指向目录跟主站一致</td>
         </tr>
         <tr>
             <td class="fr">跳转地址：</td>
-            <td><input id="go_url" type="text" class="comm_ipt" value="" name="data[go_url]"> 当前分类链接跳转到其他页面，优先级高于绑定域名</td>
+            <td><input id="go_url" type="text" class="comm_ipt" value="<?php echo $data["cdomain"]?>" name="data[go_url]"> 当前分类链接跳转到其他页面，优先级高于绑定域名</td>
         </tr>
         <tr>
             <td class="fr">绑定广告位：</td>
@@ -193,21 +186,21 @@
 
         <tr>
             <td class="fr">SEO标题(title)：</td>
-            <td><textarea name="data[ctitle]" id="ctitle"></textarea></td>
+            <td><textarea name="data[ctitle]" id="ctitle"><?php echo $data["ctitle"]?></textarea></td>
         </tr>
         <tr>
             <td class="fr">SEO关键词(keywords)：</td>
-            <td><textarea name="data[ckey]" id="ckey"></textarea></td>
+            <td><textarea name="data[ckey]" id="ckey"><?php echo $data["ckey"]?></textarea></td>
         </tr>
         <tr>
             <td class="fr">SEO描述(description)：</td>
-            <td><textarea name="data[cdesc]" id="cdesc"></textarea></td>
+            <td><textarea name="data[cdesc]" id="cdesc"><?php echo $data["cdesc"]?></textarea></td>
         </tr>
         <tr>
             <td class="fr" style="vertical-align: top;">分类简介：</td>
             <td>可用于把当前分类作为一个单页面，或者分类下文字图片介绍等
                 <p class="line-t-10"></p>
-                <textarea name="data[cintro]" id="cintro" style="display:block"></textarea>
+                <textarea name="data[cintro]" id="cintro" style="display:block"><?php echo $data["cintro"]?></textarea>
                 <p class="line-t-15"></p>
             </td>
         </tr>
@@ -215,7 +208,7 @@
             <td class="fr" style="vertical-align: top;">扩展信息：</td>
             <td>可以存放一些额外的信息，如果是否最热分类等，json格式数据，根据具体业务流程确定信息
                 <p class="line-t-10"></p>
-                <textarea name="data[extern]" id="extern" style="display:block"></textarea>
+                <textarea name="data[extern]" id="extern" style="display:block"><?php echo $data["extern"]?></textarea>
                 <p class="line-t-15"></p>
             </td>
         </tr>

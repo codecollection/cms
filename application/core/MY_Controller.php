@@ -189,8 +189,9 @@ class CAdminBase extends MY_Controller {
         $this->activeModule = $this->level;
         //检测权限
         $this->checkPermission($this->level);
+        
         $page = $this->getData('p');
-
+        
         $this->bindModel->page($page, PAGESIZE);
         $lists = $this->bindModel->search();
 
@@ -226,7 +227,7 @@ class CAdminBase extends MY_Controller {
         $id = $this->getData('id');
 
         $data = $this->bindModel->find($id);
-        $this->renderAdminView($this->controllerId . '/edit', array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
+        $this->renderAdminView($this->viewDir(2), array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
     }
 
     /**

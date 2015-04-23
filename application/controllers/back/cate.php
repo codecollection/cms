@@ -29,6 +29,13 @@ class Cate extends CAdminBase {
      */
     public function index(){
         
+        $pid = $this->getData("pid");
+        
+        if(is_numeric($pid) && $pid > 0){
+            
+            $this->bindModel->where("parent_id = " . $pid);
+        }
+        
         $this->lists();
     }
     

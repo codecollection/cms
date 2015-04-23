@@ -51,9 +51,9 @@ class Vars {
      * @param $value 节点值
      * @param $type 返回字符串类型，txt或者html
      */
-    public function get_field_str($node, $value, $type = '') {
+    public function get_field_str($node, $value, $type = true) {
         $field = $this->get_field($node, $value); //print_r($field);
-        if ($type == 'txt') {
+        if ($type) {
             return $field['txt'];
         } else {
             return '<font color="' . $field['color'] . '">' . $field['txt'] . '</font>';
@@ -119,7 +119,7 @@ class Vars {
         if($type=='select_single'){
             $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').');return false;" '.$style.'>';
             $html .= '    <a href="javascript:void(0);" class="txt_box" id="txt_box">';
-            $html .= '        <div class="sel_inp" id="sel_inp">'.$this->get_field_str($node,$default).'</div>';
+            $html .= '        <div class="sel_inp" id="sel_inp">'.$this->get_field_str($node,$default,true).'</div>';
             $html .= '        <input type="hidden" name="'.($alias==''?$node.$name:$alias.$name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
             $html .= '    </a>';
             $html .= '    <div class="sel_list" id="sel_list" style="display:none;">';

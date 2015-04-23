@@ -28,6 +28,7 @@ create table if not exists `cms_category` (
  `nav_show` int(1) not null default 0 comment '主导航显示，0=不显示，1=显示',
  `nav_show_wap` int(1) not null default 0 comment 'wap端主导航显示，0=不显示，1=显示',
  `clogo` varchar(200) not null default '' comment '分类LOGO图',
+ `clog_hover` varchar(200) not null default '' comment '分类替换图',
  `cintro` varchar(8000) not null default '' comment '分类简介',
  `go_url` varchar(200) not null default '' comment '跳转URL',
  `cdomain` varchar(50) not null default '' comment '绑定域名',

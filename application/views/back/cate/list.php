@@ -39,61 +39,31 @@
                 <td>ID</td>
                 <td width="60">排序</td>
                 <td>分类名称</td>
+                <td>分类别名</td>
                 <td width="120">导航显示</td>
                 <td width="120"></td>
                 <td width="60">操作</td>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($list["list"] as $k => $v){ ?>
-            <tr id="formli1" title="文档数量：6 绑定域名： 跳转地址：">
+            <?php foreach($list['list'] as $k => $v){ ?>
+            <tr id="<?php echo "formli1".$k?>">
                 <td><input type="checkbox" class="chk_list" value="<?php echo $v["cate_id"];?>"></td>
                 <td><a href="/" target="_blank"><?php echo $v["cate_id"];?></a></td>
-                <td><input id="corder" type="text" pid="1" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["corder"];?>"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="<?php echo $v["cname"];?>">
-                    <a  href="?cate_id=1">查看下级(0)</a>
+                <td><input id="corder" type="text" pid="<?php echo $v["cate_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["corder"];?>"></td>
+                <td><input id="corder" type="text"  class="comm_ipt cname" style="width:160px;"  value="<?php echo $v["cname"];?>">
+                    <a  href="/back/cate?pid=1">查看下级</a>
+                </td>
+                 <td><?php echo $v["cnick"];?>
                 </td>
                 <td>PC:<?php echo $this->vars->get_field_str("nav_show",1); ?> &nbsp;&nbsp;WAP:<?php echo $this->vars->get_field_str("nav_show",0); ?></td>
                 <td style="color:#888;text-align:left;line-height:160%;">
                     &nbsp;&nbsp;                                                                                                        </td>
                 <td>
-                    <a class="btn" href="/back/cate/edit?cate_id=<?php echo $v["cate_id"];?>">编辑</a>
+                    <a class="btn" href="/back/cate/edit?id=<?php echo $v["cate_id"];?>">编辑</a>
                 </td>
             </tr>
             <?php }?>
-            <!-- <tr id="formli2" title="文档数量：1 绑定域名： 跳转地址：">
-                <td><input type="checkbox" class="chk_list" value="2"></td>
-                <td><a href="/index.php?tpl=list&cid=2&p=1" target="_blank">2</a></td>
-                <td><input id="corder" type="text" pid="2" class="comm_ipt corder" style="width:30px;" value="101"></td>
-                <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="产品中心">
-                    <a  href="?cate_id=2">查看下级(3)</a>
-                </td>
-                <td><input id="cname_py" type="text" class="comm_ipt cname_py" style="width:150px;" value="chanpinzhongxin">
-                    <a href="javascript:void(0);" onclick="get_pinyin(this);">自动拼音</a></td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：1                                                                                                <br>&nbsp;&nbsp;列表模板：tpl.list.img.php                                            </td>
-                <td>
-
-                    <a class="btn" href="?tpl=edit&cate_id=2">编辑</a>
-                </td>
-            </tr>
-            <tr id="cateform" class="foot_add">
-                <td>
-                    <input type="hidden" id="parent_id" value="0" />
-                </td>
-                <td></td>
-                <td><input type="text" id="corder" class="comm_ipt " style="width:30px;" value="108"></td>
-                <td><input type="text" id="cname" class="comm_ipt " style="width:150px;" value="">
-
-                </td>
-                
-                <td><input type="text" id="nav_show" class="comm_ipt " style="width:30px;" value="0"></td>
-                <td></td>
-                <td>
-                    <a class="btn" href="javascript:void(0);" onclick="save_quick();">添加</a>
-                </td>
-            </tr>-->
         </tbody>
     </table>
     
