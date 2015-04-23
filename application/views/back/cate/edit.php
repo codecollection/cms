@@ -10,17 +10,42 @@
 </div>
 <p class="line-t-20"></p>
 
-<div id="cateform">
+<div id="form_add">
 
-    <input type="hidden" id="cate_id" name="data[cate_id]" value="0" />
-    <input type="hidden" id="parent_id" name="data[parent_id]" value="0" />
+    <input type="hidden" id="cate_id" name="id" value="0" />
     <table class="table_lists editbox">
         <thead>
             <tr><td colspan="2">基本信息</td></tr>
         </thead>
         <tr>
             <td width="150" class="fr">上级分类：</td>
-            <td>顶级分类</td>
+            <td>
+                <span class="l">
+                    <?php 
+                    $fields = $thisc->cate->show_select();
+                    
+                    echo RKit::input_str(array('node'=>'cate_id_select','alias'=>'cate_id','type'=>'select_single','default'=>0,'style'=>'style="width:200px;"'), $fields)?>
+                    <!-- <div style="width: 200px; z-index: 1;" onclick="select_single(event,this);return false;" class="sel_box">    
+                        <a id="txt_box" class="txt_box" href="javascript:void(0);">        
+                            <div id="sel_inp" class="sel_inp">顶级分类</div>        
+                            <input type="hidden" class="sel_subject_val" value="0" id="cate_id" name="data[parent_id]" />
+                        </a>    
+                        <div style="height: 115px; display: none;" id="sel_list" class="sel_list">        
+                            <a class="" value="1" href="javascript:void(0);" style="">公司动态</a>       
+                            <a class="" value="2" href="javascript:void(0);">产品中心</a>        
+                            <a class="" value="5" href="javascript:void(0);">&#12288;MCMS企业站系统</a>        
+                            <a class="" value="6" href="javascript:void(0);">&#12288;MCMS商城系统</a>        
+                            <a class="" value="7" href="javascript:void(0);">&#12288;MCMS比赛投票系统</a>        
+                            <a class="" value="3" href="javascript:void(0);">成功案例</a>        
+                            <a class="" value="4" href="javascript:void(0);">关于我们</a>        
+                            <a class="" value="11" href="javascript:void(0);">商业服务</a>        
+                            <a class="" value="9" href="javascript:void(0);">给我留言</a>        
+                            <a class="" value="8" href="javascript:void(0);">系统特点</a>        
+                            <a class="" value="10" href="javascript:void(0);">服务支持</a>    
+                        </div>
+                    </div>   -->                 
+                </span>
+            </td>
         </tr>
         <tr>
             <td class="fr"><span class="fred">* </span>分类名称 ：</td>
@@ -28,11 +53,11 @@
         </tr>
         <tr>
             <td class="fr">分类别名：</td>
-            <td><input id="cname_cn" type="text" data="data[cnick]" class="comm_ipt" value=""> 用于手机等小设备显示简短分类名称</td>
+            <td><input id="cnick" type="text" name="data[cnick]" class="comm_ipt" value=""> 用于手机等小设备显示简短分类名称</td>
         </tr>
         <tr>
             <td class="fr">排序：</td>
-            <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value=""> 数字小排前面</td>
+            <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="0"> 数字小排前面</td>
         </tr>
         <tr>
             <td class="fr">导航显示：</td>
@@ -41,15 +66,33 @@
                 <span class="l">
                     <div class="sel_box" onclick="select_single(event, this); return false;" style="width:120px">    
                         <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">否</div>        <input type="hidden" name="nav_show" id="nav_show" value="0" class="sel_subject_val">    </a>    <div class="sel_list" id="sel_list" style="display:none;">        <a href="javascript:void(0);" value="0" class="current" >否</a>        <a href="javascript:void(0);" value="1" class="" >是</a>    </div></div></span>
+                            <div class="sel_inp" id="sel_inp">否</div>       
+                            <input type="hidden" name="data[nav_show]" id="nav_show" value="0" class="sel_subject_val">    
+                        </a>    
+                        <div class="sel_list" id="sel_list" style="display:none;">        
+                            <a href="javascript:void(0);" value="0" class="current" >否</a>        
+                            <a href="javascript:void(0);" value="1" class="" >是</a>    
+                        </div>
+                    </div>
+                </span>
                 <span class="l" style="line-height:200%;">&nbsp;&nbsp;&nbsp;&nbsp;WAP站导航&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <span class="l"><div class="sel_box" onclick="select_single(event, this);
-                            return false;" style="width:120px">    <a href="javascript:void(0);" class="txt_box" id="txt_box">        <div class="sel_inp" id="sel_inp">否</div>        <input type="hidden" name="nav_show_wap" id="nav_show_wap" value="0" class="sel_subject_val">    </a>    <div class="sel_list" id="sel_list" style="display:none;">        <a href="javascript:void(0);" value="0" class="current" >否</a>        <a href="javascript:void(0);" value="1" class="" >是</a>    </div></div></span>
+                <span class="l">
+                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:120px">    
+                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
+                            <div class="sel_inp" id="sel_inp">否</div>        
+                            <input type="hidden" name="data[nav_show_wap]" id="nav_show_wap" value="0" class="sel_subject_val">    
+                        </a>    
+                        <div class="sel_list" id="sel_list" style="display:none;">        
+                                <a href="javascript:void(0);" value="0" class="current" >否</a>   
+                                <a href="javascript:void(0);" value="1" class="" >是</a>   
+                        </div>
+                    </div>
+                </span>
             </td>
         </tr>
         <tr>
             <td class="fr" style="vertical-align:top;">分类图片：</td>
-            <td><input id="clogo" type="text" class="comm_ipt" value=""> 可用于图片导航条，或者分类LOGO图/广告图等
+            <td><input id="clogo" type="text" class="comm_ipt" value="" name="data[clogo]"> 可用于图片导航条，或者分类LOGO图/广告图等
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
                     <iframe src="/back/upload?vid=clogo" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
@@ -75,17 +118,28 @@
         </tr>
         <tr>
             <td class="fr">绑定域名：</td>
-            <td><input id="cdomain" type="text" class="comm_ipt" value=""> 当前分类作为一个独立域名频道，该域名指向目录跟主站一致</td>
+            <td><input id="cdomain" name="data[cdomain]" type="text" class="comm_ipt" value=""> 当前分类作为一个独立域名频道，该域名指向目录跟主站一致</td>
         </tr>
         <tr>
             <td class="fr">跳转地址：</td>
-            <td><input id="go_url" type="text" class="comm_ipt" value=""> 当前分类链接跳转到其他页面，优先级高于绑定域名</td>
+            <td><input id="go_url" type="text" class="comm_ipt" value="" name="data[go_url]"> 当前分类链接跳转到其他页面，优先级高于绑定域名</td>
         </tr>
         <tr>
             <td class="fr">绑定广告位：</td>
             <td>
-                <div class="sel_box" onclick="select_single(event, this);
-                        return false;" style="width:258px;">    <a href="javascript:void(0);" class="txt_box" id="txt_box">        <div class="sel_inp" id="sel_inp">-</div>        <input type="hidden" name="area_id" id="area_id" value="" class="sel_subject_val">    </a>    <div class="sel_list" id="sel_list" style="display:none;">        <a href="javascript:void(0);" value="0" class="" >请选择广告位</a>        <a href="javascript:void(0);" value="3" class="" >手机版幻灯</a>        <a href="javascript:void(0);" value="2" class="" >全站左侧图片列表</a>        <a href="javascript:void(0);" value="1" class="" >首页全屏幻灯</a>    </div></div>                </td>
+                <div class="sel_box" onclick="select_single(event, this);   return false;" style="width:258px;">    
+                    <a href="javascript:void(0);" class="txt_box" id="txt_box">        
+                        <div class="sel_inp" id="sel_inp">-</div>        
+                        <input type="hidden" name="data[ad_id]" id="area_id" value="" class="sel_subject_val">    
+                    </a>    
+                    <div class="sel_list" id="sel_list" style="display:none;">        
+                        <a href="javascript:void(0);" value="0" class="" >请选择广告位</a>        
+                        <a href="javascript:void(0);" value="3" class="" >手机版幻灯</a>        
+                        <a href="javascript:void(0);" value="2" class="" >全站左侧图片列表</a>        
+                        <a href="javascript:void(0);" value="1" class="" >首页全屏幻灯</a>    
+                    </div>
+                </div>                
+            </td>
         </tr>
         <thead>
             <tr><td colspan="2">模板信息</td></tr>
@@ -193,7 +247,7 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:save();" class="btn3">保存分类</a>
+        <a href="javascript:save_data();" class="btn3">保存分类</a>
         <a href="/back/cate" class="btn3">返回分类</a>
     </div>
 </div>

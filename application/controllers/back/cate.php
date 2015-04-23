@@ -31,4 +31,5 @@ class Cate extends CAdminBase {
         parent::add();
     }
     
+    
 }

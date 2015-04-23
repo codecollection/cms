@@ -750,4 +750,12 @@ class MBase extends CI_Model{
         return $this->getFieldByWhere($f, $whe);
         
     }
+    
+    /**
+     * 获取所有列表
+     * @return type
+     */
+    public function getAll(){
+        return $this->search(FALSE);
+    }
 }

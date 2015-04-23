@@ -22,7 +22,7 @@ create table if not exists `cms_category` (
  `cdesc` varchar(500) not null default '' comment 'SEO描述',
  `corder` int(11) not null default 100 comment '分类排序',
  `tpl_index` varchar(500) not null default '' comment  '封面模板',
- `tpl_listvar` varchar(500) not null default '' comment  '列表变量模板',
+ `tpl_list` varchar(500) not null default '' comment  '列表变量模板',
  `tpl_content` varchar(500) not null default '' comment  '内容页模板',
  `model_id` int(4) not null default 0 comment '绑定模型ID',
  `nav_show` int(1) not null default 0 comment '主导航显示，0=不显示，1=显示',
@@ -30,6 +30,7 @@ create table if not exists `cms_category` (
  `clogo` varchar(200) not null default '' comment '分类LOGO图',
  `cintro` varchar(8000) not null default '' comment '分类简介',
  `go_url` varchar(200) not null default '' comment '跳转URL',
+ `cdomain` varchar(50) not null default '' comment '绑定域名',
  `ad_id` int(11) not null default 0 comment '绑定广告id',
  `extern` text not null default '' comment '扩展数据，json格式',
  primary key (`cate_id`)

@@ -515,4 +515,91 @@ class RKit {
         require $path;
     }
    
+    
+    /**
+     * 输出HTML表单
+     * @param $params 参数数组 array('node'=>'','type'=>'','default'=>'')
+     * @param =>type 表单类型 select,checkbox,radio
+     * @param =>node    节点
+     * @param =>default 默认选中
+     * @param =>name    表单名称后缀，用于一个页面多次出现时候区分
+     * @param =>alias 别名，用于同值但是文字相同的表单
+     * @param =>stype 模拟下拉框的样式
+     * @param =>on 表单函数 click,change等
+     */
+    public static function input_str($params,$fields) {
+        // 初始化
+        $node = isset($params['node'])?$params['node']:'';
+        $type = isset($params['type'])?$params['type']:'select';
+        $default = isset($params['default'])?$params['default']:'';
+        $name = isset($params['name'])?$params['name']:'';
+        $on = isset($params['on'])?$params['on']:'';
+        $alias = isset($params['alias'])?$params['alias']:'';
+        $style = isset($params['style'])?$params['style']:'style="width:120px"';
+        
+        // 下拉框
+        if ($type == 'select') {
+            $html = '<select name="' . ($alias==''?$node.$name:$alias.$name) . '" '.$on.' id="' . $node . $name . '">';
+            foreach($fields as $f) {
+                $select = '';
+                if (strlen($default) > 0 && $f['value'] == $default) $select = ' selected';
+                $html .= '<option value="' . $f['value'] . '"' . $select . '>' . $f['txt'] . '</option>';
+            }
+            $html .= '</select>';
+            return $html;
+        }
+        // 单选框
+        if ($type == 'radio') {
+            $html = '';
+            foreach($fields as $f) {
+                $select = '';
+                if (strlen($default) > 0 && $f['value'] == $default) $select = ' checked';
+                $html .= '&nbsp;&nbsp;<input type="radio" '.$on.' name="' . ($alias==''?$node.$name:$alias.$name) . '" value="' . $f['value'] . '"' . $select . '>&nbsp;' . $f['txt'] . '';
+            }
+            return $html;
+        }
+        // 复选框
+        if ($type == 'checkbox') {
+            $html = '';
+            foreach($fields as $f) {
+                $select = '';
+                $df_val=explode(',',$default);
+                if (strlen($default) > 0 && in_array($f['value'],$df_val)) $select = ' checked';
+                $html .= '<span class="cbx_wrap"><input '.$on.' type="checkbox"  class="' . ($alias==''?$node.$name:$alias.$name) . '" name="' . ($alias==''?$node.$name:$alias.$name) . '" value="' . $f['value'] . '"' . $select . '><label for="' . $node . $name . '">&nbsp;&nbsp;' . $f['txt'] . '&nbsp;&nbsp;</label></span>';
+            }
+            return $html;
+        }
+        // 模拟下拉单选框
+        if($type=='select_single'){
+            $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').');return false;" '.$style.'>';
+            $html .= '    <a href="javascript:void(0);" class="txt_box" id="txt_box">';
+            $html .= '        <div class="sel_inp" id="sel_inp">'."000".'</div>'; //$this->get_field_str($node,$default)
+            $html .= '        <input type="hidden" name="'.($alias==''?$node.$name:$alias.$name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
+            $html .= '    </a>';
+            $html .= '    <div class="sel_list" id="sel_list" style="display:none;">';
+            foreach($fields as $f) {
+                $select = '';
+                if (strlen($default) > 0 && $f['value'] == $default) $select = 'current';
+                $html .= '        <a href="javascript:void(0);" value="' . $f['value'] . '" class="'.$select.'" '.$on.'>' . $f['txt'] . '</a>';
+            }
+            $html .= '    </div>';
+            $html .= '</div>';
+            return $html;
+        }
+        // 模拟下拉多选框
+        if($type=='select_multi'){
+            $html = '<div class="sel_box duo_sel_box"  '.$style.'>';
+            $html .= '        <input type="hidden" name="'.($alias==''?$node.$name:$alias.$name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
+            $html .= '<div class="sel_list" id="sel_list">';
+            foreach($fields as $f) {
+                $select = '';
+                if (strlen($default) > 0 && in_array($f['value'], explode(',',$default))) $select = 'current';
+                $html .= '        <a href="javascript:void(0);"  value="' . $f['value'] . '" class="'.$select.'" '.$on.'>' . $f['txt'] . '</a>';
+            }
+            $html .= '</div>';
+            $html .= '</div>';
+            return $html;
+            }
+        return '-';
+    }
 }
