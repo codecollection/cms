@@ -121,9 +121,7 @@ class CAdminBase extends MY_Controller {
      */
     private $isPermission = true;
 
-    public $subject = '';
-    
-    public $shcId = 2;
+    protected $insertNav = array();
     /**
      * 构造函数
      */
@@ -144,6 +142,12 @@ class CAdminBase extends MY_Controller {
 
         $this->load->model($this->controllerId . '_model', $this->controllerId);
         $this->bindModel = $this->{$this->controllerId};
+        
+        if (!empty($this->insertNav)){
+            foreach($this->insertNav as $k => $v){
+                $this->vars->set_fields($k,$v);
+            }
+        }
         
         //$this->load->model('message_model', 'msg');
 

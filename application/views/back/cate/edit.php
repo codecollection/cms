@@ -23,27 +23,8 @@
                 <span class="l">
                     <?php 
                     $fields = $thisc->cate->show_select();
-                    
-                    echo RKit::input_str(array('node'=>'cate_id_select','alias'=>'cate_id','type'=>'select_single','default'=>0,'style'=>'style="width:200px;"'), $fields)?>
-                    <!-- <div style="width: 200px; z-index: 1;" onclick="select_single(event,this);return false;" class="sel_box">    
-                        <a id="txt_box" class="txt_box" href="javascript:void(0);">        
-                            <div id="sel_inp" class="sel_inp">顶级分类</div>        
-                            <input type="hidden" class="sel_subject_val" value="0" id="cate_id" name="data[parent_id]" />
-                        </a>    
-                        <div style="height: 115px; display: none;" id="sel_list" class="sel_list">        
-                            <a class="" value="1" href="javascript:void(0);" style="">公司动态</a>       
-                            <a class="" value="2" href="javascript:void(0);">产品中心</a>        
-                            <a class="" value="5" href="javascript:void(0);">&#12288;MCMS企业站系统</a>        
-                            <a class="" value="6" href="javascript:void(0);">&#12288;MCMS商城系统</a>        
-                            <a class="" value="7" href="javascript:void(0);">&#12288;MCMS比赛投票系统</a>        
-                            <a class="" value="3" href="javascript:void(0);">成功案例</a>        
-                            <a class="" value="4" href="javascript:void(0);">关于我们</a>        
-                            <a class="" value="11" href="javascript:void(0);">商业服务</a>        
-                            <a class="" value="9" href="javascript:void(0);">给我留言</a>        
-                            <a class="" value="8" href="javascript:void(0);">系统特点</a>        
-                            <a class="" value="10" href="javascript:void(0);">服务支持</a>    
-                        </div>
-                    </div>   -->                 
+                    array_unshift($fields, array('value'=>0,"txt"=>"顶级分类","txt_color"=>""));
+                    echo RKit::input_str(array('node'=>'cate_id_select','alias'=>'cate_id','type'=>'select_single','default'=>0,'style'=>'style="width:200px;"'), $fields)?>                
                 </span>
             </td>
         </tr>

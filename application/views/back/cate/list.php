@@ -38,9 +38,9 @@
                 <td width="40"><input type="checkbox"  onclick="C.form.check_all('.chk_list');"></td>
                 <td>ID</td>
                 <td width="60">排序</td>
-                <td width="240">分类名称</td>
-                <td width="60">导航显示</td>
-                <td></td>
+                <td>分类名称</td>
+                <td width="120">导航显示</td>
+                <td width="120"></td>
                 <td width="60">操作</td>
             </tr>
         </thead>
@@ -53,9 +53,9 @@
                 <td><input id="cname" type="text" class="comm_ipt cname" style="width:150px;" value="<?php echo $v["cname"];?>">
                     <a  href="?cate_id=1">查看下级(0)</a>
                 </td>
-                <td><input id="nav_show" type="text" class="comm_ipt nav_show" style="width:30px;" value="1"></td>
+                <td>PC:<?php echo $this->vars->get_field_str("nav_show",1); ?> &nbsp;&nbsp;WAP:<?php echo $this->vars->get_field_str("nav_show",0); ?></td>
                 <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;文档：6                                                                                                      </td>
+                    &nbsp;&nbsp;                                                                                                        </td>
                 <td>
                     <a class="btn" href="/back/cate/edit?cate_id=<?php echo $v["cate_id"];?>">编辑</a>
                 </td>
@@ -77,7 +77,7 @@
 
                     <a class="btn" href="?tpl=edit&cate_id=2">编辑</a>
                 </td>
-            </tr>-->
+            </tr>
             <tr id="cateform" class="foot_add">
                 <td>
                     <input type="hidden" id="parent_id" value="0" />
@@ -93,7 +93,7 @@
                 <td>
                     <a class="btn" href="javascript:void(0);" onclick="save_quick();">添加</a>
                 </td>
-            </tr>
+            </tr>-->
         </tbody>
     </table>
     

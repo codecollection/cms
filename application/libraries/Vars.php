@@ -5,13 +5,15 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 把数组数据输出成html代码 如：array("value"=>1,"txt"=>"启用","txt_color"=>"green") ==> <span color="green">启用</span>
  */
 class Vars {
-    private $node = ""; //节点值，可以设置默认使用
     
-    private $fields =array(); //要处理的数组
+    private $field = array(
+       
+        "user_status" => array( //用户章台
+            array("value"=>1,"txt"=>"正常","color"=>"green"),
+            array("value"=>0,"txt"=>"禁用","color"=>"red"),
+        ),
+    ); 
     
-    public function __construct($global_vars) {
-        $this->fields = $global_vars;
-    }
     /**
      * 增加或者重设一个节点
      * @param $node 节点名称 如 yesno
@@ -49,12 +51,12 @@ class Vars {
      * @param $value 节点值
      * @param $type 返回字符串类型，txt或者html
      */
-    public function get_field_str($node, $value, $type = 'txt') {
+    public function get_field_str($node, $value, $type = '') {
         $field = $this->get_field($node, $value); //print_r($field);
         if ($type == 'txt') {
             return $field['txt'];
         } else {
-            return '<font color="' . $field['txt_color'] . '">' . $field['txt'] . '</font>';
+            return '<font color="' . $field['color'] . '">' . $field['txt'] . '</font>';
         }
     }
     
@@ -225,6 +227,4 @@ class Vars {
         }
         return $html;
     }
-
-
 }

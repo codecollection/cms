@@ -12,14 +12,12 @@ class Cate_model extends MBase{
     
     public $cateList = array();
     
-    public $cateTree = array();
-    
     public $categories = array();
+    
     public function  __construct(){
         parent::__construct();
         
         $this->cateList = $this->getAll();
-        $this->cateTree = $this->cate_tree();
         $this->categories = $this->getCategories();
     }
     
@@ -214,37 +212,4 @@ class Cate_model extends MBase{
 
         return $tmp;
     }
-    
-    /**
-     * 根据分类ID输出select下拉框
-     *
-     * @param  $cate_id
-     * @param  $disabled = ' disabled="disabled" '
-     * @param  $styles =' style="background:pink;margin-top:1px;"'
-     */
-    public function html_cate_select($tree = array(), $cateId = 0 ,$i = 0, $disabled = ' disabled="disabled" ', $styles = ' style="background:pink;margin-top:1px;"') {
-       
-        $i++;
-        foreach($tree as $t) {
-            
-            $flag = '';
-            for($j = 1;$j < $i;$j++) {
-                $flag .= '　';
-            }
-            if (count($t['son']) > 0) {
-                $flag .= '┗';
-            } else {
-                $flag .= '┗';
-            }
-            $readonly = '';
-            $style = '';
-            $selected = '';
-            if($t['cate_id'] == $cateId) $selected = ' selected="selected" ';
-            if (count($t['son']) > 0) $readonly = $disabled;
-            if (count($t['son']) == 0) $style = $styles;
-            echo('<option value="' . $t['cate_id'] . '"' . $readonly . $style . $selected .'>' . $flag . $t['cname'] . '(aa)</option>');
-            $this -> html_cate_select($t['son'], $cateId ,$i, $disabled, $styles);
-        }
-    }
-    
 }
