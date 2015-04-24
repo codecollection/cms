@@ -7,6 +7,8 @@ class Field extends CAdminBase {
 
     public $controllerId = "field";
     
+    public $topLevel = "D";
+    
     public $level = "D02";
     
     function __construct() {
@@ -19,6 +21,11 @@ class Field extends CAdminBase {
      *  列表
      */
     public function index(){
+        
+        //获取字段标签
+        $fieldTags = $this->bindModel->getTags();
+        
+        $this->setData("fieldTags", $fieldTags);
         
         $this->lists();
     }

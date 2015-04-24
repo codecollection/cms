@@ -29,6 +29,12 @@ class MBase extends CI_Model{
      */
     protected $order = "corder";
     
+    
+    /**
+     * 状态字段
+     * @var type 
+     */
+    protected $status = "";
 
     /**
      *array(
@@ -83,7 +89,6 @@ class MBase extends CI_Model{
      * @var 
      */
     protected $db;
-
 
     /**
      * 构造函数
@@ -173,9 +178,12 @@ class MBase extends CI_Model{
                 }
                 
                 array_unshift($rule, $data[$fieldName]);
+                
                 $return = call_user_func_array(array($this, $method), $rule);
                 if (!$return && $ruleName != 'callback') {  //回调自己处理错误
-                    $this->errors[] = array($fieldName, sprintf(lang('model_error_' . $ruleName), isset($this->fieldTitles[$fieldName]) ? $this->fieldTitles[$fieldName] : $fieldName));
+                    //$this->errors[] = array($fieldName, sprintf(lang('model_error_' . $ruleName), isset($this->fieldTitles[$fieldName]) ? $this->fieldTitles[$fieldName] : $fieldName));
+                    $msg = sprintf(lang('model_error_' . $ruleName), isset($this->fieldTitles[$fieldName]) ? $this->fieldTitles[$fieldName] : $fieldName);
+                    RKit::printJson(array("status"=>100,"msg"=>$msg));
                 }
             }
         }
@@ -257,6 +265,16 @@ class MBase extends CI_Model{
     }
     
     /**
+     * 检测是否手机号
+     * @param type $value
+     * @return type
+     */
+    private function _rulePhone($value){
+        
+        return preg_match('/^[1][3-8]{1}\\d{9}$/', $value);
+    }
+    
+    /**
      * 检测是否为数字
      * @param string $value
      * @return boolean
@@ -272,8 +290,8 @@ class MBase extends CI_Model{
      * @return boolean
      */
     private function _ruleInt($value) {
-        
-        return preg_match('/^[0-9]+$/', $value);
+        return $value > 0;
+        //return preg_match('/^[0-9]+$/', $value);
     }
     
     /**
@@ -340,6 +358,16 @@ class MBase extends CI_Model{
         return $this->$callback($value);
     }
 
+    /**
+     * 匹配qq
+     * @param type $value
+     * @return type
+     */
+    private function _ruleQq($value){
+        
+        return preg_match('/[1-9][0-9]{4,}/', $value);
+    }
+    
     /**
      * 取得查询列表
      * @param string $sql
@@ -694,14 +722,26 @@ class MBase extends CI_Model{
         return $this->db->affected_rows() > 0;
     }
     
-    /*
+    /**
      * 修改排序
+     * @param type $id
+     * @param type $order
+     * @return type
      */
     public function order($id,$order){
         
         return $this->update(array($this->order=>$order),  "{$this->pk} = {$id}");
     }
 
+    /**
+     * 修改状态
+     * @param type $id
+     * @param type $status
+     * @return type
+     */
+    public function status($id,$status){
+        return $this->update(array($this->status=>$status),  "{$this->pk} = {$id}");
+    }
     /**
      * 根据条件更新数据信息
      * 
@@ -718,7 +758,7 @@ class MBase extends CI_Model{
 
     protected function saveAfter() {}
     
-    protected function saveBefore() {}
+    protected function saveBefore($isInsert) { }
     
     /**
      * 获取某个数据的某个字段的值
@@ -772,4 +812,17 @@ class MBase extends CI_Model{
     public function getAll(){
         return $this->search(FALSE);
     }
+    
+    public function unique($where,$field = null){
+        
+        $f = $field !== null ? $field : $this->pk;
+        $whe = implode(" and ", $where);
+        
+        $sql = " select {$f} from {$this->tableName} where {$whe} limit 1";
+       
+        $this->db->query($sql);
+       
+        return $this->db->affected_rows() > 0;
+    }
+    
 }

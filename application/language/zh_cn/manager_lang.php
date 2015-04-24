@@ -1,4 +1,18 @@
 <?php 
+//模型字段校验错误
+$lang['model_error_required'] = '%s必须输入信息';
+$lang['model_error_email'] = '输入的%s不是一个有效的邮箱地址';
+$lang['model_error_numeric'] = '输入的%s不是一个数字';
+$lang['model_error_int'] = '%s不是有效的整数值';
+$lang['model_error_minlen'] = '%s输入太短';
+$lang['model_error_maxlen'] = '%s输入太短';
+$lang['model_error_ip'] = '%s不是一个有效的ip地址';
+$lang['model_error_url'] = '%s不是一个有效的url';
+$lang['model_error_regex'] = '%s输入的数据有误';
+$lang['model_error_empty'] = '内容不能为空';
+$lang['model_error_qq'] = '输入的%s不是一个合法的qq号';
+$lang['model_error_phone'] = '输入的%s不是一个合法的手机号';
+$lang['model_error_unique'] = '输入的%s已经存在';
 
 $lang['login_success'] = "登录成功！";
 $lang['login_user_notfound'] = "该用户不存在！";

@@ -138,7 +138,12 @@ function save_data(){
         try {
             var json = $.evalJSON(data);
             
-            show_close(json.msg);
+            if(json.status == 0){
+                show_close(json.msg);
+            }else{
+                C.alert.alert({content:json.msg});
+            }
+            
             
         }catch(e){C.alert.alert({content:e.message+data});}
     });
@@ -158,9 +163,29 @@ function del_data(tag){
     }});
 }
 
+//修改排序
 function update_order(tag){
     if(!arguments[0]){tag = ".corder";}
     C.form.update_field(urls.order,tag);
+}
+
+//更改状态
+
+function status(id,status){
+    
+    $.post(urls.status,{"id":id,"status":status},function(data){
+        try {
+            var json = $.evalJSON(data);
+            
+            if(json.status == 0){
+                show_close(json.msg);
+            }else{
+                C.alert.alert({content:json.msg});
+            }
+            
+            
+        }catch(e){C.alert.alert({content:e.message+data});}
+    });
 }
 //弹出层提示后自动重载页面
 function show_close(msg,t){

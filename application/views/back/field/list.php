@@ -1,3 +1,24 @@
+<div class="crumbs">
+    <span class="cbs_left">
+        <?php 
+        //$countNav = count($navItem);
+        //foreach($navItem as $k => $v){?>
+        <a href="系统">系统</a>
+        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
+        <?php //}?>
+
+    </span>
+</div>
+<p class="line-t-15"></p>
+
+<div class="func_desc">
+    <b>标签：</b>
+    <?php foreach($fieldTags as $k => $v){?>
+    &nbsp;<a href="/back/model/field?&fieldTag=<?php echo $v['field_tag'];?>"><?php echo $v['field_tag'];?></a>&nbsp;
+    <?php }?>
+</div>
+<p class="line-t-10"></p>
+
 <div class="box4">
 
     <table class="table_lists table_click">

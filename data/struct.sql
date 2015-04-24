@@ -265,7 +265,7 @@ create table if not exists `cms_admin_list` (
  `alevel` varchar(1000) not null default '' comment '用户权限 数据结构 "A10","A11"',
  `astate` int(11) not null default 0 comment '用户状态（正常=0，停用=1）',
  `reg_date` int(11) not null default 0 comment '开通时间',
- `last_loginip` varchar(2) not null default '' comment '最后登录的IP',
+ `last_loginip` varchar(20) not null default '' comment '最后登录的IP',
  `last_logintime` int(11) not null default 0 comment '最后登录的时间',
  primary key (`admin_id`)
 ) engine=myisam default charset=utf8 comment '后台用户表';

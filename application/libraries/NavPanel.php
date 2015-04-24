@@ -46,13 +46,13 @@ class NavPanel {
         
         array(
             'title' => '用 户',
-            'url' => '/admin/userg',
+            'url' => '/back/adm',
             'level'=>'B',
             'bgimg' => '/style/back/img/menu1/union.png',
             'menu'  => array(
                 array(
                     'title'=>'管理员组',
-                    'url' => '/admin/userg',
+                    'url' => '/back/ag',
                     'level' => 'B01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'B0101'), //按钮功能配置
@@ -62,7 +62,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'管 理 员',
-                    'url' => '/admin/account',
+                    'url' => '/back/adm',
                     'level' => 'B02', //页面权限
                     'menu' => array(
                         array('title' => '增改用户', 'level' => 'B0201'),
@@ -157,97 +157,96 @@ class NavPanel {
         ),
         
         array(
-            'title' => '友 链',
+            'title' => '扩 展',
             'url' => '',
             'level'=>'E',
             'bgimg' => '/style/back/img/menu1/extern.png',
             'menu'  => array(
                 array(
-                    'title'=>'友链组',
-                    'url' => '/admin/flinkg',
-                    'level' => 'E01', //页面权限
-                    'menu' => array(
-                        array('title' => '添加编辑', 'level' => 'E0101'), //按钮功能配置
-                        array('title' => '删除', 'level' => 'E0102'),
+                    'title' => '友 链',
+                    'url' => '',
+                    'level'=>'E01',
+                    'bgimg' => '/style/back/img/menu1/extern.png',
+                    'menu'  => array(
+                        array(
+                            'title'=>'友链组',
+                            'url' => '/admin/flinkg',
+                            'level' => 'E01', //页面权限
+                            'menu' => array(
+                                array('title' => '添加编辑', 'level' => 'E0101'), //按钮功能配置
+                                array('title' => '删除', 'level' => 'E0102'),
+                            ),
+                        ),
+
+                        array(
+                            'title' => '友链管理', 
+                            'url' => '/admin/flink',
+                            'level'=>'E02',
+                            'menu'=>array(
+                                array('title'=>'添加编辑','level'=>'E0201'),
+                                array('title'=>'删除友链','level'=>'E0202'),
+                                array('title'=>'屏蔽友链','level'=>'E0203'),
+                            ),
+                        ),
                     ),
                 ),
-                
+
                 array(
-                    'title' => '友链管理', 
-                    'url' => '/admin/flink',
-                    'level'=>'E02',
-                    'menu'=>array(
-                        array('title'=>'添加编辑','level'=>'E0201'),
-                        array('title'=>'删除友链','level'=>'E0202'),
-                        array('title'=>'屏蔽友链','level'=>'E0203'),
+                    'title' => '广 告',
+                    'url' => '',
+                    'level'=>'F',
+                    'bgimg' => '/style/back/img/menu1/extern.png',
+                    'menu'  => array(
+                        array(
+                            'title'=>'广告位',
+                            'url' => '/admin/adArea',
+                            'level' => 'F01', //页面权限
+                            'menu' => array(
+                                array('title' => '添加编辑', 'level' => 'F0101'), //按钮功能配置
+                                array('title' => '删除位置', 'level' => 'F0102'),
+                            ),
+                        ),
+
+                        array(
+                            'title' => '广告管理', 
+                            'url' => '/admin/ad',
+                            'level'=>'F02',
+                            'menu'=>array(
+                                array('title'=>'添加编辑','level'=>'F0201'),
+                                array('title'=>'删除广告','level'=>'F0202'),
+                                array('title'=>'下架广告','level'=>'F0203'),
+                            ),
+                        ),
                     ),
                 ),
-            ),
-        ),
-        
-        array(
-            'title' => '广 告',
-            'url' => '',
-            'level'=>'F',
-            'bgimg' => '/style/back/img/menu1/extern.png',
-            'menu'  => array(
+
                 array(
-                    'title'=>'广告位',
-                    'url' => '/admin/adArea',
-                    'level' => 'F01', //页面权限
-                    'menu' => array(
-                        array('title' => '添加编辑', 'level' => 'F0101'), //按钮功能配置
-                        array('title' => '删除位置', 'level' => 'F0102'),
+                    'title' => '标 签',
+                    'url' => '',
+                    'level'=>'G',
+                    'bgimg' => '/style/back/img/menu1/extern.png',
+                    'menu'  => array(
+                        array(
+                            'title'=>'标签组',
+                            'url' => '/admin/tagg',
+                            'level' => 'G01', //页面权限
+                            'menu' => array(
+                                array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
+                                array('title' => '删除组', 'level' => 'G0102'),
+                            ),
+                        ),
+
+                        array(
+                            'title' => '标签管理', 
+                            'url' => '/admin/tag',
+                            'level'=>'G02',
+                            'menu'=>array(
+                                array('title'=>'添加编辑','level'=>'G0201'),
+                                array('title'=>'删除标签','level'=>'G0202'),
+                            ),
+                        ),
                     ),
                 ),
-                
-                array(
-                    'title' => '广告管理', 
-                    'url' => '/admin/ad',
-                    'level'=>'F02',
-                    'menu'=>array(
-                        array('title'=>'添加编辑','level'=>'F0201'),
-                        array('title'=>'删除广告','level'=>'F0202'),
-                        array('title'=>'下架广告','level'=>'F0203'),
-                    ),
-                ),
-            ),
-        ),
-        
-        array(
-            'title' => '标 签',
-            'url' => '',
-            'level'=>'G',
-            'bgimg' => '/style/back/img/menu1/extern.png',
-            'menu'  => array(
-                array(
-                    'title'=>'标签组',
-                    'url' => '/admin/tagg',
-                    'level' => 'G01', //页面权限
-                    'menu' => array(
-                        array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
-                        array('title' => '删除组', 'level' => 'G0102'),
-                    ),
-                ),
-                
-                array(
-                    'title' => '标签管理', 
-                    'url' => '/admin/tag',
-                    'level'=>'G02',
-                    'menu'=>array(
-                        array('title'=>'添加编辑','level'=>'G0201'),
-                        array('title'=>'删除标签','level'=>'G0202'),
-                    ),
-                ),
-            ),
-        ),
-        
-        array(
-            'title' => '扩 展',
-            'url' => '',
-            'level'=>'H',
-            'bgimg' => '/style/back/img/menu1/extern.png',
-            'menu'  => array(
                 array(
                     'title'=>'正文内链',
                     'url' => '/admin/nlink',

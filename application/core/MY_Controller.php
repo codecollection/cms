@@ -67,6 +67,15 @@ class MY_Controller extends CI_Controller {
         list($usec, $sec) = explode(" ", microtime());
         return ((float)$usec + (float)$sec);
     }
+    
+    public function echoTime($t = 0,$f = NULL){
+        
+        if($f === NULL){
+            $f = "Y-m-d";
+        }
+        
+        return date($f,$t);
+    }
 
 }
 
@@ -292,6 +301,20 @@ class CAdminBase extends MY_Controller {
         
         $this->echoAjax(0, lang('update_order'));
     }
+    
+    /**
+     * 更改状态
+     */
+    public function status(){
+        
+        $id = $this->getData('id');
+        $status = $this->getData("status");
+        
+        $this->bindModel->status($id,$status);
+        
+        $this->successAjax();
+    }
+    
     /**
      * 检测权限
      * @param string $moduleIdentity

@@ -6,14 +6,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Vars {
     
-    private $field = array(
+    private $fields = array(
        
-        "user_status" => array( //用户章台
-            array("value"=>1,"txt"=>"正常","color"=>"green"),
-            array("value"=>0,"txt"=>"禁用","color"=>"red"),
+        "user_status" => array( //用户状态操作，刚好和状态相反，正常下显示禁用，禁用下显示启用
+            array("value"=>1,"txt"=>"禁用","color"=>"red"),
+            array("value"=>0,"txt"=>"正常","color"=>"green"),
         ),
+        
+        "user_status_action" => array( //用户状态操作，刚好和状态相反，正常下显示禁用，禁用下显示启用
+            array("value"=>1,"txt"=>"启用","color"=>"green"),
+            array("value"=>0,"txt"=>"禁用","color"=>"red"),
+        )
     ); 
-    
+
     /**
      * 增加或者重设一个节点
      * @param $node 节点名称 如 yesno

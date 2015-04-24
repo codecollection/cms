@@ -77,4 +77,5 @@
 </div>
 <script>
     var urls = {"save": "/back/<?php echo $this->controllerId?>/save", "del": "/back/<?php echo $this->controllerId?>/delete","order":"/back/<?php echo $this->controllerId?>/order"};
+    
 </script>
