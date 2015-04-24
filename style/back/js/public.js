@@ -137,16 +137,41 @@ function save_data(){
     $.post(urls.save,postdata,function(data){
         try {
             var json = $.evalJSON(data);
-            if(json.status == 0){
-                window.location.reload();
-            }else{
-                C.alert.alert({content:json.msg});
-            }
+            
+            show_close(json.msg);
+            
         }catch(e){C.alert.alert({content:e.message+data});}
     });
 }
 
+//删除
+function del_data(tag){
+    if(!arguments[0]){tag = ".chk_list";}
+    var params=[];
+    $(tag).each(function () {
+        if ($(this).attr('checked') == 'checked') params.push($(this).val());
+    });
+    if (params.length == 0) { C.alert.alert({ "content": "没有选中项，无法操作" }); return; }
+    C.alert.confirm({height:200,content:"确认要删除数据"+params.length + "条数据吗？",funcOk:function(){
+        C.alert.opacty_close();
+        C.form.batch_modify(urls.del,tag);
+    }});
+}
 
+function update_order(tag){
+    if(!arguments[0]){tag = ".corder";}
+    C.form.update_field(urls.order,tag);
+}
+//弹出层提示后自动重载页面
+function show_close(msg,t){
+    if(!arguments[0]){msg = "操作成功";}
+    if(!arguments[1]){t = 2000;}
+    C.alert.alert({content:msg});
+    setInterval(function(){
+
+        window.location.reload();
+    },t);
+}
 //上传图片回调
 function callback_upload_thumb(ret){
     try{

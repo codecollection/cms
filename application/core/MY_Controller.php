@@ -267,15 +267,31 @@ class CAdminBase extends MY_Controller {
         //检测权限 
         $this->checkPermission($this->level . '02');
         
-        $ids = $this->getData('id'); //'2,3,4,5,6,7,8'
-
-        $where =  "{$this->bindModel->pk} in ({$ids})";
-        $status = $this->bindModel->deletes($where);
+        $params = $this->getData("params");
+        
+        $status = $this->bindModel->deletes($params);
         $msg = sprintf(lang($status ? 'delete_success' : 'delete_fail'), $this->controllerTitle);
 
         $this->echoAjax(0, $msg);
     }
 
+    /**
+     * 修改排序
+     */
+    public function order(){
+        
+        $params = $this->getData("params");
+        
+        if(empty($params) || !is_array($params)){
+            
+        }
+        foreach($params as $k => $v){
+            
+            $this->bindModel->order($v['id'],$v['val']);
+        }
+        
+        $this->echoAjax(0, lang('update_order'));
+    }
     /**
      * 检测权限
      * @param string $moduleIdentity

@@ -28,15 +28,4 @@ function doField(){
             C.alert.alert({"content":result + e});
         }
     });
-
-   // C.form.batch_modify(,'.chk_list');
-//    
-//    if (params.length == 0) { C.alert.alert({ "content": "没有选中项，无法操作" }); return; }
-//    C.alert.confirm({height:200,content:"以下2种情况无法删除分类：<br>1）有子分类；2）分类下有数据<br>删除后不可恢复，确定要删除吗？",funcOk:function(){
-//            C.alert.opacty_close();
-//            
-//    }});
-
-
-   // C.form.update_field('/back/model/doField', '.model','field_id');
 }

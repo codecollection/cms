@@ -9,7 +9,7 @@ class Cate extends CAdminBase {
     
     public $topLevel = "C";
     
-    public $level = "C01";
+    public $level = "C02";
     
     //分类是否在导航上面显示
     protected $insertNav = array( "nav_show" => array( 
@@ -36,6 +36,21 @@ class Cate extends CAdminBase {
             $this->bindModel->where("parent_id = " . $pid);
         }
         
+        //获取目录树
+        
+        if(1==1){
+            $params['tree']=$this->bindModel->cate_brother();
+        }else{
+            $params['tree']=$this->bindModel->cate_brother($cate_id);
+            $params['loop_limit']=2;
+        }
+        $params['checkbox']=0;
+        $params['is_expand_all']=1;
+        $params['url']='category.php';
+        $params['url_force']=1;
+        $treeHtml = $this->bindModel->show_tree($params);
+        //print_r($treeHtml);
+        $this->setData("treeHtml",$treeHtml);
         $this->lists();
     }
     

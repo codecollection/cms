@@ -48,6 +48,12 @@
 </div>
 <!-- 主体内容 -->
 <div class="content">
+    <ul class="manage_btn">
+        <?php foreach($nav as $k => $v){?>
+        <li><a href="<?php echo $v["url"];?>" <?php if($this->level == $v['level']){echo('class=current');}?>><?php echo $v["title"];?></a></li>
+        <?php }?>   
+    </ul>
+    <p class="line-t-6"></p>
     <?php echo $mainContent;?>
     <div id="alert"></div>
     <p class="line-t-20"></p>

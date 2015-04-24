@@ -24,6 +24,11 @@ class MBase extends CI_Model{
      */
     private $pkValue = NULL;
 
+    /*
+     * 排序字段
+     */
+    protected $order = "corder";
+    
 
     /**
      *array(
@@ -684,8 +689,17 @@ class MBase extends CI_Model{
      */
     public function deletes($where) {
         
+        $where = "{$this->pk } in ({$where})";
         $this->db->delete($this->tableName, $where);
         return $this->db->affected_rows() > 0;
+    }
+    
+    /*
+     * 修改排序
+     */
+    public function order($id,$order){
+        
+        return $this->update(array($this->order=>$order),  "{$this->pk} = {$id}");
     }
 
     /**

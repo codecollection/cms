@@ -19,6 +19,7 @@ class Cate_model extends MBase{
         
         $this->cateList = $this->getAll();
         $this->categories = $this->getCategories();
+        
     }
     
     /**
@@ -179,6 +180,23 @@ class Cate_model extends MBase{
         return $ret;
     }
     
+    /**
+     * 获取平级目录（水平）
+     * @param $cate_id int 目录树id
+     */
+    public function cate_brother($cate_id=0) {
+
+        $parent_id=$cate_id==0?0:$this->categories[$cate_id]['parent_id'];
+        if($cate_id==0 || $parent_id==0){
+            $ret=array();
+            foreach($this->categories as $v){
+                if($v['parent_id']==0) array_push($ret,$v);
+            }
+            return $ret;
+        }else{
+            return $this->categories[$parent_id]['son'];
+        }
+    }
     
     public function show_select($cid=0,$i=0){
         
@@ -200,6 +218,7 @@ class Cate_model extends MBase{
                 }
             }
         }else{//输出子类
+            
             foreach($this->categories[$cid]['son'] as $v){
                 //if(!check_level('T'.$v['cate_id'],0,1)) continue;
                 array_push($tmp,array('value'=>$v['cate_id'],'txt'=>$font.$v['cname'],'txt_color'=>''));
@@ -211,5 +230,69 @@ class Cate_model extends MBase{
         }
 
         return $tmp;
+    }
+    
+    /**
+     * 输出目录树
+     * @param -> tree $this->categories['son']数组
+     * @param -> expand_func 点击展开收缩的回调方法 expand_func(this)
+     * @param -> is_expand_all 是否默认全部展开 1,0
+     * @param -> ulevel 传递选中值
+     * @param -> checkbox 1,0
+     * @param -> url 链接URL，为空或者没有子树(强制输出链接=0)，输出纯文本
+     * @param -> url_force 1,0 强制输出链接
+     * @param -> click 文本上onclick 函数 onclick="javascript:void(0);";
+     * @param -> rtype_last 默认最后一级显示复选框，1,2,3|4,5,6,tid1_path,tid2_path
+     * @param -> loop_limit 输出子树级数
+     */
+    public function show_tree($params){
+        //预处理参数
+        $tree=$params['tree']=isset($params['tree'])?$params['tree']:array();
+        $expand_func=$params['expand_func']=isset($params['expand_func'])?$params['expand_func']:'expand_func(this)';
+        $is_expand_all=$params['is_expand_all']=isset($params['is_expand_all'])?$params['is_expand_all']:0;
+        if($is_expand_all==1) $expand_func='';
+        $ulevel=isset($params['ulevel'])?$params['ulevel']:array();
+        $checkbox=$params['checkbox']=isset($params['checkbox'])?$params['checkbox']:0;
+        $url=$params['url']=isset($params['url'])?$params['url']:'';
+        $url_force=$params['url_force']=isset($params['url_force'])?$params['url_force']:0;
+        $click=$params['click']=isset($params['click'])?$params['click']:'';
+        $rtype_last=$params['rtype_last']=isset($params['rtype_last'])?$params['rtype_last']:0;
+        $loop=$params['loop']=isset($params['loop'])?$params['loop']:1;
+        $loop=$params['loop']++;
+        $loop_limit=$params['loop_limit']=isset($params['loop_limit'])?$params['loop_limit']:100;
+        if($loop>$loop_limit) return;
+
+        //遍历数组
+        $html='<ul class="tree">';
+        if(is_array($tree)) {
+            foreach($tree as $v){
+                $vson=@$this->categories[$v['cate_id']]['son'];
+                //if(!check_level('T'.$v['cate_id'],0,1)) continue;//判断是否有显示权限
+                $open_status='close';
+                if($is_expand_all==1) $open_status='open';
+                $html.='<li id="li'.$v['cate_id'].'">';
+                $html.='<span onclick="tree_icon_click(this'.($expand_func==''?'':','.$expand_func).');" class="tree-icon tree-expand-'.$open_status.'"></span>';
+                if(($checkbox==1 || ($rtype_last==1 && count($vson)==0))){
+                    $chk='';if(in_array('T'.$v['cate_id'],$ulevel)) $chk=' checked';
+                    $html.='<input type="checkbox" name="level" '.$chk.' value="T'.$v['cate_id'].'" id="T'.$v['cate_id'].'">';
+                }
+
+                if($url=='' || (count($vson)==0 && $url_force==0)){
+                    $html.='<label for="T'.$v['cate_id'].'"><em '.$click.' class="no_link">'.$v['cname'].'</em></label>';
+                }else{
+                    $style = isset($_GET['cate_id'])&&$_GET['cate_id'] == $v['cate_id']?'class="selected"':'';
+                    $html.='<a '.$style.' href="">'.$v['cname'].'</a>';
+                }
+                //展开子级
+                if(count($vson)>0 && $is_expand_all==1){
+                    $params['tree']=$vson;
+                    $html.=$this->show_tree($params);
+                }
+                $html.='</li>';
+            }
+
+        }
+        $html.='</ul>';
+        return $html;
     }
 }

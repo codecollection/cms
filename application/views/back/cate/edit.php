@@ -1,7 +1,4 @@
-<ul class="manage_btn">
-    <li><a href="index.php">统计概览</a></li><li><a href="info.list.php">文档管理</a></li><li><a href="category.php" class="current">分类管理</a></li>    
-</ul>
-<p class="line-t-6"></p>
+
 <div class="crumbs">
     <span class="cbs_left">
         <b>文档</b><em>></em><a href="category.php">分类管理</a>
@@ -22,10 +19,11 @@
             <td>
                 <span class="l">
                     <?php 
-                    
                     $fields = $thisc->cate->show_select();
                     array_unshift($fields, array('value'=>0,"txt"=>"顶级分类","txt_color"=>""));
-                    echo RKit::input_str(array('node'=>'cate_id_select','name'=>'parent_id','type'=>'select_single','default'=>$data["parent_id"] = $data["parent_id"] == "" ? 0 : $data["parent_id"],'style'=>'style="width:200px;"'), $fields)?>                
+                    $this->vars->set_fields("parent_id",$fields);
+                    echo $this->vars->input_str(array('node'=>'parent_id','name'=>'parent_id','type'=>'select_single','default'=>$data["parent_id"] = $data["parent_id"] == "" ? 0 : $data["parent_id"],'style'=>'style="width:200px;"'));
+                    ?>                
                 </span>
             </td>
         </tr>
@@ -39,28 +37,19 @@
         </tr>
         <tr>
             <td class="fr">排序：</td>
-            <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="<?php echo $data['corder'] = $data["corder"] == '' ? '' : $data['corder'] ; ?>"> 数字小排前面</td>
+            <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="<?php echo $data['corder'] = $data["corder"] == '' ? '0' : $data['corder'] ; ?>"> 数字小排前面</td>
         </tr>
         <tr>
             <td class="fr">导航显示：</td>
             <td>
                 <span class="l" style="line-height:200%;">PC站导航&nbsp;&nbsp;&nbsp;&nbsp;</span> 
                 <span class="l">
-                    <?php echo $thisc->vars->input_str(array("node"=>"nav_show","default"=>$data["nav_show"]= $data["nav_show"] == "" ? 0 : $data["nav_show"],"type"=>"select_single"));?>
-<!--                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:120px">    
-                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">否</div>       
-                            <input type="hidden" name="data[nav_show]" id="nav_show" value="0" class="sel_subject_val">    
-                        </a>    
-                        <div class="sel_list" id="sel_list" style="display:none;">        
-                            <a href="javascript:void(0);" value="0" class="current" >否</a>        
-                            <a href="javascript:void(0);" value="1" class="" >是</a>    
-                        </div>
-                    </div>-->
+                    <?php echo $thisc->vars->input_str(array("node"=>"nav_show","default"=>$data["nav_show"]= $data["nav_show"] == "" ? 0 : $data["nav_show"],"type"=>"select_single","name"=>"nav_show"));?>
+
                 </span>
                 <span class="l" style="line-height:200%;">&nbsp;&nbsp;&nbsp;&nbsp;WAP站导航&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span class="l">
-                    <?php echo $thisc->vars->input_str(array("node"=>"nav_show","default"=>$data["nav_show_wap"]= $data["nav_show_wap"] == "" ? 0 : $data["nav_show_wap"],"type"=>"select_single"));?>
+                    <?php echo $thisc->vars->input_str(array("node"=>"nav_show","default"=>$data["nav_show_wap"]= $data["nav_show_wap"] == "" ? 0 : $data["nav_show_wap"],"type"=>"select_single","name"=>"nav_show_wap"));?>
                 </span>
             </td>
         </tr>

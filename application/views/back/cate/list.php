@@ -1,10 +1,8 @@
-<ul class="manage_btn">
-    <li><a href="index.php">统计概览</a></li><li><a href="info.list.php">文档管理</a></li><li><a href="category.php" class="current">分类管理</a></li>    </ul>
-<p class="line-t-6"></p>
 <div class="crumbs">
     <div class="l son_menu"><span class="txt" onclick="window.location.href = 'info.list.php';">全部分类<em>></em></span>
         <div class="son_div">
-            <ul class="tree"><li id="li1"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=1">公司动态</a></li><li id="li2"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=2">产品中心</a><ul class="tree"><li id="li5"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=5">MCMS企业站系统</a></li><li id="li6"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=6">MCMS商城系统</a></li><li id="li7"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=7">MCMS比赛投票系统</a></li></ul></li><li id="li3"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=3">成功案例</a></li><li id="li4"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=4">关于我们</a></li><li id="li11"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=11">商业服务</a></li><li id="li9"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=9">给我留言</a></li><li id="li8"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=8">系统特点</a></li><li id="li10"><span onclick="tree_icon_click(this);" class="tree-icon tree-expand-open"></span><a  href="category.php?cate_id=10">服务支持</a></li></ul>                <p class="line-t-10"></p>
+            <?php echo $treeHtml;?>
+            <p class="line-t-10"></p>
         </div>
     </div>
     <span class="cbs_left">
@@ -52,11 +50,11 @@
                 <td><a href="/" target="_blank"><?php echo $v["cate_id"];?></a></td>
                 <td><input id="corder" type="text" pid="<?php echo $v["cate_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["corder"];?>"></td>
                 <td><input id="corder" type="text"  class="comm_ipt cname" style="width:160px;"  value="<?php echo $v["cname"];?>">
-                    <a  href="/back/cate?pid=1">查看下级</a>
+                    <a  href="/back/cate?pid=<?php echo $v['cate_id']?>">查看下级(<?php echo count($thisc->cate->categories[$v["cate_id"]]["son"]);?>)</a>
                 </td>
                  <td><?php echo $v["cnick"];?>
                 </td>
-                <td>PC:<?php echo $this->vars->get_field_str("nav_show",1); ?> &nbsp;&nbsp;WAP:<?php echo $this->vars->get_field_str("nav_show",0); ?></td>
+                <td>PC:<?php echo $this->vars->get_field_str("nav_show",$v["nav_show"]); ?> &nbsp;&nbsp;WAP:<?php echo $this->vars->get_field_str("nav_show",$v["nav_show_wap"]); ?></td>
                 <td style="color:#888;text-align:left;line-height:160%;">
                     &nbsp;&nbsp;                                                                                                        </td>
                 <td>
@@ -66,17 +64,17 @@
             <?php }?>
         </tbody>
     </table>
-    
 </div>
 <p class="line-t-20"></p>
-
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
         <a href="/back/cate/add" class="btn3">添加分类</a>
-
-        <a href="javascript:void(0);" class="btn3" onclick="C.form.update_field('category.php?m=save_all&ajax=1', '.corder');">批量修改</a>
-
-        <a href="javascript:void(0);" class="btn3" onclick="del();">批量删除</a>
+        <a href="javascript:void(0);" class="btn3" onclick="update_order();">修改排序</a>
+        <a href="javascript:void(0);" class="btn3" onclick="del_data();">批量删除</a>
+        <a href="/back/cate" class="btn3">分类列表</a>
     </div>
 </div>
+<script>
+    var urls = {"save": "/back/<?php echo $this->controllerId?>/save", "del": "/back/<?php echo $this->controllerId?>/delete","order":"/back/<?php echo $this->controllerId?>/order"};
+</script>

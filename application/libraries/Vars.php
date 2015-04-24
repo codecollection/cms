@@ -120,7 +120,7 @@ class Vars {
             $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').');return false;" '.$style.'>';
             $html .= '    <a href="javascript:void(0);" class="txt_box" id="txt_box">';
             $html .= '        <div class="sel_inp" id="sel_inp">'.$this->get_field_str($node,$default,true).'</div>';
-            $html .= '        <input type="hidden" name="'.($alias==''?$node.$name:$alias.$name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
+            $html .= '        <input type="hidden" name="data['.($alias==''?$name:$alias).']" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
             $html .= '    </a>';
             $html .= '    <div class="sel_list" id="sel_list" style="display:none;">';
             foreach($this->fields[$node] as $f) {
