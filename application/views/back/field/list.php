@@ -1,12 +1,14 @@
 <div class="crumbs">
     <span class="cbs_left">
-        <?php 
-        //$countNav = count($navItem);
-        //foreach($navItem as $k => $v){?>
-        <a href="系统">系统</a>
-        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
-        <?php //}?>
-
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>      
+        <em>></em>模型字段信息
     </span>
 </div>
 <p class="line-t-15"></p>
@@ -14,7 +16,7 @@
 <div class="func_desc">
     <b>标签：</b>
     <?php foreach($fieldTags as $k => $v){?>
-    &nbsp;<a href="/back/model/field?&fieldTag=<?php echo $v['field_tag'];?>"><?php echo $v['field_tag'];?></a>&nbsp;
+    &nbsp;<a href="/back/<?php echo $this->controllerId; ?>?&tag=<?php echo $v['field_tag'];?>"><?php echo $v['field_tag'];?></a>&nbsp;
     <?php }?>
 </div>
 <p class="line-t-10"></p>
@@ -66,12 +68,12 @@
     <p class="line-t-20"></p>
 </div>
 <script>
-    var urls = {"save":"/back/model/save","del":"/back/model/del"};
+    var urls = {"save":"/back/<?php echo $this->controllerId;?>/save","del":"/back/<?php echo $this->controllerId;?>/del"};
 </script>
 
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:void(0);" class="btn3" onclick="C.form.update_field('model.php?m=save_model_attr_all&ajax=1', '.corder');">添加字段</a>
+        <a href="/back/<?php echo $this->controllerId;?>/add" class="btn3">添加字段</a>
     </div>
 </div>

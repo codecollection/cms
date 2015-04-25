@@ -37,6 +37,17 @@ class Info extends CAdminBase {
         $this->lists();
         
     }
+    
+    public function add() {
+        
+        $modelId = 1;
+        //关系字段
+        $externFields = $this->model->getRelationField($modelId);
+        
+        $this->setData('fields', $externFields);
+        $this->renderAdminView($this->viewDir(2));
+    }
+
     /**
      *  文档引导页
      */

@@ -30,4 +30,15 @@ class Field extends CAdminBase {
         $this->lists();
     }
     
+    protected function setSearch() {
+        
+        $s = RKit::getData('tag');
+        
+        if(!empty($s['tag'])){
+            $this->bindModel->where("field_tag=".$this->db->escape($s['tag']));
+        }
+        
+        parent::setSearch();
+    }
+    
 }

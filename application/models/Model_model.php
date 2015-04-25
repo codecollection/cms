@@ -44,7 +44,7 @@ class Model_model extends MBase{
     public function getRelationField($modelId){
         
         $sql = "select * from {$this->fieldTableName} as a left join {$this->relTableName} as b on b.field_id = a.field_id ";
-        $sql .= " where b.model_id = {$modelId}";
+        $sql .= " where b.model_id = {$modelId} order by forder asc,a.field_id asc";
         
         $query = $this->db->query($sql);
         

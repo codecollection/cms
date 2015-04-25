@@ -16,6 +16,17 @@ class Vars {
         "user_status_action" => array( //用户状态操作，刚好和状态相反，正常下显示禁用，禁用下显示启用
             array("value"=>1,"txt"=>"启用","color"=>"green"),
             array("value"=>0,"txt"=>"禁用","color"=>"red"),
+        ),
+        
+        "form_type" => array( //表单类型
+            array('value'=>"text",'txt'=>'文本框'), //文本框
+            array('value'=>"textarea",'txt'=>'多行文本框'), //多行文本框
+            array('value'=>"radio",'txt'=>'单选框'), //单选框
+            array('value'=>"checkb",'txt'=>'多选框'), //多选框
+            array('value'=>"upload",'txt'=>'上传按钮'), //上传按钮
+            array('value'=>"edit",'txt'=>'编辑框'), //编辑框
+            array('value'=>"select",'txt'=>'下拉框'), //下拉框
+            
         )
     ); 
 
@@ -47,7 +58,7 @@ class Vars {
                 return $v;
             }
         }
-        return array('value' => '', 'txt' => '-', 'txt_color' => '');
+        return array('value' => '', 'txt' => '-', 'color' => '');
     }
     
     /**
@@ -61,7 +72,9 @@ class Vars {
         if ($type) {
             return $field['txt'];
         } else {
-            return '<font color="' . $field['color'] . '">' . $field['txt'] . '</font>';
+            $color = isset($field['color']) ? 'color="'.$field['color'].'"' : "";
+            
+            return '<font '.$color.'>' . $field['txt'] . '</font>';
         }
     }
     

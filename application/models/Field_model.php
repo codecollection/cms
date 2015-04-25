@@ -10,6 +10,20 @@ class Field_model extends MBase{
     
     protected $pk = "field_id";
     
+    protected $rules = array(
+        array('title', 'required'),
+        array('field', 'required'),
+        array('field_type', 'required'),
+        array('form_type', 'required')
+    );
+    
+    protected $fieldTitles = array(
+        'title' => '标题',
+        'field' => '模型字段',
+        'field_type' => '字段类型',
+        'form_type' => '表单类型',
+    );
+    
     public function  __construct(){
         parent::__construct();
     }
