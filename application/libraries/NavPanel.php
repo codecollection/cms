@@ -101,13 +101,13 @@ class NavPanel {
         
         array(
             'title' => '文 档',
-            'url' => '/back/cate',
+            'url' => '/back/info/home',
             'level'=>'C',
             'bgimg' => '/style/back/img/menu1/info.png',
             'menu'  => array(
                 array(
                     'title'=>'文档列表',
-                    'url' => '/back/info',
+                    'url' => '/back/info/home',
                     'level' => 'C01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'C0101'), //按钮功能配置
@@ -324,17 +324,27 @@ class NavPanel {
         
         $item = array();
         $nav = array();
+        $minNav = array();
         foreach ($this->menu as $row => $cate){
             if(substr($level, 0,1) == $cate["level"]){
                 $nav = $cate["menu"];
+                array_push($minNav, array("url"=>$cate['url'],'title'=>$cate['title']));
+                
+                foreach($cate['menu'] as $v){
+                    if($level == $v['level']){
+                        array_push($minNav, array("url"=>$v['url'],'title'=>$v['title']));
+                    }
+                }
             }
             unset($cate["menu"]);
             array_push($item, $cate);
+            
+            
         }
         
         $data['item'] = $item;
         $data["nav"] = $nav;
-        
+        $data['minNav'] = $minNav;
         return $data;
     }
     

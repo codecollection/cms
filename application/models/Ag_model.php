@@ -35,4 +35,11 @@ class Ag_model extends MBase{
         return $fields;
     }
     
+    public function saveBefore($isInsert) {
+        
+        if($isInsert){
+            $this->cdate = time();
+        }
+    }
+    
 }

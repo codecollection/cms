@@ -35,8 +35,8 @@
             <?php foreach($fields['list'] as $k => $v){?>
             <tr id="<?php echo "formli" . $k + 1;?>">
                 
-                <td><input type="checkbox" value="<?php echo $v['field_id'];?>" class="chk_list" 
-                    <?php if($thisc->modelfield->isExitRel($model_id,$v["field_id"])){echo('checked=checked');} ?>>
+                <td><input type="checkbox" value="<?php echo $v['field_id'];?>" <?php if($v['is_system'] != 0) {echo('class="chk_list"');} ?>  
+                    <?php if($thisc->modelfield->isExitRel($model_id,$v["field_id"]) || $v['is_system'] == 0){echo('checked=checked');} ?>>
                 </td>
                 <td><?php echo $v['field_id'];?></td>
                 <td><?php echo $v['title'];?></td>

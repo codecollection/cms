@@ -1,12 +1,18 @@
 
 <div class="crumbs">
     <span class="cbs_left">
-        <b>用户</b><em>></em><a href="category.php">管理员</a><em>></em><a href="category.php">添加/编辑</a>
-        <em>></em>管理员名称        
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>      
+        <em>></em>管理员信息
     </span>
 </div>
-<p class="line-t-20"></p>
-
+<p class="line-t-15"></p>
 <div id="form_add">
 
     <input type="hidden" id="admin_id" name="id" value="<?php echo($data["admin_id"]);?>" />

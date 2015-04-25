@@ -1,17 +1,16 @@
-
 <div class="crumbs">
     <span class="cbs_left">
-        <?php
-        //$countNav = count($navItem);
-        //foreach($navItem as $k => $v){
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
         ?>
-        <a href="<?php //echo $v['url']; ?>"><?php //echo $v['title']; ?></a>
-        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
-<?php //} ?>
-
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>      
     </span>
 </div>
-<p class="line-t-20"></p>
+<p class="line-t-15"></p>
 
 <div class="box4">
     <form id="form_add">

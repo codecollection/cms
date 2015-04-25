@@ -1,11 +1,18 @@
 
 <div class="crumbs">
     <span class="cbs_left">
-        <b>文档</b><em>></em><a href="category.php">分类管理</a>
-        <em>></em>添加分类        
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>  
+        <em>></em>分类信息
     </span>
 </div>
-<p class="line-t-20"></p>
+<p class="line-t-15"></p>
 
 <div id="form_add">
 

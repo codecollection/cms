@@ -1,16 +1,16 @@
 <div class="crumbs">
-    <div class="l son_menu"><span class="txt" onclick="window.location.href = 'info.list.php';">全部分类<em>></em></span>
-        <div class="son_div">
-            <?php echo $treeHtml;?>
-            <p class="line-t-10"></p>
-        </div>
-    </div>
     <span class="cbs_left">
-        <a href="/back/<?php echo $this->controllerId;?>">分类管理</a>
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>      
     </span>
-    <span class="cbs_right"><a href="javascript:void(0);" onclick="show_more('query_box_category');">高级查询</a></span>
 </div>
-<p class="line-t-20"></p>
+<p class="line-t-15"></p>
 <div id="query_box_category" <?php if(empty($thisc->getData("sv"))){echo('style="display:none;"');}?>>
     <div class="box_970" id="screen">
         <ul class="screening se_manage res_scre">
@@ -27,7 +27,6 @@
     <p class="line-t-20"></p>
 </div>
 <!-- 树 -->
-
 <div class="box2 box4" style="width:100%;">
     <table class="table_lists table_click">
         <thead>

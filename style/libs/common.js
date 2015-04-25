@@ -830,7 +830,11 @@ var C={
                 var ret = $.evalJSON(result);
                 if (ret.code == 0) {
                     C.alert.alert({ "content": "" + ret.msg + "" ,"funcOk":function(){
-                        window.location.reload(); 
+                            
+                        setInterval(function(){
+
+                            window.location.reload();
+                        },2000);
                     }});
                 } else {
                     C.alert.alert({ "content":ret.msg});
@@ -840,6 +844,7 @@ var C={
             }
         });
       },
+    
       /*获取页面中checkbox选中值
         inp_class checkbox class 名称
       */

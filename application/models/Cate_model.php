@@ -249,7 +249,7 @@ class Cate_model extends MBase{
         //预处理参数
         $tree=$params['tree']=isset($params['tree'])?$params['tree']:array();
         $expand_func=$params['expand_func']=isset($params['expand_func'])?$params['expand_func']:'expand_func(this)';
-        $is_expand_all=$params['is_expand_all']=isset($params['is_expand_all'])?$params['is_expand_all']:0;
+        $is_expand_all=$params['is_expand_all']=isset($params['is_expand_all'])?$params['is_expand_all']:1;
         if($is_expand_all==1) $expand_func='';
         $ulevel=isset($params['ulevel'])?$params['ulevel']:array();
         $checkbox=$params['checkbox']=isset($params['checkbox'])?$params['checkbox']:0;

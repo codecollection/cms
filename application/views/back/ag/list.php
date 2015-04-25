@@ -1,12 +1,14 @@
+
 <div class="crumbs">
     <span class="cbs_left">
-        <?php 
-        //$countNav = count($navItem);
-        //foreach($navItem as $k => $v){?>
-        <a href="用户">用户</a>
-        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
-        <?php //}?>
-
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>      
     </span>
 </div>
 <p class="line-t-15"></p>
@@ -43,18 +45,20 @@
                 </td>
             </tr>
             <?php }?>
+            <tr id="form_add">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><input id="g_name" type="text"  class="comm_ipt cname" name="data[g_name]" value=""></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><a href="javascript:save_data()" class="btn">添加</a></td>
+                
+            </tr>
         </tbody>
     </table>
 </div>
 <p class="line-t-20"></p>
-<div class="footer_fixed">
-    <div class="box_1000">
-        <span>操作：</span>
-        <a href="/back/<?php echo $this->controllerId;?>/add" class="btn3">添加管理组</a>
-        <a href="javascript:void(0);" class="btn3" onclick="del_data();">批量删除</a>
-        <a href="/back/<?php echo $this->controllerId;?>" class="btn3">组列表</a>
-    </div>
-</div>
+
 <script>
     var urls = {"save": "/back/<?php echo $this->controllerId?>/save", "del": "/back/<?php echo $this->controllerId?>/delete","status":"/back/<?php echo $this->controllerId?>/status"};
     

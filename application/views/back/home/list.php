@@ -1,12 +1,14 @@
 <div class="crumbs">
     <span class="cbs_left">
-        <?php 
-        //$countNav = count($navItem);
-        //foreach($navItem as $k => $v){?>
-        <a href="系统">系统</a>
-        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
-        <?php //}?>
-
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>  
+        <em>></em>系统信息
     </span>
 </div>
 <p class="line-t-15"></p>
@@ -15,6 +17,12 @@
     <div class="totals clearfix">
         <ul>
             <li class="hdli">文档</li>
+            <li><a href="info.list.php?info_status=-1">草稿（0）</a></li>
+            <li><a href="info.list.php?info_status=3">未通过（0）</a></li>
+            <li><a href="info.list.php?info_status=2">审核中（0）</a></li>
+            <li><a href="info.list.php?info_status=0">已通过（22）</a></li>
+            <li><a href="info.list.php?info_status=1">回收站（0）</a></li>
+            
             <li><a href="info.list.php?info_status=-1">草稿（0）</a></li>
             <li><a href="info.list.php?info_status=3">未通过（0）</a></li>
             <li><a href="info.list.php?info_status=2">审核中（0）</a></li>
@@ -97,78 +105,3 @@
         </div>
     </div>
 </div>
-<style type="text/css">
-    .columns-mod{
-        width:490px;
-        height:320px;
-        border-radius: 5px;
-        -moz-border-radius:5px;
-        -webkit-border-radius:5px;
-    }
-    .hd{
-        border-radius: 5px 5px 0 0;
-        -moz-border-radius: 5px 5px 0 0;
-        -webkit-border-radius: 5px 5px 0 0;
-        background-color: #F2F2F2;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 10px 0 15px;
-    }
-    .bd{
-        background-color: rgba(250, 250, 250, 0.3);
-        border-radius: 0 0 5px 5px;
-        -moz-border-radius: 5px 5px 0 0;
-        -webkit-border-radius: 5px 5px 0 0;
-        height: 200px;
-        overflow: hidden;
-        border-bottom: 1px solid #F2F2F2;
-        border-left: 1px solid #F2F2F2;
-        border-right: 1px solid #F2F2F2;
-    }
-    .sys-info{
-        padding: 15px;
-    }
-    .sys-info table{
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    .sys-info table a:hover{text-decoration: none;}
-    .sys-info th {
-        font-weight: normal;
-        text-align: left;
-        width: 30%;
-        font-size:14px;
-    }
-    .sys-info th, .sys-info td {
-        height: 20px;
-        line-height: 20px;
-        padding: 5px 0;
-        font-size:12px;
-    }
-    .totals{
-        border-radius: 5px;
-        -moz-border-radius: 5px 5px 0 0;
-        -webkit-border-radius: 5px 5px 0 0;
-        margin:5px 0 5px 0;
-        background-color: rgba(250, 250, 250, 0.3);
-        border:1px solid #eee;
-    }
-    .totals ul{clear:both;}
-    .totals li {
-        float:left;
-        margin-left:15px;
-        font-size:12px;
-        height: 30px;
-        line-height: 29px;
-        width: 100px;
-    }
-    .totals li a{line-height: 29px;}Ï
-    .totals li a:hover{text-decoration: none;}
-    .totals .hdli {
-        font-size:14px;
-        font-weight: bold;
-    }
-</style>

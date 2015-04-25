@@ -1,27 +1,56 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * 模型管理
+ * 文档管理
  */
-class Model extends CAdminBase {
+class Info extends CAdminBase {
 
-    public $controllerId = "model";
+    public $controllerId = "info";
     
-    public $topLevel = "D";
-    public $level = "D01";
+    public $topLevel = "C";
+    
+    public $level = "C01";
     
     function __construct() {
 
        parent::__construct();
-       $this->addJs($this->controllerId . ".js");
+       //$this->addJs($this->controllerId . ".js");
+       $this->loadModel("model");
+       $this->loadModel("field");
+       $this->loadModel("cate");
     }
 
-    /**
-     *  列表
-     */
     public function index(){
         
+        $modelId = $this->getData('modelId');
+        
+        //获取模型对应的表名称
+        $modelName = $this->model->getField($modelId,"model_name"); 
+        
+        $this->bindModel->tableName = $modelName;
+        
+        //获取模型下面的字段
+        $fields = $this->model->getRelationField($modelId);
+        
+        $this->setData('fields', $fields);
+        
         $this->lists();
+        
+    }
+    /**
+     *  文档引导页
+     */
+    public function home(){
+        
+        //获取模块
+        $models = $this->model->fields("model_id,model_title,model_name")->search(false);
+        $this->setData("models", $models);
+        
+        //获取分类
+        $cate = $this->cate->show_tree(array('tree'=>$this->cate->cate_brother(),"url"=>"/back/" . $this->controllerId,"url_force"=>1));
+        $this->setData("cateHtml", $cate);
+        
+        $this->renderAdminView($this->viewDir(3,"home"));
     }
     
     /**
@@ -60,9 +89,7 @@ class Model extends CAdminBase {
         
     }
     
-    /**
-     * 保存模型
-     */
+    
     public function doField(){
         
         $this->loadModel("modelfield");
@@ -75,7 +102,6 @@ class Model extends CAdminBase {
             $this->echoAjax(0, '');
         }
         $data = array();
-        $this->db->trans_start();
         foreach($params as $k => $v){
             $data["model_id"] = $modelId;
             $data["field_id"] = $v;
@@ -86,24 +112,8 @@ class Model extends CAdminBase {
             $this->modelfield->setAttrs($data)->save(true);
         }
        
-        //如果不存在表就要创建表
-        $this->createTableByModelId($modelId);
-        $this->db->trans_complete();
         $this->successAjax();
     }
     
     
-    private function createTableByModelId($modelId){
-        //系统字段
-        $this->loadModel("field");
-        
-        $systemFields = $this->field->where("is_system=0")->search(FALSE);
-        
-        //关系字段
-        $relFields = $this->bindModel->getRelationField($modelId);
-        
-        $tableFields = array_merge($systemFields,$relFields);
-        
-        $this->bindModel->createTable($tableFields,$modelId);
-    }
 }

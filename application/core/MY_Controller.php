@@ -130,7 +130,13 @@ class CAdminBase extends MY_Controller {
      */
     private $isPermission = true;
 
+    /**
+     * 自动配置需要处理显示的数据 ,如 状态和对应的值
+     * @var type 
+     */
     protected $insertNav = array();
+    
+    protected $minNav = array();
     /**
      * 构造函数
      */
@@ -202,12 +208,15 @@ class CAdminBase extends MY_Controller {
         $page = $this->getData('p');
         
         $this->bindModel->page($page, PAGESIZE);
+        
+        $this->setSearch();
         $lists = $this->bindModel->search();
 
         $data = array('page' => RKit::getPageLink("/back/" . strtolower(get_class($this)) . "?" . http_build_query($params), $lists['count']),
             'list' => $lists,
         );
 
+        $this->setMinNav(array('title'=>"列表",'url'=>"/back/".$this->controllerId));
         $this->renderAdminView($this->viewDir(), $data);
     }
 
@@ -222,6 +231,8 @@ class CAdminBase extends MY_Controller {
         $data = $this->bindModel->getDefaultValue();
         $renderData = array('data' => $data);
 
+        $this->setMinNav(array('title'=>"添加编辑",'url'=>"/back/".$this->controllerId . "/edit"));
+        
         $this->renderAdminView($this->viewDir(2), array_merge($renderData, array()));
     }
 
@@ -236,6 +247,8 @@ class CAdminBase extends MY_Controller {
         $id = $this->getData('id');
 
         $data = $this->bindModel->find($id);
+        $this->setMinNav(array('title'=>"添加编辑",'url'=>"/back/".$this->controllerId . "/edit?id=" . $id));
+        
         $this->renderAdminView($this->viewDir(2), array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
     }
 
@@ -315,6 +328,15 @@ class CAdminBase extends MY_Controller {
         $this->successAjax();
     }
     
+    protected function setSearch(){
+        
+        $s = RKit::getData("sv","st");
+        
+        if(!empty($s['sv']) && !empty($s['st'])){
+            $this->bindModel->like($s['st'],$s['sv']);
+        }
+        
+    }
     /**
      * 检测权限
      * @param string $moduleIdentity
@@ -344,6 +366,15 @@ class CAdminBase extends MY_Controller {
     }
 
     /**
+     * 设置迷你导航
+     * @param type $nav
+     */
+    protected function setMinNav($nav){
+        
+        $this->minNav = array_merge($this->minNav,array($nav));
+    }
+
+    /**
      * 显示管理系统的视图
      * @param string $viewName
      * @param array $data
@@ -355,8 +386,11 @@ class CAdminBase extends MY_Controller {
 
         $menu = NavPanel::getInstance()->getMenus($this->activeModule,$this->level);
         
+        //迷你导航
+        $minNav = array_merge($menu["minNav"],  $this->minNav);
+        
         $viewHtml = $this->load->view($viewName, array_merge($data, $this->renderData,
-            array('nav' => $menu['nav'])), true);
+            array('nav' => $menu['nav'],'minNav'=>$minNav)), true);
         $frameData = array(
             'mainContent' => $viewHtml,
             'activedModule' => $this->activeModule,

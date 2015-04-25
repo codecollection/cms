@@ -78,7 +78,6 @@ class Vars {
      */
     public function input_str($params) {
         
-       
         // 初始化
         $node = isset($params['node'])?$params['node']:'';
         $type = isset($params['type'])?$params['type']:'select';
@@ -87,10 +86,11 @@ class Vars {
         $on = isset($params['on'])?$params['on']:'';
         $alias = isset($params['alias'])?$params['alias']:'';
         $style = isset($params['style'])?$params['style']:'style="width:120px"';
+        $isData = isset($params['isData']) ? $params['isData'] : true;
 
         // 下拉框
         if ($type == 'select') {
-            $html = '<select name="' . ($alias==''?$node.$name:$alias.$name) . '" '.$on.' id="' . $node . $name . '">';
+            $html = '<select name="'. $this->getDataName($isData, $name).'" '.$on.' id="' . $node . $name . '">';
             foreach($this->fields[$node] as $f) {
                 $select = '';
                 if (strlen($default) > 0 && $f['value'] == $default) $select = ' selected';
@@ -105,7 +105,7 @@ class Vars {
             foreach($this->fields[$node] as $f) {
                 $select = '';
                 if (strlen($default) > 0 && $f['value'] == $default) $select = ' checked';
-                $html .= '&nbsp;&nbsp;<input type="radio" '.$on.' name="' . ($alias==''?$node.$name:$alias.$name) . '" value="' . $f['value'] . '"' . $select . '>&nbsp;' . $f['txt'] . '';
+                $html .= '&nbsp;&nbsp;<input type="radio" '.$on.' name="' . $this->getDataName($isData, $name) . '" value="' . $f['value'] . '"' . $select . '>&nbsp;' . $f['txt'] . '';
             }
             return $html;
         }
@@ -116,7 +116,7 @@ class Vars {
                 $select = '';
                 $df_val=explode(',',$default);
                 if (strlen($default) > 0 && in_array($f['value'],$df_val)) $select = ' checked';
-                $html .= '<span class="cbx_wrap"><input '.$on.' type="checkbox"  class="' . ($alias==''?$node.$name:$alias.$name) . '" name="' . ($alias==''?$node.$name:$alias.$name) . '" value="' . $f['value'] . '"' . $select . '><label for="' . $node . $name . '">&nbsp;&nbsp;' . $f['txt'] . '&nbsp;&nbsp;</label></span>';
+                $html .= '<span class="cbx_wrap"><input '.$on.' type="checkbox"  class="' . ($alias==''?$node.$name:$alias.$name) . '" name="' . $this->getDataName($isData, $name) . '" value="' . $f['value'] . '"' . $select . '><label for="' . $node . $name . '">&nbsp;&nbsp;' . $f['txt'] . '&nbsp;&nbsp;</label></span>';
             }
             return $html;
         }
@@ -125,7 +125,7 @@ class Vars {
             $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').');return false;" '.$style.'>';
             $html .= '    <a href="javascript:void(0);" class="txt_box" id="txt_box">';
             $html .= '        <div class="sel_inp" id="sel_inp">'.$this->get_field_str($node,$default,true).'</div>';
-            $html .= '        <input type="hidden" name="data['.($alias==''?$name:$alias).']" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
+            $html .= '        <input type="hidden" name="'.$this->getDataName($isData, $name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
             $html .= '    </a>';
             $html .= '    <div class="sel_list" id="sel_list" style="display:none;">';
             foreach($this->fields[$node] as $f) {
@@ -140,7 +140,7 @@ class Vars {
         // 模拟下拉多选框
         if($type=='select_multi'){
             $html = '<div class="sel_box duo_sel_box"  '.$style.'>';
-            $html .= '        <input type="hidden" name="'.($alias==''?$node.$name:$alias.$name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
+            $html .= '        <input type="hidden" name="'.$this->getDataName($isData, $name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
             $html .= '<div class="sel_list" id="sel_list">';
             foreach($this->fields[$node] as $f) {
                 $select = '';
@@ -152,6 +152,13 @@ class Vars {
             return $html;
             }
         return '-';
+    }
+
+    private function getDataName($isData,$name){
+       
+        $name = $isData ? "data[{$name}]" : $name;
+        
+        return $name;
     }
 
     /**

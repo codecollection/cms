@@ -1,19 +1,36 @@
 <div class="crumbs">
     <span class="cbs_left">
-        <?php 
-        //$countNav = count($navItem);
-        //foreach($navItem as $k => $v){?>
-        <a href="用户">用户</a>
-        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
-        <?php //}?>
-
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>      
     </span>
+    <span class="cbs_right"><a href="javascript:void(0);" onclick="show_more('query_box_category');">高级查询</a></span>
 </div>
 <p class="line-t-15"></p>
 
 <!-- 查询隐藏表单-->
-<div id="query_box_category" style="display:none;">
-    
+<div id="query_box_category" <?php if(empty($thisc->getData("sv"))){echo('style="display:none;"');}?> >
+    <div class="box_970" id="screen">
+        <ul class="screening se_manage res_scre">
+            <li class="bndata_li">
+                <form action="?" method="get" name="search">
+                    <span class="l">查询项</span>
+                    <div class="l">
+                        <?php echo $this->vars->input_str(array('node'=>'search','name'=>'st','type'=>'select_single','default'=>$thisc->getData("st"),'isData'=>FALSE));?>
+                    </div>
+                    <span class="l">搜索词</span>
+                    <input type="text" class="comm_ipt l" name="sv" value="<?php echo $thisc->getData("sv");?>">
+                    
+                    &nbsp;<input type="submit" class="btn" value="查询" />
+                </form>
+            </li>
+        </ul>
+    </div>
     <p class="line-t-20"></p>
 </div>
 

@@ -11,6 +11,16 @@ class Adm extends CAdminBase {
     public $topLevel = "B";
     public $level = "B02";
     
+    //查询的下拉选项
+    public $insertNav = array(
+        'search'=>array(
+            array("txt"=>"姓名","value"=>"aname","color"=>""),
+            array("txt"=>"邮箱","value"=>"aemail","color"=>""),
+            array("txt"=>"电话","value"=>"aphone","color"=>""),
+            array("txt"=>"QQ号","value"=>"aqq","color"=>""),
+        ),
+    );
+    
     function __construct() {
 
        parent::__construct();
@@ -24,6 +34,17 @@ class Adm extends CAdminBase {
      *  列表
      */
     public function index(){
+        
+        $query = RKit::getData('schval', 'schgroup', 'schtype');
+        
+        //处理查询
+        if(!empty($query['schval']) && !empty($query['schtype'])){
+            $this->module->like($query['schtype'], $query['schval']);
+        }
+        
+        if(!empty($query['schgroup']) && !is_numeric($query['schgroup'])){
+            $this->module->like('mgroup', $query['schgroup']);
+        }
         
         $this->lists();
     }
