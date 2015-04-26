@@ -297,7 +297,7 @@ class Vars {
      * 上传框
      * @return string
      */
-    private function getUplad(){
+    private function getUpload(){
         
         return "";
     }
