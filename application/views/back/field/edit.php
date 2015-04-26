@@ -74,8 +74,9 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:save_data();" class="btn3">保存字段</a>
-        <a href="/back/<?php echo $this->controllerId;?>" class="btn3">快速创建</a>
-        <a href="/back/<?php echo $this->controllerId;?>" class="btn3">返回列表</a>
+        <?php $thisc->echoButton("{$thisc->level}01","javascript:save_data();","保存字段",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}03","/back/{$thisc->controllerId}","快速创建",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
+        
     </div>
 </div>

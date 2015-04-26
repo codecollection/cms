@@ -89,8 +89,7 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:save_data();" class="btn3">保存用户</a>
-        <a href="javascript:save_data();" class="btn3">启用/禁用</a>
-        <a href="/back/<?php echo $this->controllerId;?>" class="btn3">返回列表</a>
+        <?php $thisc->echoButton("{$thisc->level}01","javascript:save_data();","保存用户",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
     </div>
 </div>

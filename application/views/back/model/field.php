@@ -47,8 +47,6 @@
                 </td>
             </tr>
             <?php }?>
-            
-        
         </tbody>
 
     </table>
@@ -56,7 +54,6 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:void(0);" class="btn3" onclick="doField();">保存模型</a>
-        
+        <?php $thisc->echoButton($this->controllerId . "04", "javascript:doField();", "保存模型","btn3"); ?>
     </div>
 </div>

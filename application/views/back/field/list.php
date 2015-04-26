@@ -16,13 +16,12 @@
 <div class="func_desc">
     <b>标签：</b>
     <?php foreach($fieldTags as $k => $v){?>
-    &nbsp;<a href="/back/<?php echo $this->controllerId; ?>?&tag=<?php echo $v['field_tag'];?>"><?php echo $v['field_tag'];?></a>&nbsp;
+    &nbsp;<a <?php echo $a = $thisc->getData('tag') == $v['field_tag'] ? 'class="btn_min"' : "" ;?> href="/back/<?php echo $this->controllerId; ?>?&tag=<?php echo $v['field_tag'];?>"><?php echo $v['field_tag'];?></a>&nbsp;
     <?php }?>
 </div>
 <p class="line-t-10"></p>
 
 <div class="box4">
-
     <table class="table_lists table_click">
         <thead>
             <tr>
@@ -52,7 +51,7 @@
                 <td><?php echo $v['field_tag'];?></td>
                 <td><?php echo $v['is_system'];?></td>
                 <td>
-                    <a href="javascript:void(0);" onclick="model_field(<?php echo $v['field_id'];?>);" class="btn">删除</a>
+                    <?php $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");?>
                 </td>
             </tr>
             <?php }?>
@@ -74,6 +73,6 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="/back/<?php echo $this->controllerId;?>/add" class="btn3">添加字段</a>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add","添加字段",'btn3');?>
     </div>
 </div>

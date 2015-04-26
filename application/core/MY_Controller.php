@@ -524,10 +524,10 @@ class CAdminBase extends MY_Controller {
      * @param type $title
      * @param type $css
      */
-    public function echoButton($level,$url, $title, $css = 'class="btn"') {
+    public function echoButton($level,$url, $title, $css = 'btn') {
         
         if($this->admin->isValid($level)){
-            echo '<a href="'.$url.'" '.$css.'>'.$title.'</a>';
+            echo '<a href="'.$url.'" class="'.$css.'">'.$title.'</a>';
         }
         
     }

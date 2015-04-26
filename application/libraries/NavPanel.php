@@ -66,7 +66,8 @@ class NavPanel {
                     'level' => 'B02', //页面权限
                     'menu' => array(
                         array('title' => '增改用户', 'level' => 'B0201'),
-                        array('title' => '启用停用', 'level' => 'B0202'),
+                        array('title' =>  '删除用户', 'level' => 'B0202'),
+                        array('title' => '启用停用', 'level' => 'B0203'),
                     ),
                 ),
                 array(
@@ -93,7 +94,7 @@ class NavPanel {
                     'level' => 'B05', 
                     'menu' => array(
                         array('title' => '增改用户', 'level' => 'B0201'),
-                        array('title' => '启用停用', 'level' => 'B0202'),
+                        array('title' => '启用停用', 'level' => 'B0203'),
                     ),
                 ),
             ),
@@ -141,7 +142,7 @@ class NavPanel {
                         array('title' => '添加编辑', 'level' => 'D0101'), //按钮功能配置
                         array('title' => '删除字段', 'level' => 'D0102'),
                         array('title' => '字段管理', 'level' => 'D0103'),
-                        array('title' => '更 新 表', 'level' => 'D0104'),
+                        array('title' => '保存模型', 'level' => 'D0104'),
                     ),
                 ),
                 array(
@@ -151,6 +152,7 @@ class NavPanel {
                     'menu'=>array(
                         array('title'=>'添加编辑数据','level'=>'D0201'),
                         array('title'=>'删除数据','level'=>'D0202'),
+                        array('title'=>'快速创建','level'=>'D0203'),
                     ),
                 ),
             ),

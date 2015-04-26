@@ -63,8 +63,11 @@
                 <td><?php echo $v["aqq"];?></td>
                 <td><?php echo $this->vars->get_field_str("user_status",$v['astate'],'');?></td>
                 <td>
-                    <a class="btn" href="/back/<?php echo $this->controllerId;?>/edit?id=<?php echo $v["admin_id"];?>">编辑</a>
-                    <a href="javascript:status(<?php echo $v['admin_id'];?>,<?php echo $s = $v['astate'] == 0 ? 1 : 0; ?>)" class="btn"><?php echo $this->vars->get_field_str("user_status_action",$v['astate'],'');?></a>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}/edit?id={$v["admin_id"]}","编辑");?>
+                    <?php 
+                    $s = $v['astate'] == 0 ? 1 : 0;
+                    $thisc->echoButton("{$thisc->level}03","javascript:status({$v['admin_id']},{$s});",$this->vars->get_field_str("user_status_action",$v['astate'],''));?>
+                    
                 </td>
             </tr>
             <?php }?>
@@ -75,9 +78,10 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="/back/<?php echo $this->controllerId;?>/add" class="btn3">添加员工</a>
-        <a href="javascript:void(0);" class="btn3" onclick="del_data();">批量删除</a>
-        <a href="/back/<?php echo $this->controllerId;?>" class="btn3">员工列表</a>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add","添加员工",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}02","javascript:del_data();","批量删除",'btn3');?>
+        <?php $thisc->echoButton($thisc->level,"/back/{$thisc->controllerId}","员工列表",'btn3');?>
+        
     </div>
 </div>
 <script>

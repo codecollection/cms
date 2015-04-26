@@ -11,7 +11,18 @@ class Model_model extends MBase{
     protected $relTableName = "cms_model_fields";
     
     protected $fieldTableName = "cms_fields";
+    
     protected $pk = "model_id";
+    
+    protected $rules = array(
+        array('model_title', 'required'),
+        array('model_name', 'required'),
+    );
+    
+    protected $fieldTitles = array(
+        'model_title' => '模型标题',
+        'model_name' => '模型表名',
+    );
     
     public function  __construct(){
         parent::__construct();
