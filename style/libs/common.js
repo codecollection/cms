@@ -723,8 +723,6 @@ var C={
           obj.val(str);
         }
 
-
-
         //单选框，复选框
         if (obj.is('input') && (obj.attr('type') == 'radio' || obj.attr('type') == 'checkbox')) {
             $("input[name="+obj.attr('name')+"][value='"+str+"']").attr("checked",'checked');

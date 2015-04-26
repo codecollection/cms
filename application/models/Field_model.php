@@ -24,6 +24,8 @@ class Field_model extends MBase{
         'form_type' => '表单类型',
     );
     
+    protected $unique = array("field");
+        
     public function  __construct(){
         parent::__construct();
     }
@@ -38,5 +40,10 @@ class Field_model extends MBase{
         $query =  $this->db->query($sql);
         
         return $query->result_array();
+    }
+    
+    public function saveBefore($isInsert) {
+        
+        if(!$this->checkoutUnique($isInsert)){return FALSE;}
     }
 }

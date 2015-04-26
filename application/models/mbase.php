@@ -62,6 +62,9 @@ class MBase extends CI_Model{
      */
     private $errors = array();
     
+    public $errorMessage = "";
+    
+    protected $unique = array();
     /**
      * 字段的标题说明
      * array(
@@ -825,4 +828,25 @@ class MBase extends CI_Model{
         return $this->db->affected_rows() > 0;
     }
     
+    public function checkoutUnique($isInsert){
+            
+        foreach($this->unique as $unique){
+       
+            if($isInsert){
+
+                if($this->unique(array($unique.' = "' . $this->$unique . '"'), $unique)){
+                    $this->errorMessage = sprintf(lang('model_error_unique'),  $this->fieldTitles[$unique]);
+                    return false;
+                }
+
+            }else{
+
+                if($this->unique(array($unique.' = "' . $this->$unique . '"', $this->pk." != " . $this->getPkValue()),$unique)){
+                    $this->errorMessage = sprintf(lang('model_error_unique'),  $this->fieldTitles[$unique]);
+                    return false;
+
+                }
+            }
+        }
+    }
 }

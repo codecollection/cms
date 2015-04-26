@@ -28,6 +28,8 @@ class Adm_model extends MBase{
         'aname' => '用户名',
     );
     
+    protected $unique = array("aname");
+            
     protected $status = "astate";
     
     public function  __construct(){
@@ -39,16 +41,7 @@ class Adm_model extends MBase{
         //处理密码
         $this->checkPass();
         
-        if($isInsert){
-            
-            if($this->unique(array('aname = "' . $this->aname . '"'), 'aname')){
-                return false;
-            }
-            
-            $this->reg_date = time();
-        }else{
-            
-        }
+        if(!$this->checkoutUnique($isInsert)){return FALSE;}
         
         return true;
     }

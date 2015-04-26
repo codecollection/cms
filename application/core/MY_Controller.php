@@ -288,11 +288,11 @@ class CAdminBase extends MY_Controller {
         } else {
             $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
         }
-
+        
         if ($status) {
             $this->echoAjax(0, $msg);
         } else {
-            $this->echoAjax(100, $msg);
+            $this->echoAjax(100, $this->bindModel->errorMessage);
         }
     }
 
