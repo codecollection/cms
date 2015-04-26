@@ -123,7 +123,7 @@ class NavPanel {
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'C0201'), //按钮功能配置
                         array('title' => '删除分类', 'level' => 'C0202'),
-                        array('title' => '移动分类', 'level' => 'C0203'),
+                        array('title' => '修改排序', 'level' => 'C0203'),
                     ),
                 ),
             ),

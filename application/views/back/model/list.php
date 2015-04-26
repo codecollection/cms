@@ -64,14 +64,3 @@
 <script>
     var urls = {"save": "/back/model/save", "del": "/back/model/del"};
 </script>
-<!--
-<div class="footer_fixed">
-    <div class="box_1000">
-        <span>操作：</span>
-        <a href="javascript:void(0);" class="btn3" onclick="C.form.update_field('model.php?m=save_model_attr_all&ajax=1', '.corder');">批量修改</a>
-        <a href="javascript:void(0);" class="btn3" onclick="update_table('product');">更新表结构</a>
-        <a href="javascript:void(0);" class="btn3" onclick="cache_clear('model');">更新模型缓存</a>
-        <a href="model.php" class="btn3">取消</a>
-    </div>
-</div>
--->

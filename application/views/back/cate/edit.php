@@ -217,7 +217,7 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:save_data();" class="btn3">保存分类</a>
-        <a href="/back/cate" class="btn3">返回分类</a>
+        <?php $thisc->echoButton("{$thisc->level}02","javascript:save_data();","保存分类",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
     </div>
 </div>

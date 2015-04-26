@@ -55,9 +55,9 @@
                 </td>
                 <td>PC:<?php echo $this->vars->get_field_str("nav_show",$v["nav_show"]); ?> &nbsp;&nbsp;WAP:<?php echo $this->vars->get_field_str("nav_show",$v["nav_show_wap"]); ?></td>
                 <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;                                                                                                        </td>
+                    &nbsp;&nbsp;                                                                                                                  </td>
                 <td>
-                    <a class="btn" href="/back/<?php echo $this->controllerId?>/edit?id=<?php echo $v["cate_id"];?>">编辑</a>
+                    <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/edit?id={$v["cate_id"]}","编辑");?>
                 </td>
             </tr>
             <?php }?>
@@ -68,13 +68,12 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="/back/cate/add" class="btn3">添加分类</a>
-        <a href="javascript:void(0);" class="btn3" onclick="update_order();">修改排序</a>
-        <a href="javascript:void(0);" class="btn3" onclick="del_data();">批量删除</a>
-        <a href="/back/cate" class="btn3">分类列表</a>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add","添加分类",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}03","javascript:update_order();","修改排序",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}02","javascript:del_data();","批量删除",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
     </div>
 </div>
 <script>
     var urls = {"save": "/back/<?php echo $this->controllerId?>/save", "del": "/back/<?php echo $this->controllerId?>/delete","order":"/back/<?php echo $this->controllerId?>/order"};
-    
 </script>
