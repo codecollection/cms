@@ -66,11 +66,15 @@ class Field extends CAdminBase {
                     'field_tag'=>$fd[7],
                 );
                 
-                $this->bindModel->setAttrs($field)->save(true);
+                $res = $this->bindModel->setAttrs($field)->setPkValue(0)->save(true);
             }
         }
+        if($res){
+            $this->successAjax();
+        }else{
+            $this->echoAjax(100, $this->bindModel->errorMessage);
+        }
         
-        $this->successAjax();
     }
 
     protected function setSearch() {
@@ -84,4 +88,5 @@ class Field extends CAdminBase {
         parent::setSearch();
     }
     
+
 }

@@ -835,6 +835,7 @@ class MBase extends CI_Model{
             if($isInsert){
 
                 if($this->unique(array($unique.' = "' . $this->$unique . '"'), $unique)){
+                    
                     $this->errorMessage = sprintf(lang('model_error_unique'),  $this->fieldTitles[$unique]);
                     return false;
                 }
@@ -848,5 +849,6 @@ class MBase extends CI_Model{
                 }
             }
         }
+        return true;
     }
 }

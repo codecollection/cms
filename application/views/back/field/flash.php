@@ -39,5 +39,6 @@
     <div class="box_1000">
         <span>操作：</span>
         <?php $thisc->echoButton("{$thisc->level}01","javascript:flash();","确认创建",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}","返回字段",'btn3');?>
     </div>
 </div>
