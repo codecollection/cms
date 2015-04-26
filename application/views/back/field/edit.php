@@ -42,7 +42,7 @@
         </tr>
         <tr>
             <td class="fr">表单默认值：</td>
-            <td><input id="form_value" type="text" class="comm_ipt" name="data[form_value]" placeholder="0" value="<?php echo $data['form_value']; ?>"> </td>
+            <td><input id="form_value" type="text" class="comm_ipt" name="data[form_value]" placeholder="0" value="<?php echo $data['form_value']; ?>"> 不能有双引号("),如果碰到多值，如下处理 ：0:不加粗,1:加粗|red:红色,green:绿色 </td>
         </tr>
         <tr>
             <td class="fr">表单备注：</td>
@@ -52,17 +52,17 @@
         </tr>
         <tr>
             <td class="fr">字段排序：</td>
-            <td><input id="forder" type="text" class="comm_ipt" name="data[forder]" placeholder="0" value=""></td>
+            <td><input id="forder" type="text" class="comm_ipt" name="data[forder]" placeholder="0" value="<?php echo $data['forder']; ?>"></td>
         </tr>
         
         <tr>
             <td class="fr">联动表单ID：</td>
-            <td><input id="linkage_type_id" type="text" class="comm_ipt" name="data[linkage_type_id]" value=""> 表单联动菜单使用，有限处理这个，如：地址的联动
+            <td><input id="linkage_type_id" type="text" class="comm_ipt" name="data[linkage_type_id]" value="<?php echo $data['linkage_type_id']; ?>"> 表单联动菜单使用，有限处理这个，如：地址的联动
             </td>
         </tr>
         <tr>
             <td class="fr">标签：</td>
-            <td><input id="field_tag" type="text" class="comm_ipt" name="data[field_tag]" placeholder="文章" value="">给字段简单分组，可以根据标签查看
+            <td><input id="field_tag" type="text" class="comm_ipt" name="data[field_tag]" placeholder="文章" value="<?php echo $data['field_tag']; ?>">给字段简单分组，可以根据标签查看
             </td>
         </tr>
     </table>
@@ -75,7 +75,7 @@
     <div class="box_1000">
         <span>操作：</span>
         <?php $thisc->echoButton("{$thisc->level}01","javascript:save_data();","保存字段",'btn3');?>
-        <?php $thisc->echoButton("{$thisc->level}03","/back/{$thisc->controllerId}","快速创建",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}","快速创建",'btn3');?>
         <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
         
     </div>

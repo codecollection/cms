@@ -152,7 +152,6 @@ class NavPanel {
                     'menu'=>array(
                         array('title'=>'添加编辑数据','level'=>'D0201'),
                         array('title'=>'删除数据','level'=>'D0202'),
-                        array('title'=>'快速创建','level'=>'D0203'),
                     ),
                 ),
             ),

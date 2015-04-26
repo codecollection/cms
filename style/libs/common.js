@@ -650,18 +650,22 @@ var C={
        *通过formID 获取该form 下所有表单元素值
        */
       "get_form": function (formID) {
-        var value = [];
+          
+        var value = {};
         formID = formID.indexOf('#') >= 0 ? formID : '#' + formID + ''; //判断参数是否带有#
         //alert($(formID).find('input[type=checkbox]').length);
         $(formID).find('input').each(function (index) {
          
           var inp_type = this.type;
           if (inp_type == 'text' || inp_type == 'hidden' || inp_type == 'password') {
-            value.push('"' + this.name + '":"' + this.value + '"');
+            //value.push('"' + this.name + '":"' + encodeURIComponent(this.value) + '"');
+            value[this.name] = this.value;
           }
+          
           if (inp_type == 'radio' || inp_type == 'checkbox') {
             if ($(this).prop('checked')) {
-                value.push('"' + this.name + '":"' + $("input[name='"+this.name+"']:checked").val() + '"');
+                //value.push('"' + this.name + '":"' + encodeURIComponent($("input[name='"+this.name+"']:checked").val()) + '"');
+                value[this.name] = $("input[name='"+this.name+"']:checked").val();
             }
 
 			//checkbox特殊处理
@@ -680,19 +684,24 @@ var C={
 				} else {
 					var params_str = params.join(',');
 				}
-				value.push('"' + this.name + '":"' + params_str + '"');
+				//value.push('"' + this.name + '":"' + encodeURIComponent(params_str) + '"');
+                                value[this.name] = params_str;
 			}
           }
         });
 
         $(formID).find('select').each(function () {//下拉
-          value.push('"' + this.name + '":"' + $(this).find("option:selected").val() + '"');
+          //value.push('"' + this.name + '":"' + encodeURIComponent($(this).find("option:selected").val()) + '"');
+          value[this.name] = $(this).find("option:selected").val();
         });
         $(formID).find('textarea').each(function () {//多行文本
-          value.push('"' + this.name + '":"' + $(this).val() + '"');
+          //value.push('"' + this.name + '":"' + encodeURIComponent($(this).val()) + '"');
+          value[this.name] = $(this).val();
         });
+        return value;
         //alert("{" + value.join(',') + "}");
-        return $.evalJSON("{" + value.join(',') + "}");//转换json格式
+        //return $.evalJSON("{" + value.join(',') + "}");//转换json格式
+        //return JSON.parse("{" + value.join(',') + "}");
       },
       /*
        *通过formID 赋值 给该form 下ID对应的表单元素

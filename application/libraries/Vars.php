@@ -19,17 +19,18 @@ class Vars {
         ),
         
         "form_type" => array( //表单类型
-            array('value'=>"text",'txt'=>'文本框'), //文本框
+            array('value'=>"input",'txt'=>'文本框'), //文本框
             array('value'=>"textarea",'txt'=>'多行文本框'), //多行文本框
             array('value'=>"radio",'txt'=>'单选框'), //单选框
             array('value'=>"checkb",'txt'=>'多选框'), //多选框
             array('value'=>"upload",'txt'=>'上传按钮'), //上传按钮
             array('value'=>"edit",'txt'=>'编辑框'), //编辑框
             array('value'=>"select",'txt'=>'下拉框'), //下拉框
-            
+            array('value'=>"link",'txt'=>'联动表单'), //联动表单
         )
     ); 
 
+    private $formConfig = array('field'=>'','title'=>'','field_type'=>'','form_type'=>'','form_value'=>'','field_remark'=>'',''=>'','value'=>'');
     /**
      * 增加或者重设一个节点
      * @param $node 节点名称 如 yesno
@@ -175,81 +176,142 @@ class Vars {
     }
 
     /**
-     * 输出代码值下拉框，对应 mcms_code 表
-     * @param $params
+     * 根据表单模型数据返回对应的html代码,对应fields的值
+     *
+     * @param type $filed array('field'=>'','title'=>'','field_type'=>'','form_type'=>'','form_value'=>'','field_remark'=>'',''=>'');
+     * @return string
      */
-    public function input_code_select($params){
-        $node = isset($params['node'])?$params['node']:'';//节点变量名
-        $path = isset($params['path'])?$params['path']:'';//多级下拉菜单
-        $default = isset($params['default'])?$params['default']:'';//默认值
-        $childs=explode(',',$path);
-        $childs_val=explode(',',$default);
-        if($default=='') {
-            foreach($childs as $k=>$v){
-                $childs_val[$k]='';
-            }
+    public function formHtml($filed,$value = FALSE){
+        
+        $v = $value === FALSE ? $filed['form_value']: $value;
+        $filed['value'] = $v;
+        $this->formConfig = $filed; 
+        $html = "";
+        
+        switch ($filed['form_type']){
+            case 'input':
+                $html = $this->getInput();
+                break;
+            case 'radio':
+                $html = $this->getRadio();
+                break;
+            default :
+                $html = "<span>{$filed['form_value']}</span>";
         }
-
-        $html='<select id="'.$childs[0].'" name="'.$childs[0].'">';
-        $html.='<option value="">请选择</option>';
-        foreach($params['node'] as $k=>$v){
-            $selected_str='';
-            if($childs_val[0]==$k) $selected_str=' selected';
-            $html.='<option value="'.$k.'"'.$selected_str.'>'.$v['txt'].'</option>';
-        }
-        $html.='</select>';
-        //开始子级菜单
-
-        $i=0;
-        foreach($childs as $child){
-            if($i>0){
-                $html.='&nbsp;&nbsp;<select id="'.$child.'" name="'.$child.'">';
-                $html.='<option value="">请选择</option>';
-                if($i==1){
-                    $nlist=isset($node[$childs_val[0]])?$node[$childs_val[0]]['son']:array();
-                    foreach($nlist as $k=>$v){
-                        $selected_str='';
-                        if($childs_val[1]==$k) $selected_str=' selected';
-                        $html.='<option value="'.$k.'"'.$selected_str.'>'.$v['txt'].'</option>';
-                    }
-                }
-                if($i==2){
-                    $nlist=isset($node[$childs_val[0]]['son'][$childs_val[1]])?$node[$childs_val[0]]['son'][$childs_val[1]]['son']:array();
-                    foreach($nlist as $k=>$v){
-                        $selected_str='';
-                        if($childs_val[2]==$k) $selected_str=' selected';
-                        $html.='<option value="'.$k.'"'.$selected_str.'>'.$v['txt'].'</option>';
-                    }
-                }
-                if($i==3){
-                    $nlist=isset($node[$childs_val[0]]['son'][$childs_val[1]]['son'][$child_val[2]])?$node[$childs_val[0]]['son'][$childs_val[1]]['son'][$child_val[2]]['son']:array();
-                    foreach($nlist as $k=>$v){
-                        $selected_str='';
-                        if($childs_val[3]==$k) $selected_str=' selected';
-                        $html.='<option value="'.$k.'"'.$selected_str.'>'.$v['txt'].'</option>';
-                    }
-                }
-                $html.='</select>';
-            }
-            $i++;
-        }
+        
         return $html;
     }
+
     /**
-     * 输出checkbox复选框，对应 mcms_code 表
-     * @param $params
+     * 输入框html代码
+     * @return string
      */
-    public function input_code_checkbox($params){
-        $node = isset($params['node'])?$params['node']:'';//节点变量名
-        $name = isset($params['name'])?$params['name']:'';//checkbox
-        $default = isset($params['default'])?$params['default']:'';//默认值
-        $arr=explode(',',$default);
-        $html='';
-        foreach($node as $k=>$v){
-            $select='';
-            if (in_array($k,$arr)) $select = ' checked';
-            $html .= '<span style="white-space:nowrap;display:inline-block;"><input type="checkbox" name="' . $name . '" value="' . $k . '"' . $select . '>&nbsp;' . $v['txt'] . '&nbsp;&nbsp;</span>';
+    private function getInput(){
+        
+        $input = '<input id="%s" name="data[%s]" type="text" class="comm_ipt" value="%s"> %s';
+        
+        return sprintf($input,  $this->formConfig['field'],$this->formConfig['field'],$this->formConfig['value'],$this->formConfig['field_remark']);
+    }
+    
+    /**
+     * 单选
+     * @return string
+     */
+    private function getRadio(){
+        $check = 'checked="checked"';
+        
+        $radio = '<span class="cbx_wrap"><input type="radio" id="%s" name="%s" value="%s" %s class="" />&nbsp;&nbsp;%s&nbsp;&nbsp;&nbsp;&nbsp;';
+        
+        $radioData = RKit::strToArray($this->formConfig['form_value']);
+        $html = '<div class="l">';
+        foreach($radioData as $key => $value){
+            
+            foreach ($value as $k => $v){
+                $name = "data[{$this->formConfig['field']}]";
+                
+                $select = $this->formConfig['value'] == $v['value'] ? $check : '';
+                
+                $html .= sprintf($radio, $this->formConfig['field'],  $name,$v['value'], $select, $v['txt']);
+            }
+        }
+        
+        $html .='</div>' . $this->formConfig['field_remark'];
+        
+        return $html;
+    }
+
+    /**
+     * 下拉框
+     * @return string
+     */
+    private function getSelect(){
+        
+        $selectData = RKit::strToArray($this->formConfig['form_value']);
+        
+        $html = "";
+        foreach($selectData as $key => $value){
+            
+            $this->set_fields('_select', $value);
+        
+            $html .=$this->input_str(array('node'=>'_select','name'=>  $this->formConfig['field'],'type'=>'select_single','default'=>$default = $this->formConfig['value'] == $value['value'] ? $value['value'] : ''));
         }
         return $html;
     }
+    
+    /**
+     * 多选
+     * @return string
+     */
+    private function getCheckbox(){
+        
+        $check = 'checked="checked"';
+        
+        $checkbox = '<input type="checkbox" id="%s" name="%s" value="%s" %s  /><label for="%s">&nbsp;&nbsp;%s&nbsp;&nbsp;</label></span>';
+        
+        $radioData = RKit::strToArray($this->formConfig['form_value']);
+        $html = '<div class="l">';
+        foreach($radioData as $key => $value){
+            
+            foreach ($value as $k => $v){
+                $name = "data[{$this->formConfig['field']}]";
+                $select = $this->formConfig['value'] == $v['value'] ? $check : '';
+                $html .= sprintf($checkbox, $this->formConfig['field'],  $name,$v['value'], $select,  $this->formConfig['field'], $v['txt']);
+            }
+        }
+        
+        $html .='</div>' . $this->formConfig['field_remark'];
+        
+        return "";
+    }
+    
+    /**
+     * 文本框
+     * @return string
+     */
+    private function getTextarea(){
+        
+        return "";
+    }
+    
+    /**
+     * 上传框
+     * @return string
+     */
+    private function getUplad(){
+        
+        return "";
+    }
+    
+    /**
+     * 编辑框
+     * 
+     * @return string
+     */
+    private function getEdit(){
+        
+        return "";
+    }
+    
+    
+
 }

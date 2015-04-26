@@ -34,7 +34,7 @@
                 <td>表单备注</td>
                 <td>标签</td>
                 <td>是否系统</td>
-                <td width="80">操作</td>
+                <td width="100">操作</td>
             </tr>
         </thead>
 
@@ -46,12 +46,14 @@
                 <td><?php echo $v['field'];?></td>
                 <td><?php echo $v['field_type'];?></td>
                 <td><?php echo $v['form_type'];?></td>
-                <td><?php echo $v['form_value'];?></td>
+                <td><input type="text" value="<?php echo $v['form_value'];?>" class="comm_ipt" style="width:150px"/></td>
                 <td><?php echo $v['field_remark'];?></td>
                 <td><?php echo $v['field_tag'];?></td>
                 <td><?php echo $v['is_system'];?></td>
                 <td>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['field_id']}","编辑","btn btn_disabled");?>
                     <?php $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");?>
+                    
                 </td>
             </tr>
             <?php }?>
@@ -74,5 +76,6 @@
     <div class="box_1000">
         <span>操作：</span>
         <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add","添加字段",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/flash","快速创建",'btn3');?>
     </div>
 </div>

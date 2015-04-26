@@ -23,7 +23,23 @@ class MY_Controller extends CI_Controller {
     public function getData($field) {
         
         return $this->input->get_post($field);
+        
     }
+    
+//    private function decodeData($data = array()){
+//        
+//        if(is_array($data)){
+//            foreach ($data as $k => $d){
+//                $this->decodeData($d);
+//            
+//            }
+//        } else{
+//            $data = urldecode($data);
+//             
+//        }
+//        
+//        return $data;
+//    }
 
     /**
      * 输出ajax信息

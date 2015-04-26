@@ -95,7 +95,7 @@
         
         <tr>
             <td class="fr"><?php echo $v['title'];?>：</td>
-            <td><?php echo $v['form_type'];?></td>
+            <td><?php echo $thisc->vars->formHtml($v);?></td>
         </tr>
         <?php }?>
     </table>

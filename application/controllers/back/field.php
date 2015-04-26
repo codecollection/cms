@@ -11,10 +11,13 @@ class Field extends CAdminBase {
     
     public $level = "D02";
     
+    private $regFlash = "/\{(.*?)\}/";
+            
     function __construct() {
 
        parent::__construct();
        
+       $this->addJs($this->controllerId.".js");
     }
 
     /**
@@ -30,6 +33,46 @@ class Field extends CAdminBase {
         $this->lists();
     }
     
+    public function flash(){
+        
+        $this->setData('page', '');
+        $this->renderAdminView($this->viewDir(3,"flash"));
+    }
+
+    /**
+     * {标题}{title}{varchar(100) not null}{input}{}{这个是标题}{100}{测试}
+     */
+    public function doFlash(){
+        
+        //检测权限
+        
+        $data = $this->getData('data');
+        
+        $flashes = explode(PHP_EOL, $data);
+        
+        $flashData = array();
+        foreach($flashes as $f){
+            
+            if(preg_match_all($this->regFlash, $f, $flashData) && count($flashData[1]) == 8){
+                $fd = $flashData[1];
+                $field = array(
+                    'title'=>$fd[0],
+                    'field'=>$fd[1],
+                    'field_type'=>$fd[2],
+                    'form_type'=>$fd[3],
+                    'form_value'=>$fd[4],
+                    'field_remark'=>$fd[5],
+                    'forder'=>$fd[6],
+                    'field_tag'=>$fd[7],
+                );
+                
+                $this->bindModel->setAttrs($field)->save(true);
+            }
+        }
+        
+        $this->successAjax();
+    }
+
     protected function setSearch() {
         
         $s = RKit::getData('tag');
