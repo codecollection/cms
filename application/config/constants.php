@@ -90,4 +90,5 @@ define('IS_DEBUG', true);
 define('SUPER_ADMIN',100); //超级管理员特殊权限值
 define('PAGESIZE', 20);//后台每页显示的数据条数
 define('DB_BASE', 'cms'); //数据dbbase
-define('DEFAULT_INFO_IMG', '/style/back/image/upload-pic.png');
+define('DEFAULT_INFO_IMG', '/style/back/image/upload-pic.png'); //文档默认图
+define('INFO_STATE', 1); //产品默认状态
