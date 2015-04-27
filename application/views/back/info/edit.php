@@ -9,14 +9,14 @@
         <?php }else{ ?>
         <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
         <?php } } ?>  
-        <em>></em>分类信息
+        <em>></em>文档信息
     </span>
 </div>
 <p class="line-t-15"></p>
 
 <div id="form_add">
 
-    <input type="hidden" id="cate_id" name="id" value="<?php //echo($data["cate_id"]);?>" />
+    <input type="hidden" id="<?php echo $thisc->modelName."_id";?>" name="id" value="<?php echo($data[$thisc->modelName."_id"]);?>" />
     <table class="table_lists editbox">
         
         <?php ?>
@@ -36,34 +36,44 @@
         
         <tr>
             <td class="fr"><span class="fred">* </span>标题 ：</td>
-            <td><input id="cname" type="text" name="data[cname]" class="comm_ipt" value="<?php //echo $data["cname"]?>"></td>
+            <td><input id="title" type="text" name="data[title]" class="comm_ipt" value="<?php echo $data["title"]?>"></td>
         </tr>
         <tr>
             <td class="fr">描述：</td>
-            <td><input id="cnick" type="text" name="data[cnick]" class="comm_ipt" value="<?php //echo $data["cnick"]?>"> 用于手机等小设备显示简短分类名称</td>
+            <td><input id="desc" type="text" name="data[desc]" class="comm_ipt" value="<?php echo $data["desc"]?>"> 用于手机等小设备显示简短分类名称</td>
         </tr>
         
         <tr>
             <td class="fr" style="vertical-align:top;">缩略图：</td>
-            <td><input id="clogo" type="text" class="comm_ipt" value="<?php // echo $data["clogo"]?>" name="data[clogo]"> 
+            <td><input id="img_url" type="text" class="comm_ipt" value="<?php echo $data["img_url"]?>" name="data[img_url]"> 
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
-                    <iframe src="/back/upload?vid=clogo" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                    <iframe src="/back/upload?vid=img_url" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
                 </div>
 
                 <div class="slt_small" style="right:228px;">
-                    <img id="thumb_clogo" src="/style/back/image/upload-pic.png<?php //echo $data["clogo"] = $data['clogo'] == '' ? "/style/back/image/upload-pic.png" : $data["clogo"]; ?>" />                    
+                    <img id="thumb_img_url" src="<?php echo $data["img_url"] = $data['img_url'] == '' ? DEFAULT_INFO_IMG : $data["img_url"]; ?>" />                    
                 </div>
             </td>
         </tr>
         <tr>
             <td class="fr">详情：</td>
-            <td>&nbsp;<input id="cnick" type="text" name="data[cnick]" class="comm_ipt" value="<?php //echo $data["cnick"]?>"> 
+            <td>
+                 <p class="line-t-10"></p>
+                <textarea name="data[body]" id="body" style="display:block"><?php echo $data["body"]?></textarea>
+                <script type="text/javascript" src="/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
+                <script type="text/javascript">
+                    var body = CKEDITOR.replace( "body",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
+                        toolbar : ckeditor_toolbar
+                    });
+                </script>
+                <p class="line-t-15"></p>
+                
             </td>
         </tr>
         <tr>
             <td class="fr" style="vertical-align:top;">标签：</td>
-            <td><input id="clogo" type="text" class="comm_ipt" value="<?php // echo $data["clogo"]?>" name="data[clogo]"> 
+            <td><input id="tag" type="text" class="comm_ipt" value="<?php echo $data["tag"]?>" name="data[tag]"> 
             </td>
         </tr>
         <tr>
@@ -89,9 +99,9 @@
         </tr>
         <tr>
             <td class="fr">排序：</td>
-            <td><input id="cdomain" name="data[cdomain]" type="text" class="comm_ipt" value="<?php //echo $data["cdomain"]?>"> 排序有小到大</td>
+            <td><input id="forder" name="data[forder]" type="text" class="comm_ipt" value="<?php echo $data["forder"]?>"> 排序有小到大</td>
         </tr>
-        <?php foreach($fields as $v){?>
+        <?php foreach($thisc->modelFields as $v){?>
         <tr>
             <td class="fr"><?php echo $v['title'];?>：</td>
             <td><?php echo $thisc->vars->formHtml($v);?></td>

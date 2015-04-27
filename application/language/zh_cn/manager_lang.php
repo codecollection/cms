@@ -1,4 +1,7 @@
 <?php 
+//系统
+$lang['param_error'] = "请求参数有误";
+
 //模型字段校验错误
 $lang['model_error_required'] = '%s必须输入信息';
 $lang['model_error_email'] = '输入的%s不是一个有效的邮箱地址';

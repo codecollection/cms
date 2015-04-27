@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * 文档管理
  */
@@ -11,6 +11,10 @@ class Info extends CAdminBase {
     
     public $level = "C01";
     
+    public $modelName = ""; //模型对应的表明
+    
+    public $modelFields = array();
+    
     function __construct() {
 
        parent::__construct();
@@ -18,33 +22,19 @@ class Info extends CAdminBase {
        $this->loadModel("model");
        $this->loadModel("field");
        $this->loadModel("cate");
+       
+       $this->setModelName();
+       
     }
 
     public function index(){
         
-        $modelId = $this->getData('modelId');
-        
-        //获取模型对应的表名称
-        $modelName = $this->model->getField($modelId,"model_name"); 
-        
-        $this->bindModel->tableName = $modelName;
-        
-        //获取模型下面的字段
-        $fields = $this->model->getRelationField($modelId);
-        
-        $this->setData('fields', $fields);
-        $this->setData('modelId', $modelId);
         $this->lists();
         
     }
     
     public function add() {
         
-        $modelId = $this->getData('modelId');
-        //关系字段
-        $externFields = $this->model->getRelationField($modelId);
-        
-        $this->setData('fields', $externFields);
         $this->renderAdminView($this->viewDir(2));
     }
 
@@ -65,66 +55,32 @@ class Info extends CAdminBase {
     }
     
     /**
-     * 
-     * 字段管理页面
+     * 设置模型的表名称
      */
-    public function field(){
-        
-        $this->checkPermission($this->level . "03");
-        
-        $this->loadModel("field");
-        $this->loadModel("modelfield");
-        
-        $id = $this->getData('id');
-        
-        $fieldTag = $this->getData("fieldTag");
-//        $modelName = $this->bindModel->getField($id,"model_name");
-//        //获取模型存在的表字段
-//        $tableFields = $this->bindModel->getTableFields($modelName);
-        
-        if(!empty($fieldTag)){
-            $this->field->like("field_tag",$fieldTag);
-        }
-        //获取模型配置字段
-        $fields = $this->field->search();
-        
-        $this->setData("fields", $fields);
-        
-        //获取字段标签
-        $fieldTags = $this->field->getTags();
-        
-        $this->setData("fieldTags", $fieldTags);
-        
-        $this->setData("model_id", $id);
-        $this->renderAdminView($this->viewDir(0, "field"));
-        
-    }
-    
-    
-    public function doField(){
-        
-        $this->loadModel("modelfield");
-        
-        $params = $this->getData("params");
-       
-        $modelId = $this->getData("model_id");
-        
-        if(!is_array($params) || !is_numeric($modelId)){
-            $this->echoAjax(0, '');
-        }
-        $data = array();
-        foreach($params as $k => $v){
-            $data["model_id"] = $modelId;
-            $data["field_id"] = $v;
+    private function setModelName(){
+        //根据分类取
+        $cateId = $this->getData('cateId');
+        if(is_numeric($cateId) && $cateId > 0 ){
             
-            if($this->modelfield->isExitRel($modelId,$data["field_id"])){
-                continue;
-            }
-            $this->modelfield->setAttrs($data)->save(true);
+            $modelId = $this->cate->getField($cateId,'model_id');
+        }else{
+            
+            //根据模型ID取
+            $modelId = $this->getData('modelId');
         }
-       
-        $this->successAjax();
+        if(!is_numeric($modelId) && $modelId <= 0 ){ 
+            
+            $this->echoAjax(100, lang('param_error'));
+        }
+        
+        //获取模型对应的表名称
+        $modelName = $this->model->getField($modelId,"model_name"); 
+        $this->modelName = $modelId;
+        $this->bindModel->tableName = $modelName;
+        
+        //获取模型下面的字段
+        $this->modelFields = $this->model->getRelationField($modelId);
+        
     }
-    
     
 }
