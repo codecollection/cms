@@ -8,6 +8,7 @@ create table if not exists `cms_configs`(
  `tag` varchar(50) not null default '' comment '配置标签(兼分组功能)',
  `form_type` varchar(100) not null default '' comment '表单类型',
  `comment` varchar(500) not null default '' comment '字段特殊说明',
+ `is_system` tinyint(2) not null default 1 comment '是否是系统配置，0=系统，1=自定义',
  primary key (`config_id`)
 )engine=myisam default charset=utf8 comment '配置表';
 
@@ -134,7 +135,7 @@ create table if not exists `cms_fields` (
  `field_type` varchar(100) not null default '' not null comment '字段类型SQL,如：varchar(100)',
  `form_type` varchar(100) not null default '' not null comment '表单类型(input ,textarea等)',
  `form_value` varchar(1000) not null default '' not null comment '表单默认值，json格式(如:{0:红色,1:蓝色})',
- `field_remark` int(2) not null default 0 not null comment '表单的备注，比如不能为空等 0=无，1=不能为空 2=是数字 3=手机号 4=邮箱地址 5=身份证号 6=QQ号 7=银行卡号,可以自定义添加正则等',
+ `field_remark` varchar(100) not null default 0 not null comment '表单的备注，比如不能为空等 0=无，1=不能为空 2=是数字 3=手机号 4=邮箱地址 5=身份证号 6=QQ号 7=银行卡号,可以自定义添加正则等',
  `forder` int(3) not null default 100 comment '字段显示排序',
  `linkage_type_id` int(11) not null default 0 comment '联动类型ID，（如果有，先处理这个）',
  `is_system` int(3) not null default 1 comment '是否为系统字段，0=系统字段 ，1=扩展字段',
@@ -634,3 +635,5 @@ values(19, '标题颜色', 'fcolor', 'varchar(20) not null ', 0, '', 0, 1, '文�
 insert ignore into cms_fields (
 field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
 values(20, '关联文档', 'related_ids', 'varchar(200) not null ', 0, '', 0, 1, '文档');
+
+--系统配置

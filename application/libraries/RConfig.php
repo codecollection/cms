@@ -1,5 +1,6 @@
 <?php
-/* 
+/** 
+ * 犹豫没有配置redis,所以配置缓存在文件中 
  * 配置参数表
  */
 class RConfig {
@@ -35,26 +36,6 @@ class RConfig {
         
         return self::getInstance()->getValue($itemKey, $default);
     }
-    
-    /**
-     * 根据教学系统类型获取配置
-     * 
-     * @param type $itemKey
-     * @param type $item
-     * @return null
-     */
-    public static function getByTech($itemKey, $item = NULL) {
-        
-        $data =  self::getInstance()->getValue($itemKey, NULL);
-        if ($data) {
-            $ci = & get_instance();
-            $techType = $ci->rauth->getUserInfo('techType');
-            
-            return $item === NULL ? $data[$techType] : $data[$techType][$item];
-        }
-        
-        return NULL;
-    }
 
     /**
      * 取得配置项的值，并且作为模板替换处理
@@ -63,6 +44,7 @@ class RConfig {
      * @param  mixed  $templateData  模板数据
      * @return string
      */
+    /**
     public static function getTemplate($itemKey, $templateData) {
         
         $data = self::getInstance()->getValue($itemKey, '');
@@ -74,6 +56,7 @@ class RConfig {
 
         return str_replace($replaceName, $templateData, $data);
     }
+    */
     
     /**
      * 取得配置的实例
@@ -97,17 +80,35 @@ class RConfig {
     public function __construct() {
 
         $this->ci = & get_instance();
-        $this->redis = new RRedis();
-        $this->redis->setNameSpace('common');
+//        $this->redis = new RRedis();
+//        $this->redis->setNameSpace('common');
     }
 
-    
+    public function getValue($key,$default = NULL){
+        
+        $data = $this->ci->config->item($key);
+        
+            if($data === false){
+            if(!isset($this->ci->conf)){
+                $this->ci->load->model('Set_model','set');
+            }
+            $this->ci->set->fields('value');
+            $fdata = $this->ci->conf->find($key);
+            if (!$fdata) {
+                return $default;
+            }
+            $data = json_decode($fdata['value'], true);
+        }
+         return $data;
+        
+    }
     /**
      * 取得配置数据
      * @param string $itemKey
      * @param mixed $default
      * @return mixed
      */
+    /**
     public function getValue($itemKey, $default = NULL) {
         
         $data = $this->redis->hget($itemKey, $default);
@@ -128,7 +129,7 @@ class RConfig {
         
         return $data;
     }
-
+    */
     /**
      * 增加配置项
      * @param string $title
@@ -137,6 +138,7 @@ class RConfig {
      * @param string $remark
      * @return boolean
      */
+    /**
     public function add($title, $itemKey, $itemValue = NULL, $remark = NULL, $tag = NULL) {
         
         if (empty($title) || empty($itemKey)) {//必须指定key和名称
@@ -158,7 +160,7 @@ class RConfig {
         
         return true;
     }
-    
+    */
     /**
      * 设置配置值
      * @param string $itemKey
@@ -167,6 +169,7 @@ class RConfig {
      * @param string $remark
      * @return boolean
      */
+    /**
     public function set($itemKey, $itemValue = NULL, $title = NULL, $remark = NULL, $tag = NULL) {
 
         if (!$this->ci->conf->isExists($itemKey)) {//key不存在
@@ -197,16 +200,18 @@ class RConfig {
         
         return true;
     }
-    
+    */
     /**
      * 删除配置项
      * @param string $itemKey
      * @return \RConfig
      */
+    /**
     public function delete($itemKey) {
         
         $this->ci->conf->delete($itemKey);
         $this->redis->hdel(self::REDIS_KEY, $itemKey);
         return $this;
     }
+     */
 }
