@@ -30,14 +30,14 @@
             <tr id="<?php echo "formli" . $k + 1;?>">
                 
                 <td><?php echo $v['config_id'];?></td>
-                <td><?php echo $v['key'];?></td>
-                <td><?php echo $v['value'];?></td>
+                <td><?php echo $v['ckey'];?></td>
+                <td><?php echo $v['cvalue'];?></td>
                 <td><?php echo $v['tag'];?></td>
                 <td><?php echo $thisc->vars->get_field_str('is_system',$v['is_system']);?></td>
                 <td><?php echo $v['comment'];?></td>
                 <td>
-                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['config_id']}","编辑","btn btn_disabled");?>
-                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['key']});","删除","btn btn_disabled");}?>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['ckey']}","编辑","btn");?>
+                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:del_one('".$v['ckey']."');","删除","btn");}?>
                 </td>
             </tr>
             <?php }?>
@@ -50,11 +50,11 @@
     <p class="line-t-20"></p>
 </div>
 <script>
-    var urls = {"save":"/back/<?php echo $this->controllerId;?>/save","del":"/back/<?php echo $this->controllerId;?>/del"};
+    var urls = {"save":"/back/<?php echo $this->controllerId;?>/save","del":"/back/<?php echo $this->controllerId;?>/delete"};
 </script>
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <?php $thisc->echoButton("/back/<?php echo $this->controllerId;?>/add","添加配置",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}02","/back/{$this->controllerId}/add","添加配置",'btn3');?>
     </div>
 </div>

@@ -176,6 +176,7 @@ class CAdminBase extends MY_Controller {
         
         if (!empty($this->insertNav)){
             foreach($this->insertNav as $k => $v){
+               
                 $this->vars->set_fields($k,$v);
             }
         }

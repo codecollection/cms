@@ -31,6 +31,7 @@ class Vars {
     ); 
 
     private $formConfig = array('field'=>'','title'=>'','field_type'=>'','form_type'=>'','form_value'=>'','field_remark'=>'',''=>'','value'=>'');
+
     /**
      * 增加或者重设一个节点
      * @param $node 节点名称 如 yesno

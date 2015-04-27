@@ -16,11 +16,11 @@
     <table class="table_lists editbox">
         <tr>
             <td width="150" class="fr"><span class="fred">* </span>配置key：</td>
-            <td><input id="key" type="text" name="data[key]" class="comm_ipt" placeholder="配置key" value="<?php echo $data["key"]?>"></td>
+            <td><input id="ckey" type="text" name="data[ckey]" class="comm_ipt" placeholder="配置key" value="<?php echo $data["ckey"]?>"></td>
         </tr>
         <tr>
             <td class="fr"><span class="fred">* </span>配置值：</td>
-            <td><input id="value" type="text" name="data[value]" class="comm_ipt" placeholder="配置值" value="<?php echo $data["value"]?>"></td>
+            <td><input id="cvalue" type="text" name="data[cvalue]" class="comm_ipt" placeholder="配置值" value="<?php echo $data["cvalue"]?>"></td>
         </tr>
         <tr>
             <td class="fr">标签：</td>
@@ -28,18 +28,18 @@
         </tr>
         <tr>
             <td class="fr">表单类型：</td>
-            <td><?php echo $thisc->vars->input_str('form_type',$v['field_type']);?></td>
+            <td><?php echo $thisc->vars->input_str(array("node"=>"form_type","default"=>$data["field_type"]= $data["field_type"] == "" ? "text" : $data["field_type"],"type"=>"select_single","name"=>"field_type"))?></td>
         </tr>
         <tr>
             <td class="fr">是否系统：</td>
             <td>
-                <span class="cbx_wrap"><input type="radio" id="is_system" name="data[is_system]" value="0" /><label for="is_system">系统</label>&nbsp;&nbsp;
-                <span class="cbx_wrap"><input type="radio" id="is_system_not" name="data[is_system]" value="1" /><label for="is_system_not">自定义</label>&nbsp;&nbsp;
+                <span class="cbx_wrap"><input type="radio" id="is_system" name="data[is_system]" value="0" />&nbsp;&nbsp;<label for="is_system">系统</label>&nbsp;&nbsp;
+                <span class="cbx_wrap"><input type="radio" id="is_system_not" name="data[is_system]" value="1" />&nbsp;&nbsp;<label for="is_system_not">自定义</label>&nbsp;&nbsp;
             </td>
         </tr>
         <tr>
             <td class="fr">说明：</td>
-            <td><teatarea id="comment" name="data[comment]" class="comm_ipt" placeholder="配置说明"><?php echo $data['comment'];?></teatarea></td>
+            <td><textarea id="comment" name="data[comment]" style="width: 238px;height: 50px;" placeholder="配置说明"><?php echo $data['comment'];?></textarea></td>
         </tr>
     </table>
 </div>

@@ -11,11 +11,11 @@ class Set extends CAdminBase {
     
     public $level = "A02";
     
-    public $inserNav = array(
+    public $insertNav = array(
         'is_system' => array(
             array('value'=>0,'txt'=>'系统','color'=>'red'),
             array('value'=>1,'txt'=>'自定义','color'=>'green')
-        ),
+        )
     );
             
     function __construct() {

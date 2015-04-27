@@ -3,10 +3,10 @@
 create table if not exists `cms_configs`(
  `config_id` int(11) unsigned not null auto_increment comment '配置id',
  `title` varchar(100) not null default '' comment '配置项',
- `key` varchar(100) not null default '' comment '配置key',
- `value` varchar(500) not null default '' comment '配置值',
+ `ckey` varchar(100) not null default '' comment '配置key',
+ `cvalue` varchar(500) not null default '' comment '配置值',
  `tag` varchar(50) not null default '' comment '配置标签(兼分组功能)',
- `form_type` varchar(100) not null default '' comment '表单类型',
+ `field_type` varchar(100) not null default '' comment '表单类型',
  `comment` varchar(500) not null default '' comment '字段特殊说明',
  `is_system` tinyint(2) not null default 1 comment '是否是系统配置，0=系统，1=自定义',
  primary key (`config_id`)

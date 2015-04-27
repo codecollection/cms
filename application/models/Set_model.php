@@ -8,29 +8,33 @@ class Set_model extends MBase{
     
     protected $tableName = 'cms_configs';
     
-    protected $pk = "key";
+    protected $pk = "ckey";
     
     protected $rules = array(
         array('title', 'required'),
-        array('key', 'required'),
-        array('value', 'required'),
+        array('ckey', 'required'),
+        array('cvalue', 'required'),
     );
     
     protected $fieldTitles = array(
         'title' => '配置标题',
-        'key' => '配置key',
-        'value' => '配置值',
+        'ckey' => '配置key',
+        'cvalue' => '配置值',
     );
     
-    protected $unique = array("key");
+    protected $unique = array("ckey");
         
     public function  __construct(){
         parent::__construct();
     }
     
     public function saveBefore($isInsert) {
-        
-        $this->checkoutUnique($isInsert);
-        
+        if($isInsert){
+           
+            $this->checkoutUnique($isInsert);
+        }else{
+            $this->pk = "config_id";
+            $this->checkoutUnique($isInsert);
+        }
     }
 }
