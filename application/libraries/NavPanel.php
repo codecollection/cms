@@ -159,19 +159,19 @@ class NavPanel {
         
         array(
             'title' => '扩 展',
-            'url' => '',
+            'url' => '/back/flink',
             'level'=>'E',
             'bgimg' => '/style/back/img/menu1/extern.png',
             'menu'  => array(
                 array(
                     'title' => '友 链',
                     'url' => '',
-                    'level'=>'E01',
+                    'level'=>'E',
                     'bgimg' => '/style/back/img/menu1/extern.png',
                     'menu'  => array(
                         array(
                             'title'=>'友链组',
-                            'url' => '/admin/flinkg',
+                            'url' => '/back/flinkg',
                             'level' => 'E01', //页面权限
                             'menu' => array(
                                 array('title' => '添加编辑', 'level' => 'E0101'), //按钮功能配置
@@ -181,7 +181,7 @@ class NavPanel {
 
                         array(
                             'title' => '友链管理', 
-                            'url' => '/admin/flink',
+                            'url' => '/back/flink',
                             'level'=>'E02',
                             'menu'=>array(
                                 array('title'=>'添加编辑','level'=>'E0201'),
@@ -194,13 +194,13 @@ class NavPanel {
 
                 array(
                     'title' => '广 告',
-                    'url' => '',
+                    'url' => '/back/ad',
                     'level'=>'F',
                     'bgimg' => '/style/back/img/menu1/extern.png',
                     'menu'  => array(
                         array(
                             'title'=>'广告位',
-                            'url' => '/admin/adArea',
+                            'url' => '/back/adarea',
                             'level' => 'F01', //页面权限
                             'menu' => array(
                                 array('title' => '添加编辑', 'level' => 'F0101'), //按钮功能配置
@@ -210,7 +210,7 @@ class NavPanel {
 
                         array(
                             'title' => '广告管理', 
-                            'url' => '/admin/ad',
+                            'url' => '/back/ad',
                             'level'=>'F02',
                             'menu'=>array(
                                 array('title'=>'添加编辑','level'=>'F0201'),
@@ -223,13 +223,13 @@ class NavPanel {
 
                 array(
                     'title' => '标 签',
-                    'url' => '',
+                    'url' => '/back/tagg',
                     'level'=>'G',
                     'bgimg' => '/style/back/img/menu1/extern.png',
                     'menu'  => array(
                         array(
                             'title'=>'标签组',
-                            'url' => '/admin/tagg',
+                            'url' => '/back/tagg',
                             'level' => 'G01', //页面权限
                             'menu' => array(
                                 array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
@@ -239,7 +239,7 @@ class NavPanel {
 
                         array(
                             'title' => '标签管理', 
-                            'url' => '/admin/tag',
+                            'url' => '/back/tag',
                             'level'=>'G02',
                             'menu'=>array(
                                 array('title'=>'添加编辑','level'=>'G0201'),
@@ -250,7 +250,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'正文内链',
-                    'url' => '/admin/nlink',
+                    'url' => '/back/nlink',
                     'level' => 'H01', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'H0101'), //按钮功能配置
@@ -260,7 +260,7 @@ class NavPanel {
                 
                 array(
                     'title' => '推荐位', 
-                    'url' => '/admin/recommend',
+                    'url' => '/back/recommend',
                     'level'=>'H02',
                     'menu'=>array(
                         array('title'=>'添加编辑','level'=>'H0201'),
@@ -270,7 +270,7 @@ class NavPanel {
                 
                 array(
                     'title' => '评论管理', 
-                    'url' => '/admin/comment',
+                    'url' => '/back/comment',
                     'level'=>'H03',
                     'menu'=>array(
                         //array('title'=>'添加编辑','level'=>'H0301'),
@@ -281,7 +281,7 @@ class NavPanel {
                 
                 array(
                     'title' => '资源管理', 
-                    'url' => '/admin/resource',
+                    'url' => '/back/resource',
                     'level'=>'H04',
                     'menu'=>array(
                         //array('title'=>'添加编辑','level'=>'H0401'),
@@ -411,87 +411,4 @@ class NavPanel {
         if (in_array($level, $group_level)) return true;
         return false;
     }
-//
-//    /**
-//     * 普通导航树
-//     */
-//    public function navGroupTree($activeModule) {
-//
-//        if (!isset($this->ci->module)) {
-//            $this->ci->load->model('module_model', 'module');
-//        }
-//        
-//        $userRoleAccess = $this->ci->rauth->getUserInfo('userRoleAccess');
-//        $lists = $this->ci->module->getModulesByIdentity($userRoleAccess);//根据模块标识id取得模块详细信息
-//      
-//        $return = array();
-//        $title = '';
-//        foreach ($lists as $item) {//重构结果数组
-//            
-//            if ($item['is_show'] == 1) continue;
-//            
-//            if (!isset($return[$item['mgroup']])) {
-//                $return[$item['mgroup']] = array();
-//            }
-//            
-//            if ($activeModule == $item['module_identity']) {//检测当前哪一个模块处于使用状态
-//                $item['isActived'] = true;
-//                $title = $item['mgroup'] . ' >> ' . $item['module_name'];
-//            } else {
-//                $item['isActived'] = false;
-//            }
-//            
-//            $return[$item['mgroup']][] = array(
-//                'isActived' => $item['isActived'],
-//                'link'      => $item['murl'],
-//                'title'     => $item['module_name'],
-//                'moduleId' => $item['module_identity'],
-//            );
-//        }
-//        
-//        return array(
-//            'title' => $title,
-//            'lists' => $return,
-//        );
-//    }
-//    
-//    /**
-//     * 课程顾问导航树
-//     */
-//    public function navRoleCouCon() {
-//        
-//        $title1 = lang('menu_CouCon_title1');
-//        $title2 = lang('menu_CouCon_title2');
-//        $return = array($title1 => array(), $title2 => array());
-//        
-//        $id = (int)$this->ci->input->get_post('id');
-//        $vx = $this->ci->input->get_post('vx');
-//        
-//        $query = $this->ci->db->query('SELECT cate_name AS title, cate_class_id AS id FROM mgr_cate_class WHERE subject=\'TF\' AND is_special=0');
-//        foreach ($query->result_array() as $row) {
-//            $return[$title1][] = array(
-//                'title' => $row['title'],
-//                'isActived' => $row['id'] == $id,
-//                'link' => '/admin/cla/timeQuery?id=' . $row['id'],
-//                'moduleId' => 'timequery' . $row['id'],
-//            );
-//        }
-//        
-//        foreach (RConfig::get('TF_SP_TYPE') as $key => $value) {
-//            $return[$title2][] = array(
-//                'title' => $value . '设班',
-//                'isActived' => $key == $vx,
-//                'link' => '/admin/cla/spApply?vx=' . $key,
-//                'moduleId' => 'timequery' . $key,
-//            );
-//        }
-//        
-//        return array(
-//            'title' => '',
-//            'lists' => $return,
-//        );
-//    }
-//    
-//    
-    
 }

@@ -92,7 +92,6 @@
             <td><input id="cdomain" name="data[cdomain]" type="text" class="comm_ipt" value="<?php //echo $data["cdomain"]?>"> 排序有小到大</td>
         </tr>
         <?php foreach($fields as $v){?>
-        
         <tr>
             <td class="fr"><?php echo $v['title'];?>：</td>
             <td><?php echo $thisc->vars->formHtml($v);?></td>
@@ -102,12 +101,12 @@
 </div>
 
 <script>
-    var urls = {"save": "/back/cate/save", "del": "/back/cate/del"};
+    var urls = {"save": "/back/<?php echo $thisc->controllerId; ?>/save", "del": "/back/<?php echo $thisc->controllerId; ?>/del"};
 </script>
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="javascript:save_data();" class="btn3">保存分类</a>
-        <a href="/back/cate" class="btn3">返回分类</a>
+        <?php $thisc->echoButton("{$thisc->level}02","javascript:save_data();","保存信息",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
     </div>
 </div>

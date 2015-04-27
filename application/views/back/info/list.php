@@ -67,10 +67,11 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <a href="/back/<?php echo $this->controllerId?>/add" class="btn3">添加文档</a>
-        <a href="javascript:void(0);" class="btn3" onclick="update_order();">修改排序</a>
-        <a href="javascript:void(0);" class="btn3" onclick="del_data();">批量删除</a>
-        <a href="/back/<?php echo $this->controllerId?>" class="btn3">返回列表</a>
+        
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add?modelId={$modelId}","添加文档",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}03","javascript:update_order();","修改排序",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}02","javascript:del_data();","批量删除",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
     </div>
 </div>
 <script>

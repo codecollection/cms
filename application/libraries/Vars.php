@@ -22,7 +22,7 @@ class Vars {
             array('value'=>"input",'txt'=>'文本框'), //文本框
             array('value'=>"textarea",'txt'=>'多行文本框'), //多行文本框
             array('value'=>"radio",'txt'=>'单选框'), //单选框
-            array('value'=>"checkb",'txt'=>'多选框'), //多选框
+            array('value'=>"checkbox",'txt'=>'多选框'), //多选框
             array('value'=>"upload",'txt'=>'上传按钮'), //上传按钮
             array('value'=>"edit",'txt'=>'编辑框'), //编辑框
             array('value'=>"select",'txt'=>'下拉框'), //下拉框
@@ -183,18 +183,23 @@ class Vars {
      */
     public function formHtml($filed,$value = FALSE){
         
-        $v = $value === FALSE ? $filed['form_value']: $value;
-        $filed['value'] = $v;
+        $filed['value']  = $value === FALSE ? $filed['form_value']: $value;
         $this->formConfig = $filed; 
         $html = "";
         
         switch ($filed['form_type']){
             case 'input':
-                $html = $this->getInput();
-                break;
+                $html = $this->getInput();break;
             case 'radio':
-                $html = $this->getRadio();
-                break;
+                $html = $this->getRadio();break;
+            case 'checkbox':
+                $html = $this->getCheckbox();break;
+            case 'textarea':
+                $html = $this->getTextarea();break;
+            case 'select':
+                $html = $this->getSelect();break;
+            case 'upload':
+                $html = $this->getUpload();break;
             default :
                 $html = "<span>{$filed['form_value']}</span>";
         }
@@ -290,7 +295,8 @@ class Vars {
      */
     private function getTextarea(){
         
-        return "";
+        $textarea = '<textarea name="data[%s]" id="%s">%s</textarea>';
+        return sprintf($textarea,  $this->formConfig['field'],$this->formConfig['field'],$this->formConfig['value']);
     }
     
     /**
@@ -299,12 +305,20 @@ class Vars {
      */
     private function getUpload(){
         
-        return "";
+        $upload = '<input id="%s" type="text" name="data[%s]" class="comm_ipt" value="%s"> %s
+                <p class="line-t-10"></p>
+                <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
+                    <iframe src="/back/upload?vid=%s" scrolling="no" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                </div>
+                <div class="slt_small" style="right:228px;">
+                    <img id="thumb_%s" src="%s" />                    
+                </div>';
+        if(empty($this->formConfig['value'])){$this->formConfig['value'] = DEFAULT_INFO_IMG ;}
+        return sprintf($upload, $this->formConfig['field'],$this->formConfig['field'],$this->formConfig['value'],  $this->formConfig['field_remark'],$this->formConfig['field'],$this->formConfig['field'],$this->formConfig['value']);
     }
     
     /**
      * 编辑框
-     * 
      * @return string
      */
     private function getEdit(){

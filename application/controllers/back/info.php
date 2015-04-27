@@ -33,14 +33,14 @@ class Info extends CAdminBase {
         $fields = $this->model->getRelationField($modelId);
         
         $this->setData('fields', $fields);
-        
+        $this->setData('modelId', $modelId);
         $this->lists();
         
     }
     
     public function add() {
         
-        $modelId = 1;
+        $modelId = $this->getData('modelId');
         //关系字段
         $externFields = $this->model->getRelationField($modelId);
         
