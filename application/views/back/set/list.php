@@ -28,6 +28,7 @@
         <tbody>
             <?php foreach($list['list'] as $k => $v){?>
             <tr id="<?php echo "formli" . $k + 1;?>">
+                
                 <td><?php echo $v['config_id'];?></td>
                 <td><?php echo $v['key'];?></td>
                 <td><?php echo $v['value'];?></td>
@@ -36,7 +37,7 @@
                 <td><?php echo $v['comment'];?></td>
                 <td>
                     <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['config_id']}","编辑","btn btn_disabled");?>
-                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");}?>
+                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['key']});","删除","btn btn_disabled");}?>
                 </td>
             </tr>
             <?php }?>

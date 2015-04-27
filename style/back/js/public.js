@@ -161,9 +161,26 @@ function del_data(tag){
     C.alert.confirm({height:200,content:"确认要删除数据"+params.length + "条数据吗？",funcOk:function(){
         C.alert.opacty_close();
         C.form.batch_modify(urls.del,tag);
+        
     }});
 }
 
+function del_one(id){
+    $.post(urls.del,{"params":id},function(data){
+        try {
+            var json = $.evalJSON(data);
+            
+            if(json.status == 0){
+                //C.alert.alert({content:json.msg});
+                show_close(json.msg);
+            }else{
+                C.alert.alert({content:json.msg});
+            }
+            
+            
+        }catch(e){C.alert.alert({content:e.message+data});}
+    });
+}
 //修改排序
 function update_order(tag){
     if(!arguments[0]){tag = ".corder";}
