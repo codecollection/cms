@@ -148,7 +148,7 @@ class CAdminBase extends MY_Controller {
 
     /**
      * 自动配置需要处理显示的数据 ,如 状态和对应的值
-     * @var type 
+     * @var type array('txt'=>'','value'=>'',color=>'')
      */
     protected $insertNav = array();
     

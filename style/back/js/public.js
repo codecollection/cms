@@ -139,7 +139,8 @@ function save_data(){
             var json = $.evalJSON(data);
             
             if(json.status == 0){
-                show_close(json.msg);
+                C.alert.alert({content:json.msg});
+                //show_close(json.msg);
             }else{
                 C.alert.alert({content:json.msg});
             }

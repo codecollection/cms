@@ -1,7 +1,6 @@
 <div class="crumbs">
     <span class="cbs_left">
         <?php foreach ($minNav as $k =>$v){
-            
            if($k == 0){ 
         ?>
         <b><?php echo $v['title'];?></b>
@@ -12,7 +11,6 @@
     </span>
 </div>
 <p class="line-t-15"></p>
-
 <div id="form_add">
     <input type="hidden" id="config_id" name="id" value="<?php echo($data["config_id"]);?>" />
     <table class="table_lists editbox">
@@ -27,6 +25,17 @@
         <tr>
             <td class="fr">标签：</td>
             <td><input id="tag" type="text" name="data[tag]" class="comm_ipt" placeholder="配置标签" value="<?php echo $data["tag"]?>"></td>
+        </tr>
+        <tr>
+            <td class="fr">表单类型：</td>
+            <td><?php echo $thisc->vars->input_str('form_type',$v['field_type']);?></td>
+        </tr>
+        <tr>
+            <td class="fr">是否系统：</td>
+            <td>
+                <span class="cbx_wrap"><input type="radio" id="is_system" name="data[is_system]" value="0" /><label for="is_system">系统</label>&nbsp;&nbsp;
+                <span class="cbx_wrap"><input type="radio" id="is_system_not" name="data[is_system]" value="1" /><label for="is_system_not">自定义</label>&nbsp;&nbsp;
+            </td>
         </tr>
         <tr>
             <td class="fr">说明：</td>

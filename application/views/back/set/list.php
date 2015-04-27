@@ -1,7 +1,6 @@
 <div class="crumbs">
     <span class="cbs_left">
         <?php foreach ($minNav as $k =>$v){
-            
            if($k == 0){ 
         ?>
         <b><?php echo $v['title'];?></b>
@@ -21,6 +20,7 @@
                 <td>key</td>
                 <td>value</td>
                 <td>标签</td>
+                <td>是否系统</td>
                 <td>作用说明</td>
                 <td width="100">操作</td>
             </tr>
@@ -32,26 +32,15 @@
                 <td><?php echo $v['key'];?></td>
                 <td><?php echo $v['value'];?></td>
                 <td><?php echo $v['tag'];?></td>
+                <td><?php echo $thisc->vars->get_field_str('is_system',$v['is_system']);?></td>
                 <td><?php echo $v['comment'];?></td>
                 <td>
                     <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['config_id']}","编辑","btn btn_disabled");?>
-                    <?php $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");?>
-                    
+                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");}?>
                 </td>
             </tr>
             <?php }?>
-            <tr>
-                <input type="hidden" value="0" name="id" id="id" >
-                <td>&nbsp;</td>
-                <td><input type="text" value="" placeholder="友链组排序" style="width:80px;" class="comm_ipt " name="data[key]" id="key"></td>
-                <td><input type="text" value="" style="width:80px;" class="comm_ipt" placeholder="友链组名称" id="value" name="data[value]"></td>
-                <td><input type="text" value="0" style="width:80px;" class="comm_ipt " placeholder="友链组地址" id="tag" name="data[tag]"></td>
-                <td><input type="text" value="" style="width:180px;" class="comm_ipt " placeholder="友链组logo图" id="comment" name="data[comment]"></td>
-                <td>
-                <?php $thisc->echoButton($this->controllerId . "01", "javascript:save_data();", "添加"); ?>
-        
         </tbody>
-
     </table>
     <p class="line-t-20"></p>
         <div class="pagebar">
@@ -62,3 +51,9 @@
 <script>
     var urls = {"save":"/back/<?php echo $this->controllerId;?>/save","del":"/back/<?php echo $this->controllerId;?>/del"};
 </script>
+<div class="footer_fixed">
+    <div class="box_1000">
+        <span>操作：</span>
+        <?php $thisc->echoButton("/back/<?php echo $this->controllerId;?>/add","添加配置",'btn3');?>
+    </div>
+</div>
