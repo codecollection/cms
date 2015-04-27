@@ -25,10 +25,9 @@
             <td>
                 <span class="l">
                    <?php 
-                    //$fields = $thisc->cate->show_select();
-                    //array_unshift($fields, array('value'=>0,"txt"=>"顶级分类","txt_color"=>""));
-                    //$this->vars->set_fields("parent_id",$fields);
-                    //echo $this->vars->input_str(array('node'=>'parent_id','name'=>'parent_id','type'=>'select_single','default'=>$data["parent_id"] = $data["parent_id"] == "" ? 0 : $data["parent_id"],'style'=>'style="width:200px;"'));
+                    $cates = $thisc->cate->show_select();
+                    $this->vars->set_fields("last_cate_id",$cates);
+                    echo $this->vars->input_str(array('node'=>'last_cate_id','name'=>'last_cate_id','type'=>'select_single','default'=>$data["last_cate_id"] = $data["last_cate_id"] == "" ? 0 : $data["last_cate_id"],'style'=>'style="width:200px;"'));
                     ?>                
                 </span>
             </td>
