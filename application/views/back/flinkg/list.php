@@ -36,7 +36,7 @@
                 <td><?php echo $v['flink_group_img'];?></td>
                 <td>
                     <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['field_id']}","编辑","btn btn_disabled");?>
-                    <?php $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");?>
+                    <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['flink_group_id']});","删除","btn btn_disabled");?>
                     
                 </td>
             </tr>

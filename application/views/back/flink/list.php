@@ -17,7 +17,7 @@
     <table class="table_lists table_click">
         <thead>
             <tr>
-                <td>友链组ID</td>
+                <td>友链ID</td>
                 <td>排序</td>
                 <td>友链组名称</td>
                 <td>友链组地址</td>
@@ -28,19 +28,19 @@
         <tbody>
             <?php foreach($list['list'] as $k => $v){?>
             <tr id="<?php echo "formli" . $k + 1;?>">
-                <td><?php echo $v['flink_group_id'];?></td>
-                <td><input id="corder" type="text" pid="<?php echo $v["flink_group_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["forder"];?>"></td>
-                <td><?php echo $v['flink_group_name'];?></td>
-                <td><?php echo $v['flink_group_url'];?></td>
-                <td><?php echo $v['flink_group_img'];?></td>
+                <td><?php echo $v['flink_id'];?></td>
+                <td><input id="corder" type="text" pid="<?php echo $v["flink_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["flink_order"];?>"></td>
+                <td><?php echo $v['flink_name'];?></td>
+                <td><?php echo $v['flink_url'];?></td>
+                <td><?php echo $v['flink_img'];?></td>
                 <td>
-                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['field_id']}","编辑","btn btn_disabled");?>
-                    <?php $thisc->echoButton("{$thisc->level}02","javascript:void(0);","删除","btn btn_disabled");?>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['fink_id']}","编辑","btn");?>
+                    <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['flink_id']});","删除","btn");?>
                     
                 </td>
             </tr>
             <?php }?>
-            <tr>
+            <tr id="form_add">
                 <input type="hidden" value="0" name="id" id="id" >
                 <td>&nbsp;</td>
                 <td><input type="text" value="" placeholder="友链组排序" style="width:80px;" class="comm_ipt " name="data[forder]" id="model_title"></td>
