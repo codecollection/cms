@@ -26,7 +26,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'网站配置',
-                    'url' => '/admin/set',
+                    'url' => '/back/set',
                     'level' => 'A02', //页面权限
                     'menu' => array(
                         array('title' => '保存设置', 'level' => 'A0201'), //按钮功能配置
