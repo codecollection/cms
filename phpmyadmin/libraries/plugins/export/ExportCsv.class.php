@@ -102,6 +102,19 @@ class ExportCsv extends ExportPlugin
     }
 
     /**
+     * This method is called when any PluginManager to which the observer
+     * is attached calls PluginManager::notify()
+     *
+     * @param SplSubject $subject The PluginManager notifying the observer
+     *                            of an update.
+     *
+     * @return void
+     */
+    public function update (SplSubject $subject)
+    {
+    }
+
+    /**
      * Outputs export header
      *
      * @return bool Whether it succeeded
@@ -131,9 +144,7 @@ class ExportCsv extends ExportPlugin
                 $GLOBALS['csv_columns'] = 'yes';
             }
         } else {
-            if (empty($csv_terminated)
-                || /*overload*/mb_strtolower($csv_terminated) == 'auto'
-            ) {
+            if (empty($csv_terminated) || strtolower($csv_terminated) == 'auto') {
                 $csv_terminated = $GLOBALS['crlf'];
             } else {
                 $csv_terminated = str_replace('\\r', "\015", $csv_terminated);
@@ -159,12 +170,11 @@ class ExportCsv extends ExportPlugin
     /**
      * Outputs database header
      *
-     * @param string $db       Database name
-     * @param string $db_alias Alias of db
+     * @param string $db Database name
      *
      * @return bool Whether it succeeded
      */
-    public function exportDBHeader ($db, $db_alias = '')
+    public function exportDBHeader ($db)
     {
         return true;
     }
@@ -184,12 +194,11 @@ class ExportCsv extends ExportPlugin
     /**
      * Outputs CREATE DATABASE statement
      *
-     * @param string $db       Database name
-     * @param string $db_alias Alias of db
+     * @param string $db Database name
      *
      * @return bool Whether it succeeded
      */
-    public function exportDBCreate($db, $db_alias = '')
+    public function exportDBCreate($db)
     {
         return true;
     }
@@ -202,18 +211,12 @@ class ExportCsv extends ExportPlugin
      * @param string $crlf      the end of line sequence
      * @param string $error_url the url to go back in case of error
      * @param string $sql_query SQL query for obtaining data
-     * @param array  $aliases   Aliases of db/table/columns
      *
      * @return bool Whether it succeeded
      */
-    public function exportData(
-        $db, $table, $crlf, $error_url, $sql_query, $aliases = array()
-    ) {
+    public function exportData($db, $table, $crlf, $error_url, $sql_query)
+    {
         global $what, $csv_terminated, $csv_separator, $csv_enclosed, $csv_escaped;
-
-        $db_alias = $db;
-        $table_alias = $table;
-        $this->initAlias($aliases, $db_alias, $table_alias);
 
         // Gets the data from the database
         $result = $GLOBALS['dbi']->query(
@@ -225,27 +228,22 @@ class ExportCsv extends ExportPlugin
         if (isset($GLOBALS['csv_columns'])) {
             $schema_insert = '';
             for ($i = 0; $i < $fields_cnt; $i++) {
-                $col_as = $GLOBALS['dbi']->fieldName($result, $i);
-                if (!empty($aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                    $col_as = $aliases[$db]['tables'][$table]['columns'][$col_as];
-                }
-                $col_as = stripslashes($col_as);
                 if ($csv_enclosed == '') {
-                    $schema_insert .= $col_as;
+                    $schema_insert .= stripslashes(
+                        $GLOBALS['dbi']->fieldName($result, $i)
+                    );
                 } else {
                     $schema_insert .= $csv_enclosed
                         . str_replace(
                             $csv_enclosed,
                             $csv_escaped . $csv_enclosed,
-                            $col_as
+                            stripslashes($GLOBALS['dbi']->fieldName($result, $i))
                         )
                         .  $csv_enclosed;
                 }
                 $schema_insert .= $csv_separator;
             } // end for
-            $schema_insert = trim(
-                /*overload*/mb_substr($schema_insert, 0, -1)
-            );
+            $schema_insert = trim(substr($schema_insert, 0, -1));
             if (! PMA_exportOutputHandler($schema_insert . $csv_terminated)) {
                 return false;
             }

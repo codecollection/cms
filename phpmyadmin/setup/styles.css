@@ -73,7 +73,7 @@ h1 {
     zoom: 1; /* IE fix */
 }
 
-#menu li a:hover, #menu li a:active, #menu li a.active {
+#menu li a:hover, #menu li a:active {
     background-color: #e4e4e4;
 }
 
@@ -517,7 +517,6 @@ select {
     color: #333;
     padding: 3px;
     background: white;
-    margin: 6px;
 }
 
 fieldset.simple th, fieldset.simple td {

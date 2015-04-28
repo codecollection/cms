@@ -13,11 +13,11 @@ if (! defined('PHPMYADMIN')) {
  * Renders the server selection in list or selectbox form, or option tags only
  *
  * @param boolean $not_only_options whether to include form tags or not
- * @param boolean $omit_fieldset    whether to omit fieldset tag or not
+ * @param boolean $ommit_fieldset   whether to ommit fieldset tag or not
  *
  * @return string
  */
-function PMA_selectServer($not_only_options, $omit_fieldset)
+function PMA_selectServer($not_only_options, $ommit_fieldset)
 {
     $retval = '';
 
@@ -32,9 +32,9 @@ function PMA_selectServer($not_only_options, $omit_fieldset)
     if ($not_only_options) {
         $retval .= '<form method="post" action="'
             . $GLOBALS['cfg']['DefaultTabServer'] . '" class="disableAjax">';
-        $retval .= PMA_getHiddenFields(array('token' => $_SESSION[' PMA_token ']));
+        $retval .= PMA_URL_getHiddenInputs();
 
-        if (! $omit_fieldset) {
+        if (! $ommit_fieldset) {
             $retval .= '<fieldset>';
         }
         $retval .= '<label for="select_server">'
@@ -98,7 +98,7 @@ function PMA_selectServer($not_only_options, $omit_fieldset)
 
     if ($not_only_options) {
         $retval .= '</select>';
-        if (! $omit_fieldset) {
+        if (! $ommit_fieldset) {
             $retval .= '</fieldset>';
         }
         $retval .= '</form>';

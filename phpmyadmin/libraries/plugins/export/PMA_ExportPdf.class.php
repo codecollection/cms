@@ -27,11 +27,10 @@ class PMA_ExportPdf extends PMA_PDF
     /**
      * Add page if needed.
      *
-     * @param float|int $h       cell height. Default value: 0
-     * @param mixed     $y       starting y position, leave empty for current
-     *                           position
-     * @param boolean   $addpage if true add a page, otherwise only return
-     *                           the true/false state
+     * @param float   $h       cell height. Default value: 0
+     * @param mixed   $y       starting y position, leave empty for current position
+     * @param boolean $addpage if true add a page, otherwise only return
+     *                         the true/false state
      *
      * @return boolean true in case of page break, false otherwise.
      */
@@ -113,8 +112,8 @@ class PMA_ExportPdf extends PMA_PDF
             $this->Cell(
                 0,
                 $this->FontSizePt,
-                __('Database:') . ' ' . $this->dbAlias . ',  '
-                . __('Table:') . ' ' . $this->tableAlias,
+                __('Database:') . ' ' . $this->currentDb . ',  '
+                . __('Table:') . ' ' . $this->currentTable,
                 0, 1, 'L'
             );
             $l = ($this->lMargin);
@@ -205,11 +204,11 @@ class PMA_ExportPdf extends PMA_PDF
                     $l += $this->tablewidths[$col];
                 }
 
-                if (! isset($tmpheight[$row . '-' . $this->page])) {
-                    $tmpheight[$row . '-' . $this->page] = 0;
+                if (! isset($tmpheight[$row.'-'.$this->page])) {
+                    $tmpheight[$row.'-'.$this->page] = 0;
                 }
-                if ($tmpheight[$row . '-' . $this->page] < $this->GetY()) {
-                    $tmpheight[$row . '-' . $this->page] = $this->GetY();
+                if ($tmpheight[$row.'-'.$this->page] < $this->GetY()) {
+                    $tmpheight[$row.'-'.$this->page] = $this->GetY();
                 }
                 if ($this->page > $maxpage) {
                     $maxpage = $this->page;
@@ -218,7 +217,7 @@ class PMA_ExportPdf extends PMA_PDF
             }
 
             // get the height we were in the last used page
-            $h = $tmpheight[$row . '-' . $maxpage];
+            $h = $tmpheight[$row.'-'.$maxpage];
             // set the "pointer" to the left margin
             $l = $this->lMargin;
             // set the $currpage to the last page
@@ -308,15 +307,8 @@ class PMA_ExportPdf extends PMA_PDF
         // if a col title is less than the starting col width,
         // reduce that column size
         $colFits = array();
-        $titleWidth = array();
         for ($i = 0; $i < $this->numFields; $i++) {
-            $col_as = $this->fields[$i]->name;
-            $db = $this->currentDb;
-            $table = $this->currentTable;
-            if (!empty($this->aliases[$db]['tables'][$table]['columns'][$col_as])) {
-                $col_as = $this->aliases[$db]['tables'][$table]['columns'][$col_as];
-            }
-            $stringWidth = $this->getstringwidth($col_as) + 6 ;
+            $stringWidth = $this->getstringwidth($this->fields[$i]->name) + 6 ;
             // save the real title's width
             $titleWidth[$i] = $stringWidth;
             $totalTitleWidth += $stringWidth;
@@ -326,7 +318,7 @@ class PMA_ExportPdf extends PMA_PDF
             if ($stringWidth < $this->sColWidth) {
                 $colFits[$i] = $stringWidth ;
             }
-            $this->colTitles[$i] = $col_as;
+            $this->colTitles[$i] = $this->fields[$i]->name;
             $this->display_column[$i] = true;
 
             switch ($this->fields[$i]->type) {

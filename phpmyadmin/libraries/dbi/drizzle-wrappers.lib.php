@@ -60,7 +60,15 @@ class PMA_Drizzle extends Drizzle
     const BUFFER_ROW = 2;
 
     /**
-     * Creates a new database connection using TCP
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Creates a new database conection using TCP
      *
      * @param string  $host     Drizzle host
      * @param integer $port     Drizzle port
@@ -202,7 +210,7 @@ class PMA_DrizzleCon
 class PMA_DrizzleResult
 {
     /**
-     * Instance of DrizzleResult class
+     * Instamce of DrizzleResult class
      * @var DrizzleResult
      */
     private $_dresult;

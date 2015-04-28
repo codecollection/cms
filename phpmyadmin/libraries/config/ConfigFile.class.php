@@ -66,7 +66,7 @@ class ConfigFile
 
     /**
      * Result for {@link _flattenArray()}
-     * @var array|null
+     * @var array
      */
     private $_flattenArrayResult;
 
@@ -187,9 +187,9 @@ class ConfigFile
     /**
      * Sets config value
      *
-     * @param string $path           Path
-     * @param mixed  $value          Value
-     * @param string $canonical_path Canonical path
+     * @param string $path
+     * @param mixed  $value
+     * @param string $canonical_path
      *
      * @return void
      */
@@ -205,35 +205,31 @@ class ConfigFile
             return;
         }
         // if the path isn't protected it may be removed
-        if (isset($this->_persistKeys[$canonical_path])) {
-            PMA_arrayWrite($path, $_SESSION[$this->_id], $value);
-            return;
+        if (!isset($this->_persistKeys[$canonical_path])) {
+            $default_value = $this->getDefault($canonical_path);
+            $remove_path = $value === $default_value;
+            if ($this->_isInSetup) {
+                // remove if it has a default value or is empty
+                $remove_path = $remove_path
+                    || (empty($value) && empty($default_value));
+            } else {
+                // get original config values not overwritten by user
+                // preferences to allow for overwriting options set in
+                // config.inc.php with default values
+                $instance_default_value = PMA_arrayRead(
+                    $canonical_path,
+                    $this->_baseCfg
+                );
+                // remove if it has a default value and base config (config.inc.php)
+                // uses default value
+                $remove_path = $remove_path
+                    && ($instance_default_value === $default_value);
+            }
+            if ($remove_path) {
+                PMA_arrayRemove($path, $_SESSION[$this->_id]);
+                return;
+            }
         }
-
-        $default_value = $this->getDefault($canonical_path);
-        $remove_path = $value === $default_value;
-        if ($this->_isInSetup) {
-            // remove if it has a default value or is empty
-            $remove_path = $remove_path
-                || (empty($value) && empty($default_value));
-        } else {
-            // get original config values not overwritten by user
-            // preferences to allow for overwriting options set in
-            // config.inc.php with default values
-            $instance_default_value = PMA_arrayRead(
-                $canonical_path,
-                $this->_baseCfg
-            );
-            // remove if it has a default value and base config (config.inc.php)
-            // uses default value
-            $remove_path = $remove_path
-                && ($instance_default_value === $default_value);
-        }
-        if ($remove_path) {
-            PMA_arrayRemove($path, $_SESSION[$this->_id]);
-            return;
-        }
-
         PMA_arrayWrite($path, $_SESSION[$this->_id], $value);
     }
 
@@ -242,9 +238,9 @@ class ConfigFile
      * (eg. 'key/subkey').
      * Used as array_walk() callback.
      *
-     * @param mixed $value  Value
-     * @param mixed $key    Key
-     * @param mixed $prefix Prefix
+     * @param mixed $value
+     * @param mixed $key
+     * @param mixed $prefix
      *
      * @return void
      */
@@ -277,7 +273,7 @@ class ConfigFile
      * Updates config with values read from given array
      * (config will contain differences to defaults from config.defaults.php).
      *
-     * @param array $cfg Configuration
+     * @param array $cfg
      *
      * @return void
      */
@@ -318,8 +314,8 @@ class ConfigFile
      * exist in config.default.php ($cfg) and config.values.php
      * ($_cfg_db['_overrides'])
      *
-     * @param string $canonical_path Canonical path
-     * @param mixed  $default        Default value
+     * @param string $canonical_path
+     * @param mixed  $default
      *
      * @return mixed
      */
@@ -332,8 +328,8 @@ class ConfigFile
      * Returns config value, if it's not set uses the default one; returns
      * $default if the path isn't set and doesn't contain a default value
      *
-     * @param string $path    Path
-     * @param mixed  $default Default value
+     * @param string $path
+     * @param mixed  $default
      *
      * @return mixed
      */
@@ -350,7 +346,7 @@ class ConfigFile
     /**
      * Returns canonical path
      *
-     * @param string $path Path
+     * @param string $path
      *
      * @return string
      */
@@ -410,7 +406,7 @@ class ConfigFile
         }
 
         $path = 'Servers/' . $server;
-        $dsn = 'mysqli://';
+        $dsn = $this->getValue("$path/extension") . '://';
         if ($this->getValue("$path/auth_type") == 'config') {
             $dsn .= $this->getValue("$path/user");
             if (! $this->getValue("$path/nopassword")) {
@@ -501,8 +497,7 @@ class ConfigFile
     {
         $c = $_SESSION[$this->_id];
         foreach ($this->_cfgUpdateReadMapping as $map_to => $map_from) {
-            // if the key $c exists in $map_to
-            if (PMA_arrayRead($map_to, $c) !== null) {
+            if (PMA_arrayKeyExists($map_to, $c)) {
                 PMA_arrayWrite($map_to, $c, PMA_arrayRead($map_from, $c));
                 PMA_arrayRemove($map_from, $c);
             }

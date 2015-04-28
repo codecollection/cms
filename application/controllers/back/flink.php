@@ -17,4 +17,7 @@ class Flink extends CAdminBase {
        
     }
 
+    public function index(){
+        $this->lists();
+    }
 }

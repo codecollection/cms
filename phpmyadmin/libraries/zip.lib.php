@@ -57,7 +57,7 @@ class ZipFile
 
     /**
      * Sets member variable this -> doWrite to true
-     * - Should be called immediately after class instantiation
+     * - Should be called immediately after class instantiantion
      * - If set to true, then ZIP archive are echo'ed to STDOUT as each
      *   file is added via this -> addfile(), and central directories are
      *   echoed to STDOUT on final call to this -> file().  Also,

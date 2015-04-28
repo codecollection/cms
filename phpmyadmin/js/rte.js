@@ -142,14 +142,11 @@ RTE.COMMON = {
                 var opts = {
                     lineNumbers: true,
                     matchBrackets: true,
-                    extraKeys: {"Ctrl-Space": "autocomplete"},
-                    hintOptions: {"completeSingle": false, "completeOnSingleClick": true},
                     indentUnit: 4,
                     mode: "text/x-mysql",
                     lineWrapping: true
                 };
-                CodeMirror.fromTextArea($elm[0], opts)
-                    .on("inputRead", codemirrorAutocompleteOnInputRead);
+                CodeMirror.fromTextArea($elm[0], opts);
             } else {
                 PMA_ajaxShowMessage(data.error, false);
             }
@@ -301,29 +298,19 @@ RTE.COMMON = {
                 /**
                  * Display the dialog to the user
                  */
-                that.$ajaxDialog = $('<div id="rteDialog">' + data.message + '</div>').dialog({
+                that.$ajaxDialog = $('<div>' + data.message + '</div>').dialog({
                     width: 700,
                     minWidth: 500,
-                    maxHeight: $(window).height(),
                     buttons: that.buttonOptions,
                     title: data.title,
                     modal: true,
-                    open: function () {
-                        if ($('#rteDialog').parents('.ui-dialog').height() > $(window).height()) {
-                            $('#rteDialog').dialog("option", "height", $(window).height());
-                        }
-                        $(this).find('input[name=item_name]').focus();
-                        $(this).find('input.datefield').each(function () {
-                            PMA_addDatepicker($(this).css('width', '95%'), 'date');
-                        });
-                        $(this).find('input.datetimefield').each(function () {
-                            PMA_addDatepicker($(this).css('width', '95%'), 'datetime');
-                        });
-                        $.datepicker.initialized = false;
-                    },
                     close: function () {
                         $(this).remove();
                     }
+                });
+                that.$ajaxDialog.find('input[name=item_name]').focus();
+                that.$ajaxDialog.find('input.datefield, input.datetimefield').each(function () {
+                    PMA_addDatepicker($(this).css('width', '95%'));
                 });
                 /**
                  * @var mode Used to remeber whether the editor is in
@@ -345,15 +332,12 @@ RTE.COMMON = {
                 var opts = {
                     lineNumbers: true,
                     matchBrackets: true,
-                    extraKeys: {"Ctrl-Space": "autocomplete"},
-                    hintOptions: {"completeSingle": false, "completeOnSingleClick": true},
                     indentUnit: 4,
                     mode: "text/x-mysql",
                     lineWrapping: true
                 };
                 if (typeof CodeMirror != 'undefined') {
                     that.syntaxHiglighter = CodeMirror.fromTextArea($elm[0], opts);
-                    that.syntaxHiglighter.on("inputRead", codemirrorAutocompleteOnInputRead);
                 }
                 // Execute item-specific code
                 that.postDialogShow(data);
@@ -767,12 +751,14 @@ RTE.ROUTINE = {
 
 /**
  * Attach Ajax event handlers for the Routines, Triggers and Events editor
+ *
+ * FIXME: submit on ENTER keypress in dialog
  */
 $(function () {
     /**
      * Attach Ajax event handlers for the Add/Edit functionality.
      */
-    $(document).on('click', 'a.ajax.add_anchor, a.ajax.edit_anchor', function (event) {
+    $('a.ajax.add_anchor, a.ajax.edit_anchor').live('click', function (event) {
         event.preventDefault();
         var type = $(this).attr('href').substr(0, $(this).attr('href').indexOf('?'));
         if (type.indexOf('routine') != -1) {
@@ -786,47 +772,47 @@ $(function () {
         }
         var dialog = new RTE.object(type);
         dialog.editorDialog($(this).hasClass('add_anchor'), $(this));
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for the Execute routine functionality
      */
-    $(document).on('click', 'a.ajax.exec_anchor', function (event) {
+    $('a.ajax.exec_anchor').live('click', function (event) {
         event.preventDefault();
         var dialog = new RTE.object('routine');
         dialog.executeDialog($(this));
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for Export of Routines, Triggers and Events
      */
-    $(document).on('click', 'a.ajax.export_anchor', function (event) {
+    $('a.ajax.export_anchor').live('click', function (event) {
         event.preventDefault();
         var dialog = new RTE.object();
         dialog.exportDialog($(this));
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for Drop functionality
      * of Routines, Triggers and Events.
      */
-    $(document).on('click', 'a.ajax.drop_anchor', function (event) {
+    $('a.ajax.drop_anchor').live('click', function (event) {
         event.preventDefault();
         var dialog = new RTE.object();
         dialog.dropDialog($(this));
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for the "Change event/routine type"
      * functionality in the events editor, so that the correct
      * rows are shown in the editor when changing the event type
      */
-    $(document).on('change', 'select[name=item_type]', function () {
+    $('select[name=item_type]').live('change', function () {
         $(this)
         .closest('table')
-        .find('tr.recurring_event_row, tr.onetime_event_row, tr.routine_return_row, .routine_direction_cell')
+        .find('tr.recurring_event_row, tr.onetime_event_row, tr.routine_return_row, td.routine_direction_cell')
         .toggle();
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for the "Change parameter type"
@@ -834,7 +820,7 @@ $(function () {
      * option/length fields, if any, are shown when changing
      * a parameter type
      */
-    $(document).on('change', 'select[name^=item_param_type]', function () {
+    $('select[name^=item_param_type]').live('change', function () {
         /**
          * @var row jQuery object containing the reference to
          *          a row in the routine parameters table
@@ -847,14 +833,14 @@ $(function () {
             $row.find('select[name^=item_param_opts_text]'),
             $row.find('select[name^=item_param_opts_num]')
         );
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for the "Change the type of return
      * variable of function" functionality, so that the correct fields,
      * if any, are shown when changing the function return type type
      */
-    $(document).on('change', 'select[name=item_returntype]', function () {
+    $('select[name=item_returntype]').live('change', function () {
         var rte = new RTE.object('routine');
         var $table = $(this).closest('table.rte_table');
         rte.setOptionsForParameter(
@@ -863,12 +849,12 @@ $(function () {
             $table.find('select[name=item_returnopts_text]'),
             $table.find('select[name=item_returnopts_num]')
         );
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for the "Add parameter to routine" functionality
      */
-    $(document).on('click', 'input[name=routine_addparameter]', function (event) {
+    $('input[name=routine_addparameter]').live('click', function (event) {
         event.preventDefault();
         /**
          * @var routine_params_table jQuery object containing the reference
@@ -900,13 +886,13 @@ $(function () {
             $newrow.find('select[name^=item_param_opts_text]'),
             $newrow.find('select[name^=item_param_opts_num]')
         );
-    }); // end $(document).on()
+    }); // end $.live()
 
     /**
      * Attach Ajax event handlers for the
      * "Remove parameter from routine" functionality
      */
-    $(document).on('click', 'a.routine_param_remove_anchor', function (event) {
+    $('a.routine_param_remove_anchor').live('click', function (event) {
         event.preventDefault();
         $(this).parent().parent().remove();
         // After removing a parameter, the indices of the name attributes in
@@ -940,5 +926,5 @@ $(function () {
             });
             index++;
         });
-    }); // end $(document).on()
+    }); // end $.live()
 }); // end of $()

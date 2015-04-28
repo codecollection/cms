@@ -10,19 +10,23 @@ if (! defined('PHPMYADMIN')) {
     exit;
 }
 
-if (! extension_loaded('mysql')) {
-    // The old MySQL extension is deprecated as of PHP 5.5.0, and will be
-    // removed in the future. Instead, the `MySQLi` or `PDO_MySQL` extension
-    // should be used.
-    return;
-}
-
+require_once './libraries/logging.lib.php';
 require_once './libraries/dbi/DBIExtension.int.php';
 
 /**
  * MySQL client API
  */
-PMA_defineClientAPI(mysql_get_client_info());
+if (! defined('PMA_MYSQL_CLIENT_API')) {
+    $client_api = explode('.', mysql_get_client_info());
+    define(
+        'PMA_MYSQL_CLIENT_API',
+        (int)sprintf(
+            '%d%02d%02d',
+            $client_api[0], $client_api[1], intval($client_api[2])
+        )
+    );
+    unset($client_api);
+}
 
 /**
  * Interface to the classic MySQL extension
@@ -35,11 +39,11 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
     /**
      * Helper function for connecting to the database server
      *
-     * @param string $server       host/port/socket
+     * @param array  $server       host/port/socket
      * @param string $user         mysql user name
      * @param string $password     mysql user password
      * @param int    $client_flags client flags of connection
-     * @param bool   $persistent   whether to use persistent connection
+     * @param bool   $persistent   whether to use peristent connection
      *
      * @return mixed   false on error or a mysql connection resource on success
      */
@@ -73,7 +77,7 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
      * @param mysqli $link  mysqli object
      * @param string $query multi query statement to execute
      *
-     * @return boolean false always false since mysql extension not support
+     * @return boolean false always false since mysql extention not support
      *                       for multi query executions
      */
     public function realMultiQuery($link, $query)
@@ -103,19 +107,20 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
     ) {
         global $cfg;
 
-        $server_port = $GLOBALS['dbi']->getServerPort($server);
-        $server_socket = $GLOBALS['dbi']->getServerSocket($server);
-
-        if ($server_port === null) {
-            $server_port = '';
+        if ($server) {
+            $server_port = (empty($server['port']))
+                ? ''
+                : ':' . (int)$server['port'];
+            $server_socket = (empty($server['socket']))
+                ? ''
+                : ':' . $server['socket'];
         } else {
-            $server_port = ':' . $server_port;
-        }
-
-        if (is_null($server_socket)) {
-            $server_socket = '';
-        } else {
-            $server_socket = ':' . $server_socket;
+            $server_port   = (empty($cfg['Server']['port']))
+                ? ''
+                : ':' . (int)$cfg['Server']['port'];
+            $server_socket = (empty($cfg['Server']['socket']))
+                ? ''
+                : ':' . $cfg['Server']['socket'];
         }
 
         $client_flags = 0;
@@ -158,28 +163,60 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
                 );
             }
         }
+        if (empty($link)) {
+            if ($is_controluser) {
+                trigger_error(
+                    __(
+                        'Connection for controluser as defined'
+                        . ' in your configuration failed.'
+                    ),
+                    E_USER_WARNING
+                );
+                return false;
+            }
+            // we could be calling $GLOBALS['dbi']->connect() to connect to another
+            // server, for example in the Synchronize feature, so do not
+            // go back to main login if it fails
+            if (! $auxiliary_connection) {
+                PMA_logUser($user, 'mysql-denied');
+                global $auth_plugin;
+                $auth_plugin->authFails();
+            } else {
+                return false;
+            }
+        } // end if
+        if (! $server) {
+            $GLOBALS['dbi']->postConnect($link, $is_controluser);
+        }
         return $link;
     }
 
     /**
      * selects given database
      *
-     * @param string        $dbname name of db to select
-     * @param resource|null $link   mysql link resource
+     * @param string   $dbname name of db to select
+     * @param resource $link   mysql link resource
      *
      * @return bool
      */
-    public function selectDb($dbname, $link)
+    public function selectDb($dbname, $link = null)
     {
+        if (empty($link)) {
+            if (isset($GLOBALS['userlink'])) {
+                $link = $GLOBALS['userlink'];
+            } else {
+                return false;
+            }
+        }
         return mysql_select_db($dbname, $link);
     }
 
     /**
      * runs a query and returns the result
      *
-     * @param string        $query   query to run
-     * @param resource|null $link    mysql link resource
-     * @param int           $options query options
+     * @param string   $query   query to run
+     * @param resource $link    mysql link resource
+     * @param int      $options query options
      *
      * @return mixed
      */
@@ -264,7 +301,7 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
      *
      * @return bool false
      */
-    public function moreResults($link)
+    public function moreResults($link = null)
     {
         // N.B.: PHP's 'mysql' extension does not support
         // multi_queries so this function will always
@@ -280,7 +317,7 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
      *
      * @return boolean false
      */
-    public function nextResult($link)
+    public function nextResult($link = null)
     {
         // N.B.: PHP's 'mysql' extension does not support
         // multi_queries so this function will always
@@ -292,24 +329,38 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
     /**
      * Returns a string representing the type of connection used
      *
-     * @param resource|null $link mysql link
+     * @param resource $link mysql link
      *
      * @return string type of connection used
      */
-    public function getHostInfo($link)
+    public function getHostInfo($link = null)
     {
+        if (null === $link) {
+            if (isset($GLOBALS['userlink'])) {
+                $link = $GLOBALS['userlink'];
+            } else {
+                return false;
+            }
+        }
         return mysql_get_host_info($link);
     }
 
     /**
      * Returns the version of the MySQL protocol used
      *
-     * @param resource|null $link mysql link
+     * @param resource $link mysql link
      *
      * @return int version of the MySQL protocol used
      */
-    public function getProtoInfo($link)
+    public function getProtoInfo($link = null)
     {
+        if (null === $link) {
+            if (isset($GLOBALS['userlink'])) {
+                $link = $GLOBALS['userlink'];
+            } else {
+                return false;
+            }
+        }
         return mysql_get_proto_info($link);
     }
 
@@ -326,13 +377,27 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
     /**
      * returns last error message or false if no errors occurred
      *
-     * @param resource|null $link mysql link
+     * @param resource $link mysql link
      *
      * @return string|bool $error or false
      */
-    public function getError($link)
+    public function getError($link = null)
     {
         $GLOBALS['errno'] = 0;
+
+        /* Treat false same as null because of controllink */
+        if ($link === false) {
+            $link = null;
+        }
+
+        if (null === $link && isset($GLOBALS['userlink'])) {
+            $link =& $GLOBALS['userlink'];
+
+            // Do not stop now. On the initial connection, we don't have a $link,
+            // we don't have a $GLOBALS['userlink'], but we can catch the error code
+            //    } else {
+            //            return false;
+        }
 
         if (null !== $link && false !== $link) {
             $error_number = mysql_errno($link);
@@ -361,23 +426,61 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
      */
     public function numRows($result)
     {
-        if (is_bool($result)) {
+        if (!is_bool($result)) {
+            return mysql_num_rows($result);
+        } else {
             return 0;
         }
+    }
 
-        return mysql_num_rows($result);
+    /**
+     * returns last inserted auto_increment id for given $link
+     * or $GLOBALS['userlink']
+     *
+     * @param resource $link the mysql object
+     *
+     * @return string|int
+     */
+    public function insertId($link = null)
+    {
+        if (empty($link)) {
+            if (isset($GLOBALS['userlink'])) {
+                $link = $GLOBALS['userlink'];
+            } else {
+                return false;
+            }
+        }
+        // If the primary key is BIGINT we get an incorrect result
+        // (sometimes negative, sometimes positive)
+        // and in the present function we don't know if the PK is BIGINT
+        // so better play safe and use LAST_INSERT_ID()
+        //
+        return $GLOBALS['dbi']->fetchValue('SELECT LAST_INSERT_ID();', 0, 0, $link);
     }
 
     /**
      * returns the number of rows affected by last query
      *
-     * @param resource|null $link the mysql object
+     * @param resource $link           the mysql object
+     * @param bool     $get_from_cache whether to retrieve from cache
      *
-     * @return int
+     * @return string|int
      */
-    public function affectedRows($link)
+    public function affectedRows($link = null, $get_from_cache = true)
     {
-        return mysql_affected_rows($link);
+        if (empty($link)) {
+            if (isset($GLOBALS['userlink'])) {
+                $link = $GLOBALS['userlink'];
+            } else {
+                return false;
+            }
+        }
+
+        if ($get_from_cache) {
+            return $GLOBALS['cached_affected_rows'];
+        } else {
+            return mysql_affected_rows($link);
+        }
     }
 
     /**
@@ -457,11 +560,9 @@ class PMA_DBI_Mysql implements PMA_DBI_Extension
     /**
      * Store the result returned from multi query
      *
-     * @param resource $result MySQL result
-     *
      * @return false
      */
-    public function storeResult($result)
+    public function storeResult()
     {
         return false;
     }

@@ -19,7 +19,6 @@ $header   = $response->getHeader();
 $scripts  = $header->getScripts();
 $scripts->addFile('functions.js');
 $scripts->addFile('makegrid.js');
-$scripts->addFile('jquery/jquery.uitablefilter.js');
 $scripts->addFile('sql.js');
 
 require 'libraries/db_common.inc.php';

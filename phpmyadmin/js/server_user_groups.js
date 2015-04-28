@@ -2,7 +2,7 @@
  * Unbind all event handlers before tearing down a page
  */
 AJAX.registerTeardown('server_user_groups.js', function () {
-    $(document).off('click', "a.deleteUserGroup.ajax");
+    $("a.deleteUserGroup.ajax").die('click');
 });
 
 /**
@@ -13,7 +13,7 @@ AJAX.registerOnload('server_user_groups.js', function () {
     // update the checkall checkbox on Edit user group page
     $(checkboxes_sel).trigger("change");
 
-    $(document).on('click', "a.deleteUserGroup.ajax", function (event) {
+    $("a.deleteUserGroup.ajax").live('click', function (event) {
         event.preventDefault();
         var $link = $(this);
         var groupName = $link.parents('tr').find('td:first').text();
@@ -27,7 +27,7 @@ AJAX.registerOnload('server_user_groups.js', function () {
         };
         $('<div/>')
             .attr('id', 'confirmUserGroupDeleteDialog')
-            .append(PMA_sprintf(PMA_messages.strDropUserGroupWarning, escapeHtml(groupName)))
+            .append($.sprintf(PMA_messages.strDropUserGroupWarning, escapeHtml(groupName)))
             .dialog({
                 width: 300,
                 minWidth: 200,

@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * List of available forms, each form is described as an array of fields to display.
+ * List of avaible forms, each form is described as an array of fields to display.
  * Fields MUST have their counterparts in the $cfg array.
  *
  * There are two possible notations:
@@ -33,6 +33,7 @@ $forms['Servers']['Server'] = array('Servers' => array(1 => array(
     'socket',
     'ssl',
     'connect_type',
+    'extension',
     'compress',
     'nopassword')));
 $forms['Servers']['Server_auth'] = array('Servers' => array(1 => array(
@@ -56,10 +57,8 @@ $forms['Servers']['Server_config'] = array('Servers' => array(1 => array(
     'hide_db',
     'AllowRoot',
     'AllowNoPassword',
-    'DisableIS',
     'AllowDeny/order',
-    'AllowDeny/rules',
-    'SessionTimeZone')));
+    'AllowDeny/rules')));
 $forms['Servers']['Server_pmadb'] = array('Servers' => array(1 => array(
     'pmadb' => 'phpmyadmin',
     'controlhost',
@@ -76,13 +75,11 @@ $forms['Servers']['Server_pmadb'] = array('Servers' => array(1 => array(
     'column_info' => 'pma__column_info',
     'history' => 'pma__history',
     'recent' => 'pma__recent',
-    'favorite' => 'pma__favorite',
     'table_uiprefs' => 'pma__table_uiprefs',
     'tracking' => 'pma__tracking',
     'table_coords' => 'pma__table_coords',
     'pdf_pages' => 'pma__pdf_pages',
-    'savedsearches' => 'pma__savedsearches',
-    'central_columns' => 'pma__central_columns',
+    'designer_coords' => 'pma__designer_coords',
     'MaxTableUiprefs' => 100)));
 $forms['Servers']['Server_tracking'] = array('Servers' => array(1 => array(
     'tracking_version_auto_create',
@@ -108,7 +105,6 @@ $forms['Features']['Security'] = array(
     'TrustedProxies',
     'AllowUserDropDatabase',
     'AllowArbitraryServer',
-    'ArbitraryServerRegexp',
     'LoginCookieRecall',
     'LoginCookieValidity',
     'LoginCookieStore',
@@ -124,16 +120,17 @@ $forms['Features']['Warnings'] = array(
     'ServerLibraryDifference_DisableWarning',
     'PmaNoRelation_DisableWarning',
     'SuhosinDisableWarning',
-    'LoginCookieValidityDisableWarning');
+    'McryptDisableWarning');
 $forms['Features']['Developer'] = array(
     'UserprefsDeveloperTab',
+    'Error_Handler/display',
     'DBG/sql');
 $forms['Features']['Other_core_settings'] = array(
     'NaturalOrder',
     'InitialSlidersState',
     'MaxDbList',
     'MaxTableList',
-    'NumFavoriteTables',
+    'NumRecentTables',
     'ShowHint',
     'OBGzip',
     'PersistentConnections',
@@ -148,7 +145,6 @@ $forms['Features']['Other_core_settings'] = array(
     'ProxyUser',
     'ProxyPass',
     'AllowThirdPartyFraming',
-    'ZeroConf'
 );
 $forms['Sql_queries']['Sql_queries'] = array(
     'ShowSQL',
@@ -157,28 +153,30 @@ $forms['Sql_queries']['Sql_queries'] = array(
     'QueryHistoryMax',
     'IgnoreMultiSubmitErrors',
     'MaxCharactersInDisplayedSQL',
+    'EditInWindow',
+    //'QueryWindowWidth', // overridden in theme
+    //'QueryWindowHeight',
+    'QueryWindowDefTab',
     'RetainQueryBox',
     'CodemirrorEnable');
 $forms['Sql_queries']['Sql_box'] = array('SQLQuery' => array(
     'Edit',
     'Explain',
     'ShowAsPHP',
+    'Validate',
     'Refresh'));
+$forms['Sql_queries']['Sql_validator'] = array('SQLValidator' => array(
+    'use',
+    'username',
+    'password'));
 $forms['Navi_panel']['Navi_panel'] = array(
-    'ShowDatabasesNavigationAsTree',
-    'NavigationLinkWithMainPanel',
     'NavigationDisplayLogo',
     'NavigationLogoLink',
     'NavigationLogoLinkWindow',
     'NavigationTreePointerEnable',
-    'FirstLevelNavigationItems',
     'MaxNavigationItems',
     'NavigationTreeEnableGrouping',
-    'NavigationTreeEnableExpansion',
-    'NavigationTreeDisplayItemFilterMinimum',
-    'NumRecentTables',
-    'NumFavoriteTables'
-);
+    'NavigationTreeDisplayItemFilterMinimum');
 $forms['Navi_panel']['Navi_servers'] = array(
     'NavigationDisplayServers',
     'DisplayServersList');
@@ -186,7 +184,6 @@ $forms['Navi_panel']['Navi_databases'] = array(
     'NavigationTreeDbSeparator');
 $forms['Navi_panel']['Navi_tables'] = array(
     'NavigationTreeDefaultTabTable',
-    'NavigationTreeDefaultTabTable2',
     'NavigationTreeTableSeparator',
     'NavigationTreeTableLevel',
 );
@@ -211,12 +208,12 @@ $forms['Main_panel']['Browse'] = array(
     'BrowseMarkerEnable',
     'GridEditing',
     'SaveCellsAtOnce',
+    'ShowDisplayDirection',
     'RepeatCells',
     'LimitChars',
     'RowActionLinks',
-    'TablePrimaryKeyOrder',
-    'RememberSorting',
-    'RelationalDisplay');
+    'DefaultDisplay',
+    'RememberSorting');
 $forms['Main_panel']['Edit'] = array(
     'ProtectBinary',
     'ShowFunctionFields',
@@ -237,8 +234,8 @@ $forms['Main_panel']['Tabs'] = array(
     'ActionLinksMode',
     'DefaultTabServer',
     'DefaultTabDatabase',
-    'DefaultTabTable'
-);
+    'DefaultTabTable',
+    'QueryWindowDefTab');
 $forms['Import']['Import_defaults'] = array('Import' => array(
     'format',
     'charset',
@@ -305,9 +302,6 @@ $forms['Export']['Sql'] = array('Export' => array(
     ':group:' . __('Structure'),
         'sql_drop_table',
         'sql_procedure_function',
-        'sql_create_table',
-        'sql_create_view',
-        'sql_create_trigger',
         'sql_create_table_statements' => ':group',
             'sql_if_not_exists',
             'sql_auto_increment',
@@ -320,7 +314,7 @@ $forms['Export']['Sql'] = array('Export' => array(
         'sql_type',
         'sql_insert_syntax',
         'sql_max_query_size',
-        'sql_hex_for_binary',
+        'sql_hex_for_blob',
         'sql_utc_time'));
 $forms['Export']['CodeGen'] = array('Export' => array(
     'codegen_format'));

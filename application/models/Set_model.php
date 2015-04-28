@@ -8,7 +8,7 @@ class Set_model extends MBase{
     
     protected $tableName = 'cms_configs';
     
-    protected $pk = "ckey";
+    protected $pk = "config_id";
     
     protected $rules = array(
         array('title', 'required'),
@@ -29,12 +29,6 @@ class Set_model extends MBase{
     }
     
     public function saveBefore($isInsert) {
-        if($isInsert){
-           
-            $this->checkoutUnique($isInsert);
-        }else{
-            $this->pk = "config_id";
-            $this->checkoutUnique($isInsert);
-        }
+        if(!$this->checkoutUnique($isInsert)){return FALSE;}
     }
 }

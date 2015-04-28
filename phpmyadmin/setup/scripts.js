@@ -40,13 +40,13 @@ $(document).ready(function(){
     $('ul.tabs li').each(function(){
         tabWidth = $(this).width() + 10;
         width += tabWidth;
-    });
-    contentWidth = width;
-    width += 250;
-    $('body').css('min-width', width);
-    $('.tabs_contents').css('min-width', contentWidth);
+     });
+     contentWidth = width;
+     width += 250;
+     $('body').css('min-width', width);
+     $('.tabs_contents').css('min-width', contentWidth);
 });
-
+ 
 //
 // END: Messages
 // ------------------------------------------------------------------
@@ -84,7 +84,7 @@ function ajaxValidate(parent, id, values)
         data: {
             token: parent.closest('form').find('input[name=token]').val(),
             id: id,
-            values: JSON.stringify(values)
+            values: $.toJSON(values)
         },
         success: function (response) {
             if (response === null) {
@@ -115,7 +115,7 @@ function ajaxValidate(parent, id, values)
 /**
  * Automatic form submission on change.
  */
-$(document).on('change', '.autosubmit', function (e) {
+$('.autosubmit').live('change', function (e) {
     e.target.form.submit();
 });
 

@@ -27,11 +27,9 @@ class Node_Trigger_Container extends Node
         $this->icon  = PMA_Util::getImage('b_triggers.png');
         $this->links = array(
             'text' => 'db_triggers.php?server=' . $GLOBALS['server']
-                    . '&amp;db=%2$s&amp;table=%1$s&amp;token='
-                    . $_SESSION[' PMA_token '],
+                    . '&amp;db=%2$s&amp;table=%1$s&amp;token=' . $GLOBALS['token'],
             'icon' => 'db_triggers.php?server=' . $GLOBALS['server']
-                    . '&amp;db=%2$s&amp;table=%1$s&amp;token='
-                    . $_SESSION[' PMA_token ']
+                    . '&amp;db=%2$s&amp;table=%1$s&amp;token=' . $GLOBALS['token']
         );
         $this->real_name = 'triggers';
 
@@ -42,10 +40,10 @@ class Node_Trigger_Container extends Node
         $new->icon  = PMA_Util::getImage('b_trigger_add.png', '');
         $new->links = array(
             'text' => 'db_triggers.php?server=' . $GLOBALS['server']
-                    . '&amp;db=%3$s&amp;token=' . $_SESSION[' PMA_token ']
+                    . '&amp;db=%3$s&amp;token=' . $GLOBALS['token']
                     . '&amp;add_item=1',
             'icon' => 'db_triggers.php?server=' . $GLOBALS['server']
-                    . '&amp;db=%3$s&amp;token=' . $_SESSION[' PMA_token ']
+                    . '&amp;db=%3$s&amp;token=' . $GLOBALS['token']
                     . '&amp;add_item=1',
         );
         $new->classes = 'new_trigger italics';

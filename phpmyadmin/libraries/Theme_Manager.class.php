@@ -113,7 +113,7 @@ class PMA_Theme_Manager
      * Initialise the class
      *
      * @access public
-     * @return void
+     * @return boolean|void
      */
     public function init()
     {
@@ -122,7 +122,7 @@ class PMA_Theme_Manager
         $this->active_theme = '';
 
         if (! $this->setThemesPath($GLOBALS['cfg']['ThemePath'])) {
-            return;
+            return false;
         }
 
         $this->setThemePerServer($GLOBALS['cfg']['ThemePerServer']);
@@ -130,6 +130,7 @@ class PMA_Theme_Manager
         $this->loadThemes();
 
         $this->theme = new PMA_Theme;
+
 
         if (! $this->checkTheme($GLOBALS['cfg']['ThemeDefault'])) {
             trigger_error(

@@ -23,11 +23,11 @@ function PMA_getHtmlForTablesInfo($the_tables)
 
     if ($multi_tables) {
         $tbl_list     = '';
-        foreach ($the_tables as $table) {
+        foreach ($the_tables as $key => $table) {
             $tbl_list .= (empty($tbl_list) ? '' : ', ')
                       . PMA_Util::backquote($table);
         }
-        $html .= '<strong>' .  __('Showing tables:') . ' '
+        $html .= '<strong>'.  __('Showing tables:') . ' '
             . htmlspecialchars($tbl_list) . '</strong>' . "\n";
         $html .= '<hr />' . "\n";
     } // end if
@@ -52,9 +52,9 @@ function PMA_getHtmlForPrintViewFooter()
 /**
  * return html for Print View Columns
  *
- * @param bool   $tbl_is_view  whether table is a view
  * @param array  $columns      columns list
  * @param array  $analyzed_sql analyzed sql
+ * @param array  $pk_array     primary key array
  * @param bool   $have_rel     have relation?
  * @param array  $res_rel      relations array
  * @param string $db           database name
@@ -64,14 +64,14 @@ function PMA_getHtmlForPrintViewFooter()
  * @return string
  */
 function PMA_getHtmlForPrintViewColumns(
-    $tbl_is_view, $columns, $analyzed_sql, $have_rel,
+    $columns, $analyzed_sql, $pk_array, $have_rel,
     $res_rel, $db, $table, $cfgRelation
 ) {
     $html = '';
-    $primary = PMA_Index::getPrimary($table, $db);
     foreach ($columns as $row) {
         $extracted_columnspec = PMA_Util::extractColumnSpec($row['Type']);
         $type = $extracted_columnspec['print_type'];
+        $attribute = $extracted_columnspec['attribute'];
 
         if (! isset($row['Default'])) {
             if ($row['Null'] != ''  && $row['Null'] != 'NO') {
@@ -82,36 +82,33 @@ function PMA_getHtmlForPrintViewColumns(
         }
         $field_name = htmlspecialchars($row['Field']);
 
-        if (! $tbl_is_view) {
-            // here, we have a TIMESTAMP that SHOW FULL COLUMNS reports as having
-            // the NULL attribute, but SHOW CREATE TABLE says the contrary.
-            // Believe the latter.
-            /**
-             * @todo merge this logic with the one in tbl_structure.php
-             * or move it in a function similar to $GLOBALS['dbi']->getColumnsFull()
-             * but based on SHOW CREATE TABLE because information_schema
-             * cannot be trusted in this case (MySQL bug)
-             */
-            $analyzed_for_field
-                = $analyzed_sql[0]['create_table_fields'][$field_name];
-            if (! empty($analyzed_for_field['type'])
-                && $analyzed_for_field['type'] == 'TIMESTAMP'
-                && $analyzed_for_field['timestamp_not_null']
-            ) {
-                $row['Null'] = '';
-            }
+        // here, we have a TIMESTAMP that SHOW FULL COLUMNS reports as having the
+        // NULL attribute, but SHOW CREATE TABLE says the contrary. Believe
+        // the latter.
+        /**
+         * @todo merge this logic with the one in tbl_structure.php
+         * or move it in a function similar to $GLOBALS['dbi']->getColumnsFull()
+         * but based on SHOW CREATE TABLE because information_schema
+         * cannot be trusted in this case (MySQL bug)
+         */
+        $analyzed_for_field = $analyzed_sql[0]['create_table_fields'][$field_name];
+        if (! empty($analyzed_for_field['type'])
+            && $analyzed_for_field['type'] == 'TIMESTAMP'
+            && $analyzed_for_field['timestamp_not_null']
+        ) {
+            $row['Null'] = '';
         }
 
         $html .= "\n";
         $html .= '<tr><td>';
 
-        $html .= '    ' . $field_name . "\n";
-        if ($primary && $primary->hasColumn($field_name)) {
-            $html .= '    <em>(' . __('Primary') . ')</em>';
+        if (isset($pk_array[$row['Field']])) {
+            $html .= '    <u>' . $field_name . '</u>' . "\n";
+        } else {
+            $html .= '    ' . $field_name . "\n";
         }
-        $html .= "\n";
         $html .= '</td>';
-        $html .= '<td>' . htmlspecialchars($type) . '<bdo dir="ltr"></bdo></td>';
+        $html .= '<td>' . $type. '<bdo dir="ltr"></bdo></td>';
         $html .= '<td>';
         $html .= (($row['Null'] == '' || $row['Null'] == 'NO')
             ? __('No')
@@ -124,11 +121,10 @@ function PMA_getHtmlForPrintViewColumns(
         $html .= '&nbsp;</td>';
         if ($have_rel) {
             $html .= '    <td>';
-            $foreigner = PMA_searchColumnInForeigners($res_rel, $field_name);
-            if ($foreigner) {
+            if (isset($res_rel[$field_name])) {
                 $html .= htmlspecialchars(
-                    $foreigner['foreign_table']
-                    . ' -> ' . $foreigner['foreign_field']
+                    $res_rel[$field_name]['foreign_table']
+                    . ' -> ' . $res_rel[$field_name]['foreign_field']
                 );
             }
             $html .= '&nbsp;</td>' . "\n";
@@ -229,7 +225,7 @@ function PMA_getHtmlForRowStatistics(
     if (isset($showtable['Auto_increment'])) {
         $html .= "\n";
         $html .= '<tr>';
-        $html .= '<td>' . __('Next autoindex') . ' </td>';
+        $html .= '<td>' . __('Next autoindex'). ' </td>';
         $html .= '<td class="right">';
         $html .= PMA_Util::formatNumber(
             $showtable['Auto_increment'], 0
@@ -314,7 +310,7 @@ function PMA_getHtmlForSpaceUsage(
         $html .= '<tr>';
         $html .= '<td style="padding-right: 10px">' . __('Index') . '</td>';
         $html .= '<td class="right">' . $index_size . '</td>';
-        $html .= '<td>' . $index_unit . '</td>';
+        $html .= '<td>' . $index_unit. '</td>';
         $html .= '</tr>';
     }
     if (isset($free_size)) {
@@ -449,9 +445,10 @@ function PMA_getHtmlForSpaceUsageAndRowStatistics(
  * return html for Table Structure
  *
  * @param bool   $have_rel        whether have relation
- * @param bool   $tbl_is_view     Is a table view?
+ * @param array  $tbl_is_view     Is a table view?
  * @param array  $columns         columns list
  * @param array  $analyzed_sql    analyzed sql
+ * @param array  $pk_array        primary key array
  * @param array  $res_rel         relations array
  * @param string $db              database
  * @param string $table           table
@@ -464,7 +461,7 @@ function PMA_getHtmlForSpaceUsageAndRowStatistics(
  */
 function PMA_getHtmlForTableStructure(
     $have_rel, $tbl_is_view, $columns, $analyzed_sql,
-    $res_rel, $db, $table, $cfgRelation,
+    $pk_array, $res_rel, $db, $table, $cfgRelation,
     $cfg, $showtable, $cell_align_left
 ) {
     /**
@@ -488,7 +485,7 @@ function PMA_getHtmlForTableStructure(
     $html .= '</thead>';
     $html .= '<tbody>';
     $html .= PMA_getHtmlForPrintViewColumns(
-        $tbl_is_view, $columns, $analyzed_sql, $have_rel,
+        $columns, $analyzed_sql, $pk_array, $have_rel,
         $res_rel, $db, $table, $cfgRelation
     );
     $html .= '</tbody>';
@@ -520,19 +517,20 @@ function PMA_getHtmlForTableStructure(
  * @param string $db              database name
  * @param array  $cfg             global config
  * @param array  $cfgRelation     config from PMA_getRelationsParam
+ * @param array  $pk_array        primary key array
  * @param int    $cell_align_left cell align left
  *
  * @return string
  */
 function PMA_getHtmlForTablesDetail(
-    $the_tables, $db, $cfg, $cfgRelation, $cell_align_left
+    $the_tables, $db, $cfg, $cfgRelation, $pk_array, $cell_align_left
 ) {
     $html = '';
     $tables_cnt = count($the_tables);
     $multi_tables = (count($the_tables) > 1);
     $counter = 0;
 
-    foreach ($the_tables as $table) {
+    foreach ($the_tables as $key => $table) {
         if ($counter + 1 >= $tables_cnt) {
             $breakstyle = '';
         } else {
@@ -584,7 +582,7 @@ function PMA_getHtmlForTablesDetail(
 
         $html .= PMA_getHtmlForTableStructure(
             $have_rel, $tbl_is_view, $columns, $analyzed_sql,
-            $res_rel, $db, $table, $cfgRelation,
+            $pk_array, $res_rel, $db, $table, $cfgRelation,
             $cfg, $showtable, $cell_align_left
         );
 

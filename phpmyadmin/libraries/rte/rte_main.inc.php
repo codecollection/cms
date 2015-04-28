@@ -13,7 +13,6 @@ if (! defined('PHPMYADMIN')) {
  * Include all other files that are common
  * to routines, triggers and events.
  */
-require_once './libraries/rte/rte_general.lib.php';
 require_once './libraries/rte/rte_words.lib.php';
 require_once './libraries/rte/rte_export.lib.php';
 require_once './libraries/rte/rte_list.lib.php';
@@ -36,14 +35,10 @@ if ($GLOBALS['is_ajax_request'] != true) {
      * to manually select the required database and
      * create the missing $url_query variable
      */
-    if (/*overload*/mb_strlen($db)) {
+    if (strlen($db)) {
         $GLOBALS['dbi']->selectDb($db);
         if (! isset($url_query)) {
-            $url_query = PMA_URL_getCommon(
-                array(
-                    'db' => $db, 'table' => $table
-                )
-            );
+            $url_query = PMA_URL_getCommon($db, $table);
         }
     }
 }
@@ -52,6 +47,13 @@ if ($GLOBALS['is_ajax_request'] != true) {
  * Generate the conditional classes that will
  * be used to attach jQuery events to links
  */
+$ajax_class = array(
+    'add'    => '',
+    'edit'   => '',
+    'exec'   => '',
+    'drop'   => '',
+    'export' => ''
+);
 $ajax_class = array(
     'add'    => 'class="ajax add_anchor"',
     'edit'   => 'class="ajax edit_anchor"',

@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * searches the entire database
+ * searchs the entire database
  *
  * @todo    make use of UNION when searching multiple tables
  * @todo    display executed query, optional?
@@ -27,7 +27,7 @@ require 'libraries/db_common.inc.php';
 // If config variable $GLOBALS['cfg']['Usedbsearch'] is on false : exit.
 if (! $GLOBALS['cfg']['UseDbSearch']) {
     PMA_Util::mysqlDie(
-        __('Access denied!'), '', false, $err_url
+        __('Access denied'), '', false, $err_url
     );
 } // end if
 $url_query .= '&amp;goto=db_search.php';
@@ -54,10 +54,9 @@ if ($GLOBALS['is_ajax_request'] == true && empty($_REQUEST['ajax_page_request'])
 }
 
 // Display the search form
-$response->addHTML(
-    '<div id="togglesearchresultsdiv"><a id="togglesearchresultlink"></a></div>'
-    . '<br class="clearfloat" />'
-);
-$response->addHTML($db_search->getSelectionForm());
-$response->addHTML($db_search->getResultDivs());
+$response->addHTML('<div id="togglesearchresultsdiv">'
+    . '<a id="togglesearchresultlink"></a></div>'
+    . '<br class="clearfloat" />');
+$response->addHTML($db_search->getSelectionForm($url_params));
+$response->addHTML($db_search->_getResultDivs());
 ?>

@@ -89,11 +89,11 @@ class RConfig {
         $data = $this->ci->config->item($key);
         
             if($data === false){
-            if(!isset($this->ci->conf)){
+            if(!isset($this->ci->set)){
                 $this->ci->load->model('Set_model','set');
             }
             $this->ci->set->fields('value');
-            $fdata = $this->ci->conf->find($key);
+            $fdata = $this->ci->set->getFieldByWhere('cvalue','ckey="'.$key.'"');
             if (!$fdata) {
                 return $default;
             }

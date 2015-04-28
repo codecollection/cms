@@ -58,12 +58,6 @@ function PMA_getHtmlForChartTypeOptions()
         . '<label for ="radio_timeline">' . _pgettext('Chart type', 'Timeline')
         . '</label>'
         . '</span>'
-        . '<span class="span_scatter" style="display:none;">'
-        . '<input type="radio" name="chartType" '
-        . 'value="scatter" id="radio_scatter" />'
-        . '<label for ="radio_scatter">' . _pgettext('Chart type', 'Scatter')
-        . '</label>'
-        . '</span>'
         . '<br /><br />';
 
     return $html;
@@ -76,7 +70,7 @@ function PMA_getHtmlForChartTypeOptions()
  */
 function PMA_getHtmlForStackedOption()
 {
-    $html = '<span class="barStacked" style="display:none;">'
+    $html = '<span class="barStacked">'
     . '<input type="checkbox" name="barStacked" value="1"'
     . ' id="checkbox_barStacked" />'
     . '<label for ="checkbox_barStacked">' . __('Stacked') . '</label>'
@@ -90,21 +84,21 @@ function PMA_getHtmlForStackedOption()
  * Function to get html for the chart x axis options
  *
  * @param array $keys   keys
- * @param int   &$xaxis x axis
+ * @param int   &$yaxis y axis
  *
  * @return string
  */
-function PMA_getHtmlForChartXAxisOptions($keys, &$xaxis)
+function PMA_getHtmlForChartXAxisOptions($keys, &$yaxis)
 {
     $htmlString = '<div style="float:left; padding-left:40px;">'
         . '<label for="select_chartXAxis">' .  __('X-Axis:') . '</label>'
         . '<select name="chartXAxis" id="select_chartXAxis">';
 
     foreach ($keys as $idx => $key) {
-        if ($xaxis === null) {
+        if ($yaxis === null) {
             $htmlString .= '<option value="' . htmlspecialchars($idx)
                 . '" selected="selected">' . htmlspecialchars($key) . '</option>';
-            $xaxis = $idx;
+            $yaxis = $idx;
         } else {
             $htmlString .= '<option value="' . htmlspecialchars($idx) . '">'
                 . htmlspecialchars($key) . '</option>';
@@ -115,19 +109,20 @@ function PMA_getHtmlForChartXAxisOptions($keys, &$xaxis)
     return $htmlString;
 }
 
+
 /**
  * Function to get html for chart series options
  *
  * @param array $keys                 keys
  * @param array $fields_meta          fields meta
  * @param array $numeric_types        numeric types
- * @param int   $xaxis                x axis
+ * @param int   $yaxis                y axis
  * @param int   $numeric_column_count numeric column count
  *
  * @return string
  */
 function PMA_getHtmlForChartSeriesOptions($keys, $fields_meta, $numeric_types,
-    $xaxis, $numeric_column_count
+    $yaxis, $numeric_column_count
 ) {
     $htmlString = '<br />'
         . '<label for="select_chartSeries">' . __('Series:') . '</label>'
@@ -135,7 +130,7 @@ function PMA_getHtmlForChartSeriesOptions($keys, $fields_meta, $numeric_types,
 
     foreach ($keys as $idx => $key) {
         if (in_array($fields_meta[$idx]->type, $numeric_types)) {
-            if ($idx == $xaxis && $numeric_column_count > 1) {
+            if ($idx == $yaxis && $numeric_column_count > 1) {
                 $htmlString .= '<option value="' . htmlspecialchars($idx) . '">'
                     . htmlspecialchars($key) . '</option>';
             } else {
@@ -173,101 +168,26 @@ function PMA_getHtmlForDateTimeCols($keys, $fields_meta)
 }
 
 /**
- * Function to get html for date time columns
- *
- * @param array $keys          keys
- * @param array $fields_meta   fields meta
- * @param array $numeric_types numeric types
- *
- * @return string
- */
-function PMA_getHtmlForNumericCols($keys, $fields_meta, $numeric_types)
-{
-    $htmlString = '<input type="hidden" name="numericCols" value="';
-    foreach ($keys as $idx => $key) {
-        if (in_array($fields_meta[$idx]->type, $numeric_types)) {
-            $htmlString .= $idx . " ";
-        }
-    }
-    $htmlString .= '" />';
-
-    return $htmlString;
-}
-
-/**
  * Function to get html for the table axis label options
  *
- * @param int   $xaxis x axis
+ * @param int   $yaxis y axis
  * @param array $keys  keys
  *
  * @return string
  */
-function PMA_getHtmlForTableAxisLabelOptions($xaxis, $keys)
+function PMA_getHtmlForTableAxisLabelOptions($yaxis, $keys)
 {
     $htmlString = '<div style="float:left; padding-left:40px;">'
     . '<label for="xaxis_label">' . __('X-Axis label:') . '</label>'
     . '<input style="margin-top:0;" type="text" name="xaxis_label" id="xaxis_label"'
     . ' value="'
-    . (($xaxis == -1) ? __('X Values') : htmlspecialchars($keys[$xaxis]))
+    . (($yaxis == -1) ? __('X Values') : htmlspecialchars($keys[$yaxis]))
     . '" /><br />'
     . '<label for="yaxis_label">' . __('Y-Axis label:') . '</label>'
     . '<input type="text" name="yaxis_label" id="yaxis_label" value="'
     . __('Y Values') . '" /><br />'
     . '</div>';
 
-    return $htmlString;
-}
-
-/**
- * Function to get html for switching to alternative data format
- *
- * @param array $keys          keys
- * @param array $fields_meta   fields meta
- * @param array $numeric_types numeric types
- * @param int   $xaxis         x axis
- *
- * @return string
- */
-function PMA_getHtmlForAlternativeDataFormat($keys, $fields_meta, $numeric_types,
-    $xaxis
-) {
-    $htmlString = '<p style="clear:both;">&nbsp;</p>'
-        . '<div><input type="checkbox" id="chkAlternative" '
-        . 'name="chkAlternative" value="alternativeFormat">'
-        . __('Series names are in a column') . '</input>';
-
-    $htmlString .= '<br />'
-        . '<label for="select_seriesColumn">' . __('Series column:') . '</label>'
-        . '<select name="chartSeriesColumn" id="select_seriesColumn" disabled>';
-    foreach ($keys as $idx => $key) {
-        $htmlString .= '<option value="' . htmlspecialchars($idx) . '"';
-        if ($idx == 1) {
-            $htmlString .= ' selected="selected"';
-            $seriesColumn = $idx;
-        }
-        $htmlString .= '>' . htmlspecialchars($key) . '</option>';
-    }
-    $htmlString .= '</select>';
-
-    $htmlString .= '<label for="select_valueColumn">'
-        . __('Value column:') . '</label>'
-        . '<select name="chartValueColumn" id="select_valueColumn" disabled>';
-
-    $selected = false;
-    foreach ($keys as $idx => $key) {
-        if (in_array($fields_meta[$idx]->type, $numeric_types)) {
-            if (! $selected && $idx != $xaxis && $idx != $seriesColumn) {
-                $htmlString .= '<option value="' . htmlspecialchars($idx)
-                    . '" selected="selected">' . htmlspecialchars($key)
-                    . '</option>';
-                $selected = true;
-            } else {
-                $htmlString .= '<option value="' . htmlspecialchars($idx) . '">'
-                    . htmlspecialchars($key) . '</option>';
-            }
-        }
-    }
-    $htmlString .= '</select></div>';
     return $htmlString;
 }
 
@@ -312,11 +232,6 @@ function PMA_getHtmlForChartAreaDiv()
 {
     $htmlString = '<p style="clear:both;">&nbsp;</p>'
         . '<div id="resizer" style="width:600px; height:400px;">'
-        . '<div id="saveChart"'
-        . ' style="position: absolute; right: 10px;'
-        . ' top: 10px; cursor: pointer; z-index: 1000;">'
-        . PMA_Util::getImage('b_saveimage', __('Save chart as image'))
-        . '</div>'
         . '<div id="querychart">'
         . '</div>'
         . '</div>';
@@ -357,19 +272,15 @@ function PMA_getHtmlForTableChartDisplay($url_query, $url_params, $keys,
         . __('Chart title')
         . '">'
         . '</div>';
-    $xaxis = null;
-    $htmlString .= PMA_getHtmlForChartXAxisOptions($keys, $xaxis);
+    $yaxis = null;
+    $htmlString .= PMA_getHtmlForChartXAxisOptions($keys, $yaxis);
     $htmlString .= PMA_getHtmlForChartSeriesOptions(
-        $keys, $fields_meta, $numeric_types, $xaxis, $numeric_column_count
+        $keys, $fields_meta, $numeric_types, $yaxis, $numeric_column_count
     );
     $htmlString .= PMA_getHtmlForDateTimeCols($keys, $fields_meta);
-    $htmlString .= PMA_getHtmlForNumericCols($keys, $fields_meta, $numeric_types);
     $htmlString .= '</div>';
 
-    $htmlString .= PMA_getHtmlForTableAxisLabelOptions($xaxis, $keys);
-    $htmlString .= PMA_getHtmlForAlternativeDataFormat(
-        $keys, $fields_meta, $numeric_types, $xaxis
-    );
+    $htmlString .= PMA_getHtmlForTableAxisLabelOptions($yaxis, $keys);
     $htmlString .= PMA_getHtmlForStartAndNumberOfRowsOptions($sql_query);
 
     $htmlString .= PMA_getHtmlForChartAreaDiv();
@@ -381,3 +292,4 @@ function PMA_getHtmlForTableChartDisplay($url_query, $url_params, $keys,
     return $htmlString;
 }
 ?>
+

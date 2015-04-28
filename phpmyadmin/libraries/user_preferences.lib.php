@@ -110,18 +110,17 @@ function PMA_saveUserprefs(array $config_array)
     $config_data = json_encode($config_array);
     if ($has_config) {
         $query = 'UPDATE ' . $query_table
-            . ' SET `timevalue` = NOW(), `config_data` = \''
+            . ' SET `config_data` = \''
             . PMA_Util::sqlAddSlashes($config_data)
             . '\''
             . ' WHERE `username` = \''
             . PMA_Util::sqlAddSlashes($cfgRelation['user'])
             . '\'';
     } else {
-        $query = 'INSERT INTO ' . $query_table
-            . ' (`username`, `timevalue`,`config_data`) '
+        $query = 'INSERT INTO ' . $query_table . ' (`username`, `config_data`) '
             . 'VALUES (\''
-            . PMA_Util::sqlAddSlashes($cfgRelation['user']) . '\', NOW(), '
-            . '\'' . PMA_Util::sqlAddSlashes($config_data) . '\')';
+            . PMA_Util::sqlAddSlashes($cfgRelation['user']) . '\', \''
+            . PMA_Util::sqlAddSlashes($config_data) . '\')';
     }
     if (isset($_SESSION['cache'][$cache_key]['userprefs'])) {
         unset($_SESSION['cache'][$cache_key]['userprefs']);
@@ -153,6 +152,8 @@ function PMA_applyUserprefs(array $config_data)
     $blacklist = array_flip($GLOBALS['cfg']['UserprefsDisallow']);
     if (!$GLOBALS['cfg']['UserprefsDeveloperTab']) {
         // disallow everything in the Developers tab
+        $blacklist['Error_Handler/display'] = true;
+        $blacklist['Error_Handler/gather'] = true;
         $blacklist['DBG/sql'] = true;
     }
     $whitelist = array_flip(PMA_readUserprefsFieldNames());
@@ -175,7 +176,7 @@ function PMA_applyUserprefs(array $config_data)
 /**
  * Reads user preferences field names
  *
- * @param array|null $forms Forms
+ * @param array|null $forms
  *
  * @return array
  */
@@ -235,9 +236,9 @@ function PMA_persistOption($path, $value, $default_value)
 /**
  * Redirects after saving new user preferences
  *
- * @param string $file_name Filename
- * @param array  $params    URL parameters
- * @param string $hash      Hash value
+ * @param string $file_name
+ * @param array  $params
+ * @param string $hash
  *
  * @return void
  */

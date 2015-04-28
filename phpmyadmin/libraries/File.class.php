@@ -159,12 +159,16 @@ class PMA_File
     /**
      * Gets file content
      *
-     * @return string|false the binary file content as a string,
-     *                      or false if no content
+     * @param boolean $as_binary whether to return content as binary
+     * @param integer $offset    starting offset
+     * @param integer $length    length
+     *
+     * @return mixed   the binary file content as a string,
+     *                 or false if no content
      *
      * @access  public
      */
-    public function getContent()
+    public function getContent($as_binary = true, $offset = 0, $length = null)
     {
         if (null === $this->_content) {
             if ($this->isUploaded() && ! $this->checkUploadedFile()) {
@@ -182,7 +186,17 @@ class PMA_File
             }
         }
 
-        return '0x' . bin2hex($this->_content);
+        if (! empty($this->_content) && $as_binary) {
+            return '0x' . bin2hex($this->_content);
+        }
+
+        if (null !== $length) {
+            return substr($this->_content, $offset, $length);
+        } elseif ($offset > 0) {
+            return substr($this->_content, $offset);
+        }
+
+        return $this->_content;
     }
 
     /**
@@ -258,6 +272,7 @@ class PMA_File
         // are given as comment
         case 0: //UPLOAD_ERR_OK:
             return $this->setUploadedFile($file['tmp_name']);
+            break;
         case 4: //UPLOAD_ERR_NO_FILE:
             break;
         case 1: //UPLOAD_ERR_INI_SIZE:
@@ -415,7 +430,7 @@ class PMA_File
             PMA_Util::userDir($GLOBALS['cfg']['UploadDir']) . PMA_securePath($name)
         );
         if (! $this->isReadable()) {
-            $this->_error_message = __('File could not be read!');
+            $this->_error_message = __('File could not be read');
             $this->setName(null);
             return false;
         }
@@ -446,7 +461,7 @@ class PMA_File
      *
      * @todo move check of $cfg['TempDir'] into PMA_Config?
      * @access  public
-     * @return boolean whether uploaded file is fine or not
+     * @return boolean whether uploaded fiel is fine or not
      */
     public function checkUploadedFile()
     {
@@ -458,7 +473,7 @@ class PMA_File
             || ! is_writable($GLOBALS['cfg']['TempDir'])
         ) {
             // cannot create directory or access, point user to FAQ 1.11
-            $this->_error_message = __('Error moving the uploaded file, see [doc@faq1-11]FAQ 1.11[/doc].');
+            $this->_error_message = __('Error moving the uploaded file, see [doc@faq1-11]FAQ 1.11[/doc]');
             return false;
         }
 
@@ -492,13 +507,12 @@ class PMA_File
     }
 
     /**
-     * Detects what compression the file uses
+     * Detects what compression filse uses
      *
      * @todo    move file read part into readChunk() or getChunk()
      * @todo    add support for compression plugins
      * @access  protected
-     * @return  string|false false on error, otherwise string MIME type of
-     *                       compression, none for none
+     * @return string MIME type of compression, none for none
      */
     protected function detectCompression()
     {
@@ -509,7 +523,7 @@ class PMA_File
         ob_end_clean();
 
         if (! $file) {
-            $this->_error_message = __('File could not be read!');
+            $this->_error_message = __('File could not be read');
             return false;
         }
 
@@ -525,14 +539,27 @@ class PMA_File
         }
          */
 
-        $this->_compression = PMA_Util::getCompressionMimeType($file);
+        $test = fread($file, 4);
+        $len = strlen($test);
+        fclose($file);
+
+        if ($len >= 2 && $test[0] == chr(31) && $test[1] == chr(139)) {
+            $this->_compression = 'application/gzip';
+        } elseif ($len >= 3 && substr($test, 0, 3) == 'BZh') {
+            $this->_compression = 'application/bzip2';
+        } elseif ($len >= 4 && $test == "PK\003\004") {
+            $this->_compression = 'application/zip';
+        } else {
+            $this->_compression = 'none';
+        }
+
         return $this->_compression;
     }
 
     /**
      * Sets whether the content should be decompressed before returned
      *
-     * @param boolean $decompress whether to decompress
+     * @param boolean $decompress whether to decompres
      *
      * @return void
      */
@@ -617,6 +644,8 @@ class PMA_File
                 if (! empty($result['error'])) {
                     $this->_error_message = PMA_Message::rawError($result['error']);
                     return false;
+                } else {
+                    $this->content_uncompressed = $result['data'];
                 }
                 unset($result);
             } else {
@@ -630,6 +659,7 @@ class PMA_File
         default:
             $this->errorUnsupported();
             return false;
+            break;
         }
 
         return true;
@@ -673,6 +703,109 @@ class PMA_File
     }
 
     /**
+     * advances the file pointer in the file handle by $length bytes/chars
+     *
+     * @param integer $length numbers of chars/bytes to skip
+     *
+     * @return boolean
+     * @todo this function is unused
+     */
+    public function advanceFilePointer($length)
+    {
+        while ($length > 0) {
+            $this->getNextChunk($length);
+            $length -= $this->getChunkSize();
+        }
+    }
+
+    /**
+     * http://bugs.php.net/bug.php?id=29532
+     * bzip reads a maximum of 8192 bytes on windows systems
+     *
+     * @param int $max_size maximum size of the next chunk to be returned
+     *
+     * @return bool|string
+     * @todo this function is unused
+     */
+    public function getNextChunk($max_size = null)
+    {
+        if (null !== $max_size) {
+            $size = min($max_size, $this->getChunkSize());
+        } else {
+            $size = $this->getChunkSize();
+        }
+
+        // $result = $this->handler->getNextChunk($size);
+        $result = '';
+        switch ($this->getCompression()) {
+        case 'application/bzip2':
+            $result = '';
+            while (strlen($result) < $size - 8192 && ! feof($this->getHandle())) {
+                $result .= bzread($this->getHandle(), $size);
+            }
+            break;
+        case 'application/gzip':
+            $result = gzread($this->getHandle(), $size);
+            break;
+        case 'application/zip':
+            /*
+             * if getNextChunk() is used some day,
+             * replace this code by code similar to the one
+             * in open()
+             *
+            include_once './libraries/unzip.lib.php';
+            $import_handle = new SimpleUnzip();
+            $import_handle->ReadFile($this->getName());
+            if ($import_handle->Count() == 0) {
+                $this->_error_message = __('No files found inside ZIP archive!');
+                return false;
+            } elseif ($import_handle->GetError(0) != 0) {
+                $this->_error_message = __('Error in ZIP archive:')
+                    . ' ' . $import_handle->GetErrorMsg(0);
+                return false;
+            } else {
+                $result = $import_handle->GetData(0);
+            }
+             */
+            break;
+        case 'none':
+            $result = fread($this->getHandle(), $size);
+            break;
+        default:
+            return false;
+        }
+
+        if ($GLOBALS['charset_conversion']) {
+            $result = PMA_convertString($this->getCharset(), 'utf-8', $result);
+        } else {
+            /**
+             * Skip possible byte order marks (I do not think we need more
+             * charsets, but feel free to add more, you can use wikipedia for
+             * reference: <http://en.wikipedia.org/wiki/Byte_Order_Mark>)
+             *
+             * @todo BOM could be used for charset autodetection
+             */
+            if ($this->getOffset() === 0) {
+                // UTF-8
+                if (strncmp($result, "\xEF\xBB\xBF", 3) == 0) {
+                    $result = substr($result, 3);
+                    // UTF-16 BE, LE
+                } elseif (strncmp($result, "\xFE\xFF", 2) == 0
+                    || strncmp($result, "\xFF\xFE", 2) == 0
+                ) {
+                    $result = substr($result, 2);
+                }
+            }
+        }
+
+        $this->_offset += $size;
+        if (0 === $result) {
+            return true;
+        }
+        return $result;
+    }
+
+    /**
      * Returns the offset
      *
      * @return integer the offset
@@ -711,7 +844,7 @@ class PMA_File
      */
     public function getContentLength()
     {
-        return /*overload*/mb_strlen($this->_content);
+        return strlen($this->_content);
     }
 
     /**

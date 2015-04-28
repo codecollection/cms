@@ -34,12 +34,11 @@ class Node_Column extends Node
             'text' => 'tbl_structure.php?server=' . $GLOBALS['server']
                     . '&amp;db=%3$s&amp;table=%2$s&amp;field=%1$s'
                     . '&amp;change_column=1'
-                    . '&amp;token=' . $_SESSION[' PMA_token '],
+                    . '&amp;token=' . $GLOBALS['token'],
             'icon' => 'tbl_structure.php?server=' . $GLOBALS['server']
                     . '&amp;db=%3$s&amp;table=%2$s&amp;field=%1$s'
                     . '&amp;change_column=1'
-                    . '&amp;token=' . $_SESSION[' PMA_token '],
-            'title' => __('Structure')
+                    . '&amp;token=' . $GLOBALS['token']
         );
     }
 }

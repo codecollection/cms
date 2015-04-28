@@ -58,7 +58,7 @@ function prepareJSVersion() {
  */
 function addDataPoint(pointNumber, prefix) {
     return '<br/>' +
-        PMA_sprintf(PMA_messages.strPointN, (pointNumber + 1)) + ': ' +
+        $.sprintf(PMA_messages.strPointN, (pointNumber + 1)) + ': ' +
         '<label for="x">' + PMA_messages.strX + '</label>' +
         '<input type="text" name="' + prefix + '[' + pointNumber + '][x]" value=""/>' +
         '<label for="y">' + PMA_messages.strY + '</label>' +
@@ -147,7 +147,7 @@ function loadGISEditor(value, field, type, input_name, token) {
         'token' : token,
         'ajax_request': true
     }, function (data) {
-        if (typeof data !== 'undefined' && data.success === true) {
+        if (data.success === true) {
             $gis_editor.html(data.gis_editor);
             initGISEditorVisualization();
             prepareJSVersion();
@@ -197,7 +197,7 @@ function insertDataAndClose() {
     var input_name = $form.find("input[name='input_name']").val();
 
     $.post('gis_data_editor.php', $form.serialize() + "&generate=true&ajax_request=true", function (data) {
-        if (typeof data !== 'undefined' && data.success === true) {
+        if (data.success === true) {
             $("input[name='" + input_name + "']").val(data.result);
         } else {
             PMA_ajaxShowMessage(data.error, false);
@@ -210,15 +210,15 @@ function insertDataAndClose() {
  * Unbind all event handlers before tearing down a page
  */
 AJAX.registerTeardown('gis_data_editor.js', function () {
-    $(document).off('click', "#gis_editor input[name='gis_data[save]']");
-    $(document).off('submit', '#gis_editor');
-    $(document).off('change', "#gis_editor input[type='text']");
-    $(document).off('change', "#gis_editor select.gis_type");
-    $(document).off('click', '#gis_editor a.close_gis_editor, #gis_editor a.cancel_gis_editor');
-    $(document).off('click', '#gis_editor a.addJs.addPoint');
-    $(document).off('click', '#gis_editor a.addLine.addJs');
-    $(document).off('click', '#gis_editor a.addJs.addPolygon');
-    $(document).off('click', '#gis_editor a.addJs.addGeom');
+    $("#gis_editor input[name='gis_data[save]']").die('click');
+    $('#gis_editor').die('submit');
+    $('#gis_editor').find("input[type='text']").die('change');
+    $("#gis_editor select.gis_type").die('change');
+    $('#gis_editor a.close_gis_editor, #gis_editor a.cancel_gis_editor').die('click');
+    $('#gis_editor a.addJs.addPoint').die('click');
+    $('#gis_editor a.addLine.addJs').die('click');
+    $('#gis_editor a.addJs.addPolygon').die('click');
+    $('#gis_editor a.addJs.addGeom').die('click');
 });
 
 AJAX.registerOnload('gis_data_editor.js', function () {
@@ -229,7 +229,7 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Prepares and insert the GIS data to the input field on clicking 'copy'.
      */
-    $(document).on('click', "#gis_editor input[name='gis_data[save]']", function (event) {
+    $("#gis_editor input[name='gis_data[save]']").live('click', function (event) {
         event.preventDefault();
         insertDataAndClose();
     });
@@ -237,7 +237,7 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Prepares and insert the GIS data to the input field on pressing 'enter'.
      */
-    $(document).on('submit', '#gis_editor', function (event) {
+    $('#gis_editor').live('submit', function (event) {
         event.preventDefault();
         insertDataAndClose();
     });
@@ -245,14 +245,13 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Trigger asynchronous calls on data change and update the output.
      */
-    $(document).on('change', "#gis_editor input[type='text']", function () {
+    $('#gis_editor').find("input[type='text']").live('change', function () {
         var $form = $('form#gis_data_editor_form');
         $.post('gis_data_editor.php', $form.serialize() + "&generate=true&ajax_request=true", function (data) {
-            if (typeof data !== 'undefined' && data.success === true) {
+            if (data.success === true) {
                 $('#gis_data_textarea').val(data.result);
                 $('#placeholder').empty().removeClass('hasSVG').html(data.visualization);
                 $('#openlayersmap').empty();
-                /* TODO: the gis_data_editor should rather return JSON than JS code to eval */
                 eval(data.openLayers);
                 initGISEditorVisualization();
             } else {
@@ -264,12 +263,12 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Update the form on change of the GIS type.
      */
-    $(document).on('change', "#gis_editor select.gis_type", function (event) {
+    $("#gis_editor select.gis_type").live('change', function (event) {
         var $gis_editor = $("#gis_editor");
         var $form = $('form#gis_data_editor_form');
 
         $.post('gis_data_editor.php', $form.serialize() + "&get_gis_editor=true&ajax_request=true", function (data) {
-            if (typeof data !== 'undefined' && data.success === true) {
+            if (data.success === true) {
                 $gis_editor.html(data.gis_editor);
                 initGISEditorVisualization();
                 prepareJSVersion();
@@ -282,14 +281,14 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Handles closing of the GIS data editor.
      */
-    $(document).on('click', '#gis_editor a.close_gis_editor, #gis_editor a.cancel_gis_editor', function () {
+    $('#gis_editor a.close_gis_editor, #gis_editor a.cancel_gis_editor').live('click', function () {
         closeGISEditor();
     });
 
     /**
      * Handles adding data points
      */
-    $(document).on('click', '#gis_editor a.addJs.addPoint', function () {
+    $('#gis_editor a.addJs.addPoint').live('click', function () {
         var $a = $(this);
         var name = $a.attr('name');
         // Eg. name = gis_data[0][MULTIPOINT][add_point] => prefix = gis_data[0][MULTIPOINT]
@@ -306,7 +305,7 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Handles adding linestrings and inner rings
      */
-    $(document).on('click', '#gis_editor a.addLine.addJs', function () {
+    $('#gis_editor a.addLine.addJs').live('click', function () {
         var $a = $(this);
         var name = $a.attr('name');
 
@@ -342,7 +341,7 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Handles adding polygons
      */
-    $(document).on('click', '#gis_editor a.addJs.addPolygon', function () {
+    $('#gis_editor a.addJs.addPolygon').live('click', function () {
         var $a = $(this);
         var name = $a.attr('name');
         // Eg. name = gis_data[0][MULTIPOLYGON][add_polygon] => prefix = gis_data[0][MULTIPOLYGON]
@@ -371,7 +370,7 @@ AJAX.registerOnload('gis_data_editor.js', function () {
     /**
      * Handles adding geoms
      */
-    $(document).on('click', '#gis_editor a.addJs.addGeom', function () {
+    $('#gis_editor a.addJs.addGeom').live('click', function () {
         var $a = $(this);
         var prefix = 'gis_data[GEOMETRYCOLLECTION]';
         // Find the number of geoms

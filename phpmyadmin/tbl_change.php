@@ -22,7 +22,6 @@ require_once 'libraries/db_table_exists.lib.php';
  * functions implementation for this script
  */
 require_once 'libraries/insert_edit.lib.php';
-require_once 'libraries/transformations.lib.php';
 
 /**
  * Determine whether Insert or Edit and set global variables
@@ -33,10 +32,7 @@ list(
 ) = PMA_determineInsertOrEdit(
     isset($where_clause) ? $where_clause : null, $db, $table
 );
-// Increase number of rows if unsaved rows are more
-if (!empty($unsaved_values) && count($rows) < count($unsaved_values)) {
-    $rows = array_fill(0, count($unsaved_values), false);
-}
+
 /**
  * file listing
 */
@@ -47,7 +43,7 @@ require_once 'libraries/file_listing.lib.php';
  * (at this point, $GLOBALS['goto'] will be set but could be empty)
  */
 if (empty($GLOBALS['goto'])) {
-    if (/*overload*/mb_strlen($table)) {
+    if (strlen($table)) {
         // avoid a problem (see bug #2202709)
         $GLOBALS['goto'] = 'tbl_sql.php';
     } else {
@@ -73,9 +69,7 @@ $response = PMA_Response::getInstance();
 $header   = $response->getHeader();
 $scripts  = $header->getScripts();
 $scripts->addFile('functions.js');
-$scripts->addFile('sql.js');
 $scripts->addFile('tbl_change.js');
-$scripts->addFile('big_ints.js');
 $scripts->addFile('jquery/jquery-ui-timepicker-addon.js');
 $scripts->addFile('gis_data_editor.js');
 
@@ -135,10 +129,7 @@ $url_params = PMA_urlParamsInEditMode(
 
 $has_blob_field = false;
 foreach ($table_columns as $column) {
-    if (PMA_isColumn(
-        $column,
-        array('blob', 'tinyblob', 'mediumblob', 'longblob')
-    )) {
+    if (PMA_isColumnBlob($column)) {
         $has_blob_field = true;
         break;
     }
@@ -159,17 +150,16 @@ if (! $cfg['ShowFunctionFields'] || ! $cfg['ShowFieldTypesInDataEditView']) {
 }
 
 if (! $cfg['ShowFunctionFields']) {
-    $html_output .= PMA_showTypeOrFunction('function', $url_params, false);
+    $html_output .= PMA_showFunctionFieldsInEditMode($url_params, false);
 }
 
 if (! $cfg['ShowFieldTypesInDataEditView']) {
-    $html_output .= PMA_showTypeOrFunction('type', $url_params, false);
+    $html_output .= PMA_showColumnTypesInDataEditView($url_params, false);
 }
 
-$GLOBALS['plugin_scripts'] = array();
 foreach ($rows as $row_id => $current_row) {
-    if (empty($current_row)) {
-        $current_row = array();
+    if ($current_row === false) {
+        unset($current_row);
     }
 
     $jsvkey = $row_id;
@@ -178,27 +168,19 @@ foreach ($rows as $row_id => $current_row) {
     $current_result = (isset($result) && is_array($result) && isset($result[$row_id])
         ? $result[$row_id]
         : $result);
-    $repopulate = array();
-    $checked = true;
-    if (isset($unsaved_values[$row_id])) {
-        $repopulate = $unsaved_values[$row_id];
-        $checked = false;
-    }
     if ($insert_mode && $row_id > 0) {
-        $html_output .= PMA_getHtmlForIgnoreOption($row_id, $checked);
+        $html_output .= PMA_getHtmlForIgnoreOption($row_id);
     }
 
     $html_output .= PMA_getHtmlForInsertEditRow(
         $url_params, $table_columns, $column, $comments_map, $timestamp_seen,
         $current_result, $chg_evt_handler, $jsvkey, $vkey, $insert_mode,
-        $current_row, $o_rows, $tabindex, $columns_cnt,
+        isset($current_row) ? $current_row : null, $o_rows, $tabindex, $columns_cnt,
         $is_upload, $tabindex_for_function, $foreigners, $tabindex_for_null,
         $tabindex_for_value, $table, $db, $row_id, $titles,
-        $biggest_max_file_size, $text_dir, $repopulate, $where_clause_array
+        $biggest_max_file_size, $text_dir
     );
 } // end foreach on multi-edit
-$scripts->addFiles($GLOBALS['plugin_scripts']);
-unset($unsaved_values, $checked, $repopulate, $GLOBALS['plugin_scripts']);
 
 $html_output .= PMA_getHtmlForGisEditor();
 

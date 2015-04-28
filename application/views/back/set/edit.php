@@ -20,21 +20,19 @@
         </tr>
         <tr>
             <td class="fr"><span class="fred">* </span>配置值：</td>
-            <td><input id="cvalue" type="text" name="data[cvalue]" class="comm_ipt" placeholder="配置值" value="<?php echo $data["cvalue"]?>"></td>
+            <td><textarea id="cvalue" name="data[cvalue]" style="width:238px;"><?php echo $data["cvalue"]?></textarea>
+            </td>
         </tr>
         <tr>
             <td class="fr">标签：</td>
             <td><input id="tag" type="text" name="data[tag]" class="comm_ipt" placeholder="配置标签" value="<?php echo $data["tag"]?>"></td>
         </tr>
-        <tr>
-            <td class="fr">表单类型：</td>
-            <td><?php echo $thisc->vars->input_str(array("node"=>"form_type","default"=>$data["field_type"]= $data["field_type"] == "" ? "text" : $data["field_type"],"type"=>"select_single","name"=>"field_type"))?></td>
-        </tr>
+        
         <tr>
             <td class="fr">是否系统：</td>
             <td>
-                <span class="cbx_wrap"><input type="radio" id="is_system" name="data[is_system]" value="0" />&nbsp;&nbsp;<label for="is_system">系统</label>&nbsp;&nbsp;
-                <span class="cbx_wrap"><input type="radio" id="is_system_not" name="data[is_system]" value="1" />&nbsp;&nbsp;<label for="is_system_not">自定义</label>&nbsp;&nbsp;
+                <span class="cbx_wrap"><input type="radio" id="is_system" <?php if($data['is_system'] == 0) {echo('checked="checked"');}?> name="data[is_system]" value="0" />&nbsp;&nbsp;<label for="is_system">系统</label>&nbsp;&nbsp;
+                <span class="cbx_wrap"><input type="radio" id="is_system_not" <?php if($data['is_system'] == 1) {echo('checked="checked"');}?> name="data[is_system]" value="1" />&nbsp;&nbsp;<label for="is_system_not">自定义</label>&nbsp;&nbsp;
             </td>
         </tr>
         <tr>

@@ -21,8 +21,8 @@ $scripts->addFile('server_privileges.js');
  * Displays an error message and exits if the user isn't allowed to use this
  * script
  */
-if (! $GLOBALS['cfg']['ShowChgPassword']) {
-    $GLOBALS['cfg']['ShowChgPassword'] = $GLOBALS['dbi']->selectDb('mysql');
+if (! $cfg['ShowChgPassword']) {
+    $cfg['ShowChgPassword'] = $GLOBALS['dbi']->selectDb('mysql');
 }
 if ($cfg['Server']['auth_type'] == 'config' || ! $cfg['ShowChgPassword']) {
     PMA_Message::error(
@@ -128,18 +128,18 @@ function PMA_setChangePasswordMsg()
  */
 function PMA_changePassword($password, $message, $change_password_message)
 {
-    global $auth_plugin;
-
+    // Defines the url to return to in case of error in the sql statement
+    $_url_params = array();
     $hashing_function = PMA_changePassHashingFunction();
     $sql_query = 'SET password = '
         . (($password == '') ? '\'\'' : $hashing_function . '(\'***\')');
     PMA_changePassUrlParamsAndSubmitQuery(
-        $password, $sql_query, $hashing_function
+        $password, $_url_params, $sql_query, $hashing_function
     );
 
-    $auth_plugin->handlePasswordChange($password);
+    $new_url_params = PMA_changePassAuthType($_url_params, $password);
     PMA_getChangePassMessage($change_password_message, $sql_query);
-    PMA_changePassDisplayPage($message, $sql_query);
+    PMA_changePassDisplayPage($message, $sql_query, $new_url_params);
 }
 
 /**
@@ -160,16 +160,17 @@ function PMA_changePassHashingFunction()
 /**
  * Generate the error url and submit the query
  *
- * @param string $password         Password
- * @param string $sql_query        SQL query
- * @param string $hashing_function Hashing function
+ * @param string  $password
+ * @param array   $_url_params
+ * @param string  $sql_query
+ * @param string  $hashing_function
  *
  * @return void
  */
 function PMA_changePassUrlParamsAndSubmitQuery(
-    $password, $sql_query, $hashing_function
+    $password, $_url_params, $sql_query, $hashing_function
 ) {
-    $err_url = 'user_password.php' . PMA_URL_getCommon();
+    $err_url = 'user_password.php' . PMA_URL_getCommon($_url_params);
     $local_query = 'SET password = ' . (($password == '')
         ? '\'\''
         : $hashing_function . '(\'' . PMA_Util::sqlAddSlashes($password) . '\')');
@@ -179,22 +180,63 @@ function PMA_changePassUrlParamsAndSubmitQuery(
 }
 
 /**
+ * Change password authentication type
+ *
+ * @param array   $_url_params
+ * @param string  $password
+ *
+ * @return array   $_url_params
+ */
+function PMA_changePassAuthType($_url_params, $password)
+{
+    /**
+     * Changes password cookie if required
+     * Duration = till the browser is closed for password
+     * (we don't want this to be saved)
+     */
+
+    //    include_once "libraries/plugins/auth/AuthenticationCookie.class.php";
+    //    $auth_plugin = new AuthenticationCookie();
+    // the $auth_plugin is already defined in common.inc.php when this is used
+    global $auth_plugin;
+
+    if ($GLOBALS['cfg']['Server']['auth_type'] == 'cookie') {
+        $GLOBALS['PMA_Config']->setCookie(
+            'pmaPass-' . $GLOBALS['server'],
+            $auth_plugin->blowfishEncrypt(
+                $password,
+                $GLOBALS['cfg']['blowfish_secret']
+            )
+        );
+    }
+    /**
+     * For http auth. mode, the "back" link will also enforce new
+     * authentication
+     */
+    if ($GLOBALS['cfg']['Server']['auth_type'] == 'http') {
+        $_url_params['old_usr'] = 'relog';
+    }
+    return $_url_params;
+}
+
+/**
  * Display the page
  *
- * @param string $message   Message
- * @param string $sql_query SQL query
+ * @param string  $message
+ * @param string  $sql_query
+ * @param array   $_url_params
  *
  * @return void
  */
-function PMA_changePassDisplayPage($message, $sql_query)
+function PMA_changePassDisplayPage($message, $sql_query, $_url_params)
 {
     echo '<h1>' . __('Change password') . '</h1>' . "\n\n";
     echo PMA_Util::getMessage(
         $message, $sql_query, 'success'
     );
-    echo '<a href="index.php' . PMA_URL_getCommon()
-        . ' target="_parent">' . "\n"
-        . '<strong>' . __('Back') . '</strong></a>';
+    echo '<a href="index.php'.PMA_URL_getCommon($_url_params)
+        .' target="_parent">'. "\n"
+        .'<strong>'.__('Back').'</strong></a>';
     exit;
 }
 ?>

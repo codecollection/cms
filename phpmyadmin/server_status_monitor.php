@@ -10,11 +10,9 @@ require_once 'libraries/common.inc.php';
 require_once 'libraries/server_common.inc.php';
 require_once 'libraries/ServerStatusData.class.php';
 require_once 'libraries/server_status_monitor.lib.php';
-
 if (PMA_DRIZZLE) {
-    $GLOBALS['replication_info'] = array();
-    $GLOBALS['replication_info']['master']['status'] = false;
-    $GLOBALS['replication_info']['slave']['status'] = false;
+    $server_master_status = false;
+    $server_slave_status = false;
 } else {
     include_once 'libraries/replication.inc.php';
     include_once 'libraries/replication_gui.lib.php';
@@ -38,6 +36,10 @@ if (isset($_REQUEST['ajax_request']) && $_REQUEST['ajax_request'] == true) {
     }
 
     if (isset($_REQUEST['log_data'])) {
+        if (PMA_MYSQL_INT_VERSION < 50106) {
+            // Table logging is only available since 5.1.6
+            exit('""');
+        }
 
         $start = intval($_REQUEST['time_start']);
         $end = intval($_REQUEST['time_end']);
@@ -74,6 +76,7 @@ if (isset($_REQUEST['ajax_request']) && $_REQUEST['ajax_request'] == true) {
 $header   = $response->getHeader();
 $scripts  = $header->getScripts();
 $scripts->addFile('jquery/jquery.tablesorter.js');
+$scripts->addFile('jquery/jquery.json-2.4.js');
 $scripts->addFile('jquery/jquery.sortableTable.js');
 $scripts->addFile('jquery/jquery-ui-timepicker-addon.js');
 /* < IE 9 doesn't support canvas natively */

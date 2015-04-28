@@ -8,7 +8,6 @@
 
 require_once 'libraries/common.inc.php';
 require_once 'libraries/tbl_chart.lib.php';
-
 /*
  * Execute the query and return the result
  */
@@ -18,10 +17,12 @@ if (isset($_REQUEST['ajax_request'])
 ) {
     $response = PMA_Response::getInstance();
 
-    $tableLength = /*overload*/mb_strlen($GLOBALS['table']);
-    $dbLength = /*overload*/mb_strlen($GLOBALS['db']);
-    if ($tableLength && $dbLength) {
+    if (strlen($GLOBALS['table']) && strlen($GLOBALS['db'])) {
         include './libraries/tbl_common.inc.php';
+    } else {
+        $response->isSuccess(false);
+        $response->addJSON('message', __('Error'));
+        exit;
     }
 
     $sql_with_limit = 'SELECT * FROM( ' . $sql_query . ' ) AS `temp_res` LIMIT '
@@ -79,12 +80,12 @@ $scripts->addFile('jqplot/plugins/jqplot.highlighter.js');
 /**
  * Runs common work
  */
-if (/*overload*/mb_strlen($GLOBALS['table'])) {
+if (strlen($GLOBALS['table'])) {
     $url_params['goto'] = $cfg['DefaultTabTable'];
     $url_params['back'] = 'tbl_sql.php';
     include 'libraries/tbl_common.inc.php';
     include 'libraries/tbl_info.inc.php';
-} elseif (/*overload*/mb_strlen($GLOBALS['db'])) {
+} elseif (strlen($GLOBALS['db'])) {
     $url_params['goto'] = $cfg['DefaultTabDatabase'];
     $url_params['back'] = 'sql.php';
     include 'libraries/db_common.inc.php';

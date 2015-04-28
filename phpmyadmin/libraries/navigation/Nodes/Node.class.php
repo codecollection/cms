@@ -91,11 +91,6 @@ class Node
     public $links;
 
     /**
-     * @var string HTML title
-     */
-    public $title;
-
-    /**
      * @var string Extra CSS classes for the node
      */
     public $classes = '';
@@ -198,7 +193,7 @@ class Node
     }
 
     /**
-     * Retrieves the parents for a node
+     * Retreives the parents for a node
      *
      * @param bool $self       Whether to include the Node itself in the results
      * @param bool $containers Whether to include nodes of type CONTAINER
@@ -214,6 +209,7 @@ class Node
             && ($this->is_group != true || $groups)
         ) {
             $parents[] = $this;
+            $self      = false;
         }
         $parent = $this->parent;
         while (isset($parent)) {
@@ -232,16 +228,16 @@ class Node
      * node, it will return the table and database nodes. The names of the returned
      * nodes can be used in SQL queries, etc...
      *
-     * @return Node|false
+     * @return Node
      */
     public function realParent()
     {
         $retval = $this->parents();
-        if (count($retval) <= 0) {
+        if (count($retval) > 0) {
+            return $retval[0];
+        } else {
             return false;
         }
-
-        return $retval[0];
     }
 
     /**
@@ -271,9 +267,8 @@ class Node
     }
 
     /**
-     * Returns true if the node has some siblings (other nodes on the same tree
-     * level, in the same branch), false otherwise.
-     * The only exception is for nodes on
+     * Returns true the node has some siblings (other nodes on the same tree level,
+     * in the same branch), false otherwise. The only exception is for nodes on
      * the third level of the tree (columns and indexes), for which the function
      * always returns true. This is because we want to render the containers
      * for these nodes
@@ -286,15 +281,14 @@ class Node
         $paths  = $this->getPaths();
         if (count($paths['aPath_clean']) > 3) {
             $retval = true;
-            return $retval;
-        }
-
-        foreach ($this->parent->children as $child) {
-            if ($child !== $this
-                && ($child->type == Node::OBJECT || $child->hasChildren(false))
-            ) {
-                $retval = true;
-                break;
+        } else {
+            foreach ($this->parent->children as $child) {
+                if ($child !== $this
+                    && ($child->type == Node::OBJECT || $child->hasChildren(false))
+                ) {
+                    $retval = true;
+                    break;
+                }
             }
         }
         return $retval;
@@ -365,186 +359,13 @@ class Node
      */
     public function getData($type, $pos, $searchClause = '')
     {
-        $maxItems = $GLOBALS['cfg']['FirstLevelNavigationItems'];
-        if (!$GLOBALS['cfg']['NavigationTreeEnableGrouping']
-            || !$GLOBALS['cfg']['ShowDatabasesNavigationAsTree']
-        ) {
-            if (isset($GLOBALS['cfg']['Server']['DisableIS'])
-                && ! $GLOBALS['cfg']['Server']['DisableIS']
-            ) {
-                $query  = "SELECT `SCHEMA_NAME` ";
-                $query .= "FROM `INFORMATION_SCHEMA`.`SCHEMATA` ";
-                $query .= $this->_getWhereClause('SCHEMA_NAME', $searchClause);
-                $query .= "ORDER BY `SCHEMA_NAME` ";
-                $query .= "LIMIT $pos, $maxItems";
-                $retval = $GLOBALS['dbi']->fetchResult($query);
-                return $retval;
-            }
-
-            if ($GLOBALS['dbs_to_test'] === false) {
-                $retval = array();
-                $query = "SHOW DATABASES ";
-                $query .= $this->_getWhereClause('Database', $searchClause);
-                $handle = $GLOBALS['dbi']->tryQuery($query);
-                if ($handle !== false) {
-                    $count = 0;
-                    while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                        if ($pos <= 0 && $count < $maxItems) {
-                            $retval[] = $arr[0];
-                            $count++;
-                        }
-                        $pos--;
-                    }
-                }
-                return $retval;
-            }
-
-            $retval = array();
-            $count = 0;
-            foreach ($this->_getDatabasesToSearch($searchClause) as $db) {
-                $query = "SHOW DATABASES LIKE '" . $db . "'";
-                $handle = $GLOBALS['dbi']->tryQuery($query);
-                if ($handle === false) {
-                    continue;
-                }
-
-                while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                    if ($this->_isHideDb($arr[0])) {
-                        continue;
-                    }
-                    if (in_array($arr[0], $retval)) {
-                        continue;
-                    }
-
-                    if ($pos <= 0 && $count < $maxItems) {
-                        $retval[] = $arr[0];
-                        $count++;
-                    }
-                    $pos--;
-                }
-            }
-            sort($retval);
-            return $retval;
-        }
-
-        $dbSeparator = $GLOBALS['cfg']['NavigationTreeDbSeparator'];
-        if (isset($GLOBALS['cfg']['Server']['DisableIS'])
-            && ! $GLOBALS['cfg']['Server']['DisableIS']
-        ) {
-            $query  = "SELECT `SCHEMA_NAME` ";
-            $query .= "FROM `INFORMATION_SCHEMA`.`SCHEMATA`, ";
-            $query .= "(";
-            $query .= "SELECT DB_first_level ";
-            $query .= "FROM ( ";
-            $query .= "SELECT DISTINCT SUBSTRING_INDEX(SCHEMA_NAME, ";
-            $query .= "'$dbSeparator', 1) ";
-            $query .= "DB_first_level ";
-            $query .= "FROM INFORMATION_SCHEMA.SCHEMATA ";
-            $query .= $this->_getWhereClause('SCHEMA_NAME', $searchClause);
-            $query .= ") t ";
-            $query .= "ORDER BY DB_first_level ASC ";
-            $query .= "LIMIT $pos, $maxItems";
-            $query .= ") t2 ";
-            $query .= "WHERE 1 = LOCATE(CONCAT(DB_first_level, ";
-            $query .= "'$dbSeparator'), ";
-            $query .= "CONCAT(SCHEMA_NAME, ";
-            $query .= "'$dbSeparator')) ";
-            $query .= "ORDER BY SCHEMA_NAME ASC";
-            $retval = $GLOBALS['dbi']->fetchResult($query);
-            return $retval;
-        }
-
-        if ($GLOBALS['dbs_to_test'] === false) {
-            $query = "SHOW DATABASES ";
-            $query .= $this->_getWhereClause('Database', $searchClause);
-            $handle = $GLOBALS['dbi']->tryQuery($query);
-            $prefixes = array();
-            if ($handle !== false) {
-                $prefixMap = array();
-                $total = $pos + $maxItems;
-                while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                    $prefix = strstr($arr[0], $dbSeparator, true);
-                    if ($prefix === false) {
-                        $prefix = $arr[0];
-                    }
-                    $prefixMap[$prefix] = 1;
-                    if (sizeof($prefixMap) == $total) {
-                        break;
-                    }
-                }
-                $prefixes = array_slice(array_keys($prefixMap), $pos);
-            }
-
-            $query = "SHOW DATABASES ";
-            $query .= $this->_getWhereClause('Database', '');
-            $query .= " AND (";
-            $subClauses = array();
-            foreach ($prefixes as $prefix) {
-                $subClauses[] = " LOCATE('"
-                    . PMA_Util::sqlAddSlashes($prefix) . $dbSeparator . "', "
-                    . "CONCAT(`Database`, '" . $dbSeparator . "')) = 1 ";
-            }
-            $query .= implode("OR", $subClauses) . ")";
-            $retval = $GLOBALS['dbi']->fetchResult($query);
-            return $retval;
-        }
-
-        $retval = array();
-        $prefixMap = array();
-        $total = $pos + $maxItems;
-        foreach ($this->_getDatabasesToSearch($searchClause) as $db) {
-            $query = "SHOW DATABASES LIKE '" . $db . "'";
-            $handle = $GLOBALS['dbi']->tryQuery($query);
-            if ($handle === false) {
-                continue;
-            }
-
-            while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                if ($this->_isHideDb($arr[0])) {
-                    continue;
-                }
-                $prefix = strstr($arr[0], $dbSeparator, true);
-                if ($prefix === false) {
-                    $prefix = $arr[0];
-                }
-                $prefixMap[$prefix] = 1;
-                if (sizeof($prefixMap) == $total) {
-                    break 2;
-                }
-            }
-        }
-        $prefixes = array_slice(array_keys($prefixMap), $pos);
-
-        foreach ($this->_getDatabasesToSearch($searchClause) as $db) {
-            $query = "SHOW DATABASES LIKE '" . $db . "'";
-            $handle = $GLOBALS['dbi']->tryQuery($query);
-            if ($handle === false) {
-                continue;
-            }
-
-            while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                if ($this->_isHideDb($arr[0])) {
-                    continue;
-                }
-                if (in_array($arr[0], $retval)) {
-                    continue;
-                }
-
-                foreach ($prefixes as $prefix) {
-                    $starts_with = strpos(
-                        $arr[0] . $dbSeparator,
-                        $prefix . $dbSeparator
-                    ) === 0;
-                    if ($starts_with) {
-                        $retval[] = $arr[0];
-                        break;
-                    }
-                }
-            }
-        }
-        sort($retval);
-
-        return $retval;
+        $query  = "SELECT `SCHEMA_NAME` ";
+        $query .= "FROM `INFORMATION_SCHEMA`.`SCHEMATA` ";
+        $query .= $this->_getWhereClause($searchClause);
+        $query .= "ORDER BY `SCHEMA_NAME` ASC ";
+        $query .= "LIMIT $pos, {$GLOBALS['cfg']['MaxNavigationItems']}";
+        return $GLOBALS['dbi']->fetchResult($query);
+        
     }
 
     /**
@@ -559,150 +380,26 @@ class Node
      */
     public function getPresence($type = '', $searchClause = '')
     {
-        if (!$GLOBALS['cfg']['NavigationTreeEnableGrouping']
-            || !$GLOBALS['cfg']['ShowDatabasesNavigationAsTree']
-        ) {
-            if (isset($GLOBALS['cfg']['Server']['DisableIS'])
-                && ! $GLOBALS['cfg']['Server']['DisableIS']
-            ) {
-                $query = "SELECT COUNT(*) ";
-                $query .= "FROM INFORMATION_SCHEMA.SCHEMATA ";
-                $query .= $this->_getWhereClause('SCHEMA_NAME', $searchClause);
-                $retval = (int)$GLOBALS['dbi']->fetchValue($query);
-                return $retval;
-            }
-
-            if ($GLOBALS['dbs_to_test'] === false) {
-                $query = "SHOW DATABASES ";
-                $query .= $this->_getWhereClause('Database', $searchClause);
-                $retval = $GLOBALS['dbi']->numRows(
-                    $GLOBALS['dbi']->tryQuery($query)
-                );
-                return $retval;
-            }
-
-            $retval = 0;
-            foreach ($this->_getDatabasesToSearch($searchClause) as $db) {
-                $query = "SHOW DATABASES LIKE '" . $db . "'";
-                $retval += $GLOBALS['dbi']->numRows(
-                    $GLOBALS['dbi']->tryQuery($query)
-                );
-            }
-            return $retval;
-        }
-
-        $dbSeparator = $GLOBALS['cfg']['NavigationTreeDbSeparator'];
-        if (! $GLOBALS['cfg']['Server']['DisableIS']) {
-            $query = "SELECT COUNT(*) ";
-            $query .= "FROM ( ";
-            $query .= "SELECT DISTINCT SUBSTRING_INDEX(SCHEMA_NAME, ";
-            $query .= "'$dbSeparator', 1) ";
-            $query .= "DB_first_level ";
-            $query .= "FROM INFORMATION_SCHEMA.SCHEMATA ";
-            $query .= $this->_getWhereClause('SCHEMA_NAME', $searchClause);
-            $query .= ") t ";
-            $retval = (int)$GLOBALS['dbi']->fetchValue($query);
-            return $retval;
-        }
-
-        if ($GLOBALS['dbs_to_test'] !== false) {
-            $prefixMap = array();
-            foreach ($this->_getDatabasesToSearch($searchClause) as $db) {
-                $query = "SHOW DATABASES LIKE '" . $db . "'";
-                $handle = $GLOBALS['dbi']->tryQuery($query);
-                if ($handle === false) {
-                    continue;
-                }
-
-                while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                    if ($this->_isHideDb($arr[0])) {
-                        continue;
-                    }
-                    $prefix = strstr($arr[0], $dbSeparator, true);
-                    if ($prefix === false) {
-                        $prefix = $arr[0];
-                    }
-                    $prefixMap[$prefix] = 1;
-                }
-            }
-            $retval = count($prefixMap);
-            return $retval;
-        }
-
-        $prefixMap = array();
-        $query = "SHOW DATABASES ";
-        $query .= $this->_getWhereClause('Database', $searchClause);
-        $handle = $GLOBALS['dbi']->tryQuery($query);
-        if ($handle !== false) {
-            while ($arr = $GLOBALS['dbi']->fetchArray($handle)) {
-                $prefix = strstr($arr[0], $dbSeparator, true);
-                if ($prefix === false) {
-                    $prefix = $arr[0];
-                }
-                $prefixMap[$prefix] = 1;
-            }
-        }
-        $retval = count($prefixMap);
-
+        $query  = "SELECT COUNT(*) ";
+        $query .= "FROM `INFORMATION_SCHEMA`.`SCHEMATA` ";
+        $query .= $this->_getWhereClause($searchClause);
+        $retval = (int)$GLOBALS['dbi']->fetchValue($query);
         return $retval;
-    }
-
-    /**
-     * Detemines whether a given database should be hidden according to 'hide_db'
-     *
-     * @param string $db database name
-     *
-     * @return boolean whether to hide
-     */
-    private function _isHideDb($db)
-    {
-        if (! empty($GLOBALS['cfg']['Server']['hide_db'])
-            && preg_match('/' . $GLOBALS['cfg']['Server']['hide_db'] . '/', $db)
-        ) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Get the list of databases for 'SHOW DATABASES LIKE' queries.
-     * If a search clause is set it gets the highest priority while only_db gets
-     * the next priority. In case both are empty list of databases determined by
-     * GRANTs are used
-     *
-     * @param string $searchClause search clause
-     *
-     * @return array array of databases
-     */
-    private function _getDatabasesToSearch($searchClause)
-    {
-        if (! empty($searchClause)) {
-            $databases = array(
-                "%" . PMA_Util::sqlAddSlashes($searchClause, true) . "%"
-            );
-        } elseif (! empty($GLOBALS['cfg']['Server']['only_db'])) {
-            $databases = $GLOBALS['cfg']['Server']['only_db'];
-        } elseif (! empty($GLOBALS['dbs_to_test'])) {
-            $databases = $GLOBALS['dbs_to_test'];
-        }
-        sort($databases);
-        return $databases;
     }
 
     /**
      * Returns the WHERE clause depending on the $searchClause parameter
      * and the hide_db directive
      *
-     * @param string $columnName   Column name of the column having database names
      * @param string $searchClause A string used to filter the results of the query
      *
      * @return string
      */
-    private function _getWhereClause($columnName, $searchClause = '')
+    private function _getWhereClause($searchClause = '')
     {
         $whereClause = "WHERE TRUE ";
         if (! empty($searchClause)) {
-            $whereClause .= "AND " . PMA_Util::backquote($columnName) . " LIKE '%";
+            $whereClause .= "AND `SCHEMA_NAME` LIKE '%";
             $whereClause .= PMA_Util::sqlAddSlashes(
                 $searchClause, true
             );
@@ -710,8 +407,8 @@ class Node
         }
 
         if (! empty($GLOBALS['cfg']['Server']['hide_db'])) {
-            $whereClause .= "AND " . PMA_Util::backquote($columnName)
-                . " NOT REGEXP '" . $GLOBALS['cfg']['Server']['hide_db'] . "' ";
+            $whereClause .= "AND `SCHEMA_NAME` NOT REGEXP '"
+                . $GLOBALS['cfg']['Server']['hide_db'] . "' ";
         }
 
         if (! empty($GLOBALS['cfg']['Server']['only_db'])) {
@@ -723,7 +420,7 @@ class Node
             $whereClause .= "AND (";
             $subClauses = array();
             foreach ($GLOBALS['cfg']['Server']['only_db'] as $each_only_db) {
-                $subClauses[] = " " . PMA_Util::backquote($columnName) . " LIKE '"
+                $subClauses[] = " `SCHEMA_NAME` LIKE '"
                     . $each_only_db . "' ";
             }
             $whereClause .= implode("OR", $subClauses) . ")";
@@ -739,75 +436,6 @@ class Node
     public function getHtmlForControlButtons()
     {
         return '';
-    }
-
-    /**
-     * Returns CSS classes for a node
-     *
-     * @param boolean $match Whether the node matched loaded tree
-     *
-     * @return String with html classes.
-     */
-    public function getCssClasses($match)
-    {
-        if (! $GLOBALS['cfg']['NavigationTreeEnableExpansion']
-        ) {
-            return '';
-        }
-
-        $result = array('expander');
-
-        if ($this->is_group || $match) {
-            $result[] = 'loaded';
-        }
-        if ($this->type == Node::CONTAINER) {
-            $result[] = 'container';
-        }
-
-        return implode(' ', $result);
-    }
-
-    /**
-     * Returns icon for the node
-     *
-     * @param boolean $match Whether the node matched loaded tree
-     *
-     * @return String with image name
-     */
-    public function getIcon($match)
-    {
-        if (! $GLOBALS['cfg']['NavigationTreeEnableExpansion']
-        ) {
-            return '';
-        } elseif ($match && ! $this->is_group) {
-            $this->visible = true;
-            return PMA_Util::getImage('b_minus.png');
-        } else {
-            return PMA_Util::getImage('b_plus.png', __('Expand/Collapse'));
-        }
-    }
-
-    /**
-     * Gets the count of hidden elements for each database
-     *
-     * @return array array containing the count of hidden elements for each database
-     */
-    public function getNavigationHidingData()
-    {
-        $cfgRelation = PMA_getRelationsParam();
-        if (isset($cfgRelation['navwork']) && $cfgRelation['navwork']) {
-            $navTable = PMA_Util::backquote($cfgRelation['db'])
-            . "." . PMA_Util::backquote($cfgRelation['navigationhiding']);
-            $sqlQuery = "SELECT `db_name`, COUNT(*) AS `count` FROM " . $navTable
-            . " WHERE `username`='"
-                . PMA_Util::sqlAddSlashes($GLOBALS['cfg']['Server']['user']) . "'"
-                    . " GROUP BY `db_name`";
-            $counts = $GLOBALS['dbi']->fetchResult(
-                $sqlQuery, 'db_name', 'count', $GLOBALS['controllink']
-            );
-            return $counts;
-        }
-        return null;
     }
 }
 ?>

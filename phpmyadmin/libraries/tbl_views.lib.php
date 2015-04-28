@@ -31,17 +31,15 @@ function PMA_getColumnMap($sql_query, $view_columns)
             $real_source_result
         );
 
-        $nbColumns = count($view_columns);
-        $nbFields = count($real_source_fields_meta);
-        if ($nbFields > 0) {
+        if (count($real_source_fields_meta) > 0) {
 
-            for ($i=0; $i < $nbFields; $i++) {
+            for ($i=0; $i<count($real_source_fields_meta); $i++) {
 
                 $map = array();
                 $map['table_name'] = $real_source_fields_meta[$i]->table;
                 $map['refering_column'] = $real_source_fields_meta[$i]->name;
 
-                if ($nbColumns > 1) {
+                if (count($view_columns) > 1) {
                     $map['real_column'] = $view_columns[$i];
                 }
 
@@ -60,14 +58,14 @@ function PMA_getColumnMap($sql_query, $view_columns)
 
 
 /**
- * Get existing data on transformations applied for
+ * Get existing data on tranformations applyed for
  * columns in a particular table
  *
  * @param string $db Database name looking for
  *
  * @return mysqli_result Result of executed SQL query
  */
-function PMA_getExistingTransformationData($db)
+function PMA_getExistingTranformationData($db)
 {
     $cfgRelation = PMA_getRelationsParam();
 
@@ -87,15 +85,15 @@ function PMA_getExistingTransformationData($db)
 /**
  * Get SQL query for store new transformation details of a VIEW
  *
- * @param mysqli_result $pma_transformation_data Result set of SQL execution
- * @param array         $column_map              Details of VIEW columns
- * @param string        $view_name               Name of the VIEW
- * @param string        $db                      Database name of the VIEW
+ * @param mysqli_result $pma_tranformation_data Result set of SQL execution
+ * @param array         $column_map             Details of VIEW columns
+ * @param string        $view_name              Name of the VIEW
+ * @param string        $db                     Database name of the VIEW
  *
- * @return string $new_transformations_sql SQL query for new transformations
+ * @return string $new_transformations_sql SQL query for new tranformations
  */
 function PMA_getNewTransformationDataSql(
-    $pma_transformation_data, $column_map, $view_name, $db
+    $pma_tranformation_data, $column_map, $view_name, $db
 ) {
     $cfgRelation = PMA_getRelationsParam();
 
@@ -110,7 +108,7 @@ function PMA_getNewTransformationDataSql(
     $column_count = 0;
     $add_comma = false;
 
-    while ($data_row = $GLOBALS['dbi']->fetchAssoc($pma_transformation_data)) {
+    while ($data_row = $GLOBALS['dbi']->fetchAssoc($pma_tranformation_data)) {
 
         foreach ($column_map as $column) {
 

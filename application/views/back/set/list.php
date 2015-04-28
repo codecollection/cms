@@ -36,8 +36,8 @@
                 <td><?php echo $thisc->vars->get_field_str('is_system',$v['is_system']);?></td>
                 <td><?php echo $v['comment'];?></td>
                 <td>
-                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['ckey']}","编辑","btn");?>
-                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:del_one('".$v['ckey']."');","删除","btn");}?>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['config_id']}","编辑","btn");?>
+                    <?php if($v['is_system'] != 0){ $thisc->echoButton("{$thisc->level}02","javascript:del_one(".$v['config_id'].");","删除","btn");}?>
                 </td>
             </tr>
             <?php }?>

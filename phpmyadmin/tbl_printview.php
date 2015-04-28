@@ -34,12 +34,10 @@ $cfgRelation = PMA_getRelationsParam();
 /**
  * Defines the url to return to in case of error in a sql statement
  */
-if (/*overload*/mb_strlen($table)) {
-    $err_url = 'tbl_sql.php?' . PMA_URL_getCommon(
-        array('db' => $db, 'table' => $table)
-    );
+if (strlen($table)) {
+    $err_url = 'tbl_sql.php?' . PMA_URL_getCommon($db, $table);
 } else {
-    $err_url = 'db_sql.php' . PMA_URL_getCommon(array('db' => $db));
+    $err_url = 'db_sql.php?' . PMA_URL_getCommon($db);
 }
 
 
@@ -53,7 +51,7 @@ $GLOBALS['dbi']->selectDb($db);
  */
 if (isset($_POST['selected_tbl']) && is_array($_POST['selected_tbl'])) {
     $the_tables   = $_POST['selected_tbl'];
-} elseif (/*overload*/mb_strlen($table)) {
+} elseif (strlen($table)) {
     $the_tables[] = $table;
 }
 
@@ -61,6 +59,7 @@ $response->addHTML(PMA_getHtmlForTablesInfo($the_tables));
 $response->addHTML(
     PMA_getHtmlForTablesDetail(
         $the_tables, $db, $cfg, $cfgRelation,
+        isset($pk_array)? $pk_array: array(),
         $cell_align_left
     )
 );

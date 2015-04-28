@@ -15,7 +15,7 @@ if (! defined('PHPMYADMIN')) {
 /**
  * Returns the html content for the query statistics
  *
- * @param PMA_ServerStatusData $ServerStatusData Server status data
+ * @param object $ServerStatusData An instance of the PMA_ServerStatusData class
  *
  * @return string
  */
@@ -68,7 +68,7 @@ function PMA_getHtmlForQueryStatistics($ServerStatusData)
 /**
  * Returns the html content for the query details
  *
- * @param PMA_ServerStatusData $ServerStatusData Server status data
+ * @param object $ServerStatusData An instance of the PMA_ServerStatusData class
  *
  * @return string
  */
@@ -95,9 +95,8 @@ function PMA_getHtmlForServerStatusQueriesDetails($ServerStatusData)
     /* l10n: # = Amount of queries */
     $retval .= __('#');
     $retval .= '</th>';
-    $retval .= '<th>&oslash; ' . __('per hour')
-        . '</th>';
-    $retval .= '<th>%</div></th>';
+    $retval .= '<th>&oslash; ' . __('per hour') . '</th>';
+    $retval .= '<th>%</th>';
     $retval .= '</tr>';
     $retval .= '</thead>';
     $retval .= '<tbody>';

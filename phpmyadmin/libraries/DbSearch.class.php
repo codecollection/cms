@@ -152,7 +152,7 @@ class PMA_DbSearch
      *
      * @param string $table The table name
      *
-     * @return array 3 SQL queries (for count, display and delete results)
+     * @return array 3 SQL querys (for count, display and delete results)
      *
      * @todo    can we make use of fulltextsearch IN BOOLEAN MODE for this?
      * PMA_backquote
@@ -175,7 +175,6 @@ class PMA_DbSearch
         // Gets where clause for the query
         $where_clause = $this->_getWhereClause($table);
         // Builds complete queries
-        $sql = array();
         $sql['select_columns'] = $sqlstr_select . ' * ' . $sqlstr_from
             . $where_clause;
         // here, I think we need to still use the COUNT clause, even for
@@ -188,7 +187,7 @@ class PMA_DbSearch
     }
 
     /**
-     * Provides where clause for building SQL query
+     * Provides where clause for bulding SQL query
      *
      * @param string $table The table name
      *
@@ -196,6 +195,7 @@ class PMA_DbSearch
      */
     private function _getWhereClause($table)
     {
+        $where_clause = '';
         // Columns to select
         $allColumns = $GLOBALS['dbi']->getColumns($GLOBALS['db'], $table);
         $likeClauses = array();
@@ -203,7 +203,7 @@ class PMA_DbSearch
         $like_or_regex   = (($this->_criteriaSearchType == 4) ? 'REGEXP' : 'LIKE');
         $automatic_wildcard   = (($this->_criteriaSearchType < 3) ? '%' : '');
         // For "as regular expression" (search option 4), LIKE won't be used
-        // Usage example: If user is searching for a literal $ in a regexp search,
+        // Usage example: If user is seaching for a literal $ in a regexp search,
         // he should enter \$ as the value.
         $this->_criteriaSearchString = PMA_Util::sqlAddSlashes(
             $this->_criteriaSearchString,
@@ -216,14 +216,14 @@ class PMA_DbSearch
 
         foreach ($search_words as $search_word) {
             // Eliminates empty values
-            if (/*overload*/mb_strlen($search_word) === 0) {
+            if (strlen($search_word) === 0) {
                 continue;
             }
             $likeClausesPerColumn = array();
             // for each column in the table
             foreach ($allColumns as $column) {
                 if (! isset($this->_criteriaColumnName)
-                    || /*overload*/mb_strlen($this->_criteriaColumnName) == 0
+                    || strlen($this->_criteriaColumnName) == 0
                     || $column['Field'] == $this->_criteriaColumnName
                 ) {
                     // Drizzle has no CONVERT and all text columns are UTF-8
@@ -345,11 +345,7 @@ class PMA_DbSearch
             $html_output .= '<td><a name="browse_search" class="ajax" href="'
                 . $browse_result_path . '" onclick="loadResult(\''
                 . $browse_result_path . '\',\'' . $each_table . '\',\''
-                . PMA_URL_getCommon(
-                    array(
-                        'db' => $GLOBALS['db'], 'table' => $each_table
-                    )
-                ) . '\''
+                . PMA_URL_getCommon($GLOBALS['db'], $each_table) . '\''
                 . ');return false;" >'
                 . __('Browse') . '</a></td>';
             $this_url_params['sql_query'] = $newsearchsqls['delete'];
@@ -365,7 +361,7 @@ class PMA_DbSearch
                 . __('Delete') . '</a></td>';
         } else {
             $html_output .= '<td>&nbsp;</td>'
-                . '<td>&nbsp;</td>';
+                .'<td>&nbsp;</td>';
         }// end if else
         $html_output .= '</tr>';
         return $html_output;
@@ -374,9 +370,11 @@ class PMA_DbSearch
     /**
      * Provides the main search form's html
      *
+     * @param array $url_params URL parameters
+     *
      * @return string HTML for selection form
      */
-    public function getSelectionForm()
+    public function getSelectionForm($url_params)
     {
         $html_output = '<a id="db_search"></a>';
         $html_output .= '<form id="db_search_form"'
@@ -478,7 +476,7 @@ class PMA_DbSearch
      *
      * @return string div tags
      */
-    public function getResultDivs()
+    public function _getResultDivs()
     {
         $html_output = '<!-- These two table-image and table-link elements display'
             . ' the table name in browse search results  -->';

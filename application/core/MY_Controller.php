@@ -291,8 +291,10 @@ class CAdminBase extends MY_Controller {
         }
         
         if ($status) {
+            
             $this->echoAjax(0, $msg);
         } else {
+             
             $this->echoAjax(100, $this->bindModel->errorMessage);
         }
     }

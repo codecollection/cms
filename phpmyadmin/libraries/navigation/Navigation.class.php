@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
- * This class is responsible for instantiating
+ * This class is responsible for instanciating
  * the various components of the navigation panel
  *
  * @package PhpMyAdmin-navigation
@@ -22,6 +22,16 @@ require_once 'libraries/navigation/NavigationTree.class.php';
 class PMA_Navigation
 {
     /**
+     * Initialises the class
+     */
+    public function __construct()
+    {
+        if (empty($GLOBALS['token'])) {
+            $GLOBALS['token'] = $_SESSION[' PMA_token '];
+        }
+    }
+
+    /**
      * Renders the navigation tree, or part of it
      *
      * @return string The navigation tree
@@ -39,30 +49,24 @@ class PMA_Navigation
             || ! empty($_REQUEST['full'])
             || ! empty($_REQUEST['reload'])
         ) {
-            if ($GLOBALS['cfg']['ShowDatabasesNavigationAsTree']) {
-                // provide database tree in navigation
-                $navRender = $tree->renderState();
-            } else {
-                // provide legacy pre-4.0 navigation
-                $navRender = $tree->renderDbSelect();
-            }
+            $treeRender = $tree->renderState();
         } else {
-            $navRender = $tree->renderPath();
+            $treeRender = $tree->renderPath();
         }
-        if (! $navRender) {
+
+        if (! $treeRender) {
             $retval .= PMA_Message::error(
-                __('An error has occurred while loading the navigation display')
+                __('An error has occurred while loading the navigation tree')
             )->getDisplay();
         } else {
-            $retval .= $navRender;
+            $retval .= $treeRender;
         }
 
         if (! PMA_Response::getInstance()->isAjax()) {
             // closes the tags that were opened by the navigation header
-            $retval .= '</div>'; // pma_navigation_tree
-            $retval .= '</div>'; // pma_navigation_content
-            $retval .= $this->_getDropHandler();
-            $retval .= '</div>'; // pma_navigation
+            $retval .= '</div>';
+            $retval .= '</div>';
+            $retval .= '</div>';
         }
 
         return $retval;
@@ -96,27 +100,6 @@ class PMA_Navigation
     }
 
     /**
-     * Inserts Drag and Drop Import handler
-     *
-     * @return string html code for drop handler
-     */
-    private function _getDropHandler()
-    {
-        $retval = '';
-        $retval .= '<div class="pma_drop_handler">'
-            . __('Drop files here')
-            . '</div>';
-        $retval .= '<div class="pma_sql_import_status">';
-        $retval .= '<h2>SQL upload ( ';
-        $retval .= '<span class="pma_import_count">0</span> ';
-        $retval .= ') <span class="close">x</span>';
-        $retval .= '<span class="minimize">-</span></h2>';
-        $retval .= '<div></div>';
-        $retval .= '</div>';
-        return $retval;
-    }
-
-    /**
      * Remove a hidden item of navigation tree from the
      * list of hidden items in PMA database.
      *
@@ -147,13 +130,13 @@ class PMA_Navigation
     }
 
     /**
-     * Returns HTML for the dialog to show hidden navigation items.
+     * Returns HTML for the dialog to show hidden nativation items.
      *
      * @param string $dbName    database name
      * @param string $itemType  type of the items to include
      * @param string $tableName table name
      *
-     * @return string HTML for the dialog to show hidden navigation items
+     * @return string HTML for the dialog to show hidden nativation items
      */
     public function getItemUnhideDialog($dbName, $itemType = null, $tableName = null)
     {
@@ -203,12 +186,12 @@ class PMA_Navigation
                     foreach ($hidden[$t] as $hiddenItem) {
                         $html .= '<tr class="' . ($odd ? 'odd' : 'even') . '">';
                         $html .= '<td>' . htmlspecialchars($hiddenItem) . '</td>';
-                        $html .= '<td style="width:80px"><a href="navigation.php'
+                        $html .= '<td style="width:80px"><a href="navigation.php?'
                             . PMA_URL_getCommon()
                             . '&unhideNavItem=true'
-                            . '&itemType=' . urlencode($t)
-                            . '&itemName=' . urlencode($hiddenItem)
-                            . '&dbName=' . urlencode($dbName) . '"'
+                            . '&itemType=' . $t
+                            . '&itemName=' . urldecode($hiddenItem)
+                            . '&dbName=' . urldecode($dbName) . '"'
                             . ' class="unhideNavItem ajax">'
                             . PMA_Util::getIcon('lightbulb.png', __('Show'))
                             .  '</a></td>';

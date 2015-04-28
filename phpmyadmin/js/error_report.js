@@ -15,18 +15,13 @@ var ErrorReport = {
      * @return void
      */
     error_handler: function (exception) {
-        if (exception.name === null || typeof(exception.name) == "undefined") {
-            exception.name = ErrorReport._extractExceptionName(exception);
-        }
         ErrorReport._last_exception = exception;
         $.get("error_report.php", {
             ajax_request: true,
-            server: PMA_commonParams.get('server'),
             token: PMA_commonParams.get('token'),
-            get_settings: true,
-            exception_type: 'js'
+            get_settings: true
         }, function (data) {
-            if (data.success !== true) {
+            if (!data.success === true) {
                 PMA_ajaxShowMessage(data.error, false);
                 return;
             }
@@ -52,7 +47,7 @@ var ErrorReport = {
     /**
      * Shows the modal dialog previewing the report
      *
-     * @param exception object error report info
+     * @param object error report info
      *
      * @return void
      */
@@ -151,32 +146,10 @@ var ErrorReport = {
      *
      * @return void
      */
-    _removeErrorNotification: function (e) {
-        if (e) {
-            // don't remove the hash fragment by navigating to #
-            e.preventDefault();
-        }
+    _removeErrorNotification: function () {
         $("#error_notification").fadeOut(function () {
             $(this).remove();
         });
-    },
-    /**
-     * Extracts Exception name from message if it exists
-     *
-     * @return String
-     */
-    _extractExceptionName: function (exception) {
-        if (exception.message === null || typeof(exception.message) == "undefined"){
-            return "";
-        } else {
-            var reg = /([a-zA-Z]+):/;
-            var regex_result = null;
-            regex_result = reg.exec(exception.message);
-            if(regex_result && regex_result.length == 2)
-                return regex_result[1];
-            else
-                return "";
-        }
     },
     /**
      * Shows the modal dialog previewing the report
@@ -228,7 +201,7 @@ var ErrorReport = {
     /**
      * Returns the report data to send to the server
      *
-     * @param exception object exception info
+     * @param object exception info
      *
      * @return object
      */
@@ -238,11 +211,10 @@ var ErrorReport = {
             "token": PMA_commonParams.get('token'),
             "exception": exception,
             "current_url": window.location.href,
-            "microhistory": ErrorReport._get_microhistory(),
-            "exception_type": 'js'
+            "microhistory": ErrorReport._get_microhistory()
         };
         if (typeof AJAX.cache.pages[AJAX.cache.current - 1] !== 'undefined') {
-            report_data.scripts = AJAX.cache.pages[AJAX.cache.current - 1].scripts.map(
+           report_data.scripts = AJAX.cache.pages[AJAX.cache.current - 1].scripts.map(
                 function (script) {
                     return script.name;
                 }
@@ -266,7 +238,7 @@ var ErrorReport = {
     /**
      * Wraps given function in error reporting code and returns wrapped function
      *
-     * @param func function to be wrapped
+     * @param function function to be wrapped
      *
      * @return function
      */

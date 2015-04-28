@@ -50,18 +50,29 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
         // possibly use a global transform and feed it with special options
 
         // further operations on $buffer using the $options[] array.
-        $options = $this->getOptions($options, array(0, 'all', '…'));
+        if (!isset($options[0]) ||  $options[0] == '') {
+            $options[0] = 0;
+        }
 
+        if (!isset($options[1]) ||  $options[1] == '') {
+            $options[1] = 'all';
+        }
+
+        if (!isset($options[2]) || $options[2] == '') {
+            $options[2] = '…';
+        }
+
+        $newtext = '';
         if ($options[1] != 'all') {
-            $newtext = /*overload*/mb_substr(
+            $newtext = $GLOBALS['PMA_String']->substr(
                 $buffer, $options[0], $options[1]
             );
         } else {
-            $newtext = /*overload*/mb_substr($buffer, $options[0]);
+            $newtext = $GLOBALS['PMA_String']->substr($buffer, $options[0]);
         }
 
-        $length = /*overload*/mb_strlen($newtext);
-        $baselength = /*overload*/mb_strlen($buffer);
+        $length = strlen($newtext);
+        $baselength = strlen($buffer);
         if ($length != $baselength) {
             if ($options[0] != 0) {
                 $newtext = $options[2] . $newtext;
@@ -73,6 +84,21 @@ abstract class SubstringTransformationsPlugin extends TransformationsPlugin
         }
 
         return $newtext;
+    }
+
+    /**
+     * This method is called when any PluginManager to which the observer
+     * is attached calls PluginManager::notify()
+     *
+     * @param SplSubject $subject The PluginManager notifying the observer
+     *                            of an update.
+     *
+     * @todo implement
+     * @return void
+     */
+    public function update (SplSubject $subject)
+    {
+        ;
     }
 
 

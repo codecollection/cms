@@ -70,12 +70,27 @@ abstract class DownloadTransformationsPlugin extends TransformationsPlugin
 
         return sprintf(
             '<a href="transformation_wrapper.php%s&amp;ct=application'
-            . '/octet-stream&amp;cn=%s" title="%s" class="disableAjax">%s</a>',
+            . '/octet-stream&amp;cn=%s" title="%s">%s</a>',
             $options['wrapper_link'],
             urlencode($cn),
             htmlspecialchars($cn),
             htmlspecialchars($cn)
         );
+    }
+
+    /**
+     * This method is called when any PluginManager to which the observer
+     * is attached calls PluginManager::notify()
+     *
+     * @param SplSubject $subject The PluginManager notifying the observer
+     *                            of an update.
+     *
+     * @todo implement
+     * @return void
+     */
+    public function update (SplSubject $subject)
+    {
+        ;
     }
 
 
