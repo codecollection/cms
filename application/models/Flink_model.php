@@ -4,7 +4,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 友链
  *
  */
-class Fink_model extends MBase{
+class Flink_model extends MBase{
     
     protected $tableName = 'cms_flink';
     

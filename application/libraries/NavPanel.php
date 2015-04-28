@@ -159,136 +159,121 @@ class NavPanel {
         
         array(
             'title' => '扩 展',
-            'url' => '/back/flink',
+            'url' => '/back/flinkg',
             'level'=>'E',
             'bgimg' => '/style/back/img/menu1/extern.png',
-            'menu'  => array(
+            'menu'  =>array(
                 array(
-                    'title' => '友 链',
-                    'url' => '',
-                    'level'=>'E',
-                    'bgimg' => '/style/back/img/menu1/extern.png',
-                    'menu'  => array(
-                        array(
-                            'title'=>'友链组',
-                            'url' => '/back/flinkg',
-                            'level' => 'E01', //页面权限
-                            'menu' => array(
-                                array('title' => '添加编辑', 'level' => 'E0101'), //按钮功能配置
-                                array('title' => '删除', 'level' => 'E0102'),
-                            ),
-                        ),
-
-                        array(
-                            'title' => '友链管理', 
-                            'url' => '/back/flink',
-                            'level'=>'E02',
-                            'menu'=>array(
-                                array('title'=>'添加编辑','level'=>'E0201'),
-                                array('title'=>'删除友链','level'=>'E0202'),
-                                array('title'=>'屏蔽友链','level'=>'E0203'),
-                            ),
-                        ),
-                    ),
-                ),
-
-                array(
-                    'title' => '广 告',
-                    'url' => '/back/ad',
-                    'level'=>'F',
-                    'bgimg' => '/style/back/img/menu1/extern.png',
-                    'menu'  => array(
-                        array(
-                            'title'=>'广告位',
-                            'url' => '/back/adarea',
-                            'level' => 'F01', //页面权限
-                            'menu' => array(
-                                array('title' => '添加编辑', 'level' => 'F0101'), //按钮功能配置
-                                array('title' => '删除位置', 'level' => 'F0102'),
-                            ),
-                        ),
-
-                        array(
-                            'title' => '广告管理', 
-                            'url' => '/back/ad',
-                            'level'=>'F02',
-                            'menu'=>array(
-                                array('title'=>'添加编辑','level'=>'F0201'),
-                                array('title'=>'删除广告','level'=>'F0202'),
-                                array('title'=>'下架广告','level'=>'F0203'),
-                            ),
-                        ),
-                    ),
-                ),
-
-                array(
-                    'title' => '标 签',
-                    'url' => '/back/tagg',
-                    'level'=>'G',
-                    'bgimg' => '/style/back/img/menu1/extern.png',
-                    'menu'  => array(
-                        array(
-                            'title'=>'标签组',
-                            'url' => '/back/tagg',
-                            'level' => 'G01', //页面权限
-                            'menu' => array(
-                                array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
-                                array('title' => '删除组', 'level' => 'G0102'),
-                            ),
-                        ),
-
-                        array(
-                            'title' => '标签管理', 
-                            'url' => '/back/tag',
-                            'level'=>'G02',
-                            'menu'=>array(
-                                array('title'=>'添加编辑','level'=>'G0201'),
-                                array('title'=>'删除标签','level'=>'G0202'),
-                            ),
-                        ),
-                    ),
-                ),
-                array(
-                    'title'=>'正文内链',
-                    'url' => '/back/nlink',
-                    'level' => 'H01', //页面权限
+                    'title'=>'友链组',
+                    'url' => '/back/flinkg',
+                    'level' => 'E01', //页面权限
                     'menu' => array(
-                        array('title' => '添加编辑', 'level' => 'H0101'), //按钮功能配置
-                        array('title' => '删除', 'level' => 'H0102'),
+                        array('title' => '添加编辑', 'level' => 'E0101'), //按钮功能配置
+                        array('title' => '删除', 'level' => 'E0102'),
                     ),
                 ),
-                
+
                 array(
-                    'title' => '推荐位', 
-                    'url' => '/back/recommend',
-                    'level'=>'H02',
+                    'title' => '友链管理', 
+                    'url' => '/back/flink',
+                    'level'=>'E02',
                     'menu'=>array(
-                        array('title'=>'添加编辑','level'=>'H0201'),
-                        array('title'=>'删除','level'=>'H0202'),
+                        array('title'=>'添加编辑','level'=>'E0201'),
+                        array('title'=>'删除友链','level'=>'E0202'),
+                        array('title'=>'屏蔽友链','level'=>'E0203'),
                     ),
                 ),
-                
-                array(
-                    'title' => '评论管理', 
-                    'url' => '/back/comment',
-                    'level'=>'H03',
-                    'menu'=>array(
-                        //array('title'=>'添加编辑','level'=>'H0301'),
-                        //array('title'=>'删除','level'=>'H0302'),
-                        array('title'=>'屏蔽评论','level'=>'H0303'),
+                 array(
+                    'title'=>'广告位',
+                    'url' => '/back/adarea',
+                    'level' => 'F01', //页面权限
+                    'menu' => array(
+                        array('title' => '添加编辑', 'level' => 'F0101'), //按钮功能配置
+                        array('title' => '删除位置', 'level' => 'F0102'),
                     ),
                 ),
-                
+
                 array(
-                    'title' => '资源管理', 
-                    'url' => '/back/resource',
-                    'level'=>'H04',
+                    'title' => '广告管理', 
+                    'url' => '/back/ad',
+                    'level'=>'F02',
                     'menu'=>array(
-                        //array('title'=>'添加编辑','level'=>'H0401'),
-                        array('title'=>'删除资源','level'=>'H0402'),
+                        array('title'=>'添加编辑','level'=>'F0201'),
+                        array('title'=>'删除广告','level'=>'F0202'),
+                        array('title'=>'下架广告','level'=>'F0203'),
                     ),
                 ),
             ),
+              
+
+//                array(
+//                    'title' => '标 签',
+//                    'url' => '/back/tagg',
+//                    'level'=>'G',
+//                    'bgimg' => '/style/back/img/menu1/extern.png',
+//                    'menu'  => array(
+//                        array(
+//                            'title'=>'标签组',
+//                            'url' => '/back/tagg',
+//                            'level' => 'G01', //页面权限
+//                            'menu' => array(
+//                                array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
+//                                array('title' => '删除组', 'level' => 'G0102'),
+//                            ),
+//                        ),
+//
+//                        array(
+//                            'title' => '标签管理', 
+//                            'url' => '/back/tag',
+//                            'level'=>'G02',
+//                            'menu'=>array(
+//                                array('title'=>'添加编辑','level'=>'G0201'),
+//                                array('title'=>'删除标签','level'=>'G0202'),
+//                            ),
+//                        ),
+//                    ),
+//                ),
+//                array(
+//                    'title'=>'正文内链',
+//                    'url' => '/back/nlink',
+//                    'level' => 'H01', //页面权限
+//                    'menu' => array(
+//                        array('title' => '添加编辑', 'level' => 'H0101'), //按钮功能配置
+//                        array('title' => '删除', 'level' => 'H0102'),
+//                    ),
+//                ),
+//                
+//                array(
+//                    'title' => '推荐位', 
+//                    'url' => '/back/recommend',
+//                    'level'=>'H02',
+//                    'menu'=>array(
+//                        array('title'=>'添加编辑','level'=>'H0201'),
+//                        array('title'=>'删除','level'=>'H0202'),
+//                    ),
+//                ),
+//                
+//                array(
+//                    'title' => '评论管理', 
+//                    'url' => '/back/comment',
+//                    'level'=>'H03',
+//                    'menu'=>array(
+//                        //array('title'=>'添加编辑','level'=>'H0301'),
+//                        //array('title'=>'删除','level'=>'H0302'),
+//                        array('title'=>'屏蔽评论','level'=>'H0303'),
+//                    ),
+//                ),
+//                
+//                array(
+//                    'title' => '资源管理', 
+//                    'url' => '/back/resource',
+//                    'level'=>'H04',
+//                    'menu'=>array(
+//                        //array('title'=>'添加编辑','level'=>'H0401'),
+//                        array('title'=>'删除资源','level'=>'H0402'),
+//                    ),
+//                ),
+//            ),
         ),
     );
     

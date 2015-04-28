@@ -9,7 +9,7 @@ class Flink extends CAdminBase {
     
     public $topLevel = "E";
     
-    public $level = "E01";
+    public $level = "E02";
     
     function __construct() {
 

@@ -9,12 +9,16 @@ class Flinkg extends CAdminBase {
     
     public $topLevel = "E";
     
-    public $level = "E02";
+    public $level = "E01";
     
     function __construct() {
 
        parent::__construct();
        
+    }
+    
+    public function index(){
+        $this->lists();
     }
 
 }
