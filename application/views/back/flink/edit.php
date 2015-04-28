@@ -16,24 +16,24 @@
 
 <div id="form_add">
 
-    <input type="hidden" id="flink_group_id" name="id" value="<?php echo($data["flink_group_id"]);?>" />
+    <input type="hidden" id="flink_id" name="id" value="<?php echo($data["flink_id"]);?>" />
     <table class="table_lists editbox">
         
         <tr>
-            <td width="150" class="fr"><span class="fred">* </span>友链组标题：</td>
-            <td><input id="flink_group_name" type="text" name="data[flink_group_name]" class="comm_ipt" placeholder="标题" value="<?php echo $data["flink_group_name"]?>"></td>
+            <td width="150" class="fr"><span class="fred">* </span>友链标题：</td>
+            <td><input id="flink__name" type="text" name="data[flink_name]" class="comm_ipt" placeholder="标题" value="<?php echo $data["flink_name"]?>"></td>
         </tr>
         <tr>
-            <td class="fr"><span class="fred">* </span>友链组地址</td>
-            <td><input id="field" type="text" name="data[flink_group_url]" class="comm_ipt" placeholder="title" value="<?php echo $data["flink_group_url"]?>"> 如：http://localhost/</td>
+            <td class="fr"><span class="fred">* </span>友链地址</td>
+            <td><input id="field" type="text" name="data[flink_url]" class="comm_ipt" placeholder="title" value="<?php echo $data["flink_url"]?>"> 如：http://localhost/</td>
         </tr>
         <tr>
-            <td class="fr">友链组图片：</td>
-            <td><input id="flink_group_img" type="text" name="data[flink_group_img]" class="comm_ipt" placeholder="varchar(10) not null " value="<?php echo $data["flink_group_img"]?>"></td>
+            <td class="fr">友链图片：</td>
+            <td><input id="flink_img" type="text" name="data[flink_img]" class="comm_ipt" placeholder="" value="<?php echo $data["flink_img"]?>"></td>
         </tr>
         <tr>
-            <td class="fr">字段排序：</td>
-            <td><input id="forder" type="text" class="comm_ipt" name="data[forder]" placeholder="0" value="<?php echo $data['forder']; ?>"></td>
+            <td class="fr">友链排序：</td>
+            <td><input id="flink_order" type="text" class="comm_ipt" name="data[flink_order]" placeholder="0" value="<?php echo $data['flink_order']; ?>"></td>
         </tr>
         
     </table>
