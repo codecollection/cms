@@ -61,5 +61,19 @@ class Cate extends CAdminBase {
         parent::add();
     }
     
+    public function getModelSelect($default = 1){
+        $this->loadModel('model');
+        $models = $this->model->fields("model_id,model_title")->search(FALSE);
+        
+        $fields = array();
+        foreach($models as $model){
+            $f['txt'] = $model['model_title'];
+            $f['value'] = $model['model_id'];
+            array_push($fields, $f);
+        }
+        
+        $this->vars->set_fields('model',$fields);
+        return $this->vars->input_str(array("node"=>"model","default"=>$default,"type"=>"select_single","name"=>"model_id"));
+    }
     
 }

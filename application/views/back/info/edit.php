@@ -17,6 +17,7 @@
 <div id="form_add">
 
     <input type="hidden" id="<?php echo $thisc->modelName."_id";?>" name="id" value="<?php echo($data[$thisc->modelName."_id"]);?>" />
+    <input type="hidden" id="modelId" name="modelId" value="<?php echo($modelId);?>" />
     <table class="table_lists editbox">
         
         <?php ?>
@@ -27,7 +28,7 @@
                    <?php 
                     $cates = $thisc->cate->show_select();
                     $this->vars->set_fields("last_cate_id",$cates);
-                    echo $this->vars->input_str(array('node'=>'last_cate_id','name'=>'last_cate_id','type'=>'select_single','default'=>$data["last_cate_id"] = $data["last_cate_id"] == "" ? 0 : $data["last_cate_id"],'style'=>'style="width:200px;"'));
+                    echo $this->vars->input_str(array('node'=>'last_cate_id','name'=>'last_cate_id','type'=>'select_single','default'=>$last_cate_id = $data['last_cate_id'] > 0 ? $data['last_cate_id'] : $cateId,'style'=>'style="width:248px;"','callback'=>true));
                     ?>                
                 </span>
             </td>
@@ -59,15 +60,27 @@
             <td class="fr">详情：</td>
             <td>
                  <p class="line-t-10"></p>
-                <textarea name="data[body]" id="body" style="display:block"><?php echo $data["body"]?></textarea>
-                <script type="text/javascript" src="/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
+                <textarea name="data[body]" id="data[body]" style="display:block"><?php echo $data["body"]?></textarea>
+                <script type="text/javascript" src="/style/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
                 <script type="text/javascript">
-                    var body = CKEDITOR.replace( "body",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
+                    var body = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
                         toolbar : ckeditor_toolbar
                     });
                 </script>
                 <p class="line-t-15"></p>
                 
+<!--                <div style="position:relative;">
+                    <textarea name="info_body" id="info_body" style="display:block"><?php echo $page['info']['info_body'];?></textarea>
+                    <script type="text/javascript" src="/css/lib/ckeditor/ckeditor.js?t=B49E5BQ"></script>
+                    <script type="text/javascript">
+/*
+                        var info_body = CKEDITOR.replace( "info_body",{height:300,width:840,skin:"v2",menu_subMenuDelay:0,
+                     toolbar : ckeditor_toolbar
+                       });
+*/
+                    </script>
+                    <span class="upbtn_box" id="upbtn_box"><script>C.ckeditor.init("#upbtn_box","info_body");</script></span>
+                </div>-->
             </td>
         </tr>
         <tr>
@@ -103,7 +116,7 @@
         <?php foreach($thisc->modelFields as $v){?>
         <tr>
             <td class="fr"><?php echo $v['title'];?>：</td>
-            <td><?php echo $thisc->vars->formHtml($v);?></td>
+            <td><?php echo $thisc->vars->formHtml($v,$data[$v['field']]);?></td>
         </tr>
         <?php }?>
     </table>

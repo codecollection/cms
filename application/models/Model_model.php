@@ -76,7 +76,7 @@ class Model_model extends MBase{
             
             foreach($fields as $k => $v){
                 if(!in_array($v['field'],$colums)){
-                    $sql = "alter table `{$modelName}` add column `{$v['field']}` {$v['field_type']} default '{$v['form_value']}' comment '{$v['title']}' ";
+                    $sql = "alter table `{$modelName}` add column `{$v['field']}` {$v['field_type']} default '{$v['dvalue']}' comment '{$v['title']}' ";
                     
                     $this->db->query($sql);
                 }
@@ -90,7 +90,7 @@ class Model_model extends MBase{
         $sql .= " `{$modelName}_id` int(11) unsigned not null auto_increment,";
         
         foreach($fields as $k => $v){
-            $sql .= " `{$v['field']}` {$v['field_type']} default '{$v['form_value']}' comment '{$v['title']}',";
+            $sql .= " `{$v['field']}` {$v['field_type']} default '{$v['dvalue']}' comment '{$v['title']}',";
         }
         
         $sql .= " primary key (`{$modelName}_id`)) engine=myisam default charset=utf8;";

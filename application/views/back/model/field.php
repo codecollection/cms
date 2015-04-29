@@ -1,12 +1,14 @@
 <div class="crumbs">
     <span class="cbs_left">
-        <?php 
-        //$countNav = count($navItem);
-        //foreach($navItem as $k => $v){?>
-        <a href="系统">系统</a>
-        <?php //if($k < $countNav - 1) echo('<em>></em>');?>
-        <?php //}?>
-
+        <?php foreach ($minNav as $k =>$v){
+            
+           if($k == 0){ 
+        ?>
+        <b><?php echo $v['title'];?></b>
+        <?php }else{ ?>
+        <em>></em><a href="<?php echo $v['url'];?>"><?php echo $v['title'];?></a>
+        <?php } } ?>  
+        <em>></em>模型字段
     </span>
 </div>
 <p class="line-t-15"></p>
@@ -55,5 +57,6 @@
     <div class="box_1000">
         <span>操作：</span>
         <?php $thisc->echoButton($this->controllerId . "04", "javascript:doField();", "保存模型","btn3"); ?>
+        <?php $thisc->echoButton($this->controllerId . "04", "/back/{$this->controllerId}", "返回模型","btn3"); ?>
     </div>
 </div>

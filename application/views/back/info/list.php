@@ -34,29 +34,24 @@
                 <td width="40"><input type="checkbox"  onclick="C.form.check_all('.chk_list');"></td>
                 <td>ID</td>
                 <td width="60">排序</td>
-                <td>分类名称</td>
-                <td>分类别名</td>
-                <td width="120">导航显示</td>
-                <td width="120"></td>
+                <td>标题</td>
+                <td>阅读量</td>
                 <td width="60">操作</td>
             </tr>
         </thead>
         <tbody>
             <?php foreach($list['list'] as $k => $v){ ?>
             <tr id="<?php echo "formli1".$k?>">
-                <td><input type="checkbox" class="chk_list" value="<?php echo $v["cate_id"];?>"></td>
-                <td><a href="/" target="_blank"><?php echo $v["cate_id"];?></a></td>
-                <td><input id="corder" type="text" pid="<?php echo $v["cate_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["corder"];?>"></td>
-                <td><input id="corder" type="text"  class="comm_ipt cname" style="width:160px;"  value="<?php echo $v["cname"];?>">
-                    <a  href="/back/cate?pid=<?php echo $v['cate_id']?>">查看下级(<?php echo count($thisc->cate->categories[$v["cate_id"]]["son"]);?>)</a>
+                <td><input type="checkbox" class="chk_list" value="<?php echo $v[$thisc->modelName."_id"];?>"></td>
+                <td><a href="/" target="_blank"<?php echo $v[$thisc->modelName."_id"];?></a></td>
+                <td><input id="corder" type="text" pid="<?php echo $v[$thisc->modelName."_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["forder"];?>"></td>
+                <td><input type="text"  class="comm_ipt cname"  value="<?php echo $v["title"];?>">
+                    
                 </td>
-                 <td><?php echo $v["cnick"];?>
-                </td>
-                <td>PC:<?php echo $this->vars->get_field_str("nav_show",$v["nav_show"]); ?> &nbsp;&nbsp;WAP:<?php echo $this->vars->get_field_str("nav_show",$v["nav_show_wap"]); ?></td>
-                <td style="color:#888;text-align:left;line-height:160%;">
-                    &nbsp;&nbsp;                                                                                                        </td>
                 <td>
-                    <a class="btn" href="/back/<?php echo $this->controllerId?>/edit?id=<?php echo $v["cate_id"];?>">编辑</a>
+                    <?php echo $v["visitors"];?>                                                                                                     </td>
+                <td>
+                    <a class="btn" href="/back/<?php echo $this->controllerId?>/edit?id=<?php echo $v[$thisc->modelName."_id"];?>">编辑</a>
                 </td>
             </tr>
             <?php }?>

@@ -41,8 +41,12 @@
             </td>
         </tr>
         <tr>
-            <td class="fr">表单默认值：</td>
-            <td><input id="form_value" type="text" class="comm_ipt" name="data[form_value]" placeholder="0" value="<?php echo $data['form_value']; ?>"> 不能有双引号("),如果碰到多值，如下处理 ：0:不加粗,1:加粗|red:红色,green:绿色 </td>
+            <td class="fr">默认值：</td>
+            <td><input id="dvalue" type="text" name="data[dvalue]" class="comm_ipt" placeholder="表单的默认值" value="<?php echo $data["dvalue"]?>"> 如：0</td>
+        </tr>
+        <tr>
+            <td class="fr">表单备选值：</td>
+            <td><input id="form_value" type="text" class="comm_ipt" name="data[form_value]" placeholder="0" value="<?php echo htmlspecialchars($data['form_value']); ?>"> 不能有双引号("),如果碰到多值，如下处理 ：0:不加粗,1:加粗|red:红色,green:绿色 </td>
         </tr>
         <tr>
             <td class="fr">表单备注：</td>
@@ -75,7 +79,7 @@
     <div class="box_1000">
         <span>操作：</span>
         <?php $thisc->echoButton("{$thisc->level}01","javascript:save_data();","保存字段",'btn3');?>
-        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}","快速创建",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/flash","快速创建",'btn3');?>
         <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
         
     </div>

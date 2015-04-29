@@ -246,6 +246,7 @@ class CAdminBase extends MY_Controller {
         $this->checkPermission($this->level . '02'); //检测权限
 
         $data = $this->bindModel->getDefaultValue();
+        
         $renderData = array('data' => $data);
 
         $this->setMinNav(array('title'=>"添加编辑",'url'=>"/back/".$this->controllerId . "/edit"));

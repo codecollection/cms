@@ -35,7 +35,7 @@
                         <td><?php echo $v['cmodel_id']; ?></td>
                         <td style="padding-left:10px;"><?php echo empty($v['attr_content']) ? '&nbsp;' : $v['attr_content']; ?></td>
                         <td>
-                        <?php $thisc->echoButton($this->controllerId . "02", "/back/model/field?id={$v['model_id']}", "字段管理"); ?>
+                        <?php $thisc->echoButton($this->controllerId . "02", "/back/{$this->controllerId}/field?id={$v['model_id']}", "字段管理"); ?>
                         </td>
                     </tr>
                 <?php } ?>
@@ -62,5 +62,5 @@
     <p class="line-t-20"></p>
 </div>
 <script>
-    var urls = {"save": "/back/model/save", "del": "/back/model/del"};
+    var urls = {"save": "/back/<?php echo $this->controllerId?>/save", "del": "/back/<?php echo $this->controllerId?>/del"};
 </script>

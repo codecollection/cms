@@ -23,21 +23,26 @@ class Info extends CAdminBase {
        $this->loadModel("field");
        $this->loadModel("cate");
        
-       $this->setModelName();
        
     }
 
     public function index(){
+        $this->setModelName();
         
         $this->lists();
         
     }
     
     public function add() {
-        
-        $this->renderAdminView($this->viewDir(2));
+        $this->setModelName();
+        parent::add();
+        //$this->renderAdminView($this->viewDir(2));
     }
 
+    public function save(){
+        $this->setModelName();
+        parent::save();
+    }
     /**
      *  文档引导页
      */
@@ -57,7 +62,7 @@ class Info extends CAdminBase {
     /**
      * 设置模型的表名称
      */
-    private function setModelName(){
+    public function setModelName(){
         //根据分类取
         $cateId = $this->getData('cateId');
         if(is_numeric($cateId) && $cateId > 0 ){
@@ -68,6 +73,7 @@ class Info extends CAdminBase {
             //根据模型ID取
             $modelId = $this->getData('modelId');
         }
+        
         if(!is_numeric($modelId) && $modelId <= 0 ){ 
             
             $this->echoAjax(100, lang('param_error'));
@@ -75,12 +81,13 @@ class Info extends CAdminBase {
         
         //获取模型对应的表名称
         $modelName = $this->model->getField($modelId,"model_name"); 
-        $this->modelName = $modelId;
+        $this->modelName = $modelName;
         $this->bindModel->tableName = $modelName;
         
         //获取模型下面的字段
         $this->modelFields = $this->model->getRelationField($modelId);
-        
+        $this->setData('cateId', $cateId);
+        $this->setData('modelId', $modelId);
     }
     
 }

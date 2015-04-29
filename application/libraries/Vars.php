@@ -102,7 +102,7 @@ class Vars {
         $alias = isset($params['alias'])?$params['alias']:'';
         $style = isset($params['style'])?$params['style']:'style="width:120px"';
         $isData = isset($params['isData']) ? $params['isData'] : true;
-
+        $isCallBack = isset($params['callback']) ? $params['callback'] : "false";
         // 下拉框
         if ($type == 'select') {
             $html = '<select name="'. $this->getDataName($isData, $name).'" '.$on.' id="' . $node . $name . '">';
@@ -137,7 +137,7 @@ class Vars {
         }
         // 模拟下拉单选框
         if($type=='select_single'){
-            $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').');return false;" '.$style.'>';
+            $html = '<div class="sel_box" onclick="select_single(event,this'.(empty($on)?'':',\''.$on.'\'').','.$isCallBack.');return false;" '.$style.'>';
             $html .= '    <a href="javascript:void(0);" class="txt_box" id="txt_box">';
             $html .= '        <div class="sel_inp" id="sel_inp">'.$this->get_field_str($node,$default,true).'</div>';
             $html .= '        <input type="hidden" name="'.$this->getDataName($isData, $name).'" id="'.($alias==''?$node.$name:$alias.$name).'" value="'.$default.'" class="sel_subject_val">';
@@ -184,7 +184,7 @@ class Vars {
      */
     public function formHtml($filed,$value = FALSE){
         
-        $filed['value']  = $value === FALSE ? $filed['form_value']: $value;
+        $filed['value']  = $value === FALSE ? $filed['dvalue']: $value;
         $this->formConfig = $filed; 
         $html = "";
         
@@ -230,15 +230,15 @@ class Vars {
         
         $radioData = RKit::strToArray($this->formConfig['form_value']);
         $html = '<div class="l">';
+       
         foreach($radioData as $key => $value){
             
-            foreach ($value as $k => $v){
-                $name = "data[{$this->formConfig['field']}]";
-                
-                $select = $this->formConfig['value'] == $v['value'] ? $check : '';
-                
-                $html .= sprintf($radio, $this->formConfig['field'],  $name,$v['value'], $select, $v['txt']);
-            }
+            $name = "data[{$this->formConfig['field']}]";
+
+            $select = $this->formConfig['value'] == $value['value'] ? $check : '';
+
+            $html .= sprintf($radio, $this->formConfig['field'],  $name,$value['value'], $select, $value['txt']);
+
         }
         
         $html .='</div>' . $this->formConfig['field_remark'];
@@ -255,12 +255,12 @@ class Vars {
         $selectData = RKit::strToArray($this->formConfig['form_value']);
         
         $html = "";
-        foreach($selectData as $key => $value){
-            
-            $this->set_fields('_select', $value);
         
-            $html .=$this->input_str(array('node'=>'_select','name'=>  $this->formConfig['field'],'type'=>'select_single','default'=>$default = $this->formConfig['value'] == $value['value'] ? $value['value'] : ''));
-        }
+        $this->set_fields('_select', $selectData);
+        //foreach($value as $k => $v){
+
+            $html .=$this->input_str(array('node'=>'_select','name'=>  $this->formConfig['field'],'type'=>'select_single','default'=>$default = $this->formConfig['value'] == $selectData[0]['value'] ? $selectData[0]['value'] : ''));
+        //}
         return $html;
     }
     
@@ -272,22 +272,22 @@ class Vars {
         
         $check = 'checked="checked"';
         
-        $checkbox = '<input type="checkbox" id="%s" name="%s" value="%s" %s  /><label for="%s">&nbsp;&nbsp;%s&nbsp;&nbsp;</label></span>';
+        $checkbox = '<input type="checkbox" id="%s_%s" name="%s" value="%s" %s  /><label for="%s_%s">&nbsp;&nbsp;%s&nbsp;&nbsp;</label></span>';
         
-        $radioData = RKit::strToArray($this->formConfig['form_value']);
+        $d = RKit::strToArray($this->formConfig['form_value']);
         $html = '<div class="l">';
-        foreach($radioData as $key => $value){
+        
+        foreach($d as $key => $value){
             
-            foreach ($value as $k => $v){
-                $name = "data[{$this->formConfig['field']}]";
-                $select = $this->formConfig['value'] == $v['value'] ? $check : '';
-                $html .= sprintf($checkbox, $this->formConfig['field'],  $name,$v['value'], $select,  $this->formConfig['field'], $v['txt']);
-            }
+            $name = "data[{$this->formConfig['field']}]";
+            $select = $this->formConfig['value'] == $value['value'] ? $check : '';
+            $html .= sprintf($checkbox, $this->formConfig['field'], $value['value'], $name,$value['value'], $select,  $this->formConfig['field'],$value['value'], $value['txt']);
+
         }
         
         $html .='</div>' . $this->formConfig['field_remark'];
         
-        return "";
+        return $html;
     }
     
     /**

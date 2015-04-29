@@ -53,17 +53,18 @@ class Field extends CAdminBase {
         $flashData = array();
         foreach($flashes as $f){
             
-            if(preg_match_all($this->regFlash, $f, $flashData) && count($flashData[1]) == 8){
+            if(preg_match_all($this->regFlash, $f, $flashData) && count($flashData[1]) == 9){
                 $fd = $flashData[1];
                 $field = array(
                     'title'=>$fd[0],
                     'field'=>$fd[1],
                     'field_type'=>$fd[2],
                     'form_type'=>$fd[3],
-                    'form_value'=>$fd[4],
-                    'field_remark'=>$fd[5],
-                    'forder'=>$fd[6],
-                    'field_tag'=>$fd[7],
+                    'dvalue'=>$fd[4],
+                    'form_value'=>'{'.$fd[5].'}',
+                    'field_remark'=>$fd[6],
+                    'forder'=>$fd[7],
+                    'field_tag'=>$fd[8],
                 );
                 
                 $res = $this->bindModel->setAttrs($field)->setPkValue(0)->save(true);

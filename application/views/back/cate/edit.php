@@ -43,6 +43,10 @@
             <td><input id="cnick" type="text" name="data[cnick]" class="comm_ipt" value="<?php echo $data["cnick"]?>"> 用于手机等小设备显示简短分类名称</td>
         </tr>
         <tr>
+            <td class="fr">模型：</td>
+            <td><?php echo $thisc->getModelSelect($data['model_id']);?></td>
+        </tr>
+        <tr>
             <td class="fr">排序：</td>
             <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="<?php echo $data['corder'] = $data["corder"] == '' ? '0' : $data['corder'] ; ?>"> 数字小排前面</td>
         </tr>

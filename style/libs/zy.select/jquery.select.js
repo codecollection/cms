@@ -1,4 +1,5 @@
 function select_single(e,selObj,fun){//单选
+    
     e = e || window.event;
     e.cancelBubble = true;//取消冒泡
     var sel_num=5;//下拉显示个数
@@ -12,9 +13,10 @@ function select_single(e,selObj,fun){//单选
         $('#sel_inp',selObj).text($(this).text());
         $(this).addClass('current').siblings().removeClass('current');
         sty.find('a').unbind('click');
-        /*
-		fun && fun();
-		*/
+        if(fun){
+            callback($(this).attr('value'));
+        }
+		
     });
     if(sty.length){
         if(sty[0].style.display == 'none')
@@ -62,4 +64,14 @@ function select_multi(e,selObj,fun){//多选
 	fun && fun();
 	*/
     lists.unbind('click');
+}
+
+function callback(cateId){
+    
+    //createTableByModelId
+   // $.post('/back/info/add', {"cateId":cateId}, function(data) {
+     //   try {
+            window.location.href="/back/info/add?cateId="+cateId;
+       // }catch(e){}
+   // });
 }

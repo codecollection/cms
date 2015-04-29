@@ -46,7 +46,7 @@
                 <td><?php echo $v['field'];?></td>
                 <td><?php echo $v['field_type'];?></td>
                 <td><?php echo $v['form_type'];?></td>
-                <td><input type="text" value="<?php echo $v['form_value'];?>" class="comm_ipt" style="width:150px"/></td>
+                <td><?php echo $v['dvalue'];?></td>
                 <td><?php echo $v['field_remark'];?></td>
                 <td><?php echo $v['field_tag'];?></td>
                 <td><?php echo $v['is_system'];?></td>

@@ -698,6 +698,11 @@ var C={
           //value.push('"' + this.name + '":"' + encodeURIComponent($(this).val()) + '"');
           value[this.name] = $(this).val();
         });
+        for ( instance in CKEDITOR.instances ) {
+            alert(CKEDITOR.instances[instance].getData());
+            value[instance]=CKEDITOR.instances[instance].getData();
+        }
+        
         return value;
         //alert("{" + value.join(',') + "}");
         //return $.evalJSON("{" + value.join(',') + "}");//转换json格式

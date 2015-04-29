@@ -523,23 +523,15 @@ class RKit {
      */
     public static function strToArray($str){
         
-        $a = explode("|", $str);
-        $b = $c = $returnB = $returnC = $return = array();
-        
-        //$return = array();
-        foreach ($a as $ka => $v){
-            $b = explode(",", $v);
-            
-            foreach ($b as  $kb => $val){
-                $c = explode(":", $val);
-                
-                if(count($c) == 2){
-                    $return[$ka][] = array('txt'=>$c[1],'value'=>$c[0]);
-                }else{
-                    $return[$ka][] = array('txt'=>$c[0],'value'=>$c[0]);
-                }
-            }
-        }
+       $return = array();
+       
+       $strArray = json_decode($str,true);
+       
+       foreach($strArray as $k => $v){
+           $arr['txt']=$v;
+           $arr['value']=$k;
+           array_push($return, $arr);
+       }
         
         return $return;
     }
