@@ -8,6 +8,7 @@
 <!--插件JS和样式-->
 <script src="/style/libs/jquery-1.7.1.min.js"></script>
 <script src="/style/libs/common.js"></script>
+<script type="text/javascript" src="/style/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
 <!-- 
 <script src="/style/libs/zy.select/jquery.select.js"></script>
 <script src="/style/libs/zy.tree/jquery.tree.js"></script> -->

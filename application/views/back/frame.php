@@ -12,6 +12,7 @@
 <script src="/style/libs/zy.tree/jquery.tree.js"></script>
 <script src="/style/libs/datepicker.js"></script>
 <script src="/style/back/js/public.js"></script>
+<script type="text/javascript" src="/style/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.select/select.css"/>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.tree/tree.css"/>
 <link rel="shortcut icon" href="/style/back/image/logo_ico.ico" type="image/x-icon" />
