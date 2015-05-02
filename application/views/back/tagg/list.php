@@ -12,15 +12,13 @@
     </span>
 </div>
 <p class="line-t-15"></p>
-
 <div class="box4">
     <table class="table_lists table_click">
         <thead>
             <tr>
-                <td>广告位ID</td>
-                <td>名称</td>
-                <td>广告类型</td>
-                <td>标记</td>
+                <td>标签组ID</td>
+                <td>组名称</td>
+                <td>组连接</td>
                 <td>说明</td>
                 
                 <td width="100">操作</td>
@@ -30,14 +28,13 @@
         <tbody>
             <?php foreach($list['list'] as $k => $v){?>
             <tr id="<?php echo "formli" . $k + 1;?>">
-                <td><?php echo $v['area_id'];?></td>
-                <td><?php echo $v['area_name'];?></td>
-                <td><?php echo $this->vars->get_field_str("area_type",$v['area_type'],'');?></td>
-                <td><?php echo $v['identification'];?></td>
+                <td><?php echo $v['group_id'];?></td>
+                <td><?php echo $v['group_name'];?></td>
+                <td><?php echo $v['group_url'];?></td>
                 <td><?php echo $v['remark'];?></td>
                 <td>
-                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['area_id']}","编辑","btn btn_disabled");?>
-                    <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['area_id']});","删除","btn btn_disabled");?>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['group_id']}","编辑","btn btn_disabled");?>
+                    <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['group_id']});","删除","btn btn_disabled");?>
                     
                 </td>
             </tr>
@@ -45,14 +42,13 @@
             <tr id="form_add">
                 <input type="hidden" value="0" name="id" id="id" >
                 <td>&nbsp;</td>
-                <td><input type="text" value="" placeholder="广告位名称" style="width:120px;" class="comm_ipt " name="data[area_name]" id="area_name"></td>
-                <td><?php echo $thisc->vars->input_str(array('node'=>'area_type','name'=>'area_type','type'=>'select_single','default'=>0));?></td>
-                <td><input type="text" value="" style="width:80px;" class="comm_ipt " placeholder="广告位标识" id="identification" name="data[identification]"></td>
-                <td><input type="text" value="" style="width:180px;" class="comm_ipt " placeholder="广告位说明" id="remark" name="data[remark]"></td>
+                <td><input type="text" value="" placeholder="标签组名称" style="width:120px;" class="comm_ipt " name="data[group_name]" id="group_name"></td>
+                <td><input type="text" value="" style="width:80px;" class="comm_ipt " placeholder="标签组连接" id="identification" name="data[group_url]"></td>
+                <td><input type="text" value="" style="width:180px;" class="comm_ipt " placeholder="组说明" id="remark" name="data[remark]"></td>
                 <td>
                 <?php $thisc->echoButton($this->controllerId . "01", "javascript:save_data();", "添加"); ?>
                 </td>
-            </tr>
+    </tr>
         </tbody>
 
     </table>

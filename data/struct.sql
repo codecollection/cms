@@ -243,6 +243,24 @@ create table if not exists `cms_keyword` (
   index `qorder` (`qorder`),
   index `keyword` (`keyword`)
 ) engine=myisam default charset=utf8 comment '搜索关键字记录表';
+-- 标签组
+create table if not exists `cms_tag_group` (
+ `group_id` int(11) unsigned not null auto_increment comment '标签组id',
+ `group_name` varchar(100) not null default '' comment '标签组名称',
+ `group_url` varchar(100) not null default '' comment '链接地址',
+ `remark` varchar(500) default '' comment'说明',
+ primary key(`group_id`)
+)engine=myisam default charset=utf8 comment '标签组表';
+
+-- 标签
+create table if not exists `cms_tag` (
+ `tag_id` int(11) unsigned not null auto_increment comment '标签ID',
+ `group_id` int(11) default 0 comment'组id',
+ `tag` varchar(100) not null default '' comment '标签',
+ `tag_img` varchar(500) not null default '' comment 'logo图',
+ `tag_order` int(11) default 100 comment'排序',
+ primary key(`tag_id`)
+)engine=myisam default charset=utf8 comment '标签表';
 
 /*管理组合并到用户组*/
 create table if not exists `cms_admin_group` (
