@@ -45,18 +45,6 @@
             <td>
                 <?php echo $this->vars->input_str(array('node'=>'group_id','name'=>'group_id','type'=>'select_single','default'=>$data["group_id"] = $data["group_id"] == "" ? 0 : $data["group_id"]));
                 ?>
-<!--                <div class="sel_box" onclick="select_single(event, this);   return false;" style="width:258px;">    
-                    <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                        <div class="sel_inp" id="sel_inp">-</div>        
-                        <input type="hidden" name="data[ad_id]" id="area_id" value="" class="sel_subject_val">    
-                    </a>    
-                    <div class="sel_list" id="sel_list" style="display:none;">        
-                        <a href="javascript:void(0);" value="0" class="" >请选择广告位</a>        
-                        <a href="javascript:void(0);" value="3" class="" >手机版幻灯</a>        
-                        <a href="javascript:void(0);" value="2" class="" >全站左侧图片列表</a>        
-                        <a href="javascript:void(0);" value="1" class="" >首页全屏幻灯</a>    
-                    </div>
-                </div> -->
             </td>
         </tr>
         <tr>

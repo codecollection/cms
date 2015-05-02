@@ -38,9 +38,8 @@ class Model extends CAdminBase {
         $id = $this->getData('id');
         
         $fieldTag = $this->getData("fieldTag");
-//        $modelName = $this->bindModel->getField($id,"model_name");
-//        //获取模型存在的表字段
-//        $tableFields = $this->bindModel->getTableFields($modelName);
+        
+        $modelName = $this->bindModel->getField($id,"model_name");
         
         if(!empty($fieldTag)){
             $this->field->like("field_tag",$fieldTag);
@@ -56,6 +55,8 @@ class Model extends CAdminBase {
         $this->setData("fieldTags", $fieldTags);
         
         $this->setData("model_id", $id);
+        
+        $this->setMinNav(array('url'=>"/back/model/field?id=".$id,"title"=>$modelName));
         $this->renderAdminView($this->viewDir(0, "field"));
         
     }

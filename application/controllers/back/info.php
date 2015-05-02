@@ -13,6 +13,7 @@ class Info extends CAdminBase {
     
     public $modelName = ""; //模型对应的表明
     
+    public $modelTitle = "" ;
     public $modelFields = array();
     
     function __construct() {
@@ -27,8 +28,10 @@ class Info extends CAdminBase {
     }
 
     public function index(){
+        
         $this->setModelName();
         
+        $this->setMinNav(array('url'=>"",'title'=>  $this->modelName));
         $this->lists();
         
     }
@@ -39,10 +42,22 @@ class Info extends CAdminBase {
         //$this->renderAdminView($this->viewDir(2));
     }
 
+    public function edit(){
+        $this->setModelName();
+        parent::edit();
+    }
+
     public function save(){
         $this->setModelName();
         parent::save();
     }
+    
+    public function delete() {
+        
+        $this->setModelName();
+        parent::delete();
+    }
+
     /**
      *  文档引导页
      */
@@ -83,7 +98,7 @@ class Info extends CAdminBase {
         $modelName = $this->model->getField($modelId,"model_name"); 
         $this->modelName = $modelName;
         $this->bindModel->tableName = $modelName;
-        
+        $this->bindModel->setPk($modelName."_id");
         //获取模型下面的字段
         $this->modelFields = $this->model->getRelationField($modelId);
         $this->setData('cateId', $cateId);

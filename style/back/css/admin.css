@@ -45,7 +45,7 @@ em,i{font-style:normal;}
 
 /*宽度*/
 .w_100{width:100px;}
-
+.w_238{width:238px;}
 /* 置顶 */
 .to-top-a {width: 50px;height:50px;background:url(../image/backtop.jpg) no-repeat 0 bottom;display:block;border-radius:2px;}
 .to-top-a:hover{background-position:0 top;}

@@ -27,6 +27,7 @@ class Vars {
             array('value'=>"edit",'txt'=>'编辑框'), //编辑框
             array('value'=>"select",'txt'=>'下拉框'), //下拉框
             array('value'=>"link",'txt'=>'联动表单'), //联动表单
+            array('value'=>"datapicker",'txt'=>'日期选择器'), //日期选择器
         )
     ); 
 

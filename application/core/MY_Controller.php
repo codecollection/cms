@@ -26,20 +26,6 @@ class MY_Controller extends CI_Controller {
         
     }
     
-//    private function decodeData($data = array()){
-//        
-//        if(is_array($data)){
-//            foreach ($data as $k => $d){
-//                $this->decodeData($d);
-//            
-//            }
-//        } else{
-//            $data = urldecode($data);
-//             
-//        }
-//        
-//        return $data;
-//    }
 
     /**
      * 输出ajax信息
@@ -86,6 +72,7 @@ class MY_Controller extends CI_Controller {
     
     public function echoTime($t = 0,$f = NULL){
         
+        $t = $t == 0 ? time() : $t;
         if($f === NULL){
             $f = "Y-m-d";
         }
@@ -151,7 +138,10 @@ class CAdminBase extends MY_Controller {
      * @var type array('txt'=>'','value'=>'',color=>'')
      */
     protected $insertNav = array();
-    
+    /**
+     * 当前位置导航 
+     * @var array("url"=>"","title"=>"")
+     */
     protected $minNav = array();
     /**
      * 构造函数
@@ -233,7 +223,7 @@ class CAdminBase extends MY_Controller {
             'list' => $lists,
         );
 
-        $this->setMinNav(array('title'=>"列表",'url'=>"/back/".$this->controllerId));
+        $this->setMinNav(array('title'=>  $this->controllerTitle . "列表",'url'=>"/back/".$this->controllerId));
         $this->renderAdminView($this->viewDir(), $data);
     }
 
@@ -249,7 +239,7 @@ class CAdminBase extends MY_Controller {
         
         $renderData = array('data' => $data);
 
-        $this->setMinNav(array('title'=>"添加编辑",'url'=>"/back/".$this->controllerId . "/edit"));
+        $this->setMinNav(array('title'=> "添加" . $this->controllerTitle ,'url'=>"/back/".$this->controllerId . "/edit"));
         
         $this->renderAdminView($this->viewDir(2), array_merge($renderData, array()));
     }
@@ -265,7 +255,7 @@ class CAdminBase extends MY_Controller {
         $id = $this->getData('id');
 
         $data = $this->bindModel->find($id);
-        $this->setMinNav(array('title'=>"添加编辑",'url'=>"/back/".$this->controllerId . "/edit?id=" . $id));
+        $this->setMinNav(array('title'=>"编辑" . $this->controllerTitle,'url'=>"/back/".$this->controllerId . "/edit?id=" . $id));
         
         $this->renderAdminView($this->viewDir(2), array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
     }

@@ -126,6 +126,16 @@ class NavPanel {
                         array('title' => '修改排序', 'level' => 'C0203'),
                     ),
                 ),
+                array(
+                    'title' => '推荐位', 
+                    'url' => '/back/recommend',
+                    'level'=>'C03',
+                    'menu'=>array(
+                        array('title'=>'添加编辑','level'=>'C03201'),
+                        array('title'=>'删除','level'=>'C0302'),
+                    ),
+                ),
+                
             ),
         ),
         array(
@@ -186,7 +196,7 @@ class NavPanel {
                  array(
                     'title'=>'广告位',
                     'url' => '/back/adarea',
-                    'level' => 'F01', //页面权限
+                    'level' => 'E03', //页面权限
                     'menu' => array(
                         array('title' => '添加编辑', 'level' => 'F0101'), //按钮功能配置
                         array('title' => '删除位置', 'level' => 'F0102'),
@@ -196,84 +206,63 @@ class NavPanel {
                 array(
                     'title' => '广告管理', 
                     'url' => '/back/ad',
-                    'level'=>'F02',
+                    'level'=>'E04',
                     'menu'=>array(
                         array('title'=>'添加编辑','level'=>'F0201'),
                         array('title'=>'删除广告','level'=>'F0202'),
                         array('title'=>'下架广告','level'=>'F0203'),
                     ),
                 ),
-            ),
-              
+                array(
+                    'title'=>'标签组',
+                    'url' => '/back/tagg',
+                    'level' => 'E05', //页面权限
+                    'menu' => array(
+                        array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
+                        array('title' => '删除组', 'level' => 'G0102'),
+                    ),
+                ),
 
-//                array(
-//                    'title' => '标 签',
-//                    'url' => '/back/tagg',
-//                    'level'=>'G',
-//                    'bgimg' => '/style/back/img/menu1/extern.png',
-//                    'menu'  => array(
-//                        array(
-//                            'title'=>'标签组',
-//                            'url' => '/back/tagg',
-//                            'level' => 'G01', //页面权限
-//                            'menu' => array(
-//                                array('title' => '添加编辑', 'level' => 'G0101'), //按钮功能配置
-//                                array('title' => '删除组', 'level' => 'G0102'),
-//                            ),
-//                        ),
-//
-//                        array(
-//                            'title' => '标签管理', 
-//                            'url' => '/back/tag',
-//                            'level'=>'G02',
-//                            'menu'=>array(
-//                                array('title'=>'添加编辑','level'=>'G0201'),
-//                                array('title'=>'删除标签','level'=>'G0202'),
-//                            ),
-//                        ),
-//                    ),
-//                ),
-//                array(
-//                    'title'=>'正文内链',
-//                    'url' => '/back/nlink',
-//                    'level' => 'H01', //页面权限
-//                    'menu' => array(
-//                        array('title' => '添加编辑', 'level' => 'H0101'), //按钮功能配置
-//                        array('title' => '删除', 'level' => 'H0102'),
-//                    ),
-//                ),
-//                
-//                array(
-//                    'title' => '推荐位', 
-//                    'url' => '/back/recommend',
-//                    'level'=>'H02',
-//                    'menu'=>array(
-//                        array('title'=>'添加编辑','level'=>'H0201'),
-//                        array('title'=>'删除','level'=>'H0202'),
-//                    ),
-//                ),
-//                
-//                array(
-//                    'title' => '评论管理', 
-//                    'url' => '/back/comment',
-//                    'level'=>'H03',
-//                    'menu'=>array(
-//                        //array('title'=>'添加编辑','level'=>'H0301'),
-//                        //array('title'=>'删除','level'=>'H0302'),
-//                        array('title'=>'屏蔽评论','level'=>'H0303'),
-//                    ),
-//                ),
-//                
-//                array(
-//                    'title' => '资源管理', 
-//                    'url' => '/back/resource',
-//                    'level'=>'H04',
-//                    'menu'=>array(
-//                        //array('title'=>'添加编辑','level'=>'H0401'),
-//                        array('title'=>'删除资源','level'=>'H0402'),
-//                    ),
-//                ),
-//            ),
+                array(
+                    'title' => '标签管理', 
+                    'url' => '/back/tag',
+                    'level'=>'E06',
+                    'menu'=>array(
+                        array('title'=>'添加编辑','level'=>'G0201'),
+                        array('title'=>'删除标签','level'=>'G0202'),
+                    ),
+                ),
+                array(
+                    'title'=>'正文内链',
+                    'url' => '/back/nlink',
+                    'level' => 'E07', //页面权限
+                    'menu' => array(
+                        array('title' => '添加编辑', 'level' => 'H0101'), //按钮功能配置
+                        array('title' => '删除', 'level' => 'H0102'),
+                    ),
+                ),
+                
+                array(
+                    'title' => '评论管理', 
+                    'url' => '/back/comment',
+                    'level'=>'E09',
+                    'menu'=>array(
+                        //array('title'=>'添加编辑','level'=>'H0301'),
+                        //array('title'=>'删除','level'=>'H0302'),
+                        array('title'=>'屏蔽评论','level'=>'H0303'),
+                    ),
+                ),
+                
+                array(
+                    'title' => '资源管理', 
+                    'url' => '/back/resource',
+                    'level'=>'E10',
+                    'menu'=>array(
+                        //array('title'=>'添加编辑','level'=>'H0401'),
+                        array('title'=>'删除资源','level'=>'H0402'),
+                    ),
+                ),
+            ),
         ),
     );
     

@@ -98,7 +98,7 @@ create table if not exists `cms_ad_area` (
  `area_name` varchar(255) not null default '' comment '位置名称',
  `area_type` int(2) not null default 0 comment '广告位类型, 0=图片广告，1=代码广告',
  `remark` varchar(1000) not null default '' comment '位置标注',
- `cdate` int(11) not null default 0 comment '创建时间',
+ `Identification` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '标识',
  primary key (`area_id`)
 ) engine=myisam default charset=utf8 auto_increment=100;
 

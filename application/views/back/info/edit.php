@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td class="fr">描述：</td>
-            <td><input id="desc" type="text" name="data[desc]" class="comm_ipt" value="<?php echo $data["desc"]?>"> 用于手机等小设备显示简短分类名称</td>
+            <td><input id="desc" type="text" name="data[desc]" class="comm_ipt" value="<?php echo $data["desc"]?>"> </td>
         </tr>
         
         <tr>
@@ -128,6 +128,6 @@
     <div class="box_1000">
         <span>操作：</span>
         <?php $thisc->echoButton("{$thisc->level}02","javascript:save_data();","保存信息",'btn3');?>
-        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}","返回列表",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}?modelId={$modelId}&cateId={$cateId}","返回列表",'btn3');?>
     </div>
 </div>

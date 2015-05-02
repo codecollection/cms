@@ -201,6 +201,7 @@ class MBase extends CI_Model{
     public function getDefaultValue() {
         
         $data = $this->db->list_fields($this->tableName);
+        
         return array_fill_keys($data, '');
     }
 
@@ -622,6 +623,11 @@ class MBase extends CI_Model{
         return $this;
     }
     
+    public function setPk($pk){
+        $this->pk = $pk;
+        return $this;
+    }
+
     /**
      * 取得主键值
      * @return mixed

@@ -273,7 +273,7 @@ class Cate_model extends MBase{
                 $html.='<li id="li'.$v['cate_id'].'">';
                 $html.='<span onclick="tree_icon_click(this'.($expand_func==''?'':','.$expand_func).');" class="tree-icon tree-expand-'.$open_status.'"></span>';
                 if(($checkbox==1 || ($rtype_last==1 && count($vson)==0))){
-                    $chk='';if(in_array('T'.$v['cate_id'],$ulevel)) $chk=' checked';
+                    //$chk='';if(in_array('T'.$v['cate_id'],$ulevel)) $chk=' checked';
                     $html.='<input type="checkbox" name="level" '.$chk.' value="T'.$v['cate_id'].'" id="T'.$v['cate_id'].'">';
                 }
 
@@ -281,7 +281,7 @@ class Cate_model extends MBase{
                     $html.='<label for="T'.$v['cate_id'].'"><em '.$click.' class="no_link">'.$v['cname'].'</em></label>';
                 }else{
                     $style = isset($_GET['cate_id'])&&$_GET['cate_id'] == $v['cate_id']?'class="selected"':'';
-                    $html.='<a '.$style.' href="">'.$v['cname'].'</a>';
+                    $html.='<a '.$style.' href="'.$url.'?cateId='.$v['cate_id'].'">'.$v['cname'].'</a>';
                 }
                 //展开子级
                 if(count($vson)>0 && $is_expand_all==1){
