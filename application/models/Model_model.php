@@ -88,7 +88,7 @@ class Model_model extends MBase{
     private function createTableSql($fields,$modelName){
         $sql = "create table if not exists `{$modelName}` (";
         $sql .= " `{$modelName}_id` int(11) unsigned not null auto_increment,";
-        
+        $sql .= " `model_id` int(11) not null default 0 comment '模型ID',";
         foreach($fields as $k => $v){
             $sql .= " `{$v['field']}` {$v['field_type']} default '{$v['dvalue']}' comment '{$v['title']}',";
         }

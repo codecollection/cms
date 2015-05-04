@@ -245,7 +245,7 @@ class NavPanel {
                 array(
                     'title' => '评论管理', 
                     'url' => '/back/comment',
-                    'level'=>'E09',
+                    'level'=>'E08',
                     'menu'=>array(
                         //array('title'=>'添加编辑','level'=>'H0301'),
                         //array('title'=>'删除','level'=>'H0302'),

@@ -215,7 +215,8 @@ create table if not exists `cms_log_list` (
 
 create table if not exists `cms_comment` (
   `comment_id` int(11) unsigned not null auto_increment comment '评论id',
-  `info_id` int(11) not null default 0 comment '信息ID	',
+  `info_id` int(11) not null default 0 comment '信息ID',
+  `model_id` int(11) not null default 0 comment '模型ID',
   `content` varchar(500) not null default '' comment '评论内容',
   `date_add` int(11) not null default 0 comment '发布时间',
   `uid` int(11) not null default 0 comment '用户id',

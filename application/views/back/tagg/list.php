@@ -48,7 +48,7 @@
                 <td>
                 <?php $thisc->echoButton($this->controllerId . "01", "javascript:save_data();", "添加"); ?>
                 </td>
-    </tr>
+            </tr>
         </tbody>
 
     </table>
