@@ -54,8 +54,7 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add","添加广告",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add","添加推荐位",'btn3');?>
         <?php $thisc->echoButton("{$thisc->level}02","javascript:del_data();","批量删除",'btn3');?>
-        <?php $thisc->echoButton("{$thisc->level}03","javascript:update_order();","修改排序",'btn3');?>
     </div>
 </div>

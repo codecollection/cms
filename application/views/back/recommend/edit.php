@@ -12,7 +12,6 @@
     </span>
 </div>
 <p class="line-t-15"></p>
-
 <div id="form_add">
 
     <input type="hidden" id="area_id" name="id" value="<?php echo($data["area_id"]);?>" />
