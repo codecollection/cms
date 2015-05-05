@@ -57,7 +57,7 @@ create table if not exists `cms_cate_relation` (
 ) engine=myisam default charset=utf8 comment '分类和信息关系表';
 
 create table if not exists `cms_resource_list` (
- `id` int(11) unsigned not null auto_increment comment '资源',
+ `resource_id` int(11) unsigned not null auto_increment comment '资源',
  `resource_url` varchar(500) not null default '' comment '资源地址', 
  `width` int(11) not null default 0 comment '资源宽度',
  `height` int(11) not null default 0 comment '资源高度',
