@@ -17,26 +17,23 @@
         <thead>
             <tr>
                 <td width="40"><input type="checkbox" id="_checkbox"  onclick="C.form.check_all('.chk_list');"></td>
-                <td>广告ID</td>
-                <td>广告排序</td>
-                <td>广告标题</td>
-                <td>广告词</td>
-                <td>广告图片</td>
+                <td>位置ID</td>
+                <td>位置标题</td>
+                <td>文章ID列表</td>
                 <td width="100">操作</td>
             </tr>
         </thead>
         <tbody>
             <?php foreach($list['list'] as $k => $v){?>
             <tr id="<?php echo "formli" . $k + 1;?>">
-                <td><input type="checkbox" class="chk_list" value="<?php echo $v['ad_id'];?>"></td>
-                <td><?php echo $v['ad_id'];?></td>
-                <td><input id="ad_order" type="text" pid="<?php echo $v["ad_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["ad_order"];?>"></td>
-                <td><?php echo $v['ad_title'];?></td>
-                <td><?php echo $v['ad_words'];?></td>
+                <td><input type="checkbox" class="chk_list" value="<?php echo $v['area_id'];?>"></td>
+                <td><?php echo $v['area_id'];?></td>
+                <td><?php echo $v['title'];?></td>
+                <td><?php echo $v['id_list'];?></td>
                 <td><img src="<?php echo $v['ad_img'];?>" style="width:40px;height: 30px;"/></td>
                 <td>
-                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['ad_id']}","编辑","btn");?>
-                    <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['ad_id']});","删除","btn");?>
+                    <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['area_id']}","编辑","btn");?>
+                    <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['area_id']});","删除","btn");?>
                     
                 </td>
             </tr>

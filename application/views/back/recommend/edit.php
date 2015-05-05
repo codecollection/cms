@@ -15,60 +15,51 @@
 
 <div id="form_add">
 
-    <input type="hidden" id="ad_id" name="id" value="<?php echo($data["ad_id"]);?>" />
+    <input type="hidden" id="area_id" name="id" value="<?php echo($data["area_id"]);?>" />
     <table class="table_lists editbox">
         
         <tr>
-            <td width="150" class="fr"><span class="fred">* </span>广告标题：</td>
-            <td><input id="ad_title" type="text" name="data[ad_title]" class="comm_ipt" placeholder="广告标题" value="<?php echo $data["ad_title"]?>"></td>
+            <td width="150" class="fr"><span class="fred">* </span>推荐位标题：</td>
+            <td><input id="title" type="text" name="data[title]" class="comm_ipt" placeholder="标题" value="<?php echo $data["title"]?>"></td>
         </tr>
         <tr>
-            <td class="fr"><span class="fred">* </span>广告位：</td>
-            <td><?php echo $thisc->vars->input_str(array('node'=>'ad_area','name'=>'area_id','type'=>'select_single','default'=>$data['area_id'] = $data['area_id'] != '' ? $data['area_id'] : 0)); ?></td>
+            <td class="fr">推荐位地址：</td>
+            <td><input id="url" type="text" name="data[url]" class="comm_ipt" placeholder="http://" value="<?php echo $data["url"]?>"></td>
         </tr>
         <tr>
-            <td class="fr">广告词：</td>
-            <td><input id="ad_words" type="text" name="data[ad_words]" class="comm_ipt" placeholder="广告词" value="<?php echo $data["ad_words"]?>"> </td>
+            <td class="fr">文章列表：</td>
+            <td><input id="id_list" type="text" name="data[id_list]" class="comm_ipt" placeholder="1,2,3,5" value="<?php echo $data["id_list"]?>"> 文章的id列表，用（,）分隔 如：2,5,6,70</td>
         </tr>
         <tr>
-            <td class="fr">广告图片：</td>
-            <td><input id="ad_img" type="text" class="comm_ipt" value="<?php echo $data["ad_img"]?>" name="data[ad_img]"> 
+            <td class="fr">位置logo：</td>
+            <td><input id="area_logo" type="text" class="comm_ipt" value="<?php echo $data["area_logo"]?>" name="data[area_logo]"> 
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
-                    <iframe src="/back/upload?vid=ad_img" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                    <iframe src="/back/upload?vid=area_logo" width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
                 </div>
 
                 <div class="slt_small" style="right:228px;">
-                    <img id="thumb_ad_img" src="<?php echo $data["ad_img"] = $data['ad_img'] == '' ? DEFAULT_INFO_IMG : $data["ad_img"]; ?>" />                    
+                    <img id="thumb_area_logo" src="<?php echo $data["area_logo"] = $data['area_logo'] == '' ? DEFAULT_INFO_IMG : $data["area_logo"]; ?>" />                    
                 </div>
                </td>
         </tr>
         <tr>
-            <td class="fr">连接地址：</td>
-            <td><input id="ad_url" type="text" class="comm_ipt" name="data[ad_url]" placeholder="http://" value="<?php echo $data['ad_url']; ?>"></td>
-        <tr>
-            <td class="fr">广告排序：</td>
-            <td><input id="ad_order" type="text" class="comm_ipt" name="data[ad_order]" placeholder="0" value="<?php echo $data['ad_order']; ?>"></td>
-        </tr>
-        <tr>
-            <td class="fr">广告代码：</td>
-            <td> 如果是代码广告，直接填写这里的内容，根据广告位的广告类型来处理是图片广告还是代码广告
-                <textarea name="data[ad_code]" id="ad_code" style="display:block;" ><?php echo $data["ad_code"]?></textarea><span class="l"> </span>
+            <td class="fr">代码HTML：</td>
+            <td>
+                <textarea name="data[area_html]" id="area_html" style="display:block;" ><?php echo $data["area_html"]?></textarea><span class="l"> </span>
             </td>
         </tr>
-        <tr>
-            <td class="fr">起始时间：</td>
-            <td><input id="start_date" type="text" class="comm_ipt" name="data[start_date]" placeholder="0" value="<?php echo $thisc->echoTime($data['start_date']); ?>" onclick="new Calendar().show(this);"></td>
-        </tr>
-        <tr>
-            <td class="fr">结束时间：</td>
-            <td><input id="expire_date" type="text" class="comm_ipt" name="data[expire_date]" placeholder="0" value="<?php echo $thisc->echoTime($data['expire_date']); ?>" onclick="new Calendar().show(this);"> 一般针对付费广告</td>
+         <tr>
+            <td class="fr">位置说明：</td>
+            <td>
+                <textarea name="data[area_remarks]" id="area_remarks" style="display:block;" ><?php echo $data["area_remarks"]?></textarea><span class="l"> </span>
+            </td>
         </tr>
     </table>
 </div>
 
 <script>
-    var urls = {"save": "/back/<?php echo $this->controllerId;?>/save", "del": "/back/<?php echo $this->controllerId;?>/del"};
+    var urls = {"save": "/back/<?php echo $this->controllerId;?>/save", "del": "/back/<?php echo $this->controllerId;?>/delete"};
 </script>
 <div class="footer_fixed">
     <div class="box_1000">
