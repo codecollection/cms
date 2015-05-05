@@ -1,20 +1,20 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * 资源管理
+ * 推荐位
  */
-class Resource_model extends MBase{
+class Recommend_model extends MBase{
     
-    protected $tableName = 'cms_resource_list';
+    protected $tableName = 'cms_recommend_area';
     
-    protected $pk = "resource_id";
+    protected $pk = "area_id";
     
     protected $rules = array(
-        array('resource_url', 'required'),
+        array('title', 'required'),
     );
     
     protected $fieldTitles = array(
-        'resource_url' => '资源地址',
+        'title' => '推荐标题',
     );
     
     public function  __construct(){

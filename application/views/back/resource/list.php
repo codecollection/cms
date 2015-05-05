@@ -17,11 +17,11 @@
         <table class="table_lists table_click">
             <thead>
                 <tr>
-                    <td>评论ID</td>
-                    <td>文章ID</td>
-                    <td>评论内容</td>
-                    <td>赞</td>
-                    <td>踩</td>
+                    <td>资源ID</td>
+                    <td>资源地址</td>
+                    <td>大小</td>
+                    <td>原名称</td>
+                    <td>预览图</td>
                     <td width="80">操作</td>
                 </tr>
             </thead>
@@ -29,13 +29,14 @@
             <tbody>
                 <?php foreach ($list['list'] as $k => $v) { ?>
                     <tr id="<?php echo "formli" . $k + 1; ?>">
-                        <td><?php echo $v['comment_id']; ?></td>
-                        <td><a href="/back/info?modelId=<?php echo $v['model_id'];?>&id=<?php echo $v['info_id'];?>"><?php echo $v['info_id']; ?></a></td>
-                        <td><?php echo $v['content']; ?></td>
-                        <td><?php echo $v['good']; ?></td>
-                        <td><?php echo $v['bad']; ?></td>
+                        <td><?php echo $v['resource_id']; ?></td>
+                        <td><input class="comm_ipt" value="<?php echo $v['resource_url'] ?>" /></td>
+                        <td><?php echo $v['size']; ?></td>
+                        <td><?php echo $v['oname']; ?></td>
+                        <td><img src="<?php echo $v['resource_url'];?>" style="height:30px;width:40px;" /></td>
                         <td>
-                        <?php $thisc->echoButton($this->controllerId . "02", "/back/{$this->controllerId}/edit?id={$v['comment_id']}", "编辑"); ?>
+                        <?php $thisc->echoButton($this->controllerId . "02", "/back/{$this->controllerId}/edit?id={$v['resource_id']}", "编辑"); ?>
+                        <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['resource_id']});","删除","btn");?>
                         </td>
                     </tr>
                 <?php } ?>

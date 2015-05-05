@@ -256,7 +256,7 @@ class NavPanel {
                 array(
                     'title' => '资源管理', 
                     'url' => '/back/resource',
-                    'level'=>'E9',
+                    'level'=>'E09',
                     'menu'=>array(
                         //array('title'=>'添加编辑','level'=>'H0401'),
                         array('title'=>'删除资源','level'=>'H0402'),
