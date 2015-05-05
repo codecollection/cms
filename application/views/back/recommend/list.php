@@ -39,7 +39,6 @@
             </tr>
             <?php }?>
         </tbody>
-
     </table>
     <p class="line-t-20"></p>
         <div class="pagebar">

@@ -593,3 +593,10 @@ class App_Controller extends CAdminBase {
     }
 
 }
+
+class CBase extends MY_Controller{
+    
+    public function __construct() {
+        parent::__construct();
+    }
+}
