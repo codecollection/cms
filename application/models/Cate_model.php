@@ -67,11 +67,11 @@ class Cate_model extends MBase{
             //判断是否绑定域名到站点根目录
             //$host = $v['cdomain'] == '' ? DOMAIN_SITE : $v['cdomain'];
             //print_r($host);die();
-//            if (REWRITE_CATE_ALIAS == 1) {
-//                $v['surl'] = $this->url->encode('list_cpy_index', array('host' => $host, 'cpy' => $v['cname_py'], 'p' => 1));
-//            } else {
-//                $v['surl'] = $this->url->encode('list_cid_index', array('host' => $host, 'cid' => $v['cate_id'], 'p' => 1));
-//            }
+            if (1 == 1) {
+                $v['surl'] = "/info/cate?cateId=".$v['cate_id'];
+            } else {
+                $v['surl'] = "";
+            }
             //如果有伪静态识别前缀
 //            if ($v['url_dir'] != '') {//var_dump($v['url_dir']);
 //                $v['surl'] = preg_replace('~(http://.*?)/(.*?)/(.*?)~', '${1}/' . $v['url_dir'] . '/${3}', $v['surl']);
@@ -96,6 +96,11 @@ class Cate_model extends MBase{
                 //判断是否绑定域名到站点根目录
                 //$host = $vs['cdomain'] == '' ? DOMAIN_SITE : $vs['cdomain'];
                 //print_r($host);die();
+                if (1 == 1) {
+                     $v['son'][$ks]['surl'] = "/info/cate?cateId=".$v['cate_id'];
+                } else {
+                     $v['son'][$ks]['surl'] = "";
+                }
 //                if (REWRITE_CATE_ALIAS == 1) {
 //                    $v['son'][$ks]['surl'] = $this->url->encode('list_cpy_index', array('host' => $host, 'cpy' => $vs['cname_py'], 'p' => 1));
 //                } else {

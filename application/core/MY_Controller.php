@@ -414,28 +414,7 @@ class CAdminBase extends MY_Controller {
         );
         $this->load->view("back/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
     }
-
-    /**
-     * 显示导出文件的模板页面
-     * @param string $viewName
-     * @param array $data
-     */
-    protected function renderHTMLView($viewName, $data = array()) {
-
-        $data['thisc'] = $this;
-        $viewHtml = $this->load->view('admin/' . $viewName, array_merge($data, $this->renderData), true);
-        $frameData = array(
-            'mainContent' => $viewHtml,
-            'activedModule' => $this->activeModule,
-            'thisc' => $this,
-            'js' => implode("\r\n", $this->frontFile['js']),
-            'css' => implode("\r\n", $this->frontFile['css']),
-            'header' => implode("\r\n", $this->frontFile['header']),
-        );
-        
-        $this->load->view("admin/frameHTML", array_merge($frameData, $this->renderData, $data));
-    }
-
+    
     /**
      * 增加js文件
      * @param type $file
@@ -599,4 +578,28 @@ class CBase extends MY_Controller{
     public function __construct() {
         parent::__construct();
     }
+    
+    /**
+     * 显示导出文件的模板页面
+     * @param string $viewName
+     * @param array $data
+     */
+    protected function renderHTMLView($viewName, $data = array()) {
+
+        $data['thisc'] = $this;
+        $frameData = array(
+            
+            'c' => $this,
+            
+        );
+        
+        $this->load->view("front/default/{$viewName}", array_merge($frameData, $data));
+    }
+    
+    public function loadView($dirName){
+        
+        echo $this->load->view("front/default/{$dirName}","",true);
+    }
+    
+   
 }
