@@ -5,15 +5,15 @@
     <title>MCMS手机建站之星-南昌免费建站,企业建站,自助建站,手机建站,免费建站系统-南昌掌易业泰科技有限公司（掌易科技）</title>
     <meta name="keywords" content="MCMS,免费建站,企业建站,自助建站,手机建站,建站程序,免费建站系统">
     <meta name="description" content="掌易科技是一家专业WEB建站服务公司，提供手机建站移动互联网建站解决方案，并且拥有定制大型门户和其他行业WEB解决方案的能力">
-    <script type="text/javascript" src="/static/libs/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/static/libs/common.js"></script>
+    <script type="text/javascript" src="/style/libs/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/style/libs/common.js"></script>
 <!--[if lte IE 6]>
-<script language="javascript" type="text/javascript" src="/static/libs/png.js" ></script>
+<script language="javascript" type="text/javascript" src="/style/libs/png.js" ></script>
 <script type="text/javascript">
     DD_belatedPNG.fix('div, ul, li, input , a, a:hover, h2, b,span');
 </script>
 <![endif]-->
 <link rel="Shortcut Icon" href="http://crane/static/logo/logo_ico.ico" />
-<link rel="Bookmark" href="http://crane/static/logo/logo_ico.ico" />
+<link rel="Bookmark" href="http://crane/style/front/sty_default/logo/logo_ico.ico" />
 <link href="/style/front/sty_default/style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/static/sty_default/js/comm.js"></script>
+<script type="text/javascript" src="/style/front/sty_default/js/comm.js"></script>

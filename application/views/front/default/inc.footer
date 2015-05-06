@@ -9,14 +9,14 @@
     技术支持：<a href="http://www.mcms.cc" target="_blank">掌易科技</a>&nbsp;&nbsp;&nbsp;
 </div>
 <div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253530733'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1253530733' type='text/javascript'%3E%3C/script%3E"));</script></div>
-    <script src="/static/libs/qqservice/jquery.qqservice.js"></script>
+    <script src="/style/libs/qqservice/jquery.qqservice.js"></script>
 <script>
     $(function(){
         $.QqService(
             {q_top:'180', //距离顶部
                 q_right:'0',//距离右侧
                 q_left:'auto', //距离左侧
-                q_cssLink:'/static/libs/qqservice/style_1.css',// 样式文件切换
+                q_cssLink:'/style/libs/qqservice/style_1.css',// 样式文件切换
                 q_phone:'0791-88152600000', //联系电话
                 q_data:'<li style="color:#fc7e31;font-weight:bold;">售前咨询</li><li><a href="tencent://message/?uin=48254462"><img border="0" src="http://wpa.qq.com/pa?p=2:48254462:41"></a></li><li><a href="tencent://message/?uin=1133299"><img border="0" src="http://wpa.qq.com/pa?p=2:1133299:41"></a></li><li style="color:#fc7e31;font-weight:bold;">技术支持</li><li><a href="tencent://message/?uin=1005025290"><img border="0" src="http://wpa.qq.com/pa?p=2:1005025290:41"></a></li><li><a href="tencent://message/?uin=582873225"><img border="0" src="http://wpa.qq.com/pa?p=2:582873225:41"></a></li><li><a href="tencent://message/?uin=627266138"><img border="0" src="http://wpa.qq.com/pa?p=2:627266138:41"></a></li><li style="height:2px;"></li>' //html 内容
             }
