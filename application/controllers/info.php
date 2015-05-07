@@ -79,7 +79,7 @@ class Info extends CBase {
         $lists = $this->info->search();
         
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
-        $this->page =  RKit::getPageLink("/info/cate?" . http_build_query(array()), $lists['count']);
+        $this->page =  RKit::getPageLink("/info/l?" . http_build_query(array()), $lists['count']);
         
         return $lists;
     }
