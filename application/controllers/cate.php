@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Info extends CBase {
+class Cate extends CBase {
 
     /**
      * 首页
@@ -11,33 +11,6 @@ class Info extends CBase {
         $this->renderHTMLView("index");
     }
     
-    /**
-     * 分类列表
-     * cid 分类ID
-     * p 当前分页
-     */
-    public function cate(){
-        
-        $this->loadModel("cate");
-        
-        $cid = $this->getData('cid');
-        $p = $this->getData('p');
-        
-        $this->cid = $cid;
-        
-        $cateData = $this->cate->find($cid);
-        
-        //如果p小于等于0.则表示是分类下面的首页
-        if(empty($p) || $p <=0 ){
-            $tplIndex = $cateData["tpl_index"];
-        }
-         
-        $tpl = empty($tplIndex) ? $cateData['tpl_list'] : $tplIndex;
-        $tplList = empty($tpl) ? "list" : $tpl;
-        
-        $this->renderHTMLView($tplList);
-    }
-
     /**
      * 获取分类
      * @return type

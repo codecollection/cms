@@ -575,6 +575,22 @@ class App_Controller extends CAdminBase {
 
 class CBase extends MY_Controller{
     
+    /**
+     * 分类ID
+     * @var type 
+     */
+    public $cid = 0;
+    /**
+     * 信息ID
+     * @var type 
+     */
+    public $id = 0 ;
+    /**
+     * 信息的模型ID
+     * @var type 
+     */
+    public $modelId = 0;
+    
     public function __construct() {
         parent::__construct();
     }
