@@ -18,7 +18,7 @@ class Info extends CBase {
      */
     public function cate(){
         
-        $this->loadModel("cate");
+        
         
         $cid = $this->getData('cid');
         $p = $this->getData('p');
@@ -44,8 +44,6 @@ class Info extends CBase {
      */
     public function getCate(){
        
-        $this->loadModel("cate");
-        
         return $this->cate->categories;
     }
     
@@ -54,10 +52,24 @@ class Info extends CBase {
      * @return type
      */
     public function getList(){
+        $this->loadModel("model");
+        
         $cateId = $this->getData('cid');
         $p = $this->getData('p');
         
-        return array();
+        $modelId = $this->cate->getField($cateId,'model_id');
+        //获取模型对应的表名称
+        $modelName = $this->model->getField($modelId,"model_name"); 
+        
+        $this->info->tableName = $modelName;
+        $this->info->setPk($modelName."_id");
+        $this->info->page($p, PAGESIZE);
+        
+        $lists = $this->info->search();
+        
+        $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
+        
+        return $lists;
     }
 
     /**

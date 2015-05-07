@@ -15,7 +15,7 @@
                             <li><a class="tit" href="/index.php?tpl=list&cid=1&p=1">公司动态</a></li><li><a class="tit" href="/index.php?tpl=list&cid=2&p=1">产品中心</a></li><li><a class="tit" href="/index.php?tpl=list&cid=3&p=1">成功案例</a></li><li><a class="tit" href="/index.php?tpl=list&cid=4&p=1">关于我们</a></li><li><a class="tit" href="/index.php?tpl=list&cid=11&p=1">商业服务</a></li><li style="border:0px;"><a class="tit" href="/app/message/">给我留言</a></li>                        </ul>
                     </div>
                 </div>
-                                
+                   <?php $c->getList();?>             
 <div class="box">
     <div class="box_tit">公司动态</div>
     <div class="box_con">

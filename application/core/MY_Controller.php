@@ -593,6 +593,8 @@ class CBase extends MY_Controller{
     
     public function __construct() {
         parent::__construct();
+        $this->loadModel("cate");
+        $this->loadModel("info");
     }
     
     /**
