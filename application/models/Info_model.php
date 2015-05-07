@@ -55,7 +55,7 @@ class Info_model extends MBase{
     
     public function insertUrl($list,$modelId){
         foreach($list as $key => $val){
-            $list[$key]['surl'] = "/info/detail?id=".$val[$this->tableName."_id"]."&mid=".$modelId;
+            $list[$key]['surl'] = "/info/d?id=".$val[$this->tableName."_id"]."&mid=".$modelId;
         }
         
         return $list;

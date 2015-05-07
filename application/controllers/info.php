@@ -3,6 +3,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Info extends CBase {
 
+    public $page;
     /**
      * 首页
      */
@@ -16,9 +17,7 @@ class Info extends CBase {
      * cid 分类ID
      * p 当前分页
      */
-    public function cate(){
-        
-        
+    public function l(){
         
         $cid = $this->getData('cid');
         $p = $this->getData('p');
@@ -39,6 +38,21 @@ class Info extends CBase {
     }
 
     /**
+     * 详情页
+     */
+    public function d(){
+        
+        $id = $this->getData('id');
+        
+        $modelId = $this->getData('mid');
+        $this->setModel($modelId);
+        
+        $d = $this->info->find($id);
+        
+        print_r($d);
+    }
+
+    /**
      * 获取分类
      * @return type
      */
@@ -52,22 +66,20 @@ class Info extends CBase {
      * @return type
      */
     public function getList(){
-        $this->loadModel("model");
         
         $cateId = $this->getData('cid');
         $p = $this->getData('p');
         
         $modelId = $this->cate->getField($cateId,'model_id');
         //获取模型对应的表名称
-        $modelName = $this->model->getField($modelId,"model_name"); 
+        $this->setModel($modelId);
         
-        $this->info->tableName = $modelName;
-        $this->info->setPk($modelName."_id");
         $this->info->page($p, PAGESIZE);
         
         $lists = $this->info->search();
         
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
+        $this->page =  RKit::getPageLink("/info/cate?" . http_build_query(array()), $lists['count']);
         
         return $lists;
     }

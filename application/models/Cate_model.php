@@ -68,7 +68,7 @@ class Cate_model extends MBase{
             //$host = $v['cdomain'] == '' ? DOMAIN_SITE : $v['cdomain'];
             //print_r($host);die();
             if (1 == 1) {
-                $v['surl'] = "/info/cate?cid=".$v['cate_id'];
+                $v['surl'] = "/info/l?cid=".$v['cate_id'];
             } else {
                 $v['surl'] = "";
             }
@@ -97,7 +97,7 @@ class Cate_model extends MBase{
                 //$host = $vs['cdomain'] == '' ? DOMAIN_SITE : $vs['cdomain'];
                 //print_r($host);die();
                 if (1 == 1) {
-                     $v['son'][$ks]['surl'] = "/info/cate?cid=".$v['cate_id'];
+                     $v['son'][$ks]['surl'] = "/info/l?cid=".$v['cate_id'];
                 } else {
                      $v['son'][$ks]['surl'] = "";
                 }

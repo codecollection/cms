@@ -7,6 +7,11 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class MY_Controller extends CI_Controller {
 
     protected $startMicrotime = 0;
+    /**
+     * 渲染的数据
+     * @var array
+     */
+    protected $renderData = array();
     public function __construct() {
         parent::__construct();
         $this->lang->load('manager', 'zh_cn');
@@ -80,6 +85,15 @@ class MY_Controller extends CI_Controller {
         return date($f,$t);
     }
 
+    /**
+     * 设置渲染的数据
+     * @param type $name
+     * @param type $value
+     */
+    public function setData($name, $value) {
+
+        $this->renderData[$name] = $value;
+    }
 }
 
 /**
@@ -121,11 +135,7 @@ class CAdminBase extends MY_Controller {
      */
     protected $frontFile = array('css' => array(), 'js' => array(), 'header' => array());
 
-    /**
-     * 渲染的数据
-     * @var array
-     */
-    protected $renderData = array();
+   
 
     /**
      * 启用权限检测
@@ -189,16 +199,6 @@ class CAdminBase extends MY_Controller {
     protected function enablePermission() {
 
         $this->isPermission = true;
-    }
-
-    /**
-     * 设置渲染的数据
-     * @param type $name
-     * @param type $value
-     */
-    public function setData($name, $value) {
-
-        $this->renderData[$name] = $value;
     }
 
     /**
@@ -611,7 +611,7 @@ class CBase extends MY_Controller{
             
         );
         
-        $this->load->view("front/default/{$viewName}", array_merge($frameData, $data));
+        $this->load->view("front/default/{$viewName}", array_merge($frameData, $data,  $this->renderData));
     }
     
     public function loadView($dirName){
@@ -619,5 +619,17 @@ class CBase extends MY_Controller{
         echo $this->load->view("front/default/{$dirName}","",true);
     }
     
-   
+    /**
+     * 
+     * @param type $modelId
+     */
+    protected function setModel($modelId){
+        
+        $this->loadModel("model");
+        
+        $modelName = $this->model->getField($modelId,"model_name"); 
+        
+        $this->info->tableName = $modelName;
+        $this->info->setPk($modelName."_id");
+    }
 }
