@@ -49,7 +49,9 @@ class Info extends CBase {
         
         $d = $this->info->find($id);
         
-        print_r($d);
+        $this->setData("d", $d);
+        
+        $this->renderHTMLView("detail");
     }
 
     /**
