@@ -122,17 +122,10 @@
             <td class="fr">封面模版：</td>
             <td>
                 <div class="l">
-                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:258px;">    
-                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">默认</div>        
-                            <input type="hidden" name="data[tpl_index]" id="tpl_index" value="" class="sel_subject_val">    
-                        </a>    
-                            <div class="sel_list" id="sel_list" style="display:none;">        <a href="javascript:void(0);" value="" class="" >默认</a>        <a href="javascript:void(0);" value="tpl.cover.php" class="" >tpl.cover.php</a>    
-                            </div>
-                        </div>                
+                <?php echo $this->vars->input_str(array('node'=>'tpl_index','name'=>'tpl_index','type'=>'select_single','default'=>$data["tpl_index"],'style'=>'style="width:200px;"'));?>
                 </div>
                 <div class="l">
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">频道栏目封面模板，一般没有分页</span>，文件名以 <font color=red>tpl.cover</font> 开头
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">频道栏目封面模板，一般没有分页</span>，文件名的格式为 <font color=red>名称.cover.php</font>
                 </div>
             </td>
         </tr>
@@ -140,22 +133,10 @@
             <td class="fr">列表模板：</td>
             <td>
                 <div class="l">
-                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:258px;">    
-                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">默认</div>        
-                            <input type="hidden" name="data[tpl_list]" id="tpl_list" value="" class="sel_subject_val">    
-                        </a>    
-                        <div class="sel_list" id="sel_list" style="display:none;">        
-                            <a href="javascript:void(0);" value="" class="" >默认</a>        
-                            <a href="javascript:void(0);" value="tpl.list.anli.php" class="" >tpl.list.anli.php</a>        
-                            <a href="javascript:void(0);" value="tpl.list.img.php" class="" >tpl.list.img.php</a>        
-                            <a href="javascript:void(0);" value="tpl.list.php" class="" >tpl.list.php</a>        
-                            <a href="javascript:void(0);" value="tpl.list.single.php" class="" >tpl.list.single.php</a>    
-                        </div>
-                    </div>                
+                <?php echo $this->vars->input_str(array('node'=>'tpl_list','name'=>'tpl_list','type'=>'select_single','default'=>$data["tpl_list"],'style'=>'style="width:200px;"'));?>
                 </div>
                 <div class="l">
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">分类列表模板，一般有分页</span>，文件名以 <font color=red>tpl.list</font> 开头
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">分类列表模板，一般有分页</span>，文件名的格式为 <font color=red>名称.list.php</font> 
                 </div>
             </td>
         </tr>
@@ -163,20 +144,11 @@
             <td class="fr">详情模版：</td>
             <td>
                 <div class="l">
-                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:258px;">    
-                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">默认</div>        
-                            <input type="hidden" name="data[tpl_content]" id="tpl_content" value="" class="sel_subject_val">    
-                        </a>    
-                        <div class="sel_list" id="sel_list" style="display:none;">        
-                            <a href="javascript:void(0);" value="" class="" >默认</a>        
-                            <a href="javascript:void(0);" value="tpl.content.php" class="" >tpl.content.php</a>        
-                            <a href="javascript:void(0);" value="tpl.content.single.php" class="" >tpl.content.single.php</a>    
-                        </div>
-                    </div>                
+                <?php echo $this->vars->input_str(array('node'=>'tpl_content','name'=>'tpl_content','type'=>'select_single','default'=>$data["tpl_content"] ,'style'=>'style="width:200px;"'));?>
                 </div>
+                
                 <div class="l">
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">内容正文模板</span>，文件名以 <font color=red>tpl.content</font> 开头
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">内容正文模板</span>，文件名格式为 <font color=red>名称.content.php</font>
                 </div>
             </td>
         </tr>

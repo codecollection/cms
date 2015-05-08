@@ -16,8 +16,10 @@
             });
         </script>
         <ul class="silder_list" id="silder_list">
-            <li style="background:url(/style/front/sty_default/logo/index1.jpg) center no-repeat;"><a href=""  target="_blank"></a></li>
-            <li style="background:url(/style/front/sty_default/logo/index2.jpg) center no-repeat;"><a href="" target="_blank"></a></li>       
+            <?php $ad = $c->getAd(100);?>
+            <?php foreach($ad as $k => $v){?>
+            <li style="background:url(<?php echo $v['ad_img']?>) center no-repeat;"><a href=""  target="_blank"></a></li>
+            <?php }?>    
         </ul>
     </div>
 

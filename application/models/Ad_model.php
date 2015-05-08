@@ -7,6 +7,9 @@ class Ad_model extends MBase{
     
     protected $tableName = 'cms_ad_list';
     
+    protected $areaTable = 'cms_ad_area';
+
+
     protected $pk = "ad_id";
     
     protected $rules = array(
@@ -32,5 +35,12 @@ class Ad_model extends MBase{
         
         $this->start_date = strtotime($this->start_date);
         $this->expire_date = strtotime($this->expire_date);
+    }
+    
+    public function getAd($areaId){
+        
+        $this->where("area_id = ". $areaId);
+        
+        return $this->search(FALSE);
     }
 }

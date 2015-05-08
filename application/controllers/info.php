@@ -9,7 +9,7 @@ class Info extends CBase {
      */
     public function index(){
        
-        $this->renderHTMLView("index");
+        $this->renderHTMLView("cover");
     }
     
     /**
@@ -51,7 +51,7 @@ class Info extends CBase {
         
         $this->setData("d", $d);
         
-        $this->renderHTMLView("detail");
+        $this->renderHTMLView("content");
     }
 
     /**
@@ -105,6 +105,8 @@ class Info extends CBase {
      */
     public function getAd($areaId){
         
-        return array();
+        $this->loadModel("ad");
+        $ad = $this->ad->getAd($areaId);
+        return $ad;
     }
 }

@@ -57,10 +57,42 @@ class Cate extends CAdminBase {
     
     public function add(){
         
-        
+        $this->getTpl();
         parent::add();
     }
     
+    public function edit() {
+        $this->getTpl();
+        parent::edit();
+    }
+
+    /**
+     * 获取模板
+     */
+    private function getTpl(){
+        
+        $this->load->helper("directory");
+        $files = directory_map("./application/views/front/default");
+        $coverTpl = $listTpl = $detialTpl = array(array("txt"=>"默认模板","value"=>""));
+        
+        foreach ($files as $file) {
+            $f = array("txt"=>$file,"value"=>$file);
+            if(preg_match("~cover~", $file)){
+                array_push($coverTpl, $f);
+            }
+            if(preg_match("~list~", $file)){
+                array_push($listTpl, $f);
+            }
+            if(preg_match("~content~", $file)){
+                array_push($detialTpl, $f);
+            }
+        }
+        
+        $this->vars->set_fields("tpl_index",$coverTpl);
+        $this->vars->set_fields("tpl_list",$listTpl);
+        $this->vars->set_fields("tpl_content",$detialTpl);
+    }
+
     public function getModelSelect($default = 1){
         $this->loadModel('model');
         $models = $this->model->fields("model_id,model_title")->search(FALSE);
