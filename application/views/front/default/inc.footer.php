@@ -23,14 +23,16 @@
 <div class="bot wrap">
     <div style="margin-top:10px;">友情链接：
     <a href="http://www.mcms.cc" target="_blank">掌易科技</a>&nbsp;&nbsp;&nbsp;&nbsp;    </div>
-    Copyright © 2011-2014, 掌易科技 All Rights Reserved. 南昌掌易业泰科技有限公司    &nbsp;&nbsp;
+    Copyright © 2011-2014, 小肉粽科技 All Rights Reserved. 上海小肉粽科技有限公司    &nbsp;&nbsp;
     <a href="/app/map/company.php">百度地图</a>&nbsp;&nbsp;&nbsp;
     <a href="/?mcms_dev=pc">电脑版</a>&nbsp;&nbsp;&nbsp;
     <a href="/?mcms_dev=wap">手机版</a>&nbsp;&nbsp;&nbsp;
     <a href="/?mcms_dev=wx">微信版</a>&nbsp;&nbsp;&nbsp;
     技术支持：<a href="http://www.mcms.cc" target="_blank">掌易科技</a>&nbsp;&nbsp;&nbsp;
 </div>
-<div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253530733'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1253530733' type='text/javascript'%3E%3C/script%3E"));</script></div>
+<div style="display:none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253530733'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D1253530733' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
     <script src="/style/libs/qqservice/jquery.qqservice.js"></script>
 <script>
     $(function(){

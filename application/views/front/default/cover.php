@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MCMS手机建站之星-南昌免费建站,企业建站,自助建站,手机建站,免费建站系统-南昌掌易业泰科技有限公司（掌易科技）</title>
-    <meta name="keywords" content="MCMS,免费建站,企业建站,自助建站,手机建站,建站程序,免费建站系统">
-    <meta name="description" content="掌易科技是一家专业WEB建站服务公司，提供手机建站移动互联网建站解决方案，并且拥有定制大型门户和其他行业WEB解决方案的能力">
+    <title><?php echo $c->getItem("seo_title");?></title>
+    <meta name="keywords" content="<?php echo $c->getItem("seo_keywords");?>">
+    <meta name="description" content="<?php echo $c->getItem("seo_desc");?>">
 <?php $c->loadView("inc.header.php");?>
 
 <?php $c->loadView("inc.nav.php");?>

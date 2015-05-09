@@ -8,10 +8,10 @@
                 <ul>
                     <li><a href="http://crane">首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
                     <?php $cate = $c->getCate();?>
-                    <?php foreach($cate as $k => $v){?>
+                    <?php foreach($cate as $k => $v){ if($v['parent_id'] != 0){continue;};?>
                     <li><a  href="<?php echo $v['surl'];?>"><?php echo $v['cname'];?></a></li>
                     <?php }?>
-                    <li><a  href="/index.php?tpl=list&cid=4&p=1">关于我们</a></li><li><a  href="/app/message/">给我留言</a></li>                
+                    
                 </ul>
             </div>
         </div>

@@ -91,20 +91,10 @@
             <td class="fr">详情模版：</td>
             <td>
                 <div class="l">
-                    <div class="sel_box" onclick="select_single(event, this); return false;" style="width:258px;">    
-                        <a href="javascript:void(0);" class="txt_box" id="txt_box">        
-                            <div class="sel_inp" id="sel_inp">默认</div>        
-                            <input type="hidden" name="data[tpl_content]" id="tpl_content" value="" class="sel_subject_val">    
-                        </a>    
-                        <div class="sel_list" id="sel_list" style="display:none;">        
-                            <a href="javascript:void(0);" value="" class="" >默认</a>        
-                            <a href="javascript:void(0);" value="tpl.content.php" class="" >tpl.content.php</a>        
-                            <a href="javascript:void(0);" value="tpl.content.single.php" class="" >tpl.content.single.php</a>    
-                        </div>
-                    </div>                
+                    <?php echo $this->vars->input_str(array('node'=>'tpl_content','name'=>'tpl_content','type'=>'select_single','default'=>$data["tpl_content"] ,'style'=>'style="width:200px;"'));?>              
                 </div>
                 <div class="l">
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">内容正文模板</span>，文件名以 <font color=red>tpl.content</font> 开头
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">内容正文模板</span>，文件名格式为 <font color=red>名称.content.php</font> 开头
                 </div>
             </td>
         </tr>

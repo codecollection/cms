@@ -88,18 +88,22 @@ class RConfig {
         
         $data = $this->ci->config->item($key);
         
-            if($data === false){
+        if(!$data){
+            
             if(!isset($this->ci->set)){
                 $this->ci->load->model('Set_model','set');
             }
-            $this->ci->set->fields('value');
-            $fdata = $this->ci->set->getFieldByWhere('cvalue','ckey="'.$key.'"');
-            if (!$fdata) {
-                return $default;
-            }
-            $data = json_decode($fdata['value'], true);
+            //$this->ci->set->fields('value');
+            $data = $this->ci->set->getFieldByWhere('cvalue','ckey="'.$key.'"');
+            
+//            if (!$fdata) {
+//                return $default;
+//            }
+            //$data = json_decode($fdata, true);
+            $this->ci->config->set_item($key,$data);
         }
-         return $data;
+        
+        return $data;
         
     }
     /**

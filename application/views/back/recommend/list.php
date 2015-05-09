@@ -20,6 +20,7 @@
                 <td>位置ID</td>
                 <td>位置标题</td>
                 <td>文章ID列表</td>
+                <td>logo</td>
                 <td width="100">操作</td>
             </tr>
         </thead>
@@ -30,7 +31,7 @@
                 <td><?php echo $v['area_id'];?></td>
                 <td><?php echo $v['title'];?></td>
                 <td><?php echo $v['id_list'];?></td>
-                <td><img src="<?php echo $v['ad_img'];?>" style="width:40px;height: 30px;"/></td>
+                <td><img src="<?php echo $v['area_logo'];?>" style="width:40px;height: 30px;"/></td>
                 <td>
                     <?php $thisc->echoButton("{$thisc->level}","/back/{$this->controllerId}/edit?id={$v['area_id']}","编辑","btn");?>
                     <?php $thisc->echoButton("{$thisc->level}02","javascript:del_one({$v['area_id']});","删除","btn");?>

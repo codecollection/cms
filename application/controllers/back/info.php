@@ -32,18 +32,22 @@ class Info extends CAdminBase {
         $this->setModelName();
         
         $this->setMinNav(array('url'=>"",'title'=>  $this->modelName));
+        
         $this->lists();
         
     }
     
     public function add() {
         $this->setModelName();
+        
+        $this->getTpl();
         parent::add();
         //$this->renderAdminView($this->viewDir(2));
     }
 
     public function edit(){
         $this->setModelName();
+        $this->getTpl();
         parent::edit();
     }
 
@@ -83,6 +87,9 @@ class Info extends CAdminBase {
         if(is_numeric($cateId) && $cateId > 0 ){
             
             $modelId = $this->cate->getField($cateId,'model_id');
+            
+            
+            $this->bindModel->where("last_cate_id=". $cateId);
         }else{
             
             //根据模型ID取
@@ -93,6 +100,7 @@ class Info extends CAdminBase {
             
             $this->echoAjax(100, lang('param_error'));
         }
+        
         
         //获取模型对应的表名称
         $modelName = $this->model->getField($modelId,"model_name"); 

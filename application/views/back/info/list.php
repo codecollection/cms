@@ -43,7 +43,7 @@
             <?php foreach($list['list'] as $k => $v){ ?>
             <tr id="<?php echo "formli1".$k?>">
                 <td><input type="checkbox" class="chk_list" value="<?php echo $v[$thisc->modelName."_id"];?>"></td>
-                <td><a href="/" target="_blank"<?php echo $v[$thisc->modelName."_id"];?></a></td>
+                <td><a href="/" target="_blank"><?php echo $v[$thisc->modelName."_id"];?></a></td>
                 <td><input id="corder" type="text" pid="<?php echo $v[$thisc->modelName."_id"];?>" class="comm_ipt corder" style="width:30px;" value="<?php echo $v["forder"];?>"></td>
                 <td><input type="text"  class="comm_ipt cname"  value="<?php echo $v["title"];?>">
                     

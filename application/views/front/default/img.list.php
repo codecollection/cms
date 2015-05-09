@@ -18,9 +18,9 @@
             <div class="box confbg">
                 <div class="box_content">
                     <ul>
-                        <li><a href="/index.php?tpl=list&amp;cid=5&amp;p=1" class="tit">MCMS企业站系统</a></li>
-                        <li><a href="/index.php?tpl=list&amp;cid=6&amp;p=1" class="tit">MCMS商城系统</a></li>
-                        <li style="border:0px;"><a href="/index.php?tpl=list&amp;cid=7&amp;p=1" class="tit">MCMS比赛投票系统</a></li>
+                        <?php  foreach($c->getCate() as $k => $v){ if($v['parent_id'] != 0 ){continue;} ?>
+                        <li><a class="tit" href="<?php echo $v['surl'];?>"><?php echo $v['cname'];?></a></li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>            
@@ -28,10 +28,11 @@
                 <div class="box_tit">公司动态</div>
                 <div class="box_con">
                     <ul>
-                        <li><a href="http://crane/index.php?tpl=content&id=24">掌易科技发布手机建站之星3.0.0</a></li>
-                        <li><a href="http://crane/index.php?tpl=content&id=9">掌易科技签约首钢集团共青团</a></li>
-                        <li><a href="http://crane/index.php?tpl=content&id=13">掌易科技签约江西省地质矿产勘查开发局</a></li>
-                        <li><a href="http://crane/index.php?tpl=content&id=12">掌易科技签约江西师大国家单糖中心</a></li><li><a href="http://crane/index.php?tpl=content&id=11">掌易科技签约QQ.CC游戏网</a></li>        </ul>
+                        <?php $list = $c->getList(21); ?> 
+                        <?php foreach($list['list'] as $k => $v){ ?>
+                        <li><a class="tit" href="<?php echo $v['surl'];?>"><?php echo $v['title'];?></a></li>
+                        <?php }?> 
+                    </ul>
                 </div>
                 <div class="line_5"></div>
             </div>

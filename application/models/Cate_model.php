@@ -8,11 +8,13 @@ class Cate_model extends MBase{
     
     protected $tableName = 'cms_category';
     
-    protected $pk = "cate_id";
+    public $pk = "cate_id";
     
     public $cateList = array();
     
     public $categories = array();
+    
+    public $order = "corder";
     
     public function  __construct(){
         parent::__construct();
@@ -20,6 +22,7 @@ class Cate_model extends MBase{
         $this->cateList = $this->getAll();
         $this->categories = $this->getCategories();
         
+        //print_r($this->categories);
     }
     
     /**
@@ -83,7 +86,7 @@ class Cate_model extends MBase{
 //                $v['surl'] = preg_replace('~^(http://.*?)/(.*?)$~',$this->cate_parent_cdomain($v['cate_id']).'/${2}',$v['surl']);
 //            }
             //跳转链接优先
-            //if ($v['go_url'] != '') $v['surl'] = $v['go_url'];
+            if ($v['go_url'] != '') {$v['surl'] = $v['go_url'];}
 
             //print_r($v);die();
             //遍历查询子类
@@ -117,7 +120,7 @@ class Cate_model extends MBase{
 //                    $v['son'][$ks]['surl'] = preg_replace('~^(http://.*?)/(.*?)$~',$this->cate_parent_cdomain($vs['cate_id']).'/${2}',$v['son'][$ks]['surl']);
 //                }
                 //跳转链接优先
-                //if ($vs['go_url'] != '') $v['son'][$ks]['surl'] = $vs['go_url'];
+                if ($vs['go_url'] != '') {$v['son'][$ks]['surl'] = $vs['go_url'];}
             }
             $tmp_trees[$v['cate_id']] = $v;
         }
