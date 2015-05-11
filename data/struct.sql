@@ -77,7 +77,7 @@ create table if not exists `cms_resource_info`(
  index `res_info` (`info_id`,`resource_id`)
 )engine=myisam default charset=utf8 comment '信息资源关系表';
 
-
+-- 推荐位必须推荐同一种模型的数据
 create table if not exists `cms_recommend_area` (
  `area_id` int(11) unsigned not null auto_increment comment '推荐位ID',
  `title` varchar(100) not null default '' comment '位置标题',
@@ -88,6 +88,7 @@ create table if not exists `cms_recommend_area` (
  `area_order` int(11) not null default 100 comment '排序',
  `area_logo` varchar(200) not null default '' comment '位置LOGO图',
  `id_list` varchar(2000) not null default '' comment '文档ID列表，用逗号分割',
+ `model_id` int(11) not null default 0 comment '模型ID',
  primary key (`area_id`),
  index `area_type_order` (`area_type`,`area_order`)
 ) engine=myisam default charset=utf8 comment '推荐位置';
