@@ -26,7 +26,10 @@ $lang['login_exit'] = "安全退出登入！";
 $lang['login_user_deny'] = "用户被拒绝登陆！";
 
 $lang['insert_success'] = "添加%s成功";
-$lang['update_fail'] = "更新%s成功";
+$lang['update_success'] = "更新%s成功";
+
+$lang['insert_fail'] = "添加%s失败";
+$lang['update_fail'] = "更新%s失败";
 
 $lang['delete_success'] = "删除%s成功";
 $lang['delete_fail'] = "删除%s失败";

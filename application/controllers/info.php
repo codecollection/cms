@@ -148,11 +148,11 @@ class Info extends CBase {
     
     public function getArea($areaId){
         
-//        $this->loadModel("recommend");
-//        
-//        $ids = $this->recommend->getField($areaId,"id_list");
-//        
-//        $this->info();
+        $this->loadModel("recommend");
+        
+        $area = $this->recommend->fields("area_id,id_list,model_id")->find($areaId);
+        
+        return "";
     }
     
     private function getPageHtml($baseUrl, $total,$pagesize = 10) {

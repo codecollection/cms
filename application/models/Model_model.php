@@ -28,6 +28,21 @@ class Model_model extends MBase{
         parent::__construct();
     }
     
+    
+    public function modelSelect($default = 1){
+        $models = $this->fields("model_id,model_title")->search(FALSE);
+        
+        $fields = array();
+        foreach($models as $model){
+            $f['txt'] = $model['model_title'];
+            $f['value'] = $model['model_id'];
+            array_push($fields, $f);
+        }
+        
+        $this->vars->set_fields('model',$fields);
+        return $this->vars->input_str(array("node"=>"model","default"=>$default,"type"=>"select_single","name"=>"model_id"));
+    }
+
     /**
      * 获取表已经存在的字段
      * @param type $tableName

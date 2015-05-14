@@ -24,4 +24,18 @@ class Recommend extends CAdminBase {
         $this->lists();
     }
     
+    public function add() {
+        
+        parent::add();
+    }
+    
+    public function edit() {
+        
+        parent::edit();
+    }
+    
+    public function getModelSelect($default = 1){
+        $this->loadModel('model');
+        return $this->model->modelSelect($default);
+    }
 }

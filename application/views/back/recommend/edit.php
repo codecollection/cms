@@ -30,6 +30,10 @@
             <td><input id="id_list" type="text" name="data[id_list]" class="comm_ipt" placeholder="1,2,3,5" value="<?php echo $data["id_list"]?>"> 文章的id列表，用（,）分隔 如：2,5,6,70</td>
         </tr>
         <tr>
+            <td class="fr">文章模型：</td>
+            <td><?php echo $thisc->getModelSelect($data['model_id']);?></td>
+        </tr>
+        <tr>
             <td class="fr">位置logo：</td>
             <td><input id="area_logo" type="text" class="comm_ipt" value="<?php echo $data["area_logo"]?>" name="data[area_logo]"> 
                 <p class="line-t-10"></p>
