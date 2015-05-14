@@ -47,6 +47,10 @@
             <td><?php echo $thisc->getModelSelect($data['model_id']);?></td>
         </tr>
         <tr>
+            <td class="fr">关联标签组：</td>
+            <td><input id="tags" type="text" name="data[tags]" class="comm_ipt" value="<?php echo $data["tags"]?>"> 关联的相关标签组，可以用于快速搜索，数据格式如：1,3,7</td>
+        </tr>
+        <tr>
             <td class="fr">排序：</td>
             <td><input id="corder" type="text" class="comm_ipt" name="data[corder]" value="<?php echo $data['corder'] = $data["corder"] == '' ? '0' : $data['corder'] ; ?>"> 数字小排前面</td>
         </tr>

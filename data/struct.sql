@@ -35,6 +35,7 @@ create table if not exists `cms_category` (
  `cdomain` varchar(50) not null default '' comment '绑定域名',
  `ad_id` int(11) not null default 0 comment '绑定广告id',
  `extern` text not null default '' comment '扩展数据，json格式',
+ `tags` varchar(50) not null default "" comment '关联标签组ID,如：1,3,7',
  primary key (`cate_id`)
 ) engine=myisam default charset=utf8 comment '分类表';
 
