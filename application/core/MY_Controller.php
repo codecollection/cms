@@ -617,10 +617,13 @@ class CBase extends MY_Controller{
      */
     public $modelId = 0;
     
+    public $tpl = "";
     public function __construct() {
         parent::__construct();
         $this->loadModel("cate");
         $this->loadModel("info");
+        
+        $this->tpl = "default";
     }
     
     /**
@@ -637,12 +640,12 @@ class CBase extends MY_Controller{
             
         );
         
-        $this->load->view("front/default/{$viewName}", array_merge($frameData, $data,  $this->renderData));
+        $this->load->view("front/{$this->tpl}/{$viewName}", array_merge($frameData, $data,  $this->renderData));
     }
     
     public function loadView($dirName){
         
-        echo $this->load->view("front/default/{$dirName}","",true);
+        echo $this->load->view("front/{$this->tpl}/{$dirName}","",true);
     }
     
     /**

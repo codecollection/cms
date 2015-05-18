@@ -155,6 +155,14 @@ class Info extends CBase {
         return "";
     }
     
+    public function getFlink(){
+        $this->loadModel("flink");
+        
+        $flinks = $this->flink->search(false);
+        
+        return $flinks;
+    }
+
     private function getPageHtml($baseUrl, $total,$pagesize = 10) {
         
         $config = array(
