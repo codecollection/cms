@@ -22,7 +22,7 @@
             <td><input id="title" type="text" name="data[title]" class="comm_ipt" placeholder="标题" value="<?php echo $data["title"]?>"></td>
         </tr>
         <tr>
-            <td class="fr">推荐位地址：</td>
+            <td class="fr">推荐位跳转地址：</td>
             <td><input id="url" type="text" name="data[url]" class="comm_ipt" placeholder="http://" value="<?php echo $data["url"]?>"></td>
         </tr>
         <tr>
