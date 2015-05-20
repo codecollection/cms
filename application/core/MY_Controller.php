@@ -636,21 +636,47 @@ class CBase extends MY_Controller{
      */
     protected function renderHTMLView($viewName, $data = array()) {
 
-        $data['thisc'] = $this;
+        
+        $dir = "front/{$this->tpl}/{$viewName}";
+        
+        $this->renderView($dir, $data);
+        
+    }
+    
+    /**
+     * 加载视图
+     * @param type $dir 视图文件
+     * @param type $data
+     */
+    private function renderView($dir,$data){
+        
         $frameData = array(
             
             'c' => $this,
-            
         );
         
-        $this->load->view("front/{$this->tpl}/{$viewName}", array_merge($frameData, $data,  $this->renderData));
+        $this->load->view($dir, array_merge($frameData, $data,  $this->renderData));
     }
     
+    /**
+     * 
+     * @param type $dirName
+     */
     public function loadView($dirName){
         
-        echo $this->load->view("front/{$this->tpl}/{$dirName}","",true);
+        $this->echoView("front/{$this->tpl}/{$dirName}");
     }
     
+    /**
+     * 输出视图内容
+     * @param type $dirName
+     * @param type $data
+     */
+    private function echoView($dirName,$data = array()){
+        
+        echo $this->load->view($dirName,$data,true);
+    }
+
     /**
      * 
      * @param type $modelId
@@ -682,19 +708,16 @@ class CBase extends MY_Controller{
      * @param array $data
      */
     protected function renderUserView($viewName, $data = array()) {
-
-        $data['thisc'] = $this;
-        $frameData = array(
-            
-            'c' => $this,
-            
-        );
         
-        $this->load->view("user/{$viewName}", array_merge($frameData, $data,  $this->renderData));
+        $this->renderView("user/{$viewName}", $data);
     }
     
+    /**
+     * 加载用户中心视图
+     * @param type $dirName
+     */
     public function loadUserView($dirName){
         
-        echo $this->load->view("user/{$dirName}","",true);
+         $this->echoView("user/{$dirName}");
     }
  }

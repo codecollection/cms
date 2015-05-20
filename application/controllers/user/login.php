@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Login extends CUserBase {
 
-    protected $controllerId = "login";
+    protected $controllerId = "user";
     
     function __construct() {
 
