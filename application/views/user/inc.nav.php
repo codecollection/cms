@@ -7,10 +7,7 @@
             <div class="l nav">
                 <ul>
                     <li><a href="http://crane">首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
-                    <?php $cate = $c->getCate();?>
-                    <?php foreach($cate as $k => $v){ if($v['parent_id'] != 0){continue;};?>
-                    <li><a  href="<?php echo $v['surl'];?>"><?php echo $v['cname'];?></a></li>
-                    <?php }?>
+                 
                     
                 </ul>
             </div>

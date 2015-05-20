@@ -599,6 +599,9 @@ class App_Controller extends CAdminBase {
 
 }
 
+/**
+ * 前端基础类
+ */
 class CBase extends MY_Controller{
     
     /**
@@ -662,3 +665,36 @@ class CBase extends MY_Controller{
         $this->info->setPk($modelName."_id");
     }
 }
+
+/**
+ * 前台需要登录才能访问的控制器父类
+ */
+ class CUserBase extends CBase{
+        
+    public function __construct() {
+        parent::__construct();
+        $this->load->library('User','user');
+    }
+    
+    /**
+     * 显示导出文件的模板页面
+     * @param string $viewName
+     * @param array $data
+     */
+    protected function renderUserView($viewName, $data = array()) {
+
+        $data['thisc'] = $this;
+        $frameData = array(
+            
+            'c' => $this,
+            
+        );
+        
+        $this->load->view("user/{$viewName}", array_merge($frameData, $data,  $this->renderData));
+    }
+    
+    public function loadUserView($dirName){
+        
+        echo $this->load->view("user/{$dirName}","",true);
+    }
+ }
