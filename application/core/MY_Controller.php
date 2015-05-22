@@ -721,3 +721,17 @@ class CBase extends MY_Controller{
          $this->echoView("user/{$dirName}");
     }
  }
+ 
+ class WeixinBase extends CBase{
+     
+     public  $token = ""; //token 
+     
+     public $aesKey = ""; //EncodingAESKey
+     
+     public function __construct() {
+         
+        parent::__construct();
+    }
+    
+    
+ }
