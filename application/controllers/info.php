@@ -185,3 +185,5 @@ class Info extends CBase {
         return $this->pagination->create_links();
     }
 }
+
+

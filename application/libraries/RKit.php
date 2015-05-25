@@ -536,4 +536,23 @@ class RKit {
         return $return;
     }
     
+    /**
+     * 
+     * 获取到请求路径的地址
+     * @param type $url
+     * @param type $isJson 请求到的数据是否是json格式的。如果是就转成数组
+     * @return type
+     */
+    public static function getUrlData($url = "",$isJson = true){
+        
+        $dataRes = file_get_contents($url);
+        
+        if($isJson){
+            $data = json_decode($dataRes,true);
+        }else{
+            $data = $dataRes;
+        }
+        
+        return $data;
+    }
 }

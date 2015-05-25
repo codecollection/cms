@@ -4,9 +4,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 基础接口
  * 
  */
-class At extends CBase {
+class At extends WeixinBase {
 
-    function __construct() {
+    protected $tokenUrl = "/cgi-bin/token";
+    public function __construct() {
 
        parent::__construct();
     }
@@ -16,6 +17,11 @@ class At extends CBase {
      */
     public function getToken(){
         
+        $url = $this->weixinApiUrl . $this->tokenUrl . "?grant_type=client_credential&appid={$this->appId}&secret={$this->appSecret}";
+
+        $res = RKit::getUrlData($url);
+        
+        print_r($res);
     }
     
     /**
