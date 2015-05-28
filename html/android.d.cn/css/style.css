@@ -46,7 +46,7 @@ body{}
 .tit-span{float:right;margin-right:18px;font-size:12px;color:#555555;}
 .tit-span-a{color:#177ce3;} .tit-span-a:hover{ text-decoration:underline;}
 
-.web-input{margin:15px 0 0 23px;padding-left:35px;width:265px;height:40px;border:none; font-size:14px;color:#dedede;outline:none; line-height:38px; _background-attachment:fixed !important;}
+.web-input{margin:15px 0 0 23px;padding-left:35px;width:300px;height:42px;border:none; font-size:14px;color:#dedede;outline:none; line-height:38px; _background-attachment:fixed !important;}
 .web-input-1{margin-top:5px;}
 .ID{background:url(../image/login/web-input-bg.png) left -47px no-repeat;_background-position:left -47px;}
 .PWD{background:url(../image/login/web-input-bg.png) left -97px no-repeat;_background-position:left -98px;}

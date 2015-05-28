@@ -21,6 +21,29 @@
      </div>
      <a href="javascript:void(0)" id="failClose" title="关闭" class="sure tc">关&nbsp;&nbsp;&nbsp;闭</a>
 </div>
+
+<div class="update">
+    <h2>系统升级提醒<a href="javascript:void(0)" class="close"></a></h2>
+
+    <p class="update-detail">您的手机号
+        <span id="showNum"></span>已验证多个乐号。系统将进行手机号乐号“一对一”登录限定；此操作不影响手机密保的验证
+        （<a href="http://bbs.d.cn/topic_detail_48_2510920.html?djpos=sj" target="_blank" title="手机号登录说明" class="underline blue">手机号登录说明</a>）。
+    </p>
+
+    <p class="update-please">请选择与当前手机号登录绑定的乐号：</p>
+
+    <div class="information">
+        <ul class="information-ul" id="showMids">
+        </ul>
+    </div>
+    <form id="otherParams">
+        <input id="info" name="info" type="hidden" value="0"/>
+        <input id="jsonToUrl" name="toUrl" type="hidden" value=""/>
+        <input id="age" name="age" type="hidden" value=""/>
+    </form>
+    <p class="information-other">该手机同时验证了其他<span id="otherCnt"></span>个乐号，您可以输入对应的密码选择<a href="javascript:void(0);" title="登录" class="underline blue" id="otherPwdLogin">登录</a></p>
+    <a href="javascript:void(0)" id="authBtn" title="确定" class="sure tc">确&nbsp;&nbsp;&nbsp;定</a>
+</div>
 <div class="model-outer of">
     
     <a href="http://www.d.cn/" title="手机游戏第一站"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="手机游戏第一站" title="手机游戏第一站" class="web-logo fl"></a>
