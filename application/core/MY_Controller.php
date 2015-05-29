@@ -648,7 +648,7 @@ class CBase extends MY_Controller{
      * @param type $dir 视图文件
      * @param type $data
      */
-    private function renderView($dir,$data){
+    protected function renderView($dir,$data){
         
         $frameData = array(
             
@@ -697,9 +697,16 @@ class CBase extends MY_Controller{
  */
  class CUserBase extends CBase{
         
+    protected $controllerId = "";
+     
     public function __construct() {
         parent::__construct();
         $this->load->library('User','user');
+        
+        if(!empty($this->controllerId)){
+            $this->load->model($this->controllerId . '_model', $this->controllerId);
+            $this->bindModel = $this->{$this->controllerId};
+        }
     }
     
     /**

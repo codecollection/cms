@@ -77,7 +77,7 @@ $(function () {
                 //$(".b").attr("disabled","disabled");
                 //$(".c8").show();
                 type = 4;
-                checkPhone($(this).val(), showPhoneInfo);
+                checkUsername($(this).val(), showUsernameInfo);
                 isPhone = true;
             } else {
                 $(".a1").hide();
@@ -95,7 +95,8 @@ $(function () {
             // $(".jcode-pic").show();$(".jcode-pic-phone").hide();$(".b").removeAttr("disabled");
             if (email.test($(this).val())) {
                 type = 3;
-                checkEmail($(this).val(), showEmailInfo);
+                
+                checkUsername($(this).val(), showUsernameInfo);
             } else {
                 $(".a1").hide();
                 $(".a2").hide();
@@ -134,7 +135,8 @@ $(function () {
             }
             else {
                 type = 2;
-                checkUsername($(this).val(), showUserInfo);
+                
+                checkUsername($(this).val(), showUsernameInfo);
             }
         }
         if (!isPhone) {
@@ -192,7 +194,7 @@ $(function () {
     $(".mc").bind("keyup", function () {
         //如果不是用电话号码注册，检查验证码是否正确
 
-        checkPhoneVcode($("#resName").val(), $(this).val(), showPhoneVcodeInfo);
+        //checkPhoneVcode($("#resName").val(), $(this).val(), showPhoneVcodeInfo);
         if (judge1 && judge2 && judge3 && judge4 && judge5) {
             $(".leftside-a").css("background-position", "left top");
         }
@@ -274,7 +276,7 @@ $(function () {
         if (num.test($(this).val().substring(0, 1)) && $(this).val().indexOf("@") == -1 && r.test($(this).val())) {
             if (phone.test($(this).val())) {
                 type = 4;
-                checkPhone($(this).val(), showOk);
+                //checkPhone($(this).val(), showOk);
             }
             else {
                 $(".b").val("输入验证码").css("color", "#9A9A9A");
@@ -290,7 +292,7 @@ $(function () {
             //$(".jcode-pic").show();$(".jcode-pic-phone").hide();$(".b").removeAttr("disabled");
             if (email.test($(this).val())) {
                 type = 3;
-                checkEmail($(this).val(), showOk);
+                //checkEmail($(this).val(), showOk);
             } else {
                 judge1 = false;
             }
@@ -305,7 +307,7 @@ $(function () {
                 judge1 = false;
             } else {
                 type = 2;
-                checkUsername($(this).val(), showOk);
+                //checkUsername($(this).val(), showOk);
             }
         }
         if (judge1 && judge2 && judge3 && judge4 && judge5) {
@@ -345,7 +347,9 @@ $(function () {
             $(this).css("background-position", "center -101px");
             judge3 = false;
         } else {
-            checkPwd($(this).val(), showPwd($(this)));
+            checkPwd($(this).val(), showPwd);
+            
+            //showPwd($(this).val());
         }
         if (judge1 && judge2 && judge3 && judge4 && judge5) {
             $(".leftside-a").css("background-position", "left top");
@@ -390,7 +394,7 @@ $(function () {
             //judge7=false;
             var phoneNum = $(".a").val();
             var code = $("#writeCode").val()
-            sendVcToPhone(phoneNum, code, showSendVcToPhone);
+            //sendVcToPhone(phoneNum, code, showSendVcToPhone);
 
         }
     });
@@ -441,7 +445,7 @@ $(function () {
                     vcode = $(".mc").val();
                 }
                 qsData = {'isAgreement': isAgreement, 'vk': numc, 'type': type, 'account': account, 'firstPwd': firstPwd, 'secondPwd': secondPwd, 'vcode': vcode, 'businessCode': businessCode, 'to': to, 'view': 'ajax', 'display': 'json'};
-                ajaxJsonp("register.html", qsData, registerResult);
+                ajaxJsonp("/user/reg/doReg", qsData, registerResult);
             }
         }
     });
@@ -597,38 +601,41 @@ function popout() {
  * @param json
  * @return
  */
-function showEmailInfo(json) {
-    if (json.msg.length != 0) {
-        $(".a1").hide();
-        $(".a2").hide();
-        $(".a3").html(json.msg).show();
-        $(".a").css("background-position", "center -101px");
-        judge1 = false;
-    } else {
-        $(".a1").hide();
-        $(".a3").hide();
-        $(".a2").html("恭喜，该邮箱可注册").show();
-        $(".a").css("background-position", "center -49px");
-        judge1 = true;
-    }
-    if (judge1 && judge2 && judge3 && judge4 && judge5) {
-        $(".leftside-a").css("background-position", "left top");
-    }
-    else {
-        $(".leftside-a").css("background-position", "left bottom");
-    }
-}
+//function showEmailInfo(json) {
+//    if (json.msg.length != 0) {
+//        $(".a1").hide();
+//        $(".a2").hide();
+//        $(".a3").html(json.msg).show();
+//        $(".a").css("background-position", "center -101px");
+//        judge1 = false;
+//    } else {
+//        $(".a1").hide();
+//        $(".a3").hide();
+//        $(".a2").html("恭喜，该邮箱可注册").show();
+//        $(".a").css("background-position", "center -49px");
+//        judge1 = true;
+//    }
+//    if (judge1 && judge2 && judge3 && judge4 && judge5) {
+//        $(".leftside-a").css("background-position", "left top");
+//    }
+//    else {
+//        $(".leftside-a").css("background-position", "left bottom");
+//    }
+//}
 /**
  * 显示手机号码是否已经被注册
  * @param json
  * @return
  */
-function showPhoneInfo(json) {
-    var error = json.msg;
-    if (error.length != 0) {
+function showUsernameInfo(json) {
+    
+    var res = $.evalJSON(json);
+    var error = res.msg;
+   
+    if (res.status != 0) {
         $(".a1").hide();
         $(".a2").hide();
-        $(".a3").html(json.msg).show();
+        $(".a3").html(res.msg).show();
         //  $(".b").attr("disabled","disabled");
         $(".a").css("background-position", "center -101px");
         judge1 = false;
@@ -638,7 +645,7 @@ function showPhoneInfo(json) {
         judge7 = true;
         $(".a1").hide();
         $(".a3").hide();
-        $(".a2").html("恭喜，该手机号码可注册").show();
+        $(".a2").html(error).show();
         //$(".b").attr("disabled","disabled");
         $(".a").css("background-position", "center -49px");
         //$(".b").val("输入验证码").css("color","#9A9A9A");
@@ -664,31 +671,31 @@ function showPhoneInfo(json) {
  * @param json
  * @return
  */
-function showUserInfo(json) {
-    var error = json.msg;
-    if (error.length != 0) {
-
-        $(".a1").hide();
-        $(".a2").hide();
-        $(".a3").html(error).show();
-        $(".a").css("background-position", "center -101px");
-        judge1 = false;
-
-
-    } else {
-        $(".a1").hide();
-        $(".a3").hide();
-        $(".a2").html("恭喜，该用户名可注册").show();
-        $(".a").css("background-position", "center -49px");
-        judge1 = true;
-    }
-    if (judge1 && judge2 && judge3 && judge4 && judge5) {
-        $(".leftside-a").css("background-position", "left top");
-    }
-    else {
-        $(".leftside-a").css("background-position", "left bottom");
-    }
-}
+//function showUserInfo(json) {
+//    var error = json.msg;
+//    if (error.length != 0) {
+//
+//        $(".a1").hide();
+//        $(".a2").hide();
+//        $(".a3").html(error).show();
+//        $(".a").css("background-position", "center -101px");
+//        judge1 = false;
+//
+//
+//    } else {
+//        $(".a1").hide();
+//        $(".a3").hide();
+//        $(".a2").html("恭喜，该用户名可注册").show();
+//        $(".a").css("background-position", "center -49px");
+//        judge1 = true;
+//    }
+//    if (judge1 && judge2 && judge3 && judge4 && judge5) {
+//        $(".leftside-a").css("background-position", "left top");
+//    }
+//    else {
+//        $(".leftside-a").css("background-position", "left bottom");
+//    }
+//}
 
 
 /**
@@ -763,31 +770,33 @@ function countedDown() {
     }
 }
 
-function showPwd(obj) {
-    return function (json) {
+function showPwd(res) {
+    
+    var json = $.evalJSON(res);
+    //return function (json) {
         var error = json.msg;
-        if (error.length != 0) {
+        if (false) {
             $(".c1").hide();
             $(".c2").hide();
             $(".c3").html(error).show();
-            obj.css("background-position", "center -101px");
+            //obj.css("background-position", "center -101px");
             judge3 = false;
         } else {
-            if (english.test(obj.val()) && num.test(obj.val()) && txt.test(obj.val()) && obj.val().length > 5) {
+            if (true) {
                 $(".c1").hide();
                 $(".c3").hide();
-                $(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/high.jpg' class='rank' />").show();
-                obj.css("background-position", "center -49px");
-            } else if (onlyEnglish.test(obj.val()) || onlyNum.test(obj.val()) || onlyTxt.test(obj.val()) && obj.val().length > 5) {
+                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/high.jpg' class='rank' />").show();
+                $(".weird-2").css("background-position", "center -49px");
+            } else if (false) {
                 $(".c1").hide();
                 $(".c3").hide();
-                $(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/low.jpg' class='rank' />").show();
-                obj.css("background-position", "center -49px");
+                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/low.jpg' class='rank' />").show();
+                $(".weird-2").css("background-position", "center -49px");
             } else {
                 $(".c1").hide();
                 $(".c3").hide();
-                $(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/middle.jpg' class='rank' />").show();
-                obj.css("background-position", "center -49px");
+                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/middle.jpg' class='rank' />").show();
+                $(".weird-2").css("background-position", "center -49px");
             }
             judge3 = true;
         }
@@ -796,5 +805,5 @@ function showPwd(obj) {
         } else {
             $(".leftside-a").css("background-position", "left bottom");
         }
-    };
+    //};
 }

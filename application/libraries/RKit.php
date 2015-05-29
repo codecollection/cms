@@ -555,4 +555,44 @@ class RKit {
         
         return $data;
     }
+    
+    /**
+     * 检测是否手机号码
+     * @param type $mobile
+     * @return type
+     */
+    public static function isMobile($mobile) {
+        
+        return preg_match("/1[358]{1}\d{9}$/",$mobile);
+    }
+    
+    /**
+     * 判断是否为邮箱
+     * @param type $email
+     * @return type
+     */
+    public static function isMail($email) {
+        
+        return strlen($email) > 6 && preg_match("/^[\w\-\.]+@[\w\-]+(\.\w+)+$/",$email);
+    }
+    
+     /**
+     * 检测用户的绑定类型
+     * @param type $bindValue
+     * @return int
+     */
+    public static function getUserBindType($bindValue) {
+        
+        $type = 0;
+        if (self::isMobile($bindValue)) {
+            $type = 2;
+        } elseif (self::isMail($bindValue)) {
+            $type = 3;
+        } else {
+            $type = 1;
+        }
+        
+        return $type;
+    }
+
 }

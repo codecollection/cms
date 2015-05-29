@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Reg extends CUserBase {
 
-    protected $controllerId = "user";
+    protected $controllerId = "u";
     
     function __construct() {
 
@@ -37,8 +37,9 @@ class Reg extends CUserBase {
         $name = $this->getData("aname");
         $pwd = $this->getData("apass");
         
-        $rs = $this->user->login($name,$pwd);
-        
+        //$rs = $this->user->login($name,$pwd);
+        die('{"msg":""}');
+        $this->echoAjax(0, "");
          if ($rs > 0) {
             
             $this->user->update($rs);
@@ -58,4 +59,35 @@ class Reg extends CUserBase {
     }
     
   
+    /**
+     * 坚持用户名是否可用
+     */
+    public function checkName(){
+        
+        $name = $this->getData("name");
+        
+        $type = RKit::getUserBindType($name);
+        $msg = "用户名";
+        switch ($type){
+            case 1: 
+                $msg = "用户名";
+                break;
+            case 2: 
+                $msg = "手机号";
+                break;
+            case 3:
+                $msg = "邮箱";
+                break;
+        }
+        
+        if($this->u->checkName($name,$type)){
+           
+            $this->echoAjax(100, $msg.'已经存在');
+        }
+        $this->echoAjax(0, "恭喜，该{$msg}可注册");
+    }
+    
+    public function checkPwd(){
+        die('{"msg":""}');
+    }
 }

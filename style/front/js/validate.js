@@ -6,12 +6,11 @@ $(function () {
 });
 //ajax验证用户名
 function checkUsername(username, callbackFun) {
-    
     $.ajax({
         async: true,
-        url: "util/checkUsername.html",
+        url: "/user/reg/checkName",
         type: "POST",
-        data: {username: username, display: 'json'},
+        data: {name: username, display: 'json'},
         timeout: 15000,
         success: callbackFun,
         error: function (xhr) {
@@ -37,7 +36,7 @@ function checkIdentify(account, callbackFun) {
 function checkPwd(pwd, callbackFun) {
     $.ajax({
         async: true,
-        url: "util/checkPwd.html",
+        url: "/user/reg/checkPwd",
         type: "POST",
         data: {pwd: pwd, display: 'json'},
         timeout: 15000,
@@ -62,51 +61,51 @@ function checkNickname(nickname, callbackFun) {
         }
     });
 }
-
-//ajax验证邮箱
-function checkEmail(email, callbackFun) {
-    $.ajax({
-        async: true,
-        url: "util/checkEmail.html",
-        type: "POST",
-        data: {email: email, display: 'json'},
-        timeout: 15000,
-        success: callbackFun,
-        error: function (xhr) {
-            alert("访问出错（请检查您的网络环境）。");
-        }
-    });
-}
-
-//验证手机号
-function checkPhone(phone, callbackFun) {
-    $.ajax({
-        async: true,
-        url: "util/checkPhoneNum.html",
-        type: "POST",
-        data: {phoneNum: phone, display: 'json'},
-        timeout: 15000,
-        success: callbackFun,
-        error: function (xhr) {
-            alert("访问出错（请检查您的网络环境）。");
-        }
-    });
-}
-
-//验证乐号
-function checkMid(mid, callbackFun) {
-    $.ajax({
-        async: true,
-        url: "util/checkMid.html",
-        type: "POST",
-        data: {mid: mid, display: 'json'},
-        timeout: 15000,
-        success: callbackFun,
-        error: function (xhr) {
-            alert("访问出错（请检查您的网络环境）。");
-        }
-    });
-}
+//
+////ajax验证邮箱
+//function checkEmail(email, callbackFun) {
+//    $.ajax({
+//        async: true,
+//        url: "util/checkEmail.html",
+//        type: "POST",
+//        data: {email: email, display: 'json'},
+//        timeout: 15000,
+//        success: callbackFun,
+//        error: function (xhr) {
+//            alert("访问出错（请检查您的网络环境）。");
+//        }
+//    });
+//}
+//
+////验证手机号
+//function checkPhone(phone, callbackFun) {
+//    $.ajax({
+//        async: true,
+//        url: "/user/reg/doReg",
+//        type: "POST",
+//        data: {phoneNum: phone, display: 'json'},
+//        timeout: 15000,
+//        success: callbackFun,
+//        error: function (xhr) {
+//            alert("访问出错（请检查您的网络环境）。");
+//        }
+//    });
+//}
+//
+////验证乐号
+//function checkMid(mid, callbackFun) {
+//    $.ajax({
+//        async: true,
+//        url: "util/checkMid.html",
+//        type: "POST",
+//        data: {mid: mid, display: 'json'},
+//        timeout: 15000,
+//        success: callbackFun,
+//        error: function (xhr) {
+//            alert("访问出错（请检查您的网络环境）。");
+//        }
+//    });
+//}
 
 /**
  * 发送验证码到手机上
