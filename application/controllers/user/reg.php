@@ -19,8 +19,8 @@ class Reg extends CUserBase {
      */
     public function index(){
         
-        $data = $this->user->getUserInfo();
-        
+        //$data = $this->user->getUserInfo();
+        $data = false;
         if($data){
             
             redirect("/user/login");
@@ -34,16 +34,34 @@ class Reg extends CUserBase {
      */
     public function doReg(){
         
-        $name = $this->getData("aname");
-        $pwd = $this->getData("apass");
+        $isAgreement = $this->getData("isAgreement"); //同意协议
+        $name = $this->getData("account");
+        $pwd = $this->getData("pwd");
+        $repwd = $this->getData("repwd");
+        $vcode = $this->getData("vcode");
+     
+        //验证码
+        if(strtolower($this->session->userdata("vcode")) != strtolower($vcode) ){
+            $this->echoAjax(101, '验证码错误',array('tagId'=>"vode"));
+        }
+        //密码
+        if($pwd != $repwd){
+            $this->echoAjax(102, '两次填写的密码不一致',array('tagId'=>"pwd"));
+        }
+        //用户名唯一
+        $type = RKit::getUserBindType($name);
+        $msg = $this->getMsgByType($type);
         
-        //$rs = $this->user->login($name,$pwd);
-        die('{"msg":""}');
-        $this->echoAjax(0, "");
+        if($this->u->checkName($name,$type)){
+           
+            $this->echoAjax(103, $msg.'已经存在');
+        }
+        
+        //注册
+        $rs = $this->u->doReg($name,$pwd,$type);
+        
          if ($rs > 0) {
             
-            $this->user->update($rs);
-            //redirect("/back/home");
             $this->successAjax();
         }
 
@@ -67,6 +85,16 @@ class Reg extends CUserBase {
         $name = $this->getData("name");
         
         $type = RKit::getUserBindType($name);
+        $msg = $this->getMsgByType($type);
+        
+        if($this->u->checkName($name,$type)){
+           
+            $this->echoAjax(100, $msg.'已经存在');
+        }
+        $this->echoAjax(0, "恭喜，该{$msg}可注册");
+    }
+    
+    private function getMsgByType($type){
         $msg = "用户名";
         switch ($type){
             case 1: 
@@ -79,14 +107,9 @@ class Reg extends CUserBase {
                 $msg = "邮箱";
                 break;
         }
-        
-        if($this->u->checkName($name,$type)){
-           
-            $this->echoAjax(100, $msg.'已经存在');
-        }
-        $this->echoAjax(0, "恭喜，该{$msg}可注册");
+        return $msg;
     }
-    
+
     public function checkPwd(){
         die('{"msg":""}');
     }

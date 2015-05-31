@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Login extends CUserBase {
 
-    protected $controllerId = "user";
+    protected $controllerId = "u";
     
     function __construct() {
 
@@ -19,7 +19,7 @@ class Login extends CUserBase {
      */
     public function index(){
         
-        $data = $this->user->getUserInfo();
+        $data = $this->u->getUserInfo();
         
         if($data){
             

@@ -64,7 +64,7 @@ create table if not exists `cms_resource_list` (
  `height` int(11) not null default 0 comment '资源高度',
  `size` int(11) not null default 0 comment '资源大小',
  `oname` varchar(200) not null default '' comment '原文件名，不带后缀',
- primary key (`id`),
+ primary key (`resource_id`),
  index `resource_url` (`resource_url`)
 ) engine=myisam default charset=utf8 comment '资源表';
 
@@ -590,6 +590,7 @@ insert ignore into cms_admin_group (group_id,g_name,g_urank,g_remark) values(1,'
 insert ignore into cms_admin_list (aname,apass,alevel,group_id) values('admin','f21e84bcb1eea0277ced3794e8676d23','100',1);
 insert ignore into cms_admin_list (aname,apass,alevel,group_id) values('wenghe','bae208138ce50065beb13be8dd8f3c30','100',1);
 
+/* 默认模型*/
 insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(1, '文档', 'cms_info_list', 0);
 insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(2, '产品', 'cms_product', 0);
 
@@ -658,4 +659,38 @@ insert ignore into cms_fields (
 field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
 values(20, '关联文档', 'related_ids', 'varchar(200) not null ', 0, '', 0, 1, '文档');
 
---系统配置
+-- 产品默认扩展字段
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(21, '产品编号', 'product_num', 'varchar(20) not null', 0, '', 0, 1, '产品');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(22, '产品价格', 'product_price', 'varchar(20) not null', 0, '', 0, 1, '产品');
+insert ignore into cms_fields (
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
+values(23, '生成地', 'product_address', 'varchar(50) not null', 0, '', 0, 1, '产品');
+
+-- 模型字段关系
+INSERT IGNORE INTO `cms_model_fields` (`m_f_id`, `model_id`, `field_id`) VALUES
+(1, 1, 15),
+(2, 1, 16),
+(3, 1, 17),
+(4, 1, 18),
+(5, 1, 19),
+(6, 1, 20),
+(7, 2, 21),
+(8, 2, 22),
+(9, 2, 23);
+
+/* 系统配置 */
+INSERT IGNORE INTO `cms_configs` (`config_id`, `title`, `ckey`, `cvalue`, `tag`, `comment`, `field_type`, `is_system`) VALUES
+(1, '', 'site_name', '', '系统', '', 'input', 0),
+(2, '', 'seo_title', '', 'seo信息', '', 'input', 0),
+(3, '', 'seo_keywords', '', 'seo信息', '', 'input', 0),
+(4, '', 'seo_desc', '', 'seo信息', '', 'input', 0),
+(5, '', 'company_name', '', '公司', '', 'input', 0),
+(6, '', 'company_address', '', '公司', '', 'input', 0),
+(7, '', 'company_email', 'cranefly2010#163.com(联系时把#换成@)', '公司', '', 'input', 0),
+(8, '', 'company_contact', '', '公司', '', 'input', 0),
+(9, '', 'company_qq', '', '公司', '', 'input', 0),
+(10, '', 'company_qqg', '', '公司', '', 'input', 0);

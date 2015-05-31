@@ -701,8 +701,6 @@ class CBase extends MY_Controller{
      
     public function __construct() {
         parent::__construct();
-        $this->load->library('User','user');
-        
         if(!empty($this->controllerId)){
             $this->load->model($this->controllerId . '_model', $this->controllerId);
             $this->bindModel = $this->{$this->controllerId};

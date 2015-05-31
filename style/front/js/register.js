@@ -347,9 +347,9 @@ $(function () {
             $(this).css("background-position", "center -101px");
             judge3 = false;
         } else {
-            checkPwd($(this).val(), showPwd);
+            //checkPwd($(this).val(), showPwd);
             
-            //showPwd($(this).val());
+            showPwd($(this).val());
         }
         if (judge1 && judge2 && judge3 && judge4 && judge5) {
             $(".leftside-a").css("background-position", "left top");
@@ -444,8 +444,8 @@ $(function () {
                 if (type == 4) {
                     vcode = $(".mc").val();
                 }
-                qsData = {'isAgreement': isAgreement, 'vk': numc, 'type': type, 'account': account, 'firstPwd': firstPwd, 'secondPwd': secondPwd, 'vcode': vcode, 'businessCode': businessCode, 'to': to, 'view': 'ajax', 'display': 'json'};
-                ajaxJsonp("/user/reg/doReg", qsData, registerResult);
+                qsData = {'isAgreement': isAgreement, 'vk': numc, 'type': type, 'account': account, 'pwd': firstPwd, 'repwd': secondPwd, 'vcode': vcode, 'businessCode': businessCode, 'to': to, 'view': 'ajax', 'display': 'json'};
+                ajaxJson("/user/reg/doReg", qsData, registerResult);
             }
         }
     });
@@ -458,23 +458,6 @@ $(function () {
 
 });
 
-function checkType() {
-
-
-    if (num.test($(".a").val().substring(0, 1)) && $(".a").val().indexOf("@") == -1 && r.test($(".a").val())) {
-        if (phone.test($(".a").val())) {
-            type = 4;
-        }
-    } else if ($(".a").val().indexOf("@") != -1) {
-        if (email.test($(".a").val())) {
-            type = 3;
-        }
-    } else {
-        type = 2;
-    }
-
-
-}
 
 function showPhoneVcodeInfo(json) {
     var error = json.msg;
@@ -550,20 +533,22 @@ function validateRegisterResult(json) {
 }
 
 
-function registerResult(json) {
-    var error = json.msg;
-    if (error.length != 0) {
+function registerResult(res) {
+    
+    var json = $.evalJSON(res);
+    var error = json.status;
+    if (error != 0) {
         if (error == 'ajax') {
             var url = json.url;
             window.location.href = url;
             return;
         }
-        type = json.type;
-        if (type == 7 || type == 2 || type == 9) {
-            if (error == "图形验证码输入错误") {
+        type = json.status;
+        if (type == 101 || type == 102 || type == 103) {
+            if (error == 101) {
                 $(".k1").hide();
                 $(".k2").hide();
-                $(".k3").html(error).show();
+                $(".k3").html(json.msg).show();
                 $(".b").css("background-position", "center -98px");
 
             } else {
@@ -579,7 +564,7 @@ function registerResult(json) {
         } else {
             alert(error);
         }
-        checkType()
+        
         $("#registerBtn").html("立即注册");
         judge6 = true;
     } else {
@@ -595,33 +580,6 @@ function popout() {
     });
 }
 
-
-/**
- * 显示邮箱是否已经被注册
- * @param json
- * @return
- */
-//function showEmailInfo(json) {
-//    if (json.msg.length != 0) {
-//        $(".a1").hide();
-//        $(".a2").hide();
-//        $(".a3").html(json.msg).show();
-//        $(".a").css("background-position", "center -101px");
-//        judge1 = false;
-//    } else {
-//        $(".a1").hide();
-//        $(".a3").hide();
-//        $(".a2").html("恭喜，该邮箱可注册").show();
-//        $(".a").css("background-position", "center -49px");
-//        judge1 = true;
-//    }
-//    if (judge1 && judge2 && judge3 && judge4 && judge5) {
-//        $(".leftside-a").css("background-position", "left top");
-//    }
-//    else {
-//        $(".leftside-a").css("background-position", "left bottom");
-//    }
-//}
 /**
  * 显示手机号码是否已经被注册
  * @param json
@@ -665,37 +623,6 @@ function showUsernameInfo(json) {
         $(".leftside-a").css("background-position", "left bottom");
     }
 }
-
-/**
- * 显示用户名是否已经被注册
- * @param json
- * @return
- */
-//function showUserInfo(json) {
-//    var error = json.msg;
-//    if (error.length != 0) {
-//
-//        $(".a1").hide();
-//        $(".a2").hide();
-//        $(".a3").html(error).show();
-//        $(".a").css("background-position", "center -101px");
-//        judge1 = false;
-//
-//
-//    } else {
-//        $(".a1").hide();
-//        $(".a3").hide();
-//        $(".a2").html("恭喜，该用户名可注册").show();
-//        $(".a").css("background-position", "center -49px");
-//        judge1 = true;
-//    }
-//    if (judge1 && judge2 && judge3 && judge4 && judge5) {
-//        $(".leftside-a").css("background-position", "left top");
-//    }
-//    else {
-//        $(".leftside-a").css("background-position", "left bottom");
-//    }
-//}
 
 
 /**
@@ -770,40 +697,48 @@ function countedDown() {
     }
 }
 
-function showPwd(res) {
+function showPwd() {
     
-    var json = $.evalJSON(res);
-    //return function (json) {
-        var error = json.msg;
-        if (false) {
-            $(".c1").hide();
-            $(".c2").hide();
-            $(".c3").html(error).show();
-            //obj.css("background-position", "center -101px");
-            judge3 = false;
-        } else {
-            if (true) {
-                $(".c1").hide();
-                $(".c3").hide();
-                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/high.jpg' class='rank' />").show();
-                $(".weird-2").css("background-position", "center -49px");
-            } else if (false) {
-                $(".c1").hide();
-                $(".c3").hide();
-                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/low.jpg' class='rank' />").show();
-                $(".weird-2").css("background-position", "center -49px");
-            } else {
-                $(".c1").hide();
-                $(".c3").hide();
-                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/middle.jpg' class='rank' />").show();
-                $(".weird-2").css("background-position", "center -49px");
-            }
-            judge3 = true;
-        }
-        if (judge1 && judge2 && judge3 && judge4 && judge5) {
-            $(".leftside-a").css("background-position", "left top");
-        } else {
-            $(".leftside-a").css("background-position", "left bottom");
-        }
+    $(".weird-2").css("background-position", "center -49px");
+    $(".leftside-a").css("background-position", "left top");
+    $(".c1").hide();
+    $(".c2").html("&nbsp;").show();
+    $(".c3").hide();
+    judge3 = true;
+//                
+//    
+//    var json = $.evalJSON(res);
+//    //return function (json) {
+//        var error = json.msg;
+//        if (false) {
+//            $(".c1").hide();
+//            $(".c2").hide();
+//            $(".c3").html(error).show();
+//            //obj.css("background-position", "center -101px");
+//            judge3 = false;
+//        } else {
+//            if (true) {
+//                $(".c1").hide();
+//                $(".c3").hide();
+//                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/high.jpg' class='rank' />").show();
+//                $(".weird-2").css("background-position", "center -49px");
+//            } else if (false) {
+//                $(".c1").hide();
+//                $(".c3").hide();
+//                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/low.jpg' class='rank' />").show();
+//                $(".weird-2").css("background-position", "center -49px");
+//            } else {
+//                $(".c1").hide();
+//                $(".c3").hide();
+//                //$(".c2").html("密码强度 :&nbsp;&nbsp;<img src='http://img.d.cn/images/auth/web/images/firstlog/middle.jpg' class='rank' />").show();
+//                $(".weird-2").css("background-position", "center -49px");
+//            }
+//            judge3 = true;
+//        }
+//        if (judge1 && judge2 && judge3 && judge4 && judge5) {
+//            $(".leftside-a").css("background-position", "left top");
+//        } else {
+//            $(".leftside-a").css("background-position", "left bottom");
+//        }
     //};
 }

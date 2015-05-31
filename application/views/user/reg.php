@@ -50,9 +50,9 @@
             <input type="hidden" name="businessCode" id="businessCode" />
 
             <div class="jcode-pic fr tc pr">
-                <img id="imgCode" src="" title="验证码" alt="验证码"/>
+                <img id="imgCode" src="" title="验证码" alt="验证码" class="jcode-a"/>
 
-                <div class="loading"><img src="http://img.d.cn/images/auth/20150126/web/images/loading.gif" alt="载入中"></div>
+                <div class="loading"><img src="/user/captcha?t=<?php echo time();?>" alt="载入中"></div>
                 <a href="javascript:void(0)" class="jcode-a">看不清？换一张</a>
             </div>
 
@@ -63,18 +63,7 @@
             <p class="false b3 fl of k3"></p>
 
         </div>
-        <div class="jcode-oute c8">
-            <input type="text" class="leftside-input mc leftside-input-register jcode" value="输入手机验证码"/>
-
-            <div class="jcode-pic-phone fr tc">
-                <a href="javascript:void(0)" title="免费获取验证码" class="jcode-pic-phone-a1 tc">免费获取验证码</a>
-            </div>
-            <p class="leftside-detail cm1">请填写手机短信收到的验证码</p>
-
-            <p class="right  cm2"></p>
-
-            <p class="false  cm3"></p>
-        </div>
+        
         <p class="service"><a href="javascript:void(0)" class="agreement fl">√</a>同意<a href="javascript:void(0)" title="点击阅读《当乐用户协议》" class="blue other-way" onclick="popout()">《当乐用户协议》</a>
         </p>
         <a href="javascript:void(0);" title="立即注册" id="registerBtn" class="leftside-a tc">立即注册</a>

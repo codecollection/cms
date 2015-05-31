@@ -1,8 +1,9 @@
 $(function () {
     $(".jcode-a").bind("click", function () {
-        //showImg();
+        showImg();
     });
     //showImg();
+    
 });
 //ajax验证用户名
 function checkUsername(username, callbackFun) {
@@ -239,32 +240,10 @@ function sendFindPwdEmail(email, mid, account, token, callbackFun) {
 }
 
 function setCookieAndRedirect(json) {
-    var djtk = json.djtk;
-    var ambi = json.AMBI;
-    var _aes = json._AES;
-    var info = json.info;
-    var age = json.age;
-    var toUrl = json.toUrl;
-    var data = {'djtk': djtk, 'AMBI': ambi, '_AES':_aes, 'info': info, 'age': age, 'type': 'add'};
-    setCookie(data, toUrl);
-}
-
-function setCookie(data, toUrl) {
-    $.ajax({
-        async: true,
-        url: "http://d.cn/connect/dj/setcookieforlogin",
-        type: "GET",
-        dataType: 'jsonp',
-        jsonp: 'jsoncallback',
-        data: data,
-        timeout: 15000,
-        success: function (json) {
-            window.location.href = toUrl;
-        },
-        error: function (xhr) {
-            window.location.href = toUrl;
-        }
-    });
+    var account = json.account;
+    
+    $.cookie("account",account);
+    window.location.href = "/user/login";
 }
 
 /**
@@ -289,27 +268,46 @@ function ajaxJsonp(ajaxUrl, qsData, callbackFun) {
     });
 }
 
-function showImg() {
-    var timenow = new Date().getTime();
-    $(".loading").show();
-    var url = "http://oauth.d.cn/auth/verifyCode.html";
-
+/**
+ * 通用走jsonp的ajax
+ * @param ajaxUrl
+ * @param qsData
+ * @param registerResult
+ */
+function ajaxJson(ajaxUrl, qsData, callbackFun) {
     $.ajax({
-        type : "get",
-        async : false,
-        url : url,
-        data : {time : timenow},
-        cache : false,
-        dataType : "jsonp",
-        success : function(data){
-	    	$("#imgCode").attr("src",data.url);
-	    	$("#businessCode").val(data.bussinessId);
-	    	showImgCode();
-        },
-        error:function(e){
-            console.info(e);
+        async: true,
+        url: ajaxUrl,
+        type: "POST",
+        data: qsData,
+        timeout: 15000,
+        success: callbackFun,
+        error: function (xhr) {
+            alert("访问出错（请检查您的网络环境）。");
         }
     });
+}
+
+function showImg() {
+  
+    var timenow = new Date().getTime();
+    var url = "/user/captcha?t="+timenow;
+    $.ajax({
+        
+        async: true,
+        url: url,
+        type: "POST",
+        timeout: 15000,
+        success:  function (json) {
+            
+            $("#imgCode").attr("src",url);
+            showImgCode();
+        },
+        error: function (xhr) {
+            alert("访问出错（请检查您的网络环境）。");
+        }
+    });
+    
 }
 
 function showImgCode() {
