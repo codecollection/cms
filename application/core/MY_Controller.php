@@ -664,7 +664,7 @@ class CBase extends MY_Controller{
      */
     public function loadView($dirName){
         
-        $this->echoView("front/{$this->tpl}/{$dirName}");
+        $this->echoView("{$dirName}");
     }
     
     /**

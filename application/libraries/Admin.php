@@ -152,7 +152,7 @@ class Admin {
      * @param type $time
      */
     private function setSession(){
-        
+        //$this->session->set_userdata(array("token"=>  $this->token,"info"=>  $this->info));
         $_SESSION['admin'] = array("token"=>  $this->token,"info"=>  $this->info);
     }
 

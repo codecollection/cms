@@ -62,7 +62,7 @@
 <div id="overlay" class="overlay"></div>
 <!--footer begin -->
 <div class="clearfix tc" id="footer" style="margin-top:125px;">
-    <p>Copyright © 2004-2015 Downjoy. All Rights Reserved. 北京当乐信息技术有限公司 版权所有</p>
+    <?php $c->loadView("copyright.php"); ?>
 </div>
 
 <script type="text/javascript" src="http://img.d.cn/images/auth/20150126/web/js/jquery-1.8.0.min.js"></script>

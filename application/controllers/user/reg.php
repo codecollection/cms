@@ -41,7 +41,7 @@ class Reg extends CUserBase {
         $vcode = $this->getData("vcode");
      
         //验证码
-        if(strtolower($this->session->userdata("vcode")) != strtolower($vcode) ){
+        if(strtolower($_SESSION["vcode"]) != strtolower($vcode) ){
             $this->echoAjax(101, '验证码错误',array('tagId'=>"vode"));
         }
         //密码

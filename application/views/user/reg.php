@@ -82,7 +82,7 @@
 <div id="overlay" class="overlay"></div>
 <!--footer begin -->
 <div class="new-footer clearfix tc" id="footer">
-    <p>Copyright © 2015-2018 Downjoy. All Rights Reserved. 上海不倒翁信息技术有限公司 版权所有</p>
+    <?php $c->loadView("copyright.php"); ?>
 </div>
 <script type="text/javascript" src="/style/libs/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="/style/libs/common.js"></script>

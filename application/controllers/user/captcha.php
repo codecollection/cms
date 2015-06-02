@@ -22,8 +22,8 @@ class Captcha extends CBase {
         $captcha = RCaptcha::getInstance();
         $captcha->setSize(120,40);
         $word = $captcha->make();
-        
-        $this->session->set_userdata(array("vcode"=>$word));
+        $_SESSION["vcode"] = $word;
+        //$this->session->set_userdata(array("vcode"=>$word));
         exit;
     }
     
