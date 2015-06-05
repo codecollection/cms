@@ -113,7 +113,7 @@ body{}
 /******************************************************绑定直接登录**********************************************************/
 .direct{padding-left:45px;margin-top:10px;font-size:12px;color:#717171;line-height:18px;}
 /******************************************************绑定   成功**********************************************************/
-.successful{margin:85px 0 0 50px;padding-left:55px;font-size:35px;line-height:48px;color:#4b4b4b; background:url(../image/login/logo.png) left 5px no-repeat;}
+.successful{margin:85px 0 0 50px;padding-left:55px;font-size:35px;line-height:48px;color:#4b4b4b; background:url(../image/login/logo1.png) left 5px no-repeat;}
 .success-normal{margin:10px 0 0 50px;font-size:14px;color:#4b4b4b;}
 .orange{color:#ff6600;}
 .success-link{margin:10px 0 0 50px;}
@@ -122,17 +122,17 @@ body{}
 .success-return{display:block;margin:15px 0 0 50px;width:170px;line-height:40px;font-size:14px;color:#FFF;background:url(../image/login/return.png) center top no-repeat;}
 .success-dot{margin:25px 0 25px 0;height:1px; background:url(../image/login/dot.jpg) center top no-repeat;}
 .success-broadcast{margin:20px 0 0 50px;padding-left:60px;height:53px;}
-.cast-1{background:url(../image/login/logo.png) left -44px no-repeat;}
-.cast-2{background:url(../image/login/logo.png) left -99px no-repeat;}
-.cast-3{background:url(../image/login/logo.png) left -153px no-repeat;}
-.cast-1:hover{background:url(../image/login/logo.png) left -205px no-repeat;}
-.cast-2:hover{background:url(../image/login/logo.png) left -261px no-repeat;}
-.cast-3:hover{background:url(../image/login/logo.png) left -318px no-repeat;}
+.cast-1{background:url(../image/login/logo1.png) left -44px no-repeat;}
+.cast-2{background:url(../image/login/logo1.png) left -99px no-repeat;}
+.cast-3{background:url(../image/login/logo1.png) left -153px no-repeat;}
+.cast-1:hover{background:url(../image/login/logo1.png) left -205px no-repeat;}
+.cast-2:hover{background:url(../image/login/logo1.png) left -261px no-repeat;}
+.cast-3:hover{background:url(../image/login/logo1.png) left -318px no-repeat;}
 .success-broadcast-title{display:block;font-size:16px;line-height:27px;color:#000;}
 .success-broadcast-detail{display:block;font-size:14px;line-height:22px;color:#686868;}
 .success-news{position:absolute;top:110px;right:-350px;}
 /******************************************************绑定   失败**********************************************************/
-.defeated{margin:65px 0 0 50px;padding-left:55px;font-size:35px;line-height:48px;color:#4b4b4b; background:url(../image/login/logo.png) left -374px no-repeat;}
+.defeated{margin:65px 0 0 50px;padding-left:55px;font-size:35px;line-height:48px;color:#4b4b4b; background:url(../image/login/logo1.png) left -374px no-repeat;}
 .success-normal a{color:#1292db;} .success-normal a:hover{text-decoration:underline;}
 /******************************************************WEB   注册**********************************************************/
 .web-register{margin-top:60px;font-size:30px;padding:0 200px 0 40px;line-height:40px; background:url(../image/login/ziyuan.png) 255px 9px no-repeat;}

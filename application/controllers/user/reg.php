@@ -77,6 +77,11 @@ class Reg extends CUserBase {
     }
     
   
+    public function success(){
+            
+        $this->renderUserView("success");
+    }
+
     /**
      * 坚持用户名是否可用
      */
