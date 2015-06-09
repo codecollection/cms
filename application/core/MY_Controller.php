@@ -6,6 +6,14 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class MY_Controller extends CI_Controller {
 
+     /**
+     * 当前正在访问的模块标识
+     * @var string
+     */
+    public $activeModule = '';
+    public $level = "";
+    
+    
     protected $startMicrotime = 0;
     /**
      * 渲染的数据
@@ -101,13 +109,7 @@ class MY_Controller extends CI_Controller {
  */
 class CAdminBase extends MY_Controller {
 
-    /**
-     * 当前正在访问的模块标识
-     * @var string
-     */
-    public $activeModule = '';
-
-    
+   
     /**
      * 当前控制器id
      * @var string
@@ -116,7 +118,7 @@ class CAdminBase extends MY_Controller {
 
     public $topLevel = "";
     
-    public $level = "";
+   
     /**
      * 控制器名称
      * @var string
@@ -573,176 +575,7 @@ class CAdminBase extends MY_Controller {
     }
 }
 
-/**
- * app的调用接口的父控制器
- */
-class App_Controller extends CAdminBase {
-
-    protected $bindModel = "";
-
-    public $subject = "TF";
-
-    public $schId = 2;
-    public function __construct() {
-        parent::__construct();
-
-        if (!empty($this->controllerId)) {
-
-            $this->load->model("app/" . $this->controllerId . '_model', $this->controllerId);
-            $this->bindModel = $this->{$this->controllerId};
-        }
-
-        if($this->input->get_post('subject')){
-            $this->subject = $this->input->get_post('subject');
-        }
-    }
-
-}
-
-/**
- * 前端基础类
- */
-class CBase extends MY_Controller{
-    
-    /**
-     * 分类ID
-     * @var type 
-     */
-    public $cid = 0;
-    /**
-     * 信息ID
-     * @var type 
-     */
-    public $id = 0 ;
-    /**
-     * 信息的模型ID
-     * @var type 
-     */
-    public $modelId = 0;
-    
-    public $tpl = "";
-    public function __construct() {
-        parent::__construct();
-        $this->loadModel("cate");
-        $this->loadModel("info");
-        
-        $this->tpl = "public";
-    }
-    
-    /**
-     * 显示导出文件的模板页面
-     * @param string $viewName
-     * @param array $data
-     */
-    protected function renderHTMLView($viewName, $data = array()) {
-
-        
-        $dir = "front/{$this->tpl}/{$viewName}";
-        
-        $this->renderView($dir, $data);
-        
-    }
-    
-    /**
-     * 加载视图
-     * @param type $dir 视图文件
-     * @param type $data
-     */
-    protected function renderView($dir,$data){
-        
-        $frameData = array(
-            
-            'c' => $this,
-        );
-        
-        $this->load->view($dir, array_merge($frameData, $data,  $this->renderData));
-    }
-    
-    /**
-     * 
-     * @param type $dirName
-     */
-    public function loadView($dirName){
-        
-        $this->echoView("{$dirName}");
-    }
-    
-    /**
-     * 输出视图内容
-     * @param type $dirName
-     * @param type $data
-     */
-    private function echoView($dirName,$data = array()){
-        
-        echo $this->load->view($dirName,$data,true);
-    }
-
-    /**
-     * 
-     * @param type $modelId
-     */
-    protected function setModel($modelId){
-        
-        $this->loadModel("model");
-        
-        $modelName = $this->model->getField($modelId,"model_name"); 
-        
-        $this->info->tableName = $modelName;
-        $this->info->setPk($modelName."_id");
-    }
-}
-
-/**
- * 前台需要登录才能访问的控制器父类
- */
- class CUserBase extends CBase{
-        
-    protected $controllerId = "";
-     
-    public function __construct() {
-        parent::__construct();
-        if(!empty($this->controllerId)){
-            $this->load->model($this->controllerId . '_model', $this->controllerId);
-            $this->bindModel = $this->{$this->controllerId};
-        }
-    }
-    
-    /**
-     * 显示导出文件的模板页面
-     * @param string $viewName
-     * @param array $data
-     */
-    protected function renderUserView($viewName, $data = array()) {
-        
-        $this->renderView("user/{$viewName}", $data);
-    }
-    
-    /**
-     * 加载用户中心视图
-     * @param type $dirName
-     */
-    public function loadUserView($dirName){
-        
-         $this->echoView("user/{$dirName}");
-    }
- }
- 
- class WeixinBase extends CBase{
-     
-     public  $token = ""; //token 
-     
-     public $aesKey = ""; //EncodingAESKey
-     
-     protected $appId = "wx510e7cbdc4a86951";
-     
-     protected $appSecret = "c7376584865ec799bb31f9edbc87af5f";
-     
-     public $weixinApiUrl = "https://api.weixin.qq.com";
-     
-     public function __construct() {
-         
-        parent::__construct();
-    }
-    
-    
- }
+require_once(dirname(__file__).'/Base_Controller.php');
+require_once(dirname(__file__).'/APP_Controller.php');
+require_once(dirname(__file__).'/User_Controller.php');
+require_once(dirname(__file__).'/WX_Controller.php');

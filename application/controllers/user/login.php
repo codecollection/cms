@@ -23,7 +23,7 @@ class Login extends CUserBase {
         
         if($data){
             
-            redirect("/");
+            redirect("/user/home");
             exit;
         }
         $this->renderUserView("login"); 

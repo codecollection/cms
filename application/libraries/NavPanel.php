@@ -267,6 +267,125 @@ class NavPanel {
     );
     
     /**
+     * 用户中心功能
+     * 
+     * @var type 
+     */
+    private $userMenu = array(
+        array(
+            'title' => "我的公众号", //功能导航分类
+            'url' => '/user/public',
+            'level' => 'A',
+            'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
+            'menu'  => array(
+                array(
+                    'title'=>'管理公众号',
+                    'url' => '/user/public',
+                    'level' => 'A01', //页面权限，也就是列表权限
+                    'menu' => array(
+                        //array('title' => '', 'level' => ''), //按钮功能配置
+                    ),
+                ),
+                array(
+                    'title'=>'添加公众号',
+                    'url' => '/user/public/add',
+                    'level' => 'A02', //页面权限
+                    'menu' => array(
+                        array('title' => '保存设置', 'level' => 'A0201'), //按钮功能配置
+                    ),
+                ),
+            ),
+        ),
+        array(
+            'title' => "我的资料", //功能导航分类
+            'url' => '/user/info',
+            'level' => 'B',
+            'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
+            'menu'  => array(
+                array(
+                    'title'=>'资料管理',
+                    'url' => '/user/info',
+                    'level' => 'B01', //页面权限，也就是列表权限
+                    'menu' => array(
+                        //array('title' => '', 'level' => ''), //按钮功能配置
+                    ),
+                ),
+                array(
+                    'title'=>'隐私设置',
+                    'url' => '/user/info/set',
+                    'level' => 'B02', //页面权限
+                    'menu' => array(
+                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+                    ),
+                ),
+            ),
+        ),
+        array(
+            'title' => "账号安全", //功能导航分类
+            'url' => '/user/safe',
+            'level' => 'B',
+            'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
+            'menu'  => array(
+                array(
+                    'title'=>'账号安全',
+                    'url' => '/user/safe',
+                    'level' => 'B01', //页面权限，也就是列表权限
+                    'menu' => array(
+                        //array('title' => '', 'level' => ''), //按钮功能配置
+                    ),
+                ),
+                array(
+                    'title'=>'账号绑定',
+                    'url' => '/user/info/set',
+                    'level' => 'B02', //页面权限
+                    'menu' => array(
+                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+                    ),
+                ),
+            ),
+        ),
+        array(
+            'title' => "我的消息", //功能导航分类
+            'url' => '/user/safe',
+            'level' => 'B',
+            'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
+            'menu'  => array(
+                array(
+                    'title'=>'未读消息',
+                    'url' => '/user/safe',
+                    'level' => 'B01', //页面权限，也就是列表权限
+                    'menu' => array(
+                        //array('title' => '', 'level' => ''), //按钮功能配置
+                    ),
+                ),
+                array(
+                    'title'=>'收件箱',
+                    'url' => '/user/info/set',
+                    'level' => 'B02', //页面权限
+                    'menu' => array(
+                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+                    ),
+                ),
+                array(
+                    'title'=>'发件箱',
+                    'url' => '/user/safe',
+                    'level' => 'B01', //页面权限，也就是列表权限
+                    'menu' => array(
+                        //array('title' => '', 'level' => ''), //按钮功能配置
+                    ),
+                ),
+                array(
+                    'title'=>'收藏夹',
+                    'url' => '/user/info/set',
+                    'level' => 'B02', //页面权限
+                    'menu' => array(
+                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+                    ),
+                ),
+            ),
+        ),
+    );
+    /**
      * 取得实例
      *
      * @return NavPanel
@@ -322,7 +441,37 @@ class NavPanel {
         $data['minNav'] = $minNav;
         return $data;
     }
-    
+    /**
+     * 获取到用户功能
+     * @param type $activeModule
+     * @param type $level
+     * @return array
+     */
+    public function getUserMenus($activeModule,$level = 'A01'){
+        $item = array();
+        $nav = array();
+        $minNav = array();
+        foreach ($this->userMenu as $row => $cate){
+            if(substr($level, 0,1) == $cate["level"]){
+                $nav = $cate["menu"];
+                array_push($minNav, array("url"=>$cate['url'],'title'=>$cate['title']));
+                
+                foreach($cate['menu'] as $v){
+                    if($level == $v['level']){
+                        array_push($minNav, array("url"=>$v['url'],'title'=>$v['title']));
+                    }
+                }
+            }
+            unset($cate["menu"]);
+            array_push($item, $cate);
+        }
+        
+        $data['item'] = $item;
+        $data["nav"] = $nav;
+        $data['minNav'] = $minNav;
+        return $data;
+    }
+
     public function getAllMenu(){
         return $this->menu;
     }
