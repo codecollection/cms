@@ -79,7 +79,13 @@ class Reg extends CUserBase {
   
     public function success(){
             
-        $this->renderUserView("success");
+        $fromUrl = $_COOKIE["fromUrl"];
+        $account = $_COOKIE["account"];
+        
+        if(empty($account)){
+            
+        }
+        $this->renderUserView("success",array('account'=>$account,"fromUrl"=>$fromUrl));
     }
 
     /**

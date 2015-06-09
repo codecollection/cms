@@ -60,7 +60,7 @@
             <td class="fr">详情：</td>
             <td>
                  <p class="line-t-10"></p>
-                <textarea name="data[body]" id="data[body]" style="display:block"><?php echo $data["body"]?></textarea>
+                 <textarea name="data[body]" id="data[body]" style="display:block" class="ckeditor"><?php echo $data["body"]?></textarea>
                 <script type="text/javascript">
                     var body = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
                         toolbar : ckeditor_toolbar

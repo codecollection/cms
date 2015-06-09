@@ -626,7 +626,7 @@ class CBase extends MY_Controller{
         $this->loadModel("cate");
         $this->loadModel("info");
         
-        $this->tpl = "default";
+        $this->tpl = "public";
     }
     
     /**

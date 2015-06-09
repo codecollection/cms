@@ -13,10 +13,9 @@
      <div class="line fl of"></div>
      <div class="leftside fl">
           <p class="successful">注册成功！</p>
-          <p class="success-normal">恭喜您，<span class="orange">wenghe111</span> 成为当乐网用户！</p>
-          <p class="success-normal">您的专享乐号：<span class="orange">178494473</span></p>
-          <p class="success-link">帐号安全级别较低，建议您立即设置帐号保护。<a href="http://my.d.cn/178494473/account_safety.html"  title="进入安全中心" class="success-enter">进入安全中心>></a></p>
-          <a href="http://www.d.cn/" title="返回上次访问页面" class="success-return tc">返回上次访问</a>
+          <p class="success-normal">恭喜您，<span class="orange"><?php echo $account;?></span> 成为当乐网用户！</p>
+          <p class="success-link">帐号安全级别较低，建议您立即设置帐号保护。<a href="/user/center/info"  title="进入安全中心" class="success-enter">进入安全中心>></a></p>
+          <a href="<?php echo $fromUrl;?>" title="返回上次访问页面" class="success-return tc">返回上次访问</a>
           <div class="success-dot"></div>
           <a href="http://bbs.d.cn/"  title="游戏社区"><p class="success-broadcast cast-1"><span class="success-broadcast-title">游戏社区</span><span class="success-broadcast-detail">最新游戏攻略随时看，参加活动，赢取丰厚奖励。</span></p></a>
           <a href="http://mall.d.cn/"  title="领取礼包"><p class="success-broadcast cast-2"><span class="success-broadcast-title">领取礼包</span><span class="success-broadcast-detail">免费领取海量当乐用户尊享游戏礼包。</span></p></a>

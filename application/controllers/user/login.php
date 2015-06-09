@@ -23,7 +23,7 @@ class Login extends CUserBase {
         
         if($data){
             
-            redirect("/user/login");
+            redirect("/");
             exit;
         }
         $this->renderUserView("login"); 
@@ -34,16 +34,18 @@ class Login extends CUserBase {
      */
     public function doLogin(){
         
-        $name = $this->getData("aname");
-        $pwd = $this->getData("apass");
+        $name = $this->getData("account");
+        $pwd = $this->getData("password");
+        $from = $this->getData("from");
         
-        $rs = $this->user->login($name,$pwd);
+        $type = RKit::getUserBindType($name);
+        $rs = $this->u->login($name,$pwd,$type);
         
          if ($rs > 0) {
             
-            $this->user->update($rs);
+            $this->u->updateInfo($rs);
             //redirect("/back/home");
-            $this->successAjax();
+            $this->echoAjax(0,'',array("from"=>$from));
         }
 
         $info = array(
@@ -54,7 +56,7 @@ class Login extends CUserBase {
             0  => 'login_error',
         );
 
-        $this->echoAjax(100, lang($info[$rs]));
+        $this->echoAjax(100, lang($info[$rs]),array("from"=>$from));
     }
     
     /**

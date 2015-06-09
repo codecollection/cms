@@ -23,12 +23,12 @@
     <a href="http://www.d.cn/" title="手机游戏第一站"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="手机游戏第一站" title="手机游戏第一站" class="web-logo fl"></a>
 
     <div class="user-log fr">
-        <form action="javascript:void(0);" onsubmit="return false;" method="post">
+        <form action="javascript:void(0);" onsubmit="return false;" method="post" id="login_form">
             <input type="hidden" name="account" value=""/>
-
+            <input type="hidden" name="from" value="" id="from"/>
             <p class="tit">
                 <span class="tit-span">还没有帐号？
-                    <a href="goRegister.html?to=http%3A%2F%2Fwww.d.cn%2F" title="马上注册当乐用户" class="tit-span-a">马上注册</a>
+                    <a href="/user/reg" title="马上注册当乐用户" class="tit-span-a">马上注册</a>
                 </span>用户登录
             </p>
             <span id="tips" class="wrong fl"></span>
@@ -43,7 +43,7 @@
             <a href="javascript:void(0)" class="log-in fl tc" title="点击登录" id="loginBtn">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</a>
             <input type="submit" style="display:none;" id="formLogin"/>
         </form>
-        <p class="coper-log-text fl">使用合作帐号登录：</p>
+        <!--<p class="coper-log-text fl">使用合作帐号登录：</p>
 
         <div class="coper-log fl">
             <a href="http://oauth.d.cn/auth/tencent/login.html?act=1&to=http%3A%2F%2Fwww.d.cn%2F" target="_blank" title="使用QQ登录">
@@ -54,7 +54,7 @@
                 <img src="http://img.d.cn/images/auth/20150126/web/images/weibo.png" class="qq" alt="使用新浪微博登录" title="使用新浪微博登录"/>
                 <span class="qq-span">新浪微博</span>
             </a>
-        </div>
+        </div>-->
     </div>
 </div>
 <div id="overlay" class="overlay"></div>
@@ -63,21 +63,9 @@
     <?php $c->loadView("copyright.php"); ?>
 </div>
 
-<script type="text/javascript" src="http://img.d.cn/images/auth/20150126/web/js/jquery-1.8.0.min.js"></script>
-<!--[if IE 6]>
-<script src="http://img.d.cn/images/auth/20150126/web/js/DD_belatedPNG_0.0.8a.js" mce_src="http://img.d.cn/images/auth/20150126/web/js/DD_belatedPNG_0.0.8a.js"></script>
-<script type="text/javascript">
-    /* EXAMPLE */
-    DD_belatedPNG.fix('.web-logo,.coper-log img,.cover');
-    /* string argument can be any CSS selector */
-    /* .png_bg example is unnecessary */
-    /* change it to what suits you! */
-</script>
-<![endif]-->
-<script type="text/livescript" src="http://img.d.cn/images/auth/20150126/web/js/login.js"></script>
-<script type="text/livescript" src="http://img.d.cn/images/auth/20150126/web/js/validate.js"></script>
-<script type="text/javascript" src="http://img.d.cn/images/auth/20150126/web/js/jscrollPane.js"></script>
-<script type="text/javascript" src="http://img.d.cn/images/auth/20150126/web/js/mousewheel.js"></script>
+<script type="text/javascript" src="/style/libs/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/style/libs/common.js"></script>
+<script type="text/livescript" src="/style/front/js/login.js"></script>
 </body>
 </html>
 

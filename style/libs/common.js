@@ -699,10 +699,13 @@ var C={
           value[this.name] = $(this).val();
         });
         
-        for ( instance in CKEDITOR.instances ) {
+        $(formID).find(".ckeditor").each(function(){
+            for ( instance in CKEDITOR.instances ) {
 
             value[instance]=CKEDITOR.instances[instance].getData();
         }
+        });
+        
         
         return value;
         //alert("{" + value.join(',') + "}");

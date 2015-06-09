@@ -37,7 +37,7 @@
  */
 
  ini_set('date.timezone','Asia/Shanghai');
- //session_start();
+ session_start();
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

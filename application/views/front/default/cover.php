@@ -5,9 +5,9 @@
     <title><?php echo $c->getItem("seo_title");?></title>
     <meta name="keywords" content="<?php echo $c->getItem("seo_keywords");?>">
     <meta name="description" content="<?php echo $c->getItem("seo_desc");?>">
-<?php $c->loadView("inc.header.php");?>
+<?php $c->loadView("front/default/inc.header.php");?>
 
-<?php $c->loadView("inc.nav.php");?>
+<?php $c->loadView("front/default/inc.nav.php");?>
     <div class="silder" id="silder">
         <script type="text/javascript" src="/style/libs/img.silder/jquery.img.silder.js"></script>
         <script>
@@ -33,4 +33,4 @@
         </ul>
     </div>
     
-<?php $c->loadView("inc.footer.php");?>
+<?php $c->loadView("front/default/inc.footer.php");?>

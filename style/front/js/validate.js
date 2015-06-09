@@ -241,9 +241,10 @@ function sendFindPwdEmail(email, mid, account, token, callbackFun) {
 
 function setCookieAndRedirect(json) {
     var account = json.account;
-    
+    var fromUrl = "/";
     $.cookie("account",account);
-    window.location.href = "/user/login";
+    $.cookie("fromUrl",fromUrl);
+    window.location.href = "/user/success";
 }
 
 /**

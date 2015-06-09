@@ -9,6 +9,5 @@ class Info extends CBase {
      */
     public function index(){
        
-        print_r("aaa");
     }
 }

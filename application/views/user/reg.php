@@ -68,7 +68,7 @@
 
         <div class="ifhas of">
             <p class="ifhas-detail fl tc">如已有<span>当乐网</span>帐号</p>
-            <a href="goLogin.html?to=http%3A%2F%2Fwww.d.cn%2F" title="绑定帐号" class="ifhas-bind fl tc">立即登录</a>
+            <a href="/user/login" title="绑定帐号" class="ifhas-bind fl tc">立即登录</a>
         </div>
     </div>
 
