@@ -73,7 +73,7 @@ scrollbar-darkshadow-color: #c6e4f8;  /*立体滚动条强阴影的颜色*/
 scrollbar-track-color: #c6e4f8;  /*立体滚动条背景颜色*/
 }
 /* 容器控制 */
-.header,.nav,.silder,.content,.footer{width:1000px;margin:0 auto;zoom:1; clear:both;padding:0 15px;}
+.header,.nav,.silder,.content,.footer{width:1200px;margin:0 auto;zoom:1; clear:both;padding:0 15px;}
 
 /* logo */
 .header_wrap{background-color:#2a95de;height:100px;overflow:hidden;zoom:1;}

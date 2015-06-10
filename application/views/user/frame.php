@@ -23,7 +23,7 @@
 </script>
 <![endif]--><!--本页JS和样式-->
 
-<link rel="stylesheet" type="text/css" href="/style/back/css/admin.css">
+<link rel="stylesheet" type="text/css" href="/style/user/css/admin.css">
 
 </head>
 <body>
