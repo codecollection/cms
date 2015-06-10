@@ -48,7 +48,7 @@ class U_model extends MBase{
     }
     
     public function getUserInfo(){
-        return $_SESSION["user"];
+        return isset($_SESSION["user"]) ? $_SESSION['user'] : array();
     }
 
     /**
@@ -97,13 +97,14 @@ class U_model extends MBase{
        
         $token = self::makeToken($data['uname']);
         
+        $this->token = $token;
+        
         $this->setSession();
         
-        $this->db->query("UPDATE {$this->tableName} SET last_login_ip='" . $data['loginIp'] . "', last_login_date=" . time() . ' WHERE user_id =' . $userId);
+        $this->db->query("UPDATE {$this->tableName} SET last_login_ip='" . $data['last_login_ip'] . "', last_login_date=" . time() . ' WHERE user_id =' . $userId);
         
         setcookie('token', $token, time() + $time, '/');
-        
-        $this->token = $token;
+        ;
 
         return true;
         
@@ -134,7 +135,16 @@ class U_model extends MBase{
         return md5($realName . self::PWD_PREFIX . $password);
     }
     
-    
+    /**
+     * 退出登录
+     * @return boolean
+     */
+    public function logout(){
+        session_destroy();
+        //set_cookie('token', '', time() - 1);
+        return true;
+    }
+
     /**
      * 检测用户名是否存在
      * @param type $name

@@ -38,7 +38,7 @@
             <li><a href="cache.clear.php">清理缓存</a></li>
             <li><a href="javascript:void(0);" onclick="restart();">重启账号</a></li>
             <li><span><?php //echo $admin["group"];?>&nbsp;(&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php //echo $admin["name"];?></a>)</span></li>
-            <li><a href="/back/login/loginOut">退出</a></li>
+            <li><a href="/user/login/loginOut">退出</a></li>
         </ul>
         <ul class="hd_tabs" id="hd_tabs">
             <?php foreach($navItem as $k => $v){?>

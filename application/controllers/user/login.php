@@ -64,7 +64,7 @@ class Login extends CUserBase {
      */
     public function loginOut(){
         
-        $this->user->logout();
+        $this->u->logout();
         
         redirect("/user/login");
     }
