@@ -23,6 +23,25 @@ function doField(){
                 }});
             } else {
                 C.alert.alert({ "content":ret.msg});
+            } 
+        } catch (e) {
+            C.alert.alert({"content":result + e});
+        }
+    });
+}
+
+function updateModel(id){
+ 
+    //提交数据处理
+    $.post('/back/model/updateModel?id=' + id, "", function (result) {
+        try {
+            var ret = $.evalJSON(result);
+            if (ret.code == 0) {
+                C.alert.alert({ "content": "" + ret.msg + "" ,"funcOk":function(){
+                    window.location.reload(); 
+                }});
+            } else {
+                C.alert.alert({ "content":ret.msg});
             }
         } catch (e) {
             C.alert.alert({"content":result + e});

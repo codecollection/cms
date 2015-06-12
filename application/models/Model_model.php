@@ -120,4 +120,15 @@ class Model_model extends MBase{
         
         return $this->db->affected_rows() > 0;
     }
+    
+    /**
+     * 给表添加字段
+     * @param type $modelName
+     * @param type $v
+     */
+    public function addColumn($modelName,$v){
+        $sql = "alter table `{$modelName}` add column `{$v['field']}` {$v['field_type']} default '{$v['dvalue']}' comment '{$v['title']}' ";
+                    
+        $this->db->query($sql);
+    }
 }

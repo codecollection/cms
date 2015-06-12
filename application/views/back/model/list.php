@@ -22,7 +22,7 @@
                     <td>模型表名</td>
                     <td>子模型ID</td>
                     <td>扩展属性</td>
-                    <td width="80">操作</td>
+                    <td width="180">操作</td>
                 </tr>
             </thead>
 
@@ -36,6 +36,7 @@
                         <td style="padding-left:10px;"><?php echo empty($v['attr_content']) ? '&nbsp;' : $v['attr_content']; ?></td>
                         <td>
                         <?php $thisc->echoButton($this->controllerId . "02", "/back/{$this->controllerId}/field?id={$v['model_id']}", "字段管理"); ?>
+                        <?php $thisc->echoButton($this->controllerId . "05", "javascript:updateModel({$v['model_id']});", "更新表"); ?>
                         </td>
                     </tr>
                 <?php } ?>

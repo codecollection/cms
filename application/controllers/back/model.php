@@ -93,7 +93,37 @@ class Model extends CAdminBase {
         $this->successAjax();
     }
     
-    
+    /**
+     * 更新表结构
+     */
+    public function updateModel(){
+        
+        $id = $this->getData('id');
+        $modelName = $this->bindModel->getField($id,"model_name");
+        
+        //已经有的字段
+        $colums = $this->bindModel->getTableFields($modelName);
+            
+        //系统字段
+        $this->loadModel("field");
+        
+        $systemFields = $this->field->where("is_system=0")->search(FALSE);
+        
+        //关系字段
+        $relFields = $this->bindModel->getRelationField($id);
+        
+        $tableFields = array_merge($systemFields,$relFields);
+        
+        foreach($tableFields as $k => $v){
+            if(!in_array($v['field'],$colums)){
+                
+                $this->bindModel->addColumn($modelName,$v);
+            }
+        }
+            
+        $this->successAjax();
+    }
+
     private function createTableByModelId($modelId){
         //系统字段
         $this->loadModel("field");

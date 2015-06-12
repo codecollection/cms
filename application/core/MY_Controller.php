@@ -6,6 +6,25 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class MY_Controller extends CI_Controller {
 
+    /**
+     * 控制器名称
+     * @var string
+     */
+    protected $controllerTitle = '';
+    
+    /**
+     * 自动配置需要处理显示的数据 ,如 状态和对应的值
+     * @var type array('txt'=>'','value'=>'',color=>'')
+     */
+    protected $insertNav = array();
+   
+    
+    /**
+     * 当前位置导航 
+     * @var array("url"=>"","title"=>"")
+     */
+    protected $minNav = array();
+    
      /**
      * 当前正在访问的模块标识
      * @var string
@@ -102,6 +121,28 @@ class MY_Controller extends CI_Controller {
 
         $this->renderData[$name] = $value;
     }
+    
+    /**
+     * 设置迷你导航
+     * @param type $nav
+     */
+    protected function setMinNav($nav){
+        
+        $this->minNav = array_merge($this->minNav,array($nav));
+    }
+    
+    /**
+     * 设置搜索
+     */
+    protected function setSearch(){
+        
+        $s = RKit::getData("sv","st");
+        
+        if(!empty($s['sv']) && !empty($s['st'])){
+            $this->bindModel->like($s['st'],$s['sv']);
+        }
+        
+    }
 }
 
 /**
@@ -119,11 +160,7 @@ class CAdminBase extends MY_Controller {
     public $topLevel = "";
     
    
-    /**
-     * 控制器名称
-     * @var string
-     */
-    protected $controllerTitle = '';
+    
 
     /**
      * 与当前控制器绑定的模型对象
@@ -145,16 +182,7 @@ class CAdminBase extends MY_Controller {
      */
     private $isPermission = true;
 
-    /**
-     * 自动配置需要处理显示的数据 ,如 状态和对应的值
-     * @var type array('txt'=>'','value'=>'',color=>'')
-     */
-    protected $insertNav = array();
-    /**
-     * 当前位置导航 
-     * @var array("url"=>"","title"=>"")
-     */
-    protected $minNav = array();
+    
     /**
      * 构造函数
      */
@@ -339,16 +367,7 @@ class CAdminBase extends MY_Controller {
         
         $this->successAjax();
     }
-    
-    protected function setSearch(){
-        
-        $s = RKit::getData("sv","st");
-        
-        if(!empty($s['sv']) && !empty($s['st'])){
-            $this->bindModel->like($s['st'],$s['sv']);
-        }
-        
-    }
+   
     /**
      * 检测权限
      * @param string $moduleIdentity
@@ -375,15 +394,6 @@ class CAdminBase extends MY_Controller {
         }
 
         //$this->log(sprintf(lang('page_access'), $this->controllerTitle));
-    }
-
-    /**
-     * 设置迷你导航
-     * @param type $nav
-     */
-    protected function setMinNav($nav){
-        
-        $this->minNav = array_merge($this->minNav,array($nav));
     }
 
     /**

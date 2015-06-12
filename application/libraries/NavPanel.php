@@ -153,6 +153,7 @@ class NavPanel {
                         array('title' => '删除字段', 'level' => 'D0102'),
                         array('title' => '字段管理', 'level' => 'D0103'),
                         array('title' => '保存模型', 'level' => 'D0104'),
+                        array('title' => '更新表', 'level' => 'D0105'),
                     ),
                 ),
                 array(
@@ -274,13 +275,13 @@ class NavPanel {
     private $userMenu = array(
         array(
             'title' => "我的公众号", //功能导航分类
-            'url' => '/user/public',
+            'url' => '/user/pub',
             'level' => 'A',
             'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
             'menu'  => array(
                 array(
                     'title'=>'管理公众号',
-                    'url' => '/user/public',
+                    'url' => '/user/pub',
                     'level' => 'A01', //页面权限，也就是列表权限
                     'menu' => array(
                         //array('title' => '', 'level' => ''), //按钮功能配置
@@ -288,7 +289,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'添加公众号',
-                    'url' => '/user/public/add',
+                    'url' => '/user/pub/add',
                     'level' => 'A02', //页面权限
                     'menu' => array(
                         array('title' => '保存设置', 'level' => 'A0201'), //按钮功能配置
