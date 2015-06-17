@@ -1,11 +1,11 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * 公众号
+ * 公众号下面的文章
  */
-class Pub extends CUserBase {
+class Article extends CUserBase {
 
-    protected $controllerId = "pub";
+    protected $controllerId = "article";
     
     public $topLevel = "A";
     

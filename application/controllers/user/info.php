@@ -1,17 +1,15 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * 公众号
+ * 用户信息
  */
-class Pub extends CUserBase {
+class Info extends CUserBase {
 
-    protected $controllerId = "pub";
+    protected $controllerId = "info";
     
     public $topLevel = "A";
     
     public $level = "A01";
-    
-    protected $modelTable = "cms_public";
     
     public function __construct() {
 
@@ -19,13 +17,4 @@ class Pub extends CUserBase {
        
     }
 
-    /**
-     *  
-     */
-    public function index(){
-        
-        $this->lists();
-       
-    }
-    
 }
