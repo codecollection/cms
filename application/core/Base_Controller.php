@@ -27,7 +27,7 @@ class CBase extends MY_Controller{
         $this->loadModel("cate");
         $this->loadModel("info");
         
-        $this->tpl = "public";
+        $this->tpl = TEMPLATE;
     }
     
     /**

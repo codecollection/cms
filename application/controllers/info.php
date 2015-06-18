@@ -184,6 +184,16 @@ class Info extends CBase {
         
         return $this->pagination->create_links();
     }
+    
+    /**
+     * 测试预览模板
+     */
+    public function tl(){
+        
+        $tpl =  $this->getData("tpl");
+        
+        $this->renderHTMLView($tpl);
+    }
 }
 
 

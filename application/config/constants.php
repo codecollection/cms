@@ -92,3 +92,5 @@ define('PAGESIZE', 10);//后台每页显示的数据条数
 define('DB_BASE', 'cms'); //数据dbbase
 define('DEFAULT_INFO_IMG', '/style/back/image/upload-pic.png'); //文档默认图
 define('INFO_STATE', 1); //产品默认状态
+define("TEMPLATE","qingcaitao"); //前端模板文件
+define("CSSHOST", "http://cms"); //样式文件域名

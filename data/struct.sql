@@ -595,6 +595,59 @@ insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) valu
 insert ignore into cms_model (model_id, model_title, model_name, cmodel_id) values(2, '产品', 'cms_product', 0);
 
 
+--
+-- 表的结构 `cms_info_list`
+--
+
+CREATE TABLE IF NOT EXISTS `cms_info_list` (
+  `cms_info_list_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `last_cate_id` int(11) NOT NULL DEFAULT '0' COMMENT '终极分类',
+  `title` varchar(100) NOT NULL DEFAULT '' COMMENT '标题',
+  `img_url` varchar(100) NOT NULL DEFAULT '' COMMENT '缩略图',
+  `desc` varchar(300) NOT NULL DEFAULT '' COMMENT '描述',
+  `body` text COMMENT '内容',
+  `tag` varchar(100) DEFAULT '' COMMENT '标签',
+  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '发布者Id',
+  `uname` varchar(50) NOT NULL DEFAULT '' COMMENT '发布者',
+  `comments` int(6) NOT NULL DEFAULT '0' COMMENT '评论量',
+  `visitors` int(6) NOT NULL DEFAULT '0' COMMENT '浏览量',
+  `tpl_content` varchar(20) NOT NULL DEFAULT '' COMMENT '内容模板',
+  `cdate` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `state` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+  `forder` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  `city` varchar(10) NOT NULL DEFAULT '0' COMMENT '城市',
+  PRIMARY KEY (`cms_info_list_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+
+
+--
+-- 表的结构 `cms_product`
+--
+
+CREATE TABLE IF NOT EXISTS `cms_product` (
+  `cms_product_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `last_cate_id` int(11) NOT NULL DEFAULT '0' COMMENT '终极分类',
+  `title` varchar(100) NOT NULL DEFAULT '' COMMENT '标题',
+  `img_url` varchar(100) NOT NULL DEFAULT '' COMMENT '缩略图',
+  `desc` varchar(300) NOT NULL DEFAULT '' COMMENT '描述',
+  `body` text COMMENT '内容',
+  `tag` varchar(100) DEFAULT '' COMMENT '标签',
+  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '发布者Id',
+  `uname` varchar(50) NOT NULL DEFAULT '' COMMENT '发布者',
+  `comments` int(6) NOT NULL DEFAULT '0' COMMENT '评论量',
+  `visitors` int(6) NOT NULL DEFAULT '0' COMMENT '浏览量',
+  `tpl_content` varchar(20) NOT NULL DEFAULT '' COMMENT '内容模板',
+  `cdate` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `state` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
+  `forder` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  `interest` varchar(20) NOT NULL DEFAULT '1' COMMENT '爱好',
+  `city` varchar(10) NOT NULL DEFAULT '0' COMMENT '城市',
+  `version` varchar(20) NOT NULL DEFAULT '' COMMENT '版本',
+  `download` varchar(20) NOT NULL DEFAULT '' COMMENT '下载地址',
+  PRIMARY KEY (`cms_product_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 -- 系统默认的字段
 insert ignore into cms_fields (
 field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
