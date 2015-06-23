@@ -94,3 +94,4 @@ define('DEFAULT_INFO_IMG', '/style/back/image/upload-pic.png'); //文档默认�
 define('INFO_STATE', 1); //产品默认状态
 define("TEMPLATE","qingcaitao"); //前端模板文件
 define("CSSHOST", "http://cms"); //样式文件域名
+define("FILEHOST", "Http://cms"); //文件域名
