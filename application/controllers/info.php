@@ -34,6 +34,8 @@ class Info extends CBase {
         $tpl = empty($tplIndex) ? $cateData['tpl_list'] : $tplIndex;
         $tplList = empty($tpl) ? "list" : $tpl;
         
+        $this->setData("cid", $cid);
+        
         $this->renderHTMLView($tplList);
     }
 
@@ -60,9 +62,14 @@ class Info extends CBase {
      * 获取分类
      * @return type
      */
-    public function getCate(){
+    public function getCate($cid = null){
        
-        return $this->cate->categories;
+        $cate = $this->cate->categories;
+        if ($cid === null){
+            return $cate;
+        }else{
+            return $cate[$cid];
+        }
     }
     
     /**
@@ -92,6 +99,66 @@ class Info extends CBase {
         $this->page = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
         
         return $lists;
+    }
+
+    /**
+     * 根据子模型获取到数据列表数据
+     */
+    public function getList2($cid = null,$join = "right"){
+        $this->loadModel("model");
+        if ($cid === null){
+            $cateId = $this->getData('cid');
+        }else{
+            $cateId = $cid;
+        }
+        $p = $this->getData('p');
+        
+        $modelId = $this->cate->getField($cateId,'model_id');
+        
+        //获取模型对应的表名称
+        $model = $this->model->find($modelId);
+        
+        $sonModel = $this->model->find($model["cmodel_id"]);
+        
+        $sonModelTableName = $sonModel["model_name"];
+        
+        $this->setModel($modelId);
+        
+        $this->info->join($join,$sonModelTableName . " as B","B.last_cate_id = A.last_cate_id");
+        
+        $this->info->where("A.last_cate_id=".$cateId);
+        
+        $this->info->page($p, $pagesize = 10);
+        
+        $lists = $this->info->search();
+        $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
+        $this->page = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
+        
+        return $lists;
+    }
+    
+    
+    public function getList3($cid = null,$limit = 5){
+        
+        if ($cid === null){
+            $cateId = $this->getData('cid');
+        }else{
+            $cateId = $cid;
+        }
+        
+        $modelId = $this->cate->getField($cateId,'model_id');
+        //获取模型对应的表名称
+        $this->setModel($modelId);
+        
+        $this->info->where("last_cate_id=".$cateId);
+        $this->info->limit($limit);
+        $this->info->orderBy("forder DESC");
+        $l = $this->info->search(false);
+        
+        $lists = $this->info->insertUrl($l['list'],$modelId);
+       
+        return $lists;
+        
     }
 
     public function getContent(){

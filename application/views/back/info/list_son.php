@@ -51,8 +51,7 @@
                 <td>
                     <?php echo $v["visitors"];?>                                                                                                     </td>
                 <td>
-                    <a class="btn" href="/back/<?php echo $this->controllerId?>/edit?id=<?php echo $v[$thisc->modelName."_id"];?>&cateId=<?php echo $v['last_cate_id']?>">编辑</a>
-                    <a class="btn" href="/back/<?php echo $this->controllerId?>/sonModel?id=<?php echo $v[$thisc->modelName."_id"];?>&modelId=<?php echo $thisc->getData("modelId");?>">子模型</a>
+                    <a class="btn" href="/back/<?php echo $this->controllerId?>/editSon?id=<?php echo $v[$thisc->modelName."_id"];?>&cateId=<?php echo $v['last_cate_id']?>&modelId=<?php echo $v['model_id']?>">编辑</a>
                 </td>
             </tr>
             <?php }?>
@@ -64,7 +63,7 @@
     <div class="box_1000">
         <span>操作：</span>
         
-        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/add?modelId={$modelId}&cateId={$cateId}","添加文档",'btn3');?>
+        <?php $thisc->echoButton("{$thisc->level}01","/back/{$thisc->controllerId}/addSon?modelId={$modelId}&cateId={$cateId}","添加文档",'btn3');?>
         <?php $thisc->echoButton("{$thisc->level}03","javascript:update_order();","修改排序",'btn3');?>
         <?php $thisc->echoButton("{$thisc->level}02","javascript:del_data();","批量删除",'btn3');?>
         <?php $thisc->echoButton("{$thisc->level}","/back/{$thisc->controllerId}/home","返回文档",'btn3');?>

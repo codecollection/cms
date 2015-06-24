@@ -18,22 +18,11 @@
 
     <input type="hidden" id="<?php echo $thisc->modelName."_id";?>" name="id" value="<?php echo($data[$thisc->modelName."_id"]);?>" />
     <input type="hidden" id="modelId" name="modelId" value="<?php echo($modelId);?>" />
+    <input type="hidden" id="modelId" name="data[model_id]" value="<?php echo($modelId);?>" />
+    <input type="hidden" id="last_cate_id" name="data[last_cate_id]" value="<?php echo $cateId;?>" />
     <table class="table_lists editbox">
         
         <?php ?>
-        <tr>
-            <td width="150" class="fr">文档分类：</td>
-            <td>
-                <span class="l">
-                   <?php 
-                    $cates = $thisc->cate->show_select();
-                    $this->vars->set_fields("last_cate_id",$cates);
-                    echo $this->vars->input_str(array('node'=>'last_cate_id','name'=>'last_cate_id','type'=>'select_single','default'=>$last_cate_id = $data['last_cate_id'] > 0 ? $data['last_cate_id'] : $cateId,'style'=>'style="width:248px;"','callback'=>true));
-                    ?>                
-                </span>
-            </td>
-        </tr>
-        
         <tr>
             <td class="fr"><span class="fred">* </span>标题 ：</td>
             <td><input id="title" type="text" name="data[title]" class="comm_ipt" value="<?php echo $data["title"]?>"></td>
@@ -85,17 +74,6 @@
         <tr>
             <td class="fr" style="vertical-align:top;">标签：</td>
             <td><input id="tag" type="text" class="comm_ipt" value="<?php echo $data["tag"]?>" name="data[tag]"> 
-            </td>
-        </tr>
-        <tr>
-            <td class="fr">详情模版：</td>
-            <td>
-                <div class="l">
-                    <?php echo $this->vars->input_str(array('node'=>'tpl_content','name'=>'tpl_content','type'=>'select_single','default'=>$data["tpl_content"] ,'style'=>'style="width:200px;"'));?>              
-                </div>
-                <div class="l">
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="desc">内容正文模板</span>，文件名格式为 <font color=red>名称.content.php</font> 开头
-                </div>
             </td>
         </tr>
         <tr>

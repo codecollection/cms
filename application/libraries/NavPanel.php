@@ -114,6 +114,7 @@ class NavPanel {
                         array('title' => '添加编辑', 'level' => 'C0101'), //按钮功能配置
                         array('title' => '删除文档', 'level' => 'C0102'),
                         array('title' => '审核文档', 'level' => 'C0103'),
+                        array('title' => '子模型文档', 'level' => 'C0104'),
                     ),
                 ),
                 array(

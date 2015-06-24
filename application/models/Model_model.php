@@ -131,4 +131,11 @@ class Model_model extends MBase{
                     
         $this->db->query($sql);
     }
+    
+    public function getSonModelId($modelId){
+        
+        $model = $this->find($modelId);
+        
+        return $model["cmodel_id"];
+    }
 }

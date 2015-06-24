@@ -563,7 +563,7 @@ class CAdminBase extends MY_Controller {
     protected function getTpl(){
         
         $this->load->helper("directory");
-        $files = directory_map("./application/views/front/default");
+        $files = directory_map("./application/views/front/".TEMPLATE);
         $coverTpl = $listTpl = $detialTpl = array(array("txt"=>"默认模板","value"=>""));
         
         foreach ($files as $file) {

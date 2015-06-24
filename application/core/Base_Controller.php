@@ -86,6 +86,7 @@ class CBase extends MY_Controller{
      */
     public function loadView($dirName,$data = array()){
         
+        $data['c'] = $this;
         $this->echoView("{$dirName}",$data);
     }
     
