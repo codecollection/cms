@@ -1,1 +1,7 @@
 /phpMyAdmin/nbproject/private/
+/.settings/
+/.project
+/.buildpath
+/files/
+/nbproject/
+/application/config/database.php

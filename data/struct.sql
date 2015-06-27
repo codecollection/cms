@@ -29,7 +29,7 @@ create table if not exists `cms_category` (
  `nav_show` int(1) not null default 0 comment '主导航显示，0=不显示，1=显示',
  `nav_show_wap` int(1) not null default 0 comment 'wap端主导航显示，0=不显示，1=显示',
  `clogo` varchar(200) not null default '' comment '分类LOGO图',
- `clog_hover` varchar(200) not null default '' comment '分类替换图',
+ `clogo_hover` varchar(200) not null default '' comment '分类替换图',
  `cintro` varchar(8000) not null default '' comment '分类简介',
  `go_url` varchar(200) not null default '' comment '跳转URL',
  `cdomain` varchar(50) not null default '' comment '绑定域名',
@@ -100,7 +100,7 @@ create table if not exists `cms_ad_area` (
  `area_name` varchar(255) not null default '' comment '位置名称',
  `area_type` int(2) not null default 0 comment '广告位类型, 0=图片广告，1=代码广告',
  `remark` varchar(1000) not null default '' comment '位置标注',
- `Identification` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '标识',
+ `identification` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '标识',
  primary key (`area_id`)
 ) engine=myisam default charset=utf8 auto_increment=100;
 

@@ -18,10 +18,10 @@
 .flexslider{width:100%;margin:0 auto;display:block;z-index:-1;} 
 .flex-active-slide{display:block;z-index:100;}
  .flexslider {position: relative;height: 100%;overflow: hidden;background:#FFF;}
-.slides {position: relative;z-index: 99;height: 100%;width: 100%; background:url(http://www.mogoroom.com:80/pages/imgs/banner_bg1.png) repeat;}
+.slides {position: relative;z-index: 99;height: 100%;width: 100%; background:url(<?php echo CSSHOST;?>/style/front/<?php echo TEMPLATE;?>/imgs/banner_bg1.png) repeat;}
 .slides li {height: 100%; background-size:100%;background-position:0 50%;position:relative;/*  background:#FFF; position: absolute;z-index: 2; */}
 .slides li img{position: relative; bottom:45%;overflow:auto;width:100%; display:inherit; background:#FFF; }
-#mgb{height:500px;margin-bottom:1px;cursor:pointer;background:url(http://www.mogoroom.com:80/pages/activity/img-12+1/12+1.jpg) center 45px no-repeat;display:none;}
+#mgb{height:500px;margin-bottom:1px;cursor:pointer;background:url(<?php echo CSSHOST;?>/style/front/<?php echo TEMPLATE;?>/imgs/img-12+1/12+1.jpg) center 45px no-repeat;display:none;}
  .activitytk{width:264px;height:315px;position: fixed;bottom: -5px;right: 0px;z-index: 4;display:none;  margin-right: 65px;}
 .activitytk span {position: absolute; color:#FFF;top:15px;right: 10px;cursor: pointer;display: block;width: 30px;height:30px;font-size: 40px;*padding-bottom: 5px;}
 .activitytk img{width:100%} 
@@ -121,10 +121,18 @@ $(document).ready(function(){
   <div class="nav">
     <div class="nav_l">
           <div class="logo"><a href="http://www.mogoroom.com:80/"><img src="http://www.mogoroom.com:80/pages/imgs/logo1.png"/></a></div>
-         <a   href="http://www.mogoroom.com:80/goMap.html">立即找房</a>
-         <a  href="http://www.mogoroom.com:80/queryArticleAll.html">乐活蘑都<i></i></a>
-         <a  href="http://www.mogoroom.com:80/gotoBeforeRent.html">租前问答</a>
-         <a href="http://www.mogoroom.com:80/pages/detailPage/baojie.jsp" style='color:#fffd38;'>保洁大升级</a>
+        <?php $cate = $c->getCate();?>  
+        <?php 
+            $i = 0;
+            foreach ($cate as $k => $v){
+                $i++;$style = "";$color = "";
+                if($i == 2){$style = "<i></i>";}
+                if($i == 4){$color = "style='color:#fffd38;'";}
+            if($v['nav_show'] != 1){continue;}
+        ?>
+          <a   href="<?php echo $v['surl'];?>" <?php echo $color;?>><?php echo $v['cname'];?><?php echo $style?></a>
+        <?php }?>
+        
     </div>
     <div class="nav_r">
           <!-- <a href="#"><span>注册</span></a>
@@ -161,47 +169,19 @@ $(document).ready(function(){
  <div class="banner bannerFull">
    <div class="flexslider">
         <ul class="slides">
-            <li style='background-image:url(http://image.mogoroom.com//imagefile/website/index/banner3.jpg);'>
+            <?php $ad = $c->getAd(100);?>
+            <?php foreach($ad as $k => $v){?>
+            <li style='background-image:url(<?php echo FILEHOST. $v["ad_img"] ?>);'>
 	           <div class="bg-black" ></div>
 	           <div class="slides-text"> 	
-	            	<h1>住蘑菇公寓，与美好相遇</h1>
-	          		<h4>蘑菇公寓赋予租房更多可能</h4>
+	            	<h1><?php echo $v["ad_title"];?></h1>
+	          		<h4><?php echo $v["ad_words"];?></h4>
 	          		<div class="banner_text">
          				<a href="http://www.mogoroom.com:80/goMap.html" class="more">立即找房 </a>
        				</div>
           		</div>
           	</li>
-          	<li style='background-image:url(http://image.mogoroom.com//imagefile/website/index/banner8.jpg);'>
-          		<div class="bg-black" ></div>
-            	<div class="slides-text"> 
-            		<h4 style="padding: 0px 0px 30px;">世界无数地方让你找到自己</h4>
-	            	<h1>但蘑菇公寓让你释放自己</h1>
-	          		<div class="banner_text">
-         				<a href="http://www.mogoroom.com:80/goMap.html" class="more">立即找房 </a>
-       				</div>
-          		</div>
-          	</li>
-           <li style='background-image:url(http://image.mogoroom.com//imagefile/website/index/banner9.jpg);'>
-           	<div class="bg-black" ></div>
-            	<div class="slides-text"> 
-	            	<h1>蘑菇公寓，让自己住得更好一点</h1>
-	          		<h4>蘑菇公寓赋予租房更多可能</h4>
-	          		<div class="banner_text">
-         				<a href="http://www.mogoroom.com:80/goMap.html" class="more">立即找房 </a>
-          		</div>
-          	</li>
-            
-            <li style='background-image:url(http://image.mogoroom.com//imagefile/website/index/banner7.jpg);'>
-            	<div class="bg-black" ></div>
-            	<div class="slides-text"> 
-            		<h1>念念不忘 ，必有回响</h1>
-	            	<h4>莫忘初心，方得始终</h4>
-	          		<div class="banner_text">
-         				<a href="http://www.mogoroom.com:80/goMap.html" class="more">立即找房 </a>
-       				</div>
-          		</div>
-          	</li>
-           
+            <?php } ?>
         </ul>
     </div> 
     
@@ -263,20 +243,27 @@ $(document).ready(function(){
 		</div>
 <div class="hot">
 	<ul>
-    	<li><span><i></i></span><h2>覆盖全城</h2>交通便利,地铁0距离</li>
-    	<li class="ho1"><span><i></i></span><h2>底价公开</h2>高性价比,极具竞争力</li>
-        <li class="ho2"><span><i></i></span><h2>品质管控</h2>高档电梯公寓,专业运维团队</li>
-        <li class="ho3"><span><i></i></span><h2>安全保障</h2>租客认证,小区24小时安保</li>
-        <li class="ho4"><span><i></i></span><h2>社交人脉</h2>白领社交圈,收获可信赖人脉</li>
-        
+        <?php $ad = $c->getAd(106);?>
+        <?php 
+        $i = 0;
+        foreach($ad as $k => $v){
+            
+            ?>
+            <?php if($i == 0){?>
+            <li><span><i></i></span><h2><?php echo $v['ad_title']; ?></h2><?php echo $v['ad_words']?></li>
+            <?php }else{?>
+            <li class="<?php echo("ho".$i);?>"><span><i></i></span><h2><?php echo $v['ad_title']; ?></h2><?php echo $v['ad_words']?></li>
+            <?php }
+            $i++;
+            ?>
+        <?php }?>
     </ul>
-    
 </div>
 <div class="home" style="height: 873px;overflow: visible;position: relative;">
 	<div class="title">
-            <h2>蘑菇公寓  莫辜年华</h2>
-            <p>总有个声音告诉自己，无论工作多辛苦，莫忘初心——对家的美好追求。<br>
-色彩，是我对生活方式的选择。</p>
+            <?php $area = $c->getAdArea(107);?>
+            <h2><?php echo $area['area_name'];?></h2>
+            <p><?php echo $area['remark'];?></p>
     	</div>
         <div class="homein">
         	<div class="homepic pic1"> 
@@ -341,9 +328,9 @@ $(document).ready(function(){
 
 <div class="home custom">
 	<div class="title">
-            <h2>蘑菇客  分享你的故事</h2>
-            <p>你站在桥上看风景，看风景的人在楼上看你，明月装饰了你的窗子，你装饰了别人的梦。<br>
-我要让你看到，独一无二的普通。</p>
+            <?php $area = $c->getAdArea(108);?>
+            <h2><?php echo $area['area_name'];?></h2>
+            <p><?php echo $area['remark'];?></p>
     </div>
     <div class="customin cu-show" style="position: relative; padding:0px;">
     	<div id="marquee" style="margin: 0px auto; width:1098px; height:440px; ">
@@ -419,9 +406,9 @@ $(document).ready(function(){
 </div>
 <div class="home">
 	<div class="title">
-            <h2>蘑菇圈  互动从这里开始</h2>
-            <p>一人的孤独是寂寞，两人的孤独是分享。你不会知道，下一秒，你遇见了谁。<br>
-活出精彩，遇见下一个未知的自己。</p>
+            <?php $area = $c->getAdArea(109);?>
+            <h2><?php echo $area['area_name'];?></h2>
+            <p><?php echo $area['remark'];?></p>
     </div>
     <div class="customin cu3">
     	<div class="cu4">
