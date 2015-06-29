@@ -35,7 +35,7 @@ class Info extends CBase {
         $tplList = empty($tpl) ? "list" : $tpl;
         
         $this->setData("cid", $cid);
-        
+        $this->setData("cate", $cateData);
         $this->renderHTMLView($tplList);
     }
 

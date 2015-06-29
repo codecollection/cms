@@ -4,9 +4,9 @@
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-        <title>蘑菇公寓 |  沪上首家单身白领合租公寓</title>
-        <meta name="keywords" content="单身公寓,白领公寓,合租公寓,上海单身公寓,上海合租单间,上海白领公寓,上海合租公寓,上海爱情公寓,上海租房" />
-        <meta name="description" content="选择蘑菇公寓，与美好相遇，入住即送价值300元豪华居家礼包，100元搬家补贴，免中介费，高档社区，名牌家具家电，免费保洁维修，租客认证保证安全，入住租客免费获得商业保险，免费wifi，拎包入住，热线:400-800-4949" />
+        <title><?php echo $c->getItem("site_name");?><?php echo " | " . $c->getItem("seo_title");?>   </title>
+        <meta name="keywords" content="<?php echo $c->getItem("seo_keywords");?>" />
+        <meta name="description" content="<?php echo $c->getItem("seo_desc");?>" />
         <?php $c->loadView("front/qingcaitao/inc.header.php"); ?>
         <style>
             .flex-direction-nav{display:none;}

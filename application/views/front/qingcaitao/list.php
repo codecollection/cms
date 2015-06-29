@@ -6,12 +6,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="renderer" content="webkit">
         <meta name="HandheldFriendly" content="true">
-        <title>地图找房－蘑菇公寓</title>
-        <meta name="keywords" content="上海1500-2000元白领单身公寓，蘑菇公寓">
-        <meta name="description" content="上海蘑菇公寓，为你提供1500-2000元白领单身合租公寓出租信息。">
-        <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/styles.css">
-        <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/common.css" >
+        <title><?php echo empty($cate["ctitle"]) ?  $cate["ctitle"] : $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
+        <meta name="keywords" content="<?php echo $cate["ckey"]?>">
+        <meta name="description" content="<?php echo $cate["cdesc"]?>">
+        <?php $c->loadView("front/qingcaitao/inc.header.php"); ?>    
         <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/list.css" >
+        <script>
+            
+            $(document).ready(function(){
+                var params = [];
+                $(".filterFx").find("li").each(function(){
+                    params[this.div.id] = this.div.a.find(".select_id").html();
+                });
+                   alert(params.count); 
+                }
+            }
+        </script>
     </head>
     <body class="">
         <?php $c->loadView("front/qingcaitao/inc.nav.php");?>
