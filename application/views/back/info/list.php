@@ -52,7 +52,7 @@
                     <?php echo $v["visitors"];?>                                                                                                     </td>
                 <td>
                     <a class="btn" href="/back/<?php echo $this->controllerId?>/edit?id=<?php echo $v[$thisc->modelName."_id"];?>&cateId=<?php echo $v['last_cate_id']?>">编辑</a>
-                    <a class="btn" href="/back/<?php echo $this->controllerId?>/sonModel?id=<?php echo $v[$thisc->modelName."_id"];?>&modelId=<?php echo $thisc->getData("modelId");?>">子模型</a>
+                    <a class="btn" href="/back/<?php echo $this->controllerId?>/sonModel?id=<?php echo $v[$thisc->modelName."_id"];?>&modelId=<?php echo $modelId;?>">子模型</a>
                 </td>
             </tr>
             <?php }?>

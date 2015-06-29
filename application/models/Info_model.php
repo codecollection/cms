@@ -53,11 +53,33 @@ class Info_model extends MBase{
         }
     }
     
+    /**
+     * 给列表加入请求地址
+     * 
+     * @param string $list
+     * @param type $modelId
+     * @return string
+     */
     public function insertUrl($list,$modelId){
         foreach($list as $key => $val){
             $list[$key]['surl'] = "/info/d?id=".$val[$this->tableName."_id"]."&mid=".$modelId;
         }
         
         return $list;
+    }
+    
+    /**
+     * 根据子模型获取到文档的详细信息
+     * 
+     * @param type $id
+     */
+    public function getD2($id){
+        $sonModel = "cms_house";
+        $model = "cms_apartment";
+        $sql = "select A.*,B.* from {$sonModel} as A left join {$model} as B on B.{$model}_id = A.{$sonModel}_id where A.{$sonModel}_id = {$id}";
+        
+        $query = $this->db->query($sql);
+        
+        return $query->result_array();
     }
 }

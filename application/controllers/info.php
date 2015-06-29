@@ -58,6 +58,17 @@ class Info extends CBase {
         $this->renderHTMLView($tpl);
     }
 
+    public function d2(){
+        $id = $this->getData('id');
+        
+        $d = $this->info->getD2($id);
+        $tpl = empty($d['tpl_content']) ? "content" : $d['tpl_content'];
+        
+        $this->setData("d", $d);
+        
+        $this->renderHTMLView($tpl);
+    }
+
     /**
      * 获取分类
      * @return type
@@ -76,14 +87,14 @@ class Info extends CBase {
      * 获取列表
      * @return type
      */
-    public function getList($cid = null,$pagesize = 10){
+    public function getList($cid = null,$pagesize = 5){
         
         if ($cid === null){
             $cateId = $this->getData('cid');
         }else{
             $cateId = $cid;
         }
-        $p = $this->getData('p');
+        $p = $this->getData('p') > 0 ? $this->getData('p') : "1";
         
         $modelId = $this->cate->getField($cateId,'model_id');
         //获取模型对应的表名称
@@ -96,7 +107,7 @@ class Info extends CBase {
         $lists = $this->info->search();
         
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
-        $this->page = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
+        $lists['pagecode'] = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
         
         return $lists;
     }
@@ -123,7 +134,7 @@ class Info extends CBase {
         $sonModelTableName = $sonModel["model_name"];
         
         $this->setModel($modelId);
-        
+        $this->info->fields("A.*,B.*,B.img_url as Img,A.title as Title");
         $this->info->join($join,$sonModelTableName . " as B","B.last_cate_id = A.last_cate_id");
         
         $this->info->where("A.last_cate_id=".$cateId);
@@ -132,8 +143,8 @@ class Info extends CBase {
         
         $lists = $this->info->search();
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
-        $this->page = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
-        
+        $lists["pagecode"] = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
+        //print_r($lists['list']);
         return $lists;
     }
     
@@ -231,7 +242,24 @@ class Info extends CBase {
         return "";
     }
     
-    public function getFlink(){
+    /**
+     * 获取标签列表
+     * @param type $gId
+     * @return type
+     */
+    public function getTag($gId){
+        
+        $this->loadModel("tag");
+        
+        $this->tag->where("group_id = " . $gId);
+        
+        $tags = $this->tag->search(false);
+        
+        return $tags;
+        
+    }
+
+        public function getFlink(){
         $this->loadModel("flink");
         
         $flinks = $this->flink->search(false);
@@ -246,15 +274,15 @@ class Info extends CBase {
             'base_url' => $baseUrl, 
             'per_page' => $pagesize,
             'total_rows' => $total,
-            'num_links' => 4,
+            'num_links' => 6,
             'query_string_segment' => 'p',
             'page_query_string' => true,
             'first_link' => "首页",
             'last_link' => "尾页",
             'prev_link' => '上一页',
             'next_link' => '下一页',
-            'cur_tag_open' => '<a class="z-crt">',
-            'cur_tag_close' => '</a>',
+            'cur_tag_open' => '<span class="pageOn">',
+            'cur_tag_close' => '</span>',
             'use_page_numbers' => TRUE,
         );
         $this->pagination->initialize($config);
