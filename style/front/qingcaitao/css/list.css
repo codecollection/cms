@@ -87,12 +87,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
             .filter a:hover {
                 color:white;
                 background-color:#fc6622;
-                width: 1200px;
+                //width: 1200px;
             }
 
             .c-show {display:none; }
 
-
+            .filter .selected{
+                color:white;
+                background-color:#fc6622;
+            }
             .filter a { 
                 padding:0 0px 0px 0px;
                 transition:none;

@@ -11,7 +11,6 @@ class Info extends CBase {
        
         $this->renderHTMLView("cover");
     }
-    
     /**
      * 分类列表
      * cid 分类ID
@@ -36,6 +35,7 @@ class Info extends CBase {
         
         $this->setData("cid", $cid);
         $this->setData("cate", $cateData);
+        
         $this->renderHTMLView($tplList);
     }
 
@@ -170,6 +170,27 @@ class Info extends CBase {
        
         return $lists;
         
+    }
+
+    /**
+     * 
+     * 获取到模型下面的所有last_cate_id 为$lastCateId的列表
+     * 
+     * @param type $lastCateId
+     * @param type $modelId
+     * @return type
+     */
+    public function getSonList($lastCateId,$modelId){
+        
+        $this->setModel($modelId);
+        
+        $this->info->where("last_cate_id=".$lastCateId);
+        $this->info->orderBy("forder DESC");
+        $l = $this->info->search(false);
+        
+        $lists = $this->info->insertUrl($l['list'],$modelId);
+       
+        return $lists;
     }
 
     public function getContent(){

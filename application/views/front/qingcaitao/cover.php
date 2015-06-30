@@ -90,7 +90,7 @@
              setTimeout(function(){
              $mgb.slideUp(500);
              /* $(".activitytk").slideDown(500); */
-            }, 10000);
+            /*}, 10000);
                     setTimeout(function(){
                     $(".activitytk").slideDown(500);
                     }, 5000);
@@ -101,7 +101,7 @@
             $('.activitytk').hide();
             });
             });
-                    * /
+                 */   
         / * 活动 * /
 
         </script>

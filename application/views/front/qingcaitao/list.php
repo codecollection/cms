@@ -12,16 +12,33 @@
         <?php $c->loadView("front/qingcaitao/inc.header.php"); ?>    
         <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/list.css" >
         <script>
-            
-            $(document).ready(function(){
-                var params = [];
-                $(".filterFx").find("li").each(function(){
-                    params[this.div.id] = this.div.a.find(".select_id").html();
-                });
-                   alert(params.count); 
-                }
+            function checkEle(context){
+                $(context).addClass('selected').siblings('.selected').removeClass('selected');
+                return $(context).text();
             }
+            
+            function listenSelect(context){
+                var selected = {};
+                context.on('click.sel','a',function(){
+                    var self = $(this);
+                    var key = self.parents('.f_down')[0].id;
+                    var newText = checkEle(self,selected);
+                    updateSelected(key,newText,selected); 
+                });
+            }
+            
+            function updateSelected(key,value,selected){
+                selected = selected || {};
+                selected[key] = value;
+            }
+            $(document).ready(function(){
+                var filterFx = $('.filterFx');
+                listenSelect(filterFx);
+            });
         </script>
+        <style>
+            
+        </style>
     </head>
     <body class="">
         <?php $c->loadView("front/qingcaitao/inc.nav.php");?>
@@ -29,45 +46,46 @@
             <ul class="filterFx">
                 <li>
                     <b>区&nbsp;域：</b>
-                    <div class="f f_down" id="a">
-                        <a href="#">不限</a>
+                    <div class="f f_down" id="area">
+                        <a href="javascript:void();">不限</a>
                         <?php $tag = $c->getTag(1);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="#" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag_id"] == 1 ? "selected" : "";?>"><?php echo $v["tag"];?></a>
                         <?php }?>
                        <!-- <i class="a_down"></i>-->
                     </div>
                 </li>
                 <li><b>地&nbsp;铁：</b>
                     <div class="f f_down" id="b">
-                        <a href="#">不限</a>
+                        <a href="javascript:void();">不限</a>
                         <?php $tag = $c->getTag(2);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="#" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
                         <?php }?>
                        <!-- <i class="a_down b-show"></i>-->
                     </div>
                 </li>
                 <li><b>租&nbsp;金：</b> <div class="f f_down" id="c">
-                        <a href="#">不限</a><?php $tag = $c->getTag(3);?>
+                        <a href="javascript:void();">不限</a><?php $tag = $c->getTag(3);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="#" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:void();" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
                         <?php }?>
                     </div>
                 </li>
                 <li><b>方&nbsp;式：</b> <div class="f f_down" id="j">
-                        <a href="#">不限</a>
+                        <a href="javascript:void();">不限</a>
                         <?php $tag = $c->getTag(4);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="#" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:void();" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
                         <?php }?>
                     </div>
                 </li>
                 <li class="tese1" id="e"><b>特&nbsp;色：</b>
-                    <a href="#">不限</a>
+                    <div class="f f_down">
+                    <a href="javascript:void();">不限</a>
                     <?php $tag = $c->getTag(5);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="#" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:void();" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
                         <?php }?>
 <!--                    <select id="d" style="font-size:12px;">
                         <option selected="selected" value="0">风格</option>
@@ -76,6 +94,7 @@
                         <option value="3">棕色爵士</option>
                         <option value="4">金色维也纳</option>
                     </select>-->
+                    </div>
                 </li>
             </ul>
             <div id="param">筛选条件：<i>全部清除</i>
