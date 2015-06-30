@@ -1,59 +1,16 @@
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>6月13日 | 霸气烧烤邀你免费撸串</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />	
+<title><?php echo $d["title"]; ?>| <?php echo $c->getItem("site_name"); ?></title>
+<meta name="keywords" content="<?php echo $d["tag"]; ?>" />
+<meta name="description" content="<?php echo $d["desc"]; ?>" />	
 <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/styles.css">
 <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/common.css" >
 </head>
 
 <body>
-	
-
-
-
-
-
-
-
-<script type="text/javascript">
-  if (document.domain =="mogoroom.com") 
-    this.location = "http://www.mogoroom.com" + this.location.pathname + this.location.search;
-</script>
-<script type="text/javascript">
-	var youdao_conv_id = 279206; 
-</script> 
-<script type="text/javascript" src="http://conv.youdao.com/pub/conv.js"></script>
-
-<nav>
-  <div class="nav">
-    <div class="nav_l">
-          <div class="logo"><a href="http://www.mogoroom.com:80/"><img src="http://www.mogoroom.com:80/pages/imgs/logo1.png"/></a></div>
-         <a   href="http://www.mogoroom.com:80/goMap.html">立即找房</a>
-         <a class="on" href="http://www.mogoroom.com:80/queryArticleAll.html">乐活蘑都<i></i></a>
-         <a  href="http://www.mogoroom.com:80/gotoBeforeRent.html">租前问答</a>
-         <a href="http://www.mogoroom.com:80/pages/detailPage/baojie.jsp" style='color:#fffd38;'>保洁大升级</a>
-    </div>
-    <div class="nav_r">
-          <!-- <a href="#"><span>注册</span></a>
-          <a href="#"><span>登录</span></a> -->
-          <a href="javascript:;"  class="show">新手上路</a>
-          
-          <a  id="nav1" href="http://www.mogoroom.com:80/toAffiliate.html" ><span>业主加盟</span></a>
-         
-       </div>   
-  </div>
-</nav>
+<?php $c->loadView("front/qingcaitao/inc.nav.php"); ?>
    
 <div class="lehuo-2">
 <div class="lehuo-nav">

@@ -86,20 +86,15 @@
                         <!-- <div class="qr"><img id="qr" src="">手机分享此房</div>11.0㎡-->
                         <h1><?php echo $d["Title"] . "-" . $d["title"]."-".$d["room_direction"]."-".$d["room_area"]."㎡";?> 
                         </h1>
-                        <div style='font-size:16px;color:#adbadd;margin:13px 0;display: inline-block;'>都市森林的优雅转身</div>
+                        <div style='font-size:16px;color:#adbadd;margin:13px 0;display: inline-block;'><?php echo $d["style_desc"];?></div>
                         <div class="juzhu">
-                            单身公寓
+                            <?php echo $d["house_style"];?>
                         </div>
                         <h2>
-                            <span class="detailRoomId">NO.0400030B</span>
-                            <div class="address">长宁区威宁路458天山华庭<a class="showMap" href="#map"></a></div>
+<!--                            <span class="detailRoomId">NO.0400030B</span>-->
+                            <div class="address"><?php echo $d["address"];?><a class="showMap" href="#map"></a></div>
                             <div id="ditiexian">
-                                <div class="dtx_all">
-
-                                    距2号线威宁路站314米，步行约4分钟
-
-                                </div>
-
+                                <div class="dtx_all"><?php echo $d["address_desc"];?></div>
                             </div>			
                         </h2>
                         <a class="green" href="http://www.mogoroom.com:80/pages/activity/springLiving.jsp"><img src="http://www.mogoroom.com:80/pages/imgs/green1.png"></a>
@@ -118,7 +113,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>押一付三</td>
+                                    <td><?php echo $d["payway"]?></td>
                                     <td class="yj"><?php echo $d["original_price"]?>元/月</td>
                                     <td><span class="price"><?php echo $d["discount_price"]?></span> 元/月<span class="zhekou"><?php echo number_format($d["discount_price"]/$d["original_price"]*100,1)?>折</span></td>
 
@@ -155,14 +150,22 @@
                     <div class="picDetail d1">
                         <span class="pztitle">房间配置：</span>
                         <ul class="peizhi">
-                            <li class="pz1"><i></i>11.0㎡</li>
-                            <li class="pz2"><i></i> 3室 1厅1卫</li>
-                            <li class="pz3"><i></i>1/18层</li>
-
+                            <?php if(!empty($d["room_num"])){?>
+                            <li class="pz1"><i></i><?php echo $d["room_area"];?>㎡</li>
+                            <?php }?>
+                            <?php if(!empty($d["room_num"])){?>
+                            <li class="pz2"><i></i><?php echo $d["room_num"];?></li>
+                            <?php }?>
+                            <?php if(!empty($d["floor"])){?>
+                            <li class="pz3"><i></i><?php echo $d["floor"];?>层</li>
+                            <?php }?>
+                            <?php if($d["isElevator"] == "1"){?>
                             <li class="pz4"><i></i>电梯房</li>
-
+                            <?php }?>
+                            <?php if($d["isSubway"] == "1"){?>
                             <li class="pz5"><i></i>地铁沿线</li>
-                            <li class="pz6"><i></i>2位房客</li>
+                            <?php }?>
+<!--                            <li class="pz6"><i></i>2位房客</li>-->
                         </ul>
                         <div class="des">
                            <?php echo $d["body"];?>
