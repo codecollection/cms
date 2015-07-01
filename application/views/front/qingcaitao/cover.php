@@ -218,102 +218,91 @@
             <p><?php echo $area['remark']; ?></p>
         </div>
         <div class="homein">
-            <div class="homepic pic1"> 
-                <a href="http://www.mogoroom.com:80/goMap.html#2"><img src="http://image.mogoroom.com//imagefile/website/index/homepic1.jpg" alt="">
+            <?php $r = $c->getArea(4);?>
+            <div class="homepic pic1" style="overflow:hidden"> 
+                <a href="<?php echo $r["url"];?>"><img src="<?php echo $r["area_logo"];?>" alt="">
                     <div class="mask">
                         <div class="ma">
-                            <h3>绿色乡村</h3>
+                            <h3><?php echo $r["title"]?></h3>
                             <i></i>
-                            你有你的闪耀，我有我的小清新，体验清<br>新雅致生活，缓解一天疲劳
+                            <?php echo $r["area_html"];?>
                         </div>
 
                     </div>
                 </a> 
             </div>
-            <div class="homepic pic2"> 
-                <a href="http://www.mogoroom.com:80/goMap.html#1"><img src="http://image.mogoroom.com//imagefile/website/index/homepic2.jpg" alt="">
+            <?php $r = $c->getArea(5);?>
+            <div class="homepic pic2" style="overflow:hidden"> 
+                <a href="<?php echo $r["url"];?>"><img src="<?php echo $r["area_logo"];?>" alt="">
                     <div class="mask">
                         <div class="ma">
-                            <h3>蓝色波普</h3>
+                            <h3><?php echo $r["title"]?></h3>
                             <i></i>
-                            面向大海，拥抱生活给你的好与坏，享受<br>如水般平静生活，波澜不惊
+                            <?php echo $r["area_html"];?>
                         </div>
                     </div>
                 </a> 
             </div>
-            <div class="homepic pic3"> 
-                <a href="http://www.mogoroom.com:80/goMap.html#3"><img src="http://image.mogoroom.com//imagefile/website/index/homepic3.jpg" alt="">
+            <?php $r = $c->getArea(6);?>
+            <div class="homepic pic3" style="overflow:hidden"> 
+                <a href="<?php echo $r["url"];?>"><img src="<?php echo $r["area_logo"];?>" alt="">
                     <div class="mask">
                         <div class="ma m1">
-                            <h3>棕色爵士</h3>
+                            <h3><?php echo $r["title"]?></h3>
                             <i></i>
-                            低调的小资，午后，一杯咖啡的浓情，就<br>是你定义的温情和可靠
+                            <?php echo $r["area_html"];?>
                         </div>
                     </div>
                 </a> 
             </div>
-            <div class="homepic pic4"> 
-                <a href="http://www.mogoroom.com:80/goMap.html#4"><img src="http://image.mogoroom.com//imagefile/website/index/homepic4.jpg" alt="">
+            <?php $r = $c->getArea(7);?>
+            <div class="homepic pic4" style="overflow:hidden"> 
+                <a href="<?php echo $r["url"];?>"><img src="<?php echo $r["area_logo"];?>" alt="">
                     <div class="mask">
                         <div class="ma m1">
-                            <h3>金色维也纳</h3>
+                            <h3><?php echo $r["title"]?></h3>
                             <i></i>
-                            明亮的暖调，浪漫的气息，是个性闪耀的<br>你，定义空间里的美妙光线
+                            <?php echo $r["area_html"];?>
                         </div>
                     </div>
                 </a> 
             </div>
-            <div class="homepic pic5"> 
-                <a href="http://www.mogoroom.com:80/goMap.html#2"><img src="http://image.mogoroom.com//imagefile/website/index/homepic5.jpg" alt="">
+            <?php $r = $c->getArea(8);?>
+            <div class="homepic pic5" style="overflow:hidden"> 
+                <a href="<?php echo $r["url"];?>"><img src="<?php echo $r["area_logo"];?>" alt="">
                     <div class="mask">
                         <div class="ma m1">
-                            <h3>绿色乡村</h3>
+                            <h3><?php echo $r["title"]?></h3>
                             <i></i>
-                            你有你的闪耀，我有我的小清新，体验清<br>新雅致生活，缓解一天疲劳
+                            <?php echo $r["area_html"];?>
                         </div>
                     </div>
                 </a> 
             </div>
         </div>
-
     </div>
-
     <div class="home custom">
         <div class="title">
-<?php $area = $c->getAdArea(108); ?>
+        <?php $area = $c->getAdArea(108); ?>
             <h2><?php echo $area['area_name']; ?></h2>
             <p><?php echo $area['remark']; ?></p>
         </div>
         <div class="customin cu-show" style="position: relative; padding:0px;">
             <div id="marquee" style="margin: 0px auto; width:1098px; height:440px; ">
+                
                 <ul  style="padding:100px 0; ">
+                    <?php $l = $c->getList(6,3);?>
+                    <?php foreach ($l["list"] as $k => $v){?>
                     <li>
                         <div class="cu5">
-                            <img src="http://www.mogoroom.com:80/pages/imgs/lc.png" alt="">
+                            <img src="<?php echo $v["img_url"];?>" alt="">
                             <i></i>
-                            <h3>蘑菇客-老仇</h3>
-                            <p>周末的午后，阳光暖暖地透过阳台，洒在餐桌上，美女室友正吃着老仇做的牛油果奶油意大利面，而老仇则在一旁插花...</p>
-                            <a href="http://www.mogoroom.com/queryArticle_86.html" class="more cu2">阅读全文</a>
+                            <h3><?php echo $v["title"];?></h3>
+                            <p><?php echo $v["desc"];?>....</p>
+                            <a href="<?php echo $v["surl"];?>" class="more cu2">阅读全文</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="cu5">
-                            <img src="http://image.mogoroom.com//imagefile/website/index/czh.png" alt="">
-                            <i></i>
-                            <h3>蘑菇客-陈志豪</h3>
-                            <p>90年出生，摩羯座，飞行员职业的陈志豪今年五月入住了蘑菇公寓，简单温馨的公寓生活让他这个空中飞人多了一份安定...</p>
-                            <a href="http://www.mogoroom.com/queryArticle_7.html" class="more cu2">阅读全文</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="cu5">
-                            <img src="http://image.mogoroom.com//imagefile/website/index/hk.png" alt="">
-                            <i></i>
-                            <h3>蘑菇客-何况</h3>
-                            <p>那天，日本的帅哥率性地从房间拿出小提琴，顺手拉了一曲生日快乐，让我和在场的寿星感动不已。那天我们打破了各自工作...</p>
-                            <a href="http://www.mogoroom.com/queryArticle_43.html" class="more cu2">阅读全文</a>
-                        </div>
-                    </li>
+                    <?php }?>
                 </ul>
             </div>
             <div class="control"><a href="javascript:void(0);" id="goL"></a> <a href="javascript:void(0);" id="goR"></a></div>
@@ -321,19 +310,17 @@
     </div>
     <div class="home">
         <div class="title">
-<?php $area = $c->getAdArea(109); ?>
+        <?php $area = $c->getAdArea(109); ?>
             <h2><?php echo $area['area_name']; ?></h2>
             <p><?php echo $area['remark']; ?></p>
         </div>
         <div class="customin cu3">
-            <div class="cu4">
-                <a target="_blank" href="http://www.mogoroom.com/queryArticle_65.html"><img src="http://image.mogoroom.com//imagefile/website/index/img7.jpg" alt=""></a>
+            <?php $l = $c->getList(9,3);?>
+            <?php foreach ($l["list"] as $k => $v){?>
+            <div class="cu4 <?php echo $k == 2 ? "c-r" : "";?>">
+                <a target="_blank" href="<?php echo $v["surl"];?>"><img src="<?php echo $v["img_url"];?>" alt="<?php echo $v["title"];?>"></a>
             </div>
-            <div class="cu4">
-                <a target="_blank" href="http://www.mogoroom.com/queryArticle_66.html"><img src="http://image.mogoroom.com//imagefile/website/index/img8.jpg" alt=""></a>
-            </div>
-            <div class="cu4 c-r">
-                <a target="_blank" href="http://www.mogoroom.com/queryArticle_62.html"><img src="http://image.mogoroom.com//imagefile/website/index/img9.jpg" alt=""></a>
+            <?php }?>
             </div>        
         </div>    
     </div>

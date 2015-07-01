@@ -416,7 +416,8 @@
             <h1 style="padding-left:70px;"><i></i>猜你喜欢</h1>
             <div id="marquee" style="margin: 0px auto; width:1200px;">
                 <ul>
-
+                    <?php $r = $c->getArea(3);?>
+                    <?php foreach($r["list"] as $k => $v){?>
                     <li>
                         <div class="tuijian">
                             <a target="_blank" href="http://www.mogoroom.com:80/room/1342.shtml"> 
@@ -428,44 +429,7 @@
                             </a>
                         </div>
                     </li>
-
-                    <li>
-                        <div class="tuijian">
-                            <a target="_blank" href="http://www.mogoroom.com:80/room/4346.shtml"> 
-                                <img src="http://image.mogoroom.com/imagefile/room/6/2/4346/4346_1415772272512.jpg!middle" alt="浦东新区金苹果花园RoomB南卧">
-                                <div>浦东新区金苹果花园RoomB<br>
-                                    <span>14.9㎡ | 11/11层 | 南卧<br>
-                                        <b>2340</b> 元/月</span>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="tuijian">
-                            <a target="_blank" href="http://www.mogoroom.com:80/room/5999.shtml"> 
-                                <img src="http://image.mogoroom.com/imagefile/room/9/2/5999/5999_1421216496621.jpg!middle" alt="闵行区中祥龙柏苑RoomF北卧">
-                                <div>闵行区中祥龙柏苑RoomF<br>
-                                    <span>23.3㎡ | 11/12层 | 北卧<br>
-                                        <b>2590</b> 元/月</span>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="tuijian">
-                            <a target="_blank" href="http://www.mogoroom.com:80/room/6213.shtml"> 
-                                <img src="http://image.mogoroom.com/imagefile/room/3/0/6213/6213_1422424671329.jpg!middle" alt="浦东新区环球翡翠湾花园RoomC北卧">
-                                <div>浦东新区环球翡翠湾花园RoomC<br>
-                                    <span>14.3㎡ | 14/16层 | 北卧<br>
-                                        <b>1900</b> 元/月</span>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-
-
+                    <?php }?>
                 </ul>
             </div>
             <div class="control con-1"><a href="javascript:void(0);" id="goL"></a> <a href="javascript:void(0);" id="goR"></a></div>
@@ -473,109 +437,22 @@
 
         <div class="center">
             <div class="part2">
-                <h1><i></i>乐活蘑都</h1>
+                <h1><i></i><?php $cate = $c->categore(3);echo $cate["cname"];?></h1>
                 <ul class="party ldj-2">
+                    <?php $l = $c->list(3,3);?>
+                    <?php foreach($l["list"] as $k => $v){ ?>
+                    <li  class="<?php echo $k == 1 ? "ldj-2-m" : "";?>">
 
-
-                    <li  >
-
-                        <a href="http://www.mogoroom.com:80/queryArticle_87.html"><img src="http://image.mogoroom.com/imagefile/lehuo/5/2/5/5_1433818065266.jpg" alt="" style="width:278px;height:185px;">
-
-                            <div class="ldj-2-1">不HIGH非蘑 | 浪漫华尔兹交谊舞学习
-                                    <!-- <div class="ribbon"><span>进行中</span></div> -->
+                        <a href="<?php echo $v["surl"];?>"><img src="<?php echo $v["img_url"];?>" alt="" style="width:278px;height:185px;">
+                            <div class="ldj-2-1"><?php echo $v["title"];?>
+                                   <!-- <div class="ribbon"><span>进行中</span></div> -->
                             </div>
-
                         </a>
                     </li>
-
-
-
-                    <li class="ldj-2-m" >
-
-                        <a href="http://www.mogoroom.com:80/queryArticle_88.html"><img src="http://image.mogoroom.com/imagefile/lehuo/5/2/5/5_1433818613872.jpg" alt="" style="width:278px;height:185px;">
-
-                            <div class="ldj-2-1">6月13日 | 霸气烧烤邀你免费撸串
-                                    <!-- <div class="ribbon"><span>进行中</span></div> -->
-                            </div>
-
-                        </a>
-                    </li>
-
-
-
-                    <li  >
-
-                        <a href="http://www.mogoroom.com:80/queryArticle_85.html"><img src="http://image.mogoroom.com/imagefile/lehuo/5/2/5/5_1433298806472.jpg" alt="" style="width:278px;height:185px;">
-
-                            <div class="ldj-2-1">活动招募∣ 请你跳爱的华尔兹
-                                    <!-- <div class="ribbon"><span>进行中</span></div> -->
-                            </div>
-
-                        </a>
-                    </li>
-
-
+                    <?php }?>
                 </ul>
                 <div class="clear"></div>
-                <!-- <div class="hot hotin">
-                        <ul>
-                        <li><span><i></i></span><h2>覆盖全城</h2>交通便利,地铁0距离</li>
-                        <li class="ho1"><span><i></i></span><h2>底价公开</h2>高性价比,极具竞争力</li>
-                        <li class="ho2"><span><i></i></span><h2>品质管控</h2>高档电梯公寓,专业运维团队</li>
-                        <li class="ho3"><span><i></i></span><h2>安全保障</h2>租客认证,小区24小时安保</li>
-                        <li class="ho4"><span><i></i></span><h2>社交人脉</h2>白领社交圈,收获可信赖人脉</li>
-                    </ul>
-                </div> -->
-
             </div>
-        </div>
-
-
-        <div class="appointment" id = "appointment" style="position:fixed;height: 470px;" >
-            <h1>我要预约看房</h1> <i id="appClose" class="appClose">×</i>
-            <div id="appS1" style="margin-left:-25px;">
-                <div class="app_title a_top">请填写真实信息，我们将尽快与您联系</div>
-                <ul>
-                    <li><span class="app-l" style="padding-top:10px;"><b class="req">*</b> 姓名：</span><input id="uName" maxlength="20" type="text" style="width:145px;" required/><br><p class="req  r-l"></p>   </li>
-                    <li><label class="sex1"><input name="rander" value="男" checked="checked" type="radio" style="border:none"/>　先生</label>　<label class="sex1"><input name="rander" value="女士" type="radio" style="border:none" />　女士</label></li>
-                    <li><span class="app-l" style="padding-top:10px;"><b class="req">*</b> 手机：</span><input id="userPhones" maxlength="11" type="text" required/><br><p class="req  r-l"></p></li>
-                    <li><span class="app-l" style="padding-top:10px;">微信：</span><input type="text" id="uWeixin"/></li>
-
-                    <li><span class="app-l" style="padding-top:6px;"><b class="req">*</b> 预计看房时间：</span>
-                        <div class="input-append date form_datetime" style="display: inline; margin-left: -3px; position: relative; ">
-                            <input size="16" type="text" value="" readonly id="appoDate" style="font-size: 16px; margin-top:6px;"> 
-                            <span class="add-on" style="z-index: 2;position: absolute;right:10px;top: -20px;*top:10px;padding:0px; height: 25px;min-width: 20px; line-height: 25px; border:none; background-image:url(http://www.mogoroom.com:80/pages/imgs/img_05.png);
-                                  background-position: -205px -32px;cursor: pointer;">
-                                <a class="icon-th" style="background: none;"></a></span>
-                        </div>
-                        <br><p class="req r-l"></p></li>
-                    <li style="height: 65px;"><span class="app-l" style="float: left;"> <b class="req">*</b> 如何知晓我们：</span>
-                        <input  type="text" style="text-align:left;"  name="appoFirstKnow" id="appoFirstKnow"  >
-                        <br>
-                        <p class="laiyuan"style="margin-bottom:6px;" >请回忆一下,您首次是如何知晓蘑菇公寓。如:58,赶集,微博,微信,朋友</p>
-                        <p class="req  r-l"></p>
-                    </li>
-                    <li class="all"><span class="app-l" style="float: left;"> <b class="req">*</b>校验：</span><input type="text" name="checkCode" style="width:95px;" required/>
-                        <img alt="验证码" src="http://www.mogoroom.com:80/affiliate/getCheckCode.shtml" style="width: 110px; height: 30px;margin-left: 10px;margin-right:5px;vertical-align: middle;cursor: pointer;" id="codeImage" onclick="changeCode();"><a href="#" onclick="changeCode();" class="overLine">看不清?</a><br><b class="req errMsg" style=";">验证码必填,且为4位</b></li>
-
-                </ul>
-                <input type="hidden" name="sex" value="" id="sextrue" />
-                <div class="clear"></div>
-
-                <div class="s">
-                    <span id="result0" style="margin:0;"></span>
-                    <input class="in1" type="button" onclick="sendMail();" id="s" value="提交"/>
-                </div>
-
-            </div>
-            <div class="appS2">
-                <h1>已收到您的预约,我们会尽快与您联系,谢谢!</h1>
-                <p>温馨提示：本次预约成功后，蘑菇管家将贴心带看多套房源供您参考</p>
-            </div> 
-
-            <iframe id="AppFrame" src=""  allowtransparency="true" style="background-color:transparent" title="test" frameborder="0" scrolling="no" width="500" height="0" > 
-            </iframe>
-
         </div>
     <?php $c->loadView("front/qingcaitao/inc.footer.php"); ?>
     </body>

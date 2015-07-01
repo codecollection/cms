@@ -256,13 +256,27 @@ class Info extends CBase {
         return $area;
     }
 
+    /**
+     * 获取推荐位内容
+     * 
+     * @param type $areaId
+     * @return string
+     */
     public function getArea($areaId){
         
         $this->loadModel("recommend");
         
-        $area = $this->recommend->fields("area_id,id_list,model_id")->find($areaId);
+        $area = $this->recommend->find($areaId);
         
-        return "";
+        if(!empty($area["id_list"])){
+            $this->setModel($area["model_id"]);
+            $l = $this->info->where($this->info->tableName."_id"." in ({$area["id_list"]})")->search(false);
+
+            $lists = $this->info->insertUrl($l,$area["model_id"]);
+            $area =  array_merge($area,array("list" => $lists));
+        }
+        
+        return $area;
     }
     
     /**
@@ -282,7 +296,11 @@ class Info extends CBase {
         
     }
 
-        public function getFlink(){
+    /**
+     * 获取友链
+     * @return type
+     */
+    public function getFlink(){
         $this->loadModel("flink");
         
         $flinks = $this->flink->search(false);
