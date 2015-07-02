@@ -42,10 +42,10 @@
 <div class="lehuo lehuo-1">
 <div class="lh-navBar">
 	<ul class="lh-nav clearfix">
-		<li class="m dq"><a href="<?php base_url()."/info/l?cid=2"?>" ><i></i></a></li>
+		<li class="m"><a href="<?php base_url()."/info/l?cid=2"?>" ><i></i></a></li>
                 <?php $cate = $c->getCate(2);?>
                 <?php foreach($cate['son'] as $k => $v){ ?>
-		<li class="m"><a href="<?php echo $v["surl"];?>"><?php echo $v['cname'];?></a></li>
+		<li class="m <?php echo $v["cate_id"] == $cid ? "dq":"";?>"><a href="<?php echo $v["surl"];?>"><?php echo $v['cname'];?></a></li>
                 <?php }?>
 	</ul>
 </div>

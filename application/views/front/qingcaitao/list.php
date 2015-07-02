@@ -123,13 +123,13 @@
                             <h1>
                                 <a target="_blank" href="/info/d2?id=<?php echo $v['cms_house_id'];?>"><?php echo $v["Title"] . "-". $v["title"] . "-".$v["room_direction"]."-".$v["room_area"]."㎡";?>
                                 </a><br>
-                                <span><?php echo $v["desc"];?></span>
+                                <span><?php echo $v["style_desc"];?></span>
                             </h1>
 
                             <div class="room-spec"><?php echo $v["floor"] ?>层&nbsp; | <?php echo $v["room_area"]?>㎡ | <?php echo $v["room_direction"]?>
                             </div>
                             <div>
-                                <?php echo $v["desc"]?>
+                                <?php echo $v["address_desc"]?>
                             </div>
                             <div class="feature">
                                 <?php $tags = explode(",", $v["tag"]);?>

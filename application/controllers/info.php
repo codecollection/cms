@@ -4,11 +4,19 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Info extends CBase {
 
     public $page;
+    
+    public function __construct() {
+        parent::__construct();
+        
+        $cid = $this->getData('cid');
+        $this->setData("cid", $cid);
+    }
+
     /**
      * 首页
      */
     public function index(){
-       
+        
         $this->renderHTMLView("cover");
     }
     /**
@@ -20,11 +28,15 @@ class Info extends CBase {
         
         $cid = $this->getData('cid');
         $p = $this->getData('p');
-        
+        $tag = $this->getData("tag");
+        if(empty($cid)){$cid = 1;}
         $this->cid = $cid;
         
         $cateData = $this->cate->find($cid);
         
+        if(!empty($tag)){
+            $this->info->where("B.tag like '%{$tag}%'");
+        }
         //如果p小于等于0.则表示是分类下面的首页
         if(empty($p) || $p <=0 ){
             $tplIndex = $cateData["tpl_index"];
