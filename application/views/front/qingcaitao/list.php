@@ -6,39 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="renderer" content="webkit">
         <meta name="HandheldFriendly" content="true">
-        <title><?php echo empty($cate["ctitle"]) ?  $cate["ctitle"] : $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
+        <title><?php echo $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
         <meta name="keywords" content="<?php echo $cate["ckey"]?>">
         <meta name="description" content="<?php echo $cate["cdesc"]?>">
         <?php $c->loadView("front/qingcaitao/inc.header.php"); ?>    
         <link rel="stylesheet" href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/list.css" >
-        <script>
-            function checkEle(context){
-                $(context).addClass('selected').siblings('.selected').removeClass('selected');
-                return $(context).text();
-            }
-            
-            function listenSelect(context){
-                var selected = {};
-                context.on('click.sel','a',function(){
-                    var self = $(this);
-                    var key = self.parents('.f_down')[0].id;
-                    var newText = checkEle(self,selected);
-                    updateSelected(key,newText,selected); 
-                });
-            }
-            
-            function updateSelected(key,value,selected){
-                selected = selected || {};
-                selected[key] = value;
-            }
-            $(document).ready(function(){
-                var filterFx = $('.filterFx');
-                listenSelect(filterFx);
-            });
-        </script>
-        <style>
-            
-        </style>
+        <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/search.js"></script>
     </head>
     <body class="">
         <?php $c->loadView("front/qingcaitao/inc.nav.php");?>
@@ -46,46 +19,46 @@
             <ul class="filterFx">
                 <li>
                     <b>区&nbsp;域：</b>
-                    <div class="f f_down" id="area">
-                        <a href="javascript:void();">不限</a>
+                    <div class="f f_down" id="zone">
+                        <a href="javascript:;">不限</a>
                         <?php $tag = $c->getTag(1);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag_id"] == 1 ? "selected" : "";?>"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag"] == $c->getData("zone") ? "selected" : "";?>"><?php echo $v["tag"];?></a>
                         <?php }?>
                        <!-- <i class="a_down"></i>-->
                     </div>
                 </li>
                 <li><b>地&nbsp;铁：</b>
-                    <div class="f f_down" id="b">
-                        <a href="javascript:void();">不限</a>
+                    <div class="f f_down" id="subway">
+                        <a href="javascript:;">不限</a>
                         <?php $tag = $c->getTag(2);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag"] == $c->getData("subway") ? "selected" : "";?>"><?php echo $v["tag"];?></a>
                         <?php }?>
                        <!-- <i class="a_down b-show"></i>-->
                     </div>
                 </li>
-                <li><b>租&nbsp;金：</b> <div class="f f_down" id="c">
-                        <a href="javascript:void();">不限</a><?php $tag = $c->getTag(3);?>
+                <li><b>租&nbsp;金：</b> <div class="f f_down" id="discou_price">
+                        <a href="javascript:;">不限</a><?php $tag = $c->getTag(3);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="javascript:void();" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag"] == $c->getData("discou_price") ? "selected" : "";?>"><?php echo $v["tag"];?></a>
                         <?php }?>
                     </div>
                 </li>
-                <li><b>方&nbsp;式：</b> <div class="f f_down" id="j">
-                        <a href="javascript:void();">不限</a>
+                <li><b>方&nbsp;式：</b> <div class="f f_down" id="style">
+                        <a href="javascript:;">不限</a>
                         <?php $tag = $c->getTag(4);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="javascript:void();" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag"] == $c->getData("discou_price") ? "style" : "";?>"><?php echo $v["tag"];?></a>
                         <?php }?>
                     </div>
                 </li>
-                <li class="tese1" id="e"><b>特&nbsp;色：</b>
+                <li class="tese1" id="room_direction"><b>特&nbsp;色：</b>
                     <div class="f f_down">
-                    <a href="javascript:void();">不限</a>
+                    <a href="javascript:;">不限</a>
                     <?php $tag = $c->getTag(5);?>
                         <?php foreach($tag as $k => $v){?>
-                        <a href="javascript:void();" id="<?php echo $v["tag_id"]?>" class="select_id"><?php echo $v["tag"];?></a>
+                        <a href="javascript:;" id="<?php echo $v["tag_id"]?>" class="select_id <?php echo $v["tag"] == $c->getData("room_direction") ? "selected" : "";?>"><?php echo $v["tag"];?></a>
                         <?php }?>
 <!--                    <select id="d" style="font-size:12px;">
                         <option selected="selected" value="0">风格</option>
@@ -97,7 +70,7 @@
                     </div>
                 </li>
             </ul>
-            <div id="param">筛选条件：<i>全部清除</i>
+            <div id="param">筛选条件：<i><a href="<?php echo "/info/l?cid=".$cid;?>">全部清除</a></i>
             </div>
         </div>
         <div class="content1" style="width:1200px;margin:0 auto">
