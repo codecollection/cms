@@ -121,7 +121,7 @@ class Info extends CBase {
         $lists = $this->info->search();
         
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
-        $lists['pagecode'] = $this->getPageHtml("/info/l?" . http_build_query(array()), $lists['count'],$pagesize);
+        $lists['pagecode'] = $this->getPageHtml("/info/l?cid=" . $cateId. "&" . http_build_query(array()), $lists['count'],$pagesize);
         
         return $lists;
     }

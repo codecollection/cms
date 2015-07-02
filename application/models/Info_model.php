@@ -61,8 +61,11 @@ class Info_model extends MBase{
      * @return string
      */
     public function insertUrl($list,$modelId){
+        
         foreach($list as $key => $val){
+            
             $list[$key]['surl'] = "/info/d?id=".$val[$this->tableName."_id"]."&mid=".$modelId;
+            $list[$key]["desc"] = empty($val["desc"]) ? RKit::utf8_substr(strip_tags($val["body"]),0, 220) : $val["desc"];
         }
         
         return $list;

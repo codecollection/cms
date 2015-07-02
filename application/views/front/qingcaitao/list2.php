@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo empty($cate["ctitle"]) ?  $cate["ctitle"] : $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
+<title><?php echo $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
 <meta name="keywords" content="<?php echo $cate["ckey"]?>">
 <meta name="description" content="<?php echo $cate["cdesc"]?>">
 <?php $c->loadView("front/qingcaitao/inc.header.php"); ?>

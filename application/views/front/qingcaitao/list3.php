@@ -2,21 +2,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title><?php echo empty($cate["ctitle"]) ?  $cate["ctitle"] : $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
-        <meta name="keywords" content="<?php echo $cate["ckey"]?>">
-        <meta name="description" content="<?php echo $cate["cdesc"]?>">
+<title><?php echo $cate["cname"];?>－<?php echo $c->getItem("site_name");?></title>
+<meta name="keywords" content="<?php echo $cate["ckey"]?>">
+<meta name="description" content="<?php echo $cate["cdesc"]?>">
         
 <?php $c->loadView("front/qingcaitao/inc.header.php"); ?>
 <style>
-
     .flexslider{width:100%;margin:0 auto;display:block;z-index:-1;} 
     .flex-active-slide{display:block;z-index:100;}
     .flexslider {position: relative;height: 100%;overflow: hidden;background:#FFF;}
     .slides {position: relative;z-index: 99;height: 100%;width: 100%; background:url(<?php echo CSSHOST; ?>/style/front/<?php echo TEMPLATE; ?>/imgs/banner_bg1.png) repeat;}
     .slides li {height: 100%; background-size:100%;background-position:0 50%;position:relative;/*  background:#FFF; position: absolute;z-index: 2; */}
     .slides li img{position: relative; bottom:45%;overflow:auto;width:100%; display:inherit; background:#FFF; }
-
 </style>
 </head>
 
@@ -56,8 +53,8 @@
 		</a>
 		<div class="list-r">
 			<h1><a href="<?php echo $v["surl"]?>"><?php echo $v["title"]?></a></h1>
-			<h4><?php echo "2015/05/25 09:45"?></h4>
-			<p><?php echo $v["desc"];?>
+			<h4><?php echo $c->echoTime($v["cdate"]);?></h4>
+			<p><?php echo $v["desc"];?>...
 			</p>
 			<a href="<?php echo $v["surl"]?>" class="read">阅读全文&gt;</a>
 			<div class="like liking"><i></i>阅读(<?php echo $v["visitors"]?>)</div>
