@@ -8,7 +8,7 @@ class Login extends CUserBase {
 
     protected $controllerId = "u";
     
-    function __construct() {
+    public function __construct() {
 
        parent::__construct();
     }
@@ -23,10 +23,10 @@ class Login extends CUserBase {
         
         if($data){
             
-            redirect("/user/home");
+            redirect("/{$this->user}/home");
             exit;
         }
-        $this->load->view("user/login",array("c"=>$this)); 
+        $this->load->view("{$this->user}/login",array("c"=>$this)); 
     }
     
     /**

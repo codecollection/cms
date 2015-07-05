@@ -8,6 +8,12 @@
         
     protected $controllerId = "";
      
+    /**
+     * 用户中心文件夹名称
+     * @var type 
+     */
+    public $user = "user";
+    
     public function __construct() {
         parent::__construct();
         if(!empty($this->controllerId)){
