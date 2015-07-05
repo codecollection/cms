@@ -11,10 +11,22 @@
     public function __construct() {
         parent::__construct();
         if(!empty($this->controllerId)){
-            $this->load->model("user/" . $this->controllerId . '_model', $this->controllerId);
+            $this->load->model($this->controllerId . '_model', $this->controllerId);
             $this->bindModel = $this->{$this->controllerId};
         }
     }
+    
+     /**
+     * 获取配置
+     * 
+     * @param type $key
+     * @return type
+     */
+    public function getItem($key){
+        
+        return RConfig::get($key);
+    }
+    
     
     public function lists($params = array()){
         //设置活动的模块

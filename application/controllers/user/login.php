@@ -26,7 +26,7 @@ class Login extends CUserBase {
             redirect("/user/home");
             exit;
         }
-        $this->renderUserView("login"); 
+        $this->load->view("user/login",array("c"=>$this)); 
     }
     
     /**

@@ -236,17 +236,6 @@ class Info extends CBase {
     }
 
     /**
-     * 获取配置
-     * 
-     * @param type $key
-     * @return type
-     */
-    public function getItem($key){
-        
-        return RConfig::get($key);
-    }
-    
-    /**
      * 获取广告位下面的广告
      * 
      * @param type $areaId 广告位ID

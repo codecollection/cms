@@ -26,7 +26,7 @@ class Reg extends CUserBase {
             redirect("/user/login");
             exit;
         }
-        $this->renderUserView("reg"); 
+        $this->load->view("user/reg",array("c"=>$this)); 
     }
     
     /**
