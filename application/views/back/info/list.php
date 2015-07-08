@@ -36,7 +36,7 @@
                 <td width="60">排序</td>
                 <td>标题</td>
                 <td>阅读量</td>
-                <td width="60">操作</td>
+                <td width="100">操作</td>
             </tr>
         </thead>
         <tbody>
@@ -52,6 +52,7 @@
                     <?php echo $v["visitors"];?>                                                                                                     </td>
                 <td>
                     <a class="btn" href="/back/<?php echo $this->controllerId?>/edit?id=<?php echo $v[$thisc->modelName."_id"];?>&cateId=<?php echo $v['last_cate_id']?>">编辑</a>
+                    <a class="btn" href="/back/<?php echo $this->controllerId?>/sonModel?id=<?php echo $v[$thisc->modelName."_id"];?>&modelId=<?php echo $modelId;?>">子模型</a>
                 </td>
             </tr>
             <?php }?>

@@ -22,9 +22,9 @@
     DD_belatedPNG.fix('div, ul, li, input , h2, b,span,a,a:hover');
 </script>
 <![endif]--><!--本页JS和样式-->
-
+<?php echo $js;?>
 <link rel="stylesheet" type="text/css" href="/style/user/css/admin.css">
-
+<?php echo $css;?>
 </head>
 <body>
 <!-- 加载头部 -->
@@ -32,12 +32,9 @@
     <div class="header">
         <div class="hd_logo l"><a href="index.php"><img src="/style/back/image/logo.png" /></a></div>
         <ul class="user_hd r">
-            <li><a href="info.list.php?tpl=edit">添加文档</a></li>
-            <li><a href="category.php">分类管理</a></li>
-			<li><a href="/" target="_blank">前台首页</a></li>
-            <li><a href="cache.clear.php">清理缓存</a></li>
-            <li><a href="javascript:void(0);" onclick="restart();">重启账号</a></li>
-            <li><span><?php //echo $admin["group"];?>&nbsp;(&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php //echo $admin["name"];?></a>)</span></li>
+            <li><a href="/" target="_blank">我的公众号</a></li>
+            <li><a href="cache.clear.php">我的资料</a></li>
+            <li><span>欢迎你:<?php //echo $admin["group"];?>&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php  echo $user["name"];?></a></span></li>
             <li><a href="/user/login/loginOut">退出</a></li>
         </ul>
         <ul class="hd_tabs" id="hd_tabs">

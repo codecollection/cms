@@ -114,6 +114,7 @@ class NavPanel {
                         array('title' => '添加编辑', 'level' => 'C0101'), //按钮功能配置
                         array('title' => '删除文档', 'level' => 'C0102'),
                         array('title' => '审核文档', 'level' => 'C0103'),
+                        array('title' => '子模型文档', 'level' => 'C0104'),
                     ),
                 ),
                 array(
@@ -324,13 +325,13 @@ class NavPanel {
         array(
             'title' => "账号安全", //功能导航分类
             'url' => '/user/safe',
-            'level' => 'B',
+            'level' => 'C',
             'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
             'menu'  => array(
                 array(
                     'title'=>'账号安全',
                     'url' => '/user/safe',
-                    'level' => 'B01', //页面权限，也就是列表权限
+                    'level' => 'C01', //页面权限，也就是列表权限
                     'menu' => array(
                         //array('title' => '', 'level' => ''), //按钮功能配置
                     ),
@@ -338,7 +339,7 @@ class NavPanel {
                 array(
                     'title'=>'账号绑定',
                     'url' => '/user/info/set',
-                    'level' => 'B02', //页面权限
+                    'level' => 'C02', //页面权限
                     'menu' => array(
                         array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
                     ),
@@ -348,13 +349,13 @@ class NavPanel {
         array(
             'title' => "我的消息", //功能导航分类
             'url' => '/user/safe',
-            'level' => 'B',
+            'level' => 'D',
             'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
             'menu'  => array(
                 array(
                     'title'=>'未读消息',
                     'url' => '/user/safe',
-                    'level' => 'B01', //页面权限，也就是列表权限
+                    'level' => 'D01', //页面权限，也就是列表权限
                     'menu' => array(
                         //array('title' => '', 'level' => ''), //按钮功能配置
                     ),
@@ -362,7 +363,7 @@ class NavPanel {
                 array(
                     'title'=>'收件箱',
                     'url' => '/user/info/set',
-                    'level' => 'B02', //页面权限
+                    'level' => 'D02', //页面权限
                     'menu' => array(
                         array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
                     ),

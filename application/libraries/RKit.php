@@ -111,68 +111,6 @@ class RKit {
     }
     
     /**
-     * 写入日志
-     * @param type $module_identity
-     * @param type $msg
-     * @param type $data
-     * @return boolean
-     */
-//    public static function appendFileLog($userId, $userName, $module_identity, $msg) {
-//        
-//        $content = array(
-//            'employment_id' => $userId,
-//            'name'          => $userName,
-//            'content'       => $msg,
-//            'create_time'  => time(),
-//            'module_identity' => $module_identity,
-//            'request_data'  => var_export(array(
-//                'post' => $_POST,
-//                'get'  => $_GET,
-//                'cookie'=> $_COOKIE,
-//                'file' => $_FILES,
-//            ), true),
-//            'ip'           => $_SERVER['REMOTE_ADDR'],
-//            'user_agent'    => $_SERVER['HTTP_USER_AGENT'],
-//        );
-//        
-//        $path = realpath('.') . '/files/logs/' . date('Ym');
-//        if (!is_dir($path)) {
-//            $old = umask(0);
-//            mkdir($path, 0777, true);
-//            umask($old);
-//        }
-//        
-//        $path .= '/' . date('d');
-//        
-//        file_put_contents($path, base64_encode(json_encode($content)) . "\n", FILE_APPEND);
-//        return true;
-//    }
-    
-    /**
-     * 取得某一天的日志内容
-     * @param int $date
-     * @param boolean $isClean  取得内容后是否删除文件内容
-     * @return array
-     */
-//    public static function getFileLog($date, $isClean = false) {
-//        
-//        $date = str_split($date, 6);
-//        
-//        $path = realpath('.') . '/files/logs/' . $date[0] . '/' . $date[1];
-//        $content = file($path);
-//        if ($isClean) {
-//            @unlink($path);
-//        }
-//        
-//        $return = array();
-//        foreach ($content as $line) {
-//            $return[] = json_decode(base64_decode($line), true);
-//        }
-//
-//        return $return;
-//    }
-    
-    /**
      * 取得提交的数据
      * @return array
      */
@@ -594,5 +532,18 @@ class RKit {
         
         return $type;
     }
+
+    /**
+    * 中文字符截取
+    *
+    * @param  $str 要截取字符串
+    * @param  $start 开始位置
+    * @param  $length 长度
+    */
+   public static function utf8_substr($str, $start, $length, $code = "UTF-8") {
+       if (function_exists('mb_substr')) {
+           return mb_substr($str, $start, $length, $code);
+       }
+   }
 
 }

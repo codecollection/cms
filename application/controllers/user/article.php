@@ -24,8 +24,6 @@ class Article extends CUserBase {
      */
     public function index(){
         
-        $this->lists();
-       
     }
     
 }

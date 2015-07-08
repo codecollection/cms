@@ -244,7 +244,7 @@ function setCookieAndRedirect(json) {
     var fromUrl = "/";
     $.cookie("account",account);
     $.cookie("fromUrl",fromUrl);
-    window.location.href = "/user/success";
+    window.location.href = "/user/reg/success";
 }
 
 /**

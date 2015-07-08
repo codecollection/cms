@@ -3,7 +3,7 @@
 <head>
 <meta name="keywords" content=""/>
 <meta name="description" content="" />
-<link href="/style/front/css/style.css" type="text/css" rel="stylesheet" />
+<link href="/style/front/<?php echo TEMPLATE?>/css/style.css" type="text/css" rel="stylesheet" />
 <title>注册成功_用户注册</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
      <div class="leftside fl">
           <p class="successful">注册成功！</p>
           <p class="success-normal">恭喜您，<span class="orange"><?php echo $account;?></span> 成为当乐网用户！</p>
-          <p class="success-link">帐号安全级别较低，建议您立即设置帐号保护。<a href="/user/center/info"  title="进入安全中心" class="success-enter">进入安全中心>></a></p>
+          <p class="success-link">帐号安全级别较低，建议您立即设置帐号保护。<a href="/user/safe"  title="进入安全中心" class="success-enter">进入安全中心>></a></p>
           <a href="<?php echo $fromUrl;?>" title="返回上次访问页面" class="success-return tc">返回上次访问</a>
           <div class="success-dot"></div>
           <a href="http://bbs.d.cn/"  title="游戏社区"><p class="success-broadcast cast-1"><span class="success-broadcast-title">游戏社区</span><span class="success-broadcast-detail">最新游戏攻略随时看，参加活动，赢取丰厚奖励。</span></p></a>

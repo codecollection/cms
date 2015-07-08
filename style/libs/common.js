@@ -700,9 +700,11 @@ var C={
         });
         
         $(formID).find(".ckeditor").each(function(){
+            
             for ( instance in CKEDITOR.instances ) {
 
             value[instance]=CKEDITOR.instances[instance].getData();
+            
         }
         });
         

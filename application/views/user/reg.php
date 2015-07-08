@@ -10,7 +10,7 @@
 <div class="cover" id="cover"></div>
 <div class="model-outer of">
     
-    <a href="" title="" class="web-logo">微信公众号推广平台</a>
+    <a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>" class="web-logo">微信公众号推广平台</a>
     <span class="headerTit">用户注册</span>
 
     <div class="line fl of"></div>
@@ -84,8 +84,8 @@
 </div>
 <script type="text/javascript" src="/style/libs/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="/style/libs/common.js"></script>
-<script type="text/javascript" src="/style/front/js/validate.js"></script>
-<script type="text/javascript" src="/style/front/js/register.js"></script>
+<script type="text/javascript" src="/style/front/<?php echo TEMPLATE?>/js/validate.js"></script>
+<script type="text/javascript" src="/style/front/<?php echo TEMPLATE?>/js/register.js"></script>
 
 </body>
 </html>

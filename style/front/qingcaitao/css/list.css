@@ -1,0 +1,157 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{font-size: 12px;}
+            html,body{font-size: 12px;height: 100%;min-width:1220px;}
+            nav{background: #fc6622;}
+            .nav_r #nav1 span{font-size:14px;}
+            .footWrap{width: 100%;margin-top: -204px;}
+            .fools{position: fixed;bottom: -6px;left: 0px;z-index: 99999;}
+            .fools span {position: absolute; color:#FFF;top: 20px;right: 40px;cursor: pointer;display: block;width: 50px;height: 50px;font-size: 80px;*padding-bottom: 20px;}
+            .fools img{width:100%;min-height: 70px;}
+            .green-1{display:none!important;}
+
+            .search { padding:0 !important;}
+            .search2 { top:3px !important;}
+            .search .searchBtn2 { top:3px;}
+            .search2 ul li:hover { background-color:#ff6900 !important; color:white; }
+            .searchOnMap b { top:17px;}
+            #viewList {
+                postion:relative !important;
+            }
+            .folderbtn {
+                position: absolute;
+                top: 50%;
+                right: 640px;
+                width: 25px;
+                height: 80px;
+                background-color: white;
+                z-index: 10;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                cursor: pointer;
+                border: 1px solid #c7c7c7;
+                border-right: none;
+                margin-top:-40px;
+
+            }
+            .folderwrap {
+                position:relative;
+                width:100%;
+                height:100%;
+            }
+
+            .wrapTop {
+                position:relative;
+
+            }
+
+            .sectionWrap1 { 
+                width:595px;
+            }
+
+            #map3 { 
+                right:642px;
+            }
+
+
+            .arrow { 
+                background: url("http://www.mogoroom.com:80/pages/imgs/u13.png") no-repeat 0 0;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 28px;
+                left: 0;
+                display:inherit;
+            }
+
+            .arrow1 {
+                background: url("http://www.mogoroom.com:80/pages/imgs/u14.png") no-repeat 0 0;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 28px;
+                left: 0;
+                z-index:0;
+                display:none;
+            }
+
+            .searchOnMap {
+                border-radius:5px;
+                box-shadow:none;
+            }
+
+            .select_id:hover {
+                background-color:black;
+                color:white;
+
+            }
+
+            .filter a:hover {
+                color:white;
+                background-color:#fc6622;
+                //width: 1200px;
+            }
+
+            .c-show {display:none; }
+
+            .filter .selected{
+                color:white;
+                background-color:#fc6622;
+            }
+            .filter a { 
+                padding:0 0px 0px 0px;
+                transition:none;
+                margin:0 5px 0 0;
+                height: 16px;
+                padding: 0px 2px 0px 2px;
+                line-height: 16px;
+            }
+            /*
+            .filter li {
+     padding: 3px 0px 3px 5px;
+     }
+     
+            */	
+
+            .filter .on {
+                color: #ed6c00;
+                color: white;
+                background-color: #fc6622;
+                border-radius: 2px;
+            }
+            .sectionWrap1 {
+                width:640px;
+            }
+
+            /* 		.b-show {
+              display: block;
+              display: none;
+              } */
+
+
+            @media (max-width: 1920px) and (min-width: 0px);
+            .a_down {
+                display: block;
+            }
+
+
+            .search2 input {
+
+                padding: 10px 0px 10px 15px;
+            }
+
+            .search input {
+                height:22px;
+            }
+
+            .searchOnMap .search2 input { 
+                line-height:22px;
+            }
+
+            .tese1 label {
+                top: -1px;
+                position:relative;
+            }
+
+            .tese1 #f {top: -2px;
+                       position:relative;}
+            .tese1 #d {top: -2px;
+                       position:relative;}

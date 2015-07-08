@@ -25,10 +25,10 @@ $(document).ready(function(){
 		}
 	})
 	
-	  $('.flexslider').flexslider({
-		directionNav: true,
-		pauseOnAction: false
-	});  
+//	  $('.flexslider').flexslider({
+//		//directionNav: true,
+//		//pauseOnAction: false
+//	});  
 	
 	$('#marquee').kxbdSuperMarquee({
 		distance:365,

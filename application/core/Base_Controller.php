@@ -75,6 +75,7 @@ class CBase extends MY_Controller{
         $frameData = array(
             
             'c' => $this,
+            "user" => isset($_SESSION["user"]) ? $_SESSION["user"] : array(),
         );
         
         $this->load->view($dir, array_merge($frameData, $data,  $this->renderData));
@@ -86,6 +87,7 @@ class CBase extends MY_Controller{
      */
     public function loadView($dirName,$data = array()){
         
+        $data['c'] = $this;
         $this->echoView("{$dirName}",$data);
     }
     

@@ -7,9 +7,9 @@ class Info extends CUserBase {
 
     protected $controllerId = "info";
     
-    public $topLevel = "A";
+    public $topLevel = "B";
     
-    public $level = "A01";
+    public $level = "B01";
     
     public function __construct() {
 
@@ -17,4 +17,8 @@ class Info extends CUserBase {
        
     }
 
+    public function index(){
+        
+        $this->renderUserView("info");
+    }
 }

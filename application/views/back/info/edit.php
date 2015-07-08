@@ -62,24 +62,24 @@
                  <p class="line-t-10"></p>
                  <textarea name="data[body]" id="data[body]" style="display:block" class="ckeditor"><?php echo $data["body"]?></textarea>
                 <script type="text/javascript">
-                    var body = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
-                        toolbar : ckeditor_toolbar
-                    });
+//                    var editor = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
+//                        toolbar : ckeditor_toolbar
+//                    });
+//                    
+                    var editor ;  
+                        if(!CKEDITOR.instances["data[body]"]){  //判定content2是否存在  
+                             editor= CKEDITOR.replace("data[body]");  
+                        }else{  
+                               addCkeditor("data[body]");  
+                        }  
+                    function addCkeditor(id){  
+                        var editor2 = CKEDITOR.instances[id];  
+                        if(editor2) editor2.destroy(true);//销毁编辑器 content2,然后新增一个  
+                            editor = CKEDITOR.replace(id);  
+                    }  
                 </script>
                 <p class="line-t-15"></p>
-                
-<!--                <div style="position:relative;">
-                    <textarea name="info_body" id="info_body" style="display:block"><?php echo $page['info']['info_body'];?></textarea>
-                    <script type="text/javascript" src="/css/lib/ckeditor/ckeditor.js?t=B49E5BQ"></script>
-                    <script type="text/javascript">
-/*
-                        var info_body = CKEDITOR.replace( "info_body",{height:300,width:840,skin:"v2",menu_subMenuDelay:0,
-                     toolbar : ckeditor_toolbar
-                       });
-*/
-                    </script>
-                    <span class="upbtn_box" id="upbtn_box"><script>C.ckeditor.init("#upbtn_box","info_body");</script></span>
-                </div>-->
+               
             </td>
         </tr>
         <tr>

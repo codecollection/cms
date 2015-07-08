@@ -20,7 +20,7 @@
 </div>
 <div class="model-outer of">
     
-    <a href="http://www.d.cn/" title="手机游戏第一站"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="手机游戏第一站" title="手机游戏第一站" class="web-logo fl"></a>
+    <a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="手机游戏第一站" title="手机游戏第一站" class="web-logo fl"></a>
 
     <div class="user-log fr">
         <form action="javascript:void(0);" onsubmit="return false;" method="post" id="login_form">
@@ -65,7 +65,7 @@
 
 <script type="text/javascript" src="/style/libs/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="/style/libs/common.js"></script>
-<script type="text/livescript" src="/style/front/js/login.js"></script>
+<script type="text/livescript" src="/style/front/<?php echo TEMPLATE ?>/js/login.js"></script>
 </body>
 </html>
 

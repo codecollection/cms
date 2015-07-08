@@ -131,4 +131,25 @@ class Model_model extends MBase{
                     
         $this->db->query($sql);
     }
+    
+    /**
+     * 获取子模型ID
+     * @param type $modelId
+     * @return type
+     */
+    public function getSonModelId($modelId){
+        
+        $model = $this->find($modelId);
+        
+        return $model["cmodel_id"];
+    }
+    
+    
+    public function getSonModelName($modelId){
+        $sql = "select model_name from {$this->tableName} where cmodel_id = {$modelId}";
+        
+        $query = $this->db->query($sql);
+        
+        return $query->row()->model_name;
+    }
 }

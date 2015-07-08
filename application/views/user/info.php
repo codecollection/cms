@@ -21,7 +21,7 @@
             <tr>
                 <td width="150" class="fr">昵称：</td>
                 <td>
-                    <input type="text" id="site_name" class="comm_ipt" value="掌易科技"> 给自己取一个响亮的名字吧！
+                    <input type="text" id="site_name" class="comm_ipt" value=""> 给自己取一个响亮的名字吧！
                 </td>
             </tr>
 
@@ -34,13 +34,13 @@
             <tr>
                 <td width="150" class="fr">手机账号：</td>
                 <td>
-                    <span>未绑定</span> <a href="">去绑定</a>
+                    <span>未绑定</span> <a href="/user/safe?type=phone">去绑定</a>
                 </td>
             </tr>
             <tr>
                 <td width="150" class="fr">密保邮箱：</td>
                 <td>
-                    <span>未绑定</span> <a href="">去绑定</a>
+                    <span>未绑定</span> <a href="/user/safe?type=email">去绑定</a>
                 </td>
             </tr>
             <tr>

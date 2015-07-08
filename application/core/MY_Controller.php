@@ -7,6 +7,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 class MY_Controller extends CI_Controller {
 
     /**
+     * 前端显示的css/js文件
+     * @var array
+     */
+    protected $frontFile = array('css' => array(), 'js' => array(), 'header' => array());
+
+    /**
      * 控制器名称
      * @var string
      */
@@ -143,6 +149,44 @@ class MY_Controller extends CI_Controller {
         }
         
     }
+    
+    
+    /**
+     * 增加js文件
+     * @param type $file
+     */
+    public function addJs($file) {
+
+
+        if (!is_array($file)) {
+            $file = array($file);
+        }
+
+        foreach ($file as $value) {
+            $value = strstr($value, 'http') ? $value : STATIC_RES_PATH . $value;
+            
+            $this->frontFile['js'][] = '<script type="text/javascript" src="' . $value . '" ></script>';
+        }
+
+        return $this;
+    }
+
+    /**
+     * 增加css
+     * @param type $file
+     */
+    public function addCss($file) {
+
+        if (!is_array($file)) {
+            $file = array($file);
+        }
+
+        foreach ($file as $value) {
+            $this->frontFile['css'][] = '<link rel="stylesheet" type="text/css" href="' . STATIC_RES_PATH . '/css/' . $value . '" />';
+        }
+
+        return $this;
+    }
 }
 
 /**
@@ -168,14 +212,7 @@ class CAdminBase extends MY_Controller {
      */
     protected $bindModel = NULL;
 
-    /**
-     * 前端显示的css/js文件
-     * @var array
-     */
-    protected $frontFile = array('css' => array(), 'js' => array(), 'header' => array());
-
-   
-
+    
     /**
      * 启用权限检测
      * @var boolean
@@ -427,42 +464,6 @@ class CAdminBase extends MY_Controller {
         $this->load->view("back/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
     }
     
-    /**
-     * 增加js文件
-     * @param type $file
-     */
-    public function addJs($file) {
-
-
-        if (!is_array($file)) {
-            $file = array($file);
-        }
-
-        foreach ($file as $value) {
-            $value = strstr($value, 'http') ? $value : STATIC_RES_PATH . $value;
-            
-            $this->frontFile['js'][] = '<script type="text/javascript" src="' . $value . '" ></script>';
-        }
-
-        return $this;
-    }
-
-    /**
-     * 增加css
-     * @param type $file
-     */
-    public function addCss($file) {
-
-        if (!is_array($file)) {
-            $file = array($file);
-        }
-
-        foreach ($file as $value) {
-            $this->frontFile['css'][] = '<link rel="stylesheet" type="text/css" href="' . STATIC_RES_PATH . '/css/' . $value . '" />';
-        }
-
-        return $this;
-    }
 
     /**
      * 增加header
@@ -563,7 +564,7 @@ class CAdminBase extends MY_Controller {
     protected function getTpl(){
         
         $this->load->helper("directory");
-        $files = directory_map("./application/views/front/default");
+        $files = directory_map("./application/views/front/".TEMPLATE);
         $coverTpl = $listTpl = $detialTpl = array(array("txt"=>"默认模板","value"=>""));
         
         foreach ($files as $file) {
