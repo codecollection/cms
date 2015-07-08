@@ -49,3 +49,9 @@ $(document).ready(function(){
 //    window.location.href= url+"&" + data;
 //}
     
+function loginout(){
+
+    $.cookie("account","", -1);
+    $.cookie("fromUrl","", -1);
+    window.location.href = "/user/login/loginOut";
+}

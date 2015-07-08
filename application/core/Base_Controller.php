@@ -75,6 +75,7 @@ class CBase extends MY_Controller{
         $frameData = array(
             
             'c' => $this,
+            "user" => isset($_SESSION["user"]) ? $_SESSION["user"] : array(),
         );
         
         $this->load->view($dir, array_merge($frameData, $data,  $this->renderData));

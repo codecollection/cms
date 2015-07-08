@@ -18,14 +18,15 @@ class Login extends CUserBase {
      *  如果没有登录就到登录页面，如果登录了就到管理首页
      */
     public function index(){
-        
+       
         $data = $this->u->getUserInfo();
         
         if($data){
-            
+           
             redirect("/{$this->user}/home");
             exit;
         }
+        
         $this->load->view("{$this->user}/login",array("c"=>$this)); 
     }
     

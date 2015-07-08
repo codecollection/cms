@@ -96,3 +96,4 @@ define("TEMPLATE","public"); //前端模板文件
 define("HOST", 'http://cms'); //域名
 define("CSSHOST", "http://cms"); //样式文件域名
 define("FILEHOST", "Http://cms"); //文件域名
+define("AUTHHOST", "http://cms"); //用户中心

@@ -61,7 +61,7 @@ class Reg extends CUserBase {
         $rs = $this->u->doReg($name,$pwd,$type);
         
          if ($rs > 0) {
-            
+             $this->u->updateInfo($rs);
             $this->successAjax();
         }
 
@@ -80,12 +80,12 @@ class Reg extends CUserBase {
     public function success(){
             
         $fromUrl = $_COOKIE["fromUrl"];
-        $account = $_COOKIE["account"];
+        $account = isset($_COOKIE["account"]) ? $_COOKIE["account"] : @$_SESSION["user"]["uname"];
         
         if(empty($account)){
             
         }
-        $this->renderUserView("success",array('account'=>$account,"fromUrl"=>$fromUrl));
+        $this->load->view("user/success",array('account'=>$account,"fromUrl"=>$fromUrl,"c"=>$this));
     }
 
     /**

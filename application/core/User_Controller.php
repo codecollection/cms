@@ -16,6 +16,13 @@
     
     public function __construct() {
         parent::__construct();
+        
+        if(get_class($this) != "Login"){
+        if(!isset($_SESSION["user"])){
+            
+            redirect(AUTHHOST."/user/login?");
+        }
+        }
         if(!empty($this->controllerId)){
             $this->load->model($this->controllerId . '_model', $this->controllerId);
             $this->bindModel = $this->{$this->controllerId};
@@ -32,8 +39,7 @@
         
         return RConfig::get($key);
     }
-    
-    
+   
     public function lists($params = array()){
         //设置活动的模块
         $this->activeModule = $this->level;
@@ -69,6 +75,9 @@
             "nav" => $menu['nav'],
             'microtime' => $this->microtime_float() - $this->startMicrotime,
             "navItem" => $menu['item'],
+            "user" => $_SESSION["user"],
+            'js' => implode("\r\n", $this->frontFile['js']),
+            'css' => implode("\r\n", $this->frontFile['css']),
         );
         $this->load->view("user/frame", array_merge($frameData, $userInfo, $this->renderData, $data));
     }
@@ -80,6 +89,21 @@
     public function loadUserView($dirName){
         
          $this->echoView("user/{$dirName}");
+    }
+    
+    public function addJs($file) {
+        
+        if (!is_array($file)) {
+            $file = array($file);
+        }
+
+        foreach ($file as $value) {
+            $value = strstr($value, 'http') ? $value : "/style/{$this->user}/js/" . $value;
+            
+            $this->frontFile['js'][] = '<script type="text/javascript" src="' . $value . '" ></script>';
+        }
+
+        return $this;
     }
  }
  

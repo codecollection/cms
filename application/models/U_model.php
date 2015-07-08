@@ -104,14 +104,13 @@ class U_model extends MBase{
         $this->db->query("UPDATE {$this->tableName} SET last_login_ip='" . $data['last_login_ip'] . "', last_login_date=" . time() . ' WHERE user_id =' . $userId);
         
         setcookie('token', $token, time() + $time, '/');
-        ;
 
         return true;
         
     }
 
     private function setSession(){
-        $_SESSION["user"] = array("token"=>  $this->token,"info"=>  $this->info);
+        $_SESSION["user"] = array("token"=>  $this->token,"info"=>  $this->info, "name"=>  $this->info["uname"]);
     }
 
     /**

@@ -17,6 +17,8 @@
     <link rel="canonical" href="http://android.d.cn/"/>
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/common.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/more.js"></script>
 </head>
 
 <body>
@@ -125,22 +127,33 @@
             </li>
         </ul>
         <ul class="siteNavMenu fr">
-            <li id="topAdapt"><a class="set-adapt" href="javascript:" onclick="Adapt.adapt(false);">设置机型</a></li>
             <li class="rb" id="logined_li">
                 <div class="menuShow">
-                    <a href="javascript:void(0)" class="login">用户登录</a><span class="arrDrop"></span>
+                    <a href="javascript:void(0)" class="login"><?php echo !empty($user) ? $user["name"] : "用户登录";?></a><span class="arrDrop"></span>
                 </div>
-                <div class="menuHide" id="topDMainBox" style="width:260px">
+                <div class="menuHide" id="topDMainBox" style="width:<?php echo !empty($user) ? "100px" : "260px";?>">
+                    <?php if(!empty($user)){?>
+                    <div class="userPanel" style="width:100px;">
+<!--                        <img class="userFace" src="http://tools.service.d.cn/userhead/get?mid=177044757&amp;size=middle" id="avatar_url_top_id">-->
+                        <div class="userInfo">
+      <!--                        <p><?php echo $user["name"];?></p>
+                          <p>乐号：177044757</p>
+                            <p><a target="_blank" href="http://my.d.cn/message/index.html">有<em id="newMessageCnt_em_id">0</em>未读消息</a></p>-->
+                            <p><a class="r b" target="_blank" href="<?php echo AUTHHOST ?>/user/info">个人中心</a></p>
+                            <p><a onclick="loginout()" href="javascript:void(0);">退出</a></p>
+                        </div>
+                    </div>
+                    <?php }else{?>
                     <form onsubmit="topDoLogin();return false;">
                         <p class="tipsText" id="topLoginMsg"></p>
                         <input type="text" id="topLoginBoxUserName" value="乐号/用户名/邮箱/手机号" style="color:#b9b9b9" onmouseout="this.className='inputText'" onmousemove="this.className='inputTextOut'"
-                               onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='乐号/用户名/邮箱/手机号'){this.value='乐号/用户名/邮箱/手机号';this.style.color='#b9b9b9';}"
-                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='乐号/用户名/邮箱/手机号'){this.value=''};this.style.color='#4f4f4f'" class="inputText"/> <input type="password" id="topLoginBoxPassword" class="inputText" value="请输入密码" style="color:#b9b9b9" onmouseout="this.className='inputText'"
+                               onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='用户名/邮箱/手机号'){this.value='用户名/邮箱/手机号';this.style.color='#b9b9b9';}"
+                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='用户名/邮箱/手机号'){this.value=''};this.style.color='#4f4f4f'" class="inputText"/> <input type="password" id="topLoginBoxPassword" class="inputText" value="请输入密码" style="color:#b9b9b9" onmouseout="this.className='inputText'"
                                                                                                                                                                                                onmousemove="this.className='inputTextOut'"
                                                                                                                                                                                                onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='请输入密码'){this.value='请输入密码';this.style.color='#b9b9b9';}"
                                                                                                                                                                                                onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='请输入密码'){this.value=''};this.style.color='#4f4f4f'"/> <input type="submit" value="登录" class="submit"/>
                         <div class="remember">
-                            <label><input type="checkbox" class="check" checked="checked" id="topAutoLogin" /><span>自动登录</span></label><a href="http://oauth.d.cn/auth/goFindPwdWay.html?dispay=web" target="_blank">忘记密码？</a>&nbsp;|&nbsp;<a href="http://oauth.d.cn/auth/goRegister.html?display=web" target="_blank">注册帐号</a>
+                            <label><input type="checkbox" class="check" checked="checked" id="topAutoLogin" /><span>自动登录</span></label><a href="<?php echo AUTHHOST ?>/user/login?dispay=web" target="_blank">忘记密码？</a>&nbsp;|&nbsp;<a href="<?php echo AUTHHOST ?>/user/reg?display=web" target="_blank">注册帐号</a>
                         </div>
                     </form>
                     <div class="thirdP">
@@ -148,18 +161,13 @@
                         <a class="sina" href="javascript:void(0)" onclick="window.location.href='http://oauth.d.cn/auth/weibo/login.html?act=1&to='+encodeURI(window.location.href);return false;">新浪微博</a>
                         <a class="qq" href="javascript:void(0)" onclick="window.location.href='http://oauth.d.cn/auth/tencent/login.html?act=1&to='+encodeURI(window.location.href);return false;">QQ账号</a>
                     </div>
+                    <?php }?>
                 </div>
             </li>
             <li>
                 <div class="menuShow">
                     <span class="navIcon"></span>
-                    <span>网站导航</span>
-                    <span class="arrDrop"></span>
-                </div>
-                <div class="menuHide r0">
-                    <ul class="guideList">
-                        <li>              <h4><a href="http://ng.d.cn/" target="_blank">手机网游</a></h4>              <ul>                <li><strong><a href="http://mall.d.cn/" target="_blank">礼包放号</a></strong></li>                <li><a href="http://ng.d.cn/" target="_blank">网游库</a></li>                <li><a href="http://ng.d.cn/channel/testlist.html" target="_blank">测试表</a></li>                <li><a href="http://ng.d.cn/channel/ranklist.html" target="_blank">排行榜</a></li>                <li><a href="http://ng.d.cn/news/list_walkthrough_0_1.html" target="_blank">攻略评测</a></li>     <li><a href="http://ng.d.cn/news/list_special_0_1.html" target="_blank">网游专题</a></li> </ul>            </li>            <li>              <h4><a href="http://news.d.cn/" target="_blank">原创频道</a></h4>              <ul>                 <li><strong><a href="http://news.d.cn/bear/" target="_blank">熊哥有话说</a></strong></li>                <li><a href="http://news.d.cn/pc/" target="_blank">游戏评测</a></li>                <li>        <a href="http://news.d.cn/gl/" target="_blank">游戏攻略</a></li>                <li>                                        <a href="http://news.d.cn/monthly/" target="_blank">佳游月榜</a></li>    </ul>            </li>            <li>              <h4><a href="http://bbs.d.cn/" target="_blank">玩家社区</a></h4>              <ul>                <li><a href="http://bbs.d.cn/" target="_blank">网游论坛</a></li>                <li><a href="http://bbs.d.cn/forum.php?gid=8377" target="_blank">休闲娱乐</a></li>                <li><a href="http://bbs.d.cn/forum.php?gid=8374" target="_blank">单机游戏</a></li>                          <li><a href="http://bbs.d.cn/topic_list_all_4035.html" target="_blank">玩家公会</a></li>              </ul>            </li>            <li class="client">              <h4><a href="http://app.d.cn/" target="_blank">当乐游戏中心</a></h4>              <ul>                <li><a href="http://app.d.cn/android" target="_blank">安卓版</a></li>                <li>    <strong><a href="https://itunes.apple.com/cn/app/dang-le-ai-wan/id913879361?mt=8" target="_blank">当乐原创App</a></strong></li>                <li><a href="http://app.d.cn/iphone/" target="_blank">iOS越狱版</a></li>                <li><a href="http://app.d.cn/pc" target="_blank">PC版</a></li> <li><a href="http://app.d.cn/wyzx" target="_blank">当乐网游中心<span class="newIcon"></span></a></li>                  <li><a href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=appcydia&amp;t=cydia" target="_blank">当乐越狱助手</a></li>              </ul>            </li>            <li class="last">              <h4>热门游戏</h4>              <ul>        <li><a href="http://ng.d.cn/cosdaluandou/" target="_blank">COS大乱斗</a></li>   <li><a href="http://ng.d.cn/tianlongbabu3D/" target="_blank">天龙八部3D</a></li>         <li><strong><a href="http://ng.d.cn/shijie2/" target="_blank">世界2</a></strong></li>   <li><a href="http://ng.d.cn/quanminqiangzhan/" target="_blank">全民枪战</a></li>  <li><a href="http://ng.d.cn/xxjqxz/" target="_blank">新仙剑奇侠传</a></li>                <li><a href="http://ng.d.cn/baimaojihua/" target="_blank">白猫计划</a></li>     </ul>            </li>    
-                    </ul>
+                    <span>帮助中心</span>
                 </div>
             </li>
         </ul>
