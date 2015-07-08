@@ -172,17 +172,12 @@ class Info extends CBase {
         return $flinks;
     }
 
-<<<<<<< HEAD
     /**
      * 获取分类代码
-     * Enter description here ...
      * @param $baseUrl
      * @param $total
      * @param $pagesize
      */
-=======
-   
->>>>>>> dad975932511eb52741185e726973167250a76ea
     private function getPageHtml($baseUrl, $total,$pagesize = 10) {
         
         $config = array(
