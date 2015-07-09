@@ -21,7 +21,7 @@
             <tr>
                 <td width="150" class="fr">昵称：</td>
                 <td>
-                    <input type="text" id="site_name" class="comm_ipt" value=""> 给自己取一个响亮的名字吧！
+                    <input type="text" id="unick" class="comm_ipt" value="<?php echo $user["unick"];?>"> 给自己取一个响亮的名字吧！
                 </td>
             </tr>
 
@@ -44,9 +44,39 @@
                 </td>
             </tr>
             <tr>
+                <td width="150" class="fr">Q Q：</td>
+                <td>
+                    <input type="text" id="uqq" class="comm_ipt" value="<?php echo $user["uqq"];?>">
+                </td>
+            </tr>
+            <tr>
+                <td width="150" class="fr">微信：</td>
+                <td>
+                    <input type="text" id="uweixin" class="comm_ipt" value="<?php echo $user["uweixin"];?>">
+                </td>
+            </tr>
+            <tr>
                 <td width="150" class="fr">性别：</td>
                 <td>
                     
+                </td>
+            </tr>
+            <tr>
+                <td width="150" class="fr">生日：</td>
+                <td>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td width="150" class="fr">城市：</td>
+                <td>
+                    <input type="text" id="city" class="comm_ipt"  name="city" value="<?php echo $user["city"];?>">
+                </td>
+            </tr>
+            <tr>
+                <td width="150" class="fr">个性签名：</td>
+                <td>
+                    <textarea><?php echo $user["motto"] ?></textarea>
                 </td>
             </tr>
         </tbody>

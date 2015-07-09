@@ -317,6 +317,8 @@ create table if not exists `cms_user_list` (
  `uqq_verify` int(1) not null default 0 comment 'QQ是否验证',
  `uphone` varchar(100) not null default '' comment '手机',
  `uphone_verify` int(1) not null default 0 comment '手机是否验证',
+ `uweixin` varchar(50) not null default '' comment '微信',
+ `unick` varchar(50) not null default '' comment '昵称',
  `ustate` int(11) not null default 0 comment '用户状态（正常=0，停用=1）',
  `gender` int(2) not null default 0 comment '性别（女=1，男=0）',
  `birth_day` int(11) not null default 0 comment '出生年月日',
