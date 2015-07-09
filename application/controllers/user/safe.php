@@ -41,6 +41,9 @@ class Safe extends CUserBase {
             $actionName = "绑定邮箱";
         }
         
+        $user = $this->u->find($this->userId);
+        
+        $this->setData("user", $user);
         $this->setData("email", $email);
         $this->setData("phone", $phone);
         
@@ -50,4 +53,40 @@ class Safe extends CUserBase {
         $this->renderUserView("safe");
     }
     
+    public function doBind(){
+        
+        $uphone = $this->getData("uphone");
+        $phonecode = $this->getData("phonecode");
+        $uemail = $this->getData("uemail");
+        $emailcode = $this->getData("emailcode");
+        $data = array();
+        $msg = array();
+        if(!empty($uphone)){
+            
+            //判断验证码是否正确
+            if(strtolower($phonecode) != strtolower($_SESSION["pcode"])){
+                $msg["uphone"] = "绑定手机号验证码不正确";
+            }else{
+                $data["uphone"] = $uphone;
+            }
+        }
+        
+        if(!empty($uemail)){
+            //判断验证码是否正确
+            if(strtolower($emailcode) != strtolower($_SESSION["ecode"])){
+                $msg["uemail"] = "绑定邮箱验证码不正确";
+            }else{
+                $data["uemail"] = $uemail;
+            }
+        }
+        
+        if(!empty($data)){
+        $this->u->setAttrs($data)->setPkValue($this->userId)->save($this->userId == 0);
+        }
+        
+        $msgr = empty($msg) ? "帮定成功" : implode(",", $msg);
+        
+        $this->echoAjax(0, $msgr);
+        
+    }
 }

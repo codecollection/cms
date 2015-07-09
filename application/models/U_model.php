@@ -12,6 +12,8 @@ class U_model extends MBase{
     const USR_COOKIE_KEY = '*&Mdd28H0lkxc-+@sdsGGk';
     
     protected $tableName = "cms_user_list";
+    
+    protected $pk = "user_id";
     public function  __construct(){
         parent::__construct();
     }
@@ -110,7 +112,7 @@ class U_model extends MBase{
     }
 
     private function setSession(){
-        $_SESSION["user"] = array("token"=>  $this->token,"info"=>  $this->info, "name"=>  $this->info["uname"]);
+        $_SESSION["user"] = array("token"=>  $this->token,"info"=>  $this->info, "name"=>  $this->info["uname"],"userId"=>  $this->info["user_id"]);
     }
 
     /**

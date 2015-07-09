@@ -19,7 +19,7 @@ class Captcha extends CBase {
         
         $this->load->helper('RCaptcha');
 
-        $type = $this->getData("type");
+        $type = (int)$this->getData("type");
         
         $codeKey = "vcode";
         $width = 120;
@@ -28,19 +28,19 @@ class Captcha extends CBase {
         switch ($type){
         	case 1:
         		$width = 100;
-        		$height = 30;
+        		$height = 25;
         		$codeKey = "pcode";
         		break;
         	case 2:
         		$width = 100;
-        		$height = 30;
+        		$height = 25;
         		$codeKey = "ecode";
         		break;
         	default:
         		break;
         }
         $captcha = RCaptcha::getInstance();
-        $captcha->setSize(120,40);
+        $captcha->setSize($width,$height);
         $word = $captcha->make();
         $_SESSION[$codeKey] = $word;
         //$this->session->set_userdata(array("vcode"=>$word));
