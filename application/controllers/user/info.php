@@ -19,6 +19,10 @@ class Info extends CUserBase {
 
     public function index(){
         
+        $user = $this->u->find($this->userId);
+        
+        $this->setData("user", $user);
+        
         $this->renderUserView("info");
     }
 }

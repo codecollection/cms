@@ -28,25 +28,25 @@
             <tr>
                 <td width="150" class="fr">用户名：</td>
                 <td>
-                    <span>fghkg</span>
+                    <span><?php echo $user["uname"]; ?></span>
                 </td>
             </tr>
             <tr>
                 <td width="150" class="fr">手机账号：</td>
                 <td>
-                    <span>未绑定</span> <a href="/user/safe?type=phone">去绑定</a>
+                    <span><?php echo empty($user["uphone"]) ? "未绑定" : $user["uphone"] ; ?></span> <a href="/user/safe?type=phone"><?php  echo empty($user["uphone"]) ? "去绑定" : "更改"; ?></a>
                 </td>
             </tr>
             <tr>
                 <td width="150" class="fr">密保邮箱：</td>
                 <td>
-                    <span>未绑定</span> <a href="/user/safe?type=email">去绑定</a>
+                    <span><?php echo empty($user["uemail"]) ? "未绑定" : $user["uemail"] ; ?></span> <a href="/user/safe?type=email"><?php  echo empty($user["uemail"]) ? "去绑定" : "更改"; ?></a>
                 </td>
             </tr>
             <tr>
                 <td width="150" class="fr">性别：</td>
                 <td>
-                    <span>未绑定</span> <a href="">去绑定</a>
+                    
                 </td>
             </tr>
         </tbody>
