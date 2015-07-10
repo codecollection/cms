@@ -14,6 +14,7 @@ class U_model extends MBase{
     protected $tableName = "cms_user_list";
     
     protected $pk = "user_id";
+    
     public function  __construct(){
         parent::__construct();
     }
