@@ -6,7 +6,6 @@
         </thead>
         <tbody>
             <!--<tr>
-
                 <td style="vertical-align:top;" class="fr"><p class="line-t-10"></p>头像：</td>
                 <td>
                     <p class="line-t-10"></p><input type="text" value="" style="width:400px;" class="comm_ipt" id="info_img"> 用于列表显示的缩略图，你也可以 <a onclick="$('#info_img').val('');

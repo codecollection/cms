@@ -34,7 +34,7 @@
         <ul class="user_hd r">
             <li><a href="/" target="_blank">我的公众号</a></li>
             <li><a href="cache.clear.php">我的资料</a></li>
-            <li><span>欢迎你:<?php //echo $admin["group"];?>&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php  echo $user["name"];?></a></span></li>
+            <li><span>欢迎你:<?php //echo $admin["group"];?>&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php  echo $u["name"];?></a></span></li>
             <li><a href="/user/login/loginOut">退出</a></li>
         </ul>
         <ul class="hd_tabs" id="hd_tabs">

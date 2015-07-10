@@ -121,6 +121,11 @@ class CBase extends MY_Controller{
      */
     public function add() {
 
+        $data = $this->bindModel->getDefaultValue();
+        
+        $renderData = array('data' => $data);
+
+        $this->renderUserView($this->controllerId."/edit", array_merge($renderData, array()));
     }
 
     /**
@@ -143,10 +148,6 @@ class CBase extends MY_Controller{
      * 保存
      */
     public function save() {
-//        
-//        $this->activeModule = $this->level."02";
-//        //检测权限
-//        $this->checkPermission($this->level . '02');
 //        
 //        $id = $this->getData('id');
 //        $data = $this->getData('data');

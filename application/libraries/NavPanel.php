@@ -305,7 +305,7 @@ class NavPanel {
             'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
             'menu'  => array(
                 array(
-                    'title'=>'资料管理',
+                    'title'=>'个人资料',
                     'url' => '/user/info',
                     'level' => 'B01', //页面权限，也就是列表权限
                     'menu' => array(
@@ -313,13 +313,21 @@ class NavPanel {
                     ),
                 ),
                 array(
-                    'title'=>'隐私设置',
-                    'url' => '/user/info/set',
-                    'level' => 'B02', //页面权限
+                   'title'=>'编辑信息',
+                    'url' => '/user/info/edit',
+                    'level' => 'B02', //页面权限，也就是列表权限
                     'menu' => array(
-                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
-                    ),
+                        //array('title' => '', 'level' => ''), //按钮功能配置
+                    ), 
                 ),
+//                array(
+//                    'title'=>'隐私设置',
+//                    'url' => '/user/info/set',
+//                    'level' => 'B03', //页面权限
+//                    'menu' => array(
+//                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+//                    ),
+//                ),
             ),
         ),
         array(
@@ -328,17 +336,17 @@ class NavPanel {
             'level' => 'C',
             'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
             'menu'  => array(
-                array(
-                    'title'=>'账号安全',
-                    'url' => '/user/safe',
-                    'level' => 'C01', //页面权限，也就是列表权限
-                    'menu' => array(
-                        //array('title' => '', 'level' => ''), //按钮功能配置
-                    ),
-                ),
+//                array(
+//                    'title'=>'账号安全',
+//                    'url' => '/user/safe',
+//                    'level' => 'C01', //页面权限，也就是列表权限
+//                    'menu' => array(
+//                        //array('title' => '', 'level' => ''), //按钮功能配置
+//                    ),
+//                ),
                 array(
                     'title'=>'账号绑定',
-                    'url' => '/user/info/set',
+                    'url' => '/user/safe',
                     'level' => 'C02', //页面权限
                     'menu' => array(
                         array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置

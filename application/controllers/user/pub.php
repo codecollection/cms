@@ -24,7 +24,17 @@ class Pub extends CUserBase {
      */
     public function index(){
         
-        $this->lists();
+        $page = $this->getData('p');
+        
+        $this->pub->page($page, PAGESIZE);
+        
+        $lists = $this->pub->search();
+
+        $data = array('page' => RKit::getPageLink("/user/" . strtolower(get_class($this)) . "?" . http_build_query(array()), $lists['count']),
+            'list' => $lists,
+        );
+
+        $this->renderUserView("pub", $data);
        
     }
     

@@ -80,7 +80,7 @@
             "nav" => $menu['nav'],
             'microtime' => $this->microtime_float() - $this->startMicrotime,
             "navItem" => $menu['item'],
-            "user" => $_SESSION["user"],
+            "u" => $_SESSION["user"],
             'js' => implode("\r\n", $this->frontFile['js']),
             'css' => implode("\r\n", $this->frontFile['css']),
         );
