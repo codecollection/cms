@@ -19,8 +19,7 @@
                 <td><?php echo $v['title'];?></td>
                 <td><?php echo $v['visitors'];?></td>
                 <td>
-                    
-                    <a class="btn" href="/user/pub/addArticle?id=<?php echo $v['cms_article_id'];?>">编辑</a>
+                    <a class="btn" href="/user/pub/addArticle?id=<?php echo $v['cms_article_id'];?>&cateId=<?php echo $cateId;?>">编辑</a>
                 </td>
             </tr>
             <?php }?>

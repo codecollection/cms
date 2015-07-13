@@ -1,7 +1,7 @@
 
 <div id="form_add">
 
-    <input type="hidden" id="<?php echo $thisc->modelName . "_id"; ?>" name="id" value="<?php echo($data[$thisc->modelName . "_id"]); ?>" />
+    <input type="hidden" id="<?php echo "cms_article_id"; ?>" name="id" value="<?php echo($data["cms_article_id"]); ?>" />
     <input type="hidden" id="modelId" name="modelId" value="<?php echo($modelId); ?>" />
     <input type="hidden" id="modelId" name="data[model_id]" value="<?php echo($modelId); ?>" />
     <input type="hidden" id="last_cate_id" name="data[last_cate_id]" value="<?php echo $cateId; ?>" />
@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td class="fr">描述：</td>
-            <td><input id="desc" type="text" name="data[desc]" class="comm_ipt" value="<?php echo $data["desc"] ?>"> </td>
+            <td><textarea name="data[desc]"  id="desc" class="comm_ipt"><?php echo $data["desc"] ?></textarea></td>
         </tr>
 
         <tr>
@@ -45,14 +45,14 @@
                         
                         addCkeditor("data[body]");
                     }
+                    
                     function addCkeditor(id){
                         var editor2 = CKEDITOR.instances[id];
-                            if (editor2) editor2.destroy(true); //销毁编辑器,然后新增一个  
-                            editor = CKEDITOR.replace(id, {height:140, width:790, skin:"kama"});
+                        if (editor2) editor2.destroy(true); //销毁编辑器,然后新增一个  
+                        editor = CKEDITOR.replace(id, {height:140, width:790, skin:"kama"});
                     }
                 </script>
                 <p class="line-t-15"></p>
-
             </td>
         </tr>
         <tr>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <td class="fr">跳转地址：</td>
-            <td><input id="info_url" name="data[info_url]" type="text" class="comm_ipt" value=""> 如果填写了跳转地址，那么将直接跳转到该地址</td>
+            <td><input id="info_url" name="data[info_url]" type="text" class="comm_ipt" value="<?php echo $data["info_url"];?>"> 如果填写了跳转地址，那么将直接跳转到该地址</td>
         </tr>
     </table>
 </div>

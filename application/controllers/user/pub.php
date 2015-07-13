@@ -114,6 +114,7 @@ class Pub extends CUserBase {
         
         if($id > 0 ){
             $data = $this->bindModel->find($id);
+           
         }else{
             $data = $this->bindModel->getDefaultValue();
         }
