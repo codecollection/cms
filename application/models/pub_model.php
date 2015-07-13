@@ -46,6 +46,11 @@ class Pub_model extends MBase{
         if($isInsert){
             $this->uid = $this->admin->getUserInfo('admin_id');
             $this->uname = $this->admin->getUserInfo('aname');
+            
+            if(empty($this->uid)){
+                $this->uid = $_SESSION["user"]["userId"];
+                $this->uid = $_SESSION["user"]["name"];
+            }
             $this->cdate = time();
             $this->state = INFO_STATE;
         }else{

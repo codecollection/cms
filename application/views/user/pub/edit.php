@@ -7,7 +7,7 @@
 
         <tr>
             <td class="fr"><span class="fred">* </span>公众号：</td>
-            <td><input id="num" name="data[num]" type="text" class="comm_ipt" value="<?php echo $data["num"];?>"> 你的公众账号</td>
+            <td><input id="num" name="data[num]" type="text" class="comm_ipt" value="<?php echo $data["num"];?>"> 你的公众账号名称</td>
         </tr>
         
         <tr>

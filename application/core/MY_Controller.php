@@ -150,7 +150,6 @@ class MY_Controller extends CI_Controller {
         
     }
     
-    
     /**
      * 增加js文件
      * @param type $file

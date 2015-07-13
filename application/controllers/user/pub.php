@@ -13,6 +13,10 @@ class Pub extends CUserBase {
     
     protected $modelTable = "cms_public";
     
+    public $modelId = 3; //系统对应的模型id
+    
+    public $sonModelId = 4; //上面模型的子模型id
+    
     public $type = array(
         "1"=>"服务号",
         "2"=>"订阅号",
@@ -35,6 +39,8 @@ class Pub extends CUserBase {
         
         $this->pub->page($page, PAGESIZE);
         
+        $this->pub->where("uid = " . $this->userId);
+        
         $lists = $this->pub->search();
 
         $data = array('page' => RKit::getPageLink("/user/" . strtolower(get_class($this)) . "?" . http_build_query(array()), $lists['count']),
@@ -49,7 +55,7 @@ class Pub extends CUserBase {
     public function add() {
         
         $this->level = "A02";
-        $this->setModelName(3);
+        $this->setModelName($this->modelId);
         
         parent::add();
         //$this->renderAdminView($this->viewDir(2));
@@ -58,13 +64,13 @@ class Pub extends CUserBase {
     public function edit(){
         
         $this->level = "A02";
-        $this->setModelName(3);
+        $this->setModelName($this->modelId);
         
         parent::edit();
     }
 
     public function save(){
-        $this->setModelName(3);
+        $this->setModelName($this->modelId);
         parent::save();
     }
     
@@ -72,6 +78,56 @@ class Pub extends CUserBase {
         
         $this->setModelName();
         parent::delete();
+    }
+
+    public function article(){
+        
+        $infoId = $this->getData("cateId");
+        
+        $this->setModelName($this->sonModelId);
+        
+        $page = $this->getData('p');
+        
+        $this->bindModel->where("last_cate_id = " . $infoId);
+        
+        $this->bindModel->page($page, PAGESIZE);
+        
+        $this->setSearch();
+        $lists = $this->bindModel->search();
+        $params = array();
+        
+        $data = array('page' => RKit::getPageLink("/user/pub/article?" . http_build_query($params), $lists['count']),
+            'list' => $lists,
+        );
+        
+        $this->setData("modelId", $this->sonModelId);
+        $this->setData("cateId", $infoId);
+        $this->renderUserView($this->controllerId . "/article",$data);
+    }
+
+    public function addArticle(){
+        
+        $id = $this->getData("id");
+        $this->setModelName($this->sonModelId);
+        
+        $data = array();
+        
+        if($id > 0 ){
+            $data = $this->bindModel->find($id);
+        }else{
+            $data = $this->bindModel->getDefaultValue();
+        }
+        $renderData = array('data' => $data);
+
+        $this->renderUserView($this->controllerId . "/edit_son", array_merge($renderData, array()));
+    }
+
+    /**
+     * 保存子模型信息
+     */
+    public function doArticle(){
+        $this->setModelName($this->sonModelId);
+        parent::save();
     }
 
     /**

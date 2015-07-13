@@ -8,7 +8,7 @@
                 <td>类型</td>
                 <td>商家</td>
                 <td>行业</td>
-                <td width="100">操作</td>
+                <td width="140">操作</td>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +25,8 @@
                 <td><?php echo $v['owner'];?></td>
                 <td><?php echo $v['cate'];?></td>
                 <td>
-                    <a class="btn" href="/user/pub/edit?id=1&cateId=1">编辑</a>
+                    <a class="btn" href="/user/pub/edit?id=<?php echo $v["cms_public_id"];?>&cateId=<?php echo $v["last_cate_id"];?>">编辑</a>
+                   <a class="btn" href="/user/pub/article?id=<?php echo $v["cms_public_id"];?>&cateId=<?php echo $v["last_cate_id"];?>">文档管理</a> 
                 </td>
             </tr>
             <?php }?>
