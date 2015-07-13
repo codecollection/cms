@@ -1,92 +1,76 @@
-<div id="info_form">
+<div id="form_add">
+
+    <input type="hidden" id="cms_public_id" name="id" value="<?php echo $data["cms_public_id"];?>" />
+    <input type="hidden" id="modelId" name="modelId" value="3" />
+    <input type="hidden" id="last_cate_id" name="data[last_cate_id]" value="1" />
     <table class="table_lists editbox">
-        <input type="hidden" id="id" name="id" value="<?php echo $user['user_id']?>" />
-        <thead>
-            <tr><td colspan="2">基本设置</td></tr>
-        </thead>
-        <tbody>
-            <!--<tr>
-                <td style="vertical-align:top;" class="fr"><p class="line-t-10"></p>头像：</td>
-                <td>
-                    <p class="line-t-10"></p><input type="text" value="" style="width:400px;" class="comm_ipt" id="info_img"> 用于列表显示的缩略图，你也可以 <a onclick="$('#info_img').val('');
-                            $('.slt_small').html('&lt;img src=/static/sty_default/images/upload-pic.png /&gt;');" href="javascript:void(0);">取消缩略图</a>
-                    <p class="line-t-10"></p>
-                    <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
-                        <iframe width="100%" height="100%" frameborder="no" marginwidth="0" border="0" marginheight="0" allowtransparency="yes" scrolling="no" src="/app/cms/upload.form.php?type=single_upload&amp;id=info_img"></iframe>
-                    </div>
-                    <div class="slt_small">
-                        <img src="/static/sty_default/images/upload-pic.png" id="thumb_info_img">                        </div>
-                </td>
-            </tr -->
-            <tr>
-                <td width="150" class="fr">昵称：</td>
-                <td>
-                    <input type="text" id="unick" name="data[unick]" class="comm_ipt" value="<?php echo $user["unick"];?>"> 给自己取一个响亮的名字吧！
-                </td>
-            </tr>
 
-            <tr>
-                <td width="150" class="fr">用户名：</td>
-                <td>
-                    <span><?php echo $user["uname"]; ?></span>
-                </td>
-            </tr>
-<!--            <tr>
-                <td width="150" class="fr">手机账号：</td>
-                <td>
-                    <span><?php echo empty($user["uphone"]) ? "未绑定" : $user["uphone"] ; ?></span> <a href="/user/safe?type=phone"><?php  echo empty($user["uphone"]) ? "去绑定" : "更改"; ?></a>
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">密保邮箱：</td>
-                <td>
-                    <span><?php echo empty($user["uemail"]) ? "未绑定" : $user["uemail"] ; ?></span> <a href="/user/safe?type=email"><?php  echo empty($user["uemail"]) ? "去绑定" : "更改"; ?></a>
-                </td>
-            </tr>-->
-            <tr>
-                <td width="150" class="fr">Q Q：</td>
-                <td>
-                    <input type="text" id="uqq" name="data[uqq]" class="comm_ipt" value="<?php echo $user["uqq"];?>">
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">微信：</td>
-                <td>
-                    <input type="text" name="data[uweixin]" id="uweixin" class="comm_ipt" value="<?php echo $user["uweixin"];?>">
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">性别：</td>
-                <td>
-                    男: <input type="radio" name="data[gender]" value="0" <?php echo $user["gender"] != 1 ? 'checked="checked"' : "";?>/> &nbsp;&nbsp;&nbsp;&nbsp;
-                    女: <input type="radio" name="data[gender]"  value="1" <?php echo $user["gender"] == 1 ? 'checked="checked"' : "";?>/>
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">生日：</td>
-                <td>
-                    <input type="text" class="comm_ipt" name="data[birth_day]" onclick="new Calendar().show(this);" value="<?php echo $thisc->echoTime($user["birth_day"]);?>">
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">城市：</td>
-                <td>
-                    <input type="text" id="city" class="comm_ipt"  name="data[city]" value="<?php echo $user["city"];?>">
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">个性签名：</td>
-                <td>
-                    <textarea name="data[motto]"><?php echo $user["motto"] ?></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td width="150" class="fr">&nbsp;</td>
-                <td>
-                    <span></span> <a href="javascript:save();" class="btn3" style="color:#FFFFFF">确定</a>
-                </td>
-            </tr>
-        </tbody>
+        <tr>
+            <td class="fr"><span class="fred">* </span>公众号：</td>
+            <td><input id="num" name="data[num]" type="text" class="comm_ipt" value="<?php echo $data["num"];?>"> 你的公众账号</td>
+        </tr>
+        
+        <tr>
+            <td class="fr">LOGO图标：</td>
+            <td><input id="logo" type="hidden" name="data[logo]" class="comm_ipt" value="<?php echo $data["logo"]?>"> 公众账号LOGO图标主要用户展示
+                <p class="line-t-10"></p>
+                <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
+                    <iframe src="/back/upload?vid=logo" scrolling="no" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                </div>
+                <div class="slt_small" style="right:228px;">
+                    <img id="thumb_logo" src="<?php echo !empty($data["logo"]) ? $data["logo"] : '/style/back/image/upload-pic.png';?>" />                    
+                </div></td>
+        </tr>
+        <tr>
+            <td class="fr">二维码图标：</td>
+            <td><input id="code_image" type="hidden" name="data[code_image]" class="comm_ipt" value="<?php echo $data["code_image"]?>"> 二维码图标主要用于扫一扫关注
+                <p class="line-t-10"></p>
+                <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
+                    <iframe src="/back/upload?vid=code_image" scrolling="no" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
+                </div>
+                <div class="slt_small" style="right:228px;">
+                    <img id="thumb_code_image" src="<?php echo !empty($data["code_image"]) ? $data["code_image"] : '/style/back/image/upload-pic.png';?>" />                    
+                </div></td>
+        </tr>
+        <tr>
+            <td class="fr">类型：</td>
+            <td>
+                <select class="comm_ipt" name="data[type]">
+                    <?php foreach($thisc->type as $k => $v){?>
+                    <option value="<?php echo $k;?>" <?php echo $k == $data["type"] ? "selected='selected'" : "";?>><?php echo $v;?></option>
+                    <?php }?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="fr">描述：</td>
+            <td>
+                <textarea id="desc" type="text" name="data[desc]"><?php echo $data["desc"] ?></textarea> 简单的介绍下公众号吧
+            </td>
+        </tr>
 
+        <tr>
+            <td class="fr" style="vertical-align:top;">标签：</td>
+            <td><input id="tag" type="text" class="comm_ipt" value="<?php echo $data["tag"] ?>" name="data[tag]" placeholder="摄影,数码"> 公众号的标签，比如：摄影，美食等。多个用（,）分隔
+            </td>
+        </tr>
+        <tr>
+            <td class="fr">行业类别：</td>
+            <td><input id="cate" name="data[cate]" type="text" class="comm_ipt" value="<?php echo $data["cate"] ?>" placeholder="互联网"> 比如：教育，体育，互联网之类的</td>
+        </tr>
+        <tr>
+            <td class="fr">商家：</td>
+            <td><input id="owner" name="data[owner]" type="text" class="comm_ipt" value="<?php echo $data["owner"] ?>"> 你的品牌名称</td>
+        </tr>
+        <tr>
+            <td class="fr">语言：</td>
+            <td><input id="language" name="data[language]" type="text" class="comm_ipt" value="<?php echo $data["language"] ?>" placeholder="汉语"> 语言，直接是写语种，比如汉语，英语等</td>
+        </tr>
+        <tr>
+            <td width="150" class="fr">&nbsp;</td>
+            <td>
+                <span></span> <a href="javascript:save();" class="btn3" style="color:#FFFFFF">确定</a>
+            </td>
+        </tr>
     </table>
 </div>

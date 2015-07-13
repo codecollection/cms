@@ -132,42 +132,38 @@ class CBase extends MY_Controller{
      * 编辑
      */
     public function edit() {
-//
-//        $this->activeModule = $this->level."02";
-//        //检测权限
-//        $this->checkPermission($this->level . '02');
-//        $id = $this->getData('id');
-//
-//        $data = $this->bindModel->find($id);
-//        $this->setMinNav(array('title'=>"编辑" . $this->controllerTitle,'url'=>"/back/".$this->controllerId . "/edit?id=" . $id));
-//        
-//        $this->renderAdminView($this->viewDir(2), array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
+
+        $id = $this->getData('id');
+
+        $data = $this->bindModel->find($id);
+        
+        $this->renderUserView($this->controllerId."/edit", array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
     }
 
     /**
      * 保存
      */
     public function save() {
-//        
-//        $id = $this->getData('id');
-//        $data = $this->getData('data');
-//        
-//        $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
-//        $msg = '';
-//
-//        if ($id == 0) {
-//            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
-//        } else {
-//            $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
-//        }
-//        
-//        if ($status) {
-//            
-//            $this->echoAjax(0, $msg);
-//        } else {
-//             
-//            $this->echoAjax(100, $this->bindModel->errorMessage);
-//        }
+        
+        $id = $this->getData('id');
+        $data = $this->getData('data');
+        
+        $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
+        $msg = '';
+
+        if ($id == 0) {
+            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
+        } else {
+            $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
+        }
+        
+        if ($status) {
+            
+            $this->echoAjax(0, $msg);
+        } else {
+             
+            $this->echoAjax(100, $this->bindModel->errorMessage);
+        }
     }
 
     /**

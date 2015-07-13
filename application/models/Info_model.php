@@ -46,6 +46,11 @@ class Info_model extends MBase{
         if($isInsert){
             $this->uid = $this->admin->getUserInfo('admin_id');
             $this->uname = $this->admin->getUserInfo('aname');
+            
+            if(empty($this->uname)){
+                $this->uid = $_SESSION["user"]["user_id"];
+                $this->uname = $_SESSION["user"]["name"];
+            }
             $this->cdate = time();
             $this->state = INFO_STATE;
         }else{
