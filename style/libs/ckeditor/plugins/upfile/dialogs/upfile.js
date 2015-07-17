@@ -19,7 +19,7 @@
                     "html":'<div style="line-height:200%;">在此上传图片、动画、和其他系统上传设置允许的文件。</div>'
                     +'<div style="height:30px;"><b>方式1： 上传本地电脑中的文件，可选择多个文件同时上传</b> </div>'
                     +'<div style="width:119px;height:30px;overflow:hidden;" id="cke_upload_file_input">'
-                    +'<iframe width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0" 0″="" border="0″ marginwidth=" src="/app/cms/upload.form.php?type=ckeditor_upload&water=1" style=""></iframe>'
+                    +'<iframe width="100%" scrolling="no" height="100%" frameborder="no" allowtransparency="yes" marginheight="0" 0″="" border="0″ marginwidth=" src="/back/upload/uploadify?type=ckeditor_upload&water=1" style=""></iframe>'
                     +'</div>'
                     +'<div id="file_json_imgs" style="line-height:200%;color:red;"></div><input type="hidden" id="file_json">'
                     +'<div style="margin-top:10px;"><b>方式2： 复制网络上可访问的文件地址</b> </div>'

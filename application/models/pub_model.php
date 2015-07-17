@@ -13,12 +13,26 @@ class Pub_model extends MBase{
     protected $rules = array(
         array('title', 'required'),
         array('last_cate_id', 'required'),
-        array('last_cate_id','int')
+        array('last_cate_id','int'),
+        array('logo', 'required'),
+        array('code_image', 'required'),
+        array('type', 'int'),
+        array('desc', 'required'),
+        array('tag', 'required'),
+        array('cate', 'required'),
+        array('owner', 'required'),
     );
     
     protected $fieldTitles = array(
         'last_cate_id' => '分类ID',
         'title' => '标题',
+        'logo' => 'LOGO图标',
+        'code_image' => '二维码',
+        'type' => '类型',
+        'desc' => '描述',
+        'tag' => '标签',
+        'cate' => '行业',
+        'owner' => '品牌',
     );
     
     protected $order = 'forder';
@@ -47,9 +61,10 @@ class Pub_model extends MBase{
             $this->uid = $this->admin->getUserInfo('admin_id');
             $this->uname = $this->admin->getUserInfo('aname');
             
-            if(empty($this->uid)){
+            if(empty($this->uid) || $this->uid <= 0 ){
+                
                 $this->uid = $_SESSION["user"]["userId"];
-                $this->uid = $_SESSION["user"]["name"];
+                $this->uname = $_SESSION["user"]["name"];
             }
             $this->cdate = time();
             $this->state = INFO_STATE;

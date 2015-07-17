@@ -11,7 +11,7 @@
         </tr>
         
         <tr>
-            <td class="fr">LOGO图标：</td>
+            <td class="fr"><span class="fred">* </span>LOGO图标：</td>
             <td><input id="logo" type="hidden" name="data[logo]" class="comm_ipt" value="<?php echo $data["logo"]?>"> 公众账号LOGO图标主要用户展示
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
@@ -22,7 +22,7 @@
                 </div></td>
         </tr>
         <tr>
-            <td class="fr">二维码图标：</td>
+            <td class="fr"><span class="fred">* </span>二维码图标：</td>
             <td><input id="code_image" type="hidden" name="data[code_image]" class="comm_ipt" value="<?php echo $data["code_image"]?>"> 二维码图标主要用于扫一扫关注
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
@@ -33,7 +33,7 @@
                 </div></td>
         </tr>
         <tr>
-            <td class="fr">类型：</td>
+            <td class="fr"><span class="fred">* </span>类型：</td>
             <td>
                 <select class="comm_ipt" name="data[type]">
                     <?php foreach($thisc->type as $k => $v){?>
@@ -43,23 +43,23 @@
             </td>
         </tr>
         <tr>
-            <td class="fr">描述：</td>
+            <td class="fr"><span class="fred">* </span>描述：</td>
             <td>
-                <textarea id="desc" type="text" name="data[desc]"><?php echo $data["desc"] ?></textarea> 简单的介绍下公众号吧
+                <textarea id="desc" type="text" name="data[desc]"><?php echo $data["desc"]; ?></textarea> 简单的介绍下公众号吧
             </td>
         </tr>
 
         <tr>
-            <td class="fr" style="vertical-align:top;">标签：</td>
+            <td class="fr" style="vertical-align:top;"><span class="fred">* </span>标签：</td>
             <td><input id="tag" type="text" class="comm_ipt" value="<?php echo $data["tag"] ?>" name="data[tag]" placeholder="摄影,数码"> 公众号的标签，比如：摄影，美食等。多个用（,）分隔
             </td>
         </tr>
         <tr>
-            <td class="fr">行业类别：</td>
+            <td class="fr"><span class="fred">* </span>行业类别：</td>
             <td><input id="cate" name="data[cate]" type="text" class="comm_ipt" value="<?php echo $data["cate"] ?>" placeholder="互联网"> 比如：教育，体育，互联网之类的</td>
         </tr>
         <tr>
-            <td class="fr">商家：</td>
+            <td class="fr"><span class="fred">* </span>商家：</td>
             <td><input id="owner" name="data[owner]" type="text" class="comm_ipt" value="<?php echo $data["owner"] ?>"> 你的品牌名称</td>
         </tr>
         <tr>

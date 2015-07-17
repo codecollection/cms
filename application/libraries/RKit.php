@@ -546,4 +546,15 @@ class RKit {
        }
    }
 
+   public static function mkdirs($dir){
+       if (!is_dir($dir)) {
+            if (!self::mkdirs(dirname($dir))) {
+                return false;
+            }
+            if (!mkdir($dir, 0777)) {
+                return false;
+            }
+        }
+        return true;
+   }
 }

@@ -6,6 +6,10 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class MY_Controller extends CI_Controller {
 
+    protected $verify = "abc";
+    
+    protected $fileType = 'ico,jpg,jpeg,gif,png,bmp,psd,swf,flv,fla,pdf,doc,docx,rtf,txt,wps,xls,xlsx,csv,ppt,pptx,mp4,mpg,wmv,mp3,wav,zip,rar';
+    
     /**
      * 前端显示的css/js文件
      * @var array
@@ -186,6 +190,57 @@ class MY_Controller extends CI_Controller {
 
         return $this;
     }
+    
+    /**
+     * 
+     * @param type $dirName
+     */
+    public function loadView($dirName,$data = array()){
+        
+        $data['c'] = $this;
+        $this->echoView("{$dirName}",$data);
+    }
+    
+    /**
+     * 输出视图内容
+     * @param type $dirName
+     * @param type $data
+     */
+    private function echoView($dirName,$data = array()){
+        
+        echo $this->load->view($dirName,$data,true);
+    }
+    
+    /**
+     * 加载上传相册按钮的html
+     */
+    public function loadUploadFile(){
+        $t = $this->getData("type");
+        $vid = $this->getData('vid');
+        $type = empty($t) ? "single_upload" : $t;
+        
+        $timestamp = time();
+        $token = md5($this->verify . $timestamp);
+        
+        $data = array(
+            'type'=>$type,
+            "vid"=>$vid,
+            "timestamp" => $timestamp,
+            "token" => $token,
+            "callfun" => $type,
+            "limitSize" => 1024*1024*10,
+        );
+        $this->loadView("uploadfiles",$data);
+    }
+    
+    public function getResourceFiles($infoId,$modelId){
+        
+        $this->loadModel("resource");
+        
+        $resource = $this->resource->getFiles($infoId,$modelId);
+        return $resource;
+        
+    }
 }
 
 /**
@@ -204,7 +259,7 @@ class CAdminBase extends MY_Controller {
     
    
     
-
+    protected $resourceInfoTabel = "cms_resource_info";
     /**
      * 与当前控制器绑定的模型对象
      * @var OBJECT
@@ -321,6 +376,8 @@ class CAdminBase extends MY_Controller {
         $id = $this->getData('id');
 
         $data = $this->bindModel->find($id);
+        
+        
         $this->setMinNav(array('title'=>"编辑" . $this->controllerTitle,'url'=>"/back/".$this->controllerId . "/edit?id=" . $id));
         
         $this->renderAdminView($this->viewDir(2), array('data' => $data, 'pageId' => 'p_add_' . $this->controllerId));
@@ -337,7 +394,8 @@ class CAdminBase extends MY_Controller {
         
         $id = $this->getData('id');
         $data = $this->getData('data');
-        
+        $files = $this->getData("file");
+        $modelId = $this->getData("modelId");
         $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
         $msg = '';
 
@@ -347,13 +405,23 @@ class CAdminBase extends MY_Controller {
             $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
         }
         
-        if ($status) {
+        if(!empty($files)){
+            $files = !is_array($files) ? (array)$files : $files;
             
-            $this->echoAjax(0, $msg);
-        } else {
-             
-            $this->echoAjax(100, $this->bindModel->errorMessage);
+            foreach ($files as $file){
+                
+                if($file["action"] == "edit"){ continue;}
+                $fileData = array(
+                    'info_id' => $id > 0 ? $id : $status,
+                    'model_id' => isset($data["model_id"]) ? $data['model_id'] : $modelId,
+                    'resource_id' => $file['resourceId'],
+                    'cdate' => time(),
+                );
+                
+                $this->db->insert($this->resourceInfoTabel,$fileData);
+            }
         }
+        $this->echoAjax(0, "更新信息成功");
     }
 
     /**

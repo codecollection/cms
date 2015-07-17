@@ -16,6 +16,9 @@
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.select/select.css"/>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.tree/tree.css"/>
 <link rel="shortcut icon" href="/style/back/image/logo_ico.ico" type="image/x-icon" />
+
+<script src="/style/libs/uploadify/jquery.uploadify.js"></script>
+<link rel="stylesheet" type="text/css" href="/style/libs/uploadify/uploadify.css"/>
 <!--[if lte IE 6]>
 <script language="javascript" type="text/javascript" src="/style/libs/png.js" ></script>
 <script type="text/javascript">

@@ -1284,6 +1284,25 @@ function callback_upload(data){
     }catch(e){alert(data);return false;}
 }
 
+function ckeditor_upload(data){
+    var json=$.evalJSON(data);
+    if(json.code==1) {
+        top.C.alert.alert({content:json.msg});
+        return false;
+    }
+
+    var json_all={};
+    if(top.$('#file_json').val()!='') {
+        json_all= $.evalJSON(top.$('#file_json').val());
+    }
+
+    json_all[json.md5]=json;
+    var total=0;for(var f in json_all){total++;}
+
+    top.$('#file_json').val($.toJSON(json_all));
+    top.$('#file_json_imgs').html('已经上传了'+total+'个文件');
+    return true;
+}
 // 编辑器的初始化参数
 var ckeditor_toolbar=[
     ["Source","PasteText","Autoformat","Bold","Italic","Underline","Strike","Subscript","Superscript"],//加粗,斜体,自动排版,下划线,穿过线,下标字,上标字
@@ -1330,3 +1349,26 @@ function show_map_baidu(obj,params) {
 
     C.alert.opacty({'title':params.title,'width':params.width,'height':params.height,'url':params.url});
 }
+
+
+function deleteResource(obj){
+    
+    var resInfoId = obj.getAttribute("data-resInfoId");
+    
+    $.post("/back/upload/deleteResouce",{"resInfoId":resInfoId},function(data){
+        try {
+            
+            var json = $.evalJSON(data);
+            
+            if(json.status == 0) {
+               
+                $(obj).closest('li').remove();
+            }else{
+                
+                C.alert.alert({'content':json.msg});
+            }
+        }catch(e){C.alert.alert({'content':e.message+data});}
+    });
+    
+}
+

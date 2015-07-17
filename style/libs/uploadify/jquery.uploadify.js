@@ -97,38 +97,38 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					// Required Settings
 					id       : $this.attr('id'), // The ID of the DOM object
 					swf      : 'uploadify.swf',  // The path to the uploadify SWF file
-					uploader : 'uploadify.php',  // The path to the server-side upload script
+					uploader : 'uploadify.php',  // 上传处理程序
 					
 					// Options
-					auto            : true,               // Automatically upload files when added to the queue
+					auto            : true,               // 是否自动上传
 					buttonClass     : '',                 // A class name to add to the browse button DOM object
 					buttonCursor    : 'hand',             // The cursor to use with the browse button
-					buttonImage     : null,               // (String or null) The path to an image to use for the Flash browse button if not using CSS to style the button
-					buttonText      : 'SELECT FILES',     // The text to use for the browse button
+					buttonImage     : null,               // 浏览按钮的背景图片路径
+					buttonText      : '选择文件',     // The text to use for the browse button
 					checkExisting   : false,              // The path to a server-side script that checks for existing files on the server
-					debug           : false,              // Turn on swfUpload debugging mode
-					fileObjName     : 'Filedata',         // The name of the file object to use in your server-side script
-					fileSizeLimit   : 0,                  // The maximum size of an uploadable file in KB (Accepts units B KB MB GB if string, 0 for no limit)
-					fileTypeDesc    : 'All Files',        // The description for file types in the browse dialog
-					fileTypeExts    : '*.*',              // Allowed extensions in the browse dialog (server-side validation should also be used)
-					height          : 30,                 // The height of the browse button
-					itemTemplate    : false,              // The template for the file item in the queue
+					debug           : false,              // 开启调试
+					fileObjName     : 'Filedata',         // 服务器端脚本使用的文件对象的名称 $_FILES个['upload']
+					fileSizeLimit   : 0,                  // 上传文件的大小限制
+					fileTypeDesc    : '全部文件',        // 在浏览窗口底部的文件类型下拉菜单中显示的文本
+					fileTypeExts    : '*.*',              // 允许上传的文件后缀
+					height          : 30,                 // 浏览按钮的高度
+					itemTemplate    : false,              // 进度条是否显示 true=不显示 false=显示 The template for the file item in the queue
 					method          : 'post',             // The method to use when sending files to the server-side upload script
 					multi           : true,               // Allow multiple file selection in the browse dialog
-					formData        : {},                 // An object with additional data to send to the server-side upload script with every file upload
+					formData        : {},                 // 附带值
 					preventCaching  : true,               // Adds a random value to the Flash URL to prevent caching of it (conflicts with existing parameters)
 					progressData    : 'percentage',       // ('percentage' or 'speed') Data to show in the queue item during a file upload
-					queueID         : false,              // The ID of the DOM object to use as a file queue (without the #)
-					queueSizeLimit  : 999,                // The maximum number of files that can be in the queue at one time
+					queueID         : false,              // 文件选择后的容器ID
+					queueSizeLimit  : 999,                // 一次上传队列文件数量限制
 					removeCompleted : true,               // Remove queue items from the queue when they are done uploading
 					removeTimeout   : 3,                  // The delay in seconds before removing a queue item if removeCompleted is set to true
 					requeueErrors   : false,              // Keep errored files in the queue and keep trying to upload them
-					successTimeout  : 30,                 // The number of seconds to wait for Flash to detect the server's response after the file has finished uploading
-					uploadLimit     : 0,                  // The maximum number of files you can upload
-					width           : 120,                // The width of the browse button
+					successTimeout  : 30,                 // 超时时间
+					uploadLimit     : 0,                  // 最多能上传数量限制
+					width           : 120,                // 浏览按钮的宽度
 					
 					// Events
-					overrideEvents  : []             // (Array) A list of default event handlers to skip
+					overrideEvents  : []             // (Array) 不执行默认的onSelect事件
 					/*
 					onCancel         // Triggered when a file is cancelled from the queue
 					onClearQueue     // Triggered during the 'clear queue' method
@@ -279,7 +279,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						uploadSize         : 0, // The size in bytes of the upload queue
 						queueBytesUploaded : 0, // The size in bytes that have been uploaded for the current upload queue
 						uploadQueue        : [], // The files currently to be uploaded
-						errorMsg           : 'Some files were not added to the queue:'
+						errorMsg           : '有些文件没有插入到上传队列：'
 					};
 
 					// Save references to all the objects
@@ -305,7 +305,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 		cancel : function(fileID, supressEvent) {
 
 			var args = arguments;
-
+            
 			this.each(function() {
 				// Create a reference to the jQuery DOM object
 				var $this        = $(this),
@@ -324,10 +324,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 							} else {
 								swfuploadify.cancelUpload($(this).attr('id'));
 							}
-							$(this).find('.data').removeClass('data').html(' - Cancelled');
+							$(this).find('.data').removeClass('data').html(' 已删除').addClass('failure');
 							$(this).find('.uploadify-progress-bar').remove();
 							$(this).delay(1000 + 100 * delay).fadeOut(500, function() {
-								$(this).remove();
+                                $(this).remove();
 							});
 						});
 						swfuploadify.queueData.queueSize   = 0;
@@ -337,10 +337,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					} else {
 						for (var n = 0; n < args.length; n++) {
 							swfuploadify.cancelUpload(args[n]);
-							$('#' + args[n]).find('.data').removeClass('data').html(' - Cancelled');
+							$('#' + args[n]).find('.data').removeClass('data').html(' 已删除').addClass('failure');
 							$('#' + args[n]).find('.uploadify-progress-bar').remove();
 							$('#' + args[n]).delay(1000 + 100 * n).fadeOut(500, function() {
-								$(this).remove();
+                                $(this).remove();
 							});
 						}
 					}
@@ -348,10 +348,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					var item = $('#' + settings.queueID).find('.uploadify-queue-item').get(0);
 					$item = $(item);
 					swfuploadify.cancelUpload($item.attr('id'));
-					$item.find('.data').removeClass('data').html(' - Cancelled');
+					$item.find('.data').removeClass('data').html(' 已删除').addClass('failure');
 					$item.find('.uploadify-progress-bar').remove();
 					$item.delay(1000).fadeOut(500, function() {
-						$(this).remove();
+                        $(this).remove();
 					});
 				}
 			});
@@ -569,7 +569,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			var settings = this.settings;
 
 			// Reset some queue info
-			this.queueData.errorMsg       = 'Some files were not added to the queue:';
+			this.queueData.errorMsg       = '上传队列提示：';
 			this.queueData.filesReplaced  = 0;
 			this.queueData.filesCancelled = 0;
 
@@ -612,13 +612,13 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			for (var n in this.queueData.files) {
 				queuedFile = this.queueData.files[n];
 				if (queuedFile.uploaded != true && queuedFile.name == file.name) {
-					var replaceQueueItem = confirm('The file named "' + file.name + '" is already in the queue.\nDo you want to replace the existing item in the queue?');
+					//var replaceQueueItem = confirm('文件 "' + file.name + '" 已经存在，\n你要替换并重新上传覆盖吗?');
+                    var replaceQueueItem = true;
 					if (!replaceQueueItem) {
 						this.cancelUpload(file.id);
 						this.queueData.filesCancelled++;
 						return false;
-					} else {
-						$('#' + queuedFile.id).remove();
+					} else {$('#' + queuedFile.id).remove();
 						this.cancelUpload(queuedFile.id);
 						this.queueData.filesReplaced++;
 					}
@@ -664,6 +664,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						<div class="uploadify-progress-bar"><!--Progress Bar--></div>\
 					</div>\
 				</div>';
+                
 			}
 
 			// Run the default event handler
@@ -696,19 +697,19 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				switch(errorCode) {
 					case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
 						if (settings.queueSizeLimit > errorMsg) {
-							this.queueData.errorMsg += '\nThe number of files selected exceeds the remaining upload limit (' + errorMsg + ').';
+							this.queueData.errorMsg += '最多可以上传 ' + settings.uploadLimit + ' 个文件.';
 						} else {
-							this.queueData.errorMsg += '\nThe number of files selected exceeds the queue size limit (' + settings.queueSizeLimit + ').';
+							this.queueData.errorMsg += '最多同时上传 ' + settings.queueSizeLimit + ' 个文件';
 						}
 						break;
 					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-						this.queueData.errorMsg += '\nThe file "' + file.name + '" exceeds the size limit (' + settings.fileSizeLimit + ').';
+						this.queueData.errorMsg += '"' + file.name + '" 超出了上传文件大小限制 (' + settings.fileSizeLimit + ').';
 						break;
 					case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
-						this.queueData.errorMsg += '\nThe file "' + file.name + '" is empty.';
+						this.queueData.errorMsg += '"' + file.name + '" 是空文件，不上传';
 						break;
 					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-						this.queueData.errorMsg += '\nThe file "' + file.name + '" is not an accepted file type (' + settings.fileTypeDesc + ').';
+						this.queueData.errorMsg += '"' + file.name + '" 文件类型不在允许范围之内 (' + settings.fileTypeDesc + ').';
 						break;
 				}
 			}
@@ -803,31 +804,31 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			var errorString = 'Error';
 			switch(errorCode) {
 				case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
-					errorString = 'HTTP Error (' + errorMsg + ')';
+					errorString = 'HTTP 错误 (' + errorMsg + ')';
 					break;
 				case SWFUpload.UPLOAD_ERROR.MISSING_UPLOAD_URL:
-					errorString = 'Missing Upload URL';
+					errorString = '上传 URL 路径丢失';
 					break;
 				case SWFUpload.UPLOAD_ERROR.IO_ERROR:
-					errorString = 'IO Error';
+					errorString = 'IO 错误';
 					break;
 				case SWFUpload.UPLOAD_ERROR.SECURITY_ERROR:
-					errorString = 'Security Error';
+					errorString = '安全错误';
 					break;
 				case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:
-					alert('The upload limit has been reached (' + errorMsg + ').');
-					errorString = 'Exceeds Upload Limit';
+					//alert('The upload limit has been reached (' + errorMsg + ').');
+					errorString = '上传限制';
 					break;
 				case SWFUpload.UPLOAD_ERROR.UPLOAD_FAILED:
-					errorString = 'Failed';
+					errorString = '失败';
 					break;
 				case SWFUpload.UPLOAD_ERROR.SPECIFIED_FILE_ID_NOT_FOUND:
 					break;
 				case SWFUpload.UPLOAD_ERROR.FILE_VALIDATION_FAILED:
-					errorString = 'Validation Error';
+					errorString = '验证错误';
 					break;
 				case SWFUpload.UPLOAD_ERROR.FILE_CANCELLED:
-					errorString = 'Cancelled';
+					errorString = '取消的';
 					this.queueData.queueSize   -= file.size;
 					this.queueData.queueLength -= 1;
 					if (file.status == SWFUpload.FILE_STATUS.IN_PROGRESS || $.inArray(file.id, this.queueData.uploadQueue) >= 0) {
@@ -838,7 +839,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					delete this.queueData.files[file.id];
 					break;
 				case SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED:
-					errorString = 'Stopped';
+					errorString = '停止的';
 					break;
 			}
 
@@ -854,7 +855,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 				// Add the error message to the queue item
 				if (errorCode != SWFUpload.UPLOAD_ERROR.SPECIFIED_FILE_ID_NOT_FOUND && file.status != SWFUpload.FILE_STATUS.COMPLETE) {
-					$('#' + file.id).find('.data').html(' - ' + errorString);
+					$('#' + file.id).find('.data').html(' ' + errorString).addClass('failure');
 				}
 			}
 
@@ -901,10 +902,11 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			// Call the default event handler
 			if ($.inArray('onUploadProgress', settings.overrideEvents) < 0) {
 				if (settings.progressData == 'percentage') {
-					$('#' + file.id).find('.data').html(' - ' + percentage + '%');
+					$('#' + file.id).find('.data').html(' ' + percentage + '%');
 				} else if (settings.progressData == 'speed' && lapsedTime > 500) {
-					$('#' + file.id).find('.data').html(' - ' + this.queueData.averageSpeed + suffix);
+					$('#' + file.id).find('.data').html(' ' + this.queueData.averageSpeed + suffix);
 				}
+                $('#' + file.id).find('.percent_span').html(' ' + percentage + '%');
 				$('#' + file.id).find('.uploadify-progress-bar').css('width', percentage + '%');
 			}
 
@@ -931,10 +933,11 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					data    : {filename: file.name},
 					success : function(data) {
 						if (data == 1) {
-							var overwrite = confirm('A file with the name "' + file.name + '" already exists on the server.\nWould you like to replace the existing file?');
+							//var overwrite = confirm('文件名 "' + file.name + '" 的文件已经在服务器上存在，要替换这个文件吗?');
+                            var overwrite = true;
 							if (!overwrite) {
 								this.cancelUpload(file.id);
-								$('#' + file.id).remove();
+                                $('#' + file.id).remove();
 								if (this.queueData.uploadQueue.length > 0 && this.queueData.queueLength > 0) {
 									if (this.queueData.uploadQueue[0] == '*') {
 										this.startUpload();
@@ -962,7 +965,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 			// Call the default event handler
 			if ($.inArray('onUploadSuccess', settings.overrideEvents) < 0) {
-				$('#' + file.id).find('.data').html(' - Complete');
+				$('#' + file.id).find('.data').html(' 上传完毕').addClass('success');
 			}
 
 			// Call the user-defined event handler

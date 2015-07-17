@@ -19,8 +19,9 @@
     <input type="hidden" id="<?php echo $thisc->modelName."_id";?>" name="id" value="<?php echo($data[$thisc->modelName."_id"]);?>" />
     <input type="hidden" id="modelId" name="modelId" value="<?php echo($modelId);?>" />
     <table class="table_lists editbox">
-        
-        <?php ?>
+        <thead>
+                <tr><td colspan="2">基本信息</td></tr>
+            </thead>
         <tr>
             <td width="150" class="fr">文档分类：</td>
             <td>
@@ -62,21 +63,21 @@
                  <p class="line-t-10"></p>
                  <textarea name="data[body]" id="data[body]" style="display:block" class="ckeditor"><?php echo $data["body"]?></textarea>
                 <script type="text/javascript">
-//                    var editor = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
-//                        toolbar : ckeditor_toolbar
-//                    });
-//                    
-                    var editor ;  
-                        if(!CKEDITOR.instances["data[body]"]){  //判定content2是否存在  
-                             editor= CKEDITOR.replace("data[body]");  
-                        }else{  
-                               addCkeditor("data[body]");  
-                        }  
-                    function addCkeditor(id){  
-                        var editor2 = CKEDITOR.instances[id];  
-                        if(editor2) editor2.destroy(true);//销毁编辑器 content2,然后新增一个  
-                            editor = CKEDITOR.replace(id);  
-                    }  
+                    var editor = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
+                        toolbar : ckeditor_toolbar
+                    });
+                    
+//                    var editor ;  
+//                        if(!CKEDITOR.instances["data[body]"]){  //判定content2是否存在  
+//                             editor= CKEDITOR.replace("data[body]");  
+//                        }else{  
+//                               addCkeditor("data[body]");  
+//                        }  
+//                    function addCkeditor(id){  
+//                        var editor2 = CKEDITOR.instances[id];  
+//                        if(editor2) editor2.destroy(true);//销毁编辑器 content2,然后新增一个  
+//                            editor = CKEDITOR.replace(id);  
+//                    }  
                 </script>
                 <p class="line-t-15"></p>
                
@@ -108,9 +109,40 @@
             <td><?php echo $thisc->vars->formHtml($v,$data[$v['field']]);?></td>
         </tr>
         <?php }?>
+        <thead>
+                <tr><td colspan="2">相册附件</td></tr>
+            </thead>
+            <tr>
+                <td class="fr"></td>
+                <td>
+                    <p class="line-t-10"></p>
+                    <?php $thisc->loadUploadFile();?>
+                    <p class="line-t-10"></p>
+
+                    <ul id="attachs_select_list">
+                    <?php
+                    $resouce = $thisc->getResourceFiles($data[$thisc->modelName."_id"],$modelId);
+                    
+                    $html='';
+                    if(is_array($resouce) && !empty($resouce)){
+                        foreach($resouce as $k=>$v){
+                            $html.='<li>';
+                            $html.='<img src="'.$v["resource_url"].'" style="width:30px;height:30px;">';
+                            $html .='<input type="hidden" id="'.$v["resource_id"].'" name="file['.$v['resource_id'].'][resourceId]" value="'.$v["resource_id"].'">';
+                            $html .='<input type="hidden" id="action___'.$v["resource_id"].'" name="file['.$v['resource_id'].'][action]" value="edit">';
+                            $html.='<span><input id="oname___'.$v['oname'].'" type="text" class="comm_ipt" value="'.$v['oname'].'" /></span>';
+                            $html.='<em><a href="'.$v['resource_url'].'" target="_blank">查看</a>&nbsp;&nbsp;&nbsp;&nbsp;</em>';
+                            $html.='<em data-resInfoId="'.$v['res_info_id'].'" onclick="deleteResource(this)" style="cursor:pointer;">删除</em></li>';
+                        }
+                    }
+                    echo($html);
+                    ?></ul>
+                    <p class="line-t-20"></p>
+
+                </td>
+            </tr>
     </table>
 </div>
-
 <script>
     var urls = {"save": "/back/<?php echo $thisc->controllerId; ?>/save", "del": "/back/<?php echo $thisc->controllerId; ?>/del"};
 </script>

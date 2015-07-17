@@ -97,3 +97,22 @@ define("HOST", 'http://cms'); //域名
 define("CSSHOST", "http://cms"); //样式文件域名
 define("FILEHOST", "Http://cms"); //文件域名
 define("AUTHHOST", "http://cms"); //用户中心
+
+//水印
+define('WATER_MARK_ENABLE', true);
+define('WATER_WIDTH', 200);
+define('WATER_HEIGHT', 200);
+define('WATER_IMG', "/style/front/public/image/login/weibo.png"); //水印图片
+define('WATER_PCT', 60); //透明度
+define('WATER_QUALITY', 80); //水印质量
+define('WATER_POS', 3); //0-5  0=随机
+define('WATER_TEXT', "小肉粽");//水印文字
+define('WATER_FONT_SIZE', 12);
+define('WATER_FONT_FAMILY', "elephant.ttf"); //水印字体
+define('WATER_FONT_COLOR', "#FFFF"); //颜色
+
+//缩略图
+define('THUMB_WIDTH', 200);
+define('THUMB_HEIGHT', 200);
+
+

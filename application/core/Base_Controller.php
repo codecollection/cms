@@ -81,25 +81,6 @@ class CBase extends MY_Controller{
         $this->load->view($dir, array_merge($frameData, $data,  $this->renderData));
     }
     
-    /**
-     * 
-     * @param type $dirName
-     */
-    public function loadView($dirName,$data = array()){
-        
-        $data['c'] = $this;
-        $this->echoView("{$dirName}",$data);
-    }
-    
-    /**
-     * 输出视图内容
-     * @param type $dirName
-     * @param type $data
-     */
-    private function echoView($dirName,$data = array()){
-        
-        echo $this->load->view($dirName,$data,true);
-    }
 
     /**
      * 

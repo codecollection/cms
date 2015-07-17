@@ -18,6 +18,7 @@
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/common.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/index.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/common.js"></script>
     <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/more.js"></script>
 </head>
 
@@ -144,22 +145,22 @@
                         </div>
                     </div>
                     <?php }else{?>
-                    <form onsubmit="topDoLogin();return false;">
+                    <form onsubmit="doLogin();return false;" id="login_form">
                         <p class="tipsText" id="topLoginMsg"></p>
-                        <input type="text" id="topLoginBoxUserName" value="乐号/用户名/邮箱/手机号" style="color:#b9b9b9" onmouseout="this.className='inputText'" onmousemove="this.className='inputTextOut'"
+                        <input type="text" value="" name="account" placeholder="用户名/邮箱/手机号" style="color:#b9b9b9" onmouseout="this.className='inputText'" onmousemove="this.className='inputTextOut'"
                                onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='用户名/邮箱/手机号'){this.value='用户名/邮箱/手机号';this.style.color='#b9b9b9';}"
-                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='用户名/邮箱/手机号'){this.value=''};this.style.color='#4f4f4f'" class="inputText"/> <input type="password" id="topLoginBoxPassword" class="inputText" value="请输入密码" style="color:#b9b9b9" onmouseout="this.className='inputText'"
+                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='用户名/邮箱/手机号'){this.value=''};this.style.color='#4f4f4f'" class="inputText"/> <input type="password" id="topLoginBoxPassword" class="inputText" value="请输入密码" style="color:#b9b9b9" placeholder="请输入密码" onmouseout="this.className='inputText'"
                                                                                                                                                                                                onmousemove="this.className='inputTextOut'"
                                                                                                                                                                                                onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='请输入密码'){this.value='请输入密码';this.style.color='#b9b9b9';}"
-                                                                                                                                                                                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='请输入密码'){this.value=''};this.style.color='#4f4f4f'"/> <input type="submit" value="登录" class="submit"/>
+                                                                                                                                                                                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='请输入密码'){this.value=''};this.style.color='#4f4f4f'" name="password"/> <input type="submit" value="登录" class="submit"/>
                         <div class="remember">
                             <label><input type="checkbox" class="check" checked="checked" id="topAutoLogin" /><span>自动登录</span></label><a href="<?php echo AUTHHOST ?>/user/login?dispay=web" target="_blank">忘记密码？</a>&nbsp;|&nbsp;<a href="<?php echo AUTHHOST ?>/user/reg?display=web" target="_blank">注册帐号</a>
                         </div>
                     </form>
                     <div class="thirdP">
                         <p>使用合作网站帐号登录：</p>
-                        <a class="sina" href="javascript:void(0)" onclick="window.location.href='http://oauth.d.cn/auth/weibo/login.html?act=1&to='+encodeURI(window.location.href);return false;">新浪微博</a>
-                        <a class="qq" href="javascript:void(0)" onclick="window.location.href='http://oauth.d.cn/auth/tencent/login.html?act=1&to='+encodeURI(window.location.href);return false;">QQ账号</a>
+                        <a class="sina" href="javascript:void(0)">新浪微博</a>
+                        <a class="qq" href="javascript:void(0)">QQ账号</a>
                     </div>
                     <?php }?>
                 </div>

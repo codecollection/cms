@@ -32,8 +32,8 @@
     <div class="header">
         <div class="hd_logo l"><a href="index.php"><img src="/style/back/image/logo.png" /></a></div>
         <ul class="user_hd r">
-            <li><a href="/" target="_blank">我的公众号</a></li>
-            <li><a href="cache.clear.php">我的资料</a></li>
+            <li><a href="/user/pub">我的公众号</a></li>
+            <li><a href="/user/info">我的资料</a></li>
             <li><span>欢迎你:<?php //echo $admin["group"];?>&nbsp;<a href="javascript:void(0);" title="刷新帐号权限" onclick="restart();"><?php  echo $u["name"];?></a></span></li>
             <li><a href="/user/login/loginOut">退出</a></li>
         </ul>
