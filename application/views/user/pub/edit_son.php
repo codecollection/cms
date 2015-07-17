@@ -74,6 +74,8 @@
 <div class="footer_fixed">
     <div class="box_1000">
         <span>操作：</span>
-<a class="btn3" href="javascript:save_data();">保存信息</a> 
+<a class="btn3" href="javascript:save_data();">保存信息</a>
+<a class="btn3" href="/user/pub/article?id=<?php echo $cateId;?>">返回文档</a>
+<a class="btn3" href="/user/pub">返回公众号</a>
     </div>
 </div>

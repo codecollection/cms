@@ -354,46 +354,46 @@ class NavPanel {
                 ),
             ),
         ),
-        array(
-            'title' => "我的消息", //功能导航分类
-            'url' => '/user/msg',
-            'level' => 'D',
-            'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
-            'menu'  => array(
-                array(
-                    'title'=>'未读消息',
-                    'url' => '/user/safe',
-                    'level' => 'D01', //页面权限，也就是列表权限
-                    'menu' => array(
-                        //array('title' => '', 'level' => ''), //按钮功能配置
-                    ),
-                ),
-                array(
-                    'title'=>'收件箱',
-                    'url' => '/user/info/set',
-                    'level' => 'D02', //页面权限
-                    'menu' => array(
-                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
-                    ),
-                ),
-                array(
-                    'title'=>'发件箱',
-                    'url' => '/user/safe',
-                    'level' => 'D03', //页面权限，也就是列表权限
-                    'menu' => array(
-                        //array('title' => '', 'level' => ''), //按钮功能配置
-                    ),
-                ),
-                array(
-                    'title'=>'收藏夹',
-                    'url' => '/user/info/set',
-                    'level' => 'D04', //页面权限
-                    'menu' => array(
-                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
-                    ),
-                ),
-            ),
-        ),
+//        array(
+//            'title' => "我的消息", //功能导航分类
+//            'url' => '/user/msg',
+//            'level' => 'D',
+//            'bgimg' => '/style/back/img/menu1/system.png', //导航的样式图片
+//            'menu'  => array(
+//                array(
+//                    'title'=>'未读消息',
+//                    'url' => '/user/safe',
+//                    'level' => 'D01', //页面权限，也就是列表权限
+//                    'menu' => array(
+//                        //array('title' => '', 'level' => ''), //按钮功能配置
+//                    ),
+//                ),
+//                array(
+//                    'title'=>'收件箱',
+//                    'url' => '/user/info/set',
+//                    'level' => 'D02', //页面权限
+//                    'menu' => array(
+//                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+//                    ),
+//                ),
+//                array(
+//                    'title'=>'发件箱',
+//                    'url' => '/user/safe',
+//                    'level' => 'D03', //页面权限，也就是列表权限
+//                    'menu' => array(
+//                        //array('title' => '', 'level' => ''), //按钮功能配置
+//                    ),
+//                ),
+//                array(
+//                    'title'=>'收藏夹',
+//                    'url' => '/user/info/set',
+//                    'level' => 'D04', //页面权限
+//                    'menu' => array(
+//                        array('title' => '保存设置', 'level' => 'B0201'), //按钮功能配置
+//                    ),
+//                ),
+//            ),
+//        ),
     );
     /**
      * 取得实例

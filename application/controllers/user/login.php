@@ -23,7 +23,7 @@ class Login extends CUserBase {
         
         if($data){
            
-            redirect("/{$this->user}/home");
+            redirect("/{$this->user}/pub");
             exit;
         }
         
@@ -67,6 +67,6 @@ class Login extends CUserBase {
         
         $this->u->logout();
         
-        redirect("/user/login");
+        redirect("/");
     }
 }

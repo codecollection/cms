@@ -39,5 +39,5 @@
     <div class="box_1000">
         <span>操作：</span>
         
-        <a class="btn3" href="/user/pub/addArticle?modelId=<?php echo $modelId; ?>&amp;cateId=<?php echo $cateId;?>">添加文档</a>        <a class="btn3" href="javascript:update_order();">修改排序</a>        <a class="btn3" href="javascript:del_data();">批量删除</a>        <a class="btn3" href="/back/info/home">返回文档</a>    </div>
+        <a class="btn3" href="/user/pub/addArticle?modelId=<?php echo $modelId; ?>&amp;cateId=<?php echo $cateId;?>">添加文档</a>        <a class="btn3" href="javascript:update_order();">修改排序</a>        <a class="btn3" href="javascript:del_data();">批量删除</a>        <a class="btn3" href="/user/pub">返回公众号</a>    </div>
 </div>

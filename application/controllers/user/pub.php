@@ -82,7 +82,7 @@ class Pub extends CUserBase {
 
     public function article(){
         
-        $infoId = $this->getData("cateId");
+        $infoId = $this->getData("id");
         
         $this->setModelName($this->sonModelId);
         

@@ -15,7 +15,7 @@
 <script type="text/javascript" src="/style/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.select/select.css"/>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.tree/tree.css"/>
-<link rel="shortcut icon" href="/style/back/image/logo_ico.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/style/front/public/image/favicon.ico" type="image/x-icon" />
 <!--[if lte IE 6]>
 <script language="javascript" type="text/javascript" src="/style/libs/png.js" ></script>
 <script type="text/javascript">
