@@ -38,3 +38,21 @@ function save_data(){
         }catch(e){C.alert.alert({content:e.message+data});}
     });
 }
+
+function del_data(id,modelId){
+    
+    $.post("/user/pub/delete",{"params":id,"modelId":modelId},function(data){
+        try {
+            var json = $.evalJSON(data);
+            
+            if(json.status == 0){
+                show_close(json.msg);
+            }else{
+                C.alert.alert({content:json.msg});
+            }
+            
+            
+        }catch(e){C.alert.alert({content:e.message+data});}
+    });
+    
+}

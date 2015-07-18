@@ -151,17 +151,13 @@ class CBase extends MY_Controller{
      * 删除
      */
     public function delete() {
-//
-//        $this->activeModule = $this->level."01";
-//        //检测权限 
-//        $this->checkPermission($this->level . '02');
-//        
-//        $params = $this->getData("params");
-//        
-//        $status = $this->bindModel->deletes($params);
-//        $msg = sprintf(lang($status ? 'delete_success' : 'delete_fail'), $this->controllerTitle);
-//
-//        $this->echoAjax(0, $msg);
+        
+        $params = $this->getData("params");
+        
+        $status = $this->bindModel->deletes($params);
+        $msg = sprintf(lang($status ? 'delete_success' : 'delete_fail'), $this->controllerTitle);
+
+        $this->echoAjax(0, $msg);
     }
 
     /**

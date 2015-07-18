@@ -13,7 +13,6 @@ class Login extends CUserBase {
        parent::__construct();
     }
 
-    
     /**
      *  如果没有登录就到登录页面，如果登录了就到管理首页
      */

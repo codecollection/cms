@@ -13,7 +13,7 @@
             <td><input id="title" type="text" name="data[title]" class="comm_ipt" value="<?php echo $data["title"] ?>"></td>
         </tr>
         <tr>
-            <td class="fr">描述：</td>
+            <td class="fr"><span class="fred">* </span>描述：</td>
             <td><textarea name="data[desc]"  id="desc" class="comm_ipt"><?php echo $data["desc"] ?></textarea></td>
         </tr>
 
@@ -56,7 +56,7 @@
             </td>
         </tr>
         <tr>
-            <td class="fr" style="vertical-align:top;">标签：</td>
+            <td class="fr" style="vertical-align:top;"><span class="fred">* </span>标签：</td>
             <td><input id="tag" type="text" class="comm_ipt" value="<?php echo $data["tag"] ?>" name="data[tag]"> 
             </td>
         </tr>

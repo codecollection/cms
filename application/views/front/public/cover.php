@@ -2,109 +2,38 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="copyright" content="www.d.cn"/>
-<link type="application/rss+xml" href="http://android.d.cn/rss/game.xml" rel="alternate"
-            title="Android手机游戏免费下载 Android手机软件下载 Android智能门户_当乐网"/>
-    
+<meta name="copyright" content="<?php echo HOST;?>"/>
+<link type="application/rss+xml" href="" rel="alternate" title="Android手机游戏免费下载 Android手机软件下载 Android智能门户_当乐网"/>
+<link type="image/x-icon" rel="shortcut icon" href="/favicon.ico"/>
 
-<link type="image/x-icon" rel="shortcut icon" href="http://www.d.cn/favicon.ico"/>
-
-    <meta http-equiv="mobile-agent" content="format=xhtml; url=http://a.d.cn/"/>
+    <meta http-equiv="mobile-agent" content="format=xhtml; url=<?php echo HOST;?>"/>
     <meta name="viewport" content="width=1200"/>
-    <meta name="keywords" content="安卓,安卓游戏,安卓软件"/>
-    <meta name="description" content="当乐网安卓游戏门户，为用户提供最新最全的安卓手机游戏、安卓破解游戏、安卓大型游戏、安卓软件、安卓游戏攻略/评测/礼包资源"/>
-    <title>安卓手机游戏免费下载 安卓手机软件下载 当乐网</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title></title>
     <link rel="canonical" href="http://android.d.cn/"/>
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/common.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/index.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/common.js"></script>
     <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/more.js"></script>
+    <script type="text/javascript" src="<?php echo CSSHOST;?>/style/libs/jquery.lazyload.js"></script>
+    <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/navtop.css" rel="stylesheet" type="text/css"/>
+    <script>
+        $(function() {
+            $("img").lazyload({effect : "fadeIn","threshold":200});
+            
+        });
+    </script>
 </head>
 
 <body>
 
-<style type="text/css">
-    /*topnav*/
-    #siteNav,.followSina,.followTencent,.followWx,.arrDrop,.siteNavMenu li.hover .arrDrop,.navIcon,.siteNavMenu li.hover .navIcon,.rb,.lb,.guideList li ul li a span.newIcon,
-    .guideList li ul li a span.hotIcon,.thirdP .qq,.thirdP .sina,.menuHide .userInfo .rb{background:url(http://raw.android.d.cn/cdroid_res/web/common/siteNavBg.png) no-repeat;}
-    #siteNav{background-position:0 -115px;background-repeat:repeat-x;line-height:40px;font-family:Arial;height:40px;width:100%;width:100%;color:#5b5b5b; position:relative; z-index:200;}
-    #siteNav .layout{margin:0 auto;width:1190px;height:40px;}
-    .fr{float:right!important;}
-    .siteNavMenu,.siteNavMenu li{float:left;}
-    .siteNavMenu li{position:relative;}
-    .siteNavMenu li a{text-decoration:none;color:#5b5b5b;}
-    .siteNavMenu li a:hover{text-decoration:none;color:#2e2e2e; font-weight: normal;}
-    .siteNavMenu li span,.siteNavMenu li a.login{float:left;cursor:pointer;}
-    .followSina,.followTencent,.followWx{margin-top:8px;float:left;line-height:24px;display:block;}
-    .followSina{background-position:-99px 0;}
-    .siteNavMenu li.hover .followSina{background-position:-124px 0;}
-    .followTencent{background-position:-49px 0;}
-    .siteNavMenu li.hover .followTencent{background-position:-74px 0;}
-    .followWx{background-position:1px 0px;float:left;margin:8px 0 0 -4px;_margin-left:0;}
-    .siteNavMenu li.hover .followWx{background-position:-24px 0;}
-    .arrDrop,.arrDropNo{width:7px;height:4px;line-height:0px;font-size:0;display:block;float:left;margin:18px 4px 0;background-position:-168px -25px;}
-    .arrDropNo{ margin-right: 0px;}
-    .siteNavMenu li.hover .arrDrop{background-position:-168px -30px;}
-    .siteNavMenu li .menuShow{z-index:10009;padding:0 1px 0 7px;height:40px;cursor:pointer;float:left;position:relative;}
-    .siteNavMenu li.hover .menuShow{background-color:#FFF;border:1px solid #dedede;border-bottom:0;border-top:0;padding:0 0 0 6px;height:40px;}
-    .siteNavMenu li .menuHide{display:none;position:absolute;top:39px;left:0;_left:-1px;background-color:#FFF;border:1px solid #dedede;z-index:10008;}
-    .code{padding:10px;}
-    .siteNavMenu li .menuHide a{color:#4F4F4F;}
-    .siteNavMenu li .menuHide a:hover{color:#186DC3;text-decoration:underline;}
-    .siteNavMenu li .menuShow .message{margin:13px 2px 0;background-color:#FF6600;text-align:center;padding:0 4px;color:#FFF; border-radius:4px;font:normal 10px/12px Verdana;}
-    .navIcon,.siteNavMenu li.hover .navIcon{width:12px;height:10px;margin:15px 4px 0 0;font-size:0;line-height:0;display:block;background-position:-149px 0;}
-    .siteNavMenu li.hover .navIcon{background-position:-162px 0;}
-    .menuHide form .tipsText{color:#FF6600;}
-    .menuHide form,.thirdP{padding:10px;width:240px;line-height:26px;color:#9a9a9a;}
-    .menuHide form input{margin-bottom:10px;}
-    .menuHide form .inputText,.menuHide form .inputTextOut{width:228px;padding:0 5px;height:30px;line-height:30px;border:1px solid #e1e1e1;border-radius:2px;}
-    .menuHide form .inputTextOut{border:1px solid #ff9900;}
-    .menuHide form .submit{width:240px;height:34px;margin-bottom:5px;border-radius:2px;background-color:#ff9900;border:0;color:#FFF;font:bold 14px/34px normal;cursor:pointer;}
-    .menuHide form .check{margin:7px 2px 0 0;*margin-top:3px;vertical-align:middle;}
-    .remember{text-align:right;}
-    .remember label{float:left;text-align:left;}
-    .remember label *{float:left;}
-    .siteNavMenu li .menuHide .remember a{color:#186DC3;}
-    .thirdP{border-top:1px solid #e1e1e1;background-color:#f9f9f9;padding:0 10px 6px;}
-    .thirdP a{margin-right:10px;}
-    .thirdP .qq,.thirdP .sina{display:inline-block;color:#FFF!important;font:normal 12px/24px normal;width:55px;height:24px;padding-left:28px;margin:0 10px 4px 0;}
-    .thirdP .qq{background-position:0 -50px;}
-    .thirdP .qq:hover{background-position:-84px -50px;}
-    .thirdP .sina{background-position:0 -25px;}
-    .thirdP .sina:hover{background-position:-84px -25px;}
-    .thirdP .qq:hover,.thirdP .sina:hover{text-decoration:none!important;}
-    .guideList{width:948px;float:left;background-color:#FFF;height:140px;}
-    .guideList li{border-right:1px solid #ededed;width:174px;padding:5px 0 0 10px;height:135px;cursor:default;line-height:28px;}
-    .guideList li.client{width:198px}
-    .guideList li.last{border:0;}
-    .siteNavMenu li .menuHide .guideList li h4 a,.siteNavMenu li .menuHide .guideList li h4{color:#ff6600;font:bold 16px/30px normal;}
-    .guideList li ul{width:100%;}
-    .guideList li ul li{width:50%;height:28px;display:inline;padding:0;border:0;}
-    .guideList li ul li a{position:relative;display:inline-block;}
-    .siteNavMenu li .menuHide .guideList li ul li strong a{color:#F42916;}
-    .guideList li ul li a span{display:block;width:11px;height:11px;overflow:hidden;position:absolute;right:-8px;top:-2px;_top:-2px;}
-    .guideList li ul li a span.newIcon{background-position:-149px -13px;}
-    .guideList li ul li a span.hotIcon{background-position:-161px -13px;}
-    .rb{background-position:right -75px;padding-right:7px;margin-right:6px;}
-    .lb{background-position:left -75px;padding-left:10px;margin-left:10px;}
-    .menuHide .userPanel{padding:10px;width:280px;height:100px;line-height:26px;}
-    .menuHide .userFace{width:100px;height:100px; margin-right:10px;float:left;display:inline;}
-    .menuHide .userInfo{float:left;}
-    .menuHide .userInfo a{color:#186DC3;}
-    .menuHide .userInfo .rb{background-position:right -86px;}
-    .menuHide .userInfo a em{color:#ff6600;}
-    .r10{right:7px;left:auto!important}
-    .r0{right:0;left:auto!important;}
-    #topDMainBox{right:7px;_right:-6px;left:auto;}
-    #topAdapt{ padding-right: 7px;}
-    #topAdapt span{float: none;}
-</style>
 <!--topNav:begin-->
 <div id="siteNav" class="navFixed">
     <div class="layout">
         <ul class="siteNavMenu">
-            <li class="rb"><a href="http://www.d.cn" target="_blank">当乐网&nbsp;&nbsp;手机游戏第一站</a>&nbsp;</li>
+            <li class="rb"><a href="<?php echo HOST;?>" target="_blank">小肉粽&nbsp;&nbsp;微信公众平台第一站</a>&nbsp;</li>
             <li>
                 <div class="menuShow">
                     <a href="http://weibo.com/downjoygame" title="关注新浪微博" target="_blank">
@@ -123,9 +52,7 @@
                     <img src="http://raw.android.d.cn/cdroid_res/web/common/2dcode.gif" alt="微信二维码" class="code" />
                 </div>
             </li>
-            <li class="lb"><a href="http://app.d.cn" target="_blank">当乐游戏中心</a>
-              
-            </li>
+<!--            <li class="lb"><a href="" target="_blank">当乐游戏中心</a> </li>-->
         </ul>
         <ul class="siteNavMenu fr">
             <li class="rb" id="logined_li">
@@ -157,11 +84,11 @@
                             <label><input type="checkbox" class="check" checked="checked" id="topAutoLogin" /><span>自动登录</span></label><a href="<?php echo AUTHHOST ?>/user/login?dispay=web" target="_blank">忘记密码？</a>&nbsp;|&nbsp;<a href="<?php echo AUTHHOST ?>/user/reg?display=web" target="_blank">注册帐号</a>
                         </div>
                     </form>
-                    <div class="thirdP">
+<!--                    <div class="thirdP">
                         <p>使用合作网站帐号登录：</p>
                         <a class="sina" href="javascript:void(0)">新浪微博</a>
                         <a class="qq" href="javascript:void(0)">QQ账号</a>
-                    </div>
+                    </div>-->
                     <?php }?>
                 </div>
             </li>
@@ -177,36 +104,6 @@
 <div id="fullbgTop"></div>
 <div id="loginBoxTop" class="dialog"></div>
 <!--sitenave e-->
-
-<div id="report" class="report-cont">
-  <div class="report-head">
-    <a id="reportClose" title="关闭" href="javascript:void(0)">
-      <span></span>
-    </a>
-    <i></i>
-    举报该软件
-  </div>
-  <div class="report-reason">
-    <strong>举报理由：</strong>
-    <ul class="report-option clearfix">
-      <li data-content="1"><i></i>色情内容</li>
-      <li data-content="2"><i></i>暴力内容</li>
-      <li data-content="3"><i></i>反动内容</li>
-      <li data-content="4"><i></i>侵犯版权</li>
-      <li data-content="5"><i></i>携带病毒</li>
-      <li data-content="6"><i></i>恶意扣费</li>
-      <li data-content="7"><i></i>含有不良插件</li>
-      <li data-content="8"><i></i>无法安装或重启</li>
-      <li data-content="0" id="reasons"><i></i>其他举报理由</li>
-    </ul>
-    <textarea name="" id="reportTxt" cols="30" rows="10" class="report-txt" style="resize: none;"></textarea>
-    <div class="report-btn">
-      <a class="report-submit" id="reportSub" href="javascript:void(0);">举报</a>
-      <a class="report-reset" id="reportRe" href="javascript:void(0);">取消</a>
-    </div>
-  </div>
-</div>
-
 
 <h1 style="position:absolute;left:-9999px">
       <a href="http://android.d.cn" title="安卓游戏" target="_blank">安卓游戏</a>
@@ -240,19 +137,16 @@
 <div class="nav-wrap">
     <ul class="nav clearfix">
         
-                <li class="curr"><a href="http://android.d.cn/" title="当乐安卓频道">首页<span class="nav-bar"></span></a></li>
+                <li class="curr"><a href="<?php echo HOST?>" title="小肉粽微信公众号平台">首页<span class="nav-bar"></span></a></li>
             
-                <li><a href="http://android.d.cn/game" title="安卓游戏">游戏</a></li>
+                <li><a href="/info/l?cid=1" title="微信公众号">公众号</a></li>
             
-                <li><a href="http://android.d.cn/software" title="安卓软件">软件</a></li>
+                <li><a href="/info/l?cid=2" title="微信公众号资讯">资讯</a></li>
             
-                <li><a href="http://android.d.cn/netgame" title="安卓网游">网游</a></li>
             
-                <li><a href="http://android.d.cn/news" title="安卓资讯">资讯</a></li>
+                <li><a href="/info/special" title="微信公众号专题">专题</a></li>
             
-                <li><a href="http://android.d.cn/specialtopic" title="安卓专题">专题</a></li>
-            
-                <li><a href="http://android.d.cn/quan" title="安卓游戏圈">游戏圈<i></i></a></li>
+                <li><a href="/info/activity" title="微信公众号最新活动">活动<i></i></a></li>
             
     </ul>
 </div>
@@ -264,7 +158,12 @@
     <div class="ban-wrap" id="banner">
         <div class="ban-main">
             <ul class="ban clearfix">
-                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435914909266uv9p.jpg" alt="一周评论大事件第十五期" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">一周评论大事件第十五期</span>   </a> </li><li>    <a target="_blank" href="http://news.d.cn/zt/view-23546.html" title="冷热参半 十款游戏带你感受冰火两重天">                       <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435914914398Bq0I.jpg" alt="冷热参半 十款游戏带你感受冰火两重天" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">冷热参半 十款游戏带你感受冰火两重天</span>   </a> </li><li>    <a target="_blank" href="http://news.d.cn/monthly/view-22299.html" title="安卓佳游月榜6月刊 《MOBIUS最终幻想》《神偷鲍勃2》等">                       <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435631347490MNUi.jpg" alt="安卓佳游月榜6月刊 《MOBIUS最终幻想》《神偷鲍勃2》等" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">安卓佳游月榜6月刊 《MOBIUS最终幻想》《神偷鲍勃2》等</span>   </a> </li><li>                       <a target="_blank" href="http://ng.d.cn/hqgzb/ " title="花千骨正版">                       <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435914910278V1sM.jpg" alt="花千骨正版" />   </a>  </li><li>                    <a target="_blank" href="http://ng.d.cn/mwwlzz/" title="漫威：未来之战">                       <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435827285588JX4B.jpg" alt="漫威：未来之战" />   </a> </li><li>    <a target="_blank" href="http://news.d.cn/weekly/view-22264.html" title="安卓新游周刊第59期《几何战争3:维度》《杀破狼2》等">                       <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435628154473zp6X.jpg" alt="安卓新游周刊第59期《几何战争3:维度》《杀破狼2》等" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">安卓新游周刊第59期《几何战争3:维度》《杀破狼2》等</span>   </a> </li>
+                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="/style/front/public/yg2d6ic8fhofk.jpg"  alt="一周评论大事件第十五期" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">一周评论大事件第十五期</span>   </a> 
+                </li>
+                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="/style/front/public/yg2d6ic8fhofk.jpg"  alt="一周评论大事件第十五期" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">一周评论大事件第十六期</span>   </a> 
+                </li>
+                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="/style/front/public/yg2d6ic8fhofk.jpg"  alt="一周评论大事件第十五期" />   <span class="ban-cover"></span>    <span class="ban-cover-txt">一周评论大事件第十七期</span>   </a> 
+                </li>
             </ul>
             <a href="javascript:;" title="" class="ban-next ban-btn" id="next"><i></i></a>
             <a href="javascript:;" title="" class="ban-prev ban-btn" id="prev"><i></i></a>
@@ -279,7 +178,7 @@
         <div class="mod-cont mod-first">
             
                 <a href="http://android.d.cn/game/55065.html" title="极品飞车最高通缉2015" target="_blank" class="mod-first-icon">
-                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/65/55065/icon.jpg" alt="极品飞车最高通缉2015">
+                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://cms/style/front/public/huaqiangu.png" alt="极品飞车最高通缉2015">
                 </a>
                 <div class="mod-first-des clearfix">
                     <a class="mod-first-tit" href="http://android.d.cn/game/55065.html" title="极品飞车最高通缉2015" target="_blank">极品飞车最高通缉2015</a>
@@ -300,7 +199,12 @@
         </div>
         <div class="dl-good">
             <h3><i></i>当乐<em>APP</em><span>安卓用户必备</span></h3>
-            <ul class="dl-good-list clearfix"><li class="good-first">    <a href="http://www.diguayouxi.com/new/yxzx.apk" title="当乐游戏中心" class="good-link" target="_blank"><img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1402293766893Q0nL.png" alt="当乐游戏中心" /><span>当乐游戏中心</span>    </a></li><li>    <a href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&amp;t=pcCDN&amp;v=android" title="游戏中心PC版" class="good-link" target="_blank"><img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1403753152724Dx0t.png" alt="游戏中心PC版" /><span>游戏中心PC版</span>    </a></li><li class="good-last">    <a href="http://app.d.cn/wyzx/wyzx.apk" title="当乐网游中心" class="good-link" target="_blank"><img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1403753153667wNG5.png" alt="当乐网游中心" /><span>当乐网游中心</span>    </a></li></ul>
+            <ul class="dl-good-list clearfix">
+                <li class="good-first">    <a href="" title="当乐游戏中心" class="good-link" target="_blank"><img src="/style/front/public/image/anzhuologo.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1402293766893Q0nL.png" alt="当乐游戏中心" /><span>当乐游戏中心</span>    </a></li>
+                <li>    <a href="" title="游戏中心PC版" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1403753152724Dx0t.png" alt="游戏中心PC版" /><span>游戏中心PC版</span>    </a></li>
+                <li class="good-last">    <a href="" title="当乐网游中心" class="good-link" target="_blank"><img src="/style/front/public/image/dangle.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1403753153667wNG5.png" alt="当乐网游中心" /><span>当乐网游中心</span>    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -316,14 +220,14 @@
             
                 <div class="mod-thumb-b">
                     <a href="http://android.d.cn/game/59560.html" title="触感战争(含数据包)" target="_blank" class="thumb-b-img">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435829845793OVl0.jpg" alt="触感战争(含数据包)"/>
+                        <img src="/style/front/public/1436944714893B6dq.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435829845793OVl0.jpg" alt="触感战争(含数据包)"/>
                     </a>
                     <a class="thumb-app" href="http://android.d.cn/game/59560.html" title="触感战争(含数据包)" target="_blank">触感战争(含数据包)</a>
                     <div class="mod-cover"></div>
                     <div class="thumb-des-b">
                         <a href="http://android.d.cn/game/59560.html" title="触感战争(含数据包)" target="_blank" class="thumb-app-icon">
                             <i></i>
-                            <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img8.android.d.cn/android/new/game_image/60/59560/icon.png" alt="触感战争(含数据包)"/>
+                            <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img8.android.d.cn/android/new/game_image/60/59560/icon.png" alt="触感战争(含数据包)"/>
                         </a>
                         <div class="thumb-tips">
                             <p class="tips">
@@ -355,7 +259,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/59100.html" title="勇者之塔" target="_blank">勇者之塔</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/59100.html" title="勇者之塔" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/0/59100/icon.png" alt="勇者之塔"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/0/59100/icon.png" alt="勇者之塔"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -387,7 +291,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/51768.html" title="深空传说亚马逊直装版" target="_blank">深空传说亚马逊直装版</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/51768.html" title="深空传说亚马逊直装版" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/68/51768/icon.png" alt="深空传说亚马逊直装版"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img1.android.d.cn/android/new/game_image/68/51768/icon.png" alt="深空传说亚马逊直装版"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -421,7 +325,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/59166.html" title="死亡飞车高级版(含数据包)" target="_blank">死亡飞车高级版(含数据包)</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/59166.html" title="死亡飞车高级版(含数据包)" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/66/59166/icon.png" alt="死亡飞车高级版(含数据包)"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img1.android.d.cn/android/new/game_image/66/59166/icon.png" alt="死亡飞车高级版(含数据包)"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -453,7 +357,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/59352.html" title="战锤任务汉化修改版(含数据包)" target="_blank">战锤任务汉化修改版(含数据包)</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/59352.html" title="战锤任务汉化修改版(含数据包)" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/52/59352/icon.png" alt="战锤任务汉化修改版(含数据包)"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/52/59352/icon.png" alt="战锤任务汉化修改版(含数据包)"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -489,7 +393,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/43151.html" title="开心消消乐" target="_blank">开心消消乐</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/43151.html" title="开心消消乐" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/51/43151/icon.jpg?clear" alt="开心消消乐"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/51/43151/icon.jpg?clear" alt="开心消消乐"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -521,7 +425,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/54771.html" title="新恶魔猎人" target="_blank">新恶魔猎人</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/54771.html" title="新恶魔猎人" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/71/54771/icon.jpg" alt="新恶魔猎人"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/71/54771/icon.jpg" alt="新恶魔猎人"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -553,7 +457,7 @@
                         <a class="mode-app-name" href="http://ng.d.cn/hqgzb" title="花千骨正版" target="_blank">花千骨正版</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://ng.d.cn/hqgzb" title="花千骨正版" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.d.cn/netgame/hdlogo/3652_1434620818742_6TPaAkk7.png" alt="花千骨正版"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.d.cn/netgame/hdlogo/3652_1434620818742_6TPaAkk7.png" alt="花千骨正版"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -588,7 +492,7 @@
                         <a class="mode-app-name" href="http://android.d.cn/game/57701.html" title="火柴人联盟" target="_blank">火柴人联盟</a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="http://android.d.cn/game/57701.html" title="火柴人联盟" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/1/57701/icon.jpg?clear" alt="火柴人联盟"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img3.android.d.cn/android/new/game_image/1/57701/icon.jpg?clear" alt="火柴人联盟"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="num">
@@ -626,7 +530,28 @@
             <a class="mod-more" href="http://android.d.cn/game/yugao/" title="安卓游戏预告" target="_blank">更多</a>
         </div>
         <ul class="mod-cont mod-coming clearfix">
-            <li>                <div class="coming">        <a href="http://android.d.cn/game/55993.html" title="狂暴乐园战士 Rampage Land Rankers" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435806849169xb0u.jpg" alt="狂暴乐园战士 Rampage Land Rankers" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/55993.html" title="狂暴乐园战士 Rampage Land Rankers" target="_blank">狂暴乐园战士</a>            <p class="company">游戏厂商：SQEX  </p>            <div class="time">发布时间：2015年7月</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/54875.html" title="狂暴乐园战士 Rampage Land Rankers" class="coming-name" target="_blank">狂暴乐园战士</a>        <span class="coming-class">角色扮演</span><span>2015年7月</span>    </div></li><li>    <div class="coming">        <a href="http://android.d.cn/game/51672.html" title="我的战争 This War Of Mine" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435307071900IdoV.png" alt="我的战争 This War Of Mine" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/51672.html" title="我的战争 This War Of Mine" target="_blank">我的战争</a>            <p class="company">游戏厂商：11 bit studios</p>            <div class="time">发布时间：2015年7月</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/51672.html" title="我的战争 This War Of Mine" class="coming-name" target="_blank">我的战争</a>        <span class="coming-class">射击游戏</span><span>2015年7月</span>    </div></li><li> <div class="coming">        <a href="http://android.d.cn/game/54660.html" title="死亡效应2 Dead Effect 2" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435307539816hS6L.jpg" alt="死亡效应2 Dead Effect 2" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/54660.html" title="死亡效应2 Dead Effect 2" target="_blank">死亡效应2</a>            <p class="company">游戏厂商：BadFly Interactive</p>            <div class="time">发布时间：2015年9月</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/54660.html" title="死亡效应2 Dead Effect 2" class="coming-name" target="_blank">死亡效应2</a>        <span class="coming-class">射击游戏</span><span>2015年9月</span>    </div></li><li>    <div class="coming">        <a href="http://android.d.cn/game/56264.html" title="玩具熊的五夜后宫4" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/14353077604147gQe.png" alt="玩具熊的五夜后宫4" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/56264.html" title="玩具熊的五夜后宫4" target="_blank">玩具熊的五夜后宫4</a>            <p class="company">游戏厂商：Scottgames</p>            <div class="time">发布时间：2015年10月</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/56264.html" title="玩具熊的五夜后宫4" class="coming-name" target="_blank">玩具熊的五夜后宫4</a>        <span class="coming-class">冒险解谜</span><span>2015年10月</span>    </div></li><li>    <div class="coming">        <a href="http://android.d.cn/game/55841.html" title="行尸走肉：无人地带" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201505/1430616585862okYO.png" alt="行尸走肉：无人地带" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/55841.html" title="行尸走肉：无人地带" target="_blank">行尸走肉：无人地带</a>            <p class="company">游戏厂商：Next Games</p>            <div class="time">发布时间：2015年3季度</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/55841.html" title="行尸走肉：无人地带" class="coming-name" target="_blank">行尸走肉：无人地带</a>        <span class="coming-class">射击游戏</span><span>2015年3季度</span>    </div></li><li>    <div class="coming">        <a href="http://android.d.cn/game/51098.html" title="遗落的水世界 Submerged" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201505/14315881373154GzU.png" alt="遗落的水世界 Submerged" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/51098.html" title="遗落的水世界 Submerged" target="_blank">遗落的水世界</a>            <p class="company">游戏厂商：Uppercut Games</p>            <div class="time">发布时间：2015年</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/55841.html" title="遗落的水世界 Submerged" class="coming-name" target="_blank">遗落的水世界</a>        <span class="coming-class">冒险解谜</span><span>2015年</span>    </div></li><li>  <div class="coming">        <a href="http://android.d.cn/game/49421.html" title="GTA侠盗猎车手5 Grand Theft Auto Ⅴ" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201504/1429580698522Ltke.jpg" alt="GTA侠盗猎车手5 Grand Theft Auto Ⅴ" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/49421.html" title="GTA侠盗猎车手5 Grand Theft Auto Ⅴ" target="_blank">GTA侠盗猎车手5</a>            <p class="company">游戏厂商：Rockstar Games</p>            <div class="time">发布时间：敬请期待</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/49421.html" title="GTA侠盗猎车手5" class="coming-name" target="_blank">GTA侠盗猎车手5</a>        <span class="coming-class">动作游戏</span><span>敬请期待</span>    </div></li><li class="curr">    <div class="coming">        <a href="http://android.d.cn/game/50546.html" title="纸境 Tengami" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201411/1416970877924jdr9.jpg" alt="纸境 Tengami" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/50546.html" title="纸境 Tengami" target="_blank">纸境</a>            <p class="company">游戏厂商：Nyamyam</p>            <div class="time">发布时间：敬请期待</div>        </div>    </div>    <div class="coming-normal"><a href="http://android.d.cn/game/50546.html" title="纸境" class="coming-name" target="_blank">纸境</a>        <span class="coming-class">冒险解谜</span><span>敬请期待</span>     </div></li>
+            <li>                
+                <div class="coming">        <a href="http://android.d.cn/game/55993.html" title="狂暴乐园战士 Rampage Land Rankers" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435806849169xb0u.jpg" alt="狂暴乐园战士 Rampage Land Rankers" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/55993.html" title="狂暴乐园战士 Rampage Land Rankers" target="_blank">狂暴乐园战士</a>            <p class="company">游戏厂商：SQEX  </p>            <div class="time">发布时间：2015年7月</div>        </div>    
+                </div>    
+                <div class="coming-normal">        <a href="http://android.d.cn/game/54875.html" title="狂暴乐园战士 Rampage Land Rankers" class="coming-name" target="_blank">狂暴乐园战士</a>        <span class="coming-class">角色扮演</span><span>2015年7月</span>    
+                </div>
+            </li>
+            <li>    
+                <div class="coming">        <a href="http://android.d.cn/game/51672.html" title="我的战争 This War Of Mine" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435307071900IdoV.png" alt="我的战争 This War Of Mine" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/51672.html" title="我的战争 This War Of Mine" target="_blank">我的战争</a>            <p class="company">游戏厂商：11 bit studios</p>            <div class="time">发布时间：2015年7月</div>        </div>    
+                </div>    
+                <div class="coming-normal">        <a href="http://android.d.cn/game/51672.html" title="我的战争 This War Of Mine" class="coming-name" target="_blank">我的战争</a>        <span class="coming-class">射击游戏</span><span>2015年7月</span>    </div>
+            </li>
+            <li> <div class="coming">        <a href="http://android.d.cn/game/54660.html" title="死亡效应2 Dead Effect 2" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435307539816hS6L.jpg" alt="死亡效应2 Dead Effect 2" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/54660.html" title="死亡效应2 Dead Effect 2" target="_blank">死亡效应2</a>            <p class="company">游戏厂商：BadFly Interactive</p>            <div class="time">发布时间：2015年9月</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/54660.html" title="死亡效应2 Dead Effect 2" class="coming-name" target="_blank">死亡效应2</a>        <span class="coming-class">射击游戏</span><span>2015年9月</span>    </div></li>
+            <li>    <div class="coming">        <a href="http://android.d.cn/game/56264.html" title="玩具熊的五夜后宫4" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/14353077604147gQe.png" alt="玩具熊的五夜后宫4" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/56264.html" title="玩具熊的五夜后宫4" target="_blank">玩具熊的五夜后宫4</a>            <p class="company">游戏厂商：Scottgames</p>            <div class="time">发布时间：2015年10月</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/56264.html" title="玩具熊的五夜后宫4" class="coming-name" target="_blank">玩具熊的五夜后宫4</a>        <span class="coming-class">冒险解谜</span><span>2015年10月</span>    </div></li>
+            <li>    <div class="coming">        <a href="http://android.d.cn/game/55841.html" title="行尸走肉：无人地带" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201505/1430616585862okYO.png" alt="行尸走肉：无人地带" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/55841.html" title="行尸走肉：无人地带" target="_blank">行尸走肉：无人地带</a>            <p class="company">游戏厂商：Next Games</p>            <div class="time">发布时间：2015年3季度</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/55841.html" title="行尸走肉：无人地带" class="coming-name" target="_blank">行尸走肉：无人地带</a>        <span class="coming-class">射击游戏</span><span>2015年3季度</span>    </div></li>
+            <li>    <div class="coming">        <a href="http://android.d.cn/game/51098.html" title="遗落的水世界 Submerged" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201505/14315881373154GzU.png" alt="遗落的水世界 Submerged" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/51098.html" title="遗落的水世界 Submerged" target="_blank">遗落的水世界</a>            <p class="company">游戏厂商：Uppercut Games</p>            <div class="time">发布时间：2015年</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/55841.html" title="遗落的水世界 Submerged" class="coming-name" target="_blank">遗落的水世界</a>        <span class="coming-class">冒险解谜</span><span>2015年</span>    </div></li>
+            <li>  <div class="coming">        <a href="http://android.d.cn/game/49421.html" title="GTA侠盗猎车手5 Grand Theft Auto Ⅴ" class="coming-icon" target="_blank">            <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201504/1429580698522Ltke.jpg" alt="GTA侠盗猎车手5 Grand Theft Auto Ⅴ" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/49421.html" title="GTA侠盗猎车手5 Grand Theft Auto Ⅴ" target="_blank">GTA侠盗猎车手5</a>            <p class="company">游戏厂商：Rockstar Games</p>            <div class="time">发布时间：敬请期待</div>        </div>    </div>    <div class="coming-normal">        <a href="http://android.d.cn/game/49421.html" title="GTA侠盗猎车手5" class="coming-name" target="_blank">GTA侠盗猎车手5</a>        <span class="coming-class">动作游戏</span><span>敬请期待</span>    </div>
+            </li>
+            <li class="curr">    
+                <div class="coming">        <a href="http://android.d.cn/game/50546.html" title="纸境 Tengami" class="coming-icon" target="_blank">            <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201411/1416970877924jdr9.jpg" alt="纸境 Tengami" />        </a>        <div class="coming-des">            <a class="coming-tit" href="http://android.d.cn/game/50546.html" title="纸境 Tengami" target="_blank">纸境</a>            <p class="company">游戏厂商：Nyamyam</p>            <div class="time">发布时间：敬请期待</div>        </div>    </div>    
+                <div class="coming-normal"><a href="http://android.d.cn/game/50546.html" title="纸境" class="coming-name" target="_blank">纸境</a>        <span class="coming-class">冒险解谜</span><span>敬请期待</span>     
+                </div>
+            </li>
         </ul>
     </div>
 </div>
@@ -657,14 +582,14 @@
 <div class="mod-cont">
     <div class="mod-thumb-b">
         <a href="http://android.d.cn/game/59398.html" title="密室怨魂(含数据包)" target="_blank" class="thumb-b-img">
-            <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="密室怨魂(含数据包)"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="密室怨魂(含数据包)"/>
         </a>
         <a class="thumb-app" href="http://android.d.cn/game/59398.html" title="密室怨魂(含数据包)">密室怨魂(含数据包)</a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="http://android.d.cn/game/59398.html" title="密室怨魂(含数据包)" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="密室怨魂(含数据包)"/>
+                <img src="/style/front/public/anzuo1.png" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="密室怨魂(含数据包)"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -702,7 +627,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/57964.html" title="几何战争3:维度(含数据包)" target="_blank">几何战争3:维度(含数据包)</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/57964.html" title="几何战争3:维度(含数据包)" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="几何战争3:维度(含数据包)"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="几何战争3:维度(含数据包)"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -741,7 +666,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/32163.html" title="孤胆车神:维加斯离线版(含数据包)" target="_blank">孤胆车神:维加斯离线版(含数据包)</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/32163.html" title="孤胆车神:维加斯离线版(含数据包)" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/63/32163/icon.png" alt="孤胆车神:维加斯离线版(含数据包)"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/63/32163/icon.png" alt="孤胆车神:维加斯离线版(含数据包)"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -782,7 +707,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/59696.html" title="飞吧火箭" target="_blank">飞吧火箭</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/59696.html" title="飞吧火箭" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img9.android.d.cn/android/new/game_image/96/59696/icon.png" alt="飞吧火箭"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img9.android.d.cn/android/new/game_image/96/59696/icon.png" alt="飞吧火箭"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -821,7 +746,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/59176.html" title="迷你乐高Online(含数据包)" target="_blank">迷你乐高Online(含数据包)</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/59176.html" title="迷你乐高Online(含数据包)" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img2.android.d.cn/android/new/game_image/76/59176/icon.png" alt="迷你乐高Online(含数据包)"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img2.android.d.cn/android/new/game_image/76/59176/icon.png" alt="迷你乐高Online(含数据包)"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -860,7 +785,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/59694.html" title="恋爱学校" target="_blank">恋爱学校</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/59694.html" title="恋爱学校" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/94/59694/icon.png" alt="恋爱学校"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/94/59694/icon.png" alt="恋爱学校"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -899,7 +824,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/59693.html" title="末日逃离" target="_blank">末日逃离</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/59693.html" title="末日逃离" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/93/59693/icon.png" alt="末日逃离"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/93/59693/icon.png" alt="末日逃离"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -938,14 +863,14 @@
 <div class="mod-cont hide">
     <div class="mod-thumb-b">
         <a href="http://android.d.cn/game/9149.html" title="神庙逃亡中文版" target="_blank" class="thumb-b-img">
-            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405237430719xvd6.jpg" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="神庙逃亡中文版"/>
+            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405237430719xvd6.jpg" src="http://cms/style/front/public/huaqiangu.png" alt="神庙逃亡中文版"/>
         </a>
         <a class="thumb-app" href="http://android.d.cn/game/9149.html" title="神庙逃亡中文版" target="_blank">神庙逃亡中文版</a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="http://android.d.cn/game/9149.html" title="神庙逃亡中文版" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img o-src="http://img6.android.d.cn/android/new/game_image/49/9149/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="神庙逃亡中文版"/>
+                <img o-src="http://img6.android.d.cn/android/new/game_image/49/9149/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="神庙逃亡中文版"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -983,7 +908,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/36780.html" title="NBA2K14" target="_blank">NBA2K14</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/36780.html" title="NBA2K14" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/80/36780/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="NBA2K14"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/80/36780/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="NBA2K14"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1023,7 +948,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/4214.html" title="捕鱼达人官方授权正版" target="_blank">捕鱼达人官方授权正版</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/4214.html" title="捕鱼达人官方授权正版" target="_blank">
-                                    <img o-src="http://img3.android.d.cn/android/new/game_image/14/4214/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="捕鱼达人官方授权正版"/>
+                                    <img o-src="http://img3.android.d.cn/android/new/game_image/14/4214/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="捕鱼达人官方授权正版"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1063,7 +988,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/798.html" title="愤怒的小鸟之守蛋计划" target="_blank">愤怒的小鸟之守蛋计划</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/798.html" title="愤怒的小鸟之守蛋计划" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/98/798/icon.jpg?clear" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="愤怒的小鸟之守蛋计划"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/98/798/icon.jpg?clear" src="http://cms/style/front/public/huaqiangu.png" alt="愤怒的小鸟之守蛋计划"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1101,7 +1026,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/16610.html" title="地铁跑酷（洛杉矶版）" target="_blank">地铁跑酷（洛杉矶版）</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/16610.html" title="地铁跑酷（洛杉矶版）" target="_blank">
-                                    <img o-src="http://img6.android.d.cn/android/new/game_image/10/16610/icon.jpg?clear" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="地铁跑酷（洛杉矶版）"/>
+                                    <img o-src="http://img6.android.d.cn/android/new/game_image/10/16610/icon.jpg?clear" src="http://cms/style/front/public/huaqiangu.png" alt="地铁跑酷（洛杉矶版）"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1141,7 +1066,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/14219.html" title="火箭飞人(含数据包)" target="_blank">火箭飞人(含数据包)</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/14219.html" title="火箭飞人(含数据包)" target="_blank">
-                                    <img o-src="http://img9.android.d.cn/android/new/game_image/19/14219/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="火箭飞人(含数据包)"/>
+                                    <img o-src="http://img9.android.d.cn/android/new/game_image/19/14219/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="火箭飞人(含数据包)"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1181,7 +1106,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/11097.html" title="三国志无双战" target="_blank">三国志无双战</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/11097.html" title="三国志无双战" target="_blank">
-                                    <img o-src="http://img1.android.d.cn/android/new/game_image/97/11097/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="三国志无双战"/>
+                                    <img o-src="http://img1.android.d.cn/android/new/game_image/97/11097/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="三国志无双战"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1219,14 +1144,14 @@
 <div class="mod-cont hide">
     <div class="mod-thumb-b">
         <a href="http://android.d.cn/game/50494.html" title="王国保卫战:起源(含数据包)" target="_blank" class="thumb-b-img">
-            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201411/14164960998987Ryh.jpg" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="王国保卫战:起源(含数据包)"/>
+            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201411/14164960998987Ryh.jpg" src="http://cms/style/front/public/huaqiangu.png" alt="王国保卫战:起源(含数据包)"/>
         </a>
         <a class="thumb-app" href="http://android.d.cn/game/50494.html" title="王国保卫战:起源(含数据包)" target="_blank">王国保卫战:起源(含数据包)</a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="http://android.d.cn/game/50494.html" title="王国保卫战:起源(含数据包)" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img o-src="http://img5.android.d.cn/android/new/game_image/94/50494/icon.png?clear" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="王国保卫战:起源(含数据包)"/>
+                <img o-src="http://img5.android.d.cn/android/new/game_image/94/50494/icon.png?clear" src="http://cms/style/front/public/huaqiangu.png" alt="王国保卫战:起源(含数据包)"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -1264,7 +1189,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/14009.html" title="Cytus音乐节奏破解版(含数据包)" target="_blank">Cytus音乐节奏破解版(含数据包)</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/14009.html" title="Cytus音乐节奏破解版(含数据包)" target="_blank">
-                                    <img o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="Cytus音乐节奏破解版(含数据包)"/>
+                                    <img o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="Cytus音乐节奏破解版(含数据包)"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1304,7 +1229,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/32163.html" title="孤胆车神:维加斯离线版(含数据包)" target="_blank">孤胆车神:维加斯离线版(含数据包)</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/32163.html" title="孤胆车神:维加斯离线版(含数据包)" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/63/32163/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="孤胆车神:维加斯离线版(含数据包)"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/63/32163/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="孤胆车神:维加斯离线版(含数据包)"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1344,7 +1269,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/12759.html" title="愤怒的小鸟太空版高清版" target="_blank">愤怒的小鸟太空版高清版</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/12759.html" title="愤怒的小鸟太空版高清版" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/59/12759/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="愤怒的小鸟太空版高清版"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/59/12759/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="愤怒的小鸟太空版高清版"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1382,7 +1307,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/9049.html" title="愤怒的小鸟太空版无广告版" target="_blank">愤怒的小鸟太空版无广告版</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/9049.html" title="愤怒的小鸟太空版无广告版" target="_blank">
-                                    <img o-src="http://img5.android.d.cn/android/new/game_image/49/9049/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="愤怒的小鸟太空版无广告版"/>
+                                    <img o-src="http://img5.android.d.cn/android/new/game_image/49/9049/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="愤怒的小鸟太空版无广告版"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1422,7 +1347,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/9045.html" title="愤怒的小鸟太空版" target="_blank">愤怒的小鸟太空版</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/9045.html" title="愤怒的小鸟太空版" target="_blank">
-                                    <img o-src="http://img1.android.d.cn/android/new/game_image/45/9045/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="愤怒的小鸟太空版"/>
+                                    <img o-src="http://img1.android.d.cn/android/new/game_image/45/9045/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="愤怒的小鸟太空版"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1462,7 +1387,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/game/798.html" title="愤怒的小鸟之守蛋计划" target="_blank">愤怒的小鸟之守蛋计划</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/game/798.html" title="愤怒的小鸟之守蛋计划" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/98/798/icon.jpg?clear" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="愤怒的小鸟之守蛋计划"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/98/798/icon.jpg?clear" src="http://cms/style/front/public/huaqiangu.png" alt="愤怒的小鸟之守蛋计划"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -1514,7 +1439,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/14009.html" title="Cytus音乐节奏破解版(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="Cytus音乐节奏破解版(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="Cytus音乐节奏破解版(含数据包)">
                                     </a>
                                     <div class="mode-app-des">
                                         <a class="mode-app-name" href="http://android.d.cn/game/14009.html" target="_blank" title="Cytus音乐节奏破解版(含数据包)">Cytus音乐节奏破解版(含数据包)</a>
@@ -1542,7 +1467,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/51852.html" title="玩具堡修改版(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/52/51852/icon.png?clear" alt="玩具堡修改版(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img4.android.d.cn/android/new/game_image/52/51852/icon.png?clear" alt="玩具堡修改版(含数据包)">
                                     </a>
                                     <div class="mode-app-des">
                                         <a class="mode-app-name" href="http://android.d.cn/game/51852.html" target="_blank" title="玩具堡修改版(含数据包)">玩具堡修改版(含数据包)</a>
@@ -1570,7 +1495,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/59517.html" title="线上赛车修改版(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/17/59517/icon.png" alt="线上赛车修改版(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img1.android.d.cn/android/new/game_image/17/59517/icon.png" alt="线上赛车修改版(含数据包)">
                                     </a>
                                     <div class="mode-app-des">
                                         <a class="mode-app-name" href="http://android.d.cn/game/59517.html" target="_blank" title="线上赛车修改版(含数据包)">线上赛车修改版(含数据包)</a>
@@ -1598,7 +1523,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/59481.html" title="海难求生修改版(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/81/59481/icon.png" alt="海难求生修改版(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img1.android.d.cn/android/new/game_image/81/59481/icon.png" alt="海难求生修改版(含数据包)">
                                     </a>
                                     <div class="mode-app-des">
                                         <a class="mode-app-name" href="http://android.d.cn/game/59481.html" target="_blank" title="海难求生修改版(含数据包)">海难求生修改版(含数据包)</a>
@@ -1643,7 +1568,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/32163.html" title="孤胆车神:维加斯离线版(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/63/32163/icon.png" alt="孤胆车神:维加斯离线版(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/63/32163/icon.png" alt="孤胆车神:维加斯离线版(含数据包)">
                                     </a>
 
                                     <div class="mode-app-des">
@@ -1675,7 +1600,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/54786.html" title="虚荣(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/86/54786/icon.png" alt="虚荣(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img4.android.d.cn/android/new/game_image/86/54786/icon.png" alt="虚荣(含数据包)">
                                     </a>
 
                                     <div class="mode-app-des">
@@ -1707,7 +1632,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/10279.html" title="机械迷城中文版(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img2.android.d.cn/android/new/game_image/79/10279/icon.png" alt="机械迷城中文版(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img2.android.d.cn/android/new/game_image/79/10279/icon.png" alt="机械迷城中文版(含数据包)">
                                     </a>
 
                                     <div class="mode-app-des">
@@ -1739,7 +1664,7 @@
                             <li>
                                 <div class="mode-app-wrap">
                                     <a class="mode-app-icon" href="http://android.d.cn/game/30130.html" title="闪电突击队(含数据包)" target="_blank">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img8.android.d.cn/android/new/game_image/30/30130/icon.png" alt="闪电突击队(含数据包)">
+                                        <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img8.android.d.cn/android/new/game_image/30/30130/icon.png" alt="闪电突击队(含数据包)">
                                     </a>
 
                                     <div class="mode-app-des">
@@ -1784,7 +1709,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%BF%85%E5%A4%87%E6%B8%B8%E6%88%8F" title="必备游戏" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/40/40/icon.jpg" alt="必备游戏"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/40/40/icon.jpg" alt="必备游戏"/>
                                 <span class="scroll-name">必备游戏</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1793,7 +1718,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%BF%85%E5%A4%87%E8%BD%AF%E4%BB%B6" title="必备软件" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/39/39/icon.jpg" alt="必备软件"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/39/39/icon.jpg" alt="必备软件"/>
                                 <span class="scroll-name">必备软件</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1802,7 +1727,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E4%B8%8A%E5%8E%95%E6%89%80" title="上厕所" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/38/38/icon.jpg" alt="上厕所"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/38/38/icon.jpg" alt="上厕所"/>
                                 <span class="scroll-name">上厕所</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1811,7 +1736,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E8%A7%A3%E8%B0%9C" title="解谜" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/34/34/icon.jpg" alt="解谜"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/34/34/icon.jpg" alt="解谜"/>
                                 <span class="scroll-name">解谜</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1820,7 +1745,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%AF%B9%E6%88%98" title="对战" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/30/30/icon.jpg" alt="对战"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/30/30/icon.jpg" alt="对战"/>
                                 <span class="scroll-name">对战</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1829,7 +1754,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%B0%8F%E6%B8%85%E6%96%B0" title="小清新" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/28/28/icon.jpg" alt="小清新"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/28/28/icon.jpg" alt="小清新"/>
                                 <span class="scroll-name">小清新</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1838,7 +1763,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E7%94%B5%E5%BD%B1%E6%94%B9%E7%BC%96" title="电影改编" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/27/27/icon.jpg" alt="电影改编"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/27/27/icon.jpg" alt="电影改编"/>
                                 <span class="scroll-name">电影改编</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1847,7 +1772,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E9%87%8D%E5%8F%A3%E5%91%B3" title="重口味" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/24/24/icon.jpg" alt="重口味"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/24/24/icon.jpg" alt="重口味"/>
                                 <span class="scroll-name">重口味</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1856,7 +1781,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E9%87%8D%E5%8A%9B%E6%84%9F%E5%BA%94" title="重力感应" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/18/18/icon.jpg" alt="重力感应"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/18/18/icon.jpg" alt="重力感应"/>
                                 <span class="scroll-name">重力感应</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1865,7 +1790,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%84%BF%E7%AB%A5" title="儿童" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/17/17/icon.jpg" alt="儿童"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/17/17/icon.jpg" alt="儿童"/>
                                 <span class="scroll-name">儿童</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1874,7 +1799,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=3D" title="3D" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/16/16/icon.jpg" alt="3D"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/16/16/icon.jpg" alt="3D"/>
                                 <span class="scroll-name">3D</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1883,7 +1808,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=HD%E9%AB%98%E6%B8%85" title="HD高清" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/14/14/icon.jpg" alt="HD高清"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/14/14/icon.jpg" alt="HD高清"/>
                                 <span class="scroll-name">HD高清</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1892,7 +1817,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%A4%A7%E5%9E%8B%E6%B8%B8%E6%88%8F" title="大型游戏" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/13/13/icon.jpg" alt="大型游戏"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/13/13/icon.jpg" alt="大型游戏"/>
                                 <span class="scroll-name">大型游戏</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1901,7 +1826,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%A5%B3%E7%94%9F%E6%9C%80%E7%88%B1" title="女生最爱" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/12/12/icon.jpg" alt="女生最爱"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/12/12/icon.jpg" alt="女生最爱"/>
                                 <span class="scroll-name">女生最爱</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1910,7 +1835,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E6%B6%88%E7%A3%A8%E6%97%B6%E9%97%B4" title="消磨时间" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/10/10/icon.jpg" alt="消磨时间"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/10/10/icon.jpg" alt="消磨时间"/>
                                 <span class="scroll-name">消磨时间</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1919,7 +1844,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%A1%94%E9%98%B2" title="塔防" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/8/8/icon.jpg" alt="塔防"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/8/8/icon.jpg" alt="塔防"/>
                                 <span class="scroll-name">塔防</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1928,7 +1853,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E7%94%B7%E7%94%9F%E6%9C%80%E7%88%B1" title="男生最爱" target="_blank"
                                class="scroll-icon">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/6/6/icon.jpg" alt="男生最爱"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/6/6/icon.jpg" alt="男生最爱"/>
                                 <span class="scroll-name">男生最爱</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -1968,14 +1893,14 @@
 <div class="mod-cont">
     <div class="mod-thumb-b">
         <a href="http://android.d.cn/software/407.html" title="淘宝" target="_blank" class="thumb-b-img">
-            <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201408/1407131325997jDq0.jpg" alt="淘宝"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201408/1407131325997jDq0.jpg" alt="淘宝"/>
         </a>
         <a class="thumb-app" href="http://android.d.cn/software/407.html" title="淘宝" target="_blank">淘宝</a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="http://android.d.cn/software/407.html" title="淘宝" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/7/407/icon.png" alt="淘宝"/>
+                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img3.android.d.cn/android/new/game_image/7/407/icon.png" alt="淘宝"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -2008,7 +1933,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/18416.html" title="开心熊宝" target="_blank">开心熊宝</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/18416.html" title="开心熊宝" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/16/18416/icon.png" alt="开心熊宝"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img3.android.d.cn/android/new/game_image/16/18416/icon.png" alt="开心熊宝"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2046,7 +1971,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/4601.html" title="百度视频" target="_blank">百度视频</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/4601.html" title="百度视频" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/1/4601/icon.jpg" alt="百度视频"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img3.android.d.cn/android/new/game_image/1/4601/icon.jpg" alt="百度视频"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2084,7 +2009,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/9896.html" title="搜狗号码通" target="_blank">搜狗号码通</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/9896.html" title="搜狗号码通" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/96/9896/icon.png" alt="搜狗号码通"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/96/9896/icon.png" alt="搜狗号码通"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2122,7 +2047,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/55836.html" title="古诗词典" target="_blank">古诗词典</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/55836.html" title="古诗词典" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/36/55836/icon.png" alt="古诗词典"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img1.android.d.cn/android/new/game_image/36/55836/icon.png" alt="古诗词典"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2160,7 +2085,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/51039.html" title="花熊" target="_blank">花熊</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/51039.html" title="花熊" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/39/51039/icon.png" alt="花熊"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img1.android.d.cn/android/new/game_image/39/51039/icon.png" alt="花熊"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2198,7 +2123,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/1175.html" title="爱奇艺视频" target="_blank">爱奇艺视频</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/1175.html" title="爱奇艺视频" target="_blank">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/75/1175/icon.jpg" alt="爱奇艺视频"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/75/1175/icon.jpg" alt="爱奇艺视频"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2236,14 +2161,14 @@
 <div class="mod-cont hide">
     <div class="mod-thumb-b">
         <a href="http://android.d.cn/software/2168.html" title="谷歌电子市场GooglePlay商店" target="_blank" class="thumb-b-img">
-            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201407/1406181642240hKhE.jpg" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="谷歌电子市场GooglePlay商店"/>
+            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201407/1406181642240hKhE.jpg" src="http://cms/style/front/public/huaqiangu.png" alt="谷歌电子市场GooglePlay商店"/>
         </a>
         <a class="thumb-app" href="http://android.d.cn/software/2168.html" title="谷歌电子市场GooglePlay商店" target="_blank">谷歌电子市场GooglePlay商店</a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="http://android.d.cn/software/2168.html" title="谷歌电子市场GooglePlay商店" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img o-src="http://img9.android.d.cn/android/new/game_image/68/2168/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="谷歌电子市场GooglePlay商店"/>
+                <img o-src="http://img9.android.d.cn/android/new/game_image/68/2168/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="谷歌电子市场GooglePlay商店"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -2276,7 +2201,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/4070.html" title="QQ" target="_blank">QQ</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/4070.html" title="QQ" target="_blank">
-                                    <img o-src="http://img3.android.d.cn/android/new/game_image/70/4070/icon.png?clear" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="QQ"/>
+                                    <img o-src="http://img3.android.d.cn/android/new/game_image/70/4070/icon.png?clear" src="http://cms/style/front/public/huaqiangu.png" alt="QQ"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2314,7 +2239,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/2626.html" title="微信" target="_blank">微信</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/2626.html" title="微信" target="_blank">
-                                    <img o-src="http://img8.android.d.cn/android/new/game_image/26/2626/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="微信"/>
+                                    <img o-src="http://img8.android.d.cn/android/new/game_image/26/2626/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="微信"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2352,7 +2277,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/49997.html" title="Google话语提示" target="_blank">Google话语提示</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/49997.html" title="Google话语提示" target="_blank">
-                                    <img o-src="http://img3.android.d.cn/android/new/game_image/97/49997/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="Google话语提示"/>
+                                    <img o-src="http://img3.android.d.cn/android/new/game_image/97/49997/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="Google话语提示"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2390,7 +2315,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/2633.html" title="平板QQ" target="_blank">平板QQ</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/2633.html" title="平板QQ" target="_blank">
-                                    <img o-src="http://img6.android.d.cn/android/new/game_image/33/2633/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="平板QQ"/>
+                                    <img o-src="http://img6.android.d.cn/android/new/game_image/33/2633/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="平板QQ"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2428,7 +2353,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/17223.html" title="GooglePlay服务" target="_blank">GooglePlay服务</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/17223.html" title="GooglePlay服务" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/23/17223/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="GooglePlay服务"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/23/17223/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="GooglePlay服务"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2466,7 +2391,7 @@
                             <a class="mode-app-name" href="http://android.d.cn/software/238.html" title="360手机卫士" target="_blank">360手机卫士</a>
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/238.html" title="360手机卫士" target="_blank">
-                                    <img o-src="http://img5.android.d.cn/android/new/game_image/38/238/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="360手机卫士"/>
+                                    <img o-src="http://img5.android.d.cn/android/new/game_image/38/238/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="360手机卫士"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2504,14 +2429,14 @@
 <div class="mod-cont hide">
     <div class="mod-thumb-b">
         <a href="http://android.d.cn/software/1634.html" title="老虎宝典地图生活" target="_blank" class="thumb-b-img">
-            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405231130609JS9v.jpg" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="老虎宝典地图生活"/>
+            <img o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405231130609JS9v.jpg" src="http://cms/style/front/public/huaqiangu.png" alt="老虎宝典地图生活"/>
         </a>
         <a class="thumb-app" href="http://android.d.cn/software/1634.html" title="老虎宝典地图生活" target="_blank">老虎宝典地图生活</a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="http://android.d.cn/software/1634.html" title="老虎宝典地图生活" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img o-src="http://img6.android.d.cn/android/new/game_image/34/1634/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="老虎宝典地图生活"/>
+                <img o-src="http://img6.android.d.cn/android/new/game_image/34/1634/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="老虎宝典地图生活"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -2545,7 +2470,7 @@
 
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/20770.html" title="一个" target="_blank">
-                                    <img o-src="http://img8.android.d.cn/android/new/game_image/70/20770/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="一个"/>
+                                    <img o-src="http://img8.android.d.cn/android/new/game_image/70/20770/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="一个"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2583,7 +2508,7 @@
 
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/2626.html" title="微信" target="_blank">
-                                    <img o-src="http://img8.android.d.cn/android/new/game_image/26/2626/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="微信"/>
+                                    <img o-src="http://img8.android.d.cn/android/new/game_image/26/2626/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="微信"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2621,7 +2546,7 @@
 
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/7296.html" title="陌陌" target="_blank">
-                                    <img o-src="http://img7.android.d.cn/android/new/game_image/96/7296/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="陌陌"/>
+                                    <img o-src="http://img7.android.d.cn/android/new/game_image/96/7296/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="陌陌"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2659,7 +2584,7 @@
 
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/29275.html" title="网易云音乐" target="_blank">
-                                    <img o-src="http://img8.android.d.cn/android/new/game_image/75/29275/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="网易云音乐"/>
+                                    <img o-src="http://img8.android.d.cn/android/new/game_image/75/29275/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="网易云音乐"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2697,7 +2622,7 @@
 
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/42973.html" title="秒拍" target="_blank">
-                                    <img o-src="http://img8.android.d.cn/android/new/game_image/73/42973/icon.jpg" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="秒拍"/>
+                                    <img o-src="http://img8.android.d.cn/android/new/game_image/73/42973/icon.jpg" src="http://cms/style/front/public/huaqiangu.png" alt="秒拍"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2735,7 +2660,7 @@
 
                             <div class="mode-app">
                                 <a class="mode-app-icon" href="http://android.d.cn/software/12674.html" title="AdobeReaderPDF阅读器" target="_blank">
-                                    <img o-src="http://img3.android.d.cn/android/new/game_image/74/12674/icon.png" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" alt="AdobeReaderPDF阅读器"/>
+                                    <img o-src="http://img3.android.d.cn/android/new/game_image/74/12674/icon.png" src="http://cms/style/front/public/huaqiangu.png" alt="AdobeReaderPDF阅读器"/>
                                 </a>
                                 <div class="mode-app-des">
                                     <p class="num">
@@ -2790,7 +2715,7 @@
                 
                     <li class="mod-thumb-b">
                         <a href="http://news.d.cn/pc/view-22579.html" title="《深空传说》评测：动作与解谜的完美结合" target="_blank" class="thumb-b-img">
-                            <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201507/1435731486808MCs7.jpg" alt="《深空传说》评测：动作与解谜的完美结合"/>
+                            <img src="/style/front/public/zixun1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201507/1435731486808MCs7.jpg" alt="《深空传说》评测：动作与解谜的完美结合"/>
                         </a>
                         <a class="thumb-app" href="http://news.d.cn/pc/view-22579.html" title="《深空传说》评测：动作与解谜的完美结合" target="_blank">《深空传说》评测：动作与解谜的完美结合</a>
                         <div class="mod-cover"></div>
@@ -2805,7 +2730,7 @@
                 
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/pc/view-23316.html" title="当乐试玩视频：《漫威：未来之战》超级英雄的集结！" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070310491423842379.jpg" alt="当乐试玩视频：《漫威：未来之战》超级英雄的集结！"/>
+                                    <img src="/style/front/public/zixun2.jpg" o-src="http://img.news.d.cn//Upload/Image/2015070310491423842379.jpg" alt="当乐试玩视频：《漫威：未来之战》超级英雄的集结！"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/pc/view-23316.html" title="当乐试玩视频：《漫威：未来之战》超级英雄的集结！" target="_blank">当乐试玩视频：《漫威：未来之战》超级英雄的集结！</a>
                                 <div class="mod-cover"></div>
@@ -2820,7 +2745,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/pc/view-22776.html" title="当乐试玩视频：《火柴人联盟》LOL英雄的真实格斗体验！" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070111291700874213.jpg" alt="当乐试玩视频：《火柴人联盟》LOL英雄的真实格斗体验！"/>
+                                    <img src="/style/front/public/zixun2.jpg" o-src="http://img.news.d.cn//Upload/Image/2015070111291700874213.jpg" alt="当乐试玩视频：《火柴人联盟》LOL英雄的真实格斗体验！"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/pc/view-22776.html" title="当乐试玩视频：《火柴人联盟》LOL英雄的真实格斗体验！" target="_blank">当乐试玩视频：《火柴人联盟》LOL英雄的真实格斗体验！</a>
                                 <div class="mod-cover"></div>
@@ -2835,7 +2760,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/pc/view-22542.html" title="当乐试玩视频：《深空传说》让冒险来的更猛烈些！" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015063011042483923653.jpg" alt="当乐试玩视频：《深空传说》让冒险来的更猛烈些！"/>
+                                    <img src="/style/front/public/zixun2.jpg" o-src="http://img.news.d.cn//Upload/Image/2015063011042483923653.jpg" alt="当乐试玩视频：《深空传说》让冒险来的更猛烈些！"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/pc/view-22542.html" title="当乐试玩视频：《深空传说》让冒险来的更猛烈些！" target="_blank">当乐试玩视频：《深空传说》让冒险来的更猛烈些！</a>
                                 <div class="mod-cover"></div>
@@ -2850,7 +2775,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/pc/view-21828.html" title="当乐试玩视频：《九阳神功》畅爽的指尖动作快感！" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015062609510200666271.jpg" alt="当乐试玩视频：《九阳神功》畅爽的指尖动作快感！"/>
+                                    <img src="/style/front/public/zixun2.jpg" o-src="http://img.news.d.cn//Upload/Image/2015062609510200666271.jpg" alt="当乐试玩视频：《九阳神功》畅爽的指尖动作快感！"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/pc/view-21828.html" title="当乐试玩视频：《九阳神功》畅爽的指尖动作快感！" target="_blank">当乐试玩视频：《九阳神功》畅爽的指尖动作快感！</a>
                                 <div class="mod-cover"></div>
@@ -2865,7 +2790,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/pc/view-21720.html" title="当乐试玩视频：《渡劫》S级ARPG手游大作！" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015062515105997506948.jpg" alt="当乐试玩视频：《渡劫》S级ARPG手游大作！"/>
+                                    <img src="/style/front/public/zixun2.jpg" o-src="http://img.news.d.cn//Upload/Image/2015062515105997506948.jpg" alt="当乐试玩视频：《渡劫》S级ARPG手游大作！"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/pc/view-21720.html" title="当乐试玩视频：《渡劫》S级ARPG手游大作！" target="_blank">当乐试玩视频：《渡劫》S级ARPG手游大作！</a>
                                 <div class="mod-cover"></div>
@@ -2880,7 +2805,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/pc/view-21568.html" title="《不死之身》评测：为杀戮而生，为华丽而活" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015062417281953650063.jpg" alt="《不死之身》评测：为杀戮而生，为华丽而活"/>
+                                    <img src="/style/front/public/zixun2.jpg" o-src="http://img.news.d.cn//Upload/Image/2015062417281953650063.jpg" alt="《不死之身》评测：为杀戮而生，为华丽而活"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/pc/view-21568.html" title="《不死之身》评测：为杀戮而生，为华丽而活" target="_blank">《不死之身》评测：为杀戮而生，为华丽而活</a>
                                 <div class="mod-cover"></div>
@@ -2900,7 +2825,7 @@
                 
                     <li class="mod-thumb-b">
                         <a href="http://news.d.cn/gl/view-21410.html" title="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧" target="_blank" class="thumb-b-img">
-                            <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221449891w10A.jpg" alt="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧"/>
+                            <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221449891w10A.jpg" alt="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧"/>
                         </a>
                         <a class="thumb-app" href="http://news.d.cn/gl/view-21410.html" title="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧" target="_blank">《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧</a>
                         <div class="mod-cover"></div>
@@ -2915,7 +2840,7 @@
                 
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/gl/view-23702.html" title="《我的世界手机版》怎么耕地种菜 新手简易农场制作攻略" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070415505444457276.jpg" alt="《我的世界手机版》怎么耕地种菜 新手简易农场制作攻略"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070415505444457276.jpg" alt="《我的世界手机版》怎么耕地种菜 新手简易农场制作攻略"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/gl/view-23702.html" title="《我的世界手机版》怎么耕地种菜 新手简易农场制作攻略" target="_blank">《我的世界手机版》怎么耕地种菜 新手简易农场制作攻略</a>
                                 <div class="mod-cover"></div>
@@ -2930,7 +2855,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/gl/view-23701.html" title="《我的世界手机版》机关岩浆床制作攻略方法" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070415412934867772.jpg" alt="《我的世界手机版》机关岩浆床制作攻略方法"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070415412934867772.jpg" alt="《我的世界手机版》机关岩浆床制作攻略方法"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/gl/view-23701.html" title="《我的世界手机版》机关岩浆床制作攻略方法" target="_blank">《我的世界手机版》机关岩浆床制作攻略方法</a>
                                 <div class="mod-cover"></div>
@@ -2945,7 +2870,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/gl/view-23700.html" title="《我的世界手机版》基础操作教程介绍" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/201507041528146127420.jpg" alt="《我的世界手机版》基础操作教程介绍"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/201507041528146127420.jpg" alt="《我的世界手机版》基础操作教程介绍"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/gl/view-23700.html" title="《我的世界手机版》基础操作教程介绍" target="_blank">《我的世界手机版》基础操作教程介绍</a>
                                 <div class="mod-cover"></div>
@@ -2960,7 +2885,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/gl/view-23699.html" title="《我的世界手机版》火药怎么获得 火药介绍" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070415202070518365.jpg" alt="《我的世界手机版》火药怎么获得 火药介绍"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070415202070518365.jpg" alt="《我的世界手机版》火药怎么获得 火药介绍"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/gl/view-23699.html" title="《我的世界手机版》火药怎么获得 火药介绍" target="_blank">《我的世界手机版》火药怎么获得 火药介绍</a>
                                 <div class="mod-cover"></div>
@@ -2975,7 +2900,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/gl/view-23698.html" title="《我的世界手机版》双重陷阱门制作教程攻略" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070415100895204321.jpg" alt="《我的世界手机版》双重陷阱门制作教程攻略"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070415100895204321.jpg" alt="《我的世界手机版》双重陷阱门制作教程攻略"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/gl/view-23698.html" title="《我的世界手机版》双重陷阱门制作教程攻略" target="_blank">《我的世界手机版》双重陷阱门制作教程攻略</a>
                                 <div class="mod-cover"></div>
@@ -2990,7 +2915,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/gl/view-23697.html" title="《我的世界手机版》困怪陷阱制作教程" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070415005951524098.jpg" alt="《我的世界手机版》困怪陷阱制作教程"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070415005951524098.jpg" alt="《我的世界手机版》困怪陷阱制作教程"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/gl/view-23697.html" title="《我的世界手机版》困怪陷阱制作教程" target="_blank">《我的世界手机版》困怪陷阱制作教程</a>
                                 <div class="mod-cover"></div>
@@ -3011,7 +2936,7 @@
                     <li class="mod-thumb-b">
                         
                             <a href="http://news.d.cn/zt/view-21725.html" title="Less is more 十款极简主义手游佳作推荐" target="_blank" class="thumb-b-img">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/1435222356466jeyj.jpg" alt="Less is more 十款极简主义手游佳作推荐"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/1435222356466jeyj.jpg" alt="Less is more 十款极简主义手游佳作推荐"/>
                             </a>
                             <a class="thumb-app" href="http://news.d.cn/zt/view-21725.html" title="Less is more 十款极简主义手游佳作推荐" target="_blank">Less is more 十款极简主义手游佳作推荐</a>
                         
@@ -3026,7 +2951,7 @@
                 
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/bear/view-23243.html" title="谁说西方团队不能碰？且看法国厂商如何玩转日式RPG?" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070315525347795644.jpg" alt="谁说西方团队不能碰？且看法国厂商如何玩转日式RPG?"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070315525347795644.jpg" alt="谁说西方团队不能碰？且看法国厂商如何玩转日式RPG?"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/bear/view-23243.html" title="谁说西方团队不能碰？且看法国厂商如何玩转日式RPG?" target="_blank">谁说西方团队不能碰？且看法国厂商如何玩转日式RPG?</a>
                                 <div class="mod-cover"></div>
@@ -3040,7 +2965,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/video/view-23596.html" title="乐游播报第63期《深空传说》《火柴人联盟》等" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070318034842506678.jpg" alt="乐游播报第63期《深空传说》《火柴人联盟》等"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070318034842506678.jpg" alt="乐游播报第63期《深空传说》《火柴人联盟》等"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/video/view-23596.html" title="乐游播报第63期《深空传说》《火柴人联盟》等" target="_blank">乐游播报第63期《深空传说》《火柴人联盟》等</a>
                                 <div class="mod-cover"></div>
@@ -3054,7 +2979,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/zt/view-23546.html" title="冷热参半 十款游戏带你感受冰火两重天" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/201507031529305844667.jpg" alt="冷热参半 十款游戏带你感受冰火两重天"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/201507031529305844667.jpg" alt="冷热参半 十款游戏带你感受冰火两重天"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/zt/view-23546.html" title="冷热参半 十款游戏带你感受冰火两重天" target="_blank">冷热参半 十款游戏带你感受冰火两重天</a>
                                 <div class="mod-cover"></div>
@@ -3068,7 +2993,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/bear/view-23226.html" title="从批量下架南北战争游戏说起 谈谈颇受争议的苹果审核" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070216542240347911.jpg" alt="从批量下架南北战争游戏说起 谈谈颇受争议的苹果审核"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070216542240347911.jpg" alt="从批量下架南北战争游戏说起 谈谈颇受争议的苹果审核"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/bear/view-23226.html" title="从批量下架南北战争游戏说起 谈谈颇受争议的苹果审核" target="_blank">从批量下架南北战争游戏说起 谈谈颇受争议的苹果审核</a>
                                 <div class="mod-cover"></div>
@@ -3082,7 +3007,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/zt/view-22678.html" title="寻觅谋杀案背后的蛛丝马迹 凶案主题手游大盘点" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015063015543479921231.jpg" alt="寻觅谋杀案背后的蛛丝马迹 凶案主题手游大盘点"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015063015543479921231.jpg" alt="寻觅谋杀案背后的蛛丝马迹 凶案主题手游大盘点"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/zt/view-22678.html" title="寻觅谋杀案背后的蛛丝马迹 凶案主题手游大盘点" target="_blank">寻觅谋杀案背后的蛛丝马迹 凶案主题手游大盘点</a>
                                 <div class="mod-cover"></div>
@@ -3096,7 +3021,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/bear/view-22538.html" title="那些年游戏们走过的“红毯”！戏说国内外游戏盛典" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015063017492734889192.jpg" alt="那些年游戏们走过的“红毯”！戏说国内外游戏盛典"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015063017492734889192.jpg" alt="那些年游戏们走过的“红毯”！戏说国内外游戏盛典"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/bear/view-22538.html" title="那些年游戏们走过的“红毯”！戏说国内外游戏盛典" target="_blank">那些年游戏们走过的“红毯”！戏说国内外游戏盛典</a>
                                 <div class="mod-cover"></div>
@@ -3115,7 +3040,7 @@
                 
                     <li class="mod-thumb-b">
                         <a href="http://news.d.cn/news/view-21766.html" title="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战" target="_blank" class="thumb-b-img">
-                            <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221709923K4NG.jpg" alt="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战"/>
+                            <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221709923K4NG.jpg" alt="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战"/>
                         </a>
                         <a class="thumb-app" href="http://news.d.cn/news/view-21766.html" title="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战" target="_blank">《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战</a>
                         <div class="mod-cover"></div>
@@ -3129,7 +3054,7 @@
                 
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/news/view-23690.html" title="《辐射4》国内由杉果游戏代理 中文版敬请持续关注" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070414060528756560.jpg" alt="《辐射4》国内由杉果游戏代理 中文版敬请持续关注"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070414060528756560.jpg" alt="《辐射4》国内由杉果游戏代理 中文版敬请持续关注"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/news/view-23690.html" title="《辐射4》国内由杉果游戏代理 中文版敬请持续关注" target="_blank">《辐射4》国内由杉果游戏代理 中文版敬请持续关注</a>
                                 <div class="mod-cover"></div>
@@ -3143,7 +3068,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/news/view-23685.html" title="AR技术塔防手游 《隐秘：异常》 即将上架" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070413384567525958.jpg" alt="AR技术塔防手游 《隐秘：异常》 即将上架"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070413384567525958.jpg" alt="AR技术塔防手游 《隐秘：异常》 即将上架"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/news/view-23685.html" title="AR技术塔防手游 《隐秘：异常》 即将上架" target="_blank">AR技术塔防手游 《隐秘：异常》 即将上架</a>
                                 <div class="mod-cover"></div>
@@ -3157,7 +3082,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/news/view-23679.html" title="与F4大谈恋爱 《花样男子》双平台上架" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070413253098131616.jpg" alt="与F4大谈恋爱 《花样男子》双平台上架"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070413253098131616.jpg" alt="与F4大谈恋爱 《花样男子》双平台上架"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/news/view-23679.html" title="与F4大谈恋爱 《花样男子》双平台上架" target="_blank">与F4大谈恋爱 《花样男子》双平台上架</a>
                                 <div class="mod-cover"></div>
@@ -3171,7 +3096,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/news/view-23662.html" title="优质推理破案游戏《蛛丝马迹 The Trace》半价促销中" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/201507041114288959750.jpg" alt="优质推理破案游戏《蛛丝马迹 The Trace》半价促销中"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/201507041114288959750.jpg" alt="优质推理破案游戏《蛛丝马迹 The Trace》半价促销中"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/news/view-23662.html" title="优质推理破案游戏《蛛丝马迹 The Trace》半价促销中" target="_blank">优质推理破案游戏《蛛丝马迹 The Trace》半价促销中</a>
                                 <div class="mod-cover"></div>
@@ -3185,7 +3110,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/news/view-23648.html" title="暑期档热播剧《旋风少女》官方手游即将来袭" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070410205339657525.jpg" alt="暑期档热播剧《旋风少女》官方手游即将来袭"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070410205339657525.jpg" alt="暑期档热播剧《旋风少女》官方手游即将来袭"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/news/view-23648.html" title="暑期档热播剧《旋风少女》官方手游即将来袭" target="_blank">暑期档热播剧《旋风少女》官方手游即将来袭</a>
                                 <div class="mod-cover"></div>
@@ -3199,7 +3124,7 @@
                         
                             <li class="mod-thumb">
                                 <a href="http://news.d.cn/news/view-23651.html" title="王牌声优倾情演绎 《永恒战记》7月5日不删档测试" target="_blank" class="thumb-img">
-                                    <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.news.d.cn//Upload/Image/2015070410384364965014.jpg" alt="王牌声优倾情演绎 《永恒战记》7月5日不删档测试"/>
+                                    <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.news.d.cn//Upload/Image/2015070410384364965014.jpg" alt="王牌声优倾情演绎 《永恒战记》7月5日不删档测试"/>
                                 </a>
                                 <a class="thumb-app" href="http://news.d.cn/news/view-23651.html" title="王牌声优倾情演绎 《永恒战记》7月5日不删档测试" target="_blank">王牌声优倾情演绎 《永恒战记》7月5日不删档测试</a>
                                 <div class="mod-cover"></div>
@@ -3224,7 +3149,12 @@
             <a class="mod-more" href="http://app.d.cn/subject-1.html" target="_blank" title="安卓大作专区">更多</a>
         </div>
         <div class="mod-cont">
-            <ul class="mod-ori clearfix">    <li class="mod-thumb-b"><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-b-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201502/1423388462056LUIQ.jpg" alt="我的世界手机版" /></a><a class="thumb-app" href="http://app.d.cn/minecraft">我的世界专区</a><div class="mod-cover"></div><div class="thumb-des-wrap">    <div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-des-txt">毫无规则的游戏，但是却充满乐趣，这款像素风格的游戏绝对是世界上最火爆的的游戏之一。</a>   </div></div>    </li><li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201503/1425606141864Q3sy.jpg" alt="炉石传说手机版" /></a><a class="thumb-app" href="http://app.d.cn/lushichuanshuo">炉石传说手机版专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-des-txt">暴雪推出的一款策略类卡牌游戏，可以选择魔兽中的九大经典英雄人物之一，围绕英雄的职业为主题组建自己独特的套牌。</a></div></div>    </li><li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405308374133Wl7l.jpg" alt="捕鱼达人3" /></a><a class="thumb-app" href="http://app.d.cn/buyudaren3">捕鱼达人3专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-des-txt">由触控出品的《捕鱼达人3》这款超高人气大作，承载着4亿用户的捕鱼梦想，给各位捕鱼用户带来3D深海捕鱼体验。</a></div></div>    </li><li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201502/1423389129434mHA6.jpg" alt="现代战争5" /></a><a class="thumb-app" href="http://app.d.cn/mc5">现代战争5专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-des-txt">年度最火爆的战争大作，剧情模式引人入胜，多人联网模式其乐无穷，FPS游戏最佳体验。</a></div></div>    </li></ul>
+            <ul class="mod-ori clearfix">    
+                <li class="mod-thumb-b"><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-b-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201502/1423388462056LUIQ.jpg" alt="我的世界手机版" /></a><a class="thumb-app" href="http://app.d.cn/minecraft">我的世界专区</a><div class="mod-cover"></div><div class="thumb-des-wrap">    <div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-des-txt">毫无规则的游戏，但是却充满乐趣，这款像素风格的游戏绝对是世界上最火爆的的游戏之一。</a>   </div></div>    </li>
+                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201503/1425606141864Q3sy.jpg" alt="炉石传说手机版" /></a><a class="thumb-app" href="http://app.d.cn/lushichuanshuo">炉石传说手机版专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-des-txt">暴雪推出的一款策略类卡牌游戏，可以选择魔兽中的九大经典英雄人物之一，围绕英雄的职业为主题组建自己独特的套牌。</a></div></div>    </li>
+                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405308374133Wl7l.jpg" alt="捕鱼达人3" /></a><a class="thumb-app" href="http://app.d.cn/buyudaren3">捕鱼达人3专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-des-txt">由触控出品的《捕鱼达人3》这款超高人气大作，承载着4亿用户的捕鱼梦想，给各位捕鱼用户带来3D深海捕鱼体验。</a></div></div>    </li>
+                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201502/1423389129434mHA6.jpg" alt="现代战争5" /></a><a class="thumb-app" href="http://app.d.cn/mc5">现代战争5专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-des-txt">年度最火爆的战争大作，剧情模式引人入胜，多人联网模式其乐无穷，FPS游戏最佳体验。</a></div></div>    </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -3243,7 +3173,7 @@
                                 01
                             </em>
                             <a class="rank-icon" href="http://android.d.cn/game/4568.html" title="我的世界移动版" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/68/4568/icon.png" alt="我的世界移动版"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/68/4568/icon.png" alt="我的世界移动版"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/game/4568.html" title="我的世界移动版" target="_blank" class="rank-tit">我的世界移动版</a>
@@ -3268,7 +3198,7 @@
                                 02
                             </em>
                             <a class="rank-icon" href="http://android.d.cn/game/36780.html" title="NBA2K14" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img7.android.d.cn/android/new/game_image/80/36780/icon.png" alt="NBA2K14"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img7.android.d.cn/android/new/game_image/80/36780/icon.png" alt="NBA2K14"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/game/36780.html" title="NBA2K14" target="_blank" class="rank-tit">NBA2K14</a>
@@ -3293,7 +3223,7 @@
                                 03
                             </em>
                             <a class="rank-icon" href="http://android.d.cn/game/58980.html" title="踪迹:谋杀之谜游戏汉化版" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/80/58980/icon.png" alt="踪迹:谋杀之谜游戏汉化版"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img4.android.d.cn/android/new/game_image/80/58980/icon.png" alt="踪迹:谋杀之谜游戏汉化版"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/game/58980.html" title="踪迹:谋杀之谜游戏汉化版" target="_blank" class="rank-tit">踪迹:谋杀之谜游戏汉化版</a>
@@ -3379,7 +3309,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">01</em>
                             <a class="rank-icon" href="http://ng.d.cn/tianlongbabu3D" title="天龙八部3D" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.d.cn/netgame/hdlogo/1724_1434678455918_qP8lXkXt.png" alt="天龙八部3D"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.d.cn/netgame/hdlogo/1724_1434678455918_qP8lXkXt.png" alt="天龙八部3D"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://ng.d.cn/tianlongbabu3D" title="天龙八部3D" target="_blank" class="rank-tit">天龙八部3D</a>
@@ -3402,7 +3332,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">02</em>
                             <a class="rank-icon" href="http://ng.d.cn/wohucanglong" title="卧虎藏龙" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.d.cn/netgame/hdlogo/1117_1415004099991_LTQSk8bW.png" alt="卧虎藏龙"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.d.cn/netgame/hdlogo/1117_1415004099991_LTQSk8bW.png" alt="卧虎藏龙"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://ng.d.cn/wohucanglong" title="卧虎藏龙" target="_blank" class="rank-tit">卧虎藏龙</a>
@@ -3425,7 +3355,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">03</em>
                             <a class="rank-icon" href="http://ng.d.cn/wojiaomt" title="我叫MT" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img.d.cn/netgame/hdlogo/642_1403170878275_r41r9k3y.jpg" alt="我叫MT"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img.d.cn/netgame/hdlogo/642_1403170878275_r41r9k3y.jpg" alt="我叫MT"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://ng.d.cn/wojiaomt" title="我叫MT" target="_blank" class="rank-tit">我叫MT</a>
@@ -3511,7 +3441,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">01</em>
                             <a class="rank-icon" href="http://android.d.cn/software/374.html" title="当乐游戏中心" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/74/374/icon.png" alt="当乐游戏中心"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/74/374/icon.png" alt="当乐游戏中心"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/software/374.html" title="当乐游戏中心" target="_blank" class="rank-tit">当乐游戏中心</a>
@@ -3534,7 +3464,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">02</em>
                             <a class="rank-icon" href="http://android.d.cn/software/2626.html" title="微信" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img8.android.d.cn/android/new/game_image/26/2626/icon.png" alt="微信"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img8.android.d.cn/android/new/game_image/26/2626/icon.png" alt="微信"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/software/2626.html" title="微信" target="_blank" class="rank-tit">微信</a>
@@ -3557,7 +3487,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">03</em>
                             <a class="rank-icon" href="http://android.d.cn/software/1100.html" title="腾讯手机管家" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/0/1100/icon.png" alt="腾讯手机管家"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img3.android.d.cn/android/new/game_image/0/1100/icon.png" alt="腾讯手机管家"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/software/1100.html" title="腾讯手机管家" target="_blank" class="rank-tit">腾讯手机管家</a>
@@ -3643,7 +3573,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">01</em>
                             <a class="rank-icon" href="http://android.d.cn/game/52070.html" title="聚爆" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img6.android.d.cn/android/new/game_image/70/52070/icon.png?clear" alt="聚爆"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img6.android.d.cn/android/new/game_image/70/52070/icon.png?clear" alt="聚爆"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/game/52070.html" title="聚爆" target="_blank" class="rank-tit">聚爆</a>
@@ -3666,7 +3596,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">02</em>
                             <a class="rank-icon" href="http://android.d.cn/game/51672.html" title="我的战争" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/72/51672/icon.png" alt="我的战争"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img4.android.d.cn/android/new/game_image/72/51672/icon.png" alt="我的战争"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/game/51672.html" title="我的战争" target="_blank" class="rank-tit">我的战争</a>
@@ -3687,7 +3617,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num">03</em>
                             <a class="rank-icon" href="http://android.d.cn/game/54786.html" title="虚荣(含数据包)" target="_blank">
-                                <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/86/54786/icon.png" alt="虚荣(含数据包)"/>
+                                <img src="http://cms/style/front/public/huaqiangu.png" o-src="http://img4.android.d.cn/android/new/game_image/86/54786/icon.png" alt="虚荣(含数据包)"/>
                             </a>
                             <div class="rank-info">
                                 <a href="http://android.d.cn/game/54786.html" title="虚荣(含数据包)" target="_blank" class="rank-tit">虚荣(含数据包)</a>
@@ -3769,43 +3699,6 @@
     </div>
 </div>
 <!--排行榜 end-->
-<!--装机教程 begin-->
-<div class="layout">
-    <div class="mod-box">
-        <h3 class="mod-course-tit">安卓装机教程</h3>
-
-        <div class="mod-cont mod-course clearfix">
-            <div class="course clearfix">
-                <div class="course-lev lev0">
-                    <i></i>
-                    <span>新手入门</span>
-                </div>
-                <ul class="course-list">
-                    <li><a href="http://android.d.cn/news/83904.html" target="_blank" title="注册谷歌账号">注册谷歌账号</a></li><li><a href="http://android.d.cn/news/83907.html" target="_blank" title="USB调试模式">USB调试模式</a></li><li><a href="http://android.d.cn/news/3349.html" target="_blank" title="手机截屏教程">手机截屏教程</a></li><li><a href="http://app.d.cn/shoubingyouxi" target="_blank" title="安卓手柄游戏">安卓手柄游戏</a></li><li><a href="http://android.d.cn/news/89868.html" target="_blank" title="dpk安装教程">dpk安装教程</a></li><li><a href="http://android.d.cn/phone/" target="_blank" title="手机平板大全">手机平板大全</a></li>
-                </ul>
-            </div>
-            <div class="course clearfix">
-                <div class="course-lev lev1">
-                    <i></i>
-                    <span>中级进阶</span>
-                </div>
-                <ul class="course-list">
-                    <li><a href="http://android.d.cn/news/5180.html" target="_blank" title="游戏常见问题">游戏常见问题</a></li><li><a href="http://android.d.cn/news/4742.html" target="_blank" title="安装谷歌市场">安装谷歌市场</a></li><li><a href="http://android.d.cn/news/2735.html" target="_blank" title="幸运破解器">幸运破解器</a></li><li><a href="http://android.d.cn/news/4256.html" target="_blank" title="游戏放到sd卡">游戏放到sd卡</a></li><li><a href="http://android.d.cn/news/4510.html" target="_blank" title="使用内购大师">使用内购大师</a></li><li><a href="http://android.d.cn/specialtopic/411.html" target="_blank" title="root教程专区">root教程专区</a></li>
-                </ul>
-            </div>
-            <div class="course clearfix">
-                <div class="course-lev lev2">
-                    <i></i>
-                    <span>高手专区</span>
-                </div>
-                <ul class="course-list">
-                    <li><a href="http://android.d.cn/news/86034.html" target="_blank" title="备份游戏数据">备份游戏数据</a></li><li><a href="http://android.d.cn/news/2650.html" target="_blank" title="3D神器教程">3D神器教程</a></li><li><a href="http://android.d.cn/news/2649.html" target="_blank" title="更换系统字体">更换系统字体</a></li><li><a href="http://android.d.cn/news/3953.html" target="_blank" title="通过USB上网">通过USB上网</a></li><li><a href="http://android.d.cn/rom/" target="_blank" title="ROM专区">ROM专区</a></li><li><a href="http://android.d.cn/specialtopic/662.html" target="_blank" title="游戏机模拟器">游戏机模拟器</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<!--装机教程 end-->
 </div>
 <style>
 .rank-single h3 a:hover {
@@ -3835,134 +3728,6 @@ h3[class="cap-new"] a:hover {
 }
 </style>
 
-<!-- dpk直接下载提示框  -->
-<div id="Hint" class="hint-cont">
-    <div class="hint-head">
-        <a id="hintClose" title="关闭" href="javascript:void(0)">
-            <span></span>
-        </a>
-        <i></i>
-        提示
-    </div>
-    <div class="hint-content">
-        <p class="hint-tit">本游戏安装包为DPK数据包，推荐您使用当乐游戏中心安装。</p>
-        <div class="hint-outer">
-            <a href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&t=pcCDN&v=android000" title="下载电脑版" class="hint-downpc"><span>下载电脑版<i></i></span></a>
-            <a href="http://res9.d.cn/m/yxzx.apk?f=a_web_3" title="下载手机版" class="hint-downph"><span>下载手机版<i></i></span></a>
-        </div>
-        <div class="hint-link-wrap">
-            <span class="hint-not"><a href="javascript:void(0);"></a>不再提示</span>
-            <a class="hint-course" href="http://android.d.cn/news/89868.html" target="_blank;">不会安装，看这里?</a>
-            <a class="hint-submit" href="javascript:void(0);">知道了</a>
-        </div>
-    </div>
-</div>
-<!--下载相关 begin-->
-<div class="adapt-cont" id="adaptMore">
-    <h2>
-        <a href="javascript:void(0)" title="关闭" id="adaptMoreC">
-            <span></span>
-        </a>
-        <i></i>
-        机型匹配
-    </h2>
-    <p class="adapt-detail">您的手机型号未能匹配成功，请选择以下安装包进行下载。</p>
-    <ul class="adapt-ul">
-    </ul>
-</div>
-<div class="adapt-cont" id="adaptNoResult">
-    <h2>
-        <a href="javascript:void(0)" title="关闭" id="adaptNoC">
-            <span></span>
-        </a>
-        <i></i>
-        机型匹配
-    </h2>
-    <p class="adapt-detail">您的手机型号未能匹配成功，请选择以下安装包进行下载。</p>
-    <ul class="adapt-ul">
-    </ul>
-</div>
-<div class="adapt-cont" id="adaptDown">
-    <h2>
-        <a href="javascript:void(0)" title="关闭"  class="adaptDownC">
-            <span></span>
-        </a>
-        <i></i>
-        机型匹配/下载
-    </h2>
-    <p class="adapt-success"><span></span>下载已成功</p>
-    <a href="javascript:void(0)" class="iknow" id="ikonw">知道了</a>
-</div>
-<div class="adapt-cont" id="adaptSet">
-    <h2>
-        <a href="javascript:void(0);" title="关闭" id="adaptSetC">
-            <span></span>
-        </a>
-        <i></i>
-        设置机型
-    </h2>
-    <p class="setting-title">您的手机机型是：<span class="at-name"></span></p>
-    <div class="label label-1" id="brand">
-        <a href="javascript:void(0)" class="label-arrow" id="brandTri"><span></span></a>
-        <span class="label-choosen" id="brandValue">请选择手机品牌</span>
-        <div class="label-list" id="brandLi">
-            <ul class="list-ul" id="brandUl">
-            </ul>
-        </div>
-    </div>
-    <div class="label label-2" id="type">
-        <a href="javascript:void(0)" class="label-arrow" id="typeTri"><span></span></a>
-        <span class="label-choosen" id="modelValue">请选择手机型号</span>
-        <div class="model-list" id="typeLi">
-            <ul class="list-ul" id="typeUl">
-
-            </ul>
-        </div>
-    </div>
-    <a href="javascript:void(0)" class="iknow iknow-special" id="atSubmit">完成</a>
-    <a href="javascript:void(0)" class="notfound" id="atNot">没找到匹配的机型?</a>
-</div>
-<!--下载相关 end-->
-<!-- 腾讯联合登录标签 begin-->
-<span id="qqLoginBtn" style="display:none;"></span>
-<!-- 腾讯联合登录标签 end-->
-<!--下载调客户端 b-->
-<div class="client-box" id="clientBox">
-    <i id="clientClose" class="client-close"></i>
-    <p class="client-des">将使用当乐游戏中心电脑版为您免费安装</p>
-    <div class="client-main">
-        <p class="client-process">安装流程：</p>
-        <div class="client-oper clearfix">
-            <div class="client-step client-step1">
-                <span></span>
-                <p>1.下载安装当乐游戏中心PC版</p>
-            </div>
-            <div class="step-sep"><i></i></div>
-            <div class="client-step client-step2">
-                <span></span>
-                <p>2.选择应用，点击安装到手机</p>
-            </div>
-            <div class="step-sep"><i></i></div>
-            <div class="client-step client-step3">
-                <span></span>
-                <p>3.连接手机到电脑，自动安装</p>
-            </div>
-        </div>
-        <a id="clientDown" title="立即下载当乐游戏中心" class="client-down" href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&amp;t=pcCDN&amp;v=android000">立即下载当乐游戏中心</a>
-    </div>
-</div>
-<div id="ieBox" class="ie-box">
-    <i id="ieClose" class="client-close"></i>
-    <p class="client-des">将使用<em>当乐游戏中心</em>电脑版为您免费安装</p>
-    <div class="ie-down">
-        <a href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&t=pcCDN&v=android000" title="立即下载当乐游戏中心" class="ie-down-l" id="downClient">
-            <span>还未安装<br />下载客户端</span>
-        </a>
-        <a href="javascript:;" title="启动客户端安装"  class="ie-down-r" id="ieDown">
-            <span>我已安装<br />启动客户端安装</span>
-        </a>
-    </div>
-</div>
 <!--下载调客户端 e-->
 <!--登录弹出框 b-->
 <div class="adapt-cont" id="baseLog">
@@ -3973,7 +3738,7 @@ h3[class="cap-new"] a:hover {
         <i></i>
         登录
     </h2>
-    <p class="adapt-success adapt-success-special"><img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/bear.jpg" alt="" />登录后才能喜欢哦！</p>
+    <p class="adapt-success adapt-success-special"><img src="http://cms/style/front/public/huaqiangu.png" o-src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/bear.jpg" alt="" />登录后才能喜欢哦！</p>
     <a href="" title="立即登录" class="log-now">立即登录</a>
 </div>
 <!--登录弹出框 e-->

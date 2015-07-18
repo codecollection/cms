@@ -16,12 +16,12 @@
             <tr id="<?php echo "formli" . $k + 1;?>">
                 <td><?php echo $v['num'];?></td>
                 <td><?php if(!empty($v["logo"])){?>
-                    <img src="<?php echo $v["logo"]?>" style="height:30px;" />
+                    <img src="<?php echo $v["logo"]?>" style="height:30px;overflow: hidden;width: 30px;" />
             <?php }else{?>
                     --
             <?php }?>
                 </td>
-                <td><?php echo isset($thisc->type[$v['type']]) ?$thisc->type[$v['type']] : "";?></td>
+                <td><?php echo isset($thisc->type[$v['type']]) ? $thisc->type[$v['type']] : "";?></td>
                 <td><?php echo $v['owner'];?></td>
                 <td><?php echo $v['cate'];?></td>
                 <td>
