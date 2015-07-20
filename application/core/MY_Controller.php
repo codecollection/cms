@@ -68,6 +68,16 @@ class MY_Controller extends CI_Controller {
         
     }
     
+    /**
+     * 获取配置
+     * 
+     * @param type $key
+     * @return type
+     */
+    public function getItem($key){
+        
+        return RConfig::get($key);
+    }
 
     /**
      * 输出ajax信息

@@ -5,6 +5,12 @@ class Info extends CBase {
 
     public $page;
     
+    public $type = array(
+        "1"=>"服务号",
+        "2"=>"订阅号",
+        "3"=>"企业号",
+    );
+    
     public function __construct() {
         parent::__construct();
         

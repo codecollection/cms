@@ -34,16 +34,7 @@
         }
     }
     
-     /**
-     * 获取配置
-     * 
-     * @param type $key
-     * @return type
-     */
-    public function getItem($key){
-        
-        return RConfig::get($key);
-    }
+     
    
     public function lists($params = array()){
         //设置活动的模块
