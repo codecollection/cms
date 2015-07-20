@@ -13,6 +13,7 @@
 <?php echo $area["title"];?>
 
 //信息地址
+<?php $list = $c->getList(1,30);?>
 <?php echo $v['surl'];?>
 <?php foreach($list['list'] as $k => $v){}?>
 <?php echo('') ;?>
