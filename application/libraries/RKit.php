@@ -49,24 +49,32 @@ class RKit {
         $part = date('H:i:s', $time);
         
         $timeStr = '';
+//        if ($timeYear == $nowYear && $timeMonth == $nowMonth && $timeDay == $nowDay) {
+//            $timeStr = '今天 ' . $part;
+//        } else if ($timeYear == $nowYear && $timeMonth == $nowMonth && $timeDay == ($nowDay-1)) {
+//            $timeStr = '昨天 ' . $part;
+//        } elseif ($timeYear == $nowYear && $timeMonth == $nowMonth && $timeDay == ($nowDay-2)) {
+//            $timeStr = '前天 ' . $part;
+//        } elseif ($timeYear == $nowYear && $timeMonth == $nowMonth) {
+//            $timeStr = '本月 ' . $timeDay . '号' . $part;
+//        } elseif ($timeYear == $nowYear && $timeMonth == ($nowMonth - 1)) {
+//            $timeStr = '上月 ' . $timeDay . '号' . $part;
+//        } else if ($timeYear == $nowYear) {
+//            $timeStr = '今年 ' . $timeMonth . '-' . $timeDay . $part;
+//        } else if ($timeYear == ($nowYear-1)) {
+//            $timeStr = '去年 ' . $timeMonth . '-' . $timeDay . $part;
+//        } else {
+//            $timeStr = $timeYear . '-' . $timeMonth . '-' . $timeDay . $part;
+//        }
         if ($timeYear == $nowYear && $timeMonth == $nowMonth && $timeDay == $nowDay) {
-            $timeStr = '今天 ' . $part;
+            $timeStr = '今天 ';
         } else if ($timeYear == $nowYear && $timeMonth == $nowMonth && $timeDay == ($nowDay-1)) {
-            $timeStr = '昨天 ' . $part;
+            $timeStr = '昨天 ';
         } elseif ($timeYear == $nowYear && $timeMonth == $nowMonth && $timeDay == ($nowDay-2)) {
-            $timeStr = '前天 ' . $part;
-        } elseif ($timeYear == $nowYear && $timeMonth == $nowMonth) {
-            $timeStr = '本月 ' . $timeDay . '号' . $part;
-        } elseif ($timeYear == $nowYear && $timeMonth == ($nowMonth - 1)) {
-            $timeStr = '上月 ' . $timeDay . '号' . $part;
-        } else if ($timeYear == $nowYear) {
-            $timeStr = '今年 ' . $timeMonth . '-' . $timeDay . $part;
-        } else if ($timeYear == ($nowYear-1)) {
-            $timeStr = '去年 ' . $timeMonth . '-' . $timeDay . $part;
+            $timeStr = '前天 ';
         } else {
-            $timeStr = $timeYear . '-' . $timeMonth . '-' . $timeDay . $part;
+            $timeStr = $timeYear . '-' . $timeMonth . '-' . $timeDay;
         }
-        
         return $timeStr;
     }
 

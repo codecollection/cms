@@ -17,7 +17,11 @@
 <?php echo $v['surl'];?>
 <?php foreach($list['list'] as $k => $v){}?>
 <?php echo('') ;?>
+<?php echo $v['title'];?>
+<?php echo $v['img_url'];?>
 
 //分类
 <?php $cate = $c->getCate(2);?>
 <?php echo $v['cname'];?>
+
+//insert into cms_info_list (last_cate_id,model_id,title,img_url,body,uid,uname,cdate) select last_cate_id,model_id,title,img_url,body,uid,uname,cdate from cms_info_list

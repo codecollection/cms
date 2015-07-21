@@ -337,6 +337,29 @@ create table if not exists `cms_user_list` (
  primary key (`user_id`)
 ) engine=myisam default charset=utf8 comment '会员表';
 
+-- 用户喜欢记录表
+create table if not exists `cms_user_like` (
+ `ul_id` int(11) unsigned not null auto_increment,
+ `uid` int(11) not null default 0 comment '用户ID',
+ `model_id` int(11) not null default 0 comment '模型',
+ `info_id` int(11)  not null default 0 comment '信息id',
+ `cdate` int(11) not null default 0 comment '时间',
+ `likes` int(5) not null default 0 comment '喜欢',
+ primary key (`ul_id`),
+ index `u_m_i` (`uid`,`model_id`,`info_id`)
+) engine=myisam default charset=utf8;
+
+-- 收藏记录表
+create table if not exists `cms_user_collect` (
+ `uc_id` int(11) unsigned not null auto_increment,
+ `uid` int(11) not null default 0 comment '用户ID',
+ `model_id` int(11) not null default 0 comment '模型',
+ `info_id` int(11)  not null default 0 comment '信息id',
+ `cdate` int(11) not null default 0 comment '时间',
+ primary key (`uc_id`),
+ index `u_m_i` (`uid`,`model_id`,`info_id`)
+) engine=myisam default charset=utf8;
+
 -- 会员积分
 create table if not exists `cms_user_points` (
  `points_id` int(11) unsigned not null auto_increment,

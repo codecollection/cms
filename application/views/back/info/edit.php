@@ -121,6 +121,7 @@
 
                     <ul id="attachs_select_list">
                     <?php
+                    if($data[$thisc->modelName."_id"] > 0 ){
                     $resouce = $thisc->getResourceFiles($data[$thisc->modelName."_id"],$modelId);
                     
                     $html='';
@@ -136,6 +137,8 @@
                         }
                     }
                     echo($html);
+                    }
+                    
                     ?></ul>
                     <p class="line-t-20"></p>
 

@@ -184,10 +184,27 @@ class Cate_model extends MBase{
                 array_push($ret, $c);
             }
         }
-        //$ret = helper :: array_sort($ret, 'corder');
         return $ret;
     }
     
+    /**
+     * 返回分类下面的所有子分类的数组，平级结构
+     * @param type $cate_id
+     * @return type
+     */
+    public function cateAllSon($cate_id){
+        $ret = array();
+        
+        foreach($this -> cateList as $c) {
+            if ($c['parent_id'] == $cate_id) {
+                array_push($ret, $c);
+                $ret2 = $this -> cateAllSon($c['cate_id']);
+                $ret = array_merge($ret2,$ret);
+            }
+        }
+        return $ret;
+    }
+
     /**
      * 获取平级目录（水平）
      * @param $cate_id int 目录树id

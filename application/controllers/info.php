@@ -43,6 +43,7 @@ class Info extends CBase {
         if(!empty($tag)){
             $this->info->where("B.tag like '%{$tag}%'");
         }
+        
         //如果p小于等于0.则表示是分类下面的首页
         if(empty($p) || $p <=0 ){
             $tplIndex = $cateData["tpl_index"];
@@ -55,6 +56,19 @@ class Info extends CBase {
         $this->setData("cate", $cateData);
         
         $this->renderHTMLView($tplList);
+    }
+
+    /**
+     * 更新赞，喜欢，等
+     */
+    public function doLike(){
+        
+        $modelId = $this->getData('modelId');
+        $id = $this->getData('id');
+        $type = $this->getData('type');//区分是赞还喜欢
+        $this->setModel($modelId);
+        
+        
     }
 
     /**
@@ -104,6 +118,21 @@ class Info extends CBase {
     }
     
     /**
+     * 获取到分类下面的所有子分类
+     * @param type $pid
+     * @return type
+     */
+    private function getAllSon($pid = 1){
+        
+        $sons = $this->cate->cateAllSon($pid);
+        $ids = array($pid=>$pid);
+        foreach($sons as $sv){
+            $ids[$sv["cate_id"]] = $sv['cate_id'];
+        }
+        return $ids;
+    }
+
+    /**
      * 获取列表
      * @return type
      */
@@ -114,13 +143,16 @@ class Info extends CBase {
         }else{
             $cateId = $cid;
         }
+        
+        $ids = implode(",", $this->getAllSon($cateId));
+        
         $p = $this->getData('p') > 0 ? $this->getData('p') : "1";
         
         $modelId = $this->cate->getField($cateId,'model_id');
         //获取模型对应的表名称
         $this->setModel($modelId);
         
-        $this->info->where("last_cate_id=".$cateId);
+        $this->info->where("last_cate_id in ($ids)");
         
         $this->info->page($p, $pagesize);
         
@@ -327,14 +359,14 @@ class Info extends CBase {
             'base_url' => $baseUrl, 
             'per_page' => $pagesize,
             'total_rows' => $total,
-            'num_links' => 6,
+            'num_links' => 3,
             'query_string_segment' => 'p',
             'page_query_string' => true,
             'first_link' => "首页",
             'last_link' => "尾页",
             'prev_link' => '上一页',
             'next_link' => '下一页',
-            'cur_tag_open' => '<span class="pageOn">',
+            'cur_tag_open' => '<span class="curr">',
             'cur_tag_close' => '</span>',
             'use_page_numbers' => TRUE,
         );

@@ -3,17 +3,24 @@
     <head>
         <link type="application/rss+xml" href="http://android.d.cn/rss/game.xml" rel="alternate"
               title="Android手机游戏免费下载 Android手机软件下载 Android智能门户_当乐网"/>
-
-        <meta charset="utf-8"/>
-
         <meta name="keywords" content="最新安卓游戏,安卓最新游戏"/>
         <meta name="description" content="最新安卓游戏免费下载_安卓最新游戏_第1页_当乐网"/>
         <title>最新安卓游戏免费下载_安卓最新游戏_第1页_当乐网</title>
         <?php $c->loadView("front/public/header.php"); ?>
         <link rel="stylesheet" href="/style/front/public/css/list.css"/>
+        <script>
+             $(function () {
+                $('.app-list li').hover(function () {
+                    $(this).addClass('curr');
+                }, function () {
+                    $(this).removeClass('curr');
+                });
+            });
+        </script>
     </head>
 
     <body>
+        <?php $c->loadView("front/public/navtop.php");?>
         <?php $c->loadView("front/public/nav.php");?>
         <div class="content clearfix">
             <div class="left">
@@ -56,21 +63,21 @@
                         <div class="border-out-2"></div>
                         <div class="list-in">
                             <div class="list-left">
-                                <a href="http://android.d.cn/game/59398.html" target="_blank" class="app-img-out" title="密室怨魂(含数据包)">
+                                <a href="<?php echo $v['surl'];?>" target="_blank" class="app-img-out" title="<?php echo $v['num'];?>">
                                     <i class="iconSprite-2 sign sign-2"></i>
-                                    <img class="app-img" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif"  o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="密室怨魂(含数据包)"/>
+                                    <img class="app-img" src="<?php echo FILEHOST.$v['logo']; ?>"  o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
                                 </a>
-                                <div class="app-v">
+<!--                                <div class="app-v">
                                     <div class="star-bg iconSprite">
                                         <div class="stars iconSprite stars-4"></div>
                                     </div>
 
                                     <p class="update-time">刚刚<i class="up-icon-1 iconSprite"></i></p>
 
-                                </div>
+                                </div>-->
                                 <div class="app-h">
 
-                                    <a href="javascript:void(0);" title="密室怨魂(含数据包)下载" class="down-btn" onclick="Adapt.adaptDown(this, 1, 59398)">立即下载</a>
+                                    <a href="javascript:void(0);" title="<?php echo $v['num'];?>" class="down-btn" onclick="Adapt.adaptDown(this, 1, 59398)">立即关注</a>
 
                                 </div>
                             </div>
@@ -83,35 +90,31 @@
                                         <span class="small">5</span>
                                     </span>
 
-                                    <a href="javascript:;" title="密室怨魂(含数据包)喜欢" class="iconSprite " onclick="Coll.coll(this, 1, 59398);"></a>
+                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="iconSprite " onclick="Coll.coll(this, 1, 59398);"></a>
                                 </div>
 
-                                <div class="tem-d">
+<!--                                <div class="tem-d">
 
                                     <i class="tem iconSprite"></i><span class="red">47℃</span>
 
-                                </div>
+                                </div>-->
                                 <p class="g-name">
-                                    <a href="http://android.d.cn/game/59398.html" target="_blank" title="密室怨魂(含数据包)">密室怨魂(含数据包)</a>
+                                    <a href="<?php echo $v['surl'];?>" target="_blank" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
                                 </p>
                                 <p class="g-desc">
 
-                                    <a href="http://android.d.cn/game/list_1_0_6_0_0_0_0_0_0_0_0_0_0.html"
-                                       title="安卓冒险解谜" target="_blank">冒险解谜</a>
+                                    <a href="<?php echo $v['surl'];?>"
+                                       title="安卓冒险解谜" target="_blank"><?php echo $v['cate']?></a>
 
                                 </p>
                                 <p class="g-detail">
 
-                                    <span>07-04</span> | 94.29MB
+                                    <span><?php echo date("m-d",$v['cdate']);?></span> | <?php echo $v['owner'];?>
                                 </p>
-                                <p class="down-ac">
-
-                                    版本：1.0.4
-                                </p>
+                                <p class="down-ac"><?php echo $c->type[$v['type']];?></p>
                                 <p class="g-intro">
 
-                                    <span class="g-cp">小编简评：
-                                        谜题逻辑性较好，难度尚可，恐怖要素十足，吓到手抖。
+                                    <span class="g-cp"><?php echo $v['comment'];?>
                                     </span>
 
                                 </p>
@@ -125,21 +128,21 @@
                         <div class="border-out-2"></div>
                         <div class="list-in">
                             <div class="list-left">
-                                <a href="http://android.d.cn/game/14009.html" target="_blank" class="app-img-out" title="Cytus音乐节奏破解版(含数据包)">
+                                <a href="<?php echo $v['surl'];?>" target="_blank" class="app-img-out" title="<?php echo $v['num'];?>">
                                     <i class="iconSprite-2 sign sign-1"></i>
-                                    <img class="app-img" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif"  o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="Cytus音乐节奏破解版(含数据包)"/>
+                                    <img class="app-img" src="<?php echo FILEHOST.$v['logo']; ?>"  o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="<?php echo $v['num'];?>"/>
                                 </a>
-                                <div class="app-v">
+<!--                                <div class="app-v">
                                     <div class="star-bg iconSprite">
                                         <div class="stars iconSprite stars-5"></div>
                                     </div>
 
                                     <p class="update-time">刚刚<i class="up-icon-1 iconSprite"></i></p>
 
-                                </div>
+                                </div>-->
                                 <div class="app-h">
 
-                                    <a href="javascript:void(0);" title="Cytus音乐节奏破解版(含数据包)下载" class="down-btn" onclick="Adapt.adaptDown(this, 1, 14009)">立即下载</a>
+                                    <a href="javascript:void(0);" title="<?php echo $v['num'];?>" class="down-btn" onclick="Adapt.adaptDown(this, 1, 14009)">立即关注</a>
 
                                 </div>
                             </div>
@@ -152,35 +155,31 @@
                                         <span class="small">1</span>
                                     </span>
 
-                                    <a href="javascript:;" title="Cytus音乐节奏破解版(含数据包)喜欢" class="iconSprite " onclick="Coll.coll(this, 1, 14009);"></a>
+                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="iconSprite " onclick="Coll.coll(this, 1, 14009);"></a>
                                 </div>
 
-                                <div class="tem-d">
+<!--                                <div class="tem-d">
 
                                     <i class="tem iconSprite"></i><span class="red">69℃</span>
 
-                                </div>
+                                </div>-->
                                 <p class="g-name">
-                                    <a href="http://android.d.cn/game/14009.html" target="_blank" title="Cytus音乐节奏破解版(含数据包)">Cytus音乐节奏破解版(含数据包)</a>
+                                    <a href="<?php echo $v['surl'];?>" target="_blank" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
                                 </p>
                                 <p class="g-desc">
 
-                                    <a href="http://android.d.cn/game/list_1_0_48_0_0_0_0_0_0_0_0_0_0.html"
-                                       title="安卓音乐游戏" target="_blank">音乐游戏</a>
+                                    <a href="<?php echo $v['surl'];?>"
+                                       title="<?php echo $v['cate']?>" target="_blank"><?php echo $v['cate']?></a>
 
                                 </p>
                                 <p class="g-detail">
 
-                                    <span>07-04</span> | 820.60MB
+                                    <span><?php echo date("m-d",$v['cdate']);?></span> | <?php echo $v['owner'];?>
                                 </p>
-                                <p class="down-ac">
-
-                                    版本：8.0.0
-                                </p>
+                                <p class="down-ac"><?php echo $c->type[$v['type']];?></p>
                                 <p class="g-intro">
 
-                                    <span class="g-cp">小编简评：
-                                        对音乐的节奏感很有帮助，喜爱音乐的人千万不要错过
+                                    <span class="g-cp"><?php echo $v['comment'];?>
                                     </span>
 
                                 </p>
@@ -194,10 +193,13 @@
                 </ul>
 
                 <div class="clearfix"></div>
-
                 <div class="page">
-                    <span class="curr">1</span><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_2_0.html">2</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_3_0.html">3</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_4_0.html">4</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_5_0.html">5</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_6_0.html">6</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_7_0.html">7</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_2_0.html">下一页</a><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_1047_0.html">末页</a>
+                    <?php echo $list['pagecode'];?>
                 </div>
+
+<!--                <div class="page">
+                    <span class="curr">1</span><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a><a href="">6</a><a href="">7</a><a href="">下一页</a><a href="">末页</a>
+                </div>-->
             </div>
 
 
@@ -1026,135 +1028,6 @@
 
         </div>
 
-        <!-- dpk直接下载提示框  -->
-        <div id="Hint" class="hint-cont">
-            <div class="hint-head">
-                <a id="hintClose" title="关闭" href="javascript:void(0)">
-                    <span></span>
-                </a>
-                <i></i>
-                提示
-            </div>
-            <div class="hint-content">
-                <p class="hint-tit">本游戏安装包为DPK数据包，推荐您使用当乐游戏中心安装。</p>
-                <div class="hint-outer">
-                    <a href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&t=pcCDN&v=android000" title="下载电脑版" class="hint-downpc"><span>下载电脑版<i></i></span></a>
-                    <a href="http://res9.d.cn/m/yxzx.apk?f=a_web_3" title="下载手机版" class="hint-downph"><span>下载手机版<i></i></span></a>
-                </div>
-                <div class="hint-link-wrap">
-                    <span class="hint-not"><a href="javascript:void(0);"></a>不再提示</span>
-                    <a class="hint-course" href="http://android.d.cn/news/89868.html" target="_blank;">不会安装，看这里?</a>
-                    <a class="hint-submit" href="javascript:void(0);">知道了</a>
-                </div>
-            </div>
-        </div>
-        <!--下载相关 begin-->
-        <div class="adapt-cont" id="adaptMore">
-            <h2>
-                <a href="javascript:void(0)" title="关闭" id="adaptMoreC">
-                    <span></span>
-                </a>
-                <i></i>
-                机型匹配
-            </h2>
-            <p class="adapt-detail">您的手机型号未能匹配成功，请选择以下安装包进行下载。</p>
-            <ul class="adapt-ul">
-            </ul>
-        </div>
-        <div class="adapt-cont" id="adaptNoResult">
-            <h2>
-                <a href="javascript:void(0)" title="关闭" id="adaptNoC">
-                    <span></span>
-                </a>
-                <i></i>
-                机型匹配
-            </h2>
-            <p class="adapt-detail">您的手机型号未能匹配成功，请选择以下安装包进行下载。</p>
-            <ul class="adapt-ul">
-            </ul>
-        </div>
-        <div class="adapt-cont" id="adaptDown">
-            <h2>
-                <a href="javascript:void(0)" title="关闭"  class="adaptDownC">
-                    <span></span>
-                </a>
-                <i></i>
-                机型匹配/下载
-            </h2>
-            <p class="adapt-success"><span></span>下载已成功</p>
-            <a href="javascript:void(0)" class="iknow" id="ikonw">知道了</a>
-        </div>
-        <div class="adapt-cont" id="adaptSet">
-            <h2>
-                <a href="javascript:void(0);" title="关闭" id="adaptSetC">
-                    <span></span>
-                </a>
-                <i></i>
-                设置机型
-            </h2>
-            <p class="setting-title">您的手机机型是：<span class="at-name"></span></p>
-            <div class="label label-1" id="brand">
-                <a href="javascript:void(0)" class="label-arrow" id="brandTri"><span></span></a>
-                <span class="label-choosen" id="brandValue">请选择手机品牌</span>
-                <div class="label-list" id="brandLi">
-                    <ul class="list-ul" id="brandUl">
-                    </ul>
-                </div>
-            </div>
-            <div class="label label-2" id="type">
-                <a href="javascript:void(0)" class="label-arrow" id="typeTri"><span></span></a>
-                <span class="label-choosen" id="modelValue">请选择手机型号</span>
-                <div class="model-list" id="typeLi">
-                    <ul class="list-ul" id="typeUl">
-
-                    </ul>
-                </div>
-            </div>
-            <a href="javascript:void(0)" class="iknow iknow-special" id="atSubmit">完成</a>
-            <a href="javascript:void(0)" class="notfound" id="atNot">没找到匹配的机型?</a>
-        </div>
-        <!--下载相关 end-->
-        <!-- 腾讯联合登录标签 begin-->
-        <span id="qqLoginBtn" style="display:none;"></span>
-        <!-- 腾讯联合登录标签 end-->
-        <!--下载调客户端 b-->
-        <div class="client-box" id="clientBox">
-            <i id="clientClose" class="client-close"></i>
-            <p class="client-des">将使用当乐游戏中心电脑版为您免费安装</p>
-            <div class="client-main">
-                <p class="client-process">安装流程：</p>
-                <div class="client-oper clearfix">
-                    <div class="client-step client-step1">
-                        <span></span>
-                        <p>1.下载安装当乐游戏中心PC版</p>
-                    </div>
-                    <div class="step-sep"><i></i></div>
-                    <div class="client-step client-step2">
-                        <span></span>
-                        <p>2.选择应用，点击安装到手机</p>
-                    </div>
-                    <div class="step-sep"><i></i></div>
-                    <div class="client-step client-step3">
-                        <span></span>
-                        <p>3.连接手机到电脑，自动安装</p>
-                    </div>
-                </div>
-                <a id="clientDown" title="立即下载当乐游戏中心" class="client-down" href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&amp;t=pcCDN&amp;v=android000">立即下载当乐游戏中心</a>
-            </div>
-        </div>
-        <div id="ieBox" class="ie-box">
-            <i id="ieClose" class="client-close"></i>
-            <p class="client-des">将使用<em>当乐游戏中心</em>电脑版为您免费安装</p>
-            <div class="ie-down">
-                <a href="http://ios.d.cn/Subject/ProductShow/Download.ashx?c=pcandroid0&t=pcCDN&v=android000" title="立即下载当乐游戏中心" class="ie-down-l" id="downClient">
-                    <span>还未安装<br />下载客户端</span>
-                </a>
-                <a href="javascript:;" title="启动客户端安装"  class="ie-down-r" id="ieDown">
-                    <span>我已安装<br />启动客户端安装</span>
-                </a>
-            </div>
-        </div>
-        <!--下载调客户端 e-->
         <!--登录弹出框 b-->
         <div class="adapt-cont" id="baseLog">
             <h2>

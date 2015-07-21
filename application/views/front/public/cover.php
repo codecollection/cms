@@ -10,6 +10,7 @@
 
 <body>
 <!-- top-->
+<?php $c->loadView("front/public/navtop.php");?>
 <?php $c->loadView("front/public/nav.php");?>
 <!-- top end-->
 <!--content begin-->
