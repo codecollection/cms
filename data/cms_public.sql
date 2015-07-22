@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `cms_comment` (
   `info_id` int(11) NOT NULL DEFAULT '0' COMMENT '信息ID',
   `model_id` int(11) NOT NULL DEFAULT '0' COMMENT '模型ID',
   `content` varchar(500) NOT NULL DEFAULT '' COMMENT '评论内容',
-  `date_add` int(11) NOT NULL DEFAULT '0' COMMENT '发布时间',
+  `cdate` int(11) NOT NULL DEFAULT '0' COMMENT '发布时间',
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `uname` varchar(500) NOT NULL DEFAULT '' COMMENT '昵称',
   `avator` varchar(100) NOT NULL DEFAULT '' COMMENT '头像',

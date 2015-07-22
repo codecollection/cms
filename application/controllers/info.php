@@ -59,19 +59,6 @@ class Info extends CBase {
     }
 
     /**
-     * 更新赞，喜欢，等
-     */
-    public function doLike(){
-        
-        $modelId = $this->getData('modelId');
-        $id = $this->getData('id');
-        $type = $this->getData('type');//区分是赞还喜欢
-        $this->setModel($modelId);
-        
-        
-    }
-
-    /**
      * 详情页
      */
     public function d(){
@@ -86,6 +73,10 @@ class Info extends CBase {
         $tpl = "content";
         if(!empty($cate["tpl_content"])){$tpl = $cate["tpl_content"];}
         if(!empty($d["tpl_content"])){$tpl = $d["tpl_content"];}
+        
+        //更新访问量
+        $this->info->numField = "visitors";
+        $this->info->updateNum($id);
         
         $this->setData("d", $d);
         
@@ -346,7 +337,53 @@ class Info extends CBase {
         
         return $flinks;
     }
+    
+    /**
+     * 保存评论
+     * data 必须包含 array('model_id','info_id','comment');
+     * data 还可以有 parent_id,son,good,bad,
+     */
+    public function doComment(){
+        $this->loadModel("comment");
+        
+        $data = $this->getData('data');
+        
+        $data['ip'] = $this->input->ip_address();
+        $data['uname'] = $this->u->getUserInfo("nick");
+        $data['avator'] = $this->u->getUserInfo("avator");
+        $data['uid'] = $this->u->getUserInfo("uid");
+        
+        $this->comment->setAttrs($data)->save();
+        
+        $this->setModel($data['model_id']);
+        
+        $this->info->numField = "comments";
+        $this->info->updateNum($data['info_id']);
+        
+        $this->echoAjax(0, '');
+        
+    }
 
+    /**
+     * 保存喜欢数据
+     */
+    public function doLike(){
+        $this->loadModel("like");
+        
+        $modelId = $this->getData('modelId');
+        $infoId = $this->getData('id');
+        
+        $this->like->addLike($this->userId,$infoId,$modelId);
+        
+        $this->setModel($modelId);
+        
+        $this->info->numField = "like";
+        $this->info->updateNum($infoId);
+        
+        $this->echoAjax(0, '');
+        
+    }
+    
     /**
      * 获取分类代码
      * @param $baseUrl

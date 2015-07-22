@@ -10,6 +10,9 @@ class Info_model extends MBase{
     
     protected $pk = "model_id";
     
+    //喜欢，收藏，访问等自增字段
+    public $numField = "";
+    
     protected $rules = array(
         array('title', 'required'),
         array('last_cate_id', 'required'),
@@ -77,6 +80,17 @@ class Info_model extends MBase{
     }
     
     /**
+     * 更新喜欢收藏访问等字段
+     * @param type $id
+     */
+    public function updateNum($id){
+        
+        $sql = " update {$this->tableName} set `{$this->numField}` = `{$this->numField}` + 1 where {$this->tableName}_id = {$id}";
+        
+        $this->db->query($sql);
+    }
+
+    /**
      * 根据子模型获取到文档的详细信息
      * 
      * @param type $id
@@ -91,4 +105,6 @@ class Info_model extends MBase{
         
         return $query->row_array();
     }
+    
+    
 }

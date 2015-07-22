@@ -22,6 +22,10 @@ class CBase extends MY_Controller{
     public $modelId = 0;
     
     public $tpl = "";
+    
+    //用户Id
+    public $userId = 0;
+    
     public function __construct() {
         parent::__construct();
         $this->loadModel("cate");

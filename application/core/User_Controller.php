@@ -8,7 +8,6 @@
         
     protected $controllerId = "";
      
-    public $userId = 0;
     /**
      * 用户中心文件夹名称
      * @var type 
