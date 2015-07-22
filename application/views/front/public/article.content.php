@@ -160,7 +160,6 @@
                         <div class="module-cont">
                             <div class="de-intro-wrap">
                                 <?php echo $d['body'];?> 
-                                
                             </div>
                         </div>
                     </div>
@@ -169,8 +168,7 @@
                             <h2 class="module-tit"><i></i>小肉粽评论<a name="pinglun" onclick="return false;"></a></h2>
                             <span class="module-help">已有<em id="comNum2">0</em>人发表评论</span>
                         </div>
-
-
+                        
                         <!--评论 b-->
                         <input id="appId" name="appId" type="hidden" value="59398"/>
                         <input id="appType" name="appType" type="hidden" value="1"/>
