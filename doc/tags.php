@@ -24,4 +24,6 @@
 <?php $cate = $c->getCate(2);?>
 <?php echo $v['cname'];?>
 
+//详情
+<?php echo $d['title'];?>
 //insert into cms_info_list (last_cate_id,model_id,title,img_url,body,uid,uname,cdate) select last_cate_id,model_id,title,img_url,body,uid,uname,cdate from cms_info_list

@@ -20,7 +20,12 @@
         if(get_class($this) != "Login"){
             if(!isset($_SESSION["user"])){
 
-                redirect(AUTHHOST."/user/login?");
+                if(get_class($this) == 'Action'){
+                    $this->echoAjax(100, '没有登录');
+                }else{
+                    redirect(AUTHHOST."/user/login?");
+                }
+                
             }
         }
         

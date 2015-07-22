@@ -15,10 +15,10 @@
         $(function() {
             $("img").lazyload({effect : "fadeIn","threshold":200});
    
-            $("ul.mod-list").on("hover","li",function(){$(this).toggleClass("hover")});
-            $("ul.mod-coming").on("mouseover","li",function(){$(this).addClass("curr").siblings().removeClass("curr")});
+            $("ul.mod-list").on("hover","li",function(){$(this).toggleClass("hover");});
+            $("ul.mod-coming").on("mouseover","li",function(){$(this).addClass("curr").siblings().removeClass("curr");});
             
-            $(".mod-cont").on("hover","a:first",function(){$(this).css("top","-140px");});
+            $(".mod-cont").on("mouseover","a:first",function(){$(this).css("top","-140px");});
             
         });
         

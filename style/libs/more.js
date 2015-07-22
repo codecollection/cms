@@ -19,6 +19,10 @@ $(document).ready(function(){
         
         window.location.href = location.href+"&" + key + "=" + value;
     });
+    
+     $("#baseLogC").click(function(){
+         $("#baseLog").css({"left":"","visibility":""});
+     });
 });
 
 function doLogin(){
@@ -37,6 +41,7 @@ function doLogin(){
             }
         }catch(e){C.alert.alert({'content':e.message+data});}
     });
+    
 }
 ////选择
 //function checkEle(context){
@@ -66,10 +71,38 @@ function doLogin(){
 //    url = url || '';
 //    window.location.href= url+"&" + data;
 //}
-    
+   
 function loginout(){
 
     $.cookie("account","", -1);
     $.cookie("fromUrl","", -1);
     window.location.href = "/user/login/loginOut";
+}
+
+var Action = {
+    
+    doLike:function(id,modelId,obj){
+
+        $.post("/user/action/doLike",{"id":id,"modelId":modelId},function(data){
+            try {
+
+                var json = $.evalJSON(data);
+
+                if(json.status == 0) {
+                    var html = '<span class="coll-msg"></span>';
+                    
+                    $(obj).append(html);
+                    $(obj).addClass("curr").find("span").html("喜欢成功").css("display", "block").animate({ top: '-50px' }, 1000, function () {
+                        $(this).css({ display: 'none', top: '-15px',color: '#ff8b3e' });
+                    });
+                    
+                }else{
+                    //style="left: 50%; visibility: visible;display: none"
+                   $("#baseLog").css({"left":"50%","visibility":"visible"});
+                   //obj.addClass("curr");
+                   
+                }
+            }catch(e){C.alert.alert({'content':e.message+data});}
+        });
+    },
 }

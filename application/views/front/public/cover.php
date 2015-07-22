@@ -60,11 +60,11 @@
         <div class="dl-good">
             <h3><i></i>当乐<em>APP</em><span>公众号玩家必知</span></h3>
             <ul class="dl-good-list clearfix">
-                <li class="good-first">    <a href="" title="当乐游戏中心" class="good-link" target="_blank"><img src="/style/front/public/image/anzhuologo.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1402293766893Q0nL.png" alt="当乐游戏中心" /><span>当乐游戏中心</span>    </a>
+                <li class="good-first">    <a href="" title="当乐游戏中心" class="good-link" target="_blank"><img src="/style/front/public/image/anzhuologo.png" o-src="//new/smtpfbackend/new/pageadv/201406/1402293766893Q0nL.png" alt="当乐游戏中心" /><span>当乐游戏中心</span>    </a>
                 </li>
-                <li>    <a href="" title="游戏中心PC版" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1403753152724Dx0t.png" alt="游戏中心PC版" /><span>游戏中心PC版</span>    </a>
+                <li>    <a href="" title="游戏中心PC版" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" o-src="//new/smtpfbackend/new/pageadv/201406/1403753152724Dx0t.png" alt="游戏中心PC版" /><span>游戏中心PC版</span>    </a>
                 </li>
-                <li class="good-last">    <a href="" title="当乐网游中心" class="good-link" target="_blank"><img src="/style/front/public/image/dangle.png" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201406/1403753153667wNG5.png" alt="当乐网游中心" /><span>当乐网游中心</span>    </a>
+                <li class="good-last">    <a href="" title="当乐网游中心" class="good-link" target="_blank"><img src="/style/front/public/image/dangle.png" o-src="//new/smtpfbackend/new/pageadv/201406/1403753153667wNG5.png" alt="当乐网游中心" /><span>当乐网游中心</span>    </a>
                 </li>
             </ul>
         </div>
@@ -94,7 +94,7 @@
                 <?php if($k == 0){?>
                 <div class="mod-thumb-b">
                     <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img"><!--style="top:-140px;"-->
-                        <img src="/style/front/public/1436944714893B6dq.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435829845793OVl0.jpg" alt="<?php echo $v['num'];?>"/>
+                        <img src="/style/front/public/1436944714893B6dq.jpg" o-src="//new/smtpfbackend/new/pageadv/201507/1435829845793OVl0.jpg" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                     <div class="mod-cover"></div>
@@ -114,13 +114,13 @@
                                 <span class="star star-light stars-<?php echo $v['hot'] = $v['hot'] > 3 ? $v['hot'] : 3;?>" style="width:80%;"></span>
                             </span>
                             
-                              <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59560)">点击查看</a>
+                              <a class="thumb-down" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>">点击查看</a>
                             
                         </div>
                         <div class="thumb-b-func">
                             
                             <a class="b-coll-love "
-                               href="javascript:;" onclick="Coll.coll(this,1,59560)"></a>
+                               href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this)"></a>
                         </div>
                         <i class="thumb-tri"></i>
                     </div>
@@ -148,7 +148,7 @@
                                     <div class="mod-coll">   
                                         <!--<a href="javascript:;" title="勇者之塔下载" class="coll-btn coll-down" onclick=""></a>-->
                                         <a href="javascript:;" title="<?php echo $v['num'];?>喜欢" class="coll-btn coll-love "
-                                           onclick="Coll.coll(this,1, 59100);"></a>
+                                           onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                                     </div>
                                     
                                 </div>
@@ -181,7 +181,7 @@
                                 <div class="mode-app-func">
                                     <div class="mod-coll">   
                                         <!--<a href="javascript:;" title="勇者之塔下载" class="coll-btn coll-down" onclick=""></a>-->  
-                                        <a href="javascript:;" title="<?php echo $v['num'];?>喜欢" class="coll-btn coll-love " onclick=""></a>
+                                        <a href="javascript:;" title="<?php echo $v['num'];?>喜欢" class="coll-btn coll-love " onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
             <li class="<?php echo $k == 0 ? "curr" : "";?>">                
                 <div class="coming">        
                     <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="coming-icon" target="_blank">            
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201507/1435806849169xb0u.jpg" alt="<?php echo $v['num'];?>" />        
+                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//new/smtpfbackend/new/pageadv/201507/1435806849169xb0u.jpg" alt="<?php echo $v['num'];?>" />        
                     </a>        
                     <div class="coming-des">            
                         <a class="coming-tit" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>            
@@ -252,7 +252,7 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
@@ -280,8 +280,7 @@
                         <span class="score">7<span>.5</span></span>
                     </div>
                 
-                <a class="b-coll-love "
-                   href="javascript:;" onclick="Coll.coll(this,1,59398)"></a>
+                <a class="b-coll-love " href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
             </div>
             <i class="thumb-tri"></i>
         </div>
@@ -313,7 +312,7 @@
                             <div class="mod-coll">
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Coll.coll(this,1, 57964);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
 
                         </div>
@@ -331,7 +330,7 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
@@ -359,8 +358,7 @@
                         <span class="score">7<span>.5</span></span>
                     </div>
                 
-                <a class="b-coll-love "
-                   href="javascript:;" onclick="Coll.coll(this,1,59398)"></a>
+                <a class="b-coll-love " href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
             </div>
             <i class="thumb-tri"></i>
         </div>
@@ -392,7 +390,7 @@
                             <div class="mod-coll">
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Coll.coll(this,1, 57964);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
 
                         </div>
@@ -410,7 +408,7 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
@@ -439,7 +437,7 @@
                     </div>
                 
                 <a class="b-coll-love "
-                   href="javascript:;" onclick="Coll.coll(this,1,59398)"></a>
+                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
             </div>
             <i class="thumb-tri"></i>
         </div>
@@ -471,7 +469,7 @@
                             <div class="mod-coll">
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Coll.coll(this,1, 57964);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
 
                         </div>
@@ -518,7 +516,7 @@
 
                                     <a href="javascript:;" title="<?php echo $v['num'];?>"
                                        class="coll-btn coll-love "
-                                       onclick="Coll.coll(this,1, 14009);"></a>
+                                       onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                                 </div>
                             </div>
                         </div>
@@ -562,7 +560,7 @@
 
                                             <a href="javascript:;" title="<?php echo $v['num'];?>"
                                                class="coll-btn coll-love "
-                                               onclick="Coll.coll(this,1, 14009);"></a>
+                                               onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -585,7 +583,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%BF%85%E5%A4%87%E6%B8%B8%E6%88%8F" title="必备游戏" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/40/40/icon.jpg" alt="必备游戏"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/40/40/icon.jpg" alt="必备游戏"/>
                                 <span class="scroll-name">必备游戏</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -594,7 +592,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%BF%85%E5%A4%87%E8%BD%AF%E4%BB%B6" title="必备软件" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/39/39/icon.jpg" alt="必备软件"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/39/39/icon.jpg" alt="必备软件"/>
                                 <span class="scroll-name">必备软件</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -603,7 +601,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E4%B8%8A%E5%8E%95%E6%89%80" title="上厕所" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/38/38/icon.jpg" alt="上厕所"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/38/38/icon.jpg" alt="上厕所"/>
                                 <span class="scroll-name">上厕所</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -612,7 +610,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E8%A7%A3%E8%B0%9C" title="解谜" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/34/34/icon.jpg" alt="解谜"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/34/34/icon.jpg" alt="解谜"/>
                                 <span class="scroll-name">解谜</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -621,7 +619,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%AF%B9%E6%88%98" title="对战" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/30/30/icon.jpg" alt="对战"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/30/30/icon.jpg" alt="对战"/>
                                 <span class="scroll-name">对战</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -630,7 +628,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%B0%8F%E6%B8%85%E6%96%B0" title="小清新" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/28/28/icon.jpg" alt="小清新"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/28/28/icon.jpg" alt="小清新"/>
                                 <span class="scroll-name">小清新</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -639,7 +637,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E7%94%B5%E5%BD%B1%E6%94%B9%E7%BC%96" title="电影改编" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/27/27/icon.jpg" alt="电影改编"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/27/27/icon.jpg" alt="电影改编"/>
                                 <span class="scroll-name">电影改编</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -648,7 +646,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E9%87%8D%E5%8F%A3%E5%91%B3" title="重口味" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/24/24/icon.jpg" alt="重口味"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/24/24/icon.jpg" alt="重口味"/>
                                 <span class="scroll-name">重口味</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -657,7 +655,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E9%87%8D%E5%8A%9B%E6%84%9F%E5%BA%94" title="重力感应" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/18/18/icon.jpg" alt="重力感应"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/18/18/icon.jpg" alt="重力感应"/>
                                 <span class="scroll-name">重力感应</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -666,7 +664,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%84%BF%E7%AB%A5" title="儿童" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/17/17/icon.jpg" alt="儿童"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/17/17/icon.jpg" alt="儿童"/>
                                 <span class="scroll-name">儿童</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -675,7 +673,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=3D" title="3D" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/16/16/icon.jpg" alt="3D"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/16/16/icon.jpg" alt="3D"/>
                                 <span class="scroll-name">3D</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -684,7 +682,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=HD%E9%AB%98%E6%B8%85" title="HD高清" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/14/14/icon.jpg" alt="HD高清"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/14/14/icon.jpg" alt="HD高清"/>
                                 <span class="scroll-name">HD高清</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -693,7 +691,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%A4%A7%E5%9E%8B%E6%B8%B8%E6%88%8F" title="大型游戏" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/13/13/icon.jpg" alt="大型游戏"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/13/13/icon.jpg" alt="大型游戏"/>
                                 <span class="scroll-name">大型游戏</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -702,7 +700,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%A5%B3%E7%94%9F%E6%9C%80%E7%88%B1" title="女生最爱" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/12/12/icon.jpg" alt="女生最爱"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/12/12/icon.jpg" alt="女生最爱"/>
                                 <span class="scroll-name">女生最爱</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -711,7 +709,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E6%B6%88%E7%A3%A8%E6%97%B6%E9%97%B4" title="消磨时间" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/10/10/icon.jpg" alt="消磨时间"/>
+                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/10/10/icon.jpg" alt="消磨时间"/>
                                 <span class="scroll-name">消磨时间</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -720,7 +718,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E5%A1%94%E9%98%B2" title="塔防" target="_blank"
                                class="scroll-icon">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/8/8/icon.jpg" alt="塔防"/>
+                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//android/cdroid_stable/clienttag/8/8/icon.jpg" alt="塔防"/>
                                 <span class="scroll-name">塔防</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -729,7 +727,7 @@
                         <li class="scroll-item">
                             <a href="http://android.d.cn/search/tag?keyword=%E7%94%B7%E7%94%9F%E6%9C%80%E7%88%B1" title="男生最爱" target="_blank"
                                class="scroll-icon">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.android.d.cn/android/cdroid_stable/clienttag/6/6/icon.jpg" alt="男生最爱"/>
+                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//android/cdroid_stable/clienttag/6/6/icon.jpg" alt="男生最爱"/>
                                 <span class="scroll-name">男生最爱</span>
                                 <span class="scroll-cover"></span>
                             </a>
@@ -772,7 +770,7 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
@@ -801,7 +799,7 @@
                     </div>
                 
                 <a class="b-coll-love "
-                   href="javascript:;" onclick="Coll.coll(this,1,59398)"></a>
+                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
             </div>
             <i class="thumb-tri"></i>
         </div>
@@ -833,7 +831,7 @@
                             <div class="mod-coll">
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Coll.coll(this,1, 57964);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
 
                         </div>
@@ -851,7 +849,7 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
@@ -880,7 +878,7 @@
                     </div>
                 
                 <a class="b-coll-love "
-                   href="javascript:;" onclick="Coll.coll(this,1,59398)"></a>
+                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
             </div>
             <i class="thumb-tri"></i>
         </div>
@@ -912,7 +910,7 @@
                             <div class="mod-coll">
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Coll.coll(this,1, 57964);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
 
                         </div>
@@ -930,7 +928,7 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
@@ -959,7 +957,7 @@
                     </div>
                 
                 <a class="b-coll-love "
-                   href="javascript:;" onclick="Coll.coll(this,1,59398)"></a>
+                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
             </div>
             <i class="thumb-tri"></i>
         </div>
@@ -991,7 +989,7 @@
                             <div class="mod-coll">
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Coll.coll(this,1, 57964);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
 
                         </div>
@@ -1026,7 +1024,7 @@
                 
                     <li class="mod-thumb-b">
                         <a href="http://news.d.cn/pc/view-22579.html" title="《深空传说》评测：动作与解谜的完美结合" target="_blank" class="thumb-b-img">
-                            <img src="/style/front/public/zixun1.jpg" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201507/1435731486808MCs7.jpg" alt="《深空传说》评测：动作与解谜的完美结合"/>
+                            <img src="/style/front/public/zixun1.jpg" o-src="//new/smtpfbackend/new/news/201507/1435731486808MCs7.jpg" alt="《深空传说》评测：动作与解谜的完美结合"/>
                         </a>
                         <a class="thumb-app" href="http://news.d.cn/pc/view-22579.html" title="《深空传说》评测：动作与解谜的完美结合" target="_blank">《深空传说》评测：动作与解谜的完美结合</a>
                         <div class="mod-cover"></div>
@@ -1136,7 +1134,7 @@
                 
                     <li class="mod-thumb-b">
                         <a href="http://news.d.cn/gl/view-21410.html" title="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧" target="_blank" class="thumb-b-img">
-                            <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221449891w10A.jpg" alt="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧"/>
+                            <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//new/smtpfbackend/new/pageadv/201506/1435221449891w10A.jpg" alt="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧"/>
                         </a>
                         <a class="thumb-app" href="http://news.d.cn/gl/view-21410.html" title="《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧" target="_blank">《泰拉瑞亚》炼金站介绍，炼金站建造攻略技巧</a>
                         <div class="mod-cover"></div>
@@ -1247,7 +1245,7 @@
                     <li class="mod-thumb-b">
                         
                             <a href="http://news.d.cn/zt/view-21725.html" title="Less is more 十款极简主义手游佳作推荐" target="_blank" class="thumb-b-img">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.android.d.cn/new/smtpfbackend/new/news/201506/1435222356466jeyj.jpg" alt="Less is more 十款极简主义手游佳作推荐"/>
+                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//new/smtpfbackend/new/news/201506/1435222356466jeyj.jpg" alt="Less is more 十款极简主义手游佳作推荐"/>
                             </a>
                             <a class="thumb-app" href="http://news.d.cn/zt/view-21725.html" title="Less is more 十款极简主义手游佳作推荐" target="_blank">Less is more 十款极简主义手游佳作推荐</a>
                         
@@ -1351,7 +1349,7 @@
                 
                     <li class="mod-thumb-b">
                         <a href="http://news.d.cn/news/view-21766.html" title="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战" target="_blank" class="thumb-b-img">
-                            <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221709923K4NG.jpg" alt="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战"/>
+                            <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//new/smtpfbackend/new/pageadv/201506/1435221709923K4NG.jpg" alt="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战"/>
                         </a>
                         <a class="thumb-app" href="http://news.d.cn/news/view-21766.html" title="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战" target="_blank">《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战</a>
                         <div class="mod-cover"></div>
@@ -1461,10 +1459,10 @@
         </div>
         <div class="mod-cont">
             <ul class="mod-ori clearfix">    
-                <li class="mod-thumb-b"><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-b-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201502/1423388462056LUIQ.jpg" alt="我的世界手机版" /></a><a class="thumb-app" href="http://app.d.cn/minecraft">我的世界专区</a><div class="mod-cover"></div><div class="thumb-des-wrap">    <div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-des-txt">毫无规则的游戏，但是却充满乐趣，这款像素风格的游戏绝对是世界上最火爆的的游戏之一。</a>   </div></div>    </li>
-                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201503/1425606141864Q3sy.jpg" alt="炉石传说手机版" /></a><a class="thumb-app" href="http://app.d.cn/lushichuanshuo">炉石传说手机版专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-des-txt">暴雪推出的一款策略类卡牌游戏，可以选择魔兽中的九大经典英雄人物之一，围绕英雄的职业为主题组建自己独特的套牌。</a></div></div>    </li>
-                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201407/1405308374133Wl7l.jpg" alt="捕鱼达人3" /></a><a class="thumb-app" href="http://app.d.cn/buyudaren3">捕鱼达人3专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-des-txt">由触控出品的《捕鱼达人3》这款超高人气大作，承载着4亿用户的捕鱼梦想，给各位捕鱼用户带来3D深海捕鱼体验。</a></div></div>    </li>
-                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-img"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201502/1423389129434mHA6.jpg" alt="现代战争5" /></a><a class="thumb-app" href="http://app.d.cn/mc5">现代战争5专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-des-txt">年度最火爆的战争大作，剧情模式引人入胜，多人联网模式其乐无穷，FPS游戏最佳体验。</a></div></div>    </li>
+                <li class="mod-thumb-b"><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-b-img"><img src="/style/front/public/zixun2.jpg" alt="我的世界手机版" /></a><a class="thumb-app" href="http://app.d.cn/minecraft">我的世界专区</a><div class="mod-cover"></div><div class="thumb-des-wrap">    <div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/minecraft" title="我的世界专区" class="thumb-des-txt">毫无规则的游戏，但是却充满乐趣，这款像素风格的游戏绝对是世界上最火爆的的游戏之一。</a>   </div></div>    </li>
+                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-img"><img src="/style/front/public/war.jpg" alt="炉石传说手机版" /></a><a class="thumb-app" href="http://app.d.cn/lushichuanshuo">炉石传说手机版专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/lushichuanshuo" title="炉石传说手机版专区" class="thumb-des-txt">暴雪推出的一款策略类卡牌游戏，可以选择魔兽中的九大经典英雄人物之一，围绕英雄的职业为主题组建自己独特的套牌。</a></div></div>    </li>
+                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-img"><img src="/style/front/public/war.jpg" alt="捕鱼达人3" /></a><a class="thumb-app" href="http://app.d.cn/buyudaren3">捕鱼达人3专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/buyudaren3" title="捕鱼达人3专区" class="thumb-des-txt">由触控出品的《捕鱼达人3》这款超高人气大作，承载着4亿用户的捕鱼梦想，给各位捕鱼用户带来3D深海捕鱼体验。</a></div></div>    </li>
+                <li class="mod-thumb-h"><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-img"><img src="/style/front/public/war.jpg" alt="现代战争5" /></a><a class="thumb-app" href="http://app.d.cn/mc5">现代战争5专区</a><div class="mod-cover"></div><div class="thumb-des-wrap"><div class="thumb-des"><em></em><a target="blank" href="http://app.d.cn/mc5" title="现代战争5专区" class="thumb-des-txt">年度最火爆的战争大作，剧情模式引人入胜，多人联网模式其乐无穷，FPS游戏最佳体验。</a></div></div>    </li>
             </ul>
         </div>
     </div>
@@ -1502,7 +1500,7 @@
                                   <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-down" onclick="Adapt.adaptDown(this,1,4568)"></a>
                                 
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-coll "
-                                   onclick="Coll.coll(this, 1, 4568);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
                         </li>
                         <?php }else{?>
@@ -1540,7 +1538,7 @@
                                   <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-down" onclick="Adapt.adaptDown(this,5,1724)"></a>
                                 
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-coll "
-                                   onclick="Coll.coll(this, 5, 1724);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
                         </li>
                         <?php }else{?>
@@ -1578,7 +1576,7 @@
                                   <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-down" onclick="Adapt.adaptDown(this,2,374)"></a>
                                 
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-coll "
-                                   onclick="Coll.coll(this, 2, 374);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
                         </li>
                         <?php }else{?>
@@ -1600,7 +1598,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>
                             <a class="rank-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/70/52070/icon.png?clear" alt="<?php echo $v['num'];?>"/>
+                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="rank-info">
                                 <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
@@ -1616,7 +1614,7 @@
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-down" onclick="Adapt.adaptDown(this,1,52070)"></a>
                                   
                                 <a href="javascript:;" title="<?php echo $v['num'];?>" class="rank-coll "
-                                   onclick="Coll.coll(this, 1, 52070);"></a>
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                             </div>
                         </li>
                         <?php }else{?>
@@ -1643,7 +1641,7 @@
         <i></i>
         登录
     </h2>
-    <p class="adapt-success adapt-success-special"><img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/bear.jpg" alt="" />登录后才能喜欢哦！</p>
+    <p class="adapt-success adapt-success-special"><img src="/style/front/public/bear.jpg" o-src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/bear.jpg" alt="" />登录后才能喜欢哦！</p>
     <a href="" title="立即登录" class="log-now">立即登录</a>
 </div>
 <!--登录弹出框 e-->

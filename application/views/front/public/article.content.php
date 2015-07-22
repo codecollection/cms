@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,321 +12,18 @@
         <title>小肉粽_公众号推广平台_小肉粽</title>
         <link rel="canonical" href=""/>
         <?php $c->loadView("front/public/header.php"); ?>
-        <link href="http://cms/style/front/public/css/detail.css" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo CSSHOST;?>/style/front/public/css/detail.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
-        <div class="reply-box" id="replyBox">
-            <form onsubmit="return COMMENT.validateCallback(this);" action="">
-                <div class="com-head-wrap">
-                    <textarea class="reply-area" rows="0" cols="0" style="resize: none" name="comment"></textarea>
-                </div>
-                <div class="com-btn-wrap clearfix">
-
-                    <div class="expressions">
-                        <span></span>
-                        <div class="expFrame">
-                            <em></em>
-                            <p>选择表情<i></i></p>
-                            <div class="expTab fl">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)" title="傲慢" emot="[/am]">
-                                            <img alt="傲慢" src="http://img.android.d.cn/android/cdroid_stable/face/web/am.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="爱心" emot="[/ax]">
-                                            <img alt="爱心" src="http://img.android.d.cn/android/cdroid_stable/face/web/ax.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="不开心" emot="[/bkx]">
-                                            <img alt="不开心" src="http://img.android.d.cn/android/cdroid_stable/face/web/bkx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="鄙视" emot="[/bs]">
-                                            <img alt="鄙视" src="http://img.android.d.cn/android/cdroid_stable/face/web/bs.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="NO" emot="[/bx]">
-                                            <img alt="NO" src="http://img.android.d.cn/android/cdroid_stable/face/web/bx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="闭嘴" emot="[/bz]">
-                                            <img alt="闭嘴" src="http://img.android.d.cn/android/cdroid_stable/face/web/bz.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="擦汗" emot="[/ch]">
-                                            <img alt="擦汗" src="http://img.android.d.cn/android/cdroid_stable/face/web/ch.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="呆" emot="[/d]">
-                                            <img alt="呆" src="http://img.android.d.cn/android/cdroid_stable/face/web/d.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="凋谢" emot="[/dx]">
-                                            <img alt="凋谢" src="http://img.android.d.cn/android/cdroid_stable/face/web/dx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="发火" emot="[/fh]">
-                                            <img alt="发火" src="http://img.android.d.cn/android/cdroid_stable/face/web/fh.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="勾引" emot="[/gy]">
-                                            <img alt="勾引" src="http://img.android.d.cn/android/cdroid_stable/face/web/gy.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="OK" emot="[/hd]">
-                                            <img alt="OK" src="http://img.android.d.cn/android/cdroid_stable/face/web/hd.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="哼" emot="[/heng]">
-                                            <img alt="哼" src="http://img.android.d.cn/android/cdroid_stable/face/web/heng.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="互粉" emot="[/hf]">
-                                            <img alt="互粉" src="http://img.android.d.cn/android/cdroid_stable/face/web/hf.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="坏笑" emot="[/huaix]">
-                                            <img alt="坏笑" src="http://img.android.d.cn/android/cdroid_stable/face/web/huaix.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="害羞" emot="[/hx]">
-                                            <img alt="害羞" src="http://img.android.d.cn/android/cdroid_stable/face/web/hx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="火星人" emot="[/hxr]">
-                                            <img alt="火星人" src="http://img.android.d.cn/android/cdroid_stable/face/web/hxr.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="囧" emot="[/jiong]">
-                                            <img alt="囧" src="http://img.android.d.cn/android/cdroid_stable/face/web/jiong.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="哭" emot="[/k]">
-                                            <img alt="哭" src="http://img.android.d.cn/android/cdroid_stable/face/web/k.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="可爱" emot="[/ka]">
-                                            <img alt="可爱" src="http://img.android.d.cn/android/cdroid_stable/face/web/ka.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="看不见" emot="[/kbj]">
-                                            <img alt="看不见" src="http://img.android.d.cn/android/cdroid_stable/face/web/kbj.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="可怜" emot="[/kl]">
-                                            <img alt="可怜" src="http://img.android.d.cn/android/cdroid_stable/face/web/kl.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="酷" emot="[/ku]">
-                                            <img alt="酷" src="http://img.android.d.cn/android/cdroid_stable/face/web/ku.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="流汗" emot="[/lh]">
-                                            <img alt="流汗" src="http://img.android.d.cn/android/cdroid_stable/face/web/lh.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="玫瑰" emot="[/mg]">
-                                            <img alt="玫瑰" src="http://img.android.d.cn/android/cdroid_stable/face/web/mg.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="怕" emot="[/pa]">
-                                            <img alt="怕" src="http://img.android.d.cn/android/cdroid_stable/face/web/pa.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="强" emot="[/q]">
-                                            <img alt="强" src="http://img.android.d.cn/android/cdroid_stable/face/web/q.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="糗大了" emot="[/qdl]">
-                                            <img alt="糗大了" src="http://img.android.d.cn/android/cdroid_stable/face/web/qdl.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="钱" emot="[/qian]">
-                                            <img alt="钱" src="http://img.android.d.cn/android/cdroid_stable/face/web/qian.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="枪--" emot="[/qiang]">
-                                            <img alt="枪--" src="http://img.android.d.cn/android/cdroid_stable/face/web/qiang.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="亲亲" emot="[/qing]">
-                                            <img alt="亲亲" src="http://img.android.d.cn/android/cdroid_stable/face/web/qing.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="弱" emot="[/r]">
-                                            <img alt="弱" src="http://img.android.d.cn/android/cdroid_stable/face/web/r.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="胜利" emot="[/sl]">
-                                            <img alt="胜利" src="http://img.android.d.cn/android/cdroid_stable/face/web/sl.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="色迷迷" emot="[/smm]">
-                                            <img alt="色迷迷" src="http://img.android.d.cn/android/cdroid_stable/face/web/smm.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="生日蛋糕" emot="[/srdg]">
-                                            <img alt="生日蛋糕" src="http://img.android.d.cn/android/cdroid_stable/face/web/srdg.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="调皮" emot="[/tp]">
-                                            <img alt="调皮" src="http://img.android.d.cn/android/cdroid_stable/face/web/tp.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="偷笑" emot="[/tx]">
-                                            <img alt="偷笑" src="http://img.android.d.cn/android/cdroid_stable/face/web/tx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="挖鼻子" emot="[/wbz]">
-                                            <img alt="挖鼻子" src="http://img.android.d.cn/android/cdroid_stable/face/web/wbz.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="委屈" emot="[/wq]">
-                                            <img alt="委屈" src="http://img.android.d.cn/android/cdroid_stable/face/web/wq.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="微笑" emot="[/wx]">
-                                            <img alt="微笑" src="http://img.android.d.cn/android/cdroid_stable/face/web/wx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="吓" emot="[/x]">
-                                            <img alt="吓" src="http://img.android.d.cn/android/cdroid_stable/face/web/x.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="心碎" emot="[/xs]">
-                                            <img alt="心碎" src="http://img.android.d.cn/android/cdroid_stable/face/web/xs.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="阴险" emot="[/yx]">
-                                            <img alt="阴险" src="http://img.android.d.cn/android/cdroid_stable/face/web/yx.gif">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" title="抓狂" emot="[/zk]">
-                                            <img alt="抓狂" src="http://img.android.d.cn/android/cdroid_stable/face/web/zk.gif">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="com-limit">您还能留下<em id="replyLimit">200</em>个脚印</span>
-
-                    <button class="com-sub" type="submit">发布</button>
-                </div>
-            </form>
-        </div>
-
+        
         <!--topNav:begin-->
-        <!--topNav:begin-->
-<div id="siteNav" class="navFixed">
-    <div class="layout">
-        <ul class="siteNavMenu">
-            <li class="rb"><a href="http://cms" target="_blank">小肉粽&nbsp;&nbsp;微信公众平台第一站</a>&nbsp;</li>
-            <li>
-                <div class="menuShow">
-                    <a href="http://weibo.com/downjoygame" title="关注新浪微博" target="_blank">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" alt="" width="24" class="followSina"/>
-                    </a>
-                    <span class="arrDropNo"></span>
-                </div>
-                
-            </li>
-            
-            <li>
-                <div class="menuShow">
-                    <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" alt="" width="24" class="followWx" /><span class="arrDrop"></span>
-                </div>
-                <div class="menuHide">
-                    <img src="http://raw.android.d.cn/cdroid_res/web/common/2dcode.gif" alt="微信二维码" class="code" />
-                </div>
-            </li>
-<!--            <li class="lb"><a href="" target="_blank">当乐游戏中心</a> </li>-->
-        </ul>
-        <ul class="siteNavMenu fr">
-            <li class="rb" id="logined_li">
-                <div class="menuShow">
-                    <a href="javascript:void(0)" class="login">用户登录</a><span class="arrDrop"></span>
-                </div>
-                <div class="menuHide" id="topDMainBox" style="width:260px">
-                                        <form onsubmit="doLogin();return false;" id="login_form">
-                        <p class="tipsText" id="topLoginMsg"></p>
-                        <input type="text" value="" name="account" placeholder="用户名/邮箱/手机号" style="color:#b9b9b9" onmouseout="this.className='inputText'" onmousemove="this.className='inputTextOut'"
-                               onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='用户名/邮箱/手机号'){this.value='用户名/邮箱/手机号';this.style.color='#b9b9b9';}"
-                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='用户名/邮箱/手机号'){this.value=''};this.style.color='#4f4f4f'" class="inputText"/> <input type="password" id="topLoginBoxPassword" class="inputText" value="请输入密码" style="color:#b9b9b9" placeholder="请输入密码" onmouseout="this.className='inputText'"
-                                                                                                                                                                                               onmousemove="this.className='inputTextOut'"
-                                                                                                                                                                                               onblur="this.className='inputText';this.onmouseout=function(){this.className='inputText'};if(this.value==''||this.value=='请输入密码'){this.value='请输入密码';this.style.color='#b9b9b9';}"
-                                                                                                                                                                                               onfocus="this.className='inputTextOut';this.onmouseout='';if(this.value=='请输入密码'){this.value=''};this.style.color='#4f4f4f'" name="password"/> <input type="submit" value="登录" class="submit"/>
-                        <div class="remember">
-                            <label><input type="checkbox" class="check" checked="checked" id="topAutoLogin" /><span>自动登录</span></label><a href="http://cms/user/login?dispay=web" target="_blank">忘记密码？</a>&nbsp;|&nbsp;<a href="http://cms/user/reg?display=web" target="_blank">注册帐号</a>
-                        </div>
-                    </form>
-<!--                    <div class="thirdP">
-                        <p>使用合作网站帐号登录：</p>
-                        <a class="sina" href="javascript:void(0)">新浪微博</a>
-                        <a class="qq" href="javascript:void(0)">QQ账号</a>
-                    </div>-->
-                                    </div>
-            </li>
-            <li>
-                <div class="menuShow">
-                    <span class="navIcon"></span>
-                    <span>帮助中心</span>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
-<div id="fullbgTop"></div>
-<div id="loginBoxTop" class="dialog"></div>
-<!--sitenave e-->        <div class="detail-head-wrap">
+<?php $c->loadView("front/public/navtop.php"); ?>
+<!--sitenave e-->        
+        <div class="detail-head-wrap">
             <div class="detail-head">
                 <div class="detail-logo">
-                    <a href="http://cms" title="微信公众推广平台">
+                    <a href="<?php echo HOST;?>" title="微信公众推广平台">
                         <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/deLogo.jpg" alt="微信公众推广平台"/>
                     </a>
                 </div>
@@ -342,11 +40,11 @@
                 </div>
                 <ul class="nav clearfix">
 
-                    <li class=""><a href="http://cms" title="小肉粽微信公众号平台">首页</a></li>
+                    <li class="<?php echo $d['last_cate_id'] <= 0 ? "curr" : "";?>"><a href="<?php echo HOST?>" title="小肉粽微信公众号平台">首页<?php echo $d['last_cate_id'] <= 0 ? '<span class="nav-bar"></span>' : "";?></a></li>
             
-                    <li class="curr"><a href="/info/l?cid=1" title="微信公众号">公众号<span class="nav-bar"></span></a></li>
+                    <li class="<?php echo $d['last_cate_id'] == 1 ? "curr" : "";?>"><a href="/info/l?cid=1" title="微信公众号">公众号<?php echo $d['last_cate_id'] == 1 ? '<span class="nav-bar"></span>' : "";?></a></li>
 
-                    <li class=""><a href="/info/l?cid=2" title="微信公众号资讯">资讯</a></li>
+                    <li class="<?php echo $d['last_cate_id'] == 2 || in_array($d['last_cate_id'], array(3,4,5,6)) ? "curr" : "";?>"><a href="/info/l?cid=2" title="微信公众号资讯">资讯<?php echo $d['last_cate_id'] == 2 || in_array($d['last_cate_id'], array(3,4,5,6)) ? '<span class="nav-bar"></span>' : "";?></a></li>
 
 
                     <li><a href="/info/special" title="微信公众号专题">专题</a></li>
@@ -375,36 +73,14 @@
                     <div class="de-head clearfix no-tag">
                 <div class="de-head-l">
 
-                    <h1>小肉粽</h1>
+                    <h1><?php echo $d['title'];?></h1>
 
-                    <h2 class="de-app-en">小肉粽&nbsp;</h2>
-                    <img src="Http://cms/style/front/public/huaqiangu.png" alt="小肉粽" class="de-app-icon"/>
+                    <h2 class="de-app-en"><?php //echo $c->getCate($d['last_cate_id'])['cname'];?>&nbsp;</h2>
+                    <img src="<?php echo $d['img_url']?>" alt="<?php echo $d['title'];?>" class="de-app-icon" style="height:175px;width: 250px;overflow: hidden;"/>
                     <div class="de-app-des">
-                        <p class="de-edit">这是一个不错的公众号，里面有很多有用的信息<i></i></p>
+                        <p class="de-edit" style="max-width:500px;line-height:30px;"><?php echo empty($d["desc"]) ? RKit::utf8_substr(strip_tags($d["body"]),0, 120) : $d["desc"];?><i></i></p>
 
-                        <ul class="de-app-tip clearfix">
-
-<!--                            <li>
-                                <i class="no-ad"></i>无广告
-                            </li>
-                            <li>
-                                <i class="no-Net"></i>不需要网络
-                            <li>
-
-                                <i class="no-google"></i>不需要<a href="http://android.d.cn/game/33896.html" title="谷歌市场" target="_blank">谷歌市场</a>
-
-                            <li>
-                                <i class="detail-dpk"></i>DPK
-                            <li>
-                                <i class="safe"></i>通过安全扫描</li>-->
-                        </ul>
-
-                        <div class="de-adapt-wrap" data-officialUrl=0 data-gather="top">
-
-                            <div class="de-adapt" id="deAdapt">
-                                <a href="javascript:;" title="" class="de-head-btn adapt-btn" onclick="Adapt.adapt(true, {rt: '1', ri: '59398', gather: 'top'});">立即下载</a>
-                            </div>
-                        </div>
+                        <div class="clearfix"></div>
 
                         <div class="de-collect">
                             <a href="javascript:;" title="" onclick="Coll.coll(this, 1, 59398, true);" class="de-co-item de-like  clearfix">
@@ -426,38 +102,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="de-head-r">
-                    <div class="de-dimen" id="deDimen">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dimenno.jpg" alt=""/>
-                    </div>
-                    <div class="de-dimen" id="deDimNo">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dimenno.jpg" alt=""/>
-                    </div>
-                    <div class="de-dimen" id="deDimDpk">
-                        <img  src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dimendpk.jpg" alt=""/>
-                        <p class="ptextcolor">请使用当乐游戏中心扫描下载</p>
-                    </div>
-
-                    <div class="de-score">
-                        <span class="de-score-int">7</span>
-                        <span class="de-score-dec">.5</span>
-                    </div>
-
-                </div>
+                
             </div>
-
-                    <div class="de-dgm de-dgm-extra clearfix" style="margin-top:0;">
-                        <a href="http://res9.d.cn/m/yxzx.apk?f=a_web_1" title="当乐游戏中心安卓版下载">
-                            <img alt="" src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dgm-dim.jpg">
-                        </a>
-                    </div>
-
-
                     <div class="module de-shot">
                         <div class="module-head">
-                            <h2 class="module-tit"><i></i>小肉粽最近文章</h2>
+                            <h2 class="module-tit"><i></i><?php echo $d['title']?>图集</h2>
 
-                            </if>
                         </div>
                         <div class="module-cont">
 
@@ -504,17 +154,13 @@
 
                     <div class="module">
                         <div class="module-head">
-                            <h2 class="module-tit"><i></i>小肉粽简介</h2>
+                            <h2 class="module-tit"><i></i><?php echo $d['title']?>内容</h2>
 
                         </div>
                         <div class="module-cont">
                             <div class="de-intro-wrap">
-
-                                <div class="de-intro hide-cont" id="deIntro">
-                                    <div class="de-intro-inner">
-                                                                            </div>
-                                </div>
-                                <p class="intro-more"><a href="javascript:;" title="">展开+</a></p>
+                                <?php echo $d['body'];?> 
+                                
                             </div>
                         </div>
                     </div>
