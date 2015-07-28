@@ -30,7 +30,7 @@ class CBase extends MY_Controller{
         parent::__construct();
         $this->loadModel("cate");
         $this->loadModel("info");
-        
+        $this->loadModel('u');
         $this->tpl = TEMPLATE;
     }
     
@@ -136,10 +136,10 @@ class CBase extends MY_Controller{
         $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
         $msg = '';
 
-        if ($id == 0) {
-            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
-        } else {
+        if ($id > 0) {
             $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
+        } else {
+            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
         }
         
         if ($status) {

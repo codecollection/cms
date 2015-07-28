@@ -31,7 +31,7 @@ class Comment_model extends MBase{
     public function saveBefore($isInsert) {
         
         if($isInsert){
-            $this->cdate = time;
+            $this->cdate = time();
         }
         return true;
     }

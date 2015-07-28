@@ -8,10 +8,11 @@
         <meta name="keywords" content="密室怨魂,密室怨魂安卓版下载,House of Grudge" />
 
         <meta name="description" content="当乐密室怨魂专区，为您提供密室怨魂安卓版下载,攻略、评测、视频、礼包等内容。《密室怨魂 House of Grudge》是2015年即将面世的这款恐怖游戏将让你欲罢不能！解开机关和谜团，揭露神秘房间内隐藏的秘密。每个房间暗藏的秘密，将把你引向唯一的真相！ 你准备好接受挑战、直" />
-        <title><?php echo $d["num"];?>_公众号推广平台_小肉粽</title>
+        <title><?php echo $d["num"]; ?>_公众号推广平台_小肉粽</title>
         <link rel="canonical" href=""/>
         <?php $c->loadView("front/public/header.php"); ?>
         <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/detail.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/style/libs/comment.js"></script>
     </head>
     <body>
 
@@ -20,7 +21,7 @@
         <div class="detail-head-wrap">
             <div class="detail-head">
                 <div class="detail-logo">
-                    <a href="<?php echo HOST;?>" title="微信公众推广平台">
+                    <a href="<?php echo HOST; ?>" title="微信公众推广平台">
                         <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/deLogo.jpg" alt="微信公众推广平台"/>
                     </a>
                 </div>
@@ -37,11 +38,11 @@
                 </div>
                 <ul class="nav clearfix">
 
-                    <li class="<?php echo $d['last_cate_id'] <= 0 ? "curr" : "";?>"><a href="<?php echo HOST?>" title="小肉粽微信公众号平台">首页<?php echo $d['last_cate_id'] <= 0 ? '<span class="nav-bar"></span>' : "";?></a></li>
-            
-                    <li class="<?php echo $d['last_cate_id'] == 1 ? "curr" : "";?>"><a href="/info/l?cid=1" title="微信公众号">公众号<?php echo $d['last_cate_id'] == 1 ? '<span class="nav-bar"></span>' : "";?></a></li>
+                    <li class="<?php echo $d['last_cate_id'] <= 0 ? "curr" : ""; ?>"><a href="<?php echo HOST ?>" title="小肉粽微信公众号平台">首页<?php echo $d['last_cate_id'] <= 0 ? '<span class="nav-bar"></span>' : ""; ?></a></li>
 
-                    <li class="<?php echo $d['last_cate_id'] == 2 || in_array($d['last_cate_id'], array(3,4,5,6)) ? "curr" : "";?>"><a href="/info/l?cid=2" title="微信公众号资讯">资讯<?php echo $d['last_cate_id'] == 2 || in_array($d['last_cate_id'], array(3,4,5,6)) ? '<span class="nav-bar"></span>' : "";?></a></li>
+                    <li class="<?php echo $d['last_cate_id'] == 1 ? "curr" : ""; ?>"><a href="/info/l?cid=1" title="微信公众号">公众号<?php echo $d['last_cate_id'] == 1 ? '<span class="nav-bar"></span>' : ""; ?></a></li>
+
+                    <li class="<?php echo $d['last_cate_id'] == 2 || in_array($d['last_cate_id'], array(3, 4, 5, 6)) ? "curr" : ""; ?>"><a href="/info/l?cid=2" title="微信公众号资讯">资讯<?php echo $d['last_cate_id'] == 2 || in_array($d['last_cate_id'], array(3, 4, 5, 6)) ? '<span class="nav-bar"></span>' : ""; ?></a></li>
 
 
                     <li><a href="/info/special" title="微信公众号专题">专题</a></li>
@@ -65,28 +66,28 @@
             <div class="de-head clearfix no-tag">
                 <div class="de-head-l">
 
-                    <h1><?php echo $d["num"];?></h1>
+                    <h1><?php echo $d["num"]; ?></h1>
 
-                    <h2 class="de-app-en"><?php echo $d["owner"];?>&nbsp;</h2>
-                    <img src="<?php echo FILEHOST.$d['logo']; ?>" alt="<?php echo $d["num"];?>" class="de-app-icon"/>
+                    <h2 class="de-app-en"><?php echo $d["owner"]; ?>&nbsp;</h2>
+                    <img src="<?php echo FILEHOST . $d['logo']; ?>" alt="<?php echo $d["num"]; ?>" class="de-app-icon"/>
                     <div class="de-app-des">
                         <p class="de-edit"><?php echo $d['comment']; ?><i></i></p>
 
                         <ul class="de-app-tip clearfix">
 
-<!--                            <li>
-                                <i class="no-ad"></i>无广告
-                            </li>
-                            <li>
-                                <i class="no-Net"></i>不需要网络
-                            <li>
-
-                                <i class="no-google"></i>不需要<a href="http://android.d.cn/game/33896.html" title="谷歌市场" target="_blank">谷歌市场</a>
-
-                            <li>
-                                <i class="detail-dpk"></i>DPK
-                            <li>
-                                <i class="safe"></i>通过安全扫描</li>-->
+                            <!--                            <li>
+                                                            <i class="no-ad"></i>无广告
+                                                        </li>
+                                                        <li>
+                                                            <i class="no-Net"></i>不需要网络
+                                                        <li>
+                            
+                                                            <i class="no-google"></i>不需要<a href="http://android.d.cn/game/33896.html" title="谷歌市场" target="_blank">谷歌市场</a>
+                            
+                                                        <li>
+                                                            <i class="detail-dpk"></i>DPK
+                                                        <li>
+                                                            <i class="safe"></i>通过安全扫描</li>-->
                         </ul>
 
                         <div class="de-adapt-wrap" data-officialUrl=0 data-gather="top">
@@ -103,7 +104,7 @@
                                     <span class="de-co-text">喜欢</span>
                                 </div>
                                 <span class="de-co-num" id="coNum">
-                                    <?php echo $d["like"];?>
+                                    <?php echo $d["like"]; ?>
                                 </span>
                             </a>
                             <a href="#pinglun" title="" class="de-co-item de-comm">
@@ -111,7 +112,7 @@
                                     <span class="de-co-icon de-icon-com"></span>
                                     <span class="de-co-text">评论</span>
                                 </div>
-                                <span class="de-co-num" id="comNum"><?php echo $d["comments"];?></span>
+                                <span class="de-co-num" id="comNum"><?php echo $d["comments"]; ?></span>
                             </a>
 
                         </div>
@@ -151,7 +152,7 @@
 
                     <div class="module de-shot">
                         <div class="module-head">
-                            <h2 class="module-tit"><i></i><?php echo $d["num"];?>最近文章</h2>
+                            <h2 class="module-tit"><i></i><?php echo $d["num"]; ?>最近文章</h2>
 
                             </if>
                         </div>
@@ -200,7 +201,7 @@
 
                     <div class="module">
                         <div class="module-head">
-                            <h2 class="module-tit"><i></i><?php echo $d["num"];?>简介</h2>
+                            <h2 class="module-tit"><i></i><?php echo $d["num"]; ?>简介</h2>
 
                         </div>
                         <div class="module-cont">
@@ -208,7 +209,7 @@
 
                                 <div class="de-intro hide-cont" id="deIntro">
                                     <div class="de-intro-inner">
-                                        <?php echo $d['body'];?>
+                                        <?php echo $d['body']; ?>
                                     </div>
                                 </div>
                                 <p class="intro-more"><a href="javascript:;" title="">展开+</a></p>
@@ -217,23 +218,22 @@
                     </div>
                     <div class="module com-wrap" id="comCont" name="pinglun">
                         <div class="module-head">
-                            <h2 class="module-tit"><i></i><?php echo $d["num"];?>评论<a name="pinglun" onclick="return false;"></a></h2>
-                            <span class="module-help">已有<em id="comNum2"><?php echo $d["comments"];?></em>人发表评论</span>
+                            <h2 class="module-tit"><i></i><?php echo $d["num"]; ?>评论<a name="pinglun" onclick="return false;"></a></h2>
+                            <span class="module-help">已有<em id="comNum2"><?php echo $d["comments"]; ?></em>人发表评论</span>
                         </div>
 
 
                         <!--评论 b-->
-                        <input id="appId" name="appId" type="hidden" value="59398"/>
-                        <input id="appType" name="appType" type="hidden" value="1"/>
-                        <input id="ifDetail" name="ifDetail" type="hidden" value="true"/>
-
+                        
                         <div class="module-cont">
-
-                            <div class="com-head" id="comHeadHasLogin">
-                                <form action="" onsubmit="return COMMENT.validateCallback(this);">
+                            <?php if ($c->u->isLogin()) { ?>
+                            <div class="com-head" id="comHeadHasLogin" style="display:block;">
+                                <form action="" onsubmit="return false;" id="comment_form">
+                                    <input id="info_id" name="data[info_id]" type="hidden" value="<?php echo $d['cms_public_id'];?>"/>
+                                    <input id="model_id" name="data[model_id]" type="hidden" value="<?php echo $d['model_id']?>"/>
                                     <div class="com-head-box">
                                         <div class="com-login">
-                                            <textarea name="comment" id="comment" cols="30" rows="10" style="resize: none;"></textarea>
+                                            <textarea name="data[content]" id="content_comment" cols="30" rows="10" style="resize: none;"></textarea>
                                         </div>
                                     </div>
                                     <div class="com-btn-wrap clearfix">
@@ -468,23 +468,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="com-limit">您还能留下<em id="comLimit">2000</em>个脚印</span>
-                                        <button class="com-sub" type="submit" onclick="ComFn.setParentID(0, this)">发布</button>
+                                        <span class="com-limit">您还能留下<em id="comLimit">200</em>个字</span>
+                                        <button class="com-sub" type="submit" onclick="Comment.doComment();">发布</button>
 
                                     </div>
                                 </form>
                             </div>
-
+                            <?php } else { ?>
                             <div class="com-head" id="comHeadNoLogin">
-
-                                <div class="com-head-box">
-                                    <div class="no-login">
-                                        <a href="javascript:;" title="" onclick="USER.showLoginForm(window.location.href);">登录</a>后才能发表评论哦~
+                                
+                                    <div class="com-head-box">
+                                        <div class="no-login">
+                                            <a href="javascript:;" title="" onclick="USER.showLoginForm(window.location.href);">登录</a>后才能发表评论哦~
+                                        </div>
                                     </div>
-                                </div>
-
+                                
                             </div>
-
+                            <?php } ?>
 
                             <div class="com-cont">
                                 <div class="com-hot" id="comHot">
@@ -494,7 +494,7 @@
                                         </span>
                                     </h3>
                                     <div class="com-area">
-                                        <div class="com-load"></div>
+                                        <div class="com-list"><div class="com-item" commentid="4452310" resuser="137339713"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=137339713&amp;size=middle" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">一个大反派</span><span class="com-ip">四川省成都市</span>发表于<span class="com-time">2015-07-16 16:17:08</span></p><div class="com-part">我觉得玩法还不错的一款小游戏。游戏是关卡形式的，每一关我们都要帮助那个萌萌的小人找到出口才能过关。游戏的玩法还算比较有新意，每一关的地图都可以上下左右移动互换，我们要通过这些互换来引导小人儿走到出口，光是移动是不够的，还需要触发机关来将终点之门打开，虽然玩法并不难，但是我觉得地图越来越大后还是有一定难度的。。。不仅需要移动地图，还需要创造一些机关来使小人到达终点。本作画面走的是比较复古的风格，不过比较简洁舒服，游戏的玩法也还比较不错，推荐一下！</div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐网</p><a class="reply feed-btn" onclick="ComFn.setParentID(4452310, this, '137339713')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4452310" href="javascript:;" onclick="COMMENT.addTop(4452310, this)"><span class="up">顶</span><span class="counter">(<span>16</span>)</span><span class="add-one">+1</span></a></div></div></div></div><div class="com-list"><div class="com-item" commentid="4433521" resuser="143498893"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=143498893&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">冰冷の花</span><span class="com-ip">内蒙古赤峰市</span>发表于<span class="com-time">2015-07-15 23:18:43</span></p><div class="com-replay-object"><div class=" level1 com-item " commentid="4433276"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=180218198&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">♤♧♡♢</span><span class="com-ip">辽宁省抚顺市</span>2015-07-15 22:24:36<span class="floornum">1楼</span></p><div class="com-part">之前看过当乐的预告 很清新啊。。。。(´･ω･`)</div><div class="feed-back clearfix"><p class="com-from"></p><a style="display: none;" class="reply feed-btn" onclick="ComFn.setParentID(undefined, this, '4433276')" href="javascript:;">回复</a></div></div></div><i class="com-tri"></i></div><div class="com-part">我也是看预告知道的这个游戏，同样感觉画面萌萌哒，握爪_(:з」∠)_</div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐游戏中心v7.3</p><a class="reply feed-btn" onclick="ComFn.setParentID(4433521, this, '143498893')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4433521" href="javascript:;" onclick="COMMENT.addTop(4433521, this)"><span class="up">顶</span><span class="counter">(<span>4</span>)</span><span class="add-one">+1</span></a></div></div></div></div><div style="display: block;" class="com-list"><div class="com-item" commentid="4499609" resuser="128349913"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=128349913&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">创造与生存</span><span class="com-ip">广西南宁市</span>发表于<span class="com-time">2015-07-19 19:41:34</span></p><div class="com-part">有点模仿致命框架的意思，但人物可以操作这点比致命框架好，就是画面差了点</div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐游戏中心v7.3</p><a class="reply feed-btn" onclick="ComFn.setParentID(4499609, this, '128349913')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4499609" href="javascript:;" onclick="COMMENT.addTop(4499609, this)"><span class="up">顶</span><span class="counter">(<span>2</span>)</span><span class="add-one">+1</span></a></div></div></div></div><div style="display: block;" class="com-list"><div class="com-item" commentid="4489088" resuser="140207477"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=140207477&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">城管先生</span><span class="com-ip">浙江省温州市</span>发表于<span class="com-time">2015-07-18 16:59:15</span></p><div class="com-replay-object"><div class=" level1 com-item " commentid="4486091"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=164112942&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">秋风满地实乱走</span><span class="com-ip">江苏省</span>2015-07-18 00:57:29<span class="floornum">1楼</span></p><div class="com-part">就是关卡太少</div><div class="feed-back clearfix"><p class="com-from"></p><a style="display: none;" class="reply feed-btn" onclick="ComFn.setParentID(undefined, this, '4486091')" href="javascript:;">回复</a></div></div></div><i class="com-tri"></i></div><div class="com-part">瞎说关卡那少呢，明明就是多到城管先生我几下就玩好了。<img src="http://img.android.d.cn/android/cdroid_stable/face/web/yx.gif" title="阴险" alt="阴险"> </div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐游戏中心v7.4</p><a class="reply feed-btn" onclick="ComFn.setParentID(4489088, this, '140207477')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4489088" href="javascript:;" onclick="COMMENT.addTop(4489088, this)"><span class="up">顶</span><span class="counter">(<span>1</span>)</span><span class="add-one">+1</span></a></div></div></div></div><a style="display: none;" href="javascript:void(0)" title="查看更多" target="_self" class="hotmore">查看更多</a>
                                     </div>
                                 </div>
                                 <div class="com-new" id="comNew">
@@ -504,7 +504,9 @@
                                         </span>
                                     </h3>
                                     <div class="com-area">
-                                        <div class="com-load"></div>
+<!--                                        <div class="com-load"></div>-->
+                                        <div class="com-list"><div class="com-item" commentid="4452310" resuser="137339713"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=137339713&amp;size=middle" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">一个大反派</span><span class="com-ip">四川省成都市</span>发表于<span class="com-time">2015-07-16 16:17:08</span></p><div class="com-part">我觉得玩法还不错的一款小游戏。游戏是关卡形式的，每一关我们都要帮助那个萌萌的小人找到出口才能过关。游戏的玩法还算比较有新意，每一关的地图都可以上下左右移动互换，我们要通过这些互换来引导小人儿走到出口，光是移动是不够的，还需要触发机关来将终点之门打开，虽然玩法并不难，但是我觉得地图越来越大后还是有一定难度的。。。不仅需要移动地图，还需要创造一些机关来使小人到达终点。本作画面走的是比较复古的风格，不过比较简洁舒服，游戏的玩法也还比较不错，推荐一下！</div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐网</p><a class="reply feed-btn" onclick="ComFn.setParentID(4452310, this, '137339713')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4452310" href="javascript:;" onclick="COMMENT.addTop(4452310, this)"><span class="up">顶</span><span class="counter">(<span>16</span>)</span><span class="add-one">+1</span></a></div></div></div></div><div class="com-list"><div class="com-item" commentid="4433521" resuser="143498893"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=143498893&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">冰冷の花</span><span class="com-ip">内蒙古赤峰市</span>发表于<span class="com-time">2015-07-15 23:18:43</span></p><div class="com-replay-object"><div class=" level1 com-item " commentid="4433276"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=180218198&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">♤♧♡♢</span><span class="com-ip">辽宁省抚顺市</span>2015-07-15 22:24:36<span class="floornum">1楼</span></p><div class="com-part">之前看过当乐的预告 很清新啊。。。。(´･ω･`)</div><div class="feed-back clearfix"><p class="com-from"></p><a style="display: none;" class="reply feed-btn" onclick="ComFn.setParentID(undefined, this, '4433276')" href="javascript:;">回复</a></div></div></div><i class="com-tri"></i></div><div class="com-part">我也是看预告知道的这个游戏，同样感觉画面萌萌哒，握爪_(:з」∠)_</div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐游戏中心v7.3</p><a class="reply feed-btn" onclick="ComFn.setParentID(4433521, this, '143498893')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4433521" href="javascript:;" onclick="COMMENT.addTop(4433521, this)"><span class="up">顶</span><span class="counter">(<span>4</span>)</span><span class="add-one">+1</span></a></div></div></div></div><div style="display: block;" class="com-list"><div class="com-item" commentid="4499609" resuser="128349913"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=128349913&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">创造与生存</span><span class="com-ip">广西南宁市</span>发表于<span class="com-time">2015-07-19 19:41:34</span></p><div class="com-part">有点模仿致命框架的意思，但人物可以操作这点比致命框架好，就是画面差了点</div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐游戏中心v7.3</p><a class="reply feed-btn" onclick="ComFn.setParentID(4499609, this, '128349913')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4499609" href="javascript:;" onclick="COMMENT.addTop(4499609, this)"><span class="up">顶</span><span class="counter">(<span>2</span>)</span><span class="add-one">+1</span></a></div></div></div></div><div style="display: block;" class="com-list"><div class="com-item" commentid="4489088" resuser="140207477"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=140207477&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">城管先生</span><span class="com-ip">浙江省温州市</span>发表于<span class="com-time">2015-07-18 16:59:15</span></p><div class="com-replay-object"><div class=" level1 com-item " commentid="4486091"><span class="com-user-ava"><img src="http://tools.service.d.cn/userhead/get?mid=164112942&amp;size=large" alt=""></span><div class="com-main"><p class="com-user"><i></i><span class="com-user-name">秋风满地实乱走</span><span class="com-ip">江苏省</span>2015-07-18 00:57:29<span class="floornum">1楼</span></p><div class="com-part">就是关卡太少</div><div class="feed-back clearfix"><p class="com-from"></p><a style="display: none;" class="reply feed-btn" onclick="ComFn.setParentID(undefined, this, '4486091')" href="javascript:;">回复</a></div></div></div><i class="com-tri"></i></div><div class="com-part">瞎说关卡那少呢，明明就是多到城管先生我几下就玩好了。<img src="http://img.android.d.cn/android/cdroid_stable/face/web/yx.gif" title="阴险" alt="阴险"> </div><div class="feed-back clearfix"><p class="com-from">该评论来自：当乐游戏中心v7.4</p><a class="reply feed-btn" onclick="ComFn.setParentID(4489088, this, '140207477')" href="javascript:;"> 回复</a><span class="com-spe">|</span><a class="com-support feed-btn" commentid="4489088" href="javascript:;" onclick="COMMENT.addTop(4489088, this)"><span class="up">顶</span><span class="counter">(<span>1</span>)</span><span class="add-one">+1</span></a></div></div></div></div><a style="display: none;" href="javascript:void(0)" title="查看更多" target="_self" class="hotmore">查看更多</a>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -524,32 +526,32 @@
                         <div class="module-cont">
                             <ul class="de-game-info clearfix">
                                 <li class="de-game-firm"><span>类型</span>
-                                    <a href="" target="_blank" title="<?php echo $c->type[$d['type']];?>"><?php echo $c->type[$d['type']];?></a>
+                                    <a href="" target="_blank" title="<?php echo $c->type[$d['type']]; ?>"><?php echo $c->type[$d['type']]; ?></a>
                                 </li>
 
-                                <li><span>行业</span><span class="ov"><?php echo $d['cate'];?></span></li>
+                                <li><span>行业</span><span class="ov"><?php echo $d['cate']; ?></span></li>
 
-                                <li><span>时间</span><?php echo date('Y-m-d',$d['cdate']);?></li>
+                                <li><span>时间</span><?php echo date('Y-m-d', $d['cdate']); ?></li>
 
                                 <li class="de-star">
                                     <span>星级</span>
                                     <span class="star star-grey">
-                                        <span class="star star-light stars-<?php echo $d['hot'] = $d['hot'] > 3 ? $v['hot'] : 3;?>"></span>
+                                        <span class="star star-light stars-<?php echo $d['hot'] = $d['hot'] > 3 ? $v['hot'] : 3; ?>"></span>
                                     </span>
                                 </li>
 
 
-                                <li class="" style="float:right"><span>语言</span><?php echo $d['language'];?></li>
+                                <li class="" style="float:right"><span>语言</span><?php echo $d['language']; ?></li>
 
                                 <li class="">
                                     <span>热度</span>
-                                    <?php echo $d['hot'];?>
+                                    <?php echo $d['hot']; ?>
                                 </li>
 
                                 <li class="clear de-game-firm">
                                     <span>商家</span>
 
-                                    <a title="Gameday Inc.安卓游戏大全" target="_blank" href="http://android.d.cn/vendor/gameday_inc.html"><?php echo $d['owner'];?> </a>
+                                    <a title="Gameday Inc.安卓游戏大全" target="_blank" href="http://android.d.cn/vendor/gameday_inc.html"><?php echo $d['owner']; ?> </a>
 
                                 </li>
 
@@ -588,26 +590,26 @@
                     <div class="module">
                         <div class="module-head">
                             <h3 class="module-tit">
-                                <?php $area = $c->getArea(7);?>
-                                <a title="<?php echo $area["title"];?>" target="_blank" href=""> <i></i>
-                                    <?php echo $area["title"];?>
+                                <?php $area = $c->getArea(7); ?>
+                                <a title="<?php echo $area["title"]; ?>" target="_blank" href=""> <i></i>
+                                    <?php echo $area["title"]; ?>
                                 </a>
                             </h3>
                         </div>
                         <div class="module-cont">
                             <ul class="sim-app">
-                                <?php foreach($area['list'] as $k => $v){?>
-                                <li>
-                                    <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="de-set-icon">
-                                        <img src="<?php echo $v['logo'];?>" o-src="" alt="<?php echo $v['num'];?>" />
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class"><?php echo $v['owner'];?></p>
-                                        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="de-set-tit"><?php echo $v['num'];?></a>
+                                <?php foreach ($area['list'] as $k => $v) { ?>
+                                    <li>
+                                        <a href="<?php echo $v['surl']; ?>" title="<?php echo $v['num']; ?>" target="_blank" class="de-set-icon">
+                                            <img src="<?php echo $v['logo']; ?>" o-src="" alt="<?php echo $v['num']; ?>" />
+                                        </a>
+                                        <div class="sim-des">
+                                            <p class="sim-class"><?php echo $v['owner']; ?></p>
+                                            <a href="<?php echo $v['surl']; ?>" title="<?php echo $v['num']; ?>" class="de-set-tit"><?php echo $v['num']; ?></a>
 
-                                    </div>
-                                </li>
-                                <?php }?>
+                                        </div>
+                                    </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -775,7 +777,7 @@
 
         <div id="msg">
         </div>
-        
+
         <!--登录弹出框 b-->
         <div class="adapt-cont" id="baseLog">
             <h2>

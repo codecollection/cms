@@ -50,7 +50,12 @@ class U_model extends MBase{
         return $query->row()->user_id;
     }
     
-    public function getUserInfo(){
+    public function getUserInfo($key = FALSE){
+        
+        if($key){
+           
+            return isset($_SESSION['user']['info'][$key]) ? $_SESSION['user']['info'][$key] : "";
+        }
         return isset($_SESSION["user"]) ? $_SESSION['user'] : array();
     }
 
@@ -137,6 +142,10 @@ class U_model extends MBase{
         return md5($realName . self::PWD_PREFIX . $password);
     }
     
+    public function isLogin(){
+        return isset($_SESSION["user"]) && !empty($_SESSION["user"]);
+    }
+
     /**
      * 退出登录
      * @return boolean

@@ -41,7 +41,8 @@ class Info extends CBase {
         $cateData = $this->cate->find($cid);
         
         if(!empty($tag)){
-            $this->info->where("B.tag like '%{$tag}%'");
+            $this->info->where("tag like '%{$tag}%'");
+            $this->info->where("title like '%{$tag}%'");
         }
         
         //如果p小于等于0.则表示是分类下面的首页
@@ -54,6 +55,39 @@ class Info extends CBase {
         
         $this->setData("cid", $cid);
         $this->setData("cate", $cateData);
+        
+        $this->renderHTMLView($tplList);
+    }
+
+    /**
+     * 搜索结果
+     */
+    public function s(){
+        
+        $p = $this->getData('p');
+        $tag = $this->getData("keyword");
+        
+        $modelId = 3;
+        
+        $param = RKit::getData('keyword'); 
+        if(!empty($tag)){
+            $this->info->where("num like '%{$tag}%'",'or');
+            $this->info->where("tag like '%{$tag}%'",'or');
+        }
+        $pagesize = 30;
+        //获取模型对应的表名称
+        $this->setModel($modelId);
+        
+        $this->info->page($p, $pagesize);
+        
+        $lists = $this->info->search();
+        
+        $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
+        $lists['pagecode'] = $this->getPageHtml("/info/s?" . http_build_query($param), $lists['count'],$pagesize);
+        
+        $this->setData("list", $lists);
+
+        $tplList = "search.list.php";
         
         $this->renderHTMLView($tplList);
     }
@@ -310,6 +344,68 @@ class Info extends CBase {
     }
     
     /**
+     * 推荐位列表
+     */
+    public function sepcialList(){
+        
+        $pagesize = 18;
+        $list = $this->_sList(1);
+     
+        $list['pagecode'] = $this->getPageHtml("/info/special?cid=" . $this->cid . "&" . http_build_query(array()), $list['count'],$pagesize);
+        
+        return $list;
+    }
+    
+    public function activityList(){
+        $pagesize = 18;
+        $list = $this->_sList(2);
+        
+        $list['pagecode'] = $this->getPageHtml("/info/activity?cid=" . $this->cid . "&" . http_build_query(array()), $list['count'],$pagesize);
+        
+        return $list;
+    }
+    
+    /**
+     * 专题详情
+     */
+    public function sd(){
+        
+        $this->loadModel("special");
+        
+        $id = $this->getData('id');
+        $special = $this->special->find($id);
+        
+        if(!empty($special["id_list"])){
+            $this->setModel($special["model_id"]);
+            $l = $this->info->where($this->info->tableName."_id"." in ({$special["id_list"]})")->search(false);
+
+            $lists = $this->info->insertUrl($l,$special["model_id"]);
+            $special =  array_merge($special,array("list" => $lists));
+        }
+        
+        $this->setData("special", $special);
+        
+        
+    }
+
+        /**
+     * 获取推荐位列表
+     */
+    private function _sList($type){
+        
+        $this->loadModel("special");
+        
+        $p = $this->getData("p");
+        $this->special->page($p, $pagesize = 18);
+        $this->special->where('type=' . $type);
+         
+        $l = $this->special->search();
+        $l['list'] = $this->special->insertUrl($l['list'],$type);
+                
+        return $l;
+    }
+
+    /**
      * 获取标签列表
      * @param type $gId
      * @return type
@@ -367,6 +463,27 @@ class Info extends CBase {
         return $this->pagination->create_links();
     }
     
+    
+    public function special(){
+        $list = $this->sepcialList();
+        
+        //print_r($list);
+        $this->setData('list', $list);
+        $tplList = "special.list.php";
+        
+        $this->renderHTMLView($tplList);
+    }
+    
+    public function activity(){
+        
+        $list = $this->activityList();
+        
+        $this->setData('list', $list);
+        $tplList = "special.list.php";
+        
+        $this->renderHTMLView($tplList);
+    }
+
     /**
      * 测试预览模板
      */

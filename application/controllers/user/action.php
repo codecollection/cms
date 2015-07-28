@@ -15,7 +15,7 @@ class Action extends CUserBase {
 
     /**
      * 保存评论
-     * data 必须包含 array('model_id','info_id','comment');
+     * data 必须包含 array('model_id','info_id','content');
      * data 还可以有 parent_id,son,good,bad,
      */
     public function doComment(){
@@ -24,9 +24,9 @@ class Action extends CUserBase {
         $data = $this->getData('data');
         
         $data['ip'] = $this->input->ip_address();
-        $data['uname'] = $this->u->getUserInfo("nick");
-        $data['avator'] = $this->u->getUserInfo("avator");
-        $data['uid'] = $this->u->getUserInfo("uid");
+        $data['uname'] = $this->u->getUserInfo("unick");
+        $data['avator'] = $this->u->getUserInfo("uavator");
+        $data['uid'] = $this->u->getUserInfo("user_id");
         
         $this->comment->setAttrs($data)->save();
         
@@ -35,7 +35,7 @@ class Action extends CUserBase {
         $this->info->numField = "comments";
         $this->info->updateNum($data['info_id']);
         
-        $this->echoAjax(0, '');
+        $this->echoAjax(0, '',$data);
         
     }
 

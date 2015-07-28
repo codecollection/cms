@@ -739,6 +739,25 @@ CREATE TABLE IF NOT EXISTS `cms_product` (
 
 -- --------------------------------------------------------
 
+-- 专题
+create table if not exists `cms_special` (
+ `special_id` int(11) unsigned not null auto_increment comment '专题ID',
+ `title` varchar(100) not null default '' comment '位置标题',
+ `url` varchar(100) not null default '' comment '跳转地址',
+ `numb` varchar(100) not null default '' comment '期号',
+ `special_html` text not null  comment 'HTML或者描述文本',
+ `type` int(2) not null default 1 comment '位置类型：推荐位=1，专题=2',
+ `remarks` varchar(1000) not null default '' comment '备注',
+ `forder` int(11) not null default 100 comment '排序',
+ `logo` varchar(200) not null default '' comment '专题LOGO图',
+ `bg_img` varchar(200) not null default '' comment '背景图',
+ `bg_color` varchar(50) not null default '' comment '背景色',
+ `id_list` varchar(2000) not null default '' comment '文档ID列表，用逗号分割',
+ `model_id` tinyint(2) not null default 0 comment '模型ID',
+ `cdate` int(11) not null default 0 comment '创建时间',
+ primary key (`special_id`)
+) engine=myisam default charset=utf8 comment '专题';
+
 --
 -- 表的结构 `cms_public`
 --

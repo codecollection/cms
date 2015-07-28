@@ -94,6 +94,23 @@ create table if not exists `cms_recommend_area` (
  index `area_type_order` (`area_type`,`area_order`)
 ) engine=myisam default charset=utf8 comment '推荐位置';
 
+-- 专题
+create table if not exists `cms_special` (
+ `special_id` int(11) unsigned not null auto_increment comment '专题ID',
+ `title` varchar(100) not null default '' comment '位置标题',
+ `url` varchar(100) not null default '' comment '跳转地址',
+ `numb` varchar(100) not null default '' comment '期号',
+ `type` int(2) not null default 0 comment '位置类型：推荐位=1，专题=2',
+ `special_html` text not null  comment 'HTML或者描述文本',
+ `remarks` varchar(1000) not null default '' comment '备注',
+ `forder` int(11) not null default 100 comment '排序',
+ `logo` varchar(200) not null default '' comment '专题LOGO图',
+ `id_list` varchar(2000) not null default '' comment '文档ID列表，用逗号分割',
+ `model_id` tinyint(2) not null default 0 comment '模型ID',
+ `cdate` int(11) not null default 0 comment '创建时间',
+ primary key (`special_id`)
+) engine=myisam default charset=utf8 comment '专题';
+
 -- 广告位表
 create table if not exists `cms_ad_area` (
  `area_id` int(11) unsigned not null auto_increment,
@@ -102,7 +119,7 @@ create table if not exists `cms_ad_area` (
  `remark` varchar(1000) not null default '' comment '位置标注',
  `identification` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '标识',
  primary key (`area_id`)
-) engine=myisam default charset=utf8 auto_increment=100;
+) engine=myisam default charset=utf8;
 
 -- 广告列表
 create table if not exists `cms_ad_list` (
@@ -182,7 +199,7 @@ create table if not exists `cms_flink_group` (
  `flink_group_name` varchar(100) not null default '' comment '链接文字',
  `flink_group_img` varchar(500) not null default '' comment '链接图片',
  `flink_group_url` varchar(500) not null default '' comment '链接地址',
- `flink_order` int(11) default 100 comment'排序',
+ `forder` int(11) default 100 comment'排序',
  primary key(`flink_group_id`)
 )engine=myisam default charset=utf8 comment '友情链接组表';
 

@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="form clearfix">
-            <form id="sForm" method="get" action="">
+            <form id="sForm" method="get" action="/info/s">
                 <div class="search-wrap">
                     <i></i>
                     <div class="search-txt">
@@ -39,9 +39,9 @@
                 <li class="<?php echo $cid == 2 || in_array($cid, array(3,4,5,6)) ? "curr" : "";?>"><a href="/info/l?cid=2" title="微信公众号资讯">资讯<?php echo $cid == 2 || in_array($cid, array(3,4,5,6)) ? '<span class="nav-bar"></span>' : "";?></a></li>
             
             
-                <li><a href="/info/special" title="微信公众号专题">专题</a></li>
+                <li class="<?php echo $cid == 12 ? "curr" : "";?>"><a href="/info/special?cid=12" title="微信公众号专题">专题<?php echo $cid == 12 ? '<span class="nav-bar"></span>' : "";?></a></li>
             
-                <li><a href="/info/activity" title="微信公众号最新活动">活动<i></i></a></li>
+                <li class="<?php echo $cid == 13 ? "curr" : "";?>"><a href="/info/activity?cid=13" title="微信公众号最新活动">活动<i></i><?php echo $cid == 13 ? '<span class="nav-bar"></span>' : "";?></a></li>
             
     </ul>
 </div>

@@ -33,7 +33,8 @@
 			starEndNoEff: 	  0,            // 开始与结束中间无动画效果(1为是0为否)
 			preNexBtnShow:    1,            // 是否显示上一张下一张按钮
 			numBtnSty:        'num',	    // num、square、circle、roundness、rectangle == 数字、正方形、圆圈、圆形、长方形
-			numBtnShow:       1             // 是否显示数字按钮
+			numBtnShow:       1   ,          // 是否显示数字按钮
+                        butClass : 'sliderBtn' //上一张，下一站按钮样式
 		}; 
 		var options = $.extend(defaults, options);
 		options.widths = parseInt(options.widths)+"px";
@@ -67,8 +68,8 @@
 			});
 			
 			$(obj).append(
-				'<span class="sliderBtn" id='+options.prevId+'></span>'
-				+'<span class="sliderBtn" id='+options.nextId+'></span>'
+				'<span class="'+options.butClass+'" id='+options.prevId+'></span>'
+				+'<span class="'+options.butClass+'" id='+options.nextId+'></span>'
 				+'<div id="altbox">'+$(obj).find("ul li img").eq(0).attr("alt")
 				+'</div><div id="btnList"></div>'
 			);

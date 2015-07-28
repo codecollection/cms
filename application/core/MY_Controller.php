@@ -409,10 +409,10 @@ class CAdminBase extends MY_Controller {
         $status = $this->bindModel->setAttrs($data)->setPkValue($id)->save($id == 0);
         $msg = '';
 
-        if ($id == 0) {
-            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
-        } else {
+        if ($id > 0) {
             $msg = sprintf(lang($status ? 'update_success' : 'update_fail'), $this->controllerTitle);
+        } else {
+            $msg = sprintf(lang($status ? 'insert_success' : 'insert_fail'), $this->controllerTitle);
         }
         
         if(!empty($files)){
@@ -431,7 +431,7 @@ class CAdminBase extends MY_Controller {
                 $this->db->insert($this->resourceInfoTabel,$fileData);
             }
         }
-        $this->echoAjax(0, "更新信息成功");
+        $this->echoAjax(0, $msg);
     }
 
     /**

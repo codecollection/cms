@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td class="fr"><span class="fred">* </span>广告位类型：</td>
-            <td><div><?php echo $thisc->vars->input_str(array('node'=>'area_type','name'=>'area_type','type'=>'select_single','default'=>0));?></div></td>
+            <td><div><?php echo $thisc->vars->input_str(array('node'=>'area_type','name'=>'area_type','type'=>'select_single','default'=>$data['area_type']));?></div></td>
         </tr>
         <tr>
             <td class="fr">广告位标识：</td>

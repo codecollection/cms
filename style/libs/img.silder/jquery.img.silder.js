@@ -1,4 +1,4 @@
-﻿/**
+/**
 
  * 图片切换插件
  * Powered By Mr Zhou
