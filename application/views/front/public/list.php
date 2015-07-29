@@ -25,35 +25,35 @@
         <div class="content clearfix">
             <div class="left">
                 <div class="list-title clearfix" style="padding-left:0">
-                    <h2 class="con" title="安卓游戏">
-                        <span class="title-bg iconSprite"></span>安卓游戏
+                    <h2 class="con" title="公众号">
+                        <span class="title-bg iconSprite"></span>公众号
                     </h2>
-                    <ul class="list-title-tabs clearfix">
+<!--                    <ul class="list-title-tabs clearfix">
                         <li class="now">
-                            <a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓最近更新游戏">最近更新</a>
+                            <a href="" title="安卓最近更新游戏">最近更新</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/list_15_0_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓新品游戏">新品</a>
+                            <a href="" title="安卓新品游戏">新品</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/list_2_0_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓最热游戏">最热</a>
+                            <a href="" title="安卓最热游戏">最热</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/list_3_1_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓大型游戏">大型</a>
+                            <a href="" title="安卓大型游戏">大型</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/list_4_0_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓五星游戏">五星</a>
+                            <a href="" title="安卓五星游戏">五星</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/list_5_1_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓破解修改游戏">破解</a>
+                            <a href="" title="安卓破解修改游戏">破解</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/list_16_1_0_0_0_0_0_0_0_0_0_1_0.html" title="安卓汉化游戏">汉化</a>
+                            <a href="" title="安卓汉化游戏">汉化</a>
                         </li>
                         <li >
-                            <a href="http://android.d.cn/game/yugao/" title="安卓游戏预告_安卓游戏发布时间表">新游预告</a>
+                            <a href="" title="安卓游戏预告_安卓游戏发布时间表">新游预告</a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </div>
                 <?php $list = $c->getList(1,30);?>
                 <?php foreach($list['list'] as $k => $v){?>
@@ -77,7 +77,7 @@
                                 </div>-->
                                 <div class="app-h">
 
-                                    <a href="javascript:void(0);" title="<?php echo $v['num'];?>" class="down-btn" onclick="Adapt.adaptDown(this, 1, 59398)">立即关注</a>
+                                    <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="down-btn">立即阅读</a>
 
                                 </div>
                             </div>
@@ -86,11 +86,12 @@
                                 <div class="mark mark-s1" style="display:block">
 
                                     <span class="red">
-                                        <span class="big">7</span>.
-                                        <span class="small">5</span>
+                                        <?php $r = explode(".", $v['recommend']);?>
+                                        <span class="big"><?php echo isset($r[0])? $r[0]: 0;?></span>.
+                                        <span class="small"><?php echo isset($r[1])? $r[1]: 1;?></span>
                                     </span>
 
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="iconSprite " onclick="Coll.coll(this, 1, 59398);"></a>
+                                    <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="iconSprite"></a>
                                 </div>
 
 <!--                                <div class="tem-d">
@@ -104,7 +105,7 @@
                                 <p class="g-desc">
 
                                     <a href="<?php echo $v['surl'];?>"
-                                       title="安卓冒险解谜" target="_blank"><?php echo $v['cate']?></a>
+                                       title="<?php echo $v['cate']?>" target="_blank"><?php echo $v['cate']?></a>
 
                                 </p>
                                 <p class="g-detail">
@@ -142,7 +143,7 @@
                                 </div>-->
                                 <div class="app-h">
 
-                                    <a href="javascript:void(0);" title="<?php echo $v['num'];?>" class="down-btn" onclick="Adapt.adaptDown(this, 1, 14009)">立即关注</a>
+                                    <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="down-btn">立即阅读</a>
 
                                 </div>
                             </div>
@@ -151,8 +152,9 @@
                                 <div class="mark mark-s1" style="display:block">
 
                                     <span class="red">
-                                        <span class="big">8</span>.
-                                        <span class="small">1</span>
+                                        <?php $r = explode(".", $v['recommend']);?>
+                                        <span class="big"><?php echo isset($r[0])? $r[0]: 0;?></span>.
+                                        <span class="small"><?php echo isset($r[1])? $r[1]: 1;?></span>
                                     </span>
 
                                     <a href="javascript:;" title="<?php echo $v['num'];?>" class="iconSprite " onclick="Coll.coll(this, 1, 14009);"></a>
@@ -209,7 +211,7 @@
                         <h2 class="con" title="公众号筛选"><span class="title-bg iconSprite"></span>公众号筛选</h2>
                     </div>
                     <div class="div-out">
-                        <p class="game-cate">公众号类型</p>
+<!--                        <p class="game-cate">公众号类型</p>
                         <div class="right-ul-bd">
                             <ul class="game-lx">
                                 <?php foreach($c->type as $pt){ ?>
@@ -219,12 +221,12 @@
                                 </li>
                                 <?php }?>
                             </ul>
-                        </div>
+                        </div>-->
 
                         <p class="game-cate">标签</p>
                         <div class="right-ul-bd">
                             <ul class="game-lx">
-                                <li class='first cur'><a href="http://android.d.cn/game/list_1_0_0_0_0_0_0_0_0_0_0_1_0.html" title="公众号标签">全部</a></li>
+                                <li class='first cur'><a href="" title="公众号标签">全部</a></li>
                                 <?php $tags = $c->getTag(); ?>
                                 <?php foreach($tags as $tag){?>
                                 <li ><a href="/info/l?tag=<?php echo $tag["tag"];?>" title="公众号<?php echo $tag["tag"];?>"><?php echo $tag["tag"];?></a></li>

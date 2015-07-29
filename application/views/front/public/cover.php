@@ -1082,7 +1082,7 @@
 </div>
 <!--安卓资讯 end-->
 <!--安卓大作专区 begin-->
-<div class="layout">
+<!--<div class="layout">
     <div class="mod-box">
         <div class="mod-head">
             <h3 class="cap-ori"><a href="http://app.d.cn/subject-1.html" target="_blank" title="安卓大作专区">公众号大作专区</a></h3>
@@ -1097,7 +1097,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div>-->
 <!--安卓大作专区 end-->
 <!--排行榜 begin-->
 <div class="layout">
