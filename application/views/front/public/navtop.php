@@ -5,22 +5,22 @@
             <li class="rb"><a href="<?php echo HOST;?>" target="_blank">小肉粽&nbsp;&nbsp;微信公众平台第一站</a>&nbsp;</li>
             <li>
                 <div class="menuShow">
-                    <a href="http://weibo.com/downjoygame" title="关注新浪微博" target="_blank">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" alt="" width="24" class="followSina"/>
+                    <a href="http://weibo.com/u/5663240823/home" title="关注新浪微博" target="_blank">
+                        <img src="/style/front/public/transparent1.gif" alt="" width="24" class="followSina"/>
                     </a>
                     <span class="arrDropNo"></span>
                 </div>
                 
             </li>
             
-            <li>
+<!--            <li>
                 <div class="menuShow">
                     <img src="http://raw.android.d.cn/cdroid_res/web/common/transparent.gif" alt="" width="24" class="followWx" /><span class="arrDrop"></span>
                 </div>
                 <div class="menuHide">
                     <img src="http://raw.android.d.cn/cdroid_res/web/common/2dcode.gif" alt="微信二维码" class="code" />
                 </div>
-            </li>
+            </li>-->
 <!--            <li class="lb"><a href="" target="_blank">当乐游戏中心</a> </li>-->
         </ul>
         <ul class="siteNavMenu fr">
@@ -64,7 +64,7 @@
             <li>
                 <div class="menuShow">
                     <span class="navIcon"></span>
-                    <span>帮助中心</span>
+                    <span><a href="/info/l?cid=9" target="_blank" title="小肉粽帮助中心">帮助中心</a></span>
                 </div>
             </li>
         </ul>

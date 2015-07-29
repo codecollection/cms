@@ -1,1 +1,1 @@
-<p>Copyright © 2004-<script type="text/javascript">var y = new Date().getFullYear();document.write(y);</script> Downjoy. All Rights Reserved. 北京当乐信息技术有限公司 版权所有</p>
+<p>Copyright © 2004-<script type="text/javascript">var y = new Date().getFullYear();document.write(y);</script> Downjoy. All Rights Reserved. 上海不倒翁科技有限公司 版权所有</p>

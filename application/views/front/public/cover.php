@@ -55,7 +55,7 @@
                     <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>">
                 </a>
                 <div class="mod-first-des clearfix">
-                    <a class="mod-first-tit" href="<?php echo $v['surl'];?>" title="极品飞车最高通缉2015" target="_blank"><?php echo $v['num'];?></a>
+                    <a class="mod-first-tit" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                     <p class="mod-first-txt">
                         <?php echo $v['desc'];?> 
                     </p>
@@ -115,7 +115,7 @@
                         </a>
                         <div class="thumb-tips">
                             <p class="tips">
-                                <span>
+                                <span class="number">
                                 <?php echo $v['owner'];?>
                                 </span>
                                 <?php echo $c->type[$v['type']];?>
@@ -145,7 +145,7 @@
                                 <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img7.android.d.cn/android/new/game_image/0/59100/icon.png" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="mode-app-des">
-                                <p class="num">
+                                <p class="number">
                                  <?php echo $v['owner'];?>
                                 </p>
                                 <?php echo $c->type[$v['type']];?>
@@ -179,7 +179,7 @@
                                 <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="mode-app-des">
-                                <p class="num">
+                                <p class="number">
                                  <?php echo $v['owner'];?>
                                 </p>
                                 <?php echo $c->type[$v['type']];?>
@@ -305,7 +305,7 @@
                         <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
-                        <p class="num">
+                        <p class="number">
                             <em><?php echo $v['owner'];?></em>
                         </p>
                         <p class="time">
@@ -383,7 +383,7 @@
                         <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
-                        <p class="num">
+                        <p class="number">
                             <em><?php echo $v['owner'];?></em>
                         </p>
                         <p class="time">
@@ -462,7 +462,7 @@
                         <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
-                        <p class="num">
+                        <p class="number">
                             <em><?php echo $v['owner'];?></em>
                         </p>
                         <p class="time">
@@ -831,7 +831,7 @@
                         <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
-                        <p class="num">
+                        <p class="number">
                             <em><?php echo $v['owner'];?></em>
                         </p>
                         <p class="time">
@@ -910,7 +910,7 @@
                         <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
-                        <p class="num">
+                        <p class="number">
                             <em><?php echo $v['owner'];?></em>
                         </p>
                         <p class="time">
@@ -989,7 +989,7 @@
                         <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
-                        <p class="num">
+                        <p class="number">
                             <em><?php echo $v['owner'];?></em>
                         </p>
                         <p class="time">
@@ -1297,39 +1297,7 @@
             <?php }?>
         </ul>
     </div>
-    <div class="copy-right">
-        <p>
-            <input type="hidden" id="serviceIp" name="serviceIp" value="118.144.66.138">
-            <a href="http://www.d.cn/about_us.html" target="_blank" title="关于当乐">
-                关于当乐
-            </a>
-            |
-            <a href="http://www.d.cn/en-us/" target="_blank" title="About Downjoy">
-                About Downjoy
-            </a>
-            |
-            <a href="http://www.d.cn/contact_us.html" target="_blank" title="联系我们">
-                联系我们
-            </a>
-            |
-            <a href="http://www.d.cn/hr/" target="_blank" title="诚聘英才">
-              诚聘英才
-            </a>
-            |
-            <a href="http://open.d.cn/" target="_blank" title="开放平台">
-                开放平台
-            </a>
-            |
-            <a href="http://www.d.cn/privacy.html" target="_blank" title="隐私保护">
-                隐私保护
-            </a>
-            |
-            <a href="http://www.d.cn/sitemap.html" target="_blank" title="网站地图">
-                网站地图
-            </a>
-        </p>
-        <?php $c->loadView("front/public/copyright");?>
-    </div>
+    <?php $c->loadView("front/public/footer.php");?>
 </div>
 
 

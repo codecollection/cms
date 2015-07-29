@@ -150,40 +150,7 @@
 
         <div class="ft">
 
-            <div class="copy-right">
-                <p>
-                    <input type="hidden" id="serviceIp" name="serviceIp" value="118.144.66.138" />
-                    <a href="http://www.d.cn/about_us.html" target="_blank">
-                        关于当乐
-                    </a>
-                    |
-                    <a href="http://www.d.cn/en-us/" target="_blank">
-                        About Downjoy
-                    </a>
-                    |
-                    <a href="http://www.d.cn/contact_us.html" target="_blank">
-                        联系我们
-                    </a>
-                    |
-                    <a href="http://www.d.cn/hr/" target="_blank" title="诚聘英才">
-                        诚聘英才
-                    </a>
-                    |
-                    <a href="http://open.d.cn/" target="_blank">
-                        开放平台
-                    </a>
-                    |
-                    <a href="http://www.d.cn/privacy.html" target="_blank">
-                        隐私保护
-                    </a>
-                    |
-                    <a href="http://www.d.cn/sitemap.html" target="_blank">
-                        网站地图
-                    </a>
-                </p>
-                <p>Copyright © 2004-<script type="text/javascript">var y = new Date().getFullYear();
-                    document.write(y);</script> Downjoy. All Rights Reserved. 北京当乐信息技术有限公司 版权所有</p>
-            </div>
+            <?php $c->loadView("front/public/footer.php");?>
         </div>
     </body>
 </html>

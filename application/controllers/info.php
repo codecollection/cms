@@ -41,8 +41,8 @@ class Info extends CBase {
         $cateData = $this->cate->find($cid);
         
         if(!empty($tag)){
-            $this->info->where("tag like '%{$tag}%'");
-            $this->info->where("title like '%{$tag}%'");
+            $this->info->where("tag like '%{$tag}%'",'or');
+            $this->info->where("title like '%{$tag}%'",'or');
         }
         
         //如果p小于等于0.则表示是分类下面的首页
@@ -169,6 +169,8 @@ class Info extends CBase {
             $cateId = $cid;
         }
         
+        $params = RKit::getData('keyword','tag');
+        
         $ids = implode(",", $this->getAllSon($cateId));
         
         $p = $this->getData('p') > 0 ? $this->getData('p') : "1";
@@ -184,7 +186,7 @@ class Info extends CBase {
         $lists = $this->info->search();
         
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
-        $lists['pagecode'] = $this->getPageHtml("/info/l?cid=" . $cateId. "&" . http_build_query(array()), $lists['count'],$pagesize);
+        $lists['pagecode'] = $this->getPageHtml("/info/l?cid=" . $cateId. "&" . http_build_query($params), $lists['count'],$pagesize);
         
         return $lists;
     }
@@ -243,7 +245,7 @@ class Info extends CBase {
         $this->info->orderBy("forder DESC");
         $l = $this->info->search(false);
         
-        $lists = $this->info->insertUrl($l['list'],$modelId);
+        $lists = $this->info->insertUrl($l,$modelId);
        
         return $lists;
         
@@ -343,6 +345,7 @@ class Info extends CBase {
         return $area;
     }
     
+    
     /**
      * 推荐位列表
      */
@@ -410,12 +413,15 @@ class Info extends CBase {
      * @param type $gId
      * @return type
      */
-    public function getTag($gId){
+    public function getTag($gId = null,$limit = 30){
         
         $this->loadModel("tag");
         
-        $this->tag->where("group_id = " . $gId);
-        
+        if($gId !== null){
+            $this->tag->where("group_id = " . $gId);
+        }else{
+            $this->tag->limit($limit);
+        }
         $tags = $this->tag->search(false);
         
         return $tags;
