@@ -26,12 +26,16 @@ class CBase extends MY_Controller{
     //用户Id
     public $userId = 0;
     
+    public $selfUrl = "";
     public function __construct() {
         parent::__construct();
         $this->loadModel("cate");
         $this->loadModel("info");
         $this->loadModel('u');
         $this->tpl = TEMPLATE;
+        
+        $this->selfUrl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        //echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
     }
     
     /**
