@@ -61,9 +61,8 @@
                                 <a href="javascript:;" title="" class="de-head-btn adapt-btn" onclick="Adapt.adapt(true, {rt: '1', ri: '59398', gather: 'top'});">立即下载</a>
                             </div>
                         </div>
-
                         <div class="de-collect">
-                            <a href="javascript:;" title="" onclick="Coll.coll(this, 1, 59398, true);" class="de-co-item de-like  clearfix">
+                            <a href="javascript:;" title="" onclick="Action.doLike(<?php echo $d['cms_public_id'] ?>,<?php echo $d['model_id'] ?>,this);" class="de-co-item de-like  clearfix">
                                 <div class="de-co-outer clearfix">
                                     <span class="de-co-icon de-icon-focus"></span>
                                     <span class="de-co-text">喜欢</span>
@@ -72,13 +71,13 @@
                                     <?php echo $d["like"]; ?>
                                 </span>
                             </a>
-                            <a href="#pinglun" title="" class="de-co-item de-comm">
+<!--                            <a href="#pinglun" title="" class="de-co-item de-comm">
                                 <div class="de-co-outer">
                                     <span class="de-co-icon de-icon-com"></span>
                                     <span class="de-co-text">评论</span>
                                 </div>
                                 <span class="de-co-num" id="comNum"><?php echo $d["comments"]; ?></span>
-                            </a>
+                            </a>-->
 
                         </div>
                     </div>
@@ -96,8 +95,9 @@
                     </div>
 
                     <div class="de-score">
-                        <span class="de-score-int">7</span>
-                        <span class="de-score-dec">.5</span>
+                        <?php $r = explode(".", $d['recommend']);?>
+                        <span class="de-score-int"><?php echo isset($r[0])? $r[0]: 0;?></span>
+                        <span class="de-score-dec">.<?php echo isset($r[1])? $r[1]: 1;?></span>
                     </div>
 
                 </div>
