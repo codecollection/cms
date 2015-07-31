@@ -31,12 +31,11 @@
                 });
             </script>
             <ul class="ban_clearfix" id="silder_ad"><!-- <span class="ban-cover"></span>    <span class="ban-cover-txt">一周评论大事件第十五期</span>  -->
-                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="/style/front/public/yg2d6ic8fhofk.jpg"  alt="一周评论大事件第十五期" />   </a> 
+                <?php $ads = $c->getAd(102);?>
+                <?php foreach($ads as $ad){?>
+                <li>    <a target="_blank" href="<?php echo $ad["ad_url"]?>" title="<?php echo $ad["ad_title"]?>">                       <img src="<?php echo $ad["ad_img"]?>"  alt="<?php echo $ad["ad_title"]?>" />   </a> 
                 </li>
-                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="/style/front/public/1437620548566XHYp.jpg"  alt="一周评论大事件第十五期" /> </a> 
-                </li>
-                <li>    <a target="_blank" href="http://news.d.cn/news/view-23255.html" title="一周评论大事件第十五期">                       <img src="/style/front/public/1437620569543acDI.jpg"  alt="一周评论大事件第十五期" />   </a> 
-                </li>
+                <?php }?>
             </ul>
 <!--            <span  title="" class="ban-next ban-btn" id="next"><i></i></span>
             <span  title="" class="ban-prev ban-btn" id="prev"><i></i></span>-->
