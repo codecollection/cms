@@ -10,7 +10,11 @@ class Model extends CAdminBase {
     public $topLevel = "D";
     public $level = "D01";
     
-    function __construct() {
+    public $modelType = array(
+        array("value"=>0,"txt"=>"扩展模型"),
+        array("value"=>1,"txt"=>"独立模型"),
+        );
+    public function __construct() {
 
        parent::__construct();
        $this->addJs($this->controllerId . ".js");

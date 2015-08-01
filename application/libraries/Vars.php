@@ -202,13 +202,24 @@ class Vars {
                 $html = $this->getSelect();break;
             case 'upload':
                 $html = $this->getUpload();break;
+            case 'datapicker' :
+                $html = $this->getDatapicker(); break;
             default :
                 $html = "<span>{$filed['form_value']}</span>";
         }
         
         return $html;
     }
-
+    /**
+     * 日期编辑器
+     * @return type
+     */
+    private function getDatapicker(){
+        
+        $html = '<input id="%s" name="data[%s]" type="text" class="comm_ipt" value="%s" onclick="new Calendar().show(this);"> %s';
+        
+        return sprintf($html,  $this->formConfig['field'],$this->formConfig['field'],(int)$this->formConfig['value'],$this->formConfig['field_remark']);
+    }
     /**
      * 输入框html代码
      * @return string

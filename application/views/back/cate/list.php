@@ -63,6 +63,11 @@
             <?php }?>
         </tbody>
     </table>
+    <p class="line-t-20"></p>
+    <div class="pagebar">
+        <?php echo $page;?>
+    </div>
+    <p class="line-t-20"></p>
 </div>
 <p class="line-t-20"></p>
 <div class="footer_fixed">

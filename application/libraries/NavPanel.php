@@ -279,7 +279,7 @@ class NavPanel {
         array(
             'title' => '插 件',
             'url' => '/back/plug',
-            'level'=>'D',
+            'level'=>'F',
             'bgimg' => '',
             'menu'  => array(
                 array(

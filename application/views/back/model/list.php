@@ -35,6 +35,7 @@
                         <td><?php echo $v['cmodel_id']; ?></td>
                         <td style="padding-left:10px;"><?php echo empty($v['attr_content']) ? '&nbsp;' : $v['attr_content']; ?></td>
                         <td>
+                            <?php $thisc->echoButton($this->controllerId . "01", "/back/{$this->controllerId}/edit?id={$v['model_id']}", "编辑"); ?>
                         <?php $thisc->echoButton($this->controllerId . "02", "/back/{$this->controllerId}/field?id={$v['model_id']}", "字段管理"); ?>
                         <?php $thisc->echoButton($this->controllerId . "05", "javascript:updateModel({$v['model_id']});", "更新表"); ?>
                         </td>
