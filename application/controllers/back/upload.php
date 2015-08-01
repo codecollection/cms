@@ -47,10 +47,12 @@ class Upload extends CAdminBase {
             'resource_url' => $fileUrl
         );
         if($fileUrl !== FALSE){
+            $fileUrl = str_replace("\\", "/", $fileUrl);
             $this->_addResource($resource);
         }
         
-        $params = '{"params":{"func":"'.$f.'","vid":"'.$vid.'"'. '},"files":"'. $fileUrl .'"}';
+        $params = '{"params":{"func":"'.$f.'","vid":"'.$vid.'"'. '},"files":"'.$fileUrl.'"}';
+        echo($params);
         echo('<script>window.parent.callback_upload(\''.$params.'\');</script>');
         exit();
     }

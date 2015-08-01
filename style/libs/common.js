@@ -1273,6 +1273,7 @@ jQuery.cookie = function(name, value, options) {
 //默认上传回调函数
 function callback_upload(data){
     try{
+        alert(data);
         var json=$.evalJSON(data);
         if(json.code==1) {
             C.alert.alert({content:json.msg});

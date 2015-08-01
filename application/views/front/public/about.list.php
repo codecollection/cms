@@ -48,7 +48,7 @@
 <!--footer:begin-->
 <div class="footer">
     <?php $c->loadView("front/public/copyright.php");?>
-    <a href="http://www.miibeian.gov.cn/">京ICP证041520号</a></div>
+</div>
 <!--footer:end-->
 </body>
 </html>

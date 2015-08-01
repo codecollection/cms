@@ -11,7 +11,7 @@
     <span class="cbs_right"><a href="javascript:void(0);" onclick="show_more('query_box_category');">高级查询</a></span>
 </div>
 <p class="line-t-20"></p>
-<div id="query_box_category" <?php if(empty($thisc->getData("sv"))){echo('style="display:none;"');}?>>
+<div id="query_box_category" <?php // if(empty($thisc->getData("sv"))){echo('style="display:none;"');}?>>
     <div class="box_970" id="screen">
         <ul class="screening se_manage res_scre">
             <li>
