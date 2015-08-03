@@ -6,7 +6,7 @@
     <table class="table_lists editbox">
 
         <tr>
-            <td class="fr"><span class="fred">* </span>公众号：</td>
+            <td class="fr"><span class="fred">* </span>名称：</td>
             <td><input id="num" name="data[num]" type="text" class="comm_ipt" value="<?php echo $data["num"];?>"> 你的公众账号名称</td>
         </tr>
         
@@ -33,6 +33,10 @@
                 </div></td>
         </tr>
         <tr>
+            <td class="fr"><span class="fred">* </span>微信号：</td>
+            <td><input id="weixin" name="data[weixin]" type="text" class="comm_ipt" value="<?php echo $data["weixin"];?>"> 你的公众账号名称</td>
+        </tr>
+        <tr>
             <td class="fr"><span class="fred">* </span>类型：</td>
             <td>
                 <select class="comm_ipt" name="data[type]">
@@ -43,7 +47,7 @@
             </td>
         </tr>
         <tr>
-            <td class="fr"><span class="fred">* </span>描述：</td>
+            <td class="fr"><span class="fred">* </span>简介：</td>
             <td>
                 <textarea id="desc" type="text" name="data[desc]"><?php echo $data["desc"]; ?></textarea> 简单的介绍下公众号吧
             </td>
@@ -61,6 +65,10 @@
         <tr>
             <td class="fr"><span class="fred">* </span>商家：</td>
             <td><input id="owner" name="data[owner]" type="text" class="comm_ipt" value="<?php echo $data["owner"] ?>"> 你的品牌名称</td>
+        </tr>
+         <tr>
+            <td class="fr"><span class="fred"> </span>地址：</td>
+            <td><textarea id="public_add" name="data[public_add]"><?php echo $data["public_add"];?></textarea></td>;
         </tr>
         <tr>
             <td class="fr">语言：</td>

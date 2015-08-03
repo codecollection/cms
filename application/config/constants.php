@@ -112,7 +112,7 @@ define('WATER_FONT_FAMILY', "elephant.ttf"); //水印字体
 define('WATER_FONT_COLOR', "#FFFF"); //颜色
 
 //缩略图
-define('THUMB_WIDTH', 200);
-define('THUMB_HEIGHT', 200);
+define('THUMB_WIDTH', 72);
+define('THUMB_HEIGHT', 72);
 
 
