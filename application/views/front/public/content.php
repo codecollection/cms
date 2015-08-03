@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="mobile-agent" content="format=xhtml; url=http://a.d.cn/game/59398/" />
-
-        <link type="application/rss+xml" href="http://android.d.cn/rss/game.xml" rel="alternate"  title="Android手机游戏免费下载 Android手机软件下载 Android智能门户_当乐网"/>
-        <link type="image/x-icon" rel="shortcut icon" href="http://www.d.cn/favicon.ico"/>
-        <meta name="keywords" content="密室怨魂,密室怨魂安卓版下载,House of Grudge" />
-
-        <meta name="description" content="当乐密室怨魂专区，为您提供密室怨魂安卓版下载,攻略、评测、视频、礼包等内容。《密室怨魂 House of Grudge》是2015年即将面世的这款恐怖游戏将让你欲罢不能！解开机关和谜团，揭露神秘房间内隐藏的秘密。每个房间暗藏的秘密，将把你引向唯一的真相！ 你准备好接受挑战、直" />
+        <meta name="keywords" content="<?php echo $d['tag'];?>" />
+        <meta name="description" content="<?php echo $d['desc'];?>" />
         <title><?php echo $d["num"]; ?>_公众号推广平台_小肉粽</title>
         <link rel="canonical" href=""/>
         <?php $c->loadView("front/public/header.php"); ?>
@@ -23,9 +18,9 @@
 
             <p class="bread">
                 <i></i>
-                您的位置：<a href="http://android.d.cn/" title="安卓首页">首页</a><span>&gt;</span>
-                <a href="http://android.d.cn/game/" title="安卓游戏">Android安卓游戏</a><span>&gt;</span>
-                <a href="http://android.d.cn/game/59398.html" title="密室怨魂(含数据包)">密室怨魂(含数据包)</a>
+                您的位置：<a href="<?php echo HOST;?>" title="小肉粽首页">首页</a><span>&gt;</span>
+                <a href="" title="<?php echo $cate["cname"];?>"><?php echo $cate["cname"];?></a><span>&gt;</span>
+                <a href="" title="<?php echo $d['num'];?>"><?php echo $d['num'];?></a>
             </p>
 
             <div class="de-head clearfix no-tag">
@@ -83,17 +78,7 @@
                     </div>
                 </div>
                 <div class="de-head-r">
-                    <div class="de-dimen" id="deDimen">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dimenno.jpg" alt=""/>
-                    </div>
-                    <div class="de-dimen" id="deDimNo">
-                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dimenno.jpg" alt=""/>
-                    </div>
-                    <div class="de-dimen" id="deDimDpk">
-                        <img  src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/dimendpk.jpg" alt=""/>
-                        <p class="ptextcolor">请使用当乐游戏中心扫描下载</p>
-                    </div>
-
+                    
                     <div class="de-score">
                         <?php $r = explode(".", $d['recommend']);?>
                         <span class="de-score-int"><?php echo isset($r[0])? $r[0]: 0;?></span>
@@ -237,13 +222,13 @@
                                 <li class="clear de-game-firm">
                                     <span>商家</span>
 
-                                    <a title="Gameday Inc.安卓游戏大全" target="_blank" href="http://android.d.cn/vendor/gameday_inc.html"><?php echo $d['owner']; ?> </a>
+                                    <a title="<?php echo $d['owner']; ?>" href="javascript:;"><?php echo $d['owner']; ?> </a>
 
                                 </li>
 
                             </ul>
-
-                            <a href="javascript:void(0)" id='jubao' jubaoId="59398" jubaoType="1">一键举报</a>
+<!--
+                            <a href="javascript:void(0)" id='jubao' jubaoId="59398" jubaoType="1">一键举报</a>-->
 
                         </div>
                     </div>
@@ -253,26 +238,27 @@
                             <h2 class="module-tit"><i></i>标签</h2>
                         </div>
                         <div class="de-tag-wrap clear module-tit-r">
-
-                            <a href="http://android.d.cn/search/tag?keyword=%E8%A7%A3%E8%B0%9C" title="解谜" class="de-tag" target="_blank">
-                                <span>解谜</span>
+                            <?php if(!empty($d['tag'])){?>
+                            <?php $tags = explode(",", $d['tag']);?>
+                            <?php foreach($tags as $tag){?>
+                            <?php if(!empty($tag)){?>
+                            <a href="/info/l?tag=<?php echo $tag?>" title="<?php echo $tag?>" class="de-tag" target="_blank">
+                                <span><?php echo $tag;?></span>
                             </a>
-
+                            <?php }?>
+                            <?php }?>
+                            <?php }?>
                         </div>
                     </div>
 
-                    <!--游戏信息 e-->
-                    <!--下载版本 ios b-->
+<!--                    <div class="right-div list-img">
+                        <?php $ads = $c->getAd(102);?>
+                        <?php foreach($ads as $ad){?>
+                        <a href="<?php echo $ad['ad_url'];?>" title="<?php echo $ad['ad_title'];?>" target="_blank"><img src="<?php echo $ad['ad_img'];?>" alt="<?php echo $ad['ad_title'];?>" /></a>
+                        <?php }?>
+                        
+                    </div>-->
 
-                    <div class="module channel channel-ios">
-                        <p class="ch-tit">此游戏同时为你提供了苹果版本</p>
-                        <div class="ch-game">
-                            <p class="ch-name">凶宅怨魂</p>
-                            <a href="http://ios.d.cn/apps/-522693.html" target="_blank" title="凶宅怨魂iPhone版下载" class="ch-btn">下载苹果版</a>
-                        </div>
-                    </div>
-
-                    <!--下载版本 ios e-->
                     <div class="module">
                         <div class="module-head">
                             <h3 class="module-tit">
@@ -296,72 +282,6 @@
                                         </div>
                                     </li>
                                 <?php } ?>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="module">
-                        <div class="module-head">
-                            <h3 class="module-tit"><i></i>猜你喜欢</h3>
-                        </div>
-                        <div class="module-cont">
-                            <ul class="sim-app">
-
-                                <li>
-                                    <a href="http://android.d.cn/game/59097.html" target="_blank" title="逃脱游戏: 咒巢" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/97/59097/icon.png" alt="逃脱游戏: 咒巢"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/59097.html" target="_blank" title="逃脱游戏: 咒巢"  class="de-set-tit">逃脱游戏: 咒巢</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/54638.html" target="_blank" title="即插即用" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img9.android.d.cn/android/new/game_image/38/54638/icon.png" alt="即插即用"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/54638.html" target="_blank" title="即插即用"  class="de-set-tit">即插即用</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/19226.html" target="_blank" title="逃脱本色:门和房间(含数据包)" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/26/19226/icon.png" alt="逃脱本色:门和房间(含数据包)"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/19226.html" target="_blank" title="逃脱本色:门和房间(含数据包)"  class="de-set-tit">逃脱本色:门和房间(含数据包)</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/22853.html" target="_blank" title="灵魂穿越者:柏树女巫的诅咒完整版(含数据包)" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/53/22853/icon.png" alt="灵魂穿越者:柏树女巫的诅咒完整版(含数据包)"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/22853.html" target="_blank" title="灵魂穿越者:柏树女巫的诅咒完整版(含数据包)"  class="de-set-tit">灵魂穿越者:柏树女巫的诅咒完整版(含数据包)</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/49014.html" target="_blank" title="正常的大冒险" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/14/49014/icon.png" alt="正常的大冒险"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/49014.html" target="_blank" title="正常的大冒险"  class="de-set-tit">正常的大冒险</a>
-
-                                    </div>
-                                </li>
-
                             </ul>
                         </div>
                     </div>

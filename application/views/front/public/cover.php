@@ -590,165 +590,22 @@
             <script>
                 $(function(){
                     
-                   $('#tag_slider').kxbdSuperMarquee({distance:160,time:6,direction:'left',btnGo:{left:'#scrollPrev',right:'#scrollNext'}});
+                   $('#tag_slider').kxbdSuperMarquee({distance:160,time:6,direction:'left',btnGo:{left:'#scrollNext',right:'#scrollPrev'}});
                 });
             </script>
             <div class="scroll-cont" id="tag_slider">
                 <ul class="scroll-list" id="">
-                    
+                        <?php $tags = $c->getTag(null,20);?>
+                        <?php foreach($tags as $k => $tv){?>
                         <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%BF%85%E5%A4%87%E6%B8%B8%E6%88%8F" title="必备游戏" target="_blank"
+                            <a href="/info/l?tag=<?php echo $tv["tag"];?>" title="<?php echo $tv["tag"];?>" target="_blank"
                                class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/40/40/icon.jpg" alt="必备游戏"/>
-                                <span class="scroll-name">必备游戏</span>
+                                <img src="<?php echo $tv["tag_img"];?>" o-src="" alt="<?php echo $tv["tag"];?>"/>
+                                <span class="scroll-name"><?php echo $tv["tag"];?></span>
                                 <span class="scroll-cover"></span>
                             </a>
                         </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%BF%85%E5%A4%87%E8%BD%AF%E4%BB%B6" title="必备软件" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/39/39/icon.jpg" alt="必备软件"/>
-                                <span class="scroll-name">必备软件</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E4%B8%8A%E5%8E%95%E6%89%80" title="上厕所" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/38/38/icon.jpg" alt="上厕所"/>
-                                <span class="scroll-name">上厕所</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E8%A7%A3%E8%B0%9C" title="解谜" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/34/34/icon.jpg" alt="解谜"/>
-                                <span class="scroll-name">解谜</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%AF%B9%E6%88%98" title="对战" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/30/30/icon.jpg" alt="对战"/>
-                                <span class="scroll-name">对战</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%B0%8F%E6%B8%85%E6%96%B0" title="小清新" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/28/28/icon.jpg" alt="小清新"/>
-                                <span class="scroll-name">小清新</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E7%94%B5%E5%BD%B1%E6%94%B9%E7%BC%96" title="电影改编" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/27/27/icon.jpg" alt="电影改编"/>
-                                <span class="scroll-name">电影改编</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E9%87%8D%E5%8F%A3%E5%91%B3" title="重口味" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/24/24/icon.jpg" alt="重口味"/>
-                                <span class="scroll-name">重口味</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E9%87%8D%E5%8A%9B%E6%84%9F%E5%BA%94" title="重力感应" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/18/18/icon.jpg" alt="重力感应"/>
-                                <span class="scroll-name">重力感应</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%84%BF%E7%AB%A5" title="儿童" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/17/17/icon.jpg" alt="儿童"/>
-                                <span class="scroll-name">儿童</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=3D" title="3D" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/16/16/icon.jpg" alt="3D"/>
-                                <span class="scroll-name">3D</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=HD%E9%AB%98%E6%B8%85" title="HD高清" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/14/14/icon.jpg" alt="HD高清"/>
-                                <span class="scroll-name">HD高清</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%A4%A7%E5%9E%8B%E6%B8%B8%E6%88%8F" title="大型游戏" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/13/13/icon.jpg" alt="大型游戏"/>
-                                <span class="scroll-name">大型游戏</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%A5%B3%E7%94%9F%E6%9C%80%E7%88%B1" title="女生最爱" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/12/12/icon.jpg" alt="女生最爱"/>
-                                <span class="scroll-name">女生最爱</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E6%B6%88%E7%A3%A8%E6%97%B6%E9%97%B4" title="消磨时间" target="_blank"
-                               class="scroll-icon">
-                                <img src="/style/front/public/ertong.jpg" o-src="//android/cdroid_stable/clienttag/10/10/icon.jpg" alt="消磨时间"/>
-                                <span class="scroll-name">消磨时间</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E5%A1%94%E9%98%B2" title="塔防" target="_blank"
-                               class="scroll-icon">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//android/cdroid_stable/clienttag/8/8/icon.jpg" alt="塔防"/>
-                                <span class="scroll-name">塔防</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
-                        <li class="scroll-item">
-                            <a href="http://android.d.cn/search/tag?keyword=%E7%94%B7%E7%94%9F%E6%9C%80%E7%88%B1" title="男生最爱" target="_blank"
-                               class="scroll-icon">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//android/cdroid_stable/clienttag/6/6/icon.jpg" alt="男生最爱"/>
-                                <span class="scroll-name">男生最爱</span>
-                                <span class="scroll-cover"></span>
-                            </a>
-                        </li>
-                    
+                        <?php }?>
                 </ul>
             </div>
             <a class="scroll-btn scroll-prev" id="scrollPrev" href="javascript:;" title="上一组"></a>

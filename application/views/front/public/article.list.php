@@ -2,21 +2,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="keywords" content="安卓新闻,安卓游戏攻略,安卓游戏评测"/>
-        <meta name="description" content="安卓手机游戏资讯频道提供最新安卓业内新闻、原创安卓游戏攻略、安卓游戏评测、安卓软件教程、安卓新手指南等全方位安卓手机单机游戏新闻资讯"/>
-
-        <meta charset="utf-8"/>
-        <meta name="copyright" content="www.d.cn"/>
-
-
-        <link type="application/rss+xml" href="http://android.d.cn/rss/news.xml" rel="alternate"
-              title="Android手机游戏免费下载 Android手机软件下载 Android智能门户_当乐网"/>
-
-
-        <link type="image/x-icon" rel="shortcut icon" href="http://www.d.cn/favicon.ico"/>
-        <title>
-            全部最新资讯_安卓游戏/软件资讯频道_第1页_当乐网
-        </title>
+        <meta name="keywords" content="<?php echo $cate['ckey']?>"/>
+        <meta name="description" content="<?php echo $cate['cname']?>"/>
+        <title><?php echo $cate['cname']?>_第<?php echo $p;?>页_<?php echo $c->getItem('site_name');?></title>
+        
         <?php $c->loadView("front/public/header.php"); ?>
         <link rel="stylesheet" href="/style/front/public/css/list.css"/>
         <script>

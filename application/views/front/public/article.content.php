@@ -241,7 +241,7 @@
                         </div>
                     </div>
 
-                    <div class="module">
+<!--                    <div class="module">
                         <div class="module-head">
                             <h3 class="module-tit"><i></i>猜你喜欢</h3>
                         </div>
@@ -249,63 +249,19 @@
                             <ul class="sim-app">
 
                                 <li>
-                                    <a href="http://android.d.cn/game/59097.html" target="_blank" title="逃脱游戏: 咒巢" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img4.android.d.cn/android/new/game_image/97/59097/icon.png" alt="逃脱游戏: 咒巢"/>
+                                    <a href="" target="_blank" title="逃脱游戏: 咒巢" class="de-set-icon">
+                                        <img src="" o-src="" alt="逃脱游戏: 咒巢"/>
                                     </a>
                                     <div class="sim-des">
                                         <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/59097.html" target="_blank" title="逃脱游戏: 咒巢"  class="de-set-tit">逃脱游戏: 咒巢</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/54638.html" target="_blank" title="即插即用" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img9.android.d.cn/android/new/game_image/38/54638/icon.png" alt="即插即用"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/54638.html" target="_blank" title="即插即用"  class="de-set-tit">即插即用</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/19226.html" target="_blank" title="逃脱本色:门和房间(含数据包)" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/26/19226/icon.png" alt="逃脱本色:门和房间(含数据包)"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/19226.html" target="_blank" title="逃脱本色:门和房间(含数据包)"  class="de-set-tit">逃脱本色:门和房间(含数据包)</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/22853.html" target="_blank" title="灵魂穿越者:柏树女巫的诅咒完整版(含数据包)" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img3.android.d.cn/android/new/game_image/53/22853/icon.png" alt="灵魂穿越者:柏树女巫的诅咒完整版(含数据包)"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/22853.html" target="_blank" title="灵魂穿越者:柏树女巫的诅咒完整版(含数据包)"  class="de-set-tit">灵魂穿越者:柏树女巫的诅咒完整版(含数据包)</a>
-
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a href="http://android.d.cn/game/49014.html" target="_blank" title="正常的大冒险" class="de-set-icon">
-                                        <img src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/transparent.gif" o-src="http://img1.android.d.cn/android/new/game_image/14/49014/icon.png" alt="正常的大冒险"/>
-                                    </a>
-                                    <div class="sim-des">
-                                        <p class="sim-class">冒险解谜</p>
-                                        <a href="http://android.d.cn/game/49014.html" target="_blank" title="正常的大冒险"  class="de-set-tit">正常的大冒险</a>
+                                        <a href="" target="_blank" title="逃脱游戏: 咒巢"  class="de-set-tit">逃脱游戏: 咒巢</a>
 
                                     </div>
                                 </li>
 
                             </ul>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

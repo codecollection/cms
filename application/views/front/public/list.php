@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link type="application/rss+xml" href="http://android.d.cn/rss/game.xml" rel="alternate"
-              title="Android手机游戏免费下载 Android手机软件下载 Android智能门户_当乐网"/>
-        <meta name="keywords" content="最新安卓游戏,安卓最新游戏"/>
-        <meta name="description" content="最新安卓游戏免费下载_安卓最新游戏_第1页_当乐网"/>
-        <title>最新安卓游戏免费下载_安卓最新游戏_第1页_当乐网</title>
+        <meta name="keywords" content="<?php echo $cate['ckey']?>"/>
+        <meta name="description" content="<?php echo $cate['cname']?>"/>
+        <title><?php echo $cate['cname']?>_第<?php echo $p;?>页_<?php echo $c->getItem('site_name');?></title>
         <?php $c->loadView("front/public/header.php"); ?>
         <link rel="stylesheet" href="/style/front/public/css/list.css"/>
         <script>
@@ -64,8 +62,8 @@
                         <div class="list-in">
                             <div class="list-left">
                                 <a href="<?php echo $v['surl'];?>" target="_blank" class="app-img-out" title="<?php echo $v['num'];?>">
-                                    <i class="iconSprite-2 sign sign-2"></i>
-                                    <img class="app-img" src="<?php echo FILEHOST.$v['logo']; ?>"  o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
+<!--                                    <i class="iconSprite-2 sign sign-2"></i>-->
+                                    <img class="app-img" src="<?php echo FILEHOST.$v['logo']; ?>"  o-src="" alt="<?php echo $v['num'];?>"/>
                                 </a>
 <!--                                <div class="app-v">
                                     <div class="star-bg iconSprite">
@@ -91,7 +89,7 @@
                                         <span class="small"><?php echo isset($r[1])? $r[1]: 1;?></span>
                                     </span>
 
-                                    <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="iconSprite"></a>
+                                    <a href="javascript:;" title="<?php echo $v['num'];?>" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this)" class="iconSprite"></a>
                                 </div>
 
 <!--                                <div class="tem-d">
@@ -130,8 +128,8 @@
                         <div class="list-in">
                             <div class="list-left">
                                 <a href="<?php echo $v['surl'];?>" target="_blank" class="app-img-out" title="<?php echo $v['num'];?>">
-                                    <i class="iconSprite-2 sign sign-1"></i>
-                                    <img class="app-img" src="<?php echo FILEHOST.$v['logo']; ?>"  o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="<?php echo $v['num'];?>"/>
+<!--                                    <i class="iconSprite-2 sign sign-1"></i>-->
+                                    <img class="app-img" src="<?php echo FILEHOST.$v['logo']; ?>"  o-src="" alt="<?php echo $v['num'];?>"/>
                                 </a>
 <!--                                <div class="app-v">
                                     <div class="star-bg iconSprite">
@@ -157,7 +155,7 @@
                                         <span class="small"><?php echo isset($r[1])? $r[1]: 1;?></span>
                                     </span>
 
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="iconSprite " onclick="Coll.coll(this, 1, 14009);"></a>
+                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="iconSprite " onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
                                 </div>
 
 <!--                                <div class="tem-d">

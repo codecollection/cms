@@ -16,6 +16,7 @@ class Info extends CBase {
         
         $cid = $this->getData('cid');
         $this->setData("cid", $cid);
+        $this->setData('keyword', "");
     }
 
     /**
@@ -35,6 +36,8 @@ class Info extends CBase {
         $cid = $this->getData('cid');
         $p = $this->getData('p');
         $tag = $this->getData("tag");
+        $keyword = $this->getData("keyword");  
+        
         if(empty($cid)){$cid = 1;}
         $this->cid = $cid;
         
@@ -55,6 +58,8 @@ class Info extends CBase {
         
         $this->setData("cid", $cid);
         $this->setData("cate", $cateData);
+        $this->setData('p', $p);
+        $this->setData('keyword', $keyword);
         
         $this->renderHTMLView($tplList);
     }
@@ -86,7 +91,8 @@ class Info extends CBase {
         $lists['pagecode'] = $this->getPageHtml("/info/s?" . http_build_query($param), $lists['count'],$pagesize);
         
         $this->setData("list", $lists);
-
+        $this->setData('keyword', $tag);
+        
         $tplList = "search.list.php";
         
         $this->renderHTMLView($tplList);
@@ -112,6 +118,7 @@ class Info extends CBase {
         $this->info->numField = "visitors";
         $this->info->updateNum($id);
         
+        $this->setData('cate', $cate);
         $this->setData("d", $d);
         
         $this->renderHTMLView($tpl);

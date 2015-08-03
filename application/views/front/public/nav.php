@@ -16,7 +16,7 @@
                 <div class="search-wrap">
                     <i></i>
                     <div class="search-txt">
-                        <input id="key" class="txt" type="text" maxlength="30" name="keyword" autocomplete="off"  />     
+                        <input id="key" class="txt" type="text" maxlength="30" value="<?php echo isset($keyword) ? $keyword : "";?>" name="keyword" autocomplete="off"  />     
                     </div>
                 </div>
                 <div class="search-btn">
