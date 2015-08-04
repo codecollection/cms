@@ -13,7 +13,7 @@
     <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE?>/css/navtop.css" rel="stylesheet" type="text/css"/>
     <script>
         $(function() {
-            $("img").lazyload({effect : "fadeIn","threshold":200});
+            $(".lazy-img>img").lazyload({effect : "fadeIn","threshold":200});
    
             $("ul.mod-list").on("hover","li",function(){$(this).toggleClass("hover");});
             $("ul.mod-coming").on("mouseover","li",function(){$(this).addClass("curr").siblings().removeClass("curr");});

@@ -820,6 +820,11 @@ class MBase extends CI_Model{
      */
     public function getAll(){
         $this->orderBy($this->pk . " ASC");
+        
+        if(!empty($this->order)){
+            $this->orderBy($this->order . " ASC, " . $this->pk . " DESC");
+        }
+        
         return $this->search(FALSE);
     }
     

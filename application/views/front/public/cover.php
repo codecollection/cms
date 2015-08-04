@@ -51,7 +51,7 @@
         <div class="mod-cont mod-first">
             <?php foreach($area['list'] as $k => $v){?>
                 <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="mod-first-icon">
-                    <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>">
+                    <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>"  alt="<?php echo $v['num'];?>">
                 </a>
                 <div class="mod-first-des clearfix">
                     <a class="mod-first-tit" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
@@ -103,14 +103,14 @@
                 <?php if($k == 0){?>
                 <div class="mod-thumb-b">
                     <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img"><!--style="top:-140px;"-->
-                        <img src="/style/front/public/1436944714893B6dq.jpg" o-src="//new/smtpfbackend/new/pageadv/201507/1435829845793OVl0.jpg" alt="<?php echo $v['num'];?>"/>
+                        <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                     <div class="mod-cover"></div>
                     <div class="thumb-des-b">
                         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
                             <i></i>
-                            <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/60/59560/icon.png" alt="<?php echo $v['num'];?>"/>
+                            <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                         </a>
                         <div class="thumb-tips">
                             <p class="tips">
@@ -141,7 +141,7 @@
                         <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img7.android.d.cn/android/new/game_image/0/59100/icon.png" alt="<?php echo $v['num'];?>"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="number">
@@ -175,7 +175,7 @@
                         <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                         <div class="mode-app">
                             <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="mode-app-des">
                                 <p class="number">
@@ -213,7 +213,7 @@
             <li class="<?php echo $k == 0 ? "curr" : "";?>">                
                 <div class="coming">        
                     <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" class="coming-icon" target="_blank">            
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="//new/smtpfbackend/new/pageadv/201507/1435806849169xb0u.jpg" alt="<?php echo $v['num'];?>" />        
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>" />        
                     </a>        
                     <div class="coming-des">            
                         <a class="coming-tit" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>            
@@ -235,7 +235,7 @@
 <div class="layout">
 <div class="mod-box">
 <div class="mod-head">
-    <h2 class="cap-game"><a href="http://android.d.cn/game/1/" title="安卓最新游戏" target="_blank">最新公众号</a></h2>
+    <h2 class="cap-game"><a href="" title="安卓最新游戏" target="_blank">最新公众号</a></h2>
     <ul class="mod-nav">
         <li class="curr"><a href="javascript:;" title="安卓最新游戏">最新</a></li>
         <li><a href="javascript:;" title="安卓最热游戏">最热</a></li>
@@ -261,14 +261,14 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
+                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -301,7 +301,85 @@
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                 <div class="mode-app">
                     <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
+                    </a>
+                    <div class="mode-app-des">
+                        <p class="number">
+                            <em><?php echo $v['owner'];?></em>
+                        </p>
+                        <p class="time">
+                            <?php echo date("m-d",$v['cdate']);?>
+                            <span class="sep">|</span>
+                                <?php echo $c->type[$v['type']];?>
+                        </p>
+                        <p class="star-wrap">
+                            <span class="star star-grey">
+                                <span class="star star-light stars-4"></span>
+                            </span>
+                        </p>
+                        <div class="mode-app-func">
+                            <div class="mod-coll">
+                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
+                                <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
+                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <?php }?>
+    <?php }?>          
+    </ul> 
+</div>
+<?php $list = $c->getList(1,7);?>    
+<div class="mod-cont hide">
+    <?php foreach($list['list'] as $k => $v){?>
+    <?php if($k == 0){ ?>
+    <div class="mod-thumb-b">
+        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
+            <img src="<?php echo $v['img_url']?>" class="lazy-img" alt="<?php echo $v['num'];?>"/>
+        </a>
+        <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
+        <div class="mod-cover"></div>
+        <div class="thumb-des-b">
+            <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
+                <i></i>
+                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>"  alt="<?php echo $v['num'];?>"/>
+            </a>
+            <div class="thumb-tips">
+                <p class="tips">
+                    <span><em><?php echo $v['owner'];?></em></span>
+                    <span class="time"><?php echo date("m-d",$v['cdate']);?></span>
+                    <span class="sep">|</span><?php echo $c->type[$v['type']];?>
+                </p>
+                <span class="star star-grey">
+                    <span class="star star-light stars-4"></span>
+                </span>
+                
+                    <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59398)">立即查看</a>
+                  
+            </div>
+            <div class="thumb-b-func">
+                
+                    <div class="b-score">
+                        <span class="score">7<span>.5</span></span>
+                    </div>
+                
+                <a class="b-coll-love " href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
+            </div>
+            <i class="thumb-tri"></i>
+        </div>
+    </div>
+    <ul class="mod-game mod-list clearfix">
+    <?php }else{?>
+        <li>
+            <div class="mode-app-wrap">
+                <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
+                <div class="mode-app">
+                    <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
                         <p class="number">
@@ -346,85 +424,7 @@
         <div class="thumb-des-b">
             <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
-            </a>
-            <div class="thumb-tips">
-                <p class="tips">
-                    <span><em><?php echo $v['owner'];?></em></span>
-                    <span class="time"><?php echo date("m-d",$v['cdate']);?></span>
-                    <span class="sep">|</span><?php echo $c->type[$v['type']];?>
-                </p>
-                <span class="star star-grey">
-                    <span class="star star-light stars-4"></span>
-                </span>
-                
-                    <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59398)">立即查看</a>
-                  
-            </div>
-            <div class="thumb-b-func">
-                
-                    <div class="b-score">
-                        <span class="score">7<span>.5</span></span>
-                    </div>
-                
-                <a class="b-coll-love " href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-            </div>
-            <i class="thumb-tri"></i>
-        </div>
-    </div>
-    <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
-        <li>
-            <div class="mode-app-wrap">
-                <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
-                <div class="mode-app">
-                    <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
-                    </a>
-                    <div class="mode-app-des">
-                        <p class="number">
-                            <em><?php echo $v['owner'];?></em>
-                        </p>
-                        <p class="time">
-                            <?php echo date("m-d",$v['cdate']);?>
-                            <span class="sep">|</span>
-                                <?php echo $c->type[$v['type']];?>
-                        </p>
-                        <p class="star-wrap">
-                            <span class="star star-grey">
-                                <span class="star star-light stars-4"></span>
-                            </span>
-                        </p>
-                        <div class="mode-app-func">
-                            <div class="mod-coll">
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
-                                <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <?php }?>
-    <?php }?>          
-    </ul> 
-</div>
-<?php $list = $c->getList(1,7);?>    
-<div class="mod-cont hide">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
-    <div class="mod-thumb-b">
-        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
-        </a>
-        <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
-        <div class="mod-cover"></div>
-        <div class="thumb-des-b">
-            <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
-                <i></i>
-                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
+                <img  class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>"alt="<?php echo $v['num'];?>"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -458,7 +458,7 @@
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                 <div class="mode-app">
                     <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
                         <p class="number">
@@ -507,7 +507,7 @@
                 <li>
                     <div class="mode-app-wrap">
                         <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                            <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="<?php echo $v['num'];?>">
+                            <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>">
                         </a>
                         <div class="mode-app-des">
                             <a class="mode-app-name" href="<?php echo $v['surl'];?>" target="_blank" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
@@ -551,7 +551,7 @@
                         <li>
                             <div class="mode-app-wrap">
                                 <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                    <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/9/14009/icon.png" alt="<?php echo $v['num'];?>">
+                                    <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>">
                                 </a>
                                 <div class="mode-app-des">
                                     <a class="mode-app-name" href="<?php echo $v['surl'];?>" target="_blank" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
@@ -643,14 +643,14 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
+                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -684,7 +684,7 @@
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                 <div class="mode-app">
                     <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
                         <p class="number">
@@ -722,14 +722,14 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
+                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -763,7 +763,7 @@
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                 <div class="mode-app">
                     <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
                         <p class="number">
@@ -801,14 +801,14 @@
     <?php if($k == 0){ ?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
+            <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
         </a>
         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
         <div class="mod-cover"></div>
         <div class="thumb-des-b">
             <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
                 <i></i>
-                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img8.android.d.cn/android/new/game_image/98/59398/icon.png" alt="<?php echo $v['num'];?>"/>
+                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
             </a>
             <div class="thumb-tips">
                 <p class="tips">
@@ -842,7 +842,7 @@
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
                 <div class="mode-app">
                     <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img5.android.d.cn/android/new/game_image/64/57964/icon.png" alt="<?php echo $v['num'];?>"/>
+                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                     </a>
                     <div class="mode-app-des">
                         <p class="number">
@@ -901,14 +901,14 @@
                      <?php if ($k == 0){?>
                     <li class="mod-thumb-b">
                         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['title'];?>" target="_blank" class="thumb-b-img">
-                            <img src="<?php echo FILEHOST.$v['img_url']; ?>" o-src="//new/smtpfbackend/new/news/201507/1435731486808MCs7.jpg" alt="<?php echo $v['title'];?>"/>
+                            <img src="<?php echo FILEHOST.$v['img_url']; ?>"  alt="<?php echo $v['title'];?>"/>
                         </a>
                         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="《<?php echo $v['title'];?>" target="_blank"><?php echo $v['title'];?></a>
                         <div class="mod-cover"></div>
                         <div class="thumb-des-wrap">
                             <div class="thumb-des">
                                 <em></em>
-                                <a href="<?php echo $v['surl'];?>" title="《深空传说》评测：动作与解谜的完美结合" target="_blank" class="thumb-des-txt"><?php echo $v['desc'];?>...</a>
+                                <a href="<?php echo $v['surl'];?>" title="<?php echo $v['title'];?>" target="_blank" class="thumb-des-txt"><?php echo $v['desc'];?>...</a>
                                 
                             </div>
                         </div>
@@ -916,7 +916,7 @@
                     <?php }else{?>
                     <li class="mod-thumb">
                         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['title'];?>" target="_blank" class="thumb-img">
-                            <img src="<?php echo FILEHOST.$v['img_url']; ?>" o-src="http://img.news.d.cn//Upload/Image/2015070415505444457276.jpg" alt="<?php echo $v['title'];?>"/>
+                            <img src="<?php echo FILEHOST.$v['img_url']; ?>" alt="<?php echo $v['title'];?>"/>
                         </a>
                         <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['title'];?>" target="_blank"><?php echo $v['title'];?></a>
                         <div class="mod-cover"></div>
@@ -971,7 +971,7 @@
                                 <?php echo $k + 1;?>
                             </em>
                             <a class="rank-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/68/4568/icon.png" alt="<?php echo $v['num'];?>"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="rank-info">
                                 <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
@@ -1009,7 +1009,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>
                             <a class="rank-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img.d.cn/netgame/hdlogo/1724_1434678455918_qP8lXkXt.png" alt="<?php echo $v['num'];?>"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="rank-info">
                                 <a href="<?php echo $v['surl'];?>" title="天龙八部3D" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
@@ -1047,7 +1047,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>
                             <a class="rank-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/74/374/icon.png" alt="当乐游戏中心"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/74/374/icon.png" alt="当乐游戏中心"/>
                             </a>
                             <div class="rank-info">
                                 <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
@@ -1085,7 +1085,7 @@
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>
                             <a class="rank-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" o-src="" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="rank-info">
                                 <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
