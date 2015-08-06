@@ -8,7 +8,7 @@
     <div class="header clearfix">
         <div class="logo">
             <a title="微信公众推广平台" href="<?php echo HOST;?>">
-                <img src="/style/front/public/logo.png" alt="小肉粽微信公众推广平台"/>
+                <img src="/style/front/public/images/logo.png" alt="小肉粽微信公众推广平台" style="width:300px;height: 55px;" />
             </a>
         </div>
         <div class="form clearfix">

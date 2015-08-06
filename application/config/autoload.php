@@ -60,7 +60,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
-$autoload['libraries'] = array('database','Admin','Rkit','NavPanel','pagination','Vars','RConfig');
+$autoload['libraries'] = array('database','Admin','RKit','NavPanel','pagination','Vars','RConfig');
 
 
 /*

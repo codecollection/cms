@@ -189,7 +189,7 @@ class Info extends CBase {
         $this->info->where("last_cate_id in ($ids)");
         
         $this->info->page($p, $pagesize);
-        
+        //$this->info->orderBy("{$this->info->order} ASC," . $this->modelName."_id" . " DESC");
         $lists = $this->info->search();
         
         $lists['list'] = $this->info->insertUrl($lists['list'],$modelId);
