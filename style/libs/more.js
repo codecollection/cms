@@ -34,7 +34,7 @@ function doLogin(){
             var json = $.evalJSON(data);
             
             if(json.status == 0) {
-               window.location.href='/user/home';
+               window.location.href='/user/pub';
             }else{
                 if(json.status == 10) {$("#user_pass").val('');}
                 C.alert.alert({'content':json.msg});

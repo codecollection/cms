@@ -19,7 +19,7 @@ class User_model extends MBase{
         'uname' => '登录名称',
     );
     
-    protected $unique = array("uanme");
+    protected $unique = array("uname");
             
     protected $status = "ustate";
     
@@ -41,10 +41,10 @@ class User_model extends MBase{
      * 处理密码
      */
     private function checkPass(){
-        $this->apass = trim($this->apass);
+        $this->apass = trim($this->upass);
             
-        if(!empty($this->apass)){
-            $this->apass = $this->admin->makePwd($this->aname,$this->apass);
+        if(!empty($this->upass)){
+            $this->upass = $this->u->makePwd($this->uname,$this->upass);
         }else{
             unset($this->apass);
         }

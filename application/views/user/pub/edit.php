@@ -68,7 +68,7 @@
         </tr>
          <tr>
             <td class="fr"><span class="fred"> </span>地址：</td>
-            <td><textarea id="public_add" name="data[public_add]"><?php echo $data["public_add"];?></textarea></td>;
+            <td><textarea id="public_add" name="data[public_add]"><?php echo $data["public_add"];?></textarea></td>
         </tr>
         <tr>
             <td class="fr">语言：</td>

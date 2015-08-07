@@ -26,7 +26,7 @@ class User extends CAdminBase {
        parent::__construct();
        
        //加载用户组
-       $this->loadModel("ag");
+       $this->loadModel("userg");
        
     }
 
@@ -67,9 +67,9 @@ class User extends CAdminBase {
     
     private function setGroupField(){
         
-        $groups = $this->ag->getAll();
+        $groups = $this->userg->getAll();
         
-        $gf = $this->ag->changeField($groups);
+        $gf = $this->userg->changeField($groups);
         
         array_unshift($gf, array('value'=>0,"txt"=>"选择管理组","txt_color"=>""));
         
