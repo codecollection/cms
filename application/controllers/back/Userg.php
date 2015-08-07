@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Userg extends CAdminBase {
 
-    public $controllerId = "ug";
+    public $controllerId = "userg";
     
     public $topLevel = "B";
     

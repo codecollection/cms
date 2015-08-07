@@ -27,7 +27,7 @@ class MBase extends CI_Model{
     /*
      * 排序字段
      */
-    protected $order = "corder";
+    protected $order = "";
     
     
     /**

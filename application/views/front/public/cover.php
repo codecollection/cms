@@ -67,13 +67,13 @@
             <?php }?>
         </div>
         <div class="dl-good">
-            <h3><i></i>当乐<em>APP</em><span>公众号玩家必知</span></h3>
+            <h3><i></i>小肉粽<em></em><span>公众号玩家必知</span></h3>
             <ul class="dl-good-list clearfix">
-                <li class="good-first">    <a href="" title="当乐游戏中心" class="good-link" target="_blank"><img src="/style/front/public/image/anzhuologo.png" o-src="//new/smtpfbackend/new/pageadv/201406/1402293766893Q0nL.png" alt="当乐游戏中心" /><span>当乐游戏中心</span>    </a>
+                <li class="good-first">    <a href="" title="小肉粽推广平台" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" alt="小肉粽推广平台" /><span>小肉粽推广平台</span>    </a>
                 </li>
-                <li>    <a href="" title="游戏中心PC版" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" o-src="//new/smtpfbackend/new/pageadv/201406/1403753152724Dx0t.png" alt="游戏中心PC版" /><span>游戏中心PC版</span>    </a>
+                <li>    <a href="https://mp.weixin.qq.com" rel="nofollow" title="微信公众平台" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" alt="微信公众平台" /><span></span> 微信·公众平台   </a>
                 </li>
-                <li class="good-last">    <a href="" title="当乐网游中心" class="good-link" target="_blank"><img src="/style/front/public/image/dangle.png" o-src="//new/smtpfbackend/new/pageadv/201406/1403753153667wNG5.png" alt="当乐网游中心" /><span>当乐网游中心</span>    </a>
+                <li class="good-last">    <a href="" title="上海不倒翁科技" class="good-link" target="_blank"><img src="/style/front/public/image/dangle.png" alt="上海不倒翁科技" /><span></span>   上海不倒翁科技 </a>
                 </li>
             </ul>
         </div>

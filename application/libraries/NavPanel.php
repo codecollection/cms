@@ -90,7 +90,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'用户列表',
-                    'url' => '/back/account',
+                    'url' => '/back/user',
                     'level' => 'B05', 
                     'menu' => array(
                         array('title' => '增改用户', 'level' => 'B0201'),
