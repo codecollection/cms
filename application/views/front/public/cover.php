@@ -83,9 +83,8 @@
 <!--第二层 begin-->
 <div class="layout">
     <div class="mod-box layout-l">
-        <?php $area = $c->getArea(2);?>
         <div class="mod-head">
-            <h2 class="cap-recom"><?php echo $area["title"];?></h2>
+            <h2 class="cap-recom">推荐优质公众号</h2>
 <!--            <p class="mod-class">        
                 <a href="/vendor/836e0443c6127ce8aa1a34cca6ef62e3.html" title="EA游戏" target="_blank">EA</a>        
                 <span class="mod-class-sep"></span>        
@@ -99,6 +98,7 @@
             </p>  -->
         </div>
         <div class="mod-cont">
+            <?php $area = $c->getArea(14);?>
             <?php foreach($area['list'] as $k => $v){?>
                 <?php if($k == 0){?>
                 <div class="mod-thumb-b">
@@ -135,7 +135,11 @@
                     </div>
                 </div>
             <ul class="mod-recom mod-list clearfix" style="_float:left; _width: 425px;">
-                <?php }else if($k < 5 && $k > 0 ){?>
+                <?php }?>
+                <?php }?>
+                <?php $area = $c->getArea(2);?>
+                <?php foreach($area['list'] as $k => $v){?>
+                <?php if($k < 4 ){?>
                 <li class="">
                     <div class="mode-app-wrap">
                         <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
@@ -166,7 +170,7 @@
                     </div>
                 </li>
                 <?php }else{?>
-                <?php if($k == 5){?>
+                <?php if($k == 4){?>
                 </ul>
                 <ul class="mod-recom mod-list clearfix">
                 <?php }?>
@@ -231,17 +235,17 @@
     </div>
 </div>
 <!--第二层 end-->
-<!--最新安卓游戏 begin-->
+<!--最新公众号 begin-->
 <div class="layout">
 <div class="mod-box">
 <div class="mod-head">
-    <h2 class="cap-game"><a href="" title="安卓最新游戏" target="_blank">最新公众号</a></h2>
-    <ul class="mod-nav">
+    <h2 class="cap-game"><a href="" title="最新公众号" target="_blank">最新公众号</a></h2>
+<!--    <ul class="mod-nav">
         <li class="curr"><a href="javascript:;" title="安卓最新游戏">最新</a></li>
         <li><a href="javascript:;" title="安卓最热游戏">最热</a></li>
         <li><a href="javascript:;" title="安卓五星游戏">五星</a></li>
-    </ul>
-    <a class="mod-more" href="" title="安卓游戏" target="_blank">更多</a>
+    </ul>-->
+    <a class="mod-more" href="" title="最新公众号" target="_blank">更多</a>
 <!--    <p class="mod-class">
         <a href="" title="安卓角色扮演" target="_blank">角色扮演</a>
         <span class="mod-class-sep"></span>
@@ -254,11 +258,11 @@
         <a href="" title="安卓益智休闲" target="_blank">益智休闲</a>
     </p>-->
 </div>
-    
-<?php $list = $c->getList(1,7);?>    
+        
 <div class="mod-cont">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
+    <?php $area = $c->getArea(16);?>
+    <?php foreach($area['list'] as $k => $v){?>
+    <?php if($k == 0){?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
             <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
@@ -295,7 +299,10 @@
         </div>
     </div>
     <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
+    <?php }?>
+        <?php }?>
+        <?php $area = $c->getArea(15);?>
+        <?php foreach($area['list'] as $k => $v){?>
         <li>
             <div class="mode-app-wrap">
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
@@ -329,167 +336,11 @@
                 </div>
             </div>
         </li>
-        <?php }?>
     <?php }?>          
     </ul> 
 </div>
-<?php $list = $c->getList(1,7);?>    
-<div class="mod-cont hide">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
-    <div class="mod-thumb-b">
-        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="<?php echo $v['img_url']?>" class="lazy-img" alt="<?php echo $v['num'];?>"/>
-        </a>
-        <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
-        <div class="mod-cover"></div>
-        <div class="thumb-des-b">
-            <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
-                <i></i>
-                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>"  alt="<?php echo $v['num'];?>"/>
-            </a>
-            <div class="thumb-tips">
-                <p class="tips">
-                    <span><em><?php echo $v['owner'];?></em></span>
-                    <span class="time"><?php echo date("m-d",$v['cdate']);?></span>
-                    <span class="sep">|</span><?php echo $c->type[$v['type']];?>
-                </p>
-                <span class="star star-grey">
-                    <span class="star star-light stars-4"></span>
-                </span>
-                
-                    <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59398)">立即查看</a>
-                  
-            </div>
-            <div class="thumb-b-func">
-                
-                    <div class="b-score">
-                        <span class="score">7<span>.5</span></span>
-                    </div>
-                
-                <a class="b-coll-love " href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-            </div>
-            <i class="thumb-tri"></i>
-        </div>
-    </div>
-    <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
-        <li>
-            <div class="mode-app-wrap">
-                <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
-                <div class="mode-app">
-                    <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
-                    </a>
-                    <div class="mode-app-des">
-                        <p class="number">
-                            <em><?php echo $v['owner'];?></em>
-                        </p>
-                        <p class="time">
-                            <?php echo date("m-d",$v['cdate']);?>
-                            <span class="sep">|</span>
-                                <?php echo $c->type[$v['type']];?>
-                        </p>
-                        <p class="star-wrap">
-                            <span class="star star-grey">
-                                <span class="star star-light stars-4"></span>
-                            </span>
-                        </p>
-                        <div class="mode-app-func">
-                            <div class="mod-coll">
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
-                                <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <?php }?>
-    <?php }?>          
-    </ul> 
-</div>
-<?php $list = $c->getList(1,7);?>    
-<div class="mod-cont hide">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
-    <div class="mod-thumb-b">
-        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="/style/front/public/anzuo1.jpg" o-src="//new/smtpfbackend/new/news/201506/14356300447063Uxk.png" alt="<?php echo $v['num'];?>"/>
-        </a>
-        <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
-        <div class="mod-cover"></div>
-        <div class="thumb-des-b">
-            <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
-                <i></i>
-                <img  class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>"alt="<?php echo $v['num'];?>"/>
-            </a>
-            <div class="thumb-tips">
-                <p class="tips">
-                    <span><em><?php echo $v['owner'];?></em></span>
-                    <span class="time"><?php echo date("m-d",$v['cdate']);?></span>
-                    <span class="sep">|</span><?php echo $c->type[$v['type']];?>
-                </p>
-                <span class="star star-grey">
-                    <span class="star star-light stars-4"></span>
-                </span>
-                
-                    <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59398)">立即查看</a>
-                  
-            </div>
-            <div class="thumb-b-func">
-                
-                    <div class="b-score">
-                        <span class="score">7<span>.5</span></span>
-                    </div>
-                
-                <a class="b-coll-love "
-                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-            </div>
-            <i class="thumb-tri"></i>
-        </div>
-    </div>
-    <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
-        <li>
-            <div class="mode-app-wrap">
-                <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
-                <div class="mode-app">
-                    <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
-                    </a>
-                    <div class="mode-app-des">
-                        <p class="number">
-                            <em><?php echo $v['owner'];?></em>
-                        </p>
-                        <p class="time">
-                            <?php echo date("m-d",$v['cdate']);?>
-                            <span class="sep">|</span>
-                                <?php echo $c->type[$v['type']];?>
-                        </p>
-                        <p class="star-wrap">
-                            <span class="star star-grey">
-                                <span class="star star-light stars-4"></span>
-                            </span>
-                        </p>
-                        <div class="mode-app-func">
-                            <div class="mod-coll">
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
-                                <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <?php }?>
-    <?php }?>          
-    </ul> 
-</div>
 </div>
 </div>
 <!--最新安卓游戏 end-->
@@ -614,17 +465,17 @@
     </div>
 </div>
 <!--蛋疼的轮播 end-->
-<!--最新安卓软件 begin-->
+<!--技能get公众号专区 begin-->
 <div class="layout">
 <div class="mod-box">
 <div class="mod-head">
-    <h2 class="cap-soft"><a href="http://android.d.cn/software/1/" title="安卓最新软件" target="_blank">技能get公众号专区</a></h2>
-    <ul class="mod-nav">
+    <h2 class="cap-soft"><a href="" title="热门推荐专区" target="_blank">热门推荐专区</a></h2>
+<!--    <ul class="mod-nav">
         <li class="curr"><a href="javascript:;" title="安卓最新软件">最新</a></li>
         <li><a href="javascript:;" title="安卓最热软件">最热</a></li>
         <li><a href="javascript:;" title="安卓五星软件">五星</a></li>
-    </ul>
-    <a class="mod-more" href="" title="安卓最新软件" target="_blank">更多</a>
+    </ul>-->
+    <a class="mod-more" href="" title="热门推荐专区" target="_blank">更多</a>
 <!--    <p class="mod-class">
         <a href="" title="安卓通讯增强" target="_blank">通讯增强</a>
         <span class="mod-class-sep"></span>
@@ -637,10 +488,10 @@
         <a href="" title="安卓音乐播放" target="_blank">音乐播放</a>
     </p>-->
 </div>
-<?php $list = $c->getList(1,7);?>    
 <div class="mod-cont">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
+    <?php $area = $c->getArea(18);?>
+    <?php foreach($area['list'] as $k => $v){?>
+    <?php if($k == 0){?>
     <div class="mod-thumb-b">
         <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
             <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
@@ -678,7 +529,10 @@
         </div>
     </div>
     <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
+    <?php }?>
+    <?php }?>
+    <?php $area = $c->getArea(17);?>
+    <?php foreach($area['list'] as $k => $v){?>
         <li>
             <div class="mode-app-wrap">
                 <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
@@ -712,172 +566,14 @@
                 </div>
             </div>
         </li>
-        <?php }?>
     <?php }?>          
     </ul> 
 </div>
-<?php $list = $c->getList(1,7);?>    
-<div class="mod-cont hide">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
-    <div class="mod-thumb-b">
-        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
-        </a>
-        <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
-        <div class="mod-cover"></div>
-        <div class="thumb-des-b">
-            <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
-                <i></i>
-                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
-            </a>
-            <div class="thumb-tips">
-                <p class="tips">
-                    <span><em><?php echo $v['owner'];?></em></span>
-                    <span class="time"><?php echo date("m-d",$v['cdate']);?></span>
-                    <span class="sep">|</span><?php echo $c->type[$v['type']];?>
-                </p>
-                <span class="star star-grey">
-                    <span class="star star-light stars-4"></span>
-                </span>
-                
-                    <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59398)">立即查看</a>
-                  
-            </div>
-            <div class="thumb-b-func">
-                
-                    <div class="b-score">
-                        <span class="score">7<span>.5</span></span>
-                    </div>
-                
-                <a class="b-coll-love "
-                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-            </div>
-            <i class="thumb-tri"></i>
-        </div>
-    </div>
-    <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
-        <li>
-            <div class="mode-app-wrap">
-                <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
-                <div class="mode-app">
-                    <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
-                    </a>
-                    <div class="mode-app-des">
-                        <p class="number">
-                            <em><?php echo $v['owner'];?></em>
-                        </p>
-                        <p class="time">
-                            <?php echo date("m-d",$v['cdate']);?>
-                            <span class="sep">|</span>
-                                <?php echo $c->type[$v['type']];?>
-                        </p>
-                        <p class="star-wrap">
-                            <span class="star star-grey">
-                                <span class="star star-light stars-4"></span>
-                            </span>
-                        </p>
-                        <div class="mode-app-func">
-                            <div class="mod-coll">
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
-                                <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <?php }?>
-    <?php }?>          
-    </ul> 
-</div>
-<?php $list = $c->getList(1,7);?>    
-<div class="mod-cont hide">
-    <?php foreach($list['list'] as $k => $v){?>
-    <?php if($k == 0){ ?>
-    <div class="mod-thumb-b">
-        <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-b-img">
-            <img src="<?php echo $v['img_url'];?>" o-src="" alt="<?php echo $v['num'];?>"/>
-        </a>
-        <a class="thumb-app" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>"><?php echo $v['num'];?></a>
-        <div class="mod-cover"></div>
-        <div class="thumb-des-b">
-            <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="thumb-app-icon">
-                <i></i>
-                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
-            </a>
-            <div class="thumb-tips">
-                <p class="tips">
-                    <span><em><?php echo $v['owner'];?></em></span>
-                    <span class="time"><?php echo date("m-d",$v['cdate']);?></span>
-                    <span class="sep">|</span><?php echo $c->type[$v['type']];?>
-                </p>
-                <span class="star star-grey">
-                    <span class="star star-light stars-4"></span>
-                </span>
-                
-                    <a class="thumb-down" href="javascript:;" title="<?php echo $v['num'];?>" onclick="Adapt.adaptDown(this,1,59398)">立即查看</a>
-                  
-            </div>
-            <div class="thumb-b-func">
-                
-                    <div class="b-score">
-                        <span class="score">7<span>.5</span></span>
-                    </div>
-                
-                <a class="b-coll-love "
-                   href="javascript:;" onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-            </div>
-            <i class="thumb-tri"></i>
-        </div>
-    </div>
-    <ul class="mod-game mod-list clearfix">
-    <?php }else{?>
-        <li>
-            <div class="mode-app-wrap">
-                <a class="mode-app-name" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank"><?php echo $v['num'];?></a>
-                <div class="mode-app">
-                    <a class="mode-app-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                        <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
-                    </a>
-                    <div class="mode-app-des">
-                        <p class="number">
-                            <em><?php echo $v['owner'];?></em>
-                        </p>
-                        <p class="time">
-                            <?php echo date("m-d",$v['cdate']);?>
-                            <span class="sep">|</span>
-                                <?php echo $c->type[$v['type']];?>
-                        </p>
-                        <p class="star-wrap">
-                            <span class="star star-grey">
-                                <span class="star star-light stars-4"></span>
-                            </span>
-                        </p>
-                        <div class="mode-app-func">
-                            <div class="mod-coll">
-                                    <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-down" onclick="Adapt.adaptDown(this,1,57964)"></a>
-                                <a href="javascript:;" title="<?php echo $v['num'];?>" class="coll-btn coll-love "
-                                   onclick="Action.doLike(<?php echo $v['cms_public_id'] ?>,<?php echo $v['model_id'] ?>,this);"></a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <?php }?>
-    <?php }?>          
-    </ul> 
-</div>
 </div>
 </div>
 <!--最新安卓软件 end-->
-<!--安卓资讯 begin-->
+<!--公众号资讯 begin-->
 <div class="layout">
     <div class="mod-box">
         <div class="mod-head">
@@ -960,11 +656,11 @@
     <div class="mod-box">
         <div class="mod-cont clearfix">
             <div class="rank-wrap rank-single">
-                <h3><a href="http://android.d.cn/paihangbang" title="单机排行榜" target="_blank" ><em>喜欢</em>排行榜</a></h3>
+                <h3><a href="" title="喜欢排行榜" target="_blank" ><em>喜欢</em>排行榜</a></h3>
                 
                     <ul class="rank-cont">
-                        <?php $list = $c->getList(1,10);?>  
-                        <?php foreach($list['list'] as $k => $v){?>
+                        <?php $area = $c->getArea(19);?>
+                        <?php foreach($area['list'] as $k => $v){?>
                         <?php if($k < 3){?>
                         <li class="rank-item rank-front">
                             <em class="rank-num">
@@ -1000,11 +696,11 @@
                     </ul>
             </div>
             <div class="rank-wrap rank-net">
-                <h3><a href="http://android.d.cn/paihangbang" title="网游排行榜" target="_blank" ><em>热度</em>排行榜</a></h3>
+                <h3><a href="" title="热度排行榜" target="_blank" ><em>热度</em>排行榜</a></h3>
                 
                     <ul class="rank-cont">
-                    <?php $list = $c->getList(1,10);?>  
-                        <?php foreach($list['list'] as $k => $v){?>
+                    <?php $area = $c->getArea(21);?>
+                        <?php foreach($area['list'] as $k => $v){?>
                         <?php if($k < 3){?>
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>
@@ -1012,7 +708,7 @@
                                 <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="rank-info">
-                                <a href="<?php echo $v['surl'];?>" title="天龙八部3D" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
+                                <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
                                 <p class="rank-star clearfix">
                                 <span class="star star-grey">
                                     <span class="star star-light stars-"></span>
@@ -1038,16 +734,16 @@
                     </ul>
             </div>
             <div class="rank-wrap rank-soft">
-                <h3><a href="http://android.d.cn/paihangbang" title="软件排行榜" target="_blank"><em>高分</em>排行榜</a></h3>
+                <h3><a href="" title="高分排行榜" target="_blank"><em>高分</em>排行榜</a></h3>
                 
                     <ul class="rank-cont">
-                        <?php $list = $c->getList(1,10);?>  
-                        <?php foreach($list['list'] as $k => $v){?>
+                        <?php $area = $c->getArea(20);?>
+                        <?php foreach($area['list'] as $k => $v){?>
                         <?php if($k < 3){?>
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>
                             <a class="rank-icon" href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank">
-                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" o-src="http://img6.android.d.cn/android/new/game_image/74/374/icon.png" alt="当乐游戏中心"/>
+                                <img class="lazy-img" src="<?php echo FILEHOST.$v['logo']; ?>" alt="<?php echo $v['num'];?>"/>
                             </a>
                             <div class="rank-info">
                                 <a href="<?php echo $v['surl'];?>" title="<?php echo $v['num'];?>" target="_blank" class="rank-tit"><?php echo $v['num'];?></a>
@@ -1076,11 +772,11 @@
                     </ul>
             </div>
             <div class="rank-wrap rank-coll">
-                <h3><a href="http://android.d.cn/paihangbang" title="喜欢排行榜" target="_blank"><em>浏览</em>排行榜</a></h3>
+                <h3><a href="" title="浏览排行榜" target="_blank"><em>浏览</em>排行榜</a></h3>
                 
                     <ul class="rank-cont">
-                        <?php $list = $c->getList(1,10);?>  
-                        <?php foreach($list['list'] as $k => $v){?>
+                        <?php $area = $c->getArea(22);?>
+                        <?php foreach($area['list'] as $k => $v){?>
                         <?php if($k < 3){?>
                         <li class="rank-item rank-front">
                             <em class="rank-num"><?php echo $k + 1;?></em>

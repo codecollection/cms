@@ -17,13 +17,14 @@
     public function __construct() {
         parent::__construct();
         
-        if(get_class($this) != "Login"){
+        $className = get_class($this);
+        if($className != "Login" || $className != "Reg"){
             if(!isset($_SESSION["user"])){
 
                 if(get_class($this) == 'Action'){
                     $this->echoAjax(100, '没有登录');
                 }else{
-                    redirect(AUTHHOST."/user/login?");
+                    redirect(AUTHHOST."/user/".  strtolower($className));
                 }
                 
             }

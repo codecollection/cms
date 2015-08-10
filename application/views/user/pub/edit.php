@@ -11,7 +11,7 @@
         </tr>
         
         <tr>
-            <td class="fr"><span class="fred">* </span>LOGO图标：</td>
+            <td class="fr"><span class="fred">* </span>二维码图标：</td>
             <td><input id="logo" type="hidden" name="data[logo]" class="comm_ipt" value="<?php echo $data["logo"]?>"> 公众账号LOGO图标主要用户展示
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
@@ -22,7 +22,7 @@
                 </div></td>
         </tr>
         <tr>
-            <td class="fr"><span class="fred">* </span>二维码图标：</td>
+            <td class="fr"><span class="fred"></span>LOGO图标：</td>
             <td><input id="code_image" type="hidden" name="data[code_image]" class="comm_ipt" value="<?php echo $data["code_image"]?>"> 二维码图标主要用于扫一扫关注
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">

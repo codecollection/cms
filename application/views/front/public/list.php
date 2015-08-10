@@ -16,7 +16,6 @@
             });
         </script>
     </head>
-
     <body>
         <?php $c->loadView("front/public/navtop.php");?>
         <?php $c->loadView("front/public/nav.php");?>
@@ -102,8 +101,7 @@
                                 </p>
                                 <p class="g-desc">
 
-                                    <a href="<?php echo $v['surl'];?>"
-                                       title="<?php echo $v['cate']?>" target="_blank"><?php echo $v['cate']?></a>
+                                    <a href="<?php echo $v['surl'];?>" title="<?php echo $v['cate']?>" target="_blank"><?php echo $v['cate']?></a>
 
                                 </p>
                                 <p class="g-detail">

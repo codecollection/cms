@@ -1,4 +1,3 @@
-<?php $cate = $c->getCate($cid); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -79,7 +78,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="right-div list-img"><a href="http://news.d.cn/news/view-21766.html" title="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战" target="_blank"><img src="http://img.android.d.cn/new/smtpfbackend/new/pageadv/201506/1435221861067Gj6w.jpg" alt="《极品飞车2015》7月2日安卓首发 百辆首发豪车等你来战" /></a></div>
+                
                 <div class="right-div">
                     <?php $area = $c->getArea(6);?>
                     <div class="list-title clearfix">
@@ -101,21 +100,17 @@
                 </div>
                 <div class="right-div">
                     <div class="list-title clearfix">
-                        <h2 class="con" title="作家专栏"><span class="title-bg iconSprite"></span>作家专栏</h2>
-                        <a href="javascript:void(0)" class="change">
-                            <span class="ch-icon iconSprite"></span>
-                            换一组
-                        </a>
+                        <h2 class="con" title="值得一扫推荐"><span class="title-bg iconSprite"></span>值得一扫推荐</h2>
+                        
                     </div>
                     <ul class="authors">
-                        <li><div class="au-info"><a class="a-h-out" target="_blank" href="http://news.d.cn/editor/dview-90279529.html"><img alt="" src="http://raw.android.d.cn/cdroid_res/web/news2015072009/img/icon-1.png"> </a> <img alt="" src="http://img.news.d.cn//Upload//Editor/20140701141432.jpg" class="a-h-img"><div class="detail"><p class="au-name"><a target="_blank" href="http://news.d.cn/editor/dview-90279529.html">杀手凉粉</a></p><p class="au-desc">心有猛虎，细嗅蔷薇</p></div></div>
+                        <?php $area = $c->getArea(12);?>
+                        <?php foreach($area['list'] as $k => $v){?>
+                        <li>
+                            <div class="au-info"><a class="a-h-out" target="_blank" href="<?php echo $v['surl'];?>"></a> <img alt="" src="<?php echo FILEHOST.$v['logo']; ?>" class="a-h-img"><div class="detail"><p class="au-name"><a target="_blank" href="<?php echo $v['surl'];?>"><?php echo $v['num'];?></a></p><p class="au-desc"><?php echo $v['desc'];?></p></div>
+                            </div>
                         </li>
-                        <li><div class="au-info"><a class="a-h-out" target="_blank" href="http://news.d.cn/editor/dview-128386932.html"><img alt="" src="http://raw.android.d.cn/cdroid_res/web/news2015072009/img/icon-1.png"> </a> <img alt="" src="http://img.news.d.cn//Upload//Editor/20150526161748.jpg" class="a-h-img"><div class="detail"><p class="au-name"><a target="_blank" href="http://news.d.cn/editor/dview-128386932.html">狐狸</a></p><p class="au-desc">你好！我是小狐腻！</p></div></div>
-                        </li>
-                        <li><div class="au-info"><a class="a-h-out" target="_blank" href="http://news.d.cn/editor/dview-22582643.html"><img alt="" src="http://raw.android.d.cn/cdroid_res/web/news2015072009/img/icon-1.png"> </a> <img alt="" src="http://img.news.d.cn//Upload//Editor/20140630093933.jpg" class="a-h-img"><div class="detail"><p class="au-name"><a target="_blank" href="http://news.d.cn/editor/dview-22582643.html">伊恩</a></p><p class="au-desc">你永远不会独行。</p></div></div>
-                        </li>
-                        <li><div class="au-info"><a class="a-h-out" target="_blank" href="http://news.d.cn/editor/dview-28523958.html"><img alt="" src="http://raw.android.d.cn/cdroid_res/web/news2015072009/img/icon-1.png"> </a> <img alt="" src="http://img.news.d.cn//Upload//Editor/20150605095705.jpg" class="a-h-img"><div class="detail"><p class="au-name"><a target="_blank" href="http://news.d.cn/editor/dview-28523958.html">奶霸</a></p><p class="au-desc">孤独，寂寞，空虚如影随形。</p></div></div>
-                        </li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>

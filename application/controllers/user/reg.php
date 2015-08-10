@@ -4,7 +4,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 前台用户注册控制器
  * 
  */
-class Reg extends CUserBase {
+class Reg extends CBase {
 
     protected $controllerId = "u";
     
@@ -20,12 +20,13 @@ class Reg extends CUserBase {
     public function index(){
         
         //$data = $this->user->getUserInfo();
-        $data = false;
-        if($data){
-            
-            redirect("/user/login");
-            exit;
-        }
+//        $data = false;
+//        if($data){
+//            
+//            redirect("/user/login");
+//            exit;
+//        }
+        
         $this->load->view("user/reg",array("c"=>$this)); 
     }
     

@@ -4,7 +4,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 前台用户登录控制器
  * 
  */
-class Login extends CUserBase {
+class Login extends CBase {
 
     protected $controllerId = "u";
     
