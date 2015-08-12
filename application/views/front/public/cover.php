@@ -69,11 +69,11 @@
         <div class="dl-good">
             <h3><i></i>小肉粽<em></em><span>公众号玩家必知</span></h3>
             <ul class="dl-good-list clearfix">
-                <li class="good-first">    <a href="" title="小肉粽推广平台" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" alt="小肉粽推广平台" /><span>小肉粽推广平台</span>    </a>
+                <li class="good-first">    <a href="" title="小肉粽推广平台" class="good-link" target="_blank"><img src="/style/front/public/images/zongzi.jpg" alt="小肉粽推广平台" /><span>小肉粽推广平台</span>    </a>
                 </li>
-                <li>    <a href="https://mp.weixin.qq.com" rel="nofollow" title="微信公众平台" class="good-link" target="_blank"><img src="/style/front/public/image/pclogo.png" alt="微信公众平台" /><span></span> 微信·公众平台   </a>
+                <li>    <a href="https://mp.weixin.qq.com" rel="nofollow" title="微信公众平台" class="good-link" target="_blank"><img src="/style/front/public/images/weixin_64.png" alt="微信公众平台" /><span></span> 微信·公众平台   </a>
                 </li>
-                <li class="good-last">    <a href="" title="上海不倒翁科技" class="good-link" target="_blank"><img src="/style/front/public/image/dangle.png" alt="上海不倒翁科技" /><span></span>   上海不倒翁科技 </a>
+                <li class="good-last">    <a href="" title="上海不倒翁科技" class="good-link" target="_blank"><img src="/style/front/public/images/budaoweng.png" alt="上海不倒翁科技" /><span></span>   上海不倒翁科技 </a>
                 </li>
             </ul>
         </div>

@@ -6,7 +6,7 @@
         <i></i>
         登录
     </h2>
-    <p class="adapt-success adapt-success-special"><img src="/style/front/public/bear.jpg" o-src="http://raw.android.d.cn/cdroid_res/web/news2015061516/img/bear.jpg" alt="" />登录后才能喜欢哦！</p>
+    <p class="adapt-success adapt-success-special"><img src="/style/front/public/bear.jpg" alt="" />登录后才能喜欢哦！</p>
     <a href="" title="立即登录" class="log-now">立即登录</a>
 </div>
 <!--登录弹出框 e-->

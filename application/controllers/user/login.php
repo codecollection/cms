@@ -8,6 +8,7 @@ class Login extends CBase {
 
     protected $controllerId = "u";
     
+    protected $user = "user";
     public function __construct() {
 
        parent::__construct();

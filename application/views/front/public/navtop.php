@@ -64,7 +64,7 @@
             <li>
                 <div class="menuShow">
                     <span class="navIcon"></span>
-                    <span><a href="/info/l?cid=9" target="_blank" title="小肉粽帮助中心">帮助中心</a></span>
+                    <span><a href="/info/l?cid=14" target="_blank" title="小肉粽帮助中心">帮助中心</a></span>
                 </div>
             </li>
         </ul>

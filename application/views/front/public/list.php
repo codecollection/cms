@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="keywords" content="<?php echo $cate['ckey']?>"/>
-        <meta name="description" content="<?php echo $cate['cname']?>"/>
+        <meta name="description" content="<?php echo $cate['cdesc']?>"/>
         <title><?php echo $cate['cname']?>_第<?php echo $p;?>页_<?php echo $c->getItem('site_name');?></title>
         <?php $c->loadView("front/public/header.php"); ?>
         <link rel="stylesheet" href="/style/front/public/css/list.css"/>
@@ -304,12 +304,12 @@
                 </div>
 
 
-                <div class="right-div list-img">
+<!--                <div class="right-div list-img">
                     <?php $ads = $c->getAd(101);?>
                     <?php foreach($ads as $ad){?>
                     <a href="<?php echo $ad['ad_url'];?>" title="<?php echo $ad['ad_title'];?>" target="_blank"><img src="<?php echo $ad['ad_img'];?>" alt="<?php echo $ad['ad_title'];?>" /></a>
                     <?php }?>
-                </div>
+                </div>-->
 
 
             </div>

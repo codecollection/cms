@@ -4,7 +4,7 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <?php $c->loadView("user/inc.reg.php");?>
-    <title>用户注册</title>
+    <title>用户注册-小肉粽</title>
 </head>
 <body>
 <div class="cover" id="cover"></div>
@@ -62,12 +62,12 @@
 
         </div>
         
-        <p class="service"><a href="javascript:void(0)" class="agreement fl">√</a>同意<a href="javascript:void(0)" title="点击阅读《当乐用户协议》" class="blue other-way" onclick="popout()">《当乐用户协议》</a>
+        <p class="service"><a href="javascript:void(0)" class="agreement fl">√</a>同意<a href="javascript:void(0)" title="点击阅读《小肉粽用户协议》" class="blue other-way" onclick="popout()">《小肉粽用户协议》</a>
         </p>
         <a href="javascript:void(0);" title="立即注册" id="registerBtn" class="leftside-a tc">立即注册</a>
 
         <div class="ifhas of">
-            <p class="ifhas-detail fl tc">如已有<span>当乐网</span>帐号</p>
+            <p class="ifhas-detail fl tc">如已有<span>小肉粽</span>帐号</p>
             <a href="/user/login" title="绑定帐号" class="ifhas-bind fl tc">立即登录</a>
         </div>
     </div>

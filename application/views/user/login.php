@@ -4,7 +4,7 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <?php $c->loadView("user/inc.reg.php");?>
-    <title>用户登录</title>
+    <title>用户登录-小肉粽</title>
 </head>
 <body>
 <div class="banner"></div>
@@ -20,7 +20,7 @@
 </div>
 <div class="model-outer of">
     
-    <a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="手机游戏第一站" title="手机游戏第一站" class="web-logo fl"></a>
+    <a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="微信公众号推广第一站" title="微信公众号推广第一站" class="web-logo fl"></a>
 
     <div class="user-log fr">
         <form action="javascript:void(0);" onsubmit="return false;" method="post" id="login_form">
@@ -39,7 +39,7 @@
             <span class="pwd-rembmber-text fl">自动登录</span>
             <a href="goFindPwdWay.html?to=http%3A%2F%2Fwww.d.cn%2F" class="forget fr" title="找回密码">忘记密码？</a>
             <input id="isRememberPsw" type="hidden" value="0" name="isRememberPsw"/>
-            <input id="toUrl" type="hidden" name="to" value="http%3A%2F%2Fwww.d.cn%2F"/>
+            <input id="toUrl" type="hidden" name="to" value="/"/>
             <a href="javascript:void(0)" class="log-in fl tc" title="点击登录" id="loginBtn">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</a>
             <input type="submit" style="display:none;" id="formLogin"/>
         </form>

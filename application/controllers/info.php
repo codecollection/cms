@@ -485,6 +485,9 @@ class Info extends CBase {
         $this->setData('list', $list);
         $tplList = "special.list.php";
         
+        $p = $this->getData("p");
+        $p = $p > 0 ? $p : 1;
+        $this->setData("p", $p);
         $this->renderHTMLView($tplList);
     }
     
