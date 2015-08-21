@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Mess extends WeixinBase {
 
-    function __construct() {
+    public function __construct() {
 
        parent::__construct();
     }

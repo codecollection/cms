@@ -40,8 +40,8 @@ class Special_model extends MBase{
         
         $fixUrl = $type == 1 ? "sd" : "ad";
         foreach($list as $key => $val){
-            if(isset($val['info_url']) && !empty($val['info_url'])){
-                $list[$key]['surl'] = $val['info_url'];
+            if(isset($val['url']) && !empty($val['url'])){
+                $list[$key]['surl'] = $val['url'];
             }else{
                 $list[$key]['surl'] = "/info/{$fixUrl}?id=".$val["special_id"]."&mid=".$val["model_id"];
             }

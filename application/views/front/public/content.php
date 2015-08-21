@@ -8,6 +8,12 @@
         <?php $c->loadView("front/public/header.php"); ?>
         <link href="<?php echo CSSHOST ?>/style/front/<?php echo TEMPLATE ?>/css/detail.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="/style/libs/comment.js"></script>
+        <style>
+            .content-ul {}
+            .content-ul li {clear: both;}
+            .content-ul li h4{ height: 26px;line-height: 26px;color:gray;float: left;margin: 5px 10px;}
+            .content-ul li span {float: left;margin: 5px 10px;padding-top: 5px;color: ;}
+        </style>
     </head>
     <body>
 
@@ -90,58 +96,11 @@
 
             <div class="de-col clearfix">
                 <div class="col-l">
-                    <div class="module de-shot">
-                        <div class="module-head">
-                            <h2 class="module-tit"><i></i><?php echo $d["num"]; ?>最近文章</h2>
-
-                            </if>
-                        </div>
-                        <div class="module-cont">
-
-                            <div id="snapShotWrap" class="snapShotWrap">
-                                <a id="shotNext" class="snap-shot-btn next" title="下一张" href="javascript:void(0);">
-                                    <i></i>
-                                </a>
-                                <a id="shotPrev" class="snap-shot-btn prev" title="上一张" href="javascript:void(0);">
-                                    <i></i>
-                                </a>
-                                <div class="snapShotCont">
-
-                                    <div class="snopshot" id="snopshot1">
-                                        <img src="http://img8.android.d.cn/android/new/game_image/98/59398/w1.jpg" alt="密室怨魂(含数据包)_截图" />
-                                        <span class="elementOverlay"></span>
-                                    </div>
-
-                                    <div class="snopshot" id="snopshot2">
-                                        <img src="http://img8.android.d.cn/android/new/game_image/98/59398/w2.jpg" alt="密室怨魂(含数据包)_截图" />
-                                        <span class="elementOverlay"></span>
-                                    </div>
-
-                                    <div class="snopshot" id="snopshot3">
-                                        <img src="http://img8.android.d.cn/android/new/game_image/98/59398/w3.jpg" alt="密室怨魂(含数据包)_截图" />
-                                        <span class="elementOverlay"></span>
-                                    </div>
-
-                                    <div class="snopshot" id="snopshot4">
-                                        <img src="http://img8.android.d.cn/android/new/game_image/98/59398/w4.jpg" alt="密室怨魂(含数据包)_截图" />
-                                        <span class="elementOverlay"></span>
-                                    </div>
-
-                                    <div class="snopshot" id="snopshot5">
-                                        <img src="http://img8.android.d.cn/android/new/game_image/98/59398/w5.jpg" alt="密室怨魂(含数据包)_截图" />
-                                        <span class="elementOverlay"></span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
+                    
 
                     <div class="module">
                         <div class="module-head">
-                            <h2 class="module-tit"><i></i><?php echo $d["num"]; ?>简介</h2>
+                            <h2 class="module-tit"><i></i><?php echo $d["num"]; ?>详情</h2>
 
                         </div>
                         <div class="module-cont">

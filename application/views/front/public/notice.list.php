@@ -28,7 +28,7 @@
                     <h2 class="con" title="<?php echo $cate['cname'] ?>"><span class="title-bg iconSprite"></span><?php echo $cate['cname'] ?></h2>
 
                 </div>
-                <div class="tab-1 clearfix">
+<!--                <div class="tab-1 clearfix">
                     <ul>
                         <li class="<?php echo $cid == 2 ? "current" : ""; ?>"><span></span><h2><a href="/info/l?cid=2" title="全部资讯">全部资讯</a></h2></li>
                         <?php $cate = $c->getCate(2); ?>
@@ -37,7 +37,7 @@
                             <li class="<?php echo $t["cate_id"] == $cid ? "current" : ""; ?>"><span></span><h2><a href="<?php echo $t['surl'] ?>" title="<?php echo $t['cname'] ?>"><?php echo $t['cname'] ?></a></h2></li>
                         <?php } ?>
                     </ul>
-                </div>
+                </div>-->
                 <ul class="info-list clearfix">
                     <?php $list = $c->getList($cid, 18); ?>
                     <?php foreach ($list['list'] as $k => $v) { ?>

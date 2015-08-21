@@ -42,6 +42,7 @@
                 <li class="<?php echo $cid == 12 ? "curr" : "";?>"><a href="/info/special?cid=12" title="微信公众号专题">专题<?php echo $cid == 12 ? '<span class="nav-bar"></span>' : "";?></a></li>
             
                 <li class="<?php echo $cid == 13 ? "curr" : "";?>"><a href="/info/activity?cid=13" title="微信公众号最新活动">活动<i></i><?php echo $cid == 13 ? '<span class="nav-bar"></span>' : "";?></a></li>
+                <li class="<?php echo $cid == 15 ? "curr" : "";?>"><a href="/info/l?cid=15" title="网站公告">公告<?php echo $cid == 15 ? '<span class="nav-bar"></span>' : "";?></a></li>
             
     </ul>
 </div>

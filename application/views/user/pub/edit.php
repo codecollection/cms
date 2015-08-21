@@ -3,6 +3,7 @@
     <input type="hidden" id="cms_public_id" name="id" value="<?php echo $data["cms_public_id"];?>" />
     <input type="hidden" id="modelId" name="modelId" value="3" />
     <input type="hidden" id="last_cate_id" name="data[last_cate_id]" value="1" />
+    <input type="hidden" id="last_cate_id" name="data[recommend]" value="6" />
     <table class="table_lists editbox">
 
         <tr>
@@ -12,7 +13,7 @@
         
         <tr>
             <td class="fr"><span class="fred">* </span>二维码图标：</td>
-            <td><input id="logo" type="hidden" name="data[logo]" class="comm_ipt" value="<?php echo $data["logo"]?>"> 公众账号LOGO图标主要用户展示
+            <td><input id="logo" type="hidden" name="data[logo]" class="comm_ipt" value="<?php echo $data["logo"]?>"> 二维码图标主要用于扫一扫关注（建议大小72px*72px）
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
                     <iframe src="/back/upload?vid=logo" scrolling="no" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
@@ -23,7 +24,7 @@
         </tr>
         <tr>
             <td class="fr"><span class="fred"></span>LOGO图标：</td>
-            <td><input id="code_image" type="hidden" name="data[code_image]" class="comm_ipt" value="<?php echo $data["code_image"]?>"> 二维码图标主要用于扫一扫关注
+            <td><input id="code_image" type="hidden" name="data[code_image]" class="comm_ipt" value="<?php echo $data["code_image"]?>"> 公众账号LOGO图标主要用户展示（建议大小72px*72px）
                 <p class="line-t-10"></p>
                 <div style="float:left;width:119px;height:30px;overflow:hidden;margin-right:10px;">
                     <iframe src="/back/upload?vid=code_image" scrolling="no" frameborder="no" allowtransparency="yes" marginheight="0"  border="0" marginwidth="0"></iframe>
@@ -73,6 +74,32 @@
         <tr>
             <td class="fr">语言：</td>
             <td><input id="language" name="data[language]" type="text" class="comm_ipt" value="<?php echo $data["language"] ?>" placeholder="汉语"> 语言，直接是写语种，比如汉语，英语等</td>
+        </tr>
+         <tr>
+            <td class="fr">详情：</td>
+            <td>
+                 <p class="line-t-10"></p>
+                 <textarea name="data[body]" id="data[body]" style="display:block" class="ckeditor"><?php echo $data["body"]?></textarea>
+                <script type="text/javascript">
+                    var editor = CKEDITOR.replace( "data[body]",{height:140,width:790,skin:"kama",menu_subMenuDelay:0,
+                        toolbar : ckeditor_toolbar
+                    });
+                    
+//                    var editor ;  
+//                        if(!CKEDITOR.instances["data[body]"]){  //判定content2是否存在  
+//                             editor= CKEDITOR.replace("data[body]");  
+//                        }else{  
+//                               addCkeditor("data[body]");  
+//                        }  
+//                    function addCkeditor(id){  
+//                        var editor2 = CKEDITOR.instances[id];  
+//                        if(editor2) editor2.destroy(true);//销毁编辑器 content2,然后新增一个  
+//                            editor = CKEDITOR.replace(id);  
+//                    }  
+                </script>
+                <p class="line-t-15"></p>
+               
+            </td>
         </tr>
         <tr>
             <td width="150" class="fr">&nbsp;</td>

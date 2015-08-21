@@ -494,7 +494,9 @@ class Info extends CBase {
     public function activity(){
         
         $list = $this->activityList();
-        
+        $p = $this->getData("p");
+        $p = $p > 0 ? $p : 1;
+        $this->setData("p", $p);
         $this->setData('list', $list);
         $tplList = "special.list.php";
         

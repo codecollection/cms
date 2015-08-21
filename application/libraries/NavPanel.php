@@ -72,7 +72,7 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'权限管理',
-                    'url' => '/back/userg/rank',
+                    'url' => '/back/rank',
                     'level' => 'B03', //页面权限
                     'menu' => array(
                         array('title' => '分配权限', 'level' => 'B0301'),
@@ -83,9 +83,9 @@ class NavPanel {
                     'url' => '/back/userg',
                     'level' => 'B04', //页面权限
                     'menu' => array(
-                        array('title' => '添加编辑', 'level' => 'B0101'), 
+                        array('title' => '添加编辑', 'level' => 'B0401'), 
                         //array('title' => '删除用户组', 'level' => 'B0102'), 
-                        array('title' => '启用禁用', 'level' => 'B0103'), 
+                        array('title' => '启用禁用', 'level' => 'B0403'), 
                     ),
                 ),
                 array(
@@ -93,8 +93,8 @@ class NavPanel {
                     'url' => '/back/user',
                     'level' => 'B05', 
                     'menu' => array(
-                        array('title' => '增改用户', 'level' => 'B0201'),
-                        array('title' => '启用停用', 'level' => 'B0203'),
+                        array('title' => '增改用户', 'level' => 'B0501'),
+                        array('title' => '启用停用', 'level' => 'B0503'),
                     ),
                 ),
             ),

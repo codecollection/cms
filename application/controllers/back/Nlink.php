@@ -1,20 +1,24 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- *  友链
+ *  内链
  */
-class Flink extends CAdminBase {
+class Nlink extends CAdminBase {
 
-    public $controllerId = "flink";
+    public $controllerId = "nlink";
     
     public $topLevel = "E";
     
-    public $level = "E01";
+    public $level = "E07";
     
-    function __construct() {
+    public function __construct() {
 
        parent::__construct();
        
     }
+    
 
+    public function index(){
+        $this->lists();
+    }
 }
