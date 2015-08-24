@@ -44,7 +44,7 @@ class WeixinBase extends CUserBase {
         return $this->actionUrl;
     }
 
-    public function lists(){
+    public function lists($params = array()){
         
         $lists = $this->getData();
         
@@ -56,7 +56,7 @@ class WeixinBase extends CUserBase {
     /**
      * 
      */
-    public function getData(){
+    public function getRequestData(){
         //初始化
         $ch = curl_init();
 
