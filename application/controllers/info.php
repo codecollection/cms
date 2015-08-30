@@ -111,6 +111,7 @@ class Info extends CBase {
         $d = $this->info->find($id);
         $cate = $this->cate->find($d["last_cate_id"]);
         $tpl = "content";
+        
         if(!empty($cate["tpl_content"])){$tpl = $cate["tpl_content"];}
         if(!empty($d["tpl_content"])){$tpl = $d["tpl_content"];}
         

@@ -20,7 +20,7 @@
 </div>
 <div class="model-outer of">
     
-    <a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img src="http://img.d.cn/images/auth/20150126/web/images/logo.png" alt="微信公众号推广第一站" title="微信公众号推广第一站" class="web-logo fl"></a>
+    <a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img alt="微信公众号推广第一站" title="微信公众号推广第一站" class="web-logo fl"></a>
 
     <div class="user-log fr">
         <form action="javascript:void(0);" onsubmit="return false;" method="post" id="login_form">

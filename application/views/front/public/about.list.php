@@ -10,7 +10,7 @@
 <!--header:begin-->
 <div class="header">
     <div class="layout">
-        <h1><a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img src="http://img.d.cn/2013/web_index/company/images/logo.png" alt="<?php echo $c->getItem('site_name');?>" /></a></h1>
+        <h1><a href="<?php echo HOST;?>" title="<?php echo $c->getItem('site_name');?>"><img src="/style/front/public/images/logo_our.png" alt="<?php echo $c->getItem('site_name');?>" /></a></h1>
         <span class="fr">
             <a href="http://weibo.com/u/5663240823/home" target="_blank" title="新浪微博" class="sina"></a>
 <!--            <a href="http://t.qq.com/downjoy_dcn" target="_blank" title="腾讯微博" class="tt"></a>-->

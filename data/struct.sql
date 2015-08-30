@@ -658,6 +658,8 @@ CREATE TABLE IF NOT EXISTS `cms_info_list` (
   `state` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `forder` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   `city` varchar(10) NOT NULL DEFAULT '0' COMMENT '城市',
+  `info_from` varchar(100) NOT NULL DEFAULT '' COMMENT '文档来源',
+  `info_from_url` varchar(10) NOT NULL DEFAULT '0' COMMENT '来源地址',
   PRIMARY KEY (`cms_info_list_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -736,34 +738,34 @@ values(14, '排序', 'forder', 'int(11) not null', 'input', 0, 0, 0, '系统',0)
 
 -- 文档扩展字段
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(15, '文章来源', 'info_from', 'varchar(20) not null', 'input', '', 0, 1, '文档');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(15, '文章来源', 'info_from', 'varchar(20) not null', 'input', '', 0, 1, '文档','');
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(16, '来源地址', 'info_from_url', 'varchar(50) not null', 'input', '', 0, 1, '文档');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(16, '来源地址', 'info_from_url', 'varchar(50) not null', 'input', '', 0, 1, '文档','');
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type, form_value, field_remark, is_system, field_tag) 
-values(17, '跳转地址', 'info_url', 'varchar(50) not null', 'input', '', 0, 1, '文档');
+field_id, title, field, field_type, form_type, form_value, field_remark, is_system, field_tag,dvalue) 
+values(17, '跳转地址', 'info_url', 'varchar(50) not null', 'input', '', 0, 1, '文档','');
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(18, '是否加粗', 'fbold', 'tinyint(2) not null ', 'input', 0, 0, 1, '文档');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(18, '是否加粗', 'fbold', 'tinyint(2) not null ', 'input', 0, 0, 1, '文档',0);
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(19, '标题颜色', 'fcolor', 'varchar(20) not null ', 'input', '', 0, 1, '文档');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(19, '标题颜色', 'fcolor', 'varchar(20) not null ', 'input', '', 0, 1, '文档','');
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(20, '关联文档', 'related_ids', 'varchar(200) not null ', 'input', '', 0, 1, '文档');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(20, '关联文档', 'related_ids', 'varchar(200) not null ', 'input', '', 0, 1, '文档','');
 
 -- 产品默认扩展字段
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(21, '产品编号', 'product_num', 'varchar(20) not null', 'input', '', 0, 1, '产品');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(21, '产品编号', 'product_num', 'varchar(20) not null', 'input', '', 0, 1, '产品','');
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(22, '产品价格', 'product_price', 'varchar(20) not null', 'input', '', 0, 1, '产品');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(22, '产品价格', 'product_price', 'varchar(20) not null', 'input', '', 0, 1, '产品','');
 insert ignore into cms_fields (
-field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag) 
-values(23, '生成地', 'product_address', 'varchar(50) not null', 'input', '', 0, 1, '产品');
+field_id, title, field, field_type, form_type,form_value, field_remark, is_system,field_tag,dvalue) 
+values(23, '生成地', 'product_address', 'varchar(50) not null', 'input', '', 0, 1, '产品','');
 
 -- 模型字段关系
 INSERT IGNORE INTO `cms_model_fields` (`m_f_id`, `model_id`, `field_id`) VALUES
