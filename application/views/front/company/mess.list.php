@@ -9,20 +9,7 @@
     </head>
     <body>
         <?php $c->loadView("front/" . TEMPLATE . "/inc.header.php"); ?>
-        <div class="sbg">
-            <div class="wrap">
-                <div class="l">
-                    <div class="search_box">
-                        <input type="text" id="seach-txt" class="search_txt" placeholder="请输入关键字" onkeydown="if (event.keyCode == 13)
-                                    do_search();" value="">
-                        <a onclick="do_search();" class="search_btn" href="javascript:void(0);"></a>
-                    </div>
-                </div>
-                <div class="r">
-                    <a href="/app/user/login.php">登录</a>&nbsp;&nbsp;&nbsp;<a href="/app/user/register.php">注册</a>        </div>
-            </div>
-        </div>
-
+       
         <div class="main">
             <div class="line_10"></div>
             <div class="wrap snav">
@@ -83,16 +70,14 @@
                                     <tbody>
                                         <tr>
                                             <td style="text-align:right;"><span class="fim">*</span>姓名：</td>
-                                            <td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="extern___true_name" name="extern___true_name" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
+                                            <td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="" name="extern___true_name" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
                                         </tr>
                                         <tr>
-                                            <td style="text-align:right;"><span class="fim">*</span>电话：</td><td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="extern___phone" name="extern___phone" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
+                                            <td style="text-align:right;"><span class="fim">*</span>电话：</td><td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="" name="extern___phone" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align:right;"><span class="fim">*</span>内容：</td><td><div style="float:left;margin-left:10px;">
-                                                    <textarea placeholder="" class="comm_ipt" style="height:50px;" id="extern___content" name="extern___content">
-                                                        
-                                                    </textarea></div>
+                                                    <textarea placeholder="" class="comm_ipt" style="height:80px;" id="" name="extern___content"></textarea></div>
                                                 <div style="float:left;margin-left:10px;">不为空</div></td>
                                         </tr>                                
                                         <tr>

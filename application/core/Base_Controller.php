@@ -21,12 +21,23 @@ class CBase extends MY_Controller{
      */
     public $modelId = 0;
     
+    /**
+     * 模板文件
+     * @var type 
+     */
     public $tpl = "";
-    
+    /**
+     * 自动识别手机和pc ，模板文件夹
+     * @var type 
+     */
+    public $tplDir = "wap";
     //用户Id
     public $userId = 0;
     
     public $selfUrl = "";
+    
+    
+    
     public function __construct() {
         parent::__construct();
         $this->loadModel("cate");
@@ -45,8 +56,7 @@ class CBase extends MY_Controller{
      */
     protected function renderHTMLView($viewName, $data = array()) {
 
-        
-        $dir = "front/{$this->tpl}/{$viewName}";
+        $dir = "{$this->tplDir}/{$this->tpl}/{$viewName}";
         
         $this->renderView($dir, $data);
         

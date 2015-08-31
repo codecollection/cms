@@ -9,20 +9,7 @@
     </head>
     <body>
         <?php $c->loadView("front/" . TEMPLATE . "/inc.header.php"); ?>
-        <div class="sbg">
-            <div class="wrap">
-                <div class="l">
-                    <div class="search_box">
-                        <input type="text" id="seach-txt" class="search_txt" placeholder="请输入关键字" onkeydown="if (event.keyCode == 13)
-                                    do_search();" value="">
-                        <a onclick="do_search();" class="search_btn" href="javascript:void(0);"></a>
-                    </div>
-                </div>
-                <div class="r">
-                    <a href="/app/user/login.php">登录</a>&nbsp;&nbsp;&nbsp;<a href="/app/user/register.php">注册</a>        </div>
-            </div>
-        </div>
-
+        
         <div class="main">
             <div class="line_10"></div>
             <div class="wrap snav">
