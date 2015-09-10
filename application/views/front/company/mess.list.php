@@ -68,16 +68,17 @@
                             <div class="info_body">
                                 <table class="table_lists" id="msg_form">
                                     <tbody>
+                                    <input type="hidden" name="id" id="id" value="0" />
                                         <tr>
                                             <td style="text-align:right;"><span class="fim">*</span>姓名：</td>
-                                            <td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="" name="extern___true_name" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
+                                            <td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="nick_name" name="data[nick_name]" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
                                         </tr>
                                         <tr>
-                                            <td style="text-align:right;"><span class="fim">*</span>电话：</td><td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="" name="extern___phone" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
+                                            <td style="text-align:right;"><span class="fim">*</span>电话：</td><td><div style="float:left;margin-left:10px;"><input placeholder="" class="comm_ipt" id="phone" name="data[phone]" value="" type="text"></div><div style="float:left;margin-left:10px;">不为空</div></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align:right;"><span class="fim">*</span>内容：</td><td><div style="float:left;margin-left:10px;">
-                                                    <textarea placeholder="" class="comm_ipt" style="height:80px;" id="" name="extern___content"></textarea></div>
+                                                    <textarea placeholder="" class="comm_ipt" style="height:80px;" id="" name="data[content]"></textarea></div>
                                                 <div style="float:left;margin-left:10px;">不为空</div></td>
                                         </tr>                                
                                         <tr>
@@ -97,5 +98,23 @@
         </div>
         <?php $c->loadView("front/" . TEMPLATE . "/inc.footer.php"); ?>
 
+        <script>
+            function save_message(){
+                var postdata=C.form.get_form('#msg_form');
+
+                $.post("/mess/save",postdata,function(data){
+                    try {
+                        var json = $.evalJSON(data);
+                        if(json.code=='0'){
+                            C.alert.alert({content:"留言成功",funcOk:function(){
+                                window.location.reload();
+                            }});
+                        }else{
+                            C.alert.alert({content:json.msg});
+                        } 
+                    }catch(e){C.alert.alert({content:e.message+data});}
+                });
+            }
+        </script>
     </body>
 </html>

@@ -15,7 +15,7 @@
 <script type="text/javascript" src="/style/libs/ckeditor/ckeditor.js?t=<?php echo(time());?>"></script>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.select/select.css"/>
 <link rel="stylesheet" type="text/css" href="/style/libs/zy.tree/tree.css"/>
-<link rel="shortcut icon" href="/style/back/image/logo_ico.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
 <script src="/style/libs/uploadify/jquery.uploadify.js"></script>
 <link rel="stylesheet" type="text/css" href="/style/libs/uploadify/uploadify.css"/>

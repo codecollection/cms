@@ -143,6 +143,7 @@ create table if not exists `cms_model` (
  `model_title` varchar(100) not null default '' not null comment '模型标题',
  `model_name` varchar(100) not null default '' not null comment '扩展模型表名',
  `cmodel_id` varchar(100) not null default 0 comment '模型子表的ID',
+ `model_type` tinyint(2) not null default 0 commnet '模型类型0=扩展，1=独立',
  `attr_content` text not null  comment '扩展属性，JSON格式数据[{"lable":"颜色","name":"color","type":"text/checkbox/radio/select/editor/date","value":["红色","蓝色"],”field_type”:”varchar(100)/ int(11) ”},...]',
  primary key (`model_id`)
 ) engine=myisam default charset=utf8 comment '扩展模型';

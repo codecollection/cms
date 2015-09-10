@@ -6,7 +6,7 @@
  */
  class CUserBase extends CBase{
         
-    protected $controllerId = "";
+    //protected $controllerId = "";
      
     /**
      * 用户中心文件夹名称
@@ -31,12 +31,8 @@
         }
         
         $this->userId = isset($_SESSION["user"]["userId"]) ? $_SESSION["user"]["userId"] : 0;
+        $this->load->model('u_model', "u");
         
-        if(!empty($this->controllerId)){
-            $this->load->model('u_model', "u");
-            $this->load->model($this->controllerId . '_model', $this->controllerId);
-            $this->bindModel = $this->{$this->controllerId};
-        }
     }
     
      

@@ -30,13 +30,15 @@ class CBase extends MY_Controller{
      * 自动识别手机和pc ，模板文件夹
      * @var type 
      */
-    public $tplDir = "wap";
+    public $tplDir = "front";
     //用户Id
     public $userId = 0;
     
     public $selfUrl = "";
     
-    
+    public $controllerId = "";
+
+    public $bindModel = "";
     
     public function __construct() {
         parent::__construct();
@@ -45,8 +47,15 @@ class CBase extends MY_Controller{
         $this->loadModel('u');
         $this->tpl = TEMPLATE;
         
+        if(!empty($this->controllerId)){
+            
+            $this->load->model($this->controllerId . '_model', $this->controllerId);
+            $this->bindModel = $this->{$this->controllerId};
+        }
         $this->selfUrl = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         //echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
+        
+        $this->tplDir = RKit::user_device();
     }
     
     /**

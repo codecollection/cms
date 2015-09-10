@@ -6,6 +6,6 @@
             DD_belatedPNG.fix('div, ul, li, input , a, a:hover, h2, b,span');
         </script>
         <![endif]-->
-        <link rel="Shortcut Icon" href="" />
-        <link rel="Bookmark" href="" />
+        <link rel="Shortcut Icon" href="/favicon.ico" />
+        <link rel="Bookmark" href="/favicon.ico" />
         <link href="/style/front/<?php echo TEMPLATE; ?>/style.css" rel="stylesheet" type="text/css">
