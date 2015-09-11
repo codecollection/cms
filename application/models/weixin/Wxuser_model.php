@@ -4,7 +4,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * 微信用户
  *
  */
-class Wxuser extends MBase{
+class Wxuser_model extends MBase{
     
     protected $tableName = 'weixin_user';
     
