@@ -29,7 +29,7 @@ class Wx extends WeixinBase {
 
         if ($tmpStr == $signature) {
 
-            $this->responseMsg();
+            //$this->responseMsg();
             return true;
         } else {
             return false;
