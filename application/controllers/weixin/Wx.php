@@ -6,7 +6,8 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  * 
  */
 class Wx extends WeixinBase {
-
+    //回复文本内容
+    public $contentStr = "";
     public function __construct() {
 
         parent::__construct();
@@ -32,6 +33,7 @@ class Wx extends WeixinBase {
 
         if( $tmpStr == $signature ){
             echo($echoStr);
+            $this->responseMsg();
             return true;
         }else{
             return false;
@@ -53,10 +55,32 @@ class Wx extends WeixinBase {
             $time = time();
             $msgType = $postObj->MsgType;
             
+            //关注事件
+            if($msgType == "event"){
+                $this->loadModel("weixin/wxuser");
+                if($postObj->Event == "subscribe"){ //关注
+                    $this->contentStr = "欢迎关注不倒翁科技微信公众号";
+                    //加入到本地数据库
+                    $data = array(
+                        "open_id" => $fromUsername,
+                        "cdate" => $time,
+                        "status" => 1,
+                    );
+                    
+                    $this->wxuser->setAttrs($data)->setPkValue($fromUsername)->save();
+                    
+                }else if($postObj->Event == "unsubscribe"){ //取消关注
+                    $data = array(
+                        "open_id" => $fromUsername,
+                        "status" => 2,
+                    );
+                    $this->wxuser->setAttrs($data)->setPkValue($fromUsername)->save(FALSE);
+                }
+            }
+            
             if (!empty($keyword)) {
                 $resmsgType = "text";
-                $contentStr = "Welcome to wechat world!";
-                $resultStr = sprintf($this->textTpl, $fromUsername, $toUsername, $time, $resmsgType, $contentStr);
+                $resultStr = sprintf($this->textTpl, $fromUsername, $toUsername, $time, $resmsgType, $this->contentStr);
                 echo $resultStr;
             } else {
                 echo "Input something...";
