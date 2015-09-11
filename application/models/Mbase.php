@@ -573,6 +573,9 @@ class MBase extends CI_Model{
         if (isset($this->select['limit']) && $isCount) {
             $lists = $this->lists($sql, array(), $this->select['limit'][0], $this->select['limit'][1]);
         } else {
+            if(isset($this->select["limit"])){
+                $sql = $sql . " LIMIT {$this->select['limit'][0]}, {$this->select['limit'][1]}";
+            }
             $query = $this->db->query($sql);
             if ($query->num_rows() > 0) {
                 $lists = array('list' => $query->result_array());
