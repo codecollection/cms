@@ -7,7 +7,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Wx extends WeixinBase {
     //回复文本内容
-    public $contentStr = "";
+    public $contentStr = "欢迎关注小肉粽微信公众号";
     public function __construct() {
 
         parent::__construct();
@@ -81,7 +81,7 @@ class Wx extends WeixinBase {
             if (!empty($keyword)) {
                 $resmsgType = "text";
                 $resultStr = sprintf($this->textTpl, $fromUsername, $toUsername, $time, $resmsgType, $this->contentStr);
-                file_put_contents("weixin.txt", $resultStr);
+                //file_put_contents("weixin.txt", $resultStr);
                 echo $resultStr;
             } else {
                 echo "Input something...";
