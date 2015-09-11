@@ -20,19 +20,20 @@ class Wx extends WeixinBase {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
-
-        $token = "wenghe";//$this->token;
-        echo($token);
+        $echoStr = $_GET["echostr"];
+        
+        $token = $this->token;
+        
         $tmpArr = array($token, $timestamp, $nonce);
+        // use SORT_STRING rule
         sort($tmpArr, SORT_STRING);
-        $tmpStr = implode($tmpArr);
-        $tmpStr = sha1($tmpStr);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
 
-        if ($tmpStr == $signature) {
-
-            //$this->responseMsg();
+        if( $tmpStr == $signature ){
+            echo($echoStr);
             return true;
-        } else {
+        }else{
             return false;
         }
     }
