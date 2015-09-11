@@ -81,6 +81,7 @@ class Wx extends WeixinBase {
             if (!empty($keyword)) {
                 $resmsgType = "text";
                 $resultStr = sprintf($this->textTpl, $fromUsername, $toUsername, $time, $resmsgType, $this->contentStr);
+                file_put_contents("weixin.txt", $resultStr);
                 echo $resultStr;
             } else {
                 echo "Input something...";
