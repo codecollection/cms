@@ -3,7 +3,7 @@
 /**
  * 微信控制器
  */
-class WeixinBase extends CUserBase {
+class WeixinBase extends CBase {
 
     public $token = "wenghe"; //token 
     public $aesKey = ""; //EncodingAESKey

@@ -6,7 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Reg extends CBase {
 
-    protected $controllerId = "u";
+    public $controllerId = "u";
     
     function __construct() {
 
