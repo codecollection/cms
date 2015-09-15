@@ -7,7 +7,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
  */
 class Wx extends WeixinBase {
     //回复文本内容
-    public $contentStr = "欢迎关注小肉粽微信公众号";
+    public $contentStr = "不要说，直接吻，回复1查看文本信息，2图片信息，3语音信息，4视频信息，5听一首歌，6文章品读";
     public function __construct() {
 
         parent::__construct();

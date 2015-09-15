@@ -68,6 +68,13 @@ class Upload extends CAdminBase {
         return 0;
     }
     
+    /**
+     * 微信上传文件表单
+     */
+    public function weixinUpload(){
+        
+    }
+
     public function uploadify(){
         
         $t = $this->getData("type");

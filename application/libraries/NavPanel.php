@@ -296,6 +296,72 @@ class NavPanel {
                 ),
             ),
         ),
+        array(
+            'title' => '微 信',
+            'url' => '/back/material',
+            'level'=>'W',
+            'bgimg' => '',
+            'menu'  => array(
+                array(
+                    'title'=>'用户管理',
+                    'url' => '/back/wxuser',
+                    'level' => 'W01', //页面权限
+                    'menu' => array(
+                        array('title' => '用户分组', 'level' => 'W0101'), //按钮功能配置
+                        array('title' => '删除字段', 'level' => 'W0102'),
+                    ),
+                ),
+                array(
+                    'title'=>'用户组管理',
+                    'url' => '/back/wxuserg',
+                    'level' => 'W02', //页面权限
+                    'menu' => array(
+                        array('title' => '用户组列表', 'level' => 'W0201'), //按钮功能配置
+                        array('title' => '删除字段', 'level' => 'W0202'),
+                    ),
+                ),
+                array(
+                    'title'=>'永久素材管理',
+                    'url' => '/back/material',
+                    'level' => 'W03', //页面权限
+                    'menu' => array(
+                        array('title' => '永久素材列表', 'level' => 'WX0301'),
+                        array('title' => '添加永久素材', 'level' => 'WX0302'),
+                        array('title' => '删除永久素材', 'level' => 'D0103'),
+                    ),
+                ),
+                array(
+                    'title'=>'临时素材管理',
+                    'url' => '/back/tempmaterial',
+                    'level' => 'W04', //页面权限
+                    'menu' => array(
+                        array('title' => '永久素材列表', 'level' => 'D0101'),
+                        array('title' => '添加永久素材', 'level' => 'D0102'),
+                        array('title' => '', 'level' => 'D0103'),
+                    ),
+                ),
+                array(
+                    'title'=>'自定义菜单',
+                    'url' => '/back/menu',
+                    'level' => 'W04', //页面权限
+                    'menu' => array(
+                        array('title' => '永久素材列表', 'level' => 'D0101'),
+                        array('title' => '添加永久素材', 'level' => 'D0102'),
+                        array('title' => '', 'level' => 'D0103'),
+                    ),
+                ),
+                array(
+                    'title'=>'客服管理',
+                    'url' => '/back/kfaccount',
+                    'level' => 'W04', //页面权限
+                    'menu' => array(
+                        array('title' => '永久素材列表', 'level' => 'D0101'),
+                        array('title' => '添加永久素材', 'level' => 'D0102'),
+                        array('title' => '', 'level' => 'D0103'),
+                    ),
+                ),
+            ),
+        ),
     );
     
     /**

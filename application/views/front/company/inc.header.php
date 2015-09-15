@@ -4,7 +4,7 @@
                 <div class="r">
                     <div class="l nav">
                         <ul>
-                            <li><a href=<?php echo HOST;?> <?php if($cid == 0){echo('class="current"');}?>>首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
+                            <li><a href="/"<?php //echo HOST;?> <?php if($cid == 0){echo('class="current"');}?>>首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
                             <?php $cates = $c->getCate();?>
                             <?php foreach($cates as $k => $ct){
                                 

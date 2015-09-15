@@ -667,3 +667,4 @@ require_once(dirname(__file__).'/Base_Controller.php');
 require_once(dirname(__file__).'/APP_Controller.php');
 require_once(dirname(__file__).'/User_Controller.php');
 require_once(dirname(__file__).'/WX_Controller.php');
+require_once(dirname(__file__).'/WXAdmin_Controller.php');

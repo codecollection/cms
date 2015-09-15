@@ -5,6 +5,7 @@
  */
 class WeixinBase extends CBase {
 
+    public $accessToken = "";
     public $token = "wenghe"; //token 
     public $aesKey = ""; //EncodingAESKey
     protected $appId = "wxe456b49da24f9d88";
@@ -12,21 +13,21 @@ class WeixinBase extends CBase {
     public $weixinApiUrl = "https://api.weixin.qq.com";
     private $actionUrl = "";
 
-    public $listUrl = "";
-    
-    public $addUrl = "";
-    
-    public $updateUrl = "";
-    
-    public $deleteUrl = "";
+    /**
+     * 微信消息类型关系
+     */
+    public $typeRelation = array(
+        "1" => "text",
+        "2" => "image",
+        "3" => "voice",
+        "4" => "video",
+        "5" => "music",
+        "6" => "news",
+    );
     public function __construct() {
 
         parent::__construct();
         
-        $this->listUrl = $this->weixinApiUrl . $this->listUrl . $this->token;
-        $this->addUrl = $this->weixinApiUrl . $this->addUrl . $this->token;
-        $this->updateUrl = $this->weixinApiUrl . $this->updateUrl . $this->token;
-        $this->deleteUrl = $this->weixinApiUrl . $this->deleteUrl . $this->token;
     }
 
     /**
@@ -56,7 +57,7 @@ class WeixinBase extends CBase {
     /**
      * 
      */
-    public function getRequestData(){
+    public function getRequestData($params = array()){
         //初始化
         $ch = curl_init();
 
@@ -65,6 +66,10 @@ class WeixinBase extends CBase {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HEADER, 0);
 
+        if(!empty($params)){
+            curl_setopt($ch,CURLOPT_POST,TRUE);
+            curl_setopt($ch,CURLOPT_POSTFIELDS, $params); 
+        }
         //执行并获取HTML文档内容
         $output = curl_exec($ch);
 
@@ -99,11 +104,18 @@ class WeixinBase extends CBase {
         return json_decode($output,true);
     }
 
-    
+    /**
+     * 上传图片
+     * 
+     * @param type $filename
+     * @param type $path
+     * @param type $type
+     * @return type
+     */
     public function postFile($filename,$path,$type){
         
         $data = array(
-            'pic'=>'@'.realpath($path).";type=".$type.";filename=".$filename
+            'media'=>'@'.realpath($path).";type=".$type.";filename=".$filename
         );
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->getActionUrl());
