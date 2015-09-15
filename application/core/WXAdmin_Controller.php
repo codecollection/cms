@@ -16,8 +16,8 @@ class WXAdminBase extends CAdminBase{
     private $actionUrl = "";
     public function __construct() {
         parent::__construct();
-
-        if(isset($_SESSION["access_token"]) && !empty($_SESSION["access_token"])){
+        $isReqAccessToken = isset($_SESSION["access_token"]) && !empty($_SESSION["access_token"]);
+        if($isReqAccessToken){
             $this->accessToken = $_SESSION["access_token"];
             
         }else{
@@ -66,6 +66,7 @@ class WXAdminBase extends CAdminBase{
         curl_close($ch);
         
         $data = json_decode($output,true);
+        
         
         return $data;
     }
