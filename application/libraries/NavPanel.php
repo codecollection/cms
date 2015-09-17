@@ -352,11 +352,11 @@ class NavPanel {
                 array(
                     'title'=>'客服管理',
                     'url' => '/back/kfaccount',
-                    'level' => 'W04', //页面权限
+                    'level' => 'W06', //页面权限
                     'menu' => array(
-                        array('title' => '永久素材列表', 'level' => 'D0101'),
-                        array('title' => '添加永久素材', 'level' => 'D0102'),
-                        array('title' => '', 'level' => 'D0103'),
+                        array('title' => '客服列表', 'level' => 'W0601'),
+                        array('title' => '添加修改客服', 'level' => 'W0602'),
+                        array('title' => '删除', 'level' => 'W0603'),
                     ),
                 ),
             ),

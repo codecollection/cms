@@ -37,6 +37,7 @@ class WXAdminBase extends CAdminBase{
         $data = $this->getRequestData();
         
         if(!empty($data) && isset($data["access_token"])){
+            if(isset($_SESSION['access_token'])) {unset($_SESSION["access_token"]);}
             //$expires_in = $data["expires_in"];
             $_SESSION["access_token"] = $data["access_token"];
             $this->accessTokon = $data["access_token"];
@@ -131,4 +132,11 @@ class WXAdminBase extends CAdminBase{
         $this->renderAdminView($this->viewDir(2), array_merge($this->renderData, array()));
     }
     
+    /**
+     * 重新请求accesstoken
+     */
+    public function recallAccessToken(){
+        $this->getAccessToken();
+       
+    }
 }

@@ -43,7 +43,7 @@ class Wxmenu extends WXAdminBase {
         
         //print_r($data);
         
-        $this->setData("list", array("button" => $data));
+        $this->setData("list",$data);
         $this->renderAdminView($this->viewDir());
     }
     
@@ -94,40 +94,12 @@ class Wxmenu extends WXAdminBase {
         }
         $postData = RKit::json_encode_ch(array("button"=>$postArray));
         
-        print_r($postData);
-        
-//        $postData = '{"button":[
-//     {	
-//          "type":"click",
-//          "name":"今日歌曲",
-//          "key":"V1001_TODAY_MUSIC"
-//      },
-//      {
-//           "name":"菜单",
-//           "sub_button":[
-//           {	
-//               "type":"view",
-//               "name":"搜索",
-//               "url":"http://www.soso.com/"
-//            },
-//            {
-//               "type":"view",
-//               "name":"视频",
-//               "url":"http://v.qq.com/"
-//            },
-//            {
-//               "type":"click",
-//               "name":"赞一下我们",
-//               "key":"V1001_GOOD"
-//            }]
-//       }]
-// }';
         $this->setActionUrl($this->weixinApiUrl."/cgi-bin/menu/create?access_token={$this->accessToken}");
         //print_r($postData);
         
         //echo($this->getActionUrl());
         $res = $this->postData($postData);
-        print_r($res);
+        //print_r($res);
         if(!isset($res["errcode"]) || (isset($res["errcode"]) && $res["errcode"] <= 0)){
             $this->echoAjax(0, "操作成功");
         }
