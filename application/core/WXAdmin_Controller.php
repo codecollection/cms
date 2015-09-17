@@ -16,6 +16,7 @@ class WXAdminBase extends CAdminBase{
     private $actionUrl = "";
     public function __construct() {
         parent::__construct();
+        //unset($_SESSION["access_token"]);
         $isReqAccessToken = isset($_SESSION["access_token"]) && !empty($_SESSION["access_token"]);
         if($isReqAccessToken){
             $this->accessToken = $_SESSION["access_token"];
@@ -67,9 +68,9 @@ class WXAdminBase extends CAdminBase{
         
         $data = json_decode($output,true);
         
-        
         return $data;
     }
+    
 
     /**
      * 利用curl提交数据
@@ -123,11 +124,11 @@ class WXAdminBase extends CAdminBase{
     
     public function add() {
         
-        $this->renderAdminView($this->viewDir(2), array_merge($renderData, array()));
+        $this->renderAdminView($this->viewDir(2), array_merge($this->renderData, array()));
     }
     
     public function edit() {
-        $this->renderAdminView($this->viewDir(2), array_merge($renderData, array()));
+        $this->renderAdminView($this->viewDir(2), array_merge($this->renderData, array()));
     }
     
 }

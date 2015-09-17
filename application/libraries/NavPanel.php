@@ -342,12 +342,11 @@ class NavPanel {
                 ),
                 array(
                     'title'=>'自定义菜单',
-                    'url' => '/back/menu',
-                    'level' => 'W04', //页面权限
+                    'url' => '/back/wxmenu',
+                    'level' => 'W05', //页面权限
                     'menu' => array(
-                        array('title' => '永久素材列表', 'level' => 'D0101'),
-                        array('title' => '添加永久素材', 'level' => 'D0102'),
-                        array('title' => '', 'level' => 'D0103'),
+                        array('title' => '菜单列表', 'level' => 'W0501'),
+                        array('title' => '添加菜单', 'level' => 'W0502'),
                     ),
                 ),
                 array(
