@@ -64,6 +64,7 @@ create table if not exists `cms_resource_list` (
  `height` int(11) not null default 0 comment '资源高度',
  `size` int(11) not null default 0 comment '资源大小',
  `oname` varchar(200) not null default '' comment '原文件名，不带后缀',
+ `media_id` varchar(200) not null default '' comment '微信素材id',
  primary key (`resource_id`),
  index `resource_url` (`resource_url`)
 ) engine=myisam default charset=utf8 comment '资源表';

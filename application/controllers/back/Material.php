@@ -19,7 +19,14 @@ class Material extends WXAdminBase {
     }
 
     public function index(){
+        $type = "image";
+        $this->setActionUrl($this->weixinApiUrl."/cgi-bin/material/batchget_material?access_token={$this->accessToken}");
         
+        $postData = RKit::json_encode_ch(array("type"=>$type,"offset"=>0,"count"=>10));
+        
+        $list = $this->getRequestData($postData);
+        
+        print_r($list);
         $this->renderAdminView($this->viewDir());
     }
     
@@ -28,47 +35,28 @@ class Material extends WXAdminBase {
         $this->renderAdminView($this->viewDir(2));
     }
     
-    public function testUpload(){
+    public function save(){
         
-        $fileInfo = $_FILES["file"];
-        print_r($fileInfo);
-        $this->setActionUrl($this->weixinApiUrl."/cgi-bin/material/add_material?access_token={$this->accessToken}&type=image");
-        $resData = $this->postFile($fileInfo);
+        $type = "image";
+        $image = $this->getData("image");
         
-        var_dump($resData);
-    }
-    
-    /**
-     * 上传图片
-     * 
-     * @param type $filename
-     * @param type $path
-     * @param type $type
-     * @return type
-     */
-    public function postFile($fileInfo){
+//        $imagePath = realpath(".".$image);
+        $imagePath = dirname(__FILE__).$image;
         
-        $real_path = realpath($fileInfo["name"]);
-        $data = array(
-            //'form-data'=> array("type" => $fileInfo["type"],"filename"=>$fileInfo["name"],"filelength"=>$fileInfo["size"]),
-            'media' => "@{$real_path}",
-        );
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->getActionUrl());
-        curl_setopt($ch, CURLOPT_POST, true );
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_getinfo($ch);
-        $output = curl_exec($ch);
-        curl_close($ch);
+        $postData = array('media' => new CURLFile($imagePath));
         
-        if(curl_errno()==0){
-            return json_decode($output,true);  
-        }else{
-            return false;
+        $this->setActionUrl($this->weixinApiUrl."/cgi-bin/media/upload?access_token={$this->accessToken}&type={$type}
+");
+        //$this->setActionUrl("http://file.api.weixin.qq.com/cgi-bin/media/upload?type={$type}&access_token={$this->accessToken}");
+        //print_r($postData);
+        
+        $res = $this->postFile($postData);
+        var_dump($res);
+        
+        if(!isset($res["errcode"]) || (isset($res["errcode"]) && $res["errcode"] <= 0)){
+            $this->echoAjax(0, "操作成功");
         }
-          
-   
+        
+        $this->echoAjax(100, $res["errmsg"]);
     }
 }
