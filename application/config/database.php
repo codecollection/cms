@@ -71,7 +71,7 @@ $db['default'] = array(
         'hostname' => '103.19.85.78:33066',
 	'username' => 'wenghe',
 	'password' => 'wh695646826',
-	'database' => 'xrz_company',
+	'database' => 'hobby', //xrz_company ==官网
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

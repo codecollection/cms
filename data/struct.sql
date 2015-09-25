@@ -141,11 +141,11 @@ create table if not exists `cms_ad_list` (
 
 create table if not exists `cms_model` (
  `model_id` int(11) unsigned not null auto_increment comment '模型ID',
- `model_title` varchar(100) not null default '' not null comment '模型标题',
- `model_name` varchar(100) not null default '' not null comment '扩展模型表名',
+ `model_title` varchar(100) not null default '' comment '模型标题',
+ `model_name` varchar(100) not null default '' comment '扩展模型表名',
  `cmodel_id` varchar(100) not null default 0 comment '模型子表的ID',
- `model_type` tinyint(2) not null default 0 commnet '模型类型0=扩展，1=独立',
- `attr_content` text not null  comment '扩展属性，JSON格式数据[{"lable":"颜色","name":"color","type":"text/checkbox/radio/select/editor/date","value":["红色","蓝色"],”field_type”:”varchar(100)/ int(11) ”},...]',
+ `model_type` tinyint(2) not null default 0 comment '模型类型0=扩展，1=独立',
+ `attr_content` text not null  comment '扩展属性，JSON格式数据[{"lable":"颜色","name":"color","type":"text/checkbox/radio/select/editor/date","value":["红色","蓝色"],”field_type”:”varchar(100) int(11) ”},...]',
  primary key (`model_id`)
 ) engine=myisam default charset=utf8 comment '扩展模型';
 
@@ -412,6 +412,7 @@ create table if not exists `cms_keyword_relation` (
 
 
 -- 会员支付充值记录表 
+/*
  create table if not exists `cms_user_pay`(
  `pay_id` int(11) not null auto_increment comment '自增id', 
  `trade_no` varchar(50) not null default '' comment '本站订单号 唯一',
@@ -430,8 +431,9 @@ create table if not exists `cms_keyword_relation` (
  primary key (`pay_id`)
  ) engine=myisam default charset=utf8;
 
-
+*/
 -- 订单商品表
+/*
 create table if not exists `cms_order_goods` (
 `order_goods_id` mediumint(8) unsigned not null auto_increment comment '订单商品信息自增id',
 `order_id` mediumint(8) unsigned not null DEFAULT '0' comment '订单商品信息对应的详细信息id，取值order_info的order_id',
@@ -451,9 +453,10 @@ create table if not exists `cms_order_goods` (
 `gift_detail`  varchar(120) not null default '' comment '优惠说明',
 primary KEY (`order_goods_id`)
 )ENGINE=myisam default CHARSET=utf8  comment='订单的商品信息' auto_increment=1 ;
-
+*/
 
 -- 订单记录表
+/*
 create table if not exists `cms_user_order`(
   `user_order_id` int(11) not null auto_increment comment '订单id', 
   `trade_no` varchar(50) not null default '' comment '本站订单号 唯一',
@@ -481,8 +484,9 @@ create table if not exists `cms_user_order`(
   `pay_time_complete` int(11) not null default 0 comment '完成付款时间',
   primary key (`user_order_id`)
 )engine=myisam default charset=utf8;
-
+*/
 -- 收货地址表
+/*
 create table if not exists `cms_recv_address`(
   `recv_address_id` int(11) not null auto_increment comment '地址id', 
   `uid` int(11) not null default 0 comment '用户id', 
@@ -496,9 +500,10 @@ create table if not exists `cms_recv_address`(
   primary key (`recv_address_id`)
 )engine=myisam default charset=utf8;
 
-
+*/
 
 -- 购物车
+/*
 create table if not exists `cms_cart`(
   `cart_id` int(11) not null auto_increment comment '自增id', 
   `uid` int(11) not null default 0 comment '用户id', 
@@ -510,8 +515,9 @@ create table if not exists `cms_cart`(
   primary key (`cart_id`)
 )engine=myisam default charset=utf8;
 
-
+*/
 -- 快递物流
+/*
 create table if not exists `cms_shipping` (
 `shipping_id` tinyint(3) unsigned not null auto_increment comment '自增ID号',
 `shipping_code` varchar(20) not null comment '配送方式的字符串代号',
@@ -521,8 +527,9 @@ create table if not exists `cms_shipping` (
 `enabled` tinyint(1) unsigned not null DEFAULT '0' comment '该配送方式是否被禁用，1，可用；0，禁用',
 PRIMARY KEY (`shipping_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC comment='配送方式配置信息表' auto_increment=9 ;
-
+*/
 -- 收藏表
+/*
 create table if not exists `cms_collect` (
 `collect_id` mediumint(8)  not null auto_increment comment '收藏记录的自增id',
 `uid` mediumint(8) not null DEFAULT '0' comment '该条收藏记录的会员id，取值于ecs_users的user_id',
@@ -531,9 +538,10 @@ create table if not exists `cms_collect` (
 `add_time` int(11)  not null DEFAULT '0' comment '收藏时间',
 PRIMARY KEY (`collect_id`)
 )engine=myisam default charset=utf8;
-
+*/
 
 -- 充值卡
+/*
 create table if not exists `cms_exchange_code`(
   `exchange_code_id` int(11) not null auto_increment comment '兑换码id', 
   `exchange_code` varchar(50) not null default '' comment '兑换码',
@@ -542,8 +550,9 @@ create table if not exists `cms_exchange_code`(
   `exchange_time` int(11) not null default 0 comment '兑换时间',
   primary key (`exchange_code_id`)
 )engine=myisam default charset=utf8;
-
+*/
 -- 优惠券
+/*
 create table if not exists `cms_coupons`(
   `coupons_id` int(11) not null auto_increment comment 'id', 
   `uid` int(11) not null default 0 comment '用户ID',
@@ -554,8 +563,9 @@ create table if not exists `cms_coupons`(
   
   primary key (`coupons_id`)
 )engine=myisam default charset=utf8;
-
+*/
 -- 优惠打折促销活动 ，参照ecshop表
+/*
 create table if not exists `cms_activity` (
 `activity_id` smallint(5) unsigned not null auto_increment comment '优惠活动的自增id',
 `activity_name` varchar(255) not null default '' comment '优惠活动的活动名称',
@@ -573,8 +583,9 @@ create table if not exists `cms_activity` (
 PRIMARY KEY (`activity_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC comment='优惠活动的配置信息，优惠活动包括送礼，减免，打折' auto_increment=5 ;
 
-
+*/
 -- 在线人数
+/*
 create table  if not exists `cms_online`(
  `online_id` int(11) not  null auto_increment comment 'id',
  `uid` int(11) not null default 0 comment '用户id',
@@ -583,9 +594,10 @@ create table  if not exists `cms_online`(
  `create_time` int(11) not null default 0 comment '创建时间',
  primary key(`online_id`)
 )engine myisam default charset=utf8;
-
+*/
 
 -- 投票
+/*
 create table if not exists `cms_vote_subject`(
  `subject_id` int(11) unsigned not null auto_increment comment '主题id',
  `subject` varchar(255) not null default '' comment '标题',
@@ -607,8 +619,9 @@ create table if not exists `cms_vote_subject`(
  `limit_day` int(11) not null default 0  comment '间隔时间允许投票，天为单位，',
   primary key(`subject_id`) 
 ) engine=myisam default charset=utf8;
-
+*/
 -- 投票选项
+/*
 create table if not exists `cms_vote_option` (
   `option_id` int(8) unsigned not  null auto_increment comment '选项ID',
   `subject_id` int(8) unsigned not null default '0',
@@ -616,8 +629,9 @@ create table if not exists `cms_vote_option` (
   `option_order` tinyint(2) unsigned default '0' comment '排序',
   primary key  (`option_id`)
 ) engine=myisam default charset=utf8;
-
+*/
 -- 投票
+/*
 create table if not exists `cms_vote_data` (
   `data_id`  int(11) unsigned not null auto_increment comment '自增ID',
   `uid` int(8) unsigned not  null  comment '用户ID',
@@ -628,7 +642,7 @@ create table if not exists `cms_vote_data` (
   `data` varchar(255) not null  default  ''  comment '投票的数据,json格式 [3,5,6]，表示 投给了 3，5，6',
   primary key  (`data_id`)
 ) engine=myisam default charset=utf8;
-
+*/
 /*添加超级管理员组*/
 insert ignore into cms_admin_group (group_id,g_name,g_urank,g_remark) values(1,'超级管理员组','100','超级管理员组拥有所有权限');
 insert ignore into cms_admin_list (aname,apass,alevel,group_id) values('admin','f21e84bcb1eea0277ced3794e8676d23','100',1);
